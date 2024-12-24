@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Common.Entities;
+﻿using System;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -50,6 +51,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float KnockbackStrength = 1f;
 
+        public float YDirKnockbackDiv = 1f;
+
         /// <summary>
         /// Fetches the location of the damage source from either SourcePos or SourceEntity
         /// </summary>
@@ -67,6 +70,50 @@ namespace Vintagestory.API.Common
         public Entity GetCauseEntity()
         {
             return CauseEntity ?? SourceEntity;
+        }
+
+        /// <summary>
+        /// If we have a hitposition this returns the pitch between the attacker and the attacked position
+        /// </summary>
+        /// <param name="attackedPos"></param>
+        /// <returns></returns>
+        public bool GetAttackAngle(Vec3d attackedPos, out double attackYaw, out double attackPitch)
+        {
+            double dx;
+            double dy;
+            double dz;
+            if (HitPosition != null)
+            {
+                dx = HitPosition.X;
+                dy = HitPosition.Y;
+                dz = HitPosition.Z;
+            }
+            else if (SourceEntity != null)
+            {
+                dx = SourceEntity.Pos.X - attackedPos.X;
+                dy = SourceEntity.Pos.Y - attackedPos.Y;
+                dz = SourceEntity.Pos.Z - attackedPos.Z;
+            }
+            else if (SourcePos != null)
+            {
+                dx = SourcePos.X - attackedPos.X;
+                dy = SourcePos.Y - attackedPos.Y;
+                dz = SourcePos.Z - attackedPos.Z;
+            }
+            else
+            {
+                attackYaw = 0;
+                attackPitch = 0;
+                return false;
+            }
+
+            attackYaw = Math.Atan2((double)dx, (double)dz);
+            double a = dy;
+            float b = (float)Math.Sqrt(dx * dx + dz * dz);
+            attackPitch = (float)Math.Atan2(a, b);
+            return true;
+
+            //bool verticalAttack = Math.Abs(attackPitch) > 65 * GameMath.DEG2RAD;
         }
     }
 }

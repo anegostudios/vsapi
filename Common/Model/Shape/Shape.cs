@@ -626,6 +626,7 @@ namespace Vintagestory.API.Common
 
         public Animation[] CloneAnimations()
         {
+            var Animations = this.Animations;   // local variable of the same thing for performance, this helps with arrays because the JIT then knows the array ref cannot change
             if (Animations == null) return null;
 
             Animation[] elems = new Animation[Animations.Length];

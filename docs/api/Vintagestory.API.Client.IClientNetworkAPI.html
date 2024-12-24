@@ -663,38 +663,6 @@ void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null
 
 
 
-  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendMountPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket*"></a>
-
-  <h3 id="Vintagestory_API_Client_IClientNetworkAPI_SendMountPacket_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket(Vintagestory.API.Common.Entities.Entity)">
-  SendMountPacket(Entity)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Sends a mount position via UDP to the server</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SendMountPacket(Entity mount)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>mount</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Client_IClientNetworkAPI_SendPacketClient_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient*"></a>
 
   <h3 id="Vintagestory_API_Client_IClientNetworkAPI_SendPacketClient_System_Object_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(System.Object)">
@@ -728,24 +696,24 @@ void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null
 
 
 
-  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerEntityPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket*"></a>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerMountPositionPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerMountPositionPacket*"></a>
 
-  <h3 id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerEntityPacket_Vintagestory_API_Common_EntityPlayer_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket(Vintagestory.API.Common.EntityPlayer)">
-  SendPlayerEntityPacket(EntityPlayer)
+  <h3 id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerMountPositionPacket_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerMountPositionPacket(Vintagestory.API.Common.Entities.Entity)">
+  SendPlayerMountPositionPacket(Entity)
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Sends the players entity position via UDP to the server</p>
+  <div class="markdown level1 summary"><p>Sends a mount position via UDP (if possible) to the server</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SendPlayerEntityPacket(EntityPlayer player)</code></pre>
+    <pre><code class="lang-csharp hljs">void SendPlayerMountPositionPacket(Entity mount)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>player</code> <a class="xref" href="Vintagestory.API.Common.EntityPlayer.html">EntityPlayer</a></dt>
+    <dt><code>mount</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
     <dd></dd>
   </dl>
 
@@ -773,6 +741,33 @@ void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void SendPlayerNowReady()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerPositionPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerPositionPacket*"></a>
+
+  <h3 id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerPositionPacket" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerPositionPacket">
+  SendPlayerPositionPacket()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sends the players entity position (and Mount position) via UDP (if possible) to the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendPlayerPositionPacket()</code></pre>
   </div>
 
 

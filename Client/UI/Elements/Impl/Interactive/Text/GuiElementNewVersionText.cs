@@ -33,10 +33,7 @@ namespace Vintagestory.API.Client
             hoverTexture = new LoadedTexture(capi);
         }
 
-        public override void ComposeTextElements(Context ctx, ImageSurface surface)
-        {
-            
-        }
+        public override void ComposeTextElements(Context ctx, ImageSurface surface) { }
 
         /// <summary>
         /// Recomposes a multi-line message.
@@ -44,6 +41,8 @@ namespace Vintagestory.API.Client
         /// <param name="versionnumber">The version number of the new version.</param>
         public void RecomposeMultiLine(string versionnumber)
         {
+            RightPadding = (float)scaled(25);
+
             text = Lang.Get(RuntimeEnv.OS == OS.Windows ? "versionavailable-autoupdate" : "versionavailable-manualupdate", versionnumber);
 
             Bounds.fixedHeight = GetMultilineTextHeight() / RuntimeEnv.GUIScale;

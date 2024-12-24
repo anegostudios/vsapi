@@ -143,6 +143,82 @@ Class ClientEntityConfig
 
 
 
+  <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Renderer" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Renderer">
+  Renderer (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Name of the renderer system that draws this entity.
+Vanilla Entity Renderer Systems are:<br></p>
+<ul>
+<li>Item<br></li>
+<li>Dummy<br></li>
+<li>BlockFalling<br></li>
+<li>Shape<br></li>
+<li>PlayerShape<br></li>
+<li>EchoChamber<br>
+You will likely want to use Shape.</li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string Renderer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Shape" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Shape">
+  Shape (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The shape of the entity. Must be set unless <a class="xref" href="Vintagestory.ServerMods.NoObf.ClientEntityConfig.html#Vintagestory_ServerMods_NoObf_ClientEntityConfig_Renderer">Renderer</a> is not set to &quot;Shape&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CompositeShape Shape</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Animations" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Animations">
   Animations (Optional) (Default: None)
   
@@ -263,82 +339,6 @@ public bool PitchStep</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Renderer" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Renderer">
-  Renderer (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Name of the renderer system that draws this entity.
-Vanilla Entity Renderer Systems are:<br></p>
-<ul>
-<li>Item<br></li>
-<li>Dummy<br></li>
-<li>BlockFalling<br></li>
-<li>Shape<br></li>
-<li>PlayerShape<br></li>
-<li>EchoChamber<br>
-You will likely want to use Shape.</li>
-</ul>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public string Renderer</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Shape" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Shape">
-  Shape (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The shape of the entity. Must be set unless <a class="xref" href="Vintagestory.ServerMods.NoObf.ClientEntityConfig.html#Vintagestory_ServerMods_NoObf_ClientEntityConfig_Renderer">Renderer</a> is not set to &quot;Shape&quot;.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public CompositeShape Shape</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
     <dd></dd>
   </dl>
 

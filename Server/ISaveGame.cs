@@ -39,6 +39,8 @@ namespace Vintagestory.API.Server
 
         ITreeAttribute WorldConfiguration { get; }
 
+        PlayerSpawnPos DefaultSpawn { get; set; }
+
         /// <summary>
         /// Gets a previously saved object from the savegame. Returns null if no such data under this key was previously set.
         /// </summary>

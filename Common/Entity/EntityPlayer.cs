@@ -259,8 +259,8 @@ namespace Vintagestory.API.Common
             }
         }
 
-        IAnimationManager animManager;
-        IAnimationManager selfFpAnimManager;
+        PlayerAnimationManager animManager;
+        PlayerAnimationManager selfFpAnimManager;
         bool IsSelf => PlayerUID == (Api as ICoreClientAPI)?.Settings.String["playeruid"];
         public bool selfNowShadowPass;
 
@@ -293,7 +293,8 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public IAnimationManager TpAnimManager => animManager;
+        public PlayerAnimationManager TpAnimManager => animManager;
+        public PlayerAnimationManager SelfFpAnimManager => selfFpAnimManager;
 
         public EntityPlayer() : base()
         {
@@ -301,7 +302,7 @@ namespace Vintagestory.API.Common
             // which must only run while in first person mode and not while doing the shadow pass.
             // To achieve this, we run two paralell animation managers and flip back and forth between the two as needed
             animManager = new PlayerAnimationManager();
-            (animManager as PlayerAnimationManager).UseFpAnmations = false;
+            animManager.UseFpAnmations = false;
             selfFpAnimManager = new PlayerAnimationManager();
 
             requirePosesOnServer = true;
@@ -335,6 +336,7 @@ namespace Vintagestory.API.Common
                 .Register("animalHarvestingTime")
                 .Register("gliderLiftMax")
                 .Register("gliderSpeedMax")
+                .Register("jumpHeightMul")
             ;
         }
 

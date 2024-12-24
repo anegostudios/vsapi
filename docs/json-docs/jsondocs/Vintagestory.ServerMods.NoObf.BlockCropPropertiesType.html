@@ -141,6 +141,134 @@ Class BlockCropPropertiesType
 
 
 
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_GrowthStages" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.GrowthStages">
+  GrowthStages (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Amount of growth stages this crop has.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GrowthStages</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_NutrientConsumption" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.NutrientConsumption">
+  NutrientConsumption (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Total amount of nutrient consumed to reach full maturity. (100 is the maximum available for farmland)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float NutrientConsumption</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_TotalGrowthMonths" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.TotalGrowthMonths">
+  TotalGrowthMonths (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Total time in ingame months required for the crop to reach full maturity assuming full nutrient levels.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float TotalGrowthMonths</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_RequiredNutrient" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.RequiredNutrient">
+  RequiredNutrient (Recommended) (Default: N)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Which nutrient category this crop requires to grow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumSoilNutrient RequiredNutrient</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumSoilNutrient.html">EnumSoilNutrient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_Behaviors" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.Behaviors">
   Behaviors (Optional) (Default: None)
   
@@ -269,18 +397,18 @@ Class BlockCropPropertiesType
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_GrowthStages" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.GrowthStages">
-  GrowthStages (Required)
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_HeatDamageAbove" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.HeatDamageAbove">
+  HeatDamageAbove (Optional) (Default: 40)
   
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>Amount of growth stages this crop has.</p>
+<p>The crop will be damaged if it goes above this temperature.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int GrowthStages</code></pre>
+    <pre><code class="lang-csharp hljs">public float HeatDamageAbove</code></pre>
   </div>
 
 
@@ -288,7 +416,7 @@ Class BlockCropPropertiesType
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -333,38 +461,6 @@ Class BlockCropPropertiesType
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_HeatDamageAbove" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.HeatDamageAbove">
-  HeatDamageAbove (Optional) (Default: 40)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The crop will be damaged if it goes above this temperature.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float HeatDamageAbove</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_MultipleHarvests" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.MultipleHarvests">
   MultipleHarvests (Unused) (Default: false)
   
@@ -397,70 +493,6 @@ Class BlockCropPropertiesType
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_NutrientConsumption" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.NutrientConsumption">
-  NutrientConsumption (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Total amount of nutrient consumed to reach full maturity. (100 is the maximum available for farmland)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float NutrientConsumption</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_RequiredNutrient" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.RequiredNutrient">
-  RequiredNutrient (Recommended) (Default: N)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Which nutrient category this crop requires to grow</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumSoilNutrient RequiredNutrient</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.EnumSoilNutrient.html">EnumSoilNutrient</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_TotalGrowthDays" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.TotalGrowthDays">
   TotalGrowthDays (Obsolete)
   
@@ -473,38 +505,6 @@ Class BlockCropPropertiesType
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float TotalGrowthDays</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_TotalGrowthMonths" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.TotalGrowthMonths">
-  TotalGrowthMonths (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Total time in ingame months required for the crop to reach full maturity assuming full nutrient levels.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float TotalGrowthMonths</code></pre>
   </div>
 
 

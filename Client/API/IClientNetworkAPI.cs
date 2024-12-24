@@ -134,16 +134,15 @@ namespace Vintagestory.API.Client
         void SendEntityPacket(long entityid, int packetId, byte[] data = null);
 
         /// <summary>
-        /// Sends the players entity position via UDP to the server
+        /// Sends the players entity position (and Mount position) via UDP (if possible) to the server
         /// </summary>
-        /// <param name="player"></param>
-        void SendPlayerEntityPacket(EntityPlayer player);
+        void SendPlayerPositionPacket();
 
         /// <summary>
-        /// Sends a mount position via UDP to the server
+        /// Sends a mount position via UDP (if possible) to the server
         /// </summary>
         /// <param name="mount"></param>
-        void SendMountPacket(Entity mount);
+        void SendPlayerMountPositionPacket(Entity mount);
 
 
         /// <summary>

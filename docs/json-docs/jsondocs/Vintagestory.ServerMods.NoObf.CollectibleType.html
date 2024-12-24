@@ -165,6 +165,204 @@ public abstract class CollectibleType : RegistryObjectType</code></pre>
 
 
 
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_CreativeInventory" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.CreativeInventory">
+  CreativeInventory (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A list of creative tabs and variant codes for each.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, string[]&gt; CreativeInventory</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GroundTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GroundTransform">
+  GroundTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the rendered as a dropped item on the ground.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform GroundTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GuiTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GuiTransform">
+  GuiTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the block when rendered in guis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform GuiTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Shape" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Shape">
+  Shape (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Details about the 3D model of this collectible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CompositeShape Shape</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TpHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TpHandTransform">
+  TpHandTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the block when rendered in the third person mode hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform TpHandTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TpOffHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TpOffHandTransform">
+  TpOffHandTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the block when rendered in the third person mode offhand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform TpOffHandTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_AttackPower" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.AttackPower">
   AttackPower (Optional) (Default: 0.5)
   
@@ -319,39 +517,6 @@ public CombustibleProperties CombustibleProps</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html">CombustibleProperties</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_CreativeInventory" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.CreativeInventory">
-  CreativeInventory (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>A list of creative tabs and variant codes for each.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public Dictionary&lt;string, string[]&gt; CreativeInventory</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -529,40 +694,6 @@ public int Durability</code></pre>
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_FpHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.FpHandTransform">
-  FpHandTransform (Obsolete)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Deprecated - Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_TpHandTransform">TpHandTransform</a> instead.
-Used for scaling, rotation or offseting the block when rendered in the first person mode hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public ModelTransform FpHandTransform</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GrindingProps" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GrindingProps">
   GrindingProps (Optional) (Default: None)
   
@@ -584,72 +715,6 @@ public GrindingProperties GrindingProps</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.GrindingProperties.html">GrindingProperties</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GroundTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GroundTransform">
-  GroundTransform (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Used for scaling, rotation or offseting the rendered as a dropped item on the ground.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public ModelTransform GroundTransform</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GuiTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GuiTransform">
-  GuiTransform (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Used for scaling, rotation or offseting the block when rendered in guis.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public ModelTransform GuiTransform</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
     <dd></dd>
   </dl>
 
@@ -708,39 +773,6 @@ public string HeldLeftReadyAnimation</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 public string HeldLeftTpIdleAnimation</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldOldTpIdleAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldOldTpIdleAnimation">
-  HeldOldTpIdleAnimation (Obsolete)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Deprecated. Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightTpIdleAnimation">HeldRightTpIdleAnimation</a> instead.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;heldTpIdleAnimation&quot;)]
-private string HeldOldTpIdleAnimation</code></pre>
   </div>
 
 
@@ -1223,39 +1255,6 @@ public float RenderAlphaTest</code></pre>
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Shape" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Shape">
-  Shape (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Details about the 3D model of this collectible.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public CompositeShape Shape</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_StorageFlags" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.StorageFlags">
   StorageFlags (Optional) (Default: 1)
   
@@ -1422,72 +1421,6 @@ public int ToolTier</code></pre>
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TpHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TpHandTransform">
-  TpHandTransform (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Used for scaling, rotation or offseting the block when rendered in the third person mode hand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public ModelTransform TpHandTransform</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TpOffHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TpOffHandTransform">
-  TpOffHandTransform (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Used for scaling, rotation or offseting the block when rendered in the third person mode offhand.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public ModelTransform TpOffHandTransform</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TransitionableProps" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TransitionableProps">
   TransitionableProps (Optional) (Default: None)
   
@@ -1509,6 +1442,73 @@ public TransitionableProperties[] TransitionableProps</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.TransitionableProperties.html">TransitionableProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_FpHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.FpHandTransform">
+  FpHandTransform (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Deprecated - Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_TpHandTransform">TpHandTransform</a> instead.
+Used for scaling, rotation or offseting the block when rendered in the first person mode hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform FpHandTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldOldTpIdleAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldOldTpIdleAnimation">
+  HeldOldTpIdleAnimation (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Deprecated. Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightTpIdleAnimation">HeldRightTpIdleAnimation</a> instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;heldTpIdleAnimation&quot;)]
+private string HeldOldTpIdleAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 

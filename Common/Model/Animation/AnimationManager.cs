@@ -174,7 +174,7 @@ namespace Vintagestory.API.Common
 
             AnimationsDirty = true;
             ActiveAnimationsByAnimCode[animdata.Animation] = animdata;
-            entity.UpdateDebugAttributes();
+            entity?.UpdateDebugAttributes();
 
             return true;
         }

@@ -19,10 +19,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public CairoFont Font;
 
-        /// <summary>
-        /// The prober for the text size.
-        /// </summary>
-        ///public TextSizeProber Prober;
+        protected float RightPadding = 0f;
 
         /// <summary>
         /// Creates a new text based element.
@@ -50,14 +47,14 @@ namespace Vintagestory.API.Client
 
         public double GetMultilineTextHeight()
         {
-            return textUtil.GetMultilineTextHeight(Font, text, Bounds.InnerWidth);
+            return textUtil.GetMultilineTextHeight(Font, text, Bounds.InnerWidth - RightPadding);
         }
 
         public double DrawMultilineTextAt(Context ctx, double posX, double posY, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
             Font.SetupContext(ctx);
 
-            TextLine[] lines = textUtil.Lineize(Font, text, Bounds.InnerWidth);
+            TextLine[] lines = textUtil.Lineize(Font, text, Bounds.InnerWidth - RightPadding);
 
             ctx.Save();
             Matrix m = ctx.Matrix;

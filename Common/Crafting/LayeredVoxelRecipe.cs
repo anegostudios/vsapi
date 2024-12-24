@@ -6,15 +6,37 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-
+    /// <summary>
+    /// Creates a recipe using a 3D voxel-based system. Used for recipes types such as clayforming, smithing, or stone-knapping.
+    /// </summary>
+    [DocumentAsJson]
     public abstract class LayeredVoxelRecipe<T> : RecipeBase<T>
     {
-        public string[][] Pattern;
+
+        /// <summary>
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// A 2D array of strings that are layered together to form the recipe. Use "#" for solid, and "_" or " " for a gap.
+        /// </summary>
+        [DocumentAsJson] public string[][] Pattern;
+
+        /// <summary>
+        /// An array of voxels, created from <see cref="Pattern"/> during loading. This array is cloned when a player starts creating the recipe.
+        /// </summary>
         public bool[,,] Voxels;
 
+        /// <summary>
+        /// The number of layers in this recipe, in the Y-axis.
+        /// </summary>
         public abstract int QuantityLayers { get; }
+
+        /// <summary>
+        /// A category code for this recipe type. Used for error logging.
+        /// </summary>
         public abstract string RecipeCategoryCode { get; }
 
+        /// <summary>
+        /// If true, the recipe is rotated 90 degrees in the Y axis.
+        /// </summary>
         protected virtual bool RotateRecipe { get; set; } = false;
 
         public LayeredVoxelRecipe()

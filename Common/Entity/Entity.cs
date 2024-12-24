@@ -10,6 +10,7 @@ using System.Linq;
 using Vintagestory.API.Util;
 using System.Text;
 using static Vintagestory.API.Common.EntityAgent;
+using System.Numerics;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -867,8 +868,24 @@ namespace Vintagestory.API.Common.Entities
 
                 if (damageSource.GetSourcePosition() != null)
                 {
+                    bool verticalAttack = false;
+                    if (damageSource.GetAttackAngle(Pos.XYZ, out var attackYaw, out var attackPitch))
+                    {
+                        verticalAttack = Math.Abs(attackPitch) > 80 * GameMath.DEG2RAD || Math.Abs(attackPitch) < 10 * GameMath.DEG2RAD;
+                    }
+
                     Vec3d dir = (SidedPos.XYZ - damageSource.GetSourcePosition()).Normalize();
-                    dir.Y = 0.7f;
+                    
+                    if (verticalAttack)
+                    {
+                        dir.Y = 0.05f;
+                        dir.Normalize(); 
+                    } else
+                    {
+                        dir.Y = 0.7f;
+                    }
+
+                    dir.Y /= damageSource.YDirKnockbackDiv;
                     float factor = damageSource.KnockbackStrength * GameMath.Clamp((1 - Properties.KnockbackResistance) / 10f, 0, 1);
 
                     WatchedAttributes.SetFloat("onHurtDir", (float)Math.Atan2(dir.X, dir.Z));

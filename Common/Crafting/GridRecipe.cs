@@ -10,8 +10,14 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// An ingredient for a grid recipe.
+    /// </summary>
     public class GridRecipeIngredient : CraftingRecipeIngredient
     {
+        /// <summary>
+        /// The character used in the grid recipe pattern that matches this ingredient. Generated when the recipe is loaded.
+        /// </summary>
         public string PatternCode;
 
         public override void ToBytes(BinaryWriter writer)
@@ -28,89 +34,129 @@ namespace Vintagestory.API.Common
     }
 
     /// <summary>
-    /// Represents a crafting recipe
+    /// Represents a crafting recipe to be made on the crafting grid.
     /// </summary>
+    /// <example><code language="json">
+    ///{
+    ///	"ingredientPattern": "GS,S_",
+    ///	"ingredients": {
+    ///		"G": {
+    ///			"type": "item",
+    ///			"code": "drygrass"
+    ///		},
+    ///		"S": {
+    ///			"type": "item",
+    ///			"code": "stick"
+    ///		}
+    ///	},
+    ///	"width": 2,
+    ///	"height": 2,
+    ///	"output": {
+    ///		"type": "item",
+    ///		"code": "firestarter"
+    ///	}
+    ///}
+    /// </code></example>
+    [DocumentAsJson]
     public class GridRecipe : IByteSerializable
     {
         /// <summary>
-        /// Set by the recipe loader during json deserialization, if false the recipe will never be loaded.
-        /// If loaded however, you can use this field to disable recipes during runtime.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>True</jsondefault>-->
+        /// If set to false, the recipe will never be loaded.
+        /// If loaded, you can use this field to disable recipes during runtime.
         /// </summary>
-        public bool Enabled = true;
+        [DocumentAsJson] public bool Enabled = true;
 
         /// <summary>
-        /// The pattern of the ingredient. Order for a 3x3 recipe: 
-        /// 1 2 3
-        /// 4 5 6
-        /// 7 8 9
-        /// Order for a 2x2 recipe:
-        /// 1 2
-        /// 3 4
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// The pattern of the ingredient. Order for a 3x3 recipe:<br/>
+        /// 1 2 3<br/>
+        /// 4 5 6<br/>
+        /// 7 8 9<br/>
+        /// Order for a 2x2 recipe:<br/>
+        /// 1 2<br/>
+        /// 3 4<br/>
+        /// Commas seperate each horizontal row, and an underscore ( _ ) marks a space as empty.
         /// </summary>
-        public string IngredientPattern;
+        [DocumentAsJson] public string IngredientPattern;
 
         /// <summary>
-        /// The recipes ingredients in any order
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// The recipes ingredients in any order, including the code used in the ingredient pattern.
         /// </summary>
-        public Dictionary<string, CraftingRecipeIngredient> Ingredients;
+        [DocumentAsJson] public Dictionary<string, CraftingRecipeIngredient> Ingredients;
 
         /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>3</jsondefault>-->
         /// Required grid width for crafting this recipe 
         /// </summary>
-        public int Width = 3;
+        [DocumentAsJson] public int Width = 3;
 
         /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>3</jsondefault>-->
         /// Required grid height for crafting this recipe 
         /// </summary>
-        public int Height = 3;
+        [DocumentAsJson] public int Height = 3;
 
         /// <summary>
-        /// Info used by the handbook. Allows you to split grid recipe previews into multiple.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// Info used by the handbook. By default, all recipes for an object will appear in a single preview. This allows you to split grid recipe previews into multiple.
         /// </summary>
-        public int RecipeGroup = 0;
+        [DocumentAsJson] public int RecipeGroup = 0;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>True</jsondefault>-->
         /// Used by the handbook. If false, will not appear in the "Created by" section
         /// </summary>
-        public bool ShowInCreatedBy = true;
+        [DocumentAsJson] public bool ShowInCreatedBy = true;
 
         /// <summary>
-        /// The resulting Stack
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// The resulting stack when the recipe is created.
         /// </summary>
-        public CraftingRecipeIngredient Output;
+        [DocumentAsJson] public CraftingRecipeIngredient Output;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>False</jsondefault>-->
         /// Whether the order of input items should be respected
         /// </summary>
-        public bool Shapeless = false;
+        [DocumentAsJson] public bool Shapeless = false;
 
         /// <summary>
-        /// Name of the recipe, optional
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Asset Location</jsondefault>-->
+        /// Name of the recipe. Used for logging, and some specific uses. Recipes for repairing objects must contain 'repair' in the name.
         /// </summary>
-        public AssetLocation Name;
+        [DocumentAsJson] public AssetLocation Name;
 
         /// <summary>
-        /// Optional attribute data that you can attach any data to
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// Optional attribute data that you can attach any data to. Useful for code mods, but also required when using liquid ingredients.<br/>
+        /// See dough.json grid recipe file for example.
         /// </summary>
         [JsonConverter(typeof(JsonAttributesConverter))]
-        public JsonObject Attributes;
+        [DocumentAsJson] public JsonObject Attributes;
 
         /// <summary>
-        /// If set only players with given trait can use this recipe
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// If set, only players with given trait can use this recipe. See config/traits.json for a list of traits.
         /// </summary>
-        public string RequiresTrait;
+        [DocumentAsJson] public string RequiresTrait;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>True</jsondefault>-->
         /// If true, the output item will have its durability averaged over the input items
         /// </summary>
-        public bool AverageDurability = true;
+        [DocumentAsJson] public bool AverageDurability = true;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// If set, it will copy over the itemstack attributes from given ingredient code
         /// </summary>
-        public string CopyAttributesFrom = null;
+        [DocumentAsJson] public string CopyAttributesFrom = null;
 
-
+        /// <summary>
+        /// A set of ingredients with their pattern codes resolved into a single object.
+        /// </summary>
         public GridRecipeIngredient[] resolvedIngredients;
 
 

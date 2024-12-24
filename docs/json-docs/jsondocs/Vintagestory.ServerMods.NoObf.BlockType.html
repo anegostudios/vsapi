@@ -312,72 +312,6 @@ public class BlockType : CollectibleType</code></pre>
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_AllowSpawnCreatureGroups" data-uid="Vintagestory.ServerMods.NoObf.BlockType.AllowSpawnCreatureGroups">
-  AllowSpawnCreatureGroups (Optional) (Default: All ( [&quot;*&quot;] ))
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Defines what creature groups may spawn on this block.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public string[] AllowSpawnCreatureGroups</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Ambientocclusion" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Ambientocclusion">
-  Ambientocclusion (Unused)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Currently not used. Maybe you're looking for <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideAo">SideAo</a> or <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideSolidOpaqueAo">SideSolidOpaqueAo</a>?</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public bool Ambientocclusion</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_BlockMaterial" data-uid="Vintagestory.ServerMods.NoObf.BlockType.BlockMaterial">
   BlockMaterial (Recommended) (Default: Stone)
   
@@ -399,6 +333,105 @@ public EnumBlockMaterial BlockMaterial</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.EnumBlockMaterial.html">EnumBlockMaterial</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RequiredMiningTier" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RequiredMiningTier">
+  RequiredMiningTier (Recommended) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The mining tier required to break this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int RequiredMiningTier</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Resistance" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Resistance">
+  Resistance (Recommended) (Default: 6)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How long it takes to break this block in seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float Resistance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_AllowSpawnCreatureGroups" data-uid="Vintagestory.ServerMods.NoObf.BlockType.AllowSpawnCreatureGroups">
+  AllowSpawnCreatureGroups (Optional) (Default: All ( [&quot;*&quot;] ))
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines what creature groups may spawn on this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string[] AllowSpawnCreatureGroups</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -1452,72 +1485,6 @@ public int Replaceable</code></pre>
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RequiredMiningTier" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RequiredMiningTier">
-  RequiredMiningTier (Recommended) (Default: 0)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The mining tier required to break this block.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public int RequiredMiningTier</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Resistance" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Resistance">
-  Resistance (Recommended) (Default: 6)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>How long it takes to break this block in seconds.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public float Resistance</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SeasonColorMap" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SeasonColorMap">
   SeasonColorMap (Optional) (Default: None)
   
@@ -1904,6 +1871,39 @@ public float WalkspeedMultiplier</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Ambientocclusion" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Ambientocclusion">
+  Ambientocclusion (Unused)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Currently not used. Maybe you're looking for <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideAo">SideAo</a> or <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideSolidOpaqueAo">SideSolidOpaqueAo</a>?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool Ambientocclusion</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

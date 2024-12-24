@@ -164,6 +164,135 @@ Class CombustibleProperties
 
 
 
+  <h3 id="Vintagestory_API_Common_CombustibleProperties_MeltingDuration" data-uid="Vintagestory.API.Common.CombustibleProperties.MeltingDuration">
+  MeltingDuration (Recommended) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>For how many seconds the temperature has to be above the melting point until the item is smelted. Recommended if <a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltedStack">SmeltedStack</a> is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float MeltingDuration</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CombustibleProperties_MeltingPoint" data-uid="Vintagestory.API.Common.CombustibleProperties.MeltingPoint">
+  MeltingPoint (Recommended) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How many degrees celsius it takes to smelt/transform this collectible into another. Required if <a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltedStack">SmeltedStack</a> is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MeltingPoint</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CombustibleProperties_SmeltedStack" data-uid="Vintagestory.API.Common.CombustibleProperties.SmeltedStack">
+  SmeltedStack (Recommended) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, this is the resulting itemstack once the MeltingPoint has been reached for the supplied duration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JsonItemStack SmeltedStack</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CombustibleProperties_SmeltingType" data-uid="Vintagestory.API.Common.CombustibleProperties.SmeltingType">
+  SmeltingType (Recommended) (Default: Smelt)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Some smelt types have specific functionality, and are also used for correct naming in the tool tip.
+If using <a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html#Vintagestory_API_Common_EnumSmeltType_Bake">Bake</a>, you will need to include <a class="xref" href="Vintagestory.API.Common.BakingProperties.html">BakingProperties</a> in your item attributes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumSmeltType SmeltingType</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html">EnumSmeltType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_CombustibleProperties_BurnDuration" data-uid="Vintagestory.API.Common.CombustibleProperties.BurnDuration">
   BurnDuration (Optional) (Default: 0)
   
@@ -292,70 +421,6 @@ Class CombustibleProperties
 
 
 
-  <h3 id="Vintagestory_API_Common_CombustibleProperties_MeltingDuration" data-uid="Vintagestory.API.Common.CombustibleProperties.MeltingDuration">
-  MeltingDuration (Recommended) (Default: 0)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>For how many seconds the temperature has to be above the melting point until the item is smelted. Recommended if <a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltedStack">SmeltedStack</a> is set.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float MeltingDuration</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CombustibleProperties_MeltingPoint" data-uid="Vintagestory.API.Common.CombustibleProperties.MeltingPoint">
-  MeltingPoint (Recommended) (Default: 0)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>How many degrees celsius it takes to smelt/transform this collectible into another. Required if <a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltedStack">SmeltedStack</a> is set.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MeltingPoint</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_API_Common_CombustibleProperties_RequiresContainer" data-uid="Vintagestory.API.Common.CombustibleProperties.RequiresContainer">
   RequiresContainer (Optional) (Default: true)
   
@@ -408,71 +473,6 @@ Class CombustibleProperties
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CombustibleProperties_SmeltedStack" data-uid="Vintagestory.API.Common.CombustibleProperties.SmeltedStack">
-  SmeltedStack (Recommended) (Default: 0)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If set, this is the resulting itemstack once the MeltingPoint has been reached for the supplied duration.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonItemStack SmeltedStack</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CombustibleProperties_SmeltingType" data-uid="Vintagestory.API.Common.CombustibleProperties.SmeltingType">
-  SmeltingType (Recommended) (Default: Smelt)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Some smelt types have specific functionality, and are also used for correct naming in the tool tip.
-If using <a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html#Vintagestory_API_Common_EnumSmeltType_Bake">Bake</a>, you will need to include <a class="xref" href="Vintagestory.API.Common.BakingProperties.html">BakingProperties</a> in your item attributes.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumSmeltType SmeltingType</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html">EnumSmeltType</a></dt>
     <dd></dd>
   </dl>
 

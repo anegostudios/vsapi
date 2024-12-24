@@ -87,13 +87,15 @@ public class PModuleOnGround : PModule
         // Only able to jump every 500ms. Only works while on the ground.
         if (controls.Jump && entity.World.ElapsedMilliseconds - lastJump > 500 && entity.Alive)
         {
+            EntityPlayer entityPlayer = entity as EntityPlayer;
+
             lastJump = entity.World.ElapsedMilliseconds;
 
             // Set jump motion to something.
-            pos.Motion.Y = GlobalConstants.BaseJumpForce * 1 / 60f;
+            float jumpHeightMultiplier = MathF.Sqrt(MathF.Max(1f, (entityPlayer?.Stats.GetBlended("jumpHeightMul") ?? 1f)));
+            pos.Motion.Y = GlobalConstants.BaseJumpForce * 1 / 60f * jumpHeightMultiplier;
 
             // Play jump sound.
-            EntityPlayer entityPlayer = entity as EntityPlayer;
             IPlayer player = entityPlayer?.World.PlayerByUid(entityPlayer.PlayerUID);
             entity.PlayEntitySound("jump", player, false);
         }

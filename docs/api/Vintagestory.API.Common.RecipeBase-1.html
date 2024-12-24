@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class RecipeBase&lt;T&gt; | VintageStory API ">
       
-      <meta name="description" content="Creates a new base recipe type.">
+      <meta name="description" content="Creates a new base recipe type. Almost all recipe types extend from this.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class RecipeBase&lt;T&gt;
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Creates a new base recipe type.</p>
+  <div class="markdown summary"><p>Creates a new base recipe type. Almost all recipe types extend from this.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -187,7 +187,9 @@ Class RecipeBase&lt;T&gt;
   
   </h3>
 
-  <div class="markdown level1 summary"><p>...or alternatively for recipes with multiple ingredients</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>An array of ingredients for this recipe. If only using a single ingredient, see <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredient">Ingredient</a>.<br>
+Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredient">Ingredient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -218,7 +220,9 @@ Class RecipeBase&lt;T&gt;
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>The output when the recipe is successful.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -248,7 +252,8 @@ Class RecipeBase&lt;T&gt;
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The ID of the recipe. Automatically generated when the recipe is loaded.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -283,7 +288,9 @@ Class RecipeBase&lt;T&gt;
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>True</jsondefault>-->
+<p>Should this recipe be loaded by the game?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -314,7 +321,10 @@ Class RecipeBase&lt;T&gt;
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>A single ingredient for this recipe. If you need to use more than one ingredient, see <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients">Ingredients</a>.<br>
+Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients">Ingredients</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -345,7 +355,9 @@ Class RecipeBase&lt;T&gt;
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Asset Path</jsondefault>-->
+<p>Adds a name to this recipe. Used for logging, and determining helve hammer workability for smithing recipes.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

@@ -176,6 +176,20 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
+        /// Gets a translation entry for given key using the current locale. Also tries the fallback key - useful if we change a key but not all languages updated yet
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="fallbackKey"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public static string GetWithFallback(string key, string fallbackKey, params object[] args)
+        {
+            return HasTranslation(key, false) ? AvailableLanguages[CurrentLocale].Get(key, args) :
+                HasTranslation(fallbackKey, false) ? AvailableLanguages[CurrentLocale].Get(fallbackKey, args) :
+                AvailableLanguages[DefaultLocale].Get(key, args);
+        }
+
+        /// <summary>
         /// Gets the raw, unformatted translated value for the key provided.
         /// </summary>
         /// <param name="key">The key.</param>

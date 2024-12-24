@@ -451,10 +451,6 @@ namespace Vintagestory.API.Client
                 }
             }
 
-            // make sure all variants are sorted by their name
-            // this is important for seagrass and similar plants that have multiple variants where top and bottom parts need to match by the same index/name
-            bct.BakedVariants = bct.BakedVariants?.OrderBy(v => v.BakedName.Path).ToArray();
-
             if (ct.Tiles != null)
             {
                 List<BakedCompositeTexture> tiles = new List<BakedCompositeTexture>();

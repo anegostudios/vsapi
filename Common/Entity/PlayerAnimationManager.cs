@@ -47,14 +47,20 @@ namespace Vintagestory.API.Common
         {
             if (configCode == null) return false;
 
-            if (useFpAnimSet) // We are in the first person anim manager - player anim for tp animator, and anim-fp for ourselves
+            if (useFpAnimSet) // We are in the first person anim manager - play anim for tp animator, and anim-fp for ourselves
             {
-                plrEntity.TpAnimManager.StartAnimation(configCode);
+                plrEntity.TpAnimManager.StartAnimationBase(configCode);
 
                 if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode + fpEnding, out var animdata))
                 {
                     StartAnimation(animdata);
                     return true;
+                }
+            } else
+            {
+                if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode + fpEnding, out var animdata))
+                {
+                    plrEntity.SelfFpAnimManager.StartAnimationBase(animdata);
                 }
             }
 
@@ -80,6 +86,20 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            return base.StartAnimation(animdata);
+        }
+
+        public bool StartAnimationBase(string configCode)
+        {
+            if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode + fpEnding, out var animdata))
+            {
+                StartAnimation(animdata);
+                return true;
+            }
+            return base.StartAnimation(configCode);
+        }
+        public bool StartAnimationBase(AnimationMetaData animdata)
+        {
             return base.StartAnimation(animdata);
         }
 

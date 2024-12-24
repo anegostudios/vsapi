@@ -301,9 +301,6 @@ namespace Vintagestory.API.Common
                     altCS.IgnoreElements = IgnoreElements;
                 }
             }
-            // make sure all alternates are sorted by their name
-            // this is important for seaweed and similar plants that have multiple variants where top and bottom parts need to match by the same index/name
-            BakedAlternates = BakedAlternates.OrderBy(a => a.Base.Path).ToArray();
         }
 
 

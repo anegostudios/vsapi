@@ -67,7 +67,7 @@ namespace Vintagestory.API.Server
         /// <param name="message"></param>
         /// <param name="langparams"> If message is null, these are the arguments passed into the Language translation tool</param>
         void SendIngameError(string code, string message = null, params object[] langparams);
-        
+
 
         /// <summary>
         /// Sends a chat message to this player to given groupId. You can use GlobalConstants.GeneralChatGroup as groupId to send it to the players general chat.
@@ -114,13 +114,6 @@ namespace Vintagestory.API.Server
         /// <param name="consumeSpawnUse">If true, and this spawn point is use limited, will consume one use of it</param>
         /// <returns></returns>
         FuzzyEntityPos GetSpawnPosition(bool consumeSpawnUse);
-
-
-        /// <summary>
-        /// Tells the server send a position packet to the client
-        /// </summary>
-        void SendPositionToClient();
-
 
         void SetModData<T>(string key, T data);
         T GetModData<T>(string key, T defaultValue = default(T));

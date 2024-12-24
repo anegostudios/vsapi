@@ -9,62 +9,79 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// A crafting recipe ingredient
     /// </summary>
+    [DocumentAsJson]
     public class CraftingRecipeIngredient : IRecipeIngredient
     {
         /// <summary>
-        /// Item or Block
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
+        /// Is the itemstack an item or a block?
         /// </summary>
-        public EnumItemClass Type = EnumItemClass.Block;
+        [DocumentAsJson] public EnumItemClass Type = EnumItemClass.Block;
+
         /// <summary>
-        /// Code of the item or block
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// The code of the item or block
         /// </summary>
-        public AssetLocation Code { get; set; }
+        [DocumentAsJson] public AssetLocation Code { get; set; }
+
         /// <summary>
-        /// Name of the class, used for filling placeholders in the output stack
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// Attaches a name to a wildcard in an ingredient. This is used to substitute the value into the output. Only required if using a wildcard.
         /// </summary>
-        public string Name { get; set; }
+        [DocumentAsJson] public string Name { get; set; }
+
         /// <summary>
-        /// How much input items are required
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The quantity of the itemstack required for the recipe.
         /// </summary>
-        public int Quantity = 1;
+        [DocumentAsJson] public int Quantity = 1;
+
         /// <summary>
-        /// What attributes this itemstack must have
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// What attributes this itemstack must have to be a valid ingredient
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;
 
         /// <summary>
-        /// Optional attribute data that you can attach any data to
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// Optional attribute data that you can attach any data to. Used for some specific instances in code mods.
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject RecipeAttributes;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>False</jsondefault>-->
         /// Whether this crafting recipe ingredient should be regarded as a tool required to build this item.
         /// If true, the recipe will not consume the item but reduce its durability.
         /// </summary>
-        public bool IsTool;
+        [DocumentAsJson] public bool IsTool;
 
         /// <summary>
-        /// If IsTool is set, this is the durability cost
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// If <see cref="IsTool"/> is set, this is the durability cost when the recipe is created.
         /// </summary>
-        public int ToolDurabilityCost = 1;
+        [DocumentAsJson] public int ToolDurabilityCost = 1;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Allow All</jsondefault>-->
         /// When using a wildcard in the item/block code, setting this field will limit the allowed variants
         /// </summary>
-        public string[] AllowedVariants;
+        [DocumentAsJson] public string[] AllowedVariants;
 
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Skip None</jsondefault>-->
         /// When using a wildcard in the item/block code, setting this field will skip these variants
         /// </summary>
-        public string[] SkipVariants;
+        [DocumentAsJson] public string[] SkipVariants;
 
         /// <summary>
-        /// If set, the crafting recipe will give back the consumed stack to be player upon crafting
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// If set, the crafting recipe will give back the consumed stack to be player upon crafting.
+        /// Can also be used to produce multiple outputs for a recipe.
         /// </summary>
-        public JsonItemStack ReturnedStack;
+        [DocumentAsJson] public JsonItemStack ReturnedStack;
 
         /// <summary>
         /// The itemstack made from Code, Quantity and Attributes, populated by the engine

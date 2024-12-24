@@ -178,7 +178,8 @@ Class CraftingRecipeIngredient
   
   </h3>
 
-  <div class="markdown level1 summary"><p>When using a wildcard in the item/block code, setting this field will limit the allowed variants</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Allow All</jsondefault>-->
+<p>When using a wildcard in the item/block code, setting this field will limit the allowed variants</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -209,7 +210,8 @@ Class CraftingRecipeIngredient
   
   </h3>
 
-  <div class="markdown level1 summary"><p>What attributes this itemstack must have</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>What attributes this itemstack must have to be a valid ingredient</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -242,7 +244,8 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether this crafting recipe ingredient should be regarded as a tool required to build this item.
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>False</jsondefault>-->
+<p>Whether this crafting recipe ingredient should be regarded as a tool required to build this item.
 If true, the recipe will not consume the item but reduce its durability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -305,7 +308,8 @@ If true, the recipe will not consume the item but reduce its durability.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>How much input items are required</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The quantity of the itemstack required for the recipe.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -336,7 +340,8 @@ If true, the recipe will not consume the item but reduce its durability.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Optional attribute data that you can attach any data to</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>Optional attribute data that you can attach any data to. Used for some specific instances in code mods.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -400,7 +405,9 @@ public JsonObject RecipeAttributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If set, the crafting recipe will give back the consumed stack to be player upon crafting</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If set, the crafting recipe will give back the consumed stack to be player upon crafting.
+Can also be used to produce multiple outputs for a recipe.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -431,7 +438,8 @@ public JsonObject RecipeAttributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>When using a wildcard in the item/block code, setting this field will skip these variants</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Skip None</jsondefault>-->
+<p>When using a wildcard in the item/block code, setting this field will skip these variants</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -462,7 +470,8 @@ public JsonObject RecipeAttributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If IsTool is set, this is the durability cost</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>If <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_IsTool">IsTool</a> is set, this is the durability cost when the recipe is created.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -493,7 +502,8 @@ public JsonObject RecipeAttributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Item or Block</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
+<p>Is the itemstack an item or a block?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -529,7 +539,8 @@ public JsonObject RecipeAttributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Code of the item or block</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>The code of the item or block</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -561,7 +572,8 @@ public JsonObject RecipeAttributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Name of the class, used for filling placeholders in the output stack</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>Attaches a name to a wildcard in an ingredient. This is used to substitute the value into the output. Only required if using a wildcard.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

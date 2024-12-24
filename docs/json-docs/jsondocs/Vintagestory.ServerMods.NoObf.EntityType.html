@@ -157,6 +157,112 @@ public class EntityType : RegistryObjectType</code></pre>
 
 
 
+  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Client" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Client">
+  Client (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The client-side properties of the entity. Usually related to rendering, precise physics calculations, and behaviors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ClientEntityConfig Client</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ClientEntityConfig.html">ClientEntityConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Server" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Server">
+  Server (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The server-side properties of the entity. Usually related to spawning, general physics, AI tasks, and other behaviors..</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ServerEntityConfig Server</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ServerEntityConfig.html">ServerEntityConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Sounds" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Sounds">
+  Sounds (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The sounds that this entity can make. Keys to use are:<br></p>
+<ul>
+<li>&quot;hurt&quot;<br></li>
+<li>&quot;death&quot;<br></li>
+<li>&quot;idle&quot;<br></li>
+<li>&quot;swim&quot; (player only)<br></li>
+<li>&quot;eat&quot; (player only)</li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, AssetLocation&gt; Sounds</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Attributes" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Attributes">
   Attributes (Optional) (Default: None)
   
@@ -279,39 +385,6 @@ public bool CanClimbAnywhere</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Client" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Client">
-  Client (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The client-side properties of the entity. Usually related to rendering, precise physics calculations, and behaviors.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public ClientEntityConfig Client</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ClientEntityConfig.html">ClientEntityConfig</a></dt>
     <dd></dd>
   </dl>
 
@@ -510,40 +583,6 @@ public double EyeHeight</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_FallDamage" data-uid="Vintagestory.ServerMods.NoObf.EntityType.FallDamage">
-  FallDamage (Obsolete)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Obsolete. Will be removed in 1.20. Set FallDamageMultiplier to 0.0 for no fall damage.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This will be removed in 1.20. Instead set FallDamageMultiplier to 0.0 for no fall damage&quot;)]
-[JsonProperty]
-public bool FallDamage</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -787,79 +826,6 @@ public Vec2f SelectionBoxSize</code></pre>
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Server" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Server">
-  Server (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The server-side properties of the entity. Usually related to spawning, general physics, AI tasks, and other behaviors..</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public ServerEntityConfig Server</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ServerEntityConfig.html">ServerEntityConfig</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Sounds" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Sounds">
-  Sounds (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The sounds that this entity can make. Keys to use are:<br></p>
-<ul>
-<li>&quot;hurt&quot;<br></li>
-<li>&quot;death&quot;<br></li>
-<li>&quot;idle&quot;<br></li>
-<li>&quot;swim&quot; (player only)<br></li>
-<li>&quot;eat&quot; (player only)</li>
-</ul>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public Dictionary&lt;string, AssetLocation&gt; Sounds</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_SwimmingEyeHeight" data-uid="Vintagestory.ServerMods.NoObf.EntityType.SwimmingEyeHeight">
   SwimmingEyeHeight (Optional) (Default: EyeHeight)
   
@@ -914,6 +880,40 @@ public float Weight</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_FallDamage" data-uid="Vintagestory.ServerMods.NoObf.EntityType.FallDamage">
+  FallDamage (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Obsolete. Will be removed in 1.20. Set FallDamageMultiplier to 0.0 for no fall damage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This will be removed in 1.20. Instead set FallDamageMultiplier to 0.0 for no fall damage&quot;)]
+[JsonProperty]
+public bool FallDamage</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
