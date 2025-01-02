@@ -413,7 +413,7 @@ namespace Vintagestory.API.Client
                 {
                     BlendedOverlayTexture bov = ct.BlendedOverlays[i];
                     bct.TextureFilenames[i + 1] = bov.Base;
-                    bct.BakedName.Path += OverlaysSeparator + ((int)bov.BlendMode).ToString() + BlendmodeSeparator + bov.Base.ToShortString();
+                    bct.BakedName.Path += OverlaysSeparator + ((int)bov.BlendMode).ToString() + BlendmodeSeparator + (ct.Base.Domain == bov.Base.Domain ? bov.Base.ToShortString() : bov.Base.ToString());
                 }
             }
             else
