@@ -26,6 +26,14 @@ namespace Vintagestory.API.Client
         T Get(string key, T defaultValue = default(T));
 
         /// <summary>
+        /// Sets the setting with key to the provided value: if shouldTriggerWatchers is false, the watchers will not be triggered
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="shouldTriggerWatchers"></param>
+        void Set(string key, T value, bool shouldTriggerWatchers);
+
+        /// <summary>
         /// Does this setting exist?
         /// </summary>
         /// <param name="key">The key to check on a setting.</param>

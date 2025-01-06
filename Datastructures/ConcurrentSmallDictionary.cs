@@ -10,6 +10,7 @@ namespace Vintagestory.Common
 {
     /// <summary>
     /// Use like any IDictionary. Similar to a FastSmallDictionary, but this one is thread-safe for simultaneous reads and writes - will not throw a ConcurrentModificationException
+    /// <br/>This also inherently behaves as an OrderedDictionary (though without the OrderedDictionary extension methods such as ValuesOrdered, those can be added in future if required)
     /// <br/>Low-lock: there is no lock or interlocked operation except when adding new keys or when removing entries
     /// <br/>Low-memory: and contains only a single null field, if it is empty
     /// <br/>Two simultaneous writes, with the same key, at the same time, on different threads: small chance of throwing an intentional ConcurrentModificationException if both have the same keys, otherwise it's virtually impossible for us to preserve the rule that the Dictionary holds exactly one entry per key

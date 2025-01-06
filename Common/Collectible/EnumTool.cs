@@ -24,6 +24,18 @@
         Wrench,
         Probe,
         Meter,
-        Drill
+        Drill,
+        Firearm,
+        Crossbow,
+        Javelin,
+        Pike,
+        Shield,
+        Club,
+        Mace,
+        Warhammer,
+        Poleaxe,
+        Halberd,
+        Polearm,
+        Staff
     }
 }

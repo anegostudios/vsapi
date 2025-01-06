@@ -1041,7 +1041,15 @@ namespace Vintagestory.API.Common.Entities
 
             if (World.Side == EnumAppSide.Server)
             {
-                AnimManager.OnServerTick(dt);
+                try
+                {
+                    AnimManager.OnServerTick(dt);
+                }
+                catch (Exception)
+                {
+                    World.Logger.Error("Error ticking animations for entity " + Code.ToShortString() + " at " + SidedPos.AsBlockPos);
+                    throw;
+                }
             }
 
             ownPosRepulse.Set(
@@ -1136,18 +1144,22 @@ namespace Vintagestory.API.Common.Entities
         {
             shapeFresh = true;
 
-            // Clear cached values. ClientAnimator regenerates these
-            if (entityShape.Animations != null)
-            {
-                foreach (var anim in entityShape.Animations)
-                {
-                    anim.PrevNextKeyFrameByFrame = null;
-                }
-            }
-
             bool shapeIsCloned = false;
             OnTesselation(ref entityShape, shapePathForLogging, ref shapeIsCloned);
+
+            if (shapeIsCloned)
+            {
+                // Clear cached values. ClientAnimator regenerates these
+                if (entityShape.Animations != null)
+                {
+                    foreach (var anim in entityShape.Animations)
+                    {
+                        anim.PrevNextKeyFrameByFrame = null;
+                    }
+                }
+            }
         }
+
         protected virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned)
         {
             shapeFresh = true;
@@ -1635,6 +1647,24 @@ namespace Vintagestory.API.Common.Entities
         public virtual T GetBehavior<T>() where T : EntityBehavior
         {
             return (T)SidedProperties.Behaviors.FirstOrDefault(bh => bh is T);
+        }
+
+        /// <summary>
+        /// Returns itself and any behaviors that implement the interface T as a List
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual List<T> GetInterfaces<T>() where T : class
+        {
+            List<T> interfaces = new List<T>();
+
+            if (this is T) interfaces.Add(this as T);
+            for (int i = 0; i < SidedProperties.Behaviors.Count; i++)
+            {
+                if (SidedProperties.Behaviors[i] is T) interfaces.Add(SidedProperties.Behaviors[i] as T);
+            }
+
+            return interfaces;
         }
 
         /// <summary>

@@ -5,6 +5,7 @@ using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.Util;
 
 
 // Rewrite contributed by Apache#8842 over discord 20th of October 2021. Edited by Tyron
@@ -286,5 +287,16 @@ namespace Vintagestory.API.Config
             return hint;
         }
 
+        public static bool UsesNonLatinCharacters(string lang)
+        {
+            return 
+                lang == "ar" ||                                     // Arabic
+                lang.StartsWithOrdinal("zh-") ||                    // Chinese, both kinds
+                lang == "ja" || lang == "ko" || lang == "th" ||     // Other Asian languages (Japanese, Korean, Thai)
+                lang == "uk" || lang == "ru";                       // Cyrillic   (Ukrainian, Russian)
+
+            // 1.20.0: This test will need to be expanded in future if we add more languages including Greek, Bulgarian, etc.
+            // It's relevant, for example, to the localization of the room plaques in the Resonance Archives - in non-Latin characters these don't work in the saved font, Almendra: Github #4748
+        }
     }
 }

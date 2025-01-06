@@ -132,7 +132,10 @@ namespace Vintagestory.API.Common
                 MountedOn = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
                 if (MountedOn != null)
                 {
-                    TryMount(MountedOn);
+                    if (TryMount(MountedOn) && Api.Side == EnumAppSide.Server && MountedOn.MountSupplier?.OnEntity is Entity entity)
+                    {
+                        Api.World.Logger.Audit("{0} loaded already mounted/seated on a {1} at {2}", GetName(), entity.Code.ToShortString(), entity.ServerPos.AsBlockPos);
+                    }
                 }
             }
 
@@ -256,6 +259,8 @@ namespace Vintagestory.API.Common
             {
                 WatchedAttributes.RemoveAttribute("mountedOn");
             }
+
+            if (Api.Side == EnumAppSide.Server && oldMountedOn != null && oldMountedOn.MountSupplier?.OnEntity is Entity entity) Api.World.Logger.Audit("{0} dismounts/disembarks from a {1} at {2}", GetName(), entity.Code.ToShortString(), entity.ServerPos.AsBlockPos);
 
             return true;
         }

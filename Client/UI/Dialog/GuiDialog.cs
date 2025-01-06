@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.Common;
 
 namespace Vintagestory.API.Client
 {
@@ -14,7 +15,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public class DlgComposers : IEnumerable<KeyValuePair<string, GuiComposer>>
         {
-            protected OrderedDictionary<string, GuiComposer> dialogComposers = new OrderedDictionary<string, GuiComposer>();
+            protected ConcurrentSmallDictionary<string, GuiComposer> dialogComposers = new ();
             protected GuiDialog dialog;
 
             /// <summary>
@@ -101,6 +102,14 @@ namespace Vintagestory.API.Client
             {
                 dialogComposers.Remove(key);
             }
+
+            public GuiComposer[] ToArray()
+            {
+                GuiComposer[] result = new GuiComposer[dialogComposers.Count];
+                dialogComposers.Values.CopyTo(result, 0);     // 26.12.24 radfast note for the future: if this method ever throws exceptions, consider making dialogComposers a ConcurrentSmallDictionary
+                return result;
+            }
+
         }
 
 
@@ -423,7 +432,8 @@ namespace Vintagestory.API.Client
         /// <param name="args">The key or keys that were held down.</param>
         public virtual void OnKeyDown(KeyEvent args)
         {
-            foreach (GuiComposer composer in Composers.Values)
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 composer.OnKeyDown(args, focused);
                 if (args.Handled)
@@ -459,7 +469,8 @@ namespace Vintagestory.API.Client
 
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in Composers.Values)
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 composer.OnKeyPress(args);
                 if (args.Handled) return;
@@ -471,8 +482,10 @@ namespace Vintagestory.API.Client
         /// Fires when the keys are released.
         /// </summary>
         /// <param name="args">the key or keys that were released.</param>
-        public virtual void OnKeyUp(KeyEvent args) {
-            foreach (GuiComposer composer in Composers.Values)
+        public virtual void OnKeyUp(KeyEvent args)
+        {
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 composer.OnKeyUp(args);
                 if (args.Handled)
@@ -497,9 +510,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="slot">The slot the mouse entered.</param>
         /// <returns>Whether this event was handled.</returns>
-        public virtual bool OnMouseEnterSlot(ItemSlot slot) {
-
-            foreach (GuiComposer composer in Composers.Values)
+        public virtual bool OnMouseEnterSlot(ItemSlot slot)
+        {
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 if (composer.OnMouseEnterSlot(slot))
                 {
@@ -515,9 +529,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="itemSlot">The slot the mouse entered.</param>
         /// <returns>Whether this event was handled.</returns>
-        public virtual bool OnMouseLeaveSlot(ItemSlot itemSlot) {
-
-            foreach (GuiComposer composer in Composers.Values)
+        public virtual bool OnMouseLeaveSlot(ItemSlot itemSlot)
+        {
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 if (composer.OnMouseLeaveSlot(itemSlot))
                 {
@@ -543,7 +558,8 @@ namespace Vintagestory.API.Client
         {
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in Composers.Values)
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 composer.OnMouseDown(args);
                 if (args.Handled)
@@ -553,7 +569,7 @@ namespace Vintagestory.API.Client
             }
 
             if (!IsOpened()) return;
-            foreach (GuiComposer composer in Composers.Values)
+            foreach (GuiComposer composer in composers)
             {
                 if (composer.Bounds.PointInside(args.X, args.Y))
                 {
@@ -571,13 +587,14 @@ namespace Vintagestory.API.Client
         {
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in Composers.Values)
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 composer.OnMouseUp(args);
                 if (args.Handled) return;
             }
 
-            foreach (GuiComposer composer in Composers.Values)
+            foreach (GuiComposer composer in composers)
             {
                 if (composer.Bounds.PointInside(args.X, args.Y))
                 {
@@ -595,13 +612,14 @@ namespace Vintagestory.API.Client
         {
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in Composers.Values)
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 composer.OnMouseMove(args);
                 if (args.Handled) return;
             }
 
-            foreach (GuiComposer composer in Composers.Values)
+            foreach (GuiComposer composer in composers)
             {
                 if (composer.Bounds.PointInside(args.X, args.Y))
                 {
@@ -617,7 +635,8 @@ namespace Vintagestory.API.Client
         /// <param name="args"></param>
         public virtual void OnMouseWheel(MouseWheelEventArgs args)
         {
-            foreach (GuiComposer composer in Composers.Values)
+            var composers = Composers.ToArray();    // Minimise risk of co-modification exception while iterating below [Github #4804]
+            foreach (GuiComposer composer in composers)
             {
                 composer.OnMouseWheel(args);
                 if (args.IsHandled) return;
@@ -625,7 +644,7 @@ namespace Vintagestory.API.Client
 
             if (focused)
             {
-                foreach (GuiComposer composer in Composers.Values)
+                foreach (GuiComposer composer in composers)
                 {
                     if (composer.Bounds.PointInside(capi.Input.MouseX, capi.Input.MouseY))
                     {

@@ -119,6 +119,11 @@ namespace Vintagestory.API.Common
         /// The entity that controls this mountable - there can only be one
         /// </summary>
         Entity Controller { get; }
+
+        /// <summary>
+        /// The entity which this mountable really is (for example raft, boat or elk) - may be null if the IMountable is a bed or other block
+        /// </summary>
+        Entity OnEntity { get; }
     }
 
 

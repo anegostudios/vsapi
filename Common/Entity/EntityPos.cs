@@ -788,5 +788,14 @@ namespace Vintagestory.API.Common.Entities
             Motion.Z = reader.ReadDouble();
         }
 
+        public bool AnyNaN()
+        {
+            if (double.IsNaN(x + y + z)) return true;    // if either x or y is NaN then x + y is NaN, see https://learn.microsoft.com/en-us/dotnet/api/system.double.nan?view=net-7.0
+            if (float.IsNaN(roll + yaw + pitch)) return true;
+            if (double.IsNaN(Motion.X + Motion.Y + Motion.Z)) return true;
+            if (Math.Abs(x) + Math.Abs(y) + Math.Abs(z) > GlobalConstants.MaxWorldSizeXZ * 4) return true;   // arbitrary limit.  Even in the most extreme game settings, max valid coordinate sum for a player remaining within the world is slightly over twice MaxWorldSizeXZ
+            return false;
+        }
+
     }
 }

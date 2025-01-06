@@ -55,5 +55,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns></returns>
         bool IsLoaded();
+
+        /// <summary>
+        /// Set to true if the asset has been patched by JsonPatchLoader - if so, we don't want to unload it
+        /// </summary>
+        bool IsPatched { get; set; }
     }
 }

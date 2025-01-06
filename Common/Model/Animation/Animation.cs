@@ -106,7 +106,10 @@ namespace Vintagestory.API.Common
                 resolvedKeyFrames[i] = new AnimationFrame() { FrameNumber = KeyFrames[i].Frame } ;
             }
 
-            if (KeyFrames.Length == 0) return;
+            if (KeyFrames.Length == 0)
+            {
+                throw new Exception("Animation '" + Code + "' has no keyframes, this will cause other errors every time it is ticked");
+            }
 
             if (jointsById.Count >= GlobalConstants.MaxAnimatedElements)
             {

@@ -1655,11 +1655,11 @@ namespace Vintagestory.API.Common
 
                 if (Math.Abs(nutriProps.Health * healthLossMul) > 0.001f)
                 {
-                    dsc.AppendLine(Lang.Get("When eaten: {0} sat, {1} hp", Math.Round(nutriProps.Satiety * satLossMul), Math.Round(nutriProps.Health * healthLossMul, 2)));
+                    dsc.AppendLine(Lang.Get(MatterState == EnumMatterState.Liquid ? "liquid-when-drunk-saturation-hp" : "When eaten: {0} sat, {1} hp", Math.Round(nutriProps.Satiety * satLossMul), Math.Round(nutriProps.Health * healthLossMul, 2)));
                 }
                 else
                 {
-                    dsc.AppendLine(Lang.Get("When eaten: {0} sat", Math.Round(nutriProps.Satiety * satLossMul)));
+                    dsc.AppendLine(Lang.Get(MatterState == EnumMatterState.Liquid ? "liquid-when-drunk-saturation" : "When eaten: {0} sat", Math.Round(nutriProps.Satiety * satLossMul)));
                 }
 
                 dsc.AppendLine(Lang.Get("Food Category: {0}", Lang.Get("foodcategory-" + nutriProps.FoodCategory.ToString().ToLowerInvariant())));
