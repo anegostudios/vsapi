@@ -437,7 +437,7 @@ namespace Vintagestory.API.MathTools
                 case EnumDistribution.INVEXP:
                 case EnumDistribution.STRONGINVEXP:
                 case EnumDistribution.STRONGERINVEXP:
-                    return Math.Min(value, value + var);
+                    return GameMath.Clamp(value, Math.Min(avg, avg + var), Math.Max(avg, avg + var));
                 default:
                     float min = avg - var;
                     float max = avg + var;
