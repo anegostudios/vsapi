@@ -16,7 +16,7 @@ namespace Vintagestory.API.MathTools
 
     public class CollisionTester
     {
-        public CachedCuboidList CollisionBoxList = new();
+        public CachedCuboidListFaster CollisionBoxList = new();
 
         public Cuboidd entityBox = new();
 
@@ -45,10 +45,11 @@ namespace Vintagestory.API.MathTools
         /// <param name="yExtra">Default 1 for the extra high collision boxes of fences</param>
         public void ApplyTerrainCollision(Entity entity, EntityPos entityPos, float dtFactor, ref Vec3d newPosition, float stepHeight = 1, float yExtra = 1)
         {
-            minPos.Set(int.MinValue, int.MinValue, int.MinValue);
             minPos.dimension = entityPos.Dimension;
 
             var worldAccessor = entity.World;
+            Vec3d pos = this.pos;           // Local copy for efficiency
+            Cuboidd entityBox = this.entityBox; // Local copy for efficiency
 
             pos.X = entityPos.X;
             pos.Y = entityPos.Y;
@@ -70,12 +71,14 @@ namespace Vintagestory.API.MathTools
             bool collided = false;
 
             int collisionBoxListCount = CollisionBoxList.Count;
+            Cuboidd[] CollisionBoxListCuboids = CollisionBoxList.cuboids;   // Local reference for efficiency
 
             collBlockPos.dimension = entityPos.Dimension;
             // ---------- Y COLLISION. Call events and set collided vertically.
-            for (int i = 0; i < collisionBoxListCount; i++)
+            for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
             {
-                motionY = CollisionBoxList.cuboids[i].pushOutY(entityBox, motionY, ref pushDirection);
+                if (i >= collisionBoxListCount) break;
+                motionY = CollisionBoxListCuboids[i].pushOutY(entityBox, motionY, ref pushDirection);
                 if (pushDirection == EnumPushDirection.None) continue;
 
                 collided = true;
@@ -113,9 +116,10 @@ namespace Vintagestory.API.MathTools
             if (horizontallyBlocked)
             {
                 // X - Collision (Horizontal)
-                for (int i = 0; i < collisionBoxListCount; i++)
+                for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
                 {
-                    motionX = CollisionBoxList.cuboids[i].pushOutX(entityBox, motionX, ref pushDirection);
+                    if (i >= collisionBoxListCount) break;
+                    motionX = CollisionBoxListCuboids[i].pushOutX(entityBox, motionX, ref pushDirection);
                     if (pushDirection == EnumPushDirection.None) continue;
 
                     collided = true;
@@ -134,9 +138,10 @@ namespace Vintagestory.API.MathTools
 
                 // Z - Collision (Horizontal)
 
-                for (int i = 0; i < collisionBoxListCount; i++)
+                for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
                 {
-                    motionZ = CollisionBoxList.cuboids[i].pushOutZ(entityBox, motionZ, ref pushDirection);
+                    if (i >= collisionBoxListCount) break;
+                    motionZ = CollisionBoxListCuboids[i].pushOutZ(entityBox, motionZ, ref pushDirection);
                     if (pushDirection == EnumPushDirection.None) continue;
 
                     collided = true;
@@ -166,6 +171,8 @@ namespace Vintagestory.API.MathTools
 
         protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra, int dimension)
         {
+            // NEVER CALLED IN 1.20 as all invocations are in CachingCollisionTester.  But we retain this in case a mod calls it.
+
             // Check if the min and max positions of the collision test are unchanged and use the old list if they are.
             bool minPosIsUnchanged = minPos.SetAndEquals(
                 (int)(entityBox.X1 + Math.Min(0, motionX)),
@@ -222,19 +229,25 @@ namespace Vintagestory.API.MathTools
 
             entityBox.Y1 = Math.Round(entityBox.Y1, 5); // Fix float/double rounding errors. Only need to fix the vertical because gravity.
 
+            BlockPos blockPos = this.blockPos;   // Local reference for efficiency
+            Vec3d blockPosVec = this.blockPosVec;   // Local reference for efficiency
             for (int y = minY; y <= maxY; y++)
             {
+                blockPos.SetAndCorrectDimension(minX, y, minZ);
+                blockPosVec.Set(minX, y, minZ);
                 for (int x = minX; x <= maxX; x++)
                 {
+                    blockPos.X = x;
+                    blockPosVec.X = x;
                     for (int z = minZ; z <= maxZ; z++)
                     {
-                        blockPos.SetAndCorrectDimension(x, y, z);
+                        blockPos.Z = z;
                         Block block = blockAccessor.GetBlock(blockPos, BlockLayersAccess.MostSolid);
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
                         if (collisionBoxes == null || collisionBoxes.Length == 0) continue;
 
-                        blockPosVec.Set(x, y, z);
+                        blockPosVec.Z = z;
                         for (int i = 0; i < collisionBoxes.Length; i++)
                         {
                             Cuboidf collBox = collisionBoxes[i];
@@ -277,17 +290,22 @@ namespace Vintagestory.API.MathTools
 
             for (int y = minY; y <= maxY; y++)
             {
+                blockPos.Set(minX, y, minZ);
+                blockPosVec.Set(minX, y, minZ);
                 for (int x = minX; x <= maxX; x++)
                 {
+                    blockPos.X = x;
+                    blockPosVec.X = x;
                     for (int z = minZ; z <= maxZ; z++)
                     {
+                        blockPos.Z = z;
                         Block block = blockAccessor.GetMostSolidBlock(x, y, z);
-                        blockPos.Set(x, y, z);
-                        blockPosVec.Set(x, y, z);
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
+                        if (collisionBoxes == null) continue;
 
-                        for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
+                        blockPosVec.Z = z;
+                        for (int i = 0; i < collisionBoxes.Length; i++)
                         {
                             Cuboidf collBox = collisionBoxes[i];
                             if (collBox == null) continue;
@@ -307,6 +325,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
+        /// <br/>NOTE: currently not dimension-aware unless the supplied Vec3d pos is dimension-aware
         /// </summary>
         /// <param name="blockAccessor"></param>
         /// <param name="entityBoxRel"></param>
@@ -334,15 +353,18 @@ namespace Vintagestory.API.MathTools
             {
                 for (int x = minX; x <= maxX; x++)
                 {
+                    blockPos.Set(x, y, minZ);
+                    blockPosVec.Set(x, y, minZ);
                     for (int z = minZ; z <= maxZ; z++)
                     {
+                        blockPos.Z = z;
                         Block block = blockAccessor.GetBlock(x, y, z, BlockLayersAccess.MostSolid);
-                        blockPos.Set(x, y, z);
-                        blockPosVec.Set(x, y, z);
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
+                        if (collisionBoxes == null) continue;
 
-                        for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
+                        blockPosVec.Z = z;
+                        for (int i = 0; i < collisionBoxes.Length; i++)
                         {
                             Cuboidf collBox = collisionBoxes[i];
                             if (collBox == null) continue;
@@ -472,7 +494,8 @@ namespace Vintagestory.API.MathTools
     }
 
     /// <summary>
-    /// Special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick
+    /// Originally intended to be a special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick
+    /// <br/>Currently in 1.20 the caching is not very useful when we loop through all entities sequentially - but empirical testing shows it is actually faster not to cache
     /// </summary>
     public class CachingCollisionTester : CollisionTester
     {
@@ -483,8 +506,16 @@ namespace Vintagestory.API.MathTools
             tmpPos.dimension = entityPos.Dimension;
         }
 
+        public void AssignToEntity(PhysicsBehaviorBase entityPhysics, int dimension)
+        {
+            minPos.dimension = dimension;
+            tmpPos.dimension = dimension;
+        }
+
         protected override void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra, int dimension)
         {
+            Cuboidd entityBox = this.entityBox;  // Local reference for efficiency
+
             bool minPosIsUnchanged = minPos.SetAndEquals(
                 (int)(entityBox.X1 + Math.Min(0, motionX)),
                 (int)(entityBox.Y1 + Math.Min(0, motionY) - yExtra), // yExtra looks at blocks below to allow for the extra high collision box of fences
@@ -525,6 +556,7 @@ namespace Vintagestory.API.MathTools
 
                 int collisionBoxListCount = CollisionBoxList.Count;
                 if (collisionBoxListCount == 0) return;
+                Cuboidd[] CollisionBoxListCuboids = CollisionBoxList.cuboids;   // Local reference for efficiency
 
                 double deltaX = 0;
                 double deltaZ = 0;
@@ -533,29 +565,33 @@ namespace Vintagestory.API.MathTools
                 reducedBox.Translate(pos.X, pos.Y, pos.Z);
                 reducedBox.GrowBy(-clippingLimit, 0, -clippingLimit);
 
-                for (int i = 0; i < collisionBoxListCount; i++)
+                for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
                 {
-                    deltaX = CollisionBoxList.cuboids[i].pushOutX(reducedBox, clippingLimit, ref pushDirection);
+                    if (i >= collisionBoxListCount) break;
+                    deltaX = CollisionBoxListCuboids[i].pushOutX(reducedBox, clippingLimit, ref pushDirection);
                 }
                 if (deltaX == clippingLimit)
                 {
-                    for (int i = 0; i < collisionBoxListCount; i++)
+                    for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
                     {
-                        deltaX = CollisionBoxList.cuboids[i].pushOutX(reducedBox, -clippingLimit, ref pushDirection);
+                        if (i >= collisionBoxListCount) break;
+                        deltaX = CollisionBoxListCuboids[i].pushOutX(reducedBox, -clippingLimit, ref pushDirection);
                     }
                     deltaX += clippingLimit;
                 }
                 else deltaX -= clippingLimit;
 
-                for (int i = 0; i < collisionBoxListCount; i++)
+                for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
                 {
-                    deltaZ = CollisionBoxList.cuboids[i].pushOutZ(reducedBox, clippingLimit, ref pushDirection);
+                    if (i >= collisionBoxListCount) break;
+                    deltaZ = CollisionBoxListCuboids[i].pushOutZ(reducedBox, clippingLimit, ref pushDirection);
                 }
                 if (deltaZ == clippingLimit)
                 {
-                    for (int i = 0; i < collisionBoxListCount; i++)
+                    for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
                     {
-                        deltaZ = CollisionBoxList.cuboids[i].pushOutZ(reducedBox, -clippingLimit, ref pushDirection);
+                        if (i >= collisionBoxListCount) break;
+                        deltaZ = CollisionBoxListCuboids[i].pushOutZ(reducedBox, -clippingLimit, ref pushDirection);
                     }
                     deltaZ += clippingLimit;
                 }

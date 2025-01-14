@@ -119,7 +119,7 @@ namespace Vintagestory.API.Client
         /// <param name="p"></param>
         protected void DoSendPacket(object p)
         {
-            capi.Network.SendBlockEntityPacket(BlockEntityPosition.X, BlockEntityPosition.Y, BlockEntityPosition.Z, p);
+            capi.Network.SendBlockEntityPacket(BlockEntityPosition.X, BlockEntityPosition.InternalY, BlockEntityPosition.Z, p);
         }
 
         /// <summary>

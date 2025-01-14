@@ -166,6 +166,12 @@ Class EntityBehaviorPassivePhysics
       <a class="xref" href="Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_AfterInitialized_System_Boolean_">PhysicsBehaviorBase.AfterInitialized(bool)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_CanProceedOnThisThread">PhysicsBehaviorBase.CanProceedOnThisThread()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_OnPhysicsTickDone">PhysicsBehaviorBase.OnPhysicsTickDone()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_entity">EntityBehavior.entity</a>
     </div>
     <div>
@@ -403,38 +409,6 @@ Class EntityBehaviorPassivePhysics
 </h2>
 
 
-  <a id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_FlagTickDone_" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_FlagTickDone" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone">
-  FlagTickDone
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Flag for load balancer.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ref int FlagTickDone { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_Ticking_" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking*"></a>
 
   <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_Ticking" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking">
@@ -477,7 +451,7 @@ Class EntityBehaviorPassivePhysics
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called after physics has ticked and is thread-safe.</p>
+  <div class="markdown level1 summary"><p>Called once per server tick, after all physics ticking has occurred; on main thread.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -676,7 +650,7 @@ Class EntityBehaviorPassivePhysics
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called at a fixed interval 10 times per second.</p>
+  <div class="markdown level1 summary"><p>Called at a fixed interval, potentially 30 times per second (if server is running smoothly)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

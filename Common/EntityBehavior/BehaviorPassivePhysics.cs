@@ -43,10 +43,6 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     /// </summary>
     public Action<float> OnPhysicsTickCallback;
 
-    private volatile int serverPhysicsTickDone = 0;
-
-    public ref int FlagTickDone => ref serverPhysicsTickDone;
-
     public EntityBehaviorPassivePhysics(Entity entity) : base(entity)
     {
     }
@@ -139,6 +135,8 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         // Set client motion.
         entity.Pos.Motion.Set(lPos.Motion);
         entity.ServerPos.Motion.Set(lPos.Motion);
+
+        collisionTester.NewTick(lPos);
 
         // Set pos for triggering events (interpolation overrides this).
         entity.Pos.SetFrom(entity.ServerPos);
@@ -348,6 +346,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         if (mountableSupplier?.IsBeingControlled() == true && entity.World.Side == EnumAppSide.Server) return;
 
         EntityPos pos = entity.SidedPos;
+        collisionTester.AssignToEntity(this, pos.Dimension);
 
         // If entity is moving 6 blocks per second test 10 times. Needs dynamic adjustment this is overkill.
         int loops = pos.Motion.Length() > 0.1 ? 10 : 1;

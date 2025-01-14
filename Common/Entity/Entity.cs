@@ -1052,11 +1052,14 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            ownPosRepulse.Set(
-                SidedPos.X + (CollisionBox.X2 - OriginCollisionBox.X2),
-                SidedPos.Y + (CollisionBox.Y2 - OriginCollisionBox.Y2),
-                SidedPos.Z + (CollisionBox.Z2 - OriginCollisionBox.Z2)
-            );
+            if (CollisionBox != null)
+            {
+                ownPosRepulse.Set(
+                    SidedPos.X + (CollisionBox.X2 - OriginCollisionBox.X2),
+                    SidedPos.Y + (CollisionBox.Y2 - OriginCollisionBox.Y2),
+                    SidedPos.Z + (CollisionBox.Z2 - OriginCollisionBox.Z2)
+                );
+            }
             World.FrameProfiler.Mark("entity-animation-ticking");
         }
 

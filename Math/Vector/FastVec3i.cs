@@ -239,6 +239,14 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public FastVec3i Set(BlockPos pos)
+        {
+            this.X = pos.X;
+            this.Y = pos.Y;
+            this.Z = pos.Z;
+            return this;
+        }
+
         /// <summary>
         /// Sets the vector to the coordinates of given vector
         /// </summary>

@@ -178,7 +178,7 @@ Class CollisionTester
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CachedCuboidList CollisionBoxList</code></pre>
+    <pre><code class="lang-csharp hljs">public CachedCuboidListFaster CollisionBoxList</code></pre>
   </div>
 
 
@@ -186,7 +186,7 @@ Class CollisionTester
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.CachedCuboidList.html">CachedCuboidList</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.CachedCuboidListFaster.html">CachedCuboidListFaster</a></dt>
     <dd></dd>
   </dl>
 
@@ -646,7 +646,8 @@ Class CollisionTester
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.</p>
+  <div class="markdown level1 summary"><p>Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
+<br>NOTE: currently not dimension-aware unless the supplied Vec3d pos is dimension-aware</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

@@ -28,9 +28,9 @@ namespace Vintagestory.API.Client
 
         public double unscaledTabSpacing = 5;
         public double unscaledTabPadding = 4;
+        public bool[] TabHasAlarm { get; set; }
 
         public bool AlarmTabs;
-        int alarmTabIndex = -1;
 
         float fontHeight;
 
@@ -49,19 +49,21 @@ namespace Vintagestory.API.Client
         {
             this.selectedFont = selectedFont;
             this.tabs = tabs;
+            TabHasAlarm = new bool[tabs.Length];
             handler = onTabClicked;
             hoverTextures = new LoadedTexture[tabs.Length];
             for (int i = 0; i < tabs.Length; i++) hoverTextures[i] = new LoadedTexture(capi);
-            
+
             tabWidths = new int[tabs.Length];
             baseTexture = new LoadedTexture(capi);
         }
 
         CairoFont notifyFont;
 
+        [Obsolete("Use TabHasAlarm[] property instead. Used by the chat window to mark a tab/chat as unread")]
         public void SetAlarmTab(int tabIndex)
         {
-            alarmTabIndex = tabIndex;
+
         }
 
         public void WithAlarmTabs(CairoFont notifyFont)
@@ -94,7 +96,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < tabs.Length; i++)
             {
                 tabWidths[i] = (int)(ctx.TextExtents(tabs[i].Name).Width + 2 * padding + 1);
-                
+
                 ctx.NewPath();
                 ctx.MoveTo(xpos, Bounds.InnerHeight);
                 ctx.LineTo(xpos, radius);
@@ -201,7 +203,7 @@ namespace Vintagestory.API.Client
                 {
                     generateTexture(surface, ref hoverTextures[i]);
                 }
-                
+
 
                 ctx.Dispose();
                 surface.Dispose();
@@ -226,7 +228,7 @@ namespace Vintagestory.API.Client
                     api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
                 }
 
-                if (alarmTabIndex == i)
+                if (TabHasAlarm[i])
                 {
                     api.Render.Render2DTexturePremultipliedAlpha(notifyTextures[i].TextureId, (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
                 }

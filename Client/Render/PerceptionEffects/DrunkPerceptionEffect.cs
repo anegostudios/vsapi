@@ -54,6 +54,11 @@ namespace Vintagestory.API.Client
             hc.pitchOffset = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
 
             hc.pitchOffset = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
+
+
+            double accum2 = (float)((capi.InWorldEllapsedMilliseconds / 9000.0) % 100 * Math.PI);
+            float intox = capi.Render.ShaderUniforms.PerceptionEffectIntensity;
+            capi.Render.ShaderUniforms.AmbientBloomLevelAdd[DefaultShaderUniforms.BloomAddDrunkIndex] = GameMath.Clamp((float)Math.Abs(Math.Cos(accum2 / 1.12) + Math.Sin(accum2 / 2.2) + Math.Cos(accum2 * 2.3)) * intox * 2, intox / 3f, 1.8f);
         }
 
         public override void ApplyToFpHand(Matrixf modelMat)

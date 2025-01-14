@@ -3,6 +3,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common.Entities;
 
@@ -22,6 +23,7 @@ public abstract class PhysicsBehaviorBase : EntityBehavior
     protected Vec3d nPos;
 
     public float CollisionYExtra = 1f;
+    private volatile int serverPhysicsTickDone = 0;
 
     [ThreadStatic]
     protected internal static CachingCollisionTester collisionTester;
@@ -51,4 +53,13 @@ public abstract class PhysicsBehaviorBase : EntityBehavior
         mountableSupplier = entity.GetInterface<IMountable>();
     }
 
+    public bool CanProceedOnThisThread()
+    {
+        return AsyncHelper.CanProceedOnThisThread(ref serverPhysicsTickDone);
+    }
+
+    public void OnPhysicsTickDone()
+    {
+        serverPhysicsTickDone = 0;
+    }
 }

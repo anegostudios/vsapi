@@ -367,7 +367,7 @@ namespace Vintagestory.API.Common
 
             if (World != null)
             {
-                if (!Slot.Itemstack.ResolveBlockOrItem(World))
+                if (Slot.Itemstack?.ResolveBlockOrItem(World) != true)
                 {
                     this.Itemstack = null;
                     Die();

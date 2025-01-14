@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CachingCollisionTester | VintageStory API ">
       
-      <meta name="description" content="Special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick">
+      <meta name="description" content="Originally intended to be a special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick Currently in 1.20 the caching is not very useful when we loop through all entities sequentially - but empirical testing shows it is actually faster not to cache">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,8 @@ Class CachingCollisionTester
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick</p>
+  <div class="markdown summary"><p>Originally intended to be a special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick
+<br>Currently in 1.20 the caching is not very useful when we loop through all entities sequentially - but empirical testing shows it is actually faster not to cache</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -207,6 +208,39 @@ Class CachingCollisionTester
 
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_MathTools_CachingCollisionTester_AssignToEntity_" data-uid="Vintagestory.API.MathTools.CachingCollisionTester.AssignToEntity*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_CachingCollisionTester_AssignToEntity_Vintagestory_API_Common_Entities_PhysicsBehaviorBase_System_Int32_" data-uid="Vintagestory.API.MathTools.CachingCollisionTester.AssignToEntity(Vintagestory.API.Common.Entities.PhysicsBehaviorBase,System.Int32)">
+  AssignToEntity(PhysicsBehaviorBase, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AssignToEntity(PhysicsBehaviorBase entityPhysics, int dimension)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityPhysics</code> <a class="xref" href="Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html">PhysicsBehaviorBase</a></dt>
+    <dd></dd>
+    <dt><code>dimension</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_MathTools_CachingCollisionTester_GenerateCollisionBoxList_" data-uid="Vintagestory.API.MathTools.CachingCollisionTester.GenerateCollisionBoxList*"></a>

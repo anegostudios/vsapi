@@ -56,6 +56,12 @@ namespace Vintagestory.API.Client
         public float DamageVignettingSide;
         public float FrostVignetting;
         public float ExtraSepia;
+
+        public const int BloomAddDrunkIndex = 1;
+        public const int BloomAddEnvIndex = 0;
+
+        public float[] AmbientBloomLevelAdd = new float[4];
+
         public float ExtraBloom;
 
         public float FlagFogDensity;

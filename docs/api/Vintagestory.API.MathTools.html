@@ -127,7 +127,8 @@ Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A comm
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.MathTools.CachingCollisionTester.html">CachingCollisionTester</a></dt>
-      <dd><p>Special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick</p>
+      <dd><p>Originally intended to be a special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick
+<br>Currently in 1.20 the caching is not very useful when we loop through all entities sequentially - but empirical testing shows it is actually faster not to cache</p>
 </dd>
     </dl>
     <dl class="jumplist">

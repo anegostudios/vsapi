@@ -123,6 +123,11 @@ Classes
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.CachedCuboidListFaster.html">CachedCuboidListFaster</a></dt>
+      <dd><p>Just like CachedCuboidList except we use structs internally, for RAM access performance. We leave CachedCuboidList just as it is for mod backwards compatibility</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Datastructures.CachingConcurrentDictionary-2.html">CachingConcurrentDictionary&lt;TKey, TValue&gt;</a></dt>
       <dd><p>Exactly like ConcurrentDictionary except that Values is cached for performance, instead of building a new List each time Values is accessed
 <br><br>The cache is only guaranteed up to date if CachedConcurrentDictionary.TryAdd, .TryRemove or [] methods are used to modify the Dictionary
