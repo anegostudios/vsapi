@@ -303,5 +303,10 @@ namespace Vintagestory.API.Common
         {
             
         }
+
+        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
+        {
+            
+        }
     }
 }
