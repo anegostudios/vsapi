@@ -2277,14 +2277,14 @@ namespace Vintagestory.API.Common
             ItemStack stack = inSlot.Itemstack;
 
             if (DrawType == EnumDrawType.SurfaceLayer) dsc.AppendLine(Lang.Get("Decor layer block"));
-            dsc.Append(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + GetBlockMaterial(world.BlockAccessor, null, stack)) + "\n");
+            var mat = GetBlockMaterial(world.BlockAccessor, null, stack);
+            dsc.AppendLine(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + mat));
             AddExtraHeldItemInfoPostMaterial(inSlot, dsc, world);
 
             byte[] lightHsv = GetLightHsv(world.BlockAccessor, null, stack);
 
             dsc.Append((withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-hsv") + lightHsv[0] + ", " + lightHsv[1] + ", " + lightHsv[2] + "\n" : "") : ""));
             dsc.Append((!withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-level") + lightHsv[2] + "\n" : "") : ""));
-            //if (LightAbsorption > 0 && LightAbsorption < 33) dsc.Append(Lang.Get("light-absorb") + LightAbsorption + "\n");
 
             if (WalkSpeedMultiplier != 1)
             {
