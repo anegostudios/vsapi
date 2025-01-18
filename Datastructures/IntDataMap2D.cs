@@ -119,11 +119,11 @@ namespace Vintagestory.API.Datastructures
 
         public float GetIntLerpedCorrectly(float x, float z)
         {
-            int posXLeft = (int)Math.Floor(x);
-            int posZLeft = (int)Math.Floor(z);
+            int posXLeft = (int)Math.Floor(x - 0.5f);
+            int posZLeft = (int)Math.Floor(z - 0.5f);
 
-            float fx = x - posXLeft;
-            float fz = z - posZLeft;
+            float fx = x - (posXLeft + 0.5f);
+            float fz = z - (posZLeft + 0.5f);
 
             int index = (posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding;
             return GameMath.BiLerp(
@@ -134,6 +134,26 @@ namespace Vintagestory.API.Datastructures
                 fx, fz
             );
         }
+
+        public int GetColorLerpedCorrectly(float x, float z)
+        {
+            int posXLeft = (int)Math.Floor(x - 0.5f);
+            int posZLeft = (int)Math.Floor(z - 0.5f);
+
+            float fx = x - (posXLeft + 0.5f);
+            float fz = z - (posZLeft + 0.5f);
+
+            int index = (posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding;
+
+            return GameMath.BiLerpRgbColor(
+                fx, fz,
+                Data[index],
+                Data[index + 1],
+                Data[index + Size],
+                Data[index + Size + 1]
+            );
+        }
+
 
     }
 }
