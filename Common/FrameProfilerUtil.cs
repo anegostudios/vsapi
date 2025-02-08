@@ -75,11 +75,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called by the game engine for each render frame or server tick
         /// </summary>
-        public void Begin(string beginText = null)
+        public void Begin(string beginText = null, params object[] args)
         {
             if (!Enabled && !PrintSlowTicks) return;
 
-            this.beginText = beginText;
+            this.beginText = beginText == null ? null : String.Format(beginText, args);
             currentEntry = null;
             rootEntry = Enter("all");
         }

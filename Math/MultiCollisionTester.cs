@@ -254,7 +254,8 @@ namespace Vintagestory.API.MathTools
 
                             Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
 
-                            for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
+                            if (collisionBoxes == null) continue;
+                            for (int i = 0; i < collisionBoxes.Length; i++)
                             {
                                 Cuboidf collBox = collisionBoxes[i];
                                 if (collBox == null) continue;

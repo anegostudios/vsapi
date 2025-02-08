@@ -194,6 +194,7 @@ public class FastMemoryStream : Stream
     public void Reset()
     {
         Position = 0;
+        bufferlength = buffer.Length;
     }
 
     public override long Seek(long offset, SeekOrigin origin)

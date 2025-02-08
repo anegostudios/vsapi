@@ -76,9 +76,9 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-        /// Gets the sound that occurs when a specific tool hits a block.
+        /// Gets the sound that occurs when a specific tool hits a block.  (Note for coders: if none specified in the JSON, this will be null from version 1.20.4 onwards)
         /// </summary>
-        [DocumentAsJson] public virtual Dictionary<EnumTool, BlockSounds> ByTool { get; set; } = new Dictionary<EnumTool, BlockSounds>();
+        [DocumentAsJson] public virtual Dictionary<EnumTool, BlockSounds> ByTool { get; set; }
 
         /// <summary>
         /// Clones the block sounds.
@@ -88,20 +88,24 @@ namespace Vintagestory.API.Common
         {
             BlockSounds sounds = new BlockSounds()
             {
-                Walk = Walk == null ? null : Walk.Clone(),
-                Inside = Inside == null ? null : Inside.Clone(),
-                Break = Break == null ? null : Break.Clone(),
-                Place = Place == null ? null : Place.Clone(),
-                Hit = Hit == null ? null : Hit.Clone(),
-                Ambient = Ambient == null ? null : Ambient.Clone(),
+                Walk = Walk?.PermanentClone(),
+                Inside = Inside?.PermanentClone(),
+                Break = Break?.PermanentClone(),
+                Place = Place?.PermanentClone(),
+                Hit = Hit?.PermanentClone(),
+                Ambient = Ambient?.PermanentClone(),
                 AmbientBlockCount = AmbientBlockCount,
                 AmbientSoundType = AmbientSoundType,
                 AmbientMaxDistanceMerge = AmbientMaxDistanceMerge
             };
 
-            foreach (var val in ByTool)
+            if (ByTool != null)
             {
-                sounds.ByTool[val.Key] = val.Value.Clone();
+                sounds.ByTool = new(ByTool.Count);
+                foreach (var val in ByTool)
+                {
+                    sounds.ByTool[val.Key] = val.Value.Clone();
+                }
             }
 
             return sounds;
@@ -136,9 +140,11 @@ namespace Vintagestory.API.Common
         /// <returns>The resulting sound</returns>
         public AssetLocation GetBreakSound(EnumTool tool)
         {
-            BlockSounds toolSounds;
-            ByTool.TryGetValue(tool, out toolSounds);
-            if (toolSounds?.Break != null) return toolSounds.Break;
+            if (ByTool != null)
+            {
+                ByTool.TryGetValue(tool, out BlockSounds toolSounds);
+                if (toolSounds?.Break != null) return toolSounds.Break;
+            }
 
             return Break;
         }
@@ -150,9 +156,11 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public AssetLocation GetHitSound(EnumTool tool)
         {
-            BlockSounds toolSounds;
-            ByTool.TryGetValue(tool, out toolSounds);
-            if (toolSounds?.Hit != null) return toolSounds.Hit;
+            if (ByTool != null)
+            {
+                ByTool.TryGetValue(tool, out BlockSounds toolSounds);
+                if (toolSounds?.Hit != null) return toolSounds.Hit;
+            }
 
             return Hit;
         }

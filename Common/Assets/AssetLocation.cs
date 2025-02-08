@@ -184,12 +184,12 @@ namespace Vintagestory.API.Common
             if (colonIndex == -1)
             {
                 domain = null;
-                path = domainAndPath;
+                path = string.Intern(domainAndPath);
             }
             else
             {
                 domain = string.Intern(domainAndPath.Substring(0, colonIndex));
-                path = domainAndPath.Substring(colonIndex + 1);
+                path = string.Intern(domainAndPath.Substring(colonIndex + 1));
             }
         }
 
@@ -202,6 +202,16 @@ namespace Vintagestory.API.Common
             this.path   = path;
         }
 
+        /// <summary>
+        /// Create a new AssetLocation if a non-empty string is provided, otherwise return null. Useful when deserializing packets
+        /// </summary>
+        /// <param name="domainAndPath"></param>
+        /// <returns></returns>
+        public static AssetLocation CreateOrNull(string domainAndPath)
+        {
+            if (domainAndPath.Length == 0) return null;
+            return new AssetLocation(domainAndPath);
+        }
 
         /// <summary>
         /// Create an Asset Location from a string which may optionally have no prefixed domain: - in which case the defaultDomain is used.
@@ -210,9 +220,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public static AssetLocation Create(string domainAndPath, string defaultDomain = GlobalConstants.DefaultDomain)
         {
-            if (!domainAndPath.Contains(":"))
+            if (!domainAndPath.Contains(':'))
             {
-                return new AssetLocation(defaultDomain, domainAndPath.ToLowerInvariant());
+                return new AssetLocation(defaultDomain, domainAndPath.ToLowerInvariant().DeDuplicate());
             }
 
             return new AssetLocation(domainAndPath);
@@ -408,6 +418,16 @@ namespace Vintagestory.API.Common
             return new AssetLocation(this.domain, this.path);
         }
 
+        /// <summary>
+        /// Clones this asset in a way which saves RAM, if the calling code created the AssetLocation from JSON/deserialisation. Use for objects expected to be held for a long time - for example, building Blocks at game launch
+        /// (at the cost of slightly more CPU time when creating the Clone())
+        /// </summary>
+        /// <returns></returns>
+        public virtual AssetLocation PermanentClone()
+        {
+            return new AssetLocation(this.domain.DeDuplicate(), this.path.DeDuplicate());
+        }
+
         public virtual AssetLocation CloneWithoutPrefixAndEnding(int prefixLength)
         {
             int i = path.LastIndexOf('.');
@@ -562,6 +582,21 @@ namespace Vintagestory.API.Common
                 return (value as AssetLocation).ToString();
             }
             return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
+
+
+
+    public static class AssetLocationExtensions
+    {
+        /// <summary>
+        /// Convenience method and aids performance, avoids double field look-up
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <returns></returns>
+        public static string ToNonNullString(this AssetLocation loc)
+        {
+            return loc == null ? "" : loc.ToShortString();
         }
     }
 }

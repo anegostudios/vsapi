@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -208,6 +209,7 @@ namespace Vintagestory.API.Common
         {
             this.JointId = jointId;
 
+            var Children = this.Children;
             if (Children == null) return;
             for (int i = 0; i < Children.Length; i++)
             {
@@ -217,15 +219,18 @@ namespace Vintagestory.API.Common
 
         internal void ResolveRefernces()
         {
+            var Children = this.Children;
             if (Children != null)
             {
                 for (int i = 0; i < Children.Length; i++)
                 {
-                    Children[i].ParentElement = this;
-                    Children[i].ResolveRefernces();
+                    ShapeElement child = Children[i];
+                    child.ParentElement = this;
+                    child.ResolveRefernces();
                 }
             }
 
+            var AttachmentPoints = this.AttachmentPoints;
             if (AttachmentPoints != null)
             {
                 for (int i = 0; i < AttachmentPoints.Length; i++)
@@ -251,7 +256,7 @@ namespace Vintagestory.API.Common
                         continue;
                     }
                     FacesResolved[facing.Index] = f;
-                    f.Texture = f.Texture.Substring(1);
+                    f.Texture = f.Texture.Substring(1).DeDuplicate();
                 }
             }
             Faces = null;
@@ -260,6 +265,14 @@ namespace Vintagestory.API.Common
             if (Children != null)
             {
                 foreach (ShapeElement child in Children) child.TrimTextureNamesAndResolveFaces();
+            }
+
+            Name = Name.DeDuplicate();
+            StepParentName = StepParentName.DeDuplicate();
+            var AttachmentPoints = this.AttachmentPoints;
+            if (AttachmentPoints != null)
+            {
+                for (int i = 0; i < AttachmentPoints.Length; i++) AttachmentPoints[i].DeDuplicate();
             }
         }
 
@@ -372,7 +385,7 @@ namespace Vintagestory.API.Common
             ShapeElement elem = new ShapeElement()
             {
                 AttachmentPoints = (AttachmentPoint[])AttachmentPoints?.Clone(),
-                FacesResolved = (ShapeElementFace[])FacesResolved.Clone(),
+                FacesResolved = (ShapeElementFace[])FacesResolved?.Clone(),
                 From = (double[])From?.Clone(),
                 To = (double[])To?.Clone(),
                 inverseModelTransform = (float[])inverseModelTransform?.Clone(),
@@ -395,13 +408,15 @@ namespace Vintagestory.API.Common
                 Name = Name
             };
 
+            var Children = this.Children;
             if (Children != null)
             {
                 elem.Children = new ShapeElement[Children.Length];
                 for (int i = 0; i < Children.Length; i++)
                 {
-                    elem.Children[i] = Children[i].Clone();
-                    elem.Children[i].ParentElement = elem;
+                    var child = Children[i].Clone();
+                    child.ParentElement = elem;
+                    elem.Children[i] = child;
                 }
             }
 
@@ -412,6 +427,7 @@ namespace Vintagestory.API.Common
         public void SetJointIdRecursive(int jointId)
         {
             this.JointId = jointId;
+            var Children = this.Children;
             if (Children != null)
             {
                 for (int i = 0; i < Children.Length; i++)
@@ -425,6 +441,7 @@ namespace Vintagestory.API.Common
         {
             CacheInverseTransformMatrix();
 
+            var Children = this.Children;
             if (Children != null)
             {
                 for (int i = 0; i < Children.Length; i++)
@@ -437,6 +454,7 @@ namespace Vintagestory.API.Common
         public void WalkRecursive(Action<ShapeElement> onElem)
         {
             onElem(this);
+            var Children = this.Children;
             if (Children != null)
             {
                 for (int i = 0; i < Children.Length; i++)
@@ -450,6 +468,26 @@ namespace Vintagestory.API.Common
         {
             for (int i = 0; i < 6; i++) if (FacesResolved[i] != null) return true;
             return false;
+        }
+
+        public virtual void FreeRAMServer()
+        {
+            Faces = null;
+            FacesResolved = null;   // We don't need the Faces information on the server-side
+            var Children = this.Children;
+            if (Children != null)
+            {
+                for (int i = 0; i < Children.Length; i++)
+                {
+                    Children[i].FreeRAMServer();
+                }
+            }
+
+            // For now, turns out the following all need to be kept, just in case we need to animate this ShapeElement fully on the server (e.g. when a creature dies)
+            //From = null;
+            //To = null;
+            //RotationOrigin = null;
+            //inverseModelTransform = null;
         }
     }
 }

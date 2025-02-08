@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -54,5 +55,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         [JsonProperty]
         public double RotationZ;
+
+        public void DeDuplicate()
+        {
+            Code = Code.DeDuplicate();
+        }
     }
 }

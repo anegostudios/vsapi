@@ -21,5 +21,10 @@ namespace Vintagestory.API.Util
         {
             return text.IndexOf(value, stringComparison) >= 0;
         }
+
+        public static string DeDuplicate(this string str)
+        {
+            return str == null ? null : string.Intern(str);
+        }
     }
 }

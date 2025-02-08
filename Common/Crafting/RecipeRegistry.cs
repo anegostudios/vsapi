@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
@@ -34,18 +36,30 @@ namespace Vintagestory.API.Common
 
         public override void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity)
         {
+            using FastMemoryStream ms = new FastMemoryStream();
+            ToBytes(resolver, out data, out quantity, ms);
+        }
+
+        public override void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity, FastMemoryStream ms)
+        {
             quantity = Recipes.Count;
 
-            using (MemoryStream ms = new MemoryStream())
+            ms.Reset();
+            BinaryWriter writer = new BinaryWriter(ms);
+
+            foreach (T recipe in Recipes)
             {
-                BinaryWriter writer = new BinaryWriter(ms);
+                recipe.ToBytes(writer);
+            }
 
-                foreach (T recipe in Recipes)
-                {
-                    recipe.ToBytes(writer);
-                }
+            data = ms.ToArray();
+        }
 
-                data = ms.ToArray();
+        public override void FreeRAMServer()
+        {
+            foreach (T recipe in Recipes)
+            {
+                if (recipe is GridRecipe gr) gr.FreeRAMServer();
             }
         }
     }
@@ -54,7 +68,13 @@ namespace Vintagestory.API.Common
     {
         public abstract void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity);
 
+        public abstract void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity, FastMemoryStream ms);
+
         public abstract void FromBytes(IWorldAccessor resolver, int quantity, byte[] data);
+
+        public virtual void FreeRAMServer()
+        {
+        }
     }
 
 }

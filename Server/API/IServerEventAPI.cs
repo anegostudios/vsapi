@@ -211,6 +211,7 @@ namespace Vintagestory.API.Server
         /// <param name="handler"></param>
         /// <param name="interval"></param>
         void Timer(Action handler, double interval);
+        object TriggerInitWorldGen();
 
         /// <summary>
         /// Registers a method to be called every time a player places a block

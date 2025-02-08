@@ -32,9 +32,9 @@ namespace Vintagestory.API.Common
 
         public virtual void InitializeShapeAndAnimator(string cacheDictKey, Shape shape, ITexPositionSource texSource, Vec3f rotation, out MeshData meshdata)
         {
-            shape.ResolveReferences(api.World.Logger, cacheDictKey);
+            var elementsByName = shape.CollectAndResolveReferences(api.World.Logger, cacheDictKey);
             shape.CacheInvTransforms();
-            shape.ResolveAndFindJoints(api.World.Logger, cacheDictKey);
+            shape.ResolveAndFindJoints(api.World.Logger, cacheDictKey, elementsByName);
 
             TesselationMetaData meta = new TesselationMetaData()
             {
@@ -61,7 +61,7 @@ namespace Vintagestory.API.Common
             animator = GetAnimator(api, cacheDictKey, shape);
             renderer?.Dispose();
 
-            if (RuntimeEnv.MainThreadId == System.Threading.Thread.CurrentThread.ManagedThreadId)
+            if (RuntimeEnv.MainThreadId == Environment.CurrentManagedThreadId)
             {
                 renderer = new AnimatableRenderer(capi, position, rotation, animator, activeAnimationsByAnimCode, capi.Render.UploadMultiTextureMesh(meshdata), renderStage);
             } else
@@ -180,9 +180,12 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                for (int i = 0; shape.Animations != null && i < shape.Animations.Length; i++)
+                if (shape.Animations is Animation[] Animations)
                 {
-                    shape.Animations[i].GenerateAllFrames(shape.Elements, shape.JointsById);
+                    for (int i = 0; i < Animations.Length; i++)
+                    {
+                        Animations[i].GenerateAllFrames(shape.Elements, shape.JointsById);
+                    }
                 }
 
                 animator = api.Side == EnumAppSide.Client ?

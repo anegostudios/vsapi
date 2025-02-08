@@ -9,5 +9,6 @@
         Connecting = 1,
         Connected = 2,
         Playing = 3,
+        Queued = 4,
     }
 }

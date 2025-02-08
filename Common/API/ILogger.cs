@@ -247,7 +247,17 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public static string CleanStackTrace(string stackTrace)
         {
-            return stackTrace?.Replace(SourcePath,"") ?? "No stack trace";
+            if (stackTrace == null || stackTrace.Length < 150) stackTrace += RemoveThreeLines(Environment.StackTrace);  // Deal with 1-line stacktraces, typical for our own custom exceptions
+            return stackTrace.Replace(SourcePath,"");
+        }
+
+        private static string RemoveThreeLines(string s)
+        {
+            int j;
+            if ((j = s.IndexOf('\n')) > 0) s = s.Substring(j + 1);
+            if ((j = s.IndexOf('\n')) > 0) s = s.Substring(j + 1);
+            if ((j = s.IndexOf('\n')) > 0) s = s.Substring(j + 1);
+            return s;
         }
 
         public void Fatal(string format, params object[] args)

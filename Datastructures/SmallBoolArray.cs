@@ -1,4 +1,5 @@
 ﻿using System;
+using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Datastructures
@@ -11,6 +12,11 @@ namespace Vintagestory.API.Datastructures
     {
         public const int OnAllSides = 0x3F;
         int bits;
+
+        public static implicit operator int(SmallBoolArray a)     // For backwards compatibility and not too much change to API, we convert this to an (int) for use elsewhere
+        {
+            return a.bits;
+        }
 
         public SmallBoolArray(int values)
         {

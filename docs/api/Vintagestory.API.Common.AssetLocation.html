@@ -160,6 +160,9 @@ public class AssetLocation : IEquatable&lt;AssetLocation&gt;, IComparable&lt;Ass
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
   <div>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocationExtensions.html#Vintagestory_API_Common_AssetLocationExtensions_ToNonNullString_Vintagestory_API_Common_AssetLocation_">AssetLocationExtensions.ToNonNullString(AssetLocation)</a>
+  </div>
+  <div>
       <a class="xref" href="Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_">WildcardUtil.WildCardReplace(AssetLocation, AssetLocation, AssetLocation)</a>
   </div>
   </dd></dl>
@@ -832,6 +835,43 @@ BUT: the calling code has the responsibility to ensure the defaultDomain paramet
 
 
 
+  <a id="Vintagestory_API_Common_AssetLocation_CreateOrNull_" data-uid="Vintagestory.API.Common.AssetLocation.CreateOrNull*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocation_CreateOrNull_System_String_" data-uid="Vintagestory.API.Common.AssetLocation.CreateOrNull(System.String)">
+  CreateOrNull(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new AssetLocation if a non-empty string is provided, otherwise return null. Useful when deserializing packets</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AssetLocation CreateOrNull(string domainAndPath)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainAndPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_AssetLocation_EndVariant_" data-uid="Vintagestory.API.Common.AssetLocation.EndVariant*"></a>
 
   <h3 id="Vintagestory_API_Common_AssetLocation_EndVariant" data-uid="Vintagestory.API.Common.AssetLocation.EndVariant">
@@ -1204,6 +1244,39 @@ BUT: the calling code has the responsibility to ensure the defaultDomain paramet
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocation_PermanentClone_" data-uid="Vintagestory.API.Common.AssetLocation.PermanentClone*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocation_PermanentClone" data-uid="Vintagestory.API.Common.AssetLocation.PermanentClone">
+  PermanentClone()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clones this asset in a way which saves RAM, if the calling code created the AssetLocation from JSON/deserialisation. Use for objects expected to be held for a long time - for example, building Blocks at game launch
+(at the cost of slightly more CPU time when creating the Clone())</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual AssetLocation PermanentClone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
     <dd></dd>
   </dl>
 

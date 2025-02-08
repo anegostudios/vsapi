@@ -1781,7 +1781,7 @@ namespace Vintagestory.API.Common.Entities
             string version = "";
             if (!isSync)
             {
-                version = reader.ReadString();
+                version = reader.ReadString().DeDuplicate();
             }
 
             EntityId = reader.ReadInt64();
@@ -1811,7 +1811,7 @@ namespace Vintagestory.API.Common.Entities
             PositionBeforeFalling.Y = reader.ReadDouble();
             PositionBeforeFalling.Z = reader.ReadDouble();
 
-            string codeString = reader.ReadString();
+            string codeString = reader.ReadString().DeDuplicate();
             if (codeRemaps != null && codeRemaps.TryGetValue(codeString, out string remappedString)) codeString = remappedString;
             Code = new AssetLocation(codeString);
 
@@ -2264,7 +2264,7 @@ namespace Vintagestory.API.Common.Entities
 
         public virtual double GetTouchDistance()
         {
-            float dist = SelectionBox.XSize / 2;
+            float dist = SelectionBox?.XSize / 2 ?? 0.25f;
             foreach (var val in SidedProperties.Behaviors)
             {
                 EnumHandling handling = EnumHandling.PassThrough;

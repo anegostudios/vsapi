@@ -293,7 +293,7 @@ namespace Vintagestory.API.Common
 
             if (despawn != null && despawn.Reason == EnumDespawnReason.Removed)
             {
-                TryUnmount();
+                if (this is EntityHumanoid || MountedOn != null) TryUnmount();
             }
         }
 
@@ -378,7 +378,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        protected bool ignoreTeleportCall;
+        protected bool ignoreTeleportCall;  
         public override void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
         {
             if (ignoreTeleportCall) return;
@@ -750,7 +750,7 @@ namespace Vintagestory.API.Common
 
             }
 
-            if (!WatchedAttributes.HasAttribute("mountedOn") && MountedOn != null)
+            if (MountedOn != null && !WatchedAttributes.HasAttribute("mountedOn"))
             {
                 TryUnmount();
             }

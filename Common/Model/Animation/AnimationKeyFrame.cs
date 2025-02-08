@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
@@ -19,7 +20,7 @@ namespace Vintagestory.API.Common
         public Dictionary<string, AnimationKeyFrameElement> Elements;
 
 
-        Dictionary<ShapeElement, AnimationKeyFrameElement> ElementsByShapeElement = new Dictionary<ShapeElement, AnimationKeyFrameElement>();
+        IDictionary<ShapeElement, AnimationKeyFrameElement> ElementsByShapeElement;
 
         /// <summary>
         /// Resolves the keyframe animation for which elements are important.
@@ -50,6 +51,7 @@ namespace Vintagestory.API.Common
         {
             if (Elements == null) return;
 
+            ElementsByShapeElement = new FastSmallDictionary<ShapeElement, AnimationKeyFrameElement>(Elements.Count);
             foreach (var val in Elements)
             {
                 AnimationKeyFrameElement kelem = val.Value;

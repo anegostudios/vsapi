@@ -151,20 +151,37 @@ namespace Vintagestory.API.Common
 
         public virtual void Init(IBlockAccessor blockAccessor)
         {
-            SemVer.TryParse(Config.GameVersion.ShortGameVersion, out var currentVersion);
-            SemVer.TryParse(GameVersion ?? "0.0.0", out var schematicVersion);
+            Remap();
+        }
 
-            if (schematicVersion < currentVersion)
+        public bool TryGetVersionFromRemapKey(string remapKey, out SemVer remapVersion)
+        {
+            var remapString = remapKey.Split(":");
+            if (remapKey.Length < 2)
             {
-                Remap();
+                remapVersion = null;
+                return false;
             }
+
+            if (remapString[1].StartsWithFast("v"))
+            {
+                remapString[1] = remapString[1].Substring(1, remapString[1].Length - 1);
+            }
+            SemVer.TryParse(remapString[1], out remapVersion);
+
+            return true;
         }
 
         public void Remap()
         {
+            SemVer.TryParse(GameVersion ?? "0.0.0", out var schematicVersion);
+
             // now do block remapping
             foreach (var map in BlockRemaps)
             {
+                if(TryGetVersionFromRemapKey(map.Key, out var remapVersion) && remapVersion <= schematicVersion)
+                    continue;
+
                 foreach (var blockCode in BlockCodes)
                 {
                     if (map.Value.TryGetValue(blockCode.Value.Path, out var newBlockCode))
@@ -177,6 +194,9 @@ namespace Vintagestory.API.Common
             // now do item remapping
             foreach (var map in ItemRemaps)
             {
+                if(TryGetVersionFromRemapKey(map.Key, out var remapVersion) && remapVersion <= schematicVersion)
+                    continue;
+
                 foreach (var itemCode in ItemCodes)
                 {
                     if (map.Value.TryGetValue(itemCode.Value.Path, out var newItemCode))
@@ -372,6 +392,7 @@ namespace Vintagestory.API.Common
             OriginalPos = start;
 
             BlockPos readPos = new BlockPos(start.dimension);   // readPos has dimensionality, keyPos does not (because keyPos will be saved in the schematic)
+            using FastMemoryStream reusableMemoryStream = new FastMemoryStream();
             for (int x = startPos.X; x < finalPos.X; x++)
             {
                 for (int y = startPos.Y; y < finalPos.Y; y++)
@@ -393,7 +414,7 @@ namespace Vintagestory.API.Common
                         if (be != null)
                         {
                             if (be.Api == null) be.Initialize(world.Api);
-                            BlockEntitiesUnpacked[keyPos] = EncodeBlockEntityData(be);
+                            BlockEntitiesUnpacked[keyPos] = EncodeBlockEntityData(be, reusableMemoryStream);
                             be.OnStoreCollectibleMappings(BlockCodes, ItemCodes);
                         }
 
@@ -543,10 +564,11 @@ namespace Vintagestory.API.Common
             }
 
             BlockPos minPos = new BlockPos(minX, minY, minZ, startPos.dimension);
-            foreach (var e in EntitiesUnpacked)
+            using (FastMemoryStream ms = new FastMemoryStream())
             {
-                using (MemoryStream ms = new MemoryStream())
+                foreach (var e in EntitiesUnpacked)
                 {
+                    ms.Reset();
                     BinaryWriter writer = new BinaryWriter(ms);
 
                     writer.Write(world.ClassRegistry.GetEntityClassName(e.GetType()));
@@ -892,7 +914,7 @@ namespace Vintagestory.API.Common
                 decorsTmp[faceAndSubPosition / 6 * 6 + face.GetHorizontalRotated(angle).Index] = newBlock;
             }
 
-
+            using FastMemoryStream reusableMemoryStream = new FastMemoryStream();
             foreach (var val in BlockEntities)
             {
                 uint index = val.Key;
@@ -921,7 +943,7 @@ namespace Vintagestory.API.Common
                         rotatable.OnTransformed(worldForResolve ,tree, angle, BlockCodes, ItemCodes, flipAxis);
                     }
                     tree.SetString("blockCode", block.Code.ToShortString());
-                    beData = StringEncodeTreeAttribute(tree);
+                    beData = StringEncodeTreeAttribute(tree, reusableMemoryStream);
                     BlockEntitiesUnpacked[pos] = beData;
                 }
             }
@@ -1346,10 +1368,16 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string EncodeBlockEntityData(BlockEntity be)
         {
+            using FastMemoryStream ms = new FastMemoryStream();
+            return EncodeBlockEntityData(be, ms);
+        }
+
+        public virtual string EncodeBlockEntityData(BlockEntity be, FastMemoryStream ms)
+        {
             TreeAttribute tree = new TreeAttribute();
             be.ToTreeAttributes(tree);
 
-            return StringEncodeTreeAttribute(tree);
+            return StringEncodeTreeAttribute(tree, ms);
         }
 
         /// <summary>
@@ -1359,15 +1387,16 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string StringEncodeTreeAttribute(ITreeAttribute tree)
         {
-            byte[] data;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                BinaryWriter writer = new BinaryWriter(ms);
-                tree.ToBytes(writer);
-                data = ms.ToArray();
-            }
+            using FastMemoryStream ms = new FastMemoryStream();
+            return StringEncodeTreeAttribute(tree, ms);
+        }
 
-            return Ascii85.Encode(data);
+        public virtual string StringEncodeTreeAttribute(ITreeAttribute tree, FastMemoryStream ms)
+        {
+            ms.Reset();
+            BinaryWriter writer = new BinaryWriter(ms);
+            tree.ToBytes(writer);
+            return Ascii85.Encode(ms.ToArray());
         }
 
 

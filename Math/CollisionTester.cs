@@ -58,11 +58,34 @@ namespace Vintagestory.API.MathTools
             EnumPushDirection pushDirection = EnumPushDirection.None;
 
             entityBox.SetAndTranslate(entity.CollisionBox, pos.X, pos.Y, pos.Z);
-            entityBox.RemoveRoundingErrors(); // Necessary to prevent unwanted clipping through blocks when there is knockback
 
             double motionX = entityPos.Motion.X * dtFactor;
             double motionY = entityPos.Motion.Y * dtFactor;
             double motionZ = entityPos.Motion.Z * dtFactor;
+
+            // We need to make sure that rounding errors do not place us inside a block, because once inside a block, this algorithm no longer pushes the entity out of it
+            // So lets collide with blocks a tiny bit earlier - i.e. by the amount of rounding error. In other words, lets push out the entity out of collision boxes once he gets within epsilon meters instead of 0 meters,
+            // so that the position+motion addition at the end of the method never ends up being inside a block
+
+            // A double value has ~15 digits. Our max map size of 64mil means we need 8 digits for the non-fractional part, leaving us with 7 digits for the fraction - so the rounding error is on the 8th digit
+            // But for some reason we still clip through blocks if we use an epsilon that is less than 0.0001. Not sure why.
+            double epsilon = 0.0001;
+            double motEpsX = 0, motEpsY = 0, motEpsZ = 0;
+            if (motionX > epsilon) motEpsX = epsilon;
+            if (motionX < -epsilon) motEpsX = -epsilon;
+
+            if (motionY > epsilon) motEpsY = epsilon;
+            if (motionY < -epsilon) motEpsY = -epsilon;
+
+            if (motionZ > epsilon) motEpsZ = epsilon;
+            if (motionZ < -epsilon) motEpsZ = -epsilon;
+
+            // We pretend we are by epsilon meters further and push the entity out of it
+            // but at the end of the method we do not add this epsilon to the final position
+            motionX += motEpsX;
+            motionY += motEpsY;
+            motionZ += motEpsZ;
+
 
             // Generate a cube that encompasses every block between the old and new position.
             // This could also just take the new position and old position without using motion.
@@ -160,11 +183,15 @@ namespace Vintagestory.API.MathTools
 
             entity.CollidedHorizontally = collided;
 
-            //fix for player on ladder clipping into block above issue  (caused by the .CollisionBox not always having height precisely 1.85)
+            // fix for player on ladder clipping into block above issue  (caused by the .CollisionBox not always having height precisely 1.85)
             if (motionY > 0 && entity.CollidedVertically)
             {
                 motionY -= entity.LadderFixDelta;
             }
+
+            motionX -= motEpsX;
+            motionY -= motEpsY;
+            motionZ -= motEpsZ;
 
             newPosition.Set(pos.X + motionX, pos.Y + motionY, pos.Z + motionZ);
         }
@@ -434,63 +461,6 @@ namespace Vintagestory.API.MathTools
             return EnumIntersect.NoIntersect;
         }
 
-        /// <summary>
-        /// Does not call block collide events or set collided flags. Used for peeking position in the future.
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="entityPos"></param>
-        /// <param name="dtFactor"></param>
-        /// <param name="newPosition"></param>
-        public void PeekCollision(Entity entity, EntityPos entityPos, float dtFactor, ref Vec3d newPosition)
-        {
-            minPos.Set(int.MinValue, int.MinValue, int.MinValue);
-
-            pos.X = entityPos.X;
-            pos.Y = entityPos.Y;
-            pos.Z = entityPos.Z;
-
-            EnumPushDirection pushDirection = EnumPushDirection.None;
-
-            entityBox.SetAndTranslate(entity.CollisionBox, pos.X, pos.Y, pos.Z);
-            entityBox.RemoveRoundingErrors();
-
-            double deltaX = entityPos.Motion.X * dtFactor;
-            double deltaY = entityPos.Motion.Y * dtFactor;
-            double deltaZ = entityPos.Motion.Z * dtFactor;
-
-            int collisionBoxListCount = CollisionBoxList.Count;
-
-            // ---------- Y COLLISION. Call events and set collided vertically.
-            for (int i = 0; i < collisionBoxListCount; i++) deltaY = CollisionBoxList.cuboids[i].pushOutY(entityBox, deltaY, ref pushDirection);
-            entityBox.Translate(0, deltaY, 0);
-
-            // Check if horizontal collision is possible.
-            bool horizontallyBlocked = false;
-            entityBox.Translate(deltaX, 0, deltaZ);
-            foreach (Cuboidd cuboid in CollisionBoxList)
-            {
-                if (cuboid.Intersects(entityBox))
-                {
-                    horizontallyBlocked = true;
-                    break;
-                }
-            }
-            entityBox.Translate(-deltaX, 0, -deltaZ);
-
-            if (horizontallyBlocked)
-            {
-                // ---------- X COLLISION. Call events and set collided horizontally.
-                for (int i = 0; i < collisionBoxListCount; i++) deltaX = CollisionBoxList.cuboids[i].pushOutX(entityBox, deltaX, ref pushDirection);
-                entityBox.Translate(deltaX, 0, 0);
-
-                // ---------- Z COLLISION. Call events and set collided horizontally.
-                for (int i = 0; i < collisionBoxListCount; i++) deltaZ = CollisionBoxList.cuboids[i].pushOutZ(entityBox, deltaZ, ref pushDirection);
-            }
-
-            if (deltaY > 0 && entity.CollidedVertically) deltaY -= entity.LadderFixDelta;
-
-            newPosition.Set(pos.X + deltaX, pos.Y + deltaY, pos.Z + deltaZ);
-        }
     }
 
     /// <summary>

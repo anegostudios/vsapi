@@ -63,12 +63,17 @@ namespace Vintagestory.API.Common
             foreach (ShapeElement el in Elements) el.TrimTextureNamesAndResolveFaces();
         }
 
+        public void ResolveReferences(ILogger errorLogger, string shapeNameForLogging)
+        {
+            CollectAndResolveReferences(errorLogger, shapeNameForLogging);
+        }
+
         /// <summary>
         /// Attempts to resolve all references within the shape. Logs missing references them to the errorLogger
         /// </summary>
         /// <param name="errorLogger"></param>
         /// <param name="shapeNameForLogging"></param>
-        public void ResolveReferences(ILogger errorLogger, string shapeNameForLogging)
+        public Dictionary<string, ShapeElement> CollectAndResolveReferences(ILogger errorLogger, string shapeNameForLogging)
         {
             Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>();
             var Elements = this.Elements;
@@ -105,6 +110,8 @@ namespace Vintagestory.API.Common
             {
                 Elements[i].ResolveRefernces();
             }
+
+            return elementsByName;
         }
 
 
@@ -356,7 +363,7 @@ namespace Vintagestory.API.Common
         [Obsolete("Must call ResolveAndFindJoints(errorLogger, shapeName, joints) instead")]
         public void ResolveAndLoadJoints(params string[] requireJointsForElements)
         {
-            ResolveAndFindJoints(null, null, requireJointsForElements);
+            ResolveAndFindJoints(null, null, null, requireJointsForElements);
         }
 
         /// <summary>
@@ -367,11 +374,19 @@ namespace Vintagestory.API.Common
         /// <param name="errorLogger"></param>
         public void ResolveAndFindJoints(ILogger errorLogger, string shapeName, params string[] requireJointsForElements)
         {
+            ResolveAndFindJoints(errorLogger, shapeName, null, requireJointsForElements);
+        }
+
+        public void ResolveAndFindJoints(ILogger errorLogger, string shapeName, Dictionary<string, ShapeElement> elementsByName, params string[] requireJointsForElements)
+        {
             var Animations = this.Animations;
             if (Animations == null) return;
 
-            Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>(Elements.Length);
-            CollectElements(Elements, elementsByName);
+            if (elementsByName == null)
+            {
+                elementsByName = new Dictionary<string, ShapeElement>(Elements.Length);
+                CollectElements(Elements, elementsByName);
+            }
 
             int jointCount = 0;
 
@@ -680,8 +695,8 @@ namespace Vintagestory.API.Common
         public void InitForAnimations(ILogger logger, string shapeNameForLogging, params string[] requireJointsForElements)
         {
             CacheInvTransforms();
-            ResolveReferences(logger, shapeNameForLogging);
-            ResolveAndFindJoints(logger, shapeNameForLogging, requireJointsForElements);
+            Dictionary<string, ShapeElement> elementsByName = CollectAndResolveReferences(logger, shapeNameForLogging);
+            ResolveAndFindJoints(logger, shapeNameForLogging, elementsByName, requireJointsForElements);
         }
 
         private void ResolveReferences(ILogger errorLogger, string shapeName, Dictionary<string, ShapeElement> elementsByName, AnimationKeyFrame kf)
@@ -704,5 +719,43 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public virtual void FreeRAMServer()
+        {
+            Textures = null;
+
+            if (Elements != null)
+            {
+                foreach (var elem in Elements)   // Elements are still required on the server for AnimationManager reasons
+                {
+                    elem.FreeRAMServer();
+                }
+            }
+
+            var Animations = this.Animations;
+            if (Animations != null)
+            {
+                for (int i = 0; i < Animations.Length; i++)
+                {
+                    var anim = Animations[i];
+                    anim.Code = anim.Code.DeDuplicate();
+                    anim.Name = anim.Name.DeDuplicate();
+
+                    var KeyFrames = anim.KeyFrames;
+                    for (int j = 0; j < KeyFrames.Length; j++)
+                    {
+                        var Elements = KeyFrames[j].Elements;
+                        if (Elements == null) continue;
+
+                        var newElements = new Dictionary<string, AnimationKeyFrameElement>(Elements.Count);
+                        foreach (var entry in Elements)
+                        {
+                            newElements[entry.Key.DeDuplicate()] = entry.Value;
+                            entry.Value.ForElement.Name = entry.Value.ForElement.Name.DeDuplicate();
+                        }
+                        KeyFrames[j].Elements = newElements;
+                    }
+                }
+            }
+        }
     }
 }

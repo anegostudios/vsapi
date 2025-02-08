@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 
@@ -142,6 +143,12 @@ namespace Vintagestory.API.Common
                     Textures.Remove(val);
                 }
             }
+        }
+
+        public virtual void FreeRAMServer()
+        {
+            // Shape = null;     // We need to keep the Shape for any block which is IAttachableToEntity or has an AttachableToEntity attribute
+            Textures = null;
         }
     }
 }

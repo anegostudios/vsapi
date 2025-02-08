@@ -21,6 +21,9 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class CollectibleObject : RegistryObject
     {
+        // ---- Some default objects which are common to many Block and Item objects
+        public readonly static Size3f DefaultSize = new Size3f(0.5f, 0.5f, 0.5f);
+
         /// <summary>
         /// Liquids are handled and rendered differently than solid blocks.
         /// </summary>
@@ -62,9 +65,10 @@ namespace Vintagestory.API.Common
         public int Durability = 1;
 
         /// <summary>
-        /// Physical size of this collectible, 0.5 x 0.5 x 0.5 meters by default
+        /// Physical size of this collectible when held or (notionally) in a container. 0.5 x 0.5 x 0.5 meters by default.
+        /// <br/>Note, if all three dimensions are set to zero, the default will be used.
         /// </summary>
-        public Size3f Dimensions = new Size3f(0.5f, 0.5f, 0.5f);
+        public Size3f Dimensions = DefaultSize;
 
         /// <summary>
         /// When true, liquids become selectable to the player when being held in hands

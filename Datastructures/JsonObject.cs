@@ -321,7 +321,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public override string ToString()
         {
-            return token?.ToString();
+            return Util.StringExtensions.DeDuplicate(token?.ToString());
         }
 
         /// <summary>

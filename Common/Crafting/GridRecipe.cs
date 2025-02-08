@@ -29,7 +29,7 @@ namespace Vintagestory.API.Common
         public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)
         {
             base.FromBytes(reader, resolver);
-            PatternCode = reader.ReadString();
+            PatternCode = reader.ReadString().DeDuplicate();
         }
     }
 
@@ -171,7 +171,7 @@ namespace Vintagestory.API.Common
         {
             this.world = world;
 
-            IngredientPattern = IngredientPattern.Replace(",", "").Replace("\t", "").Replace("\r", "").Replace("\n", "");
+            IngredientPattern = IngredientPattern.Replace(",", "").Replace("\t", "").Replace("\r", "").Replace("\n", "").DeDuplicate();
 
             if (IngredientPattern == null)
             {
@@ -187,23 +187,25 @@ namespace Vintagestory.API.Common
             resolvedIngredients = new GridRecipeIngredient[Width * Height];
             for (int i = 0; i < IngredientPattern.Length; i++)
             {
-                string code = IngredientPattern[i].ToString();
-                if (code == " " || code == "_") continue;
+                char charcode = IngredientPattern[i];
+                if (charcode == ' ' || charcode == '_') continue;
+                string code = charcode.ToString();
 
-                if (!Ingredients.ContainsKey(code))
+                if (!Ingredients.TryGetValue(code, out CraftingRecipeIngredient craftingIngredient))
                 {
                     world.Logger.Error("Grid Recipe with output {0} contains an ingredient pattern code {1} but supplies no ingredient for it.", Output, code);
                     return false;
                 }
 
-                if (!Ingredients[code].Resolve(world, "Grid recipe"))
+                if (!craftingIngredient.Resolve(world, "Grid recipe"))
                 {
-                    world.Logger.Error("Grid Recipe with output {0} contains an ingredient that cannot be resolved: {1}", Output, Ingredients[code]);
+                    world.Logger.Error("Grid Recipe with output {0} contains an ingredient that cannot be resolved: {1}", Output, craftingIngredient);
                     return false;
                 }
 
-                resolvedIngredients[i] = Ingredients[code].CloneTo<GridRecipeIngredient>();
-                resolvedIngredients[i].PatternCode = code;
+                GridRecipeIngredient ingredient = craftingIngredient.CloneTo<GridRecipeIngredient>();
+                ingredient.PatternCode = code;
+                resolvedIngredients[i] = ingredient;
             }
 
             if (!Output.Resolve(world, "Grid recipe"))
@@ -213,6 +215,13 @@ namespace Vintagestory.API.Common
             }
 
             return true;
+        }
+
+        public virtual void FreeRAMServer()
+        {
+            // From now on, we only require the resolvedIngredients
+            IngredientPattern = null;
+            Ingredients = null;
         }
 
 
@@ -228,41 +237,41 @@ namespace Vintagestory.API.Common
             foreach (var val in Ingredients)
             {
                 if (val.Value.Name == null || val.Value.Name.Length == 0) continue;
-                if (!val.Value.Code.Path.Contains('*')) continue;
-                int wildcardStartLen = val.Value.Code.Path.IndexOf('*');
-                int wildcardEndLen = val.Value.Code.Path.Length - wildcardStartLen - 1;
+                AssetLocation assetloc = val.Value.Code;
+                int wildcardStartLen = assetloc.Path.IndexOf('*');
+                if (wildcardStartLen == -1) continue;
+                int wildcardEndLen = assetloc.Path.Length - wildcardStartLen - 1;
 
                 List<string> codes = new List<string>();
 
                 
                 if (val.Value.Type == EnumItemClass.Block)
                 {
-                    for (int i = 0; i < world.Blocks.Count; i++)
+                    foreach (var block in world.Blocks)
                     {
-                        var block = world.Blocks[i];
-                        if (block?.Code == null || block.IsMissing) continue;
-                        if (val.Value.SkipVariants != null && WildcardUtil.MatchesVariants(val.Value.Code, block.Code, val.Value.SkipVariants)) continue;
+                        if (block.IsMissing) continue;    // BlockList already performs the null check for us, in its enumerator
 
-                        if (WildcardUtil.Match(val.Value.Code, block.Code, val.Value.AllowedVariants))
+                        if (val.Value.SkipVariants != null && WildcardUtil.MatchesVariants(assetloc, block.Code, val.Value.SkipVariants)) continue;
+
+                        if (WildcardUtil.Match(assetloc, block.Code, val.Value.AllowedVariants))
                         {
                             string code = block.Code.Path.Substring(wildcardStartLen);
-                            string codepart = code.Substring(0, code.Length - wildcardEndLen);
+                            string codepart = code.Substring(0, code.Length - wildcardEndLen).DeDuplicate();
                             codes.Add(codepart);
                         }
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < world.Items.Count; i++)
+                    foreach (var item in world.Items)
                     {
-                        var item = world.Items[i];
                         if (item?.Code == null || item.IsMissing) continue;
                         if (val.Value.SkipVariants != null && WildcardUtil.MatchesVariants(val.Value.Code, item.Code, val.Value.SkipVariants)) continue;
 
                         if (WildcardUtil.Match(val.Value.Code, item.Code, val.Value.AllowedVariants))
                         {
                             string code = item.Code.Path.Substring(wildcardStartLen);
-                            string codepart = code.Substring(0, code.Length - wildcardEndLen);
+                            string codepart = code.Substring(0, code.Length - wildcardEndLen).DeDuplicate();
                             codes.Add(codepart);
                         }
                     }

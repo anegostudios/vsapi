@@ -534,9 +534,10 @@ namespace Vintagestory.API.Common.Entities
             AnimationMetaData[] newAnimations = null;
             if (Animations != null)
             {
-                newAnimations = new AnimationMetaData[Animations.Length];
+                var oldAnimations = Animations;
+                newAnimations = new AnimationMetaData[oldAnimations.Length];
                 for (int i = 0; i < newAnimations.Length; i++)
-                    newAnimations[i] = Animations[i].Clone();
+                    newAnimations[i] = oldAnimations[i].Clone();
             }
 
             Dictionary<string, AnimationMetaData> newAnimationsByMetaData = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
@@ -545,34 +546,51 @@ namespace Vintagestory.API.Common.Entities
 
             foreach (var animation in AnimationsByMetaCode)
             {
-                newAnimationsByMetaData[animation.Key] = animation.Value.Clone();
-                animsByCrc32[newAnimationsByMetaData[animation.Key].CodeCrc32] = newAnimationsByMetaData[animation.Key];
+                var clonedAnimation = animation.Value.Clone();
+                newAnimationsByMetaData[animation.Key] = clonedAnimation;
+                animsByCrc32[clonedAnimation.CodeCrc32] = clonedAnimation;
             }
 
-            Shape[] alternatesCloned = null;
+            Shape[] newAlternates = null;
             if (LoadedAlternateShapes != null)
             {
-                alternatesCloned = new Shape[LoadedAlternateShapes.Length];
-                for (int i = 0; i < alternatesCloned.Length; i++)
+                var oldAlternates = LoadedAlternateShapes;
+                newAlternates = new Shape[oldAlternates.Length];
+                for (int i = 0; i < newAlternates.Length; i++)
                 {
-                    alternatesCloned[i] = LoadedAlternateShapes[i].Clone();
+                    newAlternates[i] = oldAlternates[i].Clone();
                 }
             }
 
             return new EntityClientProperties(BehaviorsAsJsonObj, null)
             {
-                Textures = new FastSmallDictionary<string, CompositeTexture>(Textures),
+                Textures = Textures == null ? null : new FastSmallDictionary<string, CompositeTexture>(Textures),
                 RendererName = RendererName,
                 GlowLevel = GlowLevel,
                 PitchStep = PitchStep,
                 Size = Size,
                 SizeGrowthFactor = SizeGrowthFactor,
                 Shape = Shape?.Clone(),
-                LoadedAlternateShapes = alternatesCloned,
+                LoadedAlternateShapes = newAlternates,
                 Animations = newAnimations,
                 AnimationsByMetaCode = newAnimationsByMetaData,
                 AnimationsByCrc32 = animsByCrc32
             };
+        }
+
+        public virtual void FreeRAMServer()
+        {
+            // Save memory on server. The Textures are no longer needed, now that they have been packetised for sending to clients
+            // (but we still need to retain the Animations data permanently on the server, and we also require to retain the Shape e.g. for adjustCollisionBoxToAnimations calls)
+            Textures = null;
+            if (Animations != null)
+            {
+                var AnimationsMetaData = this.Animations;
+                for (int i = 0; i < AnimationsMetaData.Length; i++)
+                {
+                    AnimationsMetaData[i].DeDuplicate();
+                }
+            }
         }
     }
 

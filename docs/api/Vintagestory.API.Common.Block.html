@@ -130,6 +130,9 @@ Class Block
     <dt>Inherited Members</dt>
     <dd>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_DefaultSize">CollectibleObject.DefaultSize</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_MatterState">CollectibleObject.MatterState</a>
     </div>
     <div>
@@ -1192,6 +1195,36 @@ Class Block
 
 
 
+  <h3 id="Vintagestory_API_Common_Block_DefaultAllowAllSpawns" data-uid="Vintagestory.API.Common.Block.DefaultAllowAllSpawns">
+  DefaultAllowAllSpawns
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly string[] DefaultAllowAllSpawns</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_Block_DefaultCollisionBox" data-uid="Vintagestory.API.Common.Block.DefaultCollisionBox">
   DefaultCollisionBox
   
@@ -1211,6 +1244,129 @@ Class Block
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Block_DefaultCollisionSelectionBoxes" data-uid="Vintagestory.API.Common.Block.DefaultCollisionSelectionBoxes">
+  DefaultCollisionSelectionBoxes
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default Collision boxes (and also Selection boxes) array containing just the Default Collision Box
+This is standard for most solid blocks in the game. Since it is in practice immutable, all blocks can use a single copy of the same array
+This will help both RAM performance (avoids duplicate copies) and physics tick performance (this commonly accessed object can be well cached)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Cuboidf[] DefaultCollisionSelectionBoxes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Block_DefaultCubeShape" data-uid="Vintagestory.API.Common.Block.DefaultCubeShape">
+  DefaultCubeShape
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly CompositeShape DefaultCubeShape</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Block_DefaultSideAo" data-uid="Vintagestory.API.Common.Block.DefaultSideAo">
+  DefaultSideAo
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly bool[] DefaultSideAo</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Block_DefaultSideOpaque" data-uid="Vintagestory.API.Common.Block.DefaultSideOpaque">
+  DefaultSideOpaque
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly bool[] DefaultSideOpaque</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -3513,6 +3669,49 @@ Examples:
 
 
 
+  <a id="Vintagestory_API_Common_Block_CanAcceptFallOnto_" data-uid="Vintagestory.API.Common.Block.CanAcceptFallOnto*"></a>
+
+  <h3 id="Vintagestory_API_Common_Block_CanAcceptFallOnto_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block_Vintagestory_API_Datastructures_TreeAttribute_" data-uid="Vintagestory.API.Common.Block.CanAcceptFallOnto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,Vintagestory.API.Datastructures.TreeAttribute)">
+  CanAcceptFallOnto(IWorldAccessor, BlockPos, Block, TreeAttribute)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called on the main main thread or, potentially, on a separate thread if multiple physics threads is enabled. Return true to have <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnFallOnto_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block_Vintagestory_API_Datastructures_TreeAttribute_">OnFallOnto(IWorldAccessor, BlockPos, Block, TreeAttribute)</a>() called, which will always be on the main thread</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CanAcceptFallOnto(IWorldAccessor world, BlockPos pos, Block fallingBlock, TreeAttribute blockEntityAttributes)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>fallingBlock</code> <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+    <dt><code>blockEntityAttributes</code> <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html">TreeAttribute</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Block_CanAttachBlockAt_" data-uid="Vintagestory.API.Common.Block.CanAttachBlockAt*"></a>
 
   <h3 id="Vintagestory_API_Common_Block_CanAttachBlockAt_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_Cuboidi_" data-uid="Vintagestory.API.Common.Block.CanAttachBlockAt(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.Cuboidi)">
@@ -3934,6 +4133,32 @@ Examples:
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Block_FreeRAMServer_" data-uid="Vintagestory.API.Common.Block.FreeRAMServer*"></a>
+
+  <h3 id="Vintagestory_API_Common_Block_FreeRAMServer" data-uid="Vintagestory.API.Common.Block.FreeRAMServer">
+  FreeRAMServer()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FreeRAMServer()</code></pre>
+  </div>
+
+
 
 
 
@@ -6458,7 +6683,8 @@ For Worldgen you might be able to use TryPlaceBlockForWorldGen() to attach custo
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when a falling block falls onto this one. Return true to cancel default behavior.</p>
+  <div class="markdown level1 summary"><p>Called when a falling block falls onto this one. Return true to cancel default behavior.
+<br>Note: From game version 1.20.4, if overriding this you should also override <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_CanAcceptFallOnto_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block_Vintagestory_API_Datastructures_TreeAttribute_">CanAcceptFallOnto(IWorldAccessor, BlockPos, Block, TreeAttribute)</a>(). See BlockCoalPile for an example. If CanAcceptFallOnto() is not implemented, then this OnFallOnto() method will most likely never be called</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

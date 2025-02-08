@@ -26,6 +26,21 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class Block : CollectibleObject
     {
+        public readonly static bool[] DefaultSideOpaque = new bool[] { true, true, true, true, true, true };
+        public readonly static bool[] DefaultSideAo = new bool[] { true, true, true, true, true, true };
+        public readonly static CompositeShape DefaultCubeShape = new CompositeShape() { Base = new AssetLocation("block/basic/cube") };
+        public readonly static string[] DefaultAllowAllSpawns = new string[] { "*" };
+        /// <summary>
+        /// Default Full Block Collision Box
+        /// </summary>
+        public static Cuboidf DefaultCollisionBox = new Cuboidf(0, 0, 0, 1, 1, 1);
+        /// <summary>
+        /// Default Collision boxes (and also Selection boxes) array containing just the Default Collision Box
+        /// This is standard for most solid blocks in the game. Since it is in practice immutable, all blocks can use a single copy of the same array
+        /// This will help both RAM performance (avoids duplicate copies) and physics tick performance (this commonly accessed object can be well cached)
+        /// </summary>
+        public readonly static Cuboidf[] DefaultCollisionSelectionBoxes = new Cuboidf[] { DefaultCollisionBox };
+
         /// <summary>
         /// Returns the block id
         /// </summary>
@@ -45,11 +60,6 @@ namespace Vintagestory.API.Common
         /// Return non-null if this block should have water (or ice) placed in its position in the fluids layer when updating from 1.16 to 1.17
         /// </summary>
         public virtual string RemapToLiquidsLayer { get { return null; } }
-
-        /// <summary>
-        /// Default Full Block Collision Box
-        /// </summary>
-        public static Cuboidf DefaultCollisionBox = new Cuboidf(0, 0, 0, 1, 1, 1);
 
         /// <summary>
         /// Unique number of the block. Same as <see cref="Id"/>. This number depends on the order in which the blocks are order. The numbering is however always ensured to remain the same on a per world basis.
@@ -176,7 +186,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The default json block shape to be used when drawtype==JSON
         /// </summary>
-        public CompositeShape Shape = new CompositeShape() { Base = new AssetLocation("block/basic/cube") };
+        public CompositeShape Shape = DefaultCubeShape;
 
         public CompositeShape Lod0Shape;
         public CompositeShape Lod2Shape;
@@ -210,7 +220,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines which of the 6 block sides are completely opaque. Used to determine which block faces can be culled during tesselation.
         /// </summary>
-        public bool[] SideOpaque = new bool[] { true, true, true, true, true, true};
+        public bool[] SideOpaque = DefaultSideOpaque;
 
         /// <summary>
         /// Defines which of the 6 block side are solid. Used to determine if attachable blocks can be attached to this block. Also used to determine if snow can rest on top of this block.
@@ -220,7 +230,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines which of the 6 block side should be shaded with ambient occlusion
         /// </summary>
-        public bool[] SideAo = new bool[] { true, true, true, true, true, true };
+        public bool[] SideAo = DefaultSideAo;
 
         /// <summary>
         /// Defines which of the 6 block neighbours should receive AO if this block is in front of them
@@ -230,7 +240,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines what creature groups may spawn on this block
         /// </summary>
-        public string[] AllowSpawnCreatureGroups = new string[] { "*" };
+        public string[] AllowSpawnCreatureGroups = DefaultAllowAllSpawns;
         public bool AllCreaturesAllowed;
 
         /// <summary>
@@ -263,12 +273,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines the area with which the player character collides with.
         /// </summary>
-        public Cuboidf[] CollisionBoxes = new Cuboidf[] { DefaultCollisionBox.Clone() };
+        public Cuboidf[] CollisionBoxes = DefaultCollisionSelectionBoxes;
 
         /// <summary>
         /// Defines the area which the players mouse pointer collides with for selection.
         /// </summary>
-        public Cuboidf[] SelectionBoxes = new Cuboidf[] { DefaultCollisionBox.Clone() };
+        public Cuboidf[] SelectionBoxes = DefaultCollisionSelectionBoxes;
 
         /// <summary>
         /// Defines the area with which particles collide with (if null, will be the same as CollisionBoxes).
@@ -452,6 +462,12 @@ namespace Vintagestory.API.Common
         {
             set
             {
+                if (ReferenceEquals(SideOpaque, DefaultSideOpaque))    // Do not modify the values within DefaultSideOpaque
+                {
+                    if (!value) SideOpaque = new bool[6];
+                    return;
+                }
+
                 SideOpaque[0] = value;
                 SideOpaque[1] = value;
                 SideOpaque[2] = value;
@@ -1558,6 +1574,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Called when a falling block falls onto this one. Return true to cancel default behavior.
+        /// <br/>Note: From game version 1.20.4, if overriding this you should also override <see cref="CanAcceptFallOnto"/>(). See BlockCoalPile for an example. If CanAcceptFallOnto() is not implemented, then this OnFallOnto() method will most likely never be called
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos"></param>
@@ -1569,6 +1586,19 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+
+        /// <summary>
+        /// Called on the main main thread or, potentially, on a separate thread if multiple physics threads is enabled. Return true to have <see cref="OnFallOnto"/>() called, which will always be on the main thread
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <param name="fallingBlock"></param>
+        /// <param name="blockEntityAttributes"></param>
+        /// <returns></returns>
+        public virtual bool CanAcceptFallOnto(IWorldAccessor world, BlockPos pos, Block fallingBlock, TreeAttribute blockEntityAttributes)
+        {
+            return false;
+        }
 
         /// <summary>
         /// Everytime the player moves by 8 blocks (or rather leaves the current 8-grid), a scan of all blocks 32x32x32 blocks around the player is initiated<br/>
@@ -2782,5 +2812,14 @@ namespace Vintagestory.API.Common
             return Code.Domain + AssetLocation.LocationSeparator + "block " + Code.Path + "/" + BlockId;
         }
 
+        public virtual void FreeRAMServer()
+        {
+            // Shape = null;     // We need to keep the Shape for any block which is IAttachableToEntity or has an AttachableToEntity attribute
+            ShapeInventory = null;
+            Lod0Shape = null;
+            Lod2Shape = null;
+            Textures = null;
+            TexturesInventory = null;
+        }
     }
 }

@@ -8,6 +8,7 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -273,9 +274,10 @@ namespace Vintagestory.API.Common
         public AnimationMetaData Init()
         {
             withActivitiesMerged = 0;
-            for (int i = 0; TriggeredBy?.OnControls != null && i < TriggeredBy.OnControls.Length; i++)
+            if (TriggeredBy?.OnControls is EnumEntityActivity[] OnControls)
+            for (int i = 0; i < OnControls.Length; i++)
             {
-                withActivitiesMerged |= (int)TriggeredBy.OnControls[i];
+                withActivitiesMerged |= (int)OnControls[i];
             }
 
             CodeCrc32 = GetCrc32(Code);
@@ -382,11 +384,15 @@ namespace Vintagestory.API.Common
             {
                 writer.Write(TriggeredBy.MatchExact);
 
-                writer.Write(TriggeredBy.OnControls == null ? 0 : TriggeredBy.OnControls.Length);
-                for (int i = 0; TriggeredBy.OnControls != null && i < TriggeredBy.OnControls.Length; i++)
+                if (TriggeredBy.OnControls is EnumEntityActivity[] OnControls)
                 {
-                    writer.Write((int)TriggeredBy.OnControls[i]);
+                    writer.Write(OnControls.Length);
+                    for (int i = 0; i < OnControls.Length; i++)
+                    {
+                        writer.Write((int)OnControls[i]);
+                    }
                 }
+                else writer.Write(0);
                 writer.Write(TriggeredBy.DefaultAnim);
             }
 
@@ -422,14 +428,14 @@ namespace Vintagestory.API.Common
         {
             AnimationMetaData animdata = new AnimationMetaData();
 
-            animdata.Code = reader.ReadString();
+            animdata.Code = reader.ReadString().DeDuplicate();
             animdata.Animation = reader.ReadString();
             animdata.Weight = reader.ReadSingle();
 
             int weightCount = reader.ReadInt32();
             for (int i = 0; i < weightCount; i++)
             {
-                animdata.ElementWeight[reader.ReadString()] = reader.ReadSingle();
+                animdata.ElementWeight[reader.ReadString().DeDuplicate()] = reader.ReadSingle();
             }
 
             animdata.AnimationSpeed = reader.ReadSingle();
@@ -456,7 +462,7 @@ namespace Vintagestory.API.Common
             weightCount = reader.ReadInt32();
             for (int i = 0; i < weightCount; i++)
             {
-                animdata.ElementBlendMode[reader.ReadString()] = (EnumAnimationBlendMode)reader.ReadInt32();
+                animdata.ElementBlendMode[reader.ReadString().DeDuplicate()] = (EnumAnimationBlendMode)reader.ReadInt32();
             }
 
             animdata.MulWithWalkSpeed = reader.ReadBoolean();
@@ -508,7 +514,18 @@ namespace Vintagestory.API.Common
             return animdata;
         }
 
-        
+        internal void DeDuplicate()
+        {
+            Code = Code.DeDuplicate();
+
+            var newElementWeight = new Dictionary<string, float>(ElementWeight.Count);
+            foreach (var entry in ElementWeight) newElementWeight[entry.Key.DeDuplicate()] = entry.Value;
+            ElementWeight = newElementWeight;
+
+            var newElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(ElementBlendMode.Count);
+            foreach (var entry in ElementBlendMode) newElementBlendMode[entry.Key.DeDuplicate()] = entry.Value;
+            ElementBlendMode = newElementBlendMode;
+        }
     }
 
 

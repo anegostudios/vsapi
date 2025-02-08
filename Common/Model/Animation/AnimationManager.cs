@@ -343,6 +343,9 @@ namespace Vintagestory.API.Common
             ITreeAttribute animtree = new TreeAttribute();
             tree["activeAnims"] = animtree;
 
+            if (ActiveAnimationsByAnimCode.Count == 0) return;
+
+            using FastMemoryStream ms = new FastMemoryStream();
             foreach (var val in ActiveAnimationsByAnimCode)
             {
                 if (val.Value.Code == null) val.Value.Code = val.Key; // ah wtf.
@@ -355,15 +358,13 @@ namespace Vintagestory.API.Common
                     val.Value.StartFrameOnce = anim.CurrentFrame;
                 }
 
-                using (MemoryStream ms = new MemoryStream())
+                ms.Reset();
+                using (BinaryWriter writer = new BinaryWriter(ms))
                 {
-                    using (BinaryWriter writer = new BinaryWriter(ms))
-                    {
-                        val.Value.ToBytes(writer);
-                    }
-
-                    animtree[val.Key] = new ByteArrayAttribute(ms.ToArray());
+                    val.Value.ToBytes(writer);
                 }
+
+                animtree[val.Key] = new ByteArrayAttribute(ms.ToArray());
 
                 val.Value.StartFrameOnce = 0;
             }

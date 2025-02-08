@@ -258,19 +258,27 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void OnBlockUnloaded()
         {
-            if (Api != null)
+            try
             {
-                UnregisterAllTickListeners();
-
-                if (CallbackHandlers != null) foreach (long handlerId in CallbackHandlers)
+                if (Api != null)
                 {
-                    Api.Event.UnregisterCallback(handlerId);
+                    UnregisterAllTickListeners();
+
+                    if (CallbackHandlers != null) foreach (long handlerId in CallbackHandlers)
+                    {
+                        Api.Event.UnregisterCallback(handlerId);
+                    }
+                }
+
+                foreach (var val in Behaviors)
+                {
+                    val.OnBlockUnloaded();
                 }
             }
-
-            foreach (var val in Behaviors)
+            catch (Exception)
             {
-                val.OnBlockUnloaded();
+                Api.Logger.Error("At position " + Pos + " for block " + (Block?.Code.ToShortString() ?? "(missing)") + " a " + GetType().Name + " threw an error when unloaded");
+                throw;
             }
         }
 

@@ -570,6 +570,45 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_Shape_CollectAndResolveReferences_" data-uid="Vintagestory.API.Common.Shape.CollectAndResolveReferences*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_CollectAndResolveReferences_Vintagestory_API_Common_ILogger_System_String_" data-uid="Vintagestory.API.Common.Shape.CollectAndResolveReferences(Vintagestory.API.Common.ILogger,System.String)">
+  CollectAndResolveReferences(ILogger, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Attempts to resolve all references within the shape. Logs missing references them to the errorLogger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, ShapeElement&gt; CollectAndResolveReferences(ILogger errorLogger, string shapeNameForLogging)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>errorLogger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+    <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Shape_CollectElements_" data-uid="Vintagestory.API.Common.Shape.CollectElements*"></a>
 
   <h3 id="Vintagestory_API_Common_Shape_CollectElements_Vintagestory_API_Common_ShapeElement___System_Collections_Generic_IDictionary_System_String_Vintagestory_API_Common_ShapeElement__" data-uid="Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement})">
@@ -592,6 +631,32 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
     <dt><code>elementsByName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>&gt;</dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Shape_FreeRAMServer_" data-uid="Vintagestory.API.Common.Shape.FreeRAMServer*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_FreeRAMServer" data-uid="Vintagestory.API.Common.Shape.FreeRAMServer">
+  FreeRAMServer()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FreeRAMServer()</code></pre>
+  </div>
+
 
 
 
@@ -753,6 +818,43 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
 
   <a id="Vintagestory_API_Common_Shape_ResolveAndFindJoints_" data-uid="Vintagestory.API.Common.Shape.ResolveAndFindJoints*"></a>
 
+  <h3 id="Vintagestory_API_Common_Shape_ResolveAndFindJoints_Vintagestory_API_Common_ILogger_System_String_System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_ShapeElement__System_String___" data-uid="Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger,System.String,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement},System.String[])">
+  ResolveAndFindJoints(ILogger, string, Dictionary&lt;string, ShapeElement&gt;, params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResolveAndFindJoints(ILogger errorLogger, string shapeName, Dictionary&lt;string, ShapeElement&gt; elementsByName, params string[] requireJointsForElements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>errorLogger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+    <dt><code>shapeName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>elementsByName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Shape_ResolveAndFindJoints_" data-uid="Vintagestory.API.Common.Shape.ResolveAndFindJoints*"></a>
+
   <h3 id="Vintagestory_API_Common_Shape_ResolveAndFindJoints_Vintagestory_API_Common_ILogger_System_String_System_String___" data-uid="Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger,System.String,System.String[])">
   ResolveAndFindJoints(ILogger, string, params string[])
   
@@ -826,8 +928,7 @@ public void ResolveAndLoadJoints(params string[] requireJointsForElements)</code
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Attempts to resolve all references within the shape. Logs missing references them to the errorLogger</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

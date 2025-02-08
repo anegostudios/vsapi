@@ -145,6 +145,8 @@ namespace Vintagestory.API.Common
     [DocumentAsJson]
     public class ModelTransform : ModelTransformNoDefaults
     {
+        private readonly static Vec3f DefaultZeroTranslation = new Vec3f(0, 0, 0);
+
         public ModelTransform(ModelTransformNoDefaults baseTf, ModelTransform defaults)
         {
             Rotate = baseTf.Rotate;
@@ -185,7 +187,7 @@ namespace Vintagestory.API.Common
         {
             return new ModelTransform()
             {
-                Translation = new Vec3f(),
+                Translation = DefaultZeroTranslation,
                 Rotation = new Vec3f(-22.6f, -45 - 0.3f, 0),
                 Scale = 1f
             };
@@ -228,7 +230,7 @@ namespace Vintagestory.API.Common
         {
             return new ModelTransform()
             {
-                Translation = new Vec3f(),
+                Translation = DefaultZeroTranslation,
                 Rotation = new Vec3f(0, -45, 0),
                 Origin = new Vec3f(0.5f, 0, 0.5f),
                 Scale = 1.5f
@@ -287,7 +289,7 @@ namespace Vintagestory.API.Common
         {
             return new ModelTransform()
             {
-                Translation = new Vec3f(0, 0, 0),
+                Translation = DefaultZeroTranslation,
                 Rotation = new Vec3f(90, 0, 0),
                 Origin = new Vec3f(0.5f, 0.5f, 0.53f),
                 Scale = 1.5f
@@ -302,7 +304,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public ModelTransform EnsureDefaultValues()
         {
-            if (Translation == null) Translation = new Vec3f();
+            // If we are using the common default Translation, provide a new Vec3f() here as calling code is probably then going to adjust it (why else call EnsureDefaultValues())
+            if (Translation == null || object.ReferenceEquals(Translation, DefaultZeroTranslation)) Translation = new Vec3f();
             if (Rotation == null) Rotation = new Vec3f();
             return this;
         }
