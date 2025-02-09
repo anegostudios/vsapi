@@ -77,12 +77,14 @@ namespace Vintagestory.API.Common
         /// 1 2<br/>
         /// 3 4<br/>
         /// Commas seperate each horizontal row, and an underscore ( _ ) marks a space as empty.
+        /// <br/>Note: from game version 1.20.4, this becomes <b>null on server-side</b> after completion of recipe resolving during server start-up phase
         /// </summary>
         [DocumentAsJson] public string IngredientPattern;
 
         /// <summary>
         /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The recipes ingredients in any order, including the code used in the ingredient pattern.
+        /// <br/>Note: from game version 1.20.4, this becomes <b>null on server-side</b> after completion of recipe resolving during server start-up phase
         /// </summary>
         [DocumentAsJson] public Dictionary<string, CraftingRecipeIngredient> Ingredients;
 

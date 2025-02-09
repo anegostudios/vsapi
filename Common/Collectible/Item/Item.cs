@@ -26,12 +26,14 @@ namespace Vintagestory.API.Common
         public int ItemId;
 
         /// <summary>
-        /// The items shape. Null for automatic shape based on the texture.
+        /// The item's shape. Null for automatic shape based on the texture.
         /// </summary>
         public CompositeShape Shape = null;
 
         /// <summary>
-        /// Default textures to be used for this block
+        /// Default textures to be used for this item. The Dictionary keys are the texture short names, as referenced in this item's shape ShapeElementFaces
+        /// <br/>(may be null on clients, prior to receipt of server assets)
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         public Dictionary<string, CompositeTexture> Textures = new Dictionary<string, CompositeTexture>();
 

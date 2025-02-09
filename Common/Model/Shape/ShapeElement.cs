@@ -47,6 +47,7 @@ namespace Vintagestory.API.Common
         public Dictionary<string, ShapeElementFace> Faces;
         /// <summary>
         /// An array holding the faces of this shape element in BlockFacing order: North, East, South, West, Up, Down.  May be null if not present or not enabled.
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         public ShapeElementFace[] FacesResolved = new ShapeElementFace[6];
 

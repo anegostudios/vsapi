@@ -16,7 +16,8 @@ namespace Vintagestory.API.Common
     public class Shape
     {
         /// <summary>
-        /// The collection of textures in the shape.
+        /// The collection of textures in the shape. The Dictionary keys are the texture short names, used in each ShapeElementFace
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         [JsonProperty]
         public Dictionary<string, AssetLocation> Textures;

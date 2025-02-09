@@ -179,7 +179,8 @@ namespace Vintagestory.API.Common
         public int alternatingVOffsetFaces;
 
         /// <summary>
-        /// The block shape to be used when displayed in the inventory gui, held in hand or dropped on the ground
+        /// The block shape to be used when displayed in the inventory GUI, held in hand or dropped on the ground
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         public CompositeShape ShapeInventory = null;
 
@@ -188,15 +189,24 @@ namespace Vintagestory.API.Common
         /// </summary>
         public CompositeShape Shape = DefaultCubeShape;
 
+        /// <summary>
+        /// The additional shape elements seen only at close distance ("LOD0"). For example, see leaves
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
+        /// </summary>
         public CompositeShape Lod0Shape;
+        /// <summary>
+        /// The alternative simplified shape seen at far distance ("LOD2"). For example, see flowers
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
+        /// </summary>
         public CompositeShape Lod2Shape;
         public MeshData Lod0Mesh;
         public MeshData Lod2Mesh;
         public bool DoNotRenderAtLod2;
 
         /// <summary>
-        /// Default textures to be used for this block
-        /// (may be null, on servers prior to reading blockType, on clients prior to receipt of server assets)
+        /// Default textures to be used for this block. The Dictionary keys are the texture short names, as referenced in this block's shape ShapeElementFaces
+        /// <br/>(may be null on clients, prior to receipt of server assets)
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         public IDictionary<string, CompositeTexture> Textures;
 
@@ -207,8 +217,9 @@ namespace Vintagestory.API.Common
         public BakedCompositeTexture[][] FastTextureVariants;
 
         /// <summary>
-        /// Textures to be used for this block in the inventory gui, held in hand or dropped on the ground
-        /// (may be null, on servers prior to reading blockType, on clients prior to receipt of server assets)
+        /// Textures to be used for this block in the inventory GUI, held in hand or dropped on the ground
+        /// <br/>(may be null on clients, prior to receipt of server assets)
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         public IDictionary<string, CompositeTexture> TexturesInventory;
 

@@ -40,7 +40,7 @@ namespace Vintagestory.API.Common
             ToBytes(resolver, out data, out quantity, ms);
         }
 
-        public override void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity, FastMemoryStream ms)
+        public void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity, FastMemoryStream ms)
         {
             quantity = Recipes.Count;
 
@@ -55,7 +55,7 @@ namespace Vintagestory.API.Common
             data = ms.ToArray();
         }
 
-        public override void FreeRAMServer()
+        public virtual void FreeRAMServer()
         {
             foreach (T recipe in Recipes)
             {
@@ -68,13 +68,7 @@ namespace Vintagestory.API.Common
     {
         public abstract void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity);
 
-        public abstract void ToBytes(IWorldAccessor resolver, out byte[] data, out int quantity, FastMemoryStream ms);
-
         public abstract void FromBytes(IWorldAccessor resolver, int quantity, byte[] data);
-
-        public virtual void FreeRAMServer()
-        {
-        }
     }
 
 }

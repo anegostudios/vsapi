@@ -787,7 +787,7 @@ Class Item
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The items shape. Null for automatic shape based on the texture.</p>
+  <div class="markdown level1 summary"><p>The item's shape. Null for automatic shape based on the texture.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -818,7 +818,9 @@ Class Item
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Default textures to be used for this block</p>
+  <div class="markdown level1 summary"><p>Default textures to be used for this item. The Dictionary keys are the texture short names, as referenced in this item's shape ShapeElementFaces
+<br>(may be null on clients, prior to receipt of server assets)
+<br>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

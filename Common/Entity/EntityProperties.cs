@@ -403,6 +403,7 @@ namespace Vintagestory.API.Common.Entities
 
         /// <summary>
         /// Directory of all available textures. First one will be default one
+        /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         public IDictionary<string, CompositeTexture> Textures = new FastSmallDictionary<string, CompositeTexture>(0);
 

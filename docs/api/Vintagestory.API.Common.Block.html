@@ -1969,7 +1969,9 @@ The outer array is indexed based on the 6 BlockFacing.Index numerals; the inner 
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The additional shape elements seen only at close distance (&quot;LOD0&quot;). For example, see leaves
+<br>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2029,7 +2031,9 @@ The outer array is indexed based on the 6 BlockFacing.Index numerals; the inner 
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The alternative simplified shape seen at far distance (&quot;LOD2&quot;). For example, see flowers
+<br>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2562,7 +2566,8 @@ Examples:
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The block shape to be used when displayed in the inventory gui, held in hand or dropped on the ground</p>
+  <div class="markdown level1 summary"><p>The block shape to be used when displayed in the inventory GUI, held in hand or dropped on the ground
+<br>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2809,8 +2814,9 @@ Examples:
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Default textures to be used for this block
-(may be null, on servers prior to reading blockType, on clients prior to receipt of server assets)</p>
+  <div class="markdown level1 summary"><p>Default textures to be used for this block. The Dictionary keys are the texture short names, as referenced in this block's shape ShapeElementFaces
+<br>(may be null on clients, prior to receipt of server assets)
+<br>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2841,8 +2847,9 @@ Examples:
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Textures to be used for this block in the inventory gui, held in hand or dropped on the ground
-(may be null, on servers prior to reading blockType, on clients prior to receipt of server assets)</p>
+  <div class="markdown level1 summary"><p>Textures to be used for this block in the inventory GUI, held in hand or dropped on the ground
+<br>(may be null on clients, prior to receipt of server assets)
+<br>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
