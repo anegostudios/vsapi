@@ -141,6 +141,16 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// As StartAnimation, except that it does not attempt to start the animation if the named animation is non-existent for this entity
+        /// </summary>
+        /// <param name="animdata"></param>
+        public virtual bool TryStartAnimation(AnimationMetaData animdata)
+        {
+            if (((AnimatorBase)Animator).GetAnimationState(animdata.Animation) == null) return false;
+            return StartAnimation(animdata);
+        }
+
+        /// <summary>
         /// Client: Starts given animation
         /// Server: Sends all active anims to all connected clients then purges the ActiveAnimationsByAnimCode list
         /// </summary>

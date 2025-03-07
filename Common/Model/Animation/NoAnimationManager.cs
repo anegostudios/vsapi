@@ -155,6 +155,11 @@ namespace Vintagestory.API.Common
         {
         }
 
+        public bool TryStartAnimation(AnimationMetaData animdata)
+        {
+            return false;
+        }
+
         public bool StartAnimation(AnimationMetaData animdata)
         {
             return false;

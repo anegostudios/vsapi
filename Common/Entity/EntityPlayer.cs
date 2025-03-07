@@ -700,16 +700,8 @@ namespace Vintagestory.API.Common
 
         Cuboidf tmpCollBox = new Cuboidf();
         bool holdPosition = false;
-        bool eyePosInsideBlock = false;
         float[] prevAnimModelMatrix;
-        float[] beforeAnimModelMatrix;
-        Vec3d beforeLocalEyePos;
-        Vec3d beforePos;
         float secondsDead;
-
-
-
-
 
         void updateLocalEyePosImmersiveFpMode(float dt)
         {

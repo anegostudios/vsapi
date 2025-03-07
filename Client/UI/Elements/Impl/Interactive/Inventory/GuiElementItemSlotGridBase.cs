@@ -454,7 +454,15 @@ namespace Vintagestory.API.Client
                     if (((slot.Itemstack == null || AlwaysRenderIcon) && slot.BackgroundIcon != null)  || slot.HexBackgroundColor != null)
                     {
                         string key = slot.BackgroundIcon + "-" + slot.HexBackgroundColor;
-                        api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBgIconAndColor[key], bounds);
+                        if (slotTextureIdsByBgIconAndColor.ContainsKey(key))
+                        {
+                            api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBgIconAndColor[key], bounds);
+                        }
+                        else
+                        {
+                            api.Render.Render2DTexturePremultipliedAlpha(slotTexture.TextureId, bounds);
+                        }
+                        
                     } else
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(slotTexture.TextureId, bounds);

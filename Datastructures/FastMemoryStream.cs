@@ -17,6 +17,13 @@ public class FastMemoryStream : Stream
         Position = 0;
     }
 
+    public FastMemoryStream(int capacity)
+    {
+        bufferlength = capacity;
+        buffer = new byte[capacity];
+        Position = 0;
+    }
+
     public FastMemoryStream(byte[] buffer, int length)
     {
         bufferlength = length;
@@ -145,12 +152,13 @@ public class FastMemoryStream : Stream
 
     public override void Write(ReadOnlySpan<byte> inputBuffer)
     {
-        CheckCapacity(inputBuffer.Length);
+        int length = inputBuffer.Length;
+        CheckCapacity(length);
 
-        Span<byte> streamBuffer = new Span<byte>(this.buffer, (int)this.Position, inputBuffer.Length);
+        Span<byte> streamBuffer = new Span<byte>(this.buffer, (int)this.Position, length);
         inputBuffer.CopyTo(streamBuffer);   // Uses internal Buffer.MemMove which is similar to what Array.Copy uses internally
 
-        Position += inputBuffer.Length;
+        Position += length;
     }
 
     private static byte[] FastCopy(byte[] buffer, int oldLength, int newSize)
@@ -202,4 +210,38 @@ public class FastMemoryStream : Stream
         return -1;
     }
 
+    public void RemoveFromStart(int newStart)
+    {
+        int oldLength = (int)Position;
+        int newLength = oldLength - newStart;
+        if (newLength >= 128)
+        {
+            Array.Copy(buffer, newStart, buffer, 0, newLength);
+        }
+        else
+        {
+            var buffer = this.buffer;
+            uint i = (uint)newStart;
+            uint j = 0;
+            if (newLength > 15)    // 15 is arbitrary but we don't need this faff for very small arrays, and (uint)srcLimit will be calculated wrong if oldLength is less than 3
+            {
+                uint srcLimit = (uint)(oldLength - 3);
+                for (; i < buffer.Length; i += 4)
+                {
+                    if (i >= srcLimit) break;
+                    buffer[j] = buffer[i];
+                    buffer[j + 1] = buffer[i + 1];
+                    buffer[j + 2] = buffer[i + 2];
+                    buffer[j + 3] = buffer[i + 3];
+                    j += 4;
+                }
+            }
+            while (i < oldLength)
+            {
+                buffer[j++] = buffer[i++];
+            }
+        }
+
+        Position -= newStart;
+    }
 }

@@ -5,7 +5,7 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
     /// <summary>
-    /// Draws an icon 
+    /// Draws an icon
     /// </summary>
     public class IconComponent : RichTextComponentBase
     {
@@ -37,10 +37,14 @@ namespace Vintagestory.API.Client
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             double size = GuiElement.scaled(font.UnscaledFontsize);
+            IAsset svgAsset = null;
+            if (iconPath != null)
+            {
+                svgAsset = capi.Assets.TryGet(new AssetLocation(iconPath).WithPathPrefixOnce("textures/"), true);
+            }
 
-            if (iconPath != null) {
+            if (svgAsset != null) {
                 size *= sizeMulSvg;
-                IAsset svgAsset = capi.Assets.TryGet(new AssetLocation(iconPath).WithPathPrefixOnce("textures/"), true);
                 var asc = font.GetFontExtents().Ascent;
                 capi.Gui.DrawSvg(svgAsset, surface, (int)BoundsPerLine[0].X, (int)(BoundsPerLine[0].Y + asc - (int)size)+2 /* why the 2 offset? Only god knows -_- */, (int)size, (int)size, ColorUtil.ColorFromRgba(font.Color));
             }

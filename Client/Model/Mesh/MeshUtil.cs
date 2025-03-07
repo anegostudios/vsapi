@@ -14,17 +14,19 @@ namespace Vintagestory.API.Client
         public static void SetWindFlag(this MeshData sourceMesh, float waveFlagMinY = 9/16f, int flag = EnumWindBitModeMask.NormalWind)
         {
             int verticesCount = sourceMesh.VerticesCount;
+            var sourceMeshXyz = sourceMesh.xyz;
+            var sourceMeshFlags = sourceMesh.Flags;
             for (int i = 0; i < verticesCount; i++)
             {
-                float y = sourceMesh.xyz[i * 3 + 1];
+                float y = sourceMeshXyz[i * 3 + 1];
 
                 if (y > waveFlagMinY)
                 {
-                    sourceMesh.Flags[i] |= flag;
+                    sourceMeshFlags[i] |= flag;
                 }
                 else
                 {
-                    sourceMesh.Flags[i] &= VertexFlags.ClearWindModeBitsMask;
+                    sourceMeshFlags[i] &= VertexFlags.ClearWindModeBitsMask;
                 }
             }
         }
@@ -32,9 +34,10 @@ namespace Vintagestory.API.Client
         public static void ClearWindFlags(this MeshData sourceMesh)
         {
             int verticesCount = sourceMesh.VerticesCount;
+            var sourceMeshFlags = sourceMesh.Flags;
             for (int i = 0; i < verticesCount; i++)
             {
-                sourceMesh.Flags[i] &= VertexFlags.ClearWindModeBitsMask;
+                sourceMeshFlags[i] &= VertexFlags.ClearWindModeBitsMask;
             }
         }
 
@@ -42,17 +45,19 @@ namespace Vintagestory.API.Client
         {
             int clearFlags = VertexFlags.ClearWindBitsMask;
             int verticesCount = sourceMesh.VerticesCount;
+            var sourceMeshFlags = sourceMesh.Flags;
 
             if (!enableWind)
             {
                 // Shorter return path, and no need to test off in every iteration of the loop in the other code path
                 for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
                 {
-                    sourceMesh.Flags[vertexNum] &= clearFlags;
+                    sourceMeshFlags[vertexNum] &= clearFlags;
                 }
                 return;
             }
 
+            var sourceMeshXyz = sourceMesh.xyz;
             // We add the ground offset to the winddatabits, but not if a vertex is on a side of the block flagged in leavesNoShearTileSide (because against a solid block) - in that case, ground offset will remain zero
             for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
             {
@@ -68,21 +73,21 @@ namespace Vintagestory.API.Client
                     // sidesToCheckMask is a bitmask with bits corresponding to TileSideFlagsEnum, i.e. 32 is Down, 16 is Up, 8 is West, etc.
                     // leavesNoShearTileSide was built in the same way. Binary & these two together and if the result is not 0, then we have a vertex on a no-shear tile side, in which case we want groundoffset 0
 
-                    int x = (int)(sourceMesh.xyz[vertexNum * 3 + 0] - 1.5f) >> 1;
-                    int z = (int)(sourceMesh.xyz[vertexNum * 3 + 2] - 1.5f) >> 1;
+                    int x = (int)(sourceMeshXyz[vertexNum * 3 + 0] - 1.5f) >> 1;
+                    int z = (int)(sourceMeshXyz[vertexNum * 3 + 2] - 1.5f) >> 1;
                     int sidesToCheckMask = 1 << TileSideEnum.Up - y | 4 + z * 3 | 2 - x * 6;     // This math evaluates to 32 or 16 (for y = -1 or 0)  +  1 or 4 (for z = -1 or 0)  +   8 or 2 (for x = -1 or 0)   In other words, bit flags in bit positions corresponding to TileSideFlagsEnum
                                                                                                  // Every vertex has three flags set, because all vertices are on the "outside" of a leaves block - yes, a leaves block is not a standard cube and it has probably been rotated, but this is a good enough approximation to whether this vertex is close to the solid neighbour or not
                     if ((leavesNoShearTileSide & sidesToCheckMask) != 0)    // If this vertex is on a side matching leavesNoShearTileSide, then the binary & result will be non-zero
                     {
                         // No wind shear on this side: ground offset set to 0 in the WindData
-                        VertexFlags.ReplaceWindData(ref sourceMesh.Flags[vertexNum], 0);
+                        VertexFlags.ReplaceWindData(ref sourceMeshFlags[vertexNum], 0);
                         continue;
                     }
                 }
 
                 // Normally, apply a groundOffset based on the top of the block, -1 for vertices on the bottom of the block
                 int groundOffset = groundOffsetTop == 8 ? 7 : groundOffsetTop + y;
-                VertexFlags.ReplaceWindData(ref sourceMesh.Flags[vertexNum], groundOffset);
+                VertexFlags.ReplaceWindData(ref sourceMeshFlags[vertexNum], groundOffset);
             }
         }
 

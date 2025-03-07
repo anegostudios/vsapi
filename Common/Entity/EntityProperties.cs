@@ -406,6 +406,10 @@ namespace Vintagestory.API.Common.Entities
         /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
         public IDictionary<string, CompositeTexture> Textures = new FastSmallDictionary<string, CompositeTexture>(0);
+        /// <summary>
+        /// Set by a server at the end of asset loading, immediately prior to setting Textures to null; relevant to spawning entities with variant textures
+        /// </summary>
+        public int TexturesAlternatesCount = 0;
 
         /// <summary>
         /// Used by various renderers to retrieve the entities texture it should be drawn with
@@ -566,6 +570,7 @@ namespace Vintagestory.API.Common.Entities
             return new EntityClientProperties(BehaviorsAsJsonObj, null)
             {
                 Textures = Textures == null ? null : new FastSmallDictionary<string, CompositeTexture>(Textures),
+                TexturesAlternatesCount = TexturesAlternatesCount,
                 RendererName = RendererName,
                 GlowLevel = GlowLevel,
                 PitchStep = PitchStep,
@@ -583,6 +588,8 @@ namespace Vintagestory.API.Common.Entities
         {
             // Save memory on server. The Textures are no longer needed, now that they have been packetised for sending to clients
             // (but we still need to retain the Animations data permanently on the server, and we also require to retain the Shape e.g. for adjustCollisionBoxToAnimations calls)
+            var alternates = FirstTexture?.Alternates;
+            TexturesAlternatesCount = alternates == null ? 0 : alternates.Length;
             Textures = null;
             if (Animations != null)
             {

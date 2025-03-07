@@ -573,9 +573,9 @@ namespace Vintagestory.API.Common.Entities
 
             if (api.Side == EnumAppSide.Server)
             {
-                if (properties.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
+                if (properties.Client != null && properties.Client.TexturesAlternatesCount > 0 && !WatchedAttributes.HasAttribute("textureIndex"))
                 {
-                    WatchedAttributes.SetInt("textureIndex", World.Rand.Next(properties.Client.FirstTexture.Alternates.Length + 1));
+                    WatchedAttributes.SetInt("textureIndex", World.Rand.Next(properties.Client.TexturesAlternatesCount + 1));
                 }
             }
 

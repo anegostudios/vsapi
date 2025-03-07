@@ -140,6 +140,13 @@ namespace Vintagestory.API.Common
         RunningAnimation GetAnimationState(string anim);
 
         /// <summary>
+        /// Starts an animation based on the AnimationMetaData, if it exists; returns false if it does not exist (or if unable to start it, e.g. because it is already playing)
+        /// </summary>
+        /// <param name="animdata"></param>
+        /// <returns></returns>
+        bool TryStartAnimation(AnimationMetaData animdata);
+
+        /// <summary>
         /// Starts an animation based on the AnimationMetaData
         /// </summary>
         /// <param name="animdata"></param>

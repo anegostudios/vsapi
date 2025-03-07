@@ -200,8 +200,8 @@ namespace Vintagestory.API.Common
         public virtual void OnExchanged(Block block)
         {
             //var oldBlock = this.Block;
+            if (block != this.Block) MarkDirty(true);
             this.Block = block;
-            MarkDirty(true);
 
             // Add new behaviors
             /*foreach (var beht in block.BlockEntityBehaviors)

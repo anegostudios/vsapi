@@ -261,6 +261,38 @@ You can use this matrix instead of <a class="xref" href="Vintagestory.API.Client
 
 
 
+  <a id="Vintagestory_API_Client_IRenderAPI_CameraStuck_" data-uid="Vintagestory.API.Client.IRenderAPI.CameraStuck*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_CameraStuck" data-uid="Vintagestory.API.Client.IRenderAPI.CameraStuck">
+  CameraStuck
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>True if when in IFP mode the camera would end up inside blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool CameraStuck { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_IRenderAPI_CameraType_" data-uid="Vintagestory.API.Client.IRenderAPI.CameraType*"></a>
 
   <h3 id="Vintagestory_API_Client_IRenderAPI_CameraType" data-uid="Vintagestory.API.Client.IRenderAPI.CameraType">
@@ -2923,6 +2955,48 @@ int LoadTextureFromRgba(int[] rgbaPixels, int width, int height, bool linearMag,
     <dt><code>quadModel</code> <a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
     <dd></dd>
     <dt><code>textureid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>posX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>posY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_Render2DTexture_" data-uid="Vintagestory.API.Client.IRenderAPI.Render2DTexture*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_Render2DTexture_Vintagestory_API_Client_MultiTextureMeshRef_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.IRenderAPI.Render2DTexture(Vintagestory.API.Client.MultiTextureMeshRef,System.Single,System.Single,System.Single,System.Single,System.Single)">
+  Render2DTexture(MultiTextureMeshRef, float, float, float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Renders given texture onto the screen, uses supplied quad for rendering (gui mode)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Render2DTexture(MultiTextureMeshRef quadModel, float posX, float posY, float width, float height, float z = 50)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>quadModel</code> <a class="xref" href="Vintagestory.API.Client.MultiTextureMeshRef.html">MultiTextureMeshRef</a></dt>
     <dd></dd>
     <dt><code>posX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>

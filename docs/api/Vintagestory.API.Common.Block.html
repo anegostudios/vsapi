@@ -679,7 +679,7 @@ Class Block
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Creates a new instance of a block with default model transforms</p>
+  <div class="markdown level1 summary"><p>Creates a new instance of a block with null model transforms; BlockTypeNet will add default transforms client-side if they are null in the BlockType packet; transforms should not be needed on a server</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1769,6 +1769,38 @@ The outer array is indexed based on the 6 BlockFacing.Index numerals; the inner 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Block_IceCheckOffset" data-uid="Vintagestory.API.Common.Block.IceCheckOffset">
+  IceCheckOffset
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>To tell the JsonTesselator the offset to use when checking whether this is being rendered in/on ice
+(Currently only implemented by BlockWaterLily, compare seaweed and other water plants which check whether the block they are inside is ice, so their IceCheckOffset has the default value of 0)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IceCheckOffset</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

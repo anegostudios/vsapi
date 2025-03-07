@@ -378,6 +378,12 @@ namespace Vintagestory.API.Common
 
         float humanoidTraversalCost; // Read from attributes
 
+        /// <summary>
+        /// To tell the JsonTesselator the offset to use when checking whether this is being rendered in/on ice
+        /// (Currently only implemented by BlockWaterLily, compare seaweed and other water plants which check whether the block they are inside is ice, so their IceCheckOffset has the default value of 0)
+        /// </summary>
+        public int IceCheckOffset;
+
 
         public virtual string ClimateColorMapForMap => ClimateColorMap;
         public virtual string SeasonColorMapForMap => SeasonColorMap;
@@ -386,15 +392,10 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Creates a new instance of a block with default model transforms
+        /// Creates a new instance of a block with null model transforms; BlockTypeNet will add default transforms client-side if they are null in the BlockType packet; transforms should not be needed on a server
         /// </summary>
         public Block()
         {
-            GuiTransform = ModelTransform.BlockDefaultGui();
-            FpHandTransform = ModelTransform.BlockDefaultFp();
-            TpHandTransform = ModelTransform.BlockDefaultTp();
-            TpOffHandTransform = ModelTransform.BlockDefaultTp();
-            GroundTransform = ModelTransform.BlockDefaultGround();
         }
 
         /// <summary>
@@ -410,7 +411,8 @@ namespace Vintagestory.API.Common
 
             base.OnLoaded(api);
 
-            bool supportsCover = Variant["cover"] != null && (Variant["cover"] == "free" || Variant["cover"].Contains("snow"));
+            string coverVariant = Variant["cover"];
+            bool supportsCover = coverVariant != null && (coverVariant == "free" || coverVariant.Contains("snow"));
             if (supportsCover)
             {
                 notSnowCovered = api.World.GetBlock(CodeWithVariant("cover", "free"));

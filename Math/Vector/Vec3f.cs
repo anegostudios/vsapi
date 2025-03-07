@@ -322,7 +322,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public Vec3f Clone()
         {
-            return (Vec3f)MemberwiseClone();
+            return new Vec3f(X, Y, Z);
         }
 
         /// <summary>

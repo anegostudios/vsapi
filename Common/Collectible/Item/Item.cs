@@ -41,17 +41,12 @@ namespace Vintagestory.API.Common
         /// Returns the first texture in Textures
         /// </summary>
         public CompositeTexture FirstTexture { get { return (Textures == null || Textures.Count == 0) ? null : Textures.First().Value; }}
-        
+
         /// <summary>
-        /// Instantiate a new item with default model transforms
+        /// Instantiate a new item with null model transforms; ItemTypeNet will add default transforms client-side if they are null in the ItemType packet; transforms should not be needed on a server
         /// </summary>
         public Item()
         {
-            GuiTransform = ModelTransform.ItemDefaultGui();
-            FpHandTransform = ModelTransform.ItemDefaultFp();
-            TpHandTransform = ModelTransform.ItemDefaultTp();
-            TpOffHandTransform = ModelTransform.ItemDefaultTp();
-            GroundTransform = ModelTransform.ItemDefaultGround();
         }
 
         /// <summary>

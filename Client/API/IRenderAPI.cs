@@ -98,6 +98,11 @@ namespace Vintagestory.API.Client
         EnumCameraMode CameraType { get; }
 
         /// <summary>
+        /// True if when in IFP mode the camera would end up inside blocks
+        /// </summary>
+        bool CameraStuck { get; }
+
+        /// <summary>
         /// The current modelview matrix stack
         /// </summary>
         StackMatrix4 MvMatrix { get; }
@@ -715,6 +720,19 @@ namespace Vintagestory.API.Client
         /// <param name="height"></param>
         /// <param name="z"></param>
         void Render2DTexture(MeshRef quadModel, int textureid, float posX, float posY, float width, float height, float z = 50);
+
+        /// <summary>
+        /// Renders given texture onto the screen, uses supplied quad for rendering (gui mode)
+        /// </summary>
+        /// <param name="quadModel"></param>
+        /// <param name="textureid"></param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="z"></param>
+        void Render2DTexture(MultiTextureMeshRef quadModel, float posX, float posY, float width, float height, float z = 50);
+
 
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace Vintagestory.API.Common
         protected ICoreClientAPI capi;
         protected Vec3d position;
 
-        // Obsolete
+        [Obsolete]
         protected virtual int RenderTextureId => capi.BlockTextureAtlas.AtlasTextures[0].TextureId;
 
         public double RenderOrder => 1;
