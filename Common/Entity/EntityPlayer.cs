@@ -478,14 +478,23 @@ namespace Vintagestory.API.Common
                 LocalEyePos.X = 0;
                 LocalEyePos.Z = 0;
 
-                if (MountedOn?.LocalEyePos != null)
+                bool skipIfpEyePos = false;
+
+                if (MountedOn != null)
                 {
-                    LocalEyePos.Set(MountedOn.LocalEyePos);
+                    var anim = MountedOn.SuggestedAnimation;
+                    skipIfpEyePos = anim?.Code == "sleep";
+                    if (MountedOn.LocalEyePos != null)
+                    {
+                        LocalEyePos.Set(MountedOn.LocalEyePos);
+                    }
                 }
+
+                
 
                 // Immersive fp mode has its own way of setting the eye pos
                 // but we still need to run above non-ifp code for the hitbox
-                if (player.ImmersiveFpMode)
+                if (player.ImmersiveFpMode && !skipIfpEyePos)
                 {
                     secondsDead = Alive ? 0 : secondsDead + dt;
                     updateLocalEyePosImmersiveFpMode(dt);

@@ -362,6 +362,8 @@ namespace Vintagestory.API.Common
     {
         public static VtmlToken[] Tokenize(ILogger errorLogger, string vtml)
         {
+            if (vtml == null) return new VtmlToken[0];
+
             List<VtmlToken> tokenized = new List<VtmlToken>();
             Stack<VtmlTagToken> tokenStack = new Stack<VtmlTagToken>();
             string text = "";
