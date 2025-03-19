@@ -58,14 +58,13 @@ namespace Vintagestory.API.Common
                 Richtextify(capi, tokens[i], ref elems, fontStack, didClickLink);
             }
         }
-        
+
 
         static void Richtextify(ICoreClientAPI capi, VtmlToken token, ref List<RichTextComponentBase> elems, Stack<CairoFont> fontStack, Action<LinkTextComponent> didClickLink)
         {
             if (token is VtmlTagToken)
             {
                 VtmlTagToken tagToken = token as VtmlTagToken;
-
                 switch (tagToken.Name)
                 {
                     case "br":
@@ -74,6 +73,7 @@ namespace Vintagestory.API.Common
 
                     case "hotkey":
                     case "hk":
+                        if (string.IsNullOrEmpty(tagToken.ContentText) || tagToken.ContentText.All(char.IsWhiteSpace)) break;
                         string hotkeyName = tagToken.ContentText;
                         if (hotkeyName == "leftmouse") hotkeyName = "primarymouse";    //alias names for a few, to make things simpler for handbook editors
                         if (hotkeyName == "rightmouse") hotkeyName = "secondarymouse";
@@ -147,12 +147,12 @@ namespace Vintagestory.API.Common
                         }
 
                         List<ItemStack> stacks = new List<ItemStack>();
-                        
+
 
                         foreach (var code in codes.Split('|'))
                         {
                             CollectibleObject cobj;
-                            
+
                             if (type == "item")
                             {
                                 cobj = capi.World.GetItem(new AssetLocation(code));
@@ -193,7 +193,7 @@ namespace Vintagestory.API.Common
                         }
                         fontStack.Pop();
                         break;
-                    
+
                     case "clear":
                         elems.Add(new ClearFloatTextComponent(capi));
                         break;
@@ -316,7 +316,7 @@ namespace Vintagestory.API.Common
                         orient = EnumTextOrientation.Justify;
                         break;
                 }
-                
+
             } else
             {
                 orient = prevFont.Orientation;
@@ -562,10 +562,10 @@ namespace Vintagestory.API.Common
                             state = ParseState.SeekKey;
                             break;
                         }
-                        
+
                         key += tag[i];
-                       
-                        
+
+
                         break;
 
                     case ParseState.SeekValue:
