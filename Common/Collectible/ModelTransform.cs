@@ -334,6 +334,8 @@ namespace Vintagestory.API.Common
         [OnDeserialized]
         internal void OnDeserializedMethod(StreamingContext context)
         {
+            if (Translation == null) Translation = new Vec3f();
+            if (Rotation == null) Rotation = new Vec3f();
         }
     }
 }

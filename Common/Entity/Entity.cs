@@ -455,6 +455,8 @@ namespace Vintagestory.API.Common.Entities
         protected bool alive=true;
         public float minHorRangeToClient;
 
+        public virtual bool AdjustCollisionBoxToAnimation => !alive;
+
         public float IdleSoundChanceModifier
         {
             get { return WatchedAttributes.GetFloat("idleSoundChanceModifier", 1); }
@@ -777,7 +779,7 @@ namespace Vintagestory.API.Common.Entities
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
-                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / GlobalConstants.ChunkSize, (int)ServerPos.Z / GlobalConstants.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
+                sapi.WorldManager.LoadChunkColumnPriority((int)x / GlobalConstants.ChunkSize, (int)z / GlobalConstants.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
                     {
                         IsTeleport = true;
                         Pos.SetPos(x, y, z);
@@ -1511,6 +1513,7 @@ namespace Vintagestory.API.Common.Entities
                 if (Api is ICoreClientAPI ic && ic.World.Player.Entity.EntityId == EntityId)
                 {
                     Pos.SetPosWithDimension(newPos);
+                    ((EntityPlayer)this).UpdatePartitioning();
                 }
                 ServerPos.SetPosWithDimension(newPos);
                 World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);

@@ -1429,7 +1429,7 @@ namespace Vintagestory.API.Common
 
             Teleporting = true;
             
-           sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / GlobalConstants.ChunkSize, (int)ServerPos.Z / GlobalConstants.ChunkSize, new ChunkLoadOptions()
+           sapi.WorldManager.LoadChunkColumnPriority((int)x / GlobalConstants.ChunkSize, (int)z / GlobalConstants.ChunkSize, new ChunkLoadOptions()
             {
                 OnLoaded = () =>
                 {
@@ -1443,12 +1443,15 @@ namespace Vintagestory.API.Common
 
         private void onplrteleported(double x, double y, double z, Action onTeleported, ICoreServerAPI sapi)
         {
+            int oldX = ServerPos.XInt;
+            int oldZ = ServerPos.ZInt;
             Pos.SetPos(x, y, z);
             ServerPos.SetPos(x, y, z);
             PreviousServerPos.SetPos(-99, -99, -99);
             PositionBeforeFalling.Set(x, y, z);
             Pos.Motion.Set(0, 0, 0);
             sapi.Network.BroadcastEntityPacket(EntityId, (int)EntityServerPacketId.Teleport, SerializerUtil.Serialize(ServerPos.XYZ));
+            UpdatePartitioning();
             IServerPlayer player = this.Player as IServerPlayer;
             int chunksize = GlobalConstants.ChunkSize;
             player.CurrentChunkSentRadius = 0;
@@ -1468,6 +1471,11 @@ namespace Vintagestory.API.Common
             }, 50);
 
             WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+            WatchedAttributes.MarkAllDirty();       // Force sending of server position to the client (i.e. a full entity update packet) at the same time as sending the new positionVersionNumber
+            if (oldX / GlobalConstants.ChunkSize != x / GlobalConstants.ChunkSize || oldZ / GlobalConstants.ChunkSize != z / GlobalConstants.ChunkSize)
+            {
+                if (player.ClientId != 0) sapi.Event.PlayerChunkTransition(player);    // ClientId will be 0 if not yet connected
+            }
             onTeleported?.Invoke();
         }
 

@@ -184,7 +184,7 @@ namespace Vintagestory.API.Common
         /// Gets the AnimationMetaData for the target action.
         /// </summary>
         Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode { get; }
-
+        
         /// <summary>
         /// The event fired when the client recieves the server animations
         /// </summary>

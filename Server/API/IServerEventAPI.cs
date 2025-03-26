@@ -238,5 +238,10 @@ namespace Vintagestory.API.Server
         /// </summary>
         event BlockUsedDelegate DidUseBlock;
 
+        /// <summary>
+        /// Triggers an immediate ClientAwarenessEvent for the specified player
+        /// </summary>
+        /// <param name="player"></param>
+        void PlayerChunkTransition(IServerPlayer player);
     }
 }

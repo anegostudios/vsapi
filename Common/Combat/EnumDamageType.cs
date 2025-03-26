@@ -15,6 +15,7 @@
         Frost,
         Electricity,
         Heat,
-        Injury
+        Injury,
+        Acid
     }
 }

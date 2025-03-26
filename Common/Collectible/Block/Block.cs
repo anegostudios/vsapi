@@ -1689,7 +1689,7 @@ namespace Vintagestory.API.Common
                     AdvancedParticleProperties bps = ParticleProperties[i];
                     bps.WindAffectednesAtPos = windAffectednessAtPos;
                     bps.basePos.X = pos.X + TopMiddlePos.X;
-                    bps.basePos.Y = pos.Y + TopMiddlePos.Y;
+                    bps.basePos.Y = pos.InternalY + TopMiddlePos.Y;
                     bps.basePos.Z = pos.Z + TopMiddlePos.Z;
 
                     manager.Spawn(bps);
