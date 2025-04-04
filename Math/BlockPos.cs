@@ -38,7 +38,11 @@ namespace Vintagestory.API.MathTools
         public const int SlotDontCare = -1;
 
         [ProtoMember(4), DefaultValue(SlotDontCare)]
-        public int slot = SlotDontCare;
+        public int Slot {
+            get => slot;
+            set => slot = value;
+        }
+        private int slot = SlotDontCare;
 
         public const int DimensionBoundary = GlobalConstants.DimensionSizeInChunks * GlobalConstants.ChunkSize;
 
