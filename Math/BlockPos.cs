@@ -37,10 +37,16 @@ namespace Vintagestory.API.MathTools
 
         public const int SlotDontCare = -1;
 
+        /// <summary>
+        /// Performs a very fast hashing function on the positional (X, Y, Z, and dimension) parameters. Guaranteed to avoid collisions
+        /// only when the change in any given coordinate is less than 16; do not use it for a cryptographic hash.
+        /// </summary>
+        public ushort FastHash => (ushort)((dimension << 12) + (Y << 8) + (X << 4) + Z);
+
         [ProtoMember(4), DefaultValue(SlotDontCare)]
         public int Slot {
-            get => slot;
-            set => slot = value;
+            get => (slot & 0xFFFF) == FastHash ? (slot >> 16) : SlotDontCare;
+            set => slot = (value << 16) | FastHash;
         }
         private int slot = SlotDontCare;
 
@@ -79,7 +85,7 @@ namespace Vintagestory.API.MathTools
             this.Y = y;
             this.Z = z;
             this.dimension = dim;
-            this.slot = slot;
+            this.Slot = slot;
         }
 
         [Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")]
@@ -97,7 +103,7 @@ namespace Vintagestory.API.MathTools
             this.Y = vec.Y;
             this.Z = vec.Z;
             this.dimension = dim;
-            this.slot = slot;
+            this.Slot = slot;
         }
 
         /// <summary>
@@ -117,8 +123,8 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public int this[int i]
         {
-            get { return i == 0 ? X : i == 1 ? Y : i == 2 ? Z : i == 3 ? dimension : slot; }
-            set { if (i == 0) X = value; else if (i == 1) Y = value; else if (i == 2) Z = value; else if (i == 3) dimension = value; else slot = value; }
+            get { return i == 0 ? X : i == 1 ? Y : i == 2 ? Z : i == 3 ? dimension : Slot; }
+            set { if (i == 0) X = value; else if (i == 1) Y = value; else if (i == 2) Z = value; else if (i == 3) dimension = value; else Slot = value; }
         }
 
         /// <summary>
@@ -129,7 +135,7 @@ namespace Vintagestory.API.MathTools
         public BlockPos Up(int dy = 1)
         {
             Y += dy;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -141,7 +147,7 @@ namespace Vintagestory.API.MathTools
         public BlockPos Down(int dy = 1)
         {
             Y -= dy;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -155,7 +161,7 @@ namespace Vintagestory.API.MathTools
             X = (int)origin.X;
             Y = (int)origin.Y;
             Z = (int)origin.Z;
-            slot = SlotDontCare;
+            this.Slot = slot;
             return this;
         }
 
@@ -164,7 +170,7 @@ namespace Vintagestory.API.MathTools
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -173,7 +179,7 @@ namespace Vintagestory.API.MathTools
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -188,7 +194,7 @@ namespace Vintagestory.API.MathTools
             Y = (int)origin.Y % DimensionBoundary;
             Z = (int)origin.Z;
             dimension = (int)origin.Y / DimensionBoundary;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -205,7 +211,7 @@ namespace Vintagestory.API.MathTools
             Y = y % DimensionBoundary;
             Z = z;
             dimension = y / DimensionBoundary;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -223,7 +229,7 @@ namespace Vintagestory.API.MathTools
             X = x;
             Y = y;
             Z = z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -232,7 +238,7 @@ namespace Vintagestory.API.MathTools
             X = (int)x;
             Y = (int)y;
             Z = (int)z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -241,7 +247,7 @@ namespace Vintagestory.API.MathTools
             X = blockPos.X;
             Y = blockPos.Y;
             Z = blockPos.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -279,7 +285,7 @@ namespace Vintagestory.API.MathTools
             X = x;
             Y = y;
             Z = z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return false;
         }
 
@@ -305,7 +311,7 @@ namespace Vintagestory.API.MathTools
         public BlockPos West()
         {
             X -= 1;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -317,21 +323,21 @@ namespace Vintagestory.API.MathTools
         public BlockPos North()
         {
             Z -= 1;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
         public BlockPos East()
         {
             X += 1;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
         public BlockPos South()
         {
             Z += 1;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -434,7 +440,7 @@ namespace Vintagestory.API.MathTools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual BlockPos Copy()
         {
-            return new BlockPos(X, Y, Z, dimension, slot);
+            return new BlockPos(X, Y, Z, dimension, Slot);
         }
 
 
@@ -445,7 +451,7 @@ namespace Vintagestory.API.MathTools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual BlockPos CopyAndCorrectDimension()
         {
-            return new BlockPos(X, Y % DimensionBoundary, Z, dimension + Y / DimensionBoundary, slot);
+            return new BlockPos(X, Y % DimensionBoundary, Z, dimension + Y / DimensionBoundary, Slot);
         }
 
 
@@ -464,7 +470,7 @@ namespace Vintagestory.API.MathTools
             X += (int)dx;
             Y += (int)dy;
             Z += (int)dz;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -482,7 +488,7 @@ namespace Vintagestory.API.MathTools
             X += dx;
             Y += dy;
             Z += dz;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -497,7 +503,7 @@ namespace Vintagestory.API.MathTools
             X += vector.X;
             Y += vector.Y;
             Z += vector.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -512,7 +518,7 @@ namespace Vintagestory.API.MathTools
             X += vector.X;
             Y += vector.Y;
             Z += vector.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -528,7 +534,7 @@ namespace Vintagestory.API.MathTools
             X += pos.X;
             Y += pos.Y;
             Z += pos.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -546,7 +552,7 @@ namespace Vintagestory.API.MathTools
             X += faceNormals.X * length;
             Y += faceNormals.Y * length;
             Z += faceNormals.Z * length;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -562,7 +568,7 @@ namespace Vintagestory.API.MathTools
             X += faceNormals.X;
             Y += faceNormals.Y;
             Z += faceNormals.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -649,7 +655,7 @@ namespace Vintagestory.API.MathTools
             X -= pos.X;
             Y -= pos.Y;
             Z -= pos.Z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -666,7 +672,7 @@ namespace Vintagestory.API.MathTools
             X -= x;
             Y -= y;
             Z -= z;
-            slot = SlotDontCare;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -859,22 +865,22 @@ namespace Vintagestory.API.MathTools
 
         public override string ToString()
         {
-            return X + ", " + Y + ", " + Z + (slot != SlotDontCare ? " / " + slot : "") + (dimension > 0 ? " : " + dimension : "");
+            return X + ", " + Y + ", " + Z + (Slot != SlotDontCare ? " / " + Slot : "") + (dimension > 0 ? " : " + dimension : "");
         }
 
         public override bool Equals(object obj)
         {
-            return (obj is BlockPos pos) && X == pos.X && Y == pos.Y && Z == pos.Z && dimension == pos.dimension && slot == pos.slot;
+            return (obj is BlockPos pos) && X == pos.X && Y == pos.Y && Z == pos.Z && dimension == pos.dimension && Slot == pos.Slot;
         }
 
         public override int GetHashCode()
         {
-            return ((17 * 23 + X) * 23 + Y) * 23 + Z + dimension * 269023 + slot * 613849;
+            return ((17 * 23 + X) * 23 + Y) * 23 + Z + dimension * 269023 + Slot * 613849;
         }
 
         public bool Equals(BlockPos other)
         {
-            return other != null && X == other.X && Y == other.Y && Z == other.Z && dimension == other.dimension && slot == other.slot;
+            return other != null && X == other.X && Y == other.Y && Z == other.Z && dimension == other.dimension && Slot == other.Slot;
         }
 
         public bool Equals(int x, int y, int z)
