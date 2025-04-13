@@ -62,6 +62,14 @@ namespace Vintagestory.API.Common
         public virtual string RemapToLiquidsLayer { get { return null; } }
 
         /// <summary>
+        /// Modifiers that can alter the behavior of a block, particularly when being placed or removed
+        /// </summary>
+        public BlockBehavior[] BlockBehaviors { get; } = new BlockBehavior[0];
+
+        public override CollectibleBehavior[] CollectibleBehaviors =>
+            base.CollectibleBehaviors.Concat(BlockBehaviors.Cast<CollectibleBehavior>()).ToArray();
+
+        /// <summary>
         /// Unique number of the block. Same as <see cref="Id"/>. This number depends on the order in which the blocks are order. The numbering is however always ensured to remain the same on a per world basis.
         /// </summary>
         public int BlockId;
@@ -322,11 +330,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool HasAlternates;
         public bool HasTiles;
-
-        /// <summary>
-        /// Modifiers that can alter the behavior of a block, particularly when being placed or removed
-        /// </summary>
-        public BlockBehavior[] BlockBehaviors = new BlockBehavior[0];
 
         /// <summary>
         /// Modifiers that can alter the behavior of a block entity
@@ -2011,7 +2014,7 @@ namespace Vintagestory.API.Common
             return Climbable;
         }
 
-        
+
 
         /// <summary>
         /// The cost of traversing this block as part of the AI pathfinding system.
