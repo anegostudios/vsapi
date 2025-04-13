@@ -21,14 +21,6 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class CollectibleObject : RegistryObject
     {
-        // ---- Some default objects which are common to many Block and Item objects
-        public readonly static Size3f DefaultSize = new Size3f(0.5f, 0.5f, 0.5f);
-
-        /// <summary>
-        /// Liquids are handled and rendered differently than solid blocks.
-        /// </summary>
-        public EnumMatterState MatterState = EnumMatterState.Solid;
-
         /// <summary>
         /// This value is set the the BlockId or ItemId-Remapper if it encounters a block/item in the savegame,
         /// but no longer exists as a loaded block/item
@@ -49,10 +41,23 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Modifiers that can alter the behavior of the item or block, mostly for held interaction
+        /// Child classes can override this to add their own behaviors provided they inherit from CollectibleBehavior
+        /// </summary>
+        public virtual CollectibleBehavior[] CollectibleBehaviors { get; } = new CollectibleBehavior[0];
+
+        /// <summary>
         /// Block or Item?
         /// </summary>
         public abstract EnumItemClass ItemClass { get; }
 
+        // ---- Some default objects which are common to many Block and Item objects
+        public readonly static Size3f DefaultSize = new Size3f(0.5f, 0.5f, 0.5f);
+
+        /// <summary>
+        /// Liquids are handled and rendered differently than solid blocks.
+        /// </summary>
+        public EnumMatterState MatterState = EnumMatterState.Solid;
 
         /// <summary>
         /// Max amount of collectible that one default inventory slot can hold
@@ -245,18 +250,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         protected ICoreAPI api;
 
-
-        /// <summary>
-        /// Modifiers that can alter the behavior of the item or block, mostly for held interaction
-        /// </summary>
-        public CollectibleBehavior[] CollectibleBehaviors = new CollectibleBehavior[0];
-
         /// <summary>
         /// For light emitting collectibles: hue, saturation and brightness value
         /// </summary>
         public byte[] LightHsv = new byte[3];
-
-
 
         // Non overridable so people don't accidently forget to call the base method for assigning the api in OnLoaded
         public void OnLoadedNative(ICoreAPI api)
