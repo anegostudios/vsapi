@@ -1337,6 +1337,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
+        /// Spawns the associated block entity, remember to call the base method!
         /// For Worldgen you might be able to use TryPlaceBlockForWorldGen() to attach custom behaviors during placement/removal
         /// </summary>
         /// <param name="world"></param>

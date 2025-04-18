@@ -490,7 +490,7 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                
+
 
                 // Immersive fp mode has its own way of setting the eye pos
                 // but we still need to run above non-ifp code for the hitbox
@@ -802,6 +802,18 @@ namespace Vintagestory.API.Common
             string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
             string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
             string nowHeldRightReadyAnim = rightstack?.Collectible.GetHeldReadyAnimation(RightHandItemSlot, this, EnumHand.Right);
+
+            if (LeftHandItemSlot != null)
+            {
+                if (!LeftHandItemSlot.Empty && LeftHandItemSlot.Itemstack.Collectible is IHeldHandAnimOverrider roverrider)
+                {
+                    if (!roverrider.AllowHeldIdleHandAnim(this, RightHandItemSlot, EnumHand.Right)) nowHeldRightIdleAnim = null;
+                }
+                if (!RightHandItemSlot.Empty && RightHandItemSlot.Itemstack.Collectible is IHeldHandAnimOverrider loverrider)
+                {
+                    if (!loverrider.AllowHeldIdleHandAnim(this, LeftHandItemSlot, EnumHand.Right)) nowHeldLeftIdleAnim = null;
+                }
+            }
 
 
             bool shouldRightReadyStack =
@@ -1319,28 +1331,29 @@ namespace Vintagestory.API.Common
                 bool heal = damageSource.Type == EnumDamageType.Heal;
                 string msg;
 
+                var player = World.PlayerByUid(PlayerUID) as IServerPlayer;
                 string damageTypeLocalised = Lang.Get("damagetype-" + damageSource.Type.ToString().ToLowerInvariant());
                 if (damageSource.Type == EnumDamageType.BluntAttack || damageSource.Type == EnumDamageType.PiercingAttack || damageSource.Type == EnumDamageType.SlashingAttack)
                 {
-                    msg = Lang.Get(heal ? "damagelog-heal-attack" : "damagelog-damage-attack", damage, damageTypeLocalised, damageSource.Source);
+                    msg = Lang.GetL(player.LanguageCode, heal ? "damagelog-heal-attack" : "damagelog-damage-attack", damage, damageTypeLocalised, damageSource.Source);
                 } else
                 {
-                    msg = Lang.Get(heal ? "damagelog-heal" : "damagelog-damage", damage, damageTypeLocalised);
+                    msg = Lang.GetL(player.LanguageCode, heal ? "damagelog-heal" : "damagelog-damage", damage, damageTypeLocalised);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Player)
                 {
                     EntityPlayer eplr = damageSource.GetCauseEntity() as EntityPlayer;
-                    msg = Lang.Get(heal ? "damagelog-heal-byplayer" : "damagelog-damage-byplayer", damage, World.PlayerByUid(eplr.PlayerUID).PlayerName);
+                    msg = Lang.GetL(player.LanguageCode, heal ? "damagelog-heal-byplayer" : "damagelog-damage-byplayer", damage, World.PlayerByUid(eplr.PlayerUID).PlayerName);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Entity)
                 {
-                    string creatureName = Lang.Get("prefixandcreature-" + damageSource.GetCauseEntity().Code.Path.Replace("-", ""));
-                    msg = Lang.Get(heal ? "damagelog-heal-byentity" : "damagelog-damage-byentity", damage, creatureName);
+                    string creatureName = Lang.GetL(player.LanguageCode, "prefixandcreature-" + damageSource.GetCauseEntity().Code.Path.Replace("-", ""));
+                    msg = Lang.GetL(player.LanguageCode, heal ? "damagelog-heal-byentity" : "damagelog-damage-byentity", damage, creatureName);
                 }
 
-                (World.PlayerByUid(PlayerUID) as IServerPlayer).SendMessage(GlobalConstants.DamageLogChatGroup, msg, EnumChatType.Notification);
+                player.SendMessage(GlobalConstants.DamageLogChatGroup, msg, EnumChatType.Notification);
             }
         }
 
@@ -1404,7 +1417,7 @@ namespace Vintagestory.API.Common
 
 
 
-        
+
         public override void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
         {
             if (ignoreTeleportCall) return;
@@ -1428,7 +1441,7 @@ namespace Vintagestory.API.Common
             }
 
             Teleporting = true;
-            
+
            sapi.WorldManager.LoadChunkColumnPriority((int)x / GlobalConstants.ChunkSize, (int)z / GlobalConstants.ChunkSize, new ChunkLoadOptions()
             {
                 OnLoaded = () =>
@@ -1555,7 +1568,7 @@ namespace Vintagestory.API.Common
                     Server only:
                     S3. /Corresponding change to Entity Partitioning   (basically do everything which happens on entity unload)
                     S4. stretch goal? update any AITask currently targeting this entity (it should stop chasing etc. immediately on next tick)
-                        - AITaskTargetable - check IsTargetable every tick, 
+                        - AITaskTargetable - check IsTargetable every tick,
                     S5. Update chunk sending for that player (? may be unnecessary)
                     S6. Send update to other clients
                     S7. Do we need to force OTHER clients to run game.RemoveEntityRenderer(entity) or is changing the dimension + chunk enough?

@@ -314,7 +314,8 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Step 4: Block was placed. Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
-        /// Be aware that the vanilla OnBlockPlaced block behavior is to spawn the block entity if any is associated with this block, so this code will not get executed if you set handled to PreventDefault or Last
+        /// Until 1.20: The BlockEntity does not exist yet at this point and will not be generated if handling is set to PreventSubsequent
+        /// <br/>(Note, we intend to change this in game version 1.21 so that the BlockEntity (if the block has one) will always be created before calling BlockBehavior.OnBlockPlaced())
         /// </summary>
         /// <param name="world"></param>
         /// <param name="blockPos"></param>

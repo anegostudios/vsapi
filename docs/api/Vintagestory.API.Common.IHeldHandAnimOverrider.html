@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum EnumLightLevelType | VintageStory API </title>
+      <title>Interface IHeldHandAnimOverrider | VintageStory API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum EnumLightLevelType | VintageStory API ">
+      <meta name="title" content="Interface IHeldHandAnimOverrider | VintageStory API ">
       
-      <meta name="description" content="Used in blockAccessor.GetLightLevel() to determine what kind of light level you want">
+      
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,13 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Vintagestory.API.Common.EnumLightLevelType">
+        <article data-uid="Vintagestory.API.Common.IHeldHandAnimOverrider">
 
 
 
-
-  <h1 id="Vintagestory_API_Common_EnumLightLevelType" data-uid="Vintagestory.API.Common.EnumLightLevelType" class="text-break">
-Enum EnumLightLevelType  
+  <h1 id="Vintagestory_API_Common_IHeldHandAnimOverrider" data-uid="Vintagestory.API.Common.IHeldHandAnimOverrider" class="text-break">
+Interface IHeldHandAnimOverrider  
   </h1>
 
   <div class="facts text-secondary">
@@ -98,12 +97,11 @@ Enum EnumLightLevelType
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Used in blockAccessor.GetLightLevel() to determine what kind of light level you want</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum EnumLightLevelType</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IHeldHandAnimOverrider</code></pre>
   </div>
 
 
@@ -124,28 +122,52 @@ Enum EnumLightLevelType
   </div>
   </dd></dl>
 
-  <h2 id="fields">Fields
+
+
+
+
+  <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Common_IHeldHandAnimOverrider_AllowHeldIdleHandAnim_" data-uid="Vintagestory.API.Common.IHeldHandAnimOverrider.AllowHeldIdleHandAnim*"></a>
+
+  <h3 id="Vintagestory_API_Common_IHeldHandAnimOverrider_AllowHeldIdleHandAnim_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumHand_" data-uid="Vintagestory.API.Common.IHeldHandAnimOverrider.AllowHeldIdleHandAnim(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumHand)">
+  AllowHeldIdleHandAnim(Entity, ItemSlot, EnumHand)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AllowHeldIdleHandAnim(Entity forEntity, ItemSlot slot, EnumHand hand)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt id="Vintagestory_API_Common_EnumLightLevelType_MaxLight"><code>MaxLight = 2</code></dt>
-    <dd><p>Will get you max(sunlight, onlyblocklight)</p>
-</dd>
-    <dt id="Vintagestory_API_Common_EnumLightLevelType_MaxTimeOfDayLight"><code>MaxTimeOfDayLight = 3</code></dt>
-    <dd><p>Will get you max(sunlight * sunbrightness, blocklight)</p>
-</dd>
-    <dt id="Vintagestory_API_Common_EnumLightLevelType_OnlyBlockLight"><code>OnlyBlockLight = 0</code></dt>
-    <dd><p>Will get you just the block light</p>
-</dd>
-    <dt id="Vintagestory_API_Common_EnumLightLevelType_OnlySunLight"><code>OnlySunLight = 1</code></dt>
-    <dd><p>Will get you just the sun light unaffected by the day/night cycle</p>
-</dd>
-    <dt id="Vintagestory_API_Common_EnumLightLevelType_Sunbrightness"><code>Sunbrightness = 5</code></dt>
-    <dd><p>Will get you sunbrightness</p>
-</dd>
-    <dt id="Vintagestory_API_Common_EnumLightLevelType_TimeOfDaySunLight"><code>TimeOfDaySunLight = 4</code></dt>
-    <dd><p>Will get you sunlight * sunbrightness</p>
-</dd>
+    <dt><code>forEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>hand</code> <a class="xref" href="Vintagestory.API.Common.EnumHand.html">EnumHand</a></dt>
+    <dd></dd>
   </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
 

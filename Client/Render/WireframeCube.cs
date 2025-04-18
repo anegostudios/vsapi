@@ -88,6 +88,8 @@ namespace Vintagestory.Client.NoObf
             {
                 capi.Render.LineWidth = 1.6f;
             }
+
+            capi.Render.GLDepthMask(true);
         }
 
         public void Dispose()

@@ -172,8 +172,9 @@ namespace Vintagestory.API.Client
         {
             if (Inventory != null)
             {
-                Inventory.Close(capi.World.Player);
-                capi.World.Player.InventoryManager.CloseInventory(Inventory);
+                Inventory.Close(capi.World.Player);     // radfast 17.4.25:  InventoryManager.CloseInventory() in the following line will also call Inventory.Close().  But for chests and other openable containers it needs to be called twice for the lid to close properly.  The reason for the lid closing thing is because in the OnInventoryClosed actions, BEGenericTypedContainer.OnInvClosed() is called before BEOpenableContainer.OnInventoryClosed() due to the order in which initialise methods are called
+                object pkt = capi.World.Player.InventoryManager.CloseInventory(Inventory);
+                if (pkt != null) capi.Network.SendPacketClient(pkt);
             }
 
             capi.Network.SendBlockEntityPacket(BlockEntityPosition, (int)EnumBlockEntityPacketId.Close);
