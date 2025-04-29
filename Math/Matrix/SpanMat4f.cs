@@ -7,12 +7,12 @@
 //  * Redistributions of source code must retain the above copyright notice, this
 //    list of conditions and the following disclaimer.
 //  * Redistributions in binary form must reproduce the above copyright notice,
-//    this list of conditions and the following disclaimer in the documentation 
+//    this list of conditions and the following disclaimer in the documentation
 //    and/or other materials provided with the distribution.
 
 //THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 //ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-//WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+//WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 //DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
 //ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 //(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -21,8 +21,8 @@
 //(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Vintagestory.API.MathTools
 {
@@ -31,85 +31,14 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     public partial class Mat4f
     {
-        /// <summary>
-        /// Creates a new identity mat4
-        /// 0 4 8  12
-        /// 1 5 9  13
-        /// 2 6 10 14
-        /// 3 7 11 15
-        /// </summary>
-        /// <returns>new 4x4 matrix</returns>
-        public static float[] Create()
-        {
-            float[] output = new float[16];  // a new array is automatically initialised to the default float value of 0f
-            output[0] = 1f;
-            output[5] = 1f;
-            output[10] = 1f;
-            output[15] = 1f;
-            return output;
-        }
-
-
-        /// <summary>
-        /// Creates a new mat4 initialized with values from an existing matrix
-        /// </summary>
-        /// <param name="a">a matrix to clone</param>
-        /// <returns>new 4x4 matrix</returns>
-        public static float[] CloneIt(float[] a)
-        {
-            float[] output = new float[16];
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            output[3] = a[3];
-            output[4] = a[4];
-            output[5] = a[5];
-            output[6] = a[6];
-            output[7] = a[7];
-            output[8] = a[8];
-            output[9] = a[9];
-            output[10] = a[10];
-            output[11] = a[11];
-            output[12] = a[12];
-            output[13] = a[13];
-            output[14] = a[14];
-            output[15] = a[15];
-            return output;
-        }
-
-        /// <summary>
-        /// Copy the values from one mat4 to another
-        /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the source matrix</param>
-        /// <returns></returns>
-        public static float[] Copy(float[] output, float[] a)
-        {
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            output[3] = a[3];
-            output[4] = a[4];
-            output[5] = a[5];
-            output[6] = a[6];
-            output[7] = a[7];
-            output[8] = a[8];
-            output[9] = a[9];
-            output[10] = a[10];
-            output[11] = a[11];
-            output[12] = a[12];
-            output[13] = a[13];
-            output[14] = a[14];
-            output[15] = a[15];
-            return output;
-        }
+        private const float GLMAT_EPSILON = 1.0f / 1000000.0f;
 
         /// <summary>
         /// Set a mat4 to the identity matrix
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <returns></returns>
-        public static float[] Identity(float[] output)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Identity(Span<float> output)
         {
             output[0] = 1;
             output[1] = 0;
@@ -127,17 +56,16 @@ namespace Vintagestory.API.MathTools
             output[13] = 0;
             output[14] = 0;
             output[15] = 1;
-            return output;
         }
 
 
         /// <summary>
         /// Set a mat4 to the identity matrix with a scale applied
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
+        /// <param name="output">{mat4} out the receiving matrix</param>
         /// <param name="scale"></param>
-        /// <returns></returns>
-        public static float[] Identity_Scaled(float[] output, float scale)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Identity_Scaled(Span<float> output, float scale)
         {
             output[0] = scale;
             output[1] = 0;
@@ -155,17 +83,15 @@ namespace Vintagestory.API.MathTools
             output[13] = 0;
             output[14] = 0;
             output[15] = 1;
-            return output;
         }
 
 
         /// <summary>
         /// Transpose the values of a mat4
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the source matrix</param>
-        /// <returns></returns>
-        public static float[] Transpose(float[] output, float[] a)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the source matrix</param>
+        public static void Transpose(Span<float> output, ReadOnlySpan<float> a)
         {
             // If we are transposing ourselves we can skip a few steps but have to cache some values
             if (output == a)
@@ -206,17 +132,15 @@ namespace Vintagestory.API.MathTools
                 output[14] = a[11];
                 output[15] = a[15];
             }
-
-            return output;
         }
 
         /// <summary>
         /// Inverts a mat4
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the source matrix</param>
-        /// <returns></returns>
-        public static float[] Invert(float[] output, float[] a)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the source matrix</param>
+        /// <returns><see langword="true"/> if the operation was successful</returns>
+        public static bool Invert(Span<float> output, ReadOnlySpan<float> a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
             float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
@@ -241,7 +165,7 @@ namespace Vintagestory.API.MathTools
 
             if (det == 0)
             {
-                return null;
+                return false;
             }
             float one = 1;
             det = one / det;
@@ -263,16 +187,15 @@ namespace Vintagestory.API.MathTools
             output[14] = (a31 * b01 - a30 * b03 - a32 * b00) * det;
             output[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
 
-            return output;
+            return true;
         }
 
         /// <summary>
-        /// Calculates the adjugate of a mat4   
+        /// Calculates the adjugate of a mat4
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the source matrix</param>
-        /// <returns></returns>
-        public static float[] Adjoint(float[] output, float[] a)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the source matrix</param>
+        public static void Adjoint(Span<float> output, ReadOnlySpan<float> a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
             float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
@@ -295,15 +218,14 @@ namespace Vintagestory.API.MathTools
             output[13] = (a00 * (a21 * a32 - a22 * a31) - a20 * (a01 * a32 - a02 * a31) + a30 * (a01 * a22 - a02 * a21));
             output[14] = -(a00 * (a11 * a32 - a12 * a31) - a10 * (a01 * a32 - a02 * a31) + a30 * (a01 * a12 - a02 * a11));
             output[15] = (a00 * (a11 * a22 - a12 * a21) - a10 * (a01 * a22 - a02 * a21) + a20 * (a01 * a12 - a02 * a11));
-            return output;
         }
 
         /// <summary>
         /// Calculates the determinant of a mat4
         /// </summary>
-        /// <param name="a">the source matrix</param>
-        /// <returns>of a</returns>
-        public static float Determinant(float[] a)
+        /// <param name="a">{mat4} a the source matrix</param>
+        /// <returns>{Number} determinant of a</returns>
+        public static float Determinant(ReadOnlySpan<float> a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
             float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
@@ -329,13 +251,11 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Multiplies two mat4's
-        /// 
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the first operand</param>
-        /// <param name="b">the second operand</param>
-        /// <returns></returns>
-        public static float[] Multiply(float[] output, float[] a, float[] b)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the first operand</param>
+        /// <param name="b">{mat4} b the second operand</param>
+        public static void Multiply(Span<float> output, ReadOnlySpan<float> a, ReadOnlySpan<float> b)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
             float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
@@ -366,7 +286,6 @@ namespace Vintagestory.API.MathTools
             output[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
             output[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
             output[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
-            return output;
         }
 
         /// <summary>
@@ -375,23 +294,21 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Mul(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Mul(Span<float> output, ReadOnlySpan<float> a, ReadOnlySpan<float> b)
         {
-            return Multiply(output, a, b);
+            Multiply(output, a, b);
         }
-
 
         /// <summary>
         /// Translate a mat4 by the given vector
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="input">the matrix to translate</param>
-        /// <param name="x">vector to translate by</param>
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="input">{mat4} a the matrix to translate</param>
+        /// <param name="x">{vec3} v vector to translate by</param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        /// <returns></returns>
-        public static float[] Translate(float[] output, float[] input, float x, float y, float z)
+        public static void Translate(Span<float> output, ReadOnlySpan<float> input, float x, float y, float z)
         {
             if (input == output)
             {
@@ -419,18 +336,15 @@ namespace Vintagestory.API.MathTools
                 output[14] = a02 * x + a12 * y + a22 * z + input[14];
                 output[15] = a03 * x + a13 * y + a23 * z + input[15];
             }
-
-            return output;
         }
 
         /// <summary>
         /// Translate a mat4 by the given vector
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="input">the matrix to translate</param>
-        /// <param name="translate">vector to translate by</param>
-        /// <returns></returns>
-        public static float[] Translate(float[] output, float[] input, float[] translate)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="input">{mat4} a the matrix to translate</param>
+        /// <param name="translate">{vec3} v vector to translate by</param>
+        public static void Translate(Span<float> output, ReadOnlySpan<float> input, ReadOnlySpan<float> translate)
         {
             float x = translate[0]; float y = translate[1]; float z = translate[2];
             if (input == output)
@@ -459,18 +373,16 @@ namespace Vintagestory.API.MathTools
                 output[14] = a02 * x + a12 * y + a22 * z + input[14];
                 output[15] = a03 * x + a13 * y + a23 * z + input[15];
             }
-
-            return output;
         }
 
         /// <summary>
         /// Scales the mat4 by the dimensions in the given vec3
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the matrix to scale</param>
-        /// <param name="v">the vec3 to scale the matrix by</param>
-        /// <returns></returns>
-        public static float[] Scale(float[] output, float[] a, float[] v)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the matrix to scale</param>
+        /// <param name="v">{vec3} v the vec3 to scale the matrix by</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Scale(Span<float> output, ReadOnlySpan<float> a, ReadOnlySpan<float> v)
         {
             float x = v[0]; float y = v[1]; float z = v[2];
 
@@ -490,29 +402,18 @@ namespace Vintagestory.API.MathTools
             output[13] = a[13];
             output[14] = a[14];
             output[15] = a[15];
-            return output;
         }
-
-        public static void SimpleScaleMatrix(Span<float> matrix, float x, float y, float z)
-        {
-            matrix.Clear();
-            matrix[0] = x;
-            matrix[5] = y;
-            matrix[10] = z;
-            matrix[15] = 1f;
-        }
-
 
         /// <summary>
         /// Scales the mat4 by the dimensions in the given vec3
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the matrix to scale</param>
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the matrix to scale</param>
         /// <param name="xScale"></param>
         /// <param name="yScale"></param>
         /// <param name="zScale"></param>
-        /// <returns></returns>
-        public static float[] Scale(float[] output, float[] a, float xScale, float yScale, float zScale)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Scale(Span<float> output, ReadOnlySpan<float> a, float xScale, float yScale, float zScale)
         {
             output[0] = a[0] * xScale;
             output[1] = a[1] * xScale;
@@ -530,18 +431,17 @@ namespace Vintagestory.API.MathTools
             output[13] = a[13];
             output[14] = a[14];
             output[15] = a[15];
-            return output;
         }
 
         /// <summary>
         /// Rotates a mat4 by the given angle
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the matrix to rotate</param>
-        /// <param name="rad">the angle to rotate the matrix by</param>
-        /// <param name="axis">the axis to rotate around</param>
-        /// <returns></returns>
-        public static float[] Rotate(float[] output, float[] a, float rad, float[] axis)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the matrix to rotate</param>
+        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
+        /// <param name="axis">{vec3} axis the axis to rotate around</param>
+        /// <returns><see langword="true"/> if the operation was successful</returns>
+        public static bool Rotate(Span<float> output, ReadOnlySpan<float> a, float rad, ReadOnlySpan<float> axis)
         {
             float x = axis[0]; float y = axis[1]; float z = axis[2];
             float len = GameMath.Sqrt(x * x + y * y + z * z);
@@ -553,7 +453,7 @@ namespace Vintagestory.API.MathTools
             float b10; float b11; float b12;
             float b20; float b21; float b22;
 
-            if (GlMatrixMathf.Abs(len) < GlMatrixMathf.GLMAT_EPSILON()) { return null; }
+            if (Math.Abs(len) < GLMAT_EPSILON) { return false; }
 
             len = 1 / len;
             x *= len;
@@ -595,17 +495,16 @@ namespace Vintagestory.API.MathTools
                 output[14] = a[14];
                 output[15] = a[15];
             }
-            return output;
+            return true;
         }
 
         /// <summary>
         /// Rotates a matrix by the given angle around the X axis
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the matrix to rotate</param>
-        /// <param name="rad">the angle to rotate the matrix by</param>
-        /// <returns></returns>
-        public static float[] RotateX(float[] output, float[] a, float rad)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the matrix to rotate</param>
+        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
+        public static void RotateX(Span<float> output, ReadOnlySpan<float> a, float rad)
         {
             float s = GameMath.Sin(rad);
             float c = GameMath.Cos(rad);
@@ -640,17 +539,15 @@ namespace Vintagestory.API.MathTools
             output[9] = a21 * c - a11 * s;
             output[10] = a22 * c - a12 * s;
             output[11] = a23 * c - a13 * s;
-            return output;
         }
 
         /// <summary>
         /// Rotates a matrix by the given angle around the Y axis
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the matrix to rotate</param>
-        /// <param name="rad">the angle to rotate the matrix by</param>
-        /// <returns></returns>
-        public static float[] RotateY(float[] output, float[] a, float rad)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the matrix to rotate</param>
+        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
+        public static void RotateY(Span<float> output, ReadOnlySpan<float> a, float rad)
         {
             float s = GameMath.Sin(rad);
             float c = GameMath.Cos(rad);
@@ -685,17 +582,15 @@ namespace Vintagestory.API.MathTools
             output[9] = a01 * s + a21 * c;
             output[10] = a02 * s + a22 * c;
             output[11] = a03 * s + a23 * c;
-            return output;
         }
 
         /// <summary>
         /// Rotates a matrix by the given angle around the Z axis
         /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the matrix to rotate</param>
-        /// <param name="rad">the angle to rotate the matrix by</param>
-        /// <returns></returns>
-        public static float[] RotateZ(float[] output, float[] a, float rad)
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the matrix to rotate</param>
+        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
+        public static void RotateZ(Span<float> output, ReadOnlySpan<float> a, float rad)
         {
             float s = GameMath.Sin(rad);
             float c = GameMath.Cos(rad);
@@ -730,44 +625,6 @@ namespace Vintagestory.API.MathTools
             output[5] = a11 * c - a01 * s;
             output[6] = a12 * c - a02 * s;
             output[7] = a13 * c - a03 * s;
-            return output;
-        }
-
-
-        /// <summary>
-        /// Provides a composite rotation matrix, equivalent to RotateX followed by RotateY followed by RotateZ
-        /// <br/>Here we work on a Span (which may be on the stack) for higher performance
-        /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="radX"></param>
-        /// <param name="radY"></param>
-        /// <param name="radZ"></param>
-        public static void RotateXYZ(Span<float> matrix, float radX, float radY, float radZ)
-        {
-            float sx = GameMath.Sin(radX);
-            float cx = GameMath.Cos(radX);
-            float sy = GameMath.Sin(radY);
-            float cy = GameMath.Cos(radY);
-            float sz = GameMath.Sin(radZ);
-            float cz = GameMath.Cos(radZ);
-            float a01 = sx * sy;
-            float a02 = - cx * sy;
-            matrix[0] = cy * cz;
-            matrix[1] = a01 * cz + cx * sz;
-            matrix[2] = a02 * cz + sx * sz;
-            matrix[3] = 0f;
-            matrix[4] = -cy * sz;
-            matrix[5] = cx * cz - a01 * sz;
-            matrix[6] = sx * cz - a02 * sz;
-            matrix[7] = 0f;
-            matrix[8] = sy;
-            matrix[9] = - sx * cy;
-            matrix[10] = cx * cy;
-            matrix[11] = 0f;
-            matrix[12] = 0f;
-            matrix[13] = 0f;
-            matrix[14] = 0f;
-            matrix[15] = 1f;
         }
 
         /// <summary>
@@ -779,11 +636,10 @@ namespace Vintagestory.API.MathTools
         ///     quat4.toMat4(quat, quatMat);
         ///     mat4.multiply(dest, quatMat);
         /// </summary>
-        /// <param name="output">mat4 receiving operation result</param>
-        /// <param name="q">Rotation quaternion</param>
-        /// <param name="v">Translation vector</param>
-        /// <returns></returns>
-        public static float[] FromRotationTranslation(float[] output, float[] q, float[] v)
+        /// <param name="output">{mat4} out mat4 receiving operation result</param>
+        /// <param name="q">{quat4} q Rotation quaternion</param>
+        /// <param name="v">{vec3} v Translation vector</param>
+        public static void FromRotationTranslation(Span<float> output, ReadOnlySpan<float> q, ReadOnlySpan<float> v)
         {
             // Quaternion math
             float x = q[0]; float y = q[1]; float z = q[2]; float w = q[3];
@@ -817,17 +673,14 @@ namespace Vintagestory.API.MathTools
             output[13] = v[1];
             output[14] = v[2];
             output[15] = 1;
-
-            return output;
         }
 
         /// <summary>
         /// Calculates a 4x4 matrix from the given quaternion
         /// </summary>
-        /// <param name="output">mat4 receiving operation result</param>
-        /// <param name="q">Quaternion to create matrix from</param>
-        /// <returns></returns>
-        public static float[] FromQuat(float[] output, float[] q)
+        /// <param name="output">{mat4} out mat4 receiving operation result</param>
+        /// <param name="q">{quat} q Quaternion to create matrix from</param>
+        public static void FromQuat(Span<float> output, ReadOnlySpan<float> q)
         {
             float x = q[0]; float y = q[1]; float z = q[2]; float w = q[3];
             float x2 = x + x;
@@ -863,32 +716,30 @@ namespace Vintagestory.API.MathTools
             output[13] = 0;
             output[14] = 0;
             output[15] = 1;
-
-            return output;
         }
 
         /// <summary>
         /// Generates a frustum matrix with the given bounds
         /// </summary>
-        /// <param name="output">mat4 frustum matrix will be written into</param>
-        /// <param name="left">Left bound of the frustum</param>
-        /// <param name="right">Right bound of the frustum</param>
-        /// <param name="bottom">Bottom bound of the frustum</param>
-        /// <param name="top">Top bound of the frustum</param>
-        /// <param name="near">Near bound of the frustum</param>
-        /// <param name="far">Far bound of the frustum</param>
-        /// <returns></returns>
-        public static float[] Frustum(float[] output, float left, float right, float bottom, float top, float near, float far)
+        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
+        /// <param name="left">{Number} left Left bound of the frustum</param>
+        /// <param name="right">{Number} right Right bound of the frustum</param>
+        /// <param name="bottom">{Number} bottom Bottom bound of the frustum</param>
+        /// <param name="top">{Number} top Top bound of the frustum</param>
+        /// <param name="near">{Number} near Near bound of the frustum</param>
+        /// <param name="far">{Number} far Far bound of the frustum</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Frustum(Span<float> output, float left, float right, float bottom, float top, float near, float far)
         {
             float rl = 1 / (right - left);
             float tb = 1 / (top - bottom);
             float nf = 1 / (near - far);
-            output[0] = (near * 2) * rl;
+            output[0] = (near * 2f) * rl;
             output[1] = 0;
             output[2] = 0;
             output[3] = 0;
             output[4] = 0;
-            output[5] = (near * 2) * tb;
+            output[5] = (near * 2f) * tb;
             output[6] = 0;
             output[7] = 0;
             output[8] = (right + left) * rl;
@@ -897,24 +748,23 @@ namespace Vintagestory.API.MathTools
             output[11] = -1;
             output[12] = 0;
             output[13] = 0;
-            output[14] = (far * near * 2) * nf;
+            output[14] = (far * near * 2f) * nf;
             output[15] = 0;
-            return output;
         }
 
         /// <summary>
         /// Generates a perspective projection matrix with the given bounds
         /// </summary>
-        /// <param name="output">mat4 frustum matrix will be written into</param>
-        /// <param name="fovy">Vertical field of view in radians</param>
-        /// <param name="aspect">Aspect ratio. typically viewport width/height</param>
-        /// <param name="near">Near bound of the frustum</param>
-        /// <param name="far">Far bound of the frustum</param>
-        /// <returns></returns>
-        public static float[] Perspective(float[] output, float fovy, float aspect, float near, float far)
+        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
+        /// <param name="fovy">{number} fovy Vertical field of view in radians</param>
+        /// <param name="aspect">{number} aspect Aspect ratio. typically viewport width/height</param>
+        /// <param name="near">{number} near Near bound of the frustum</param>
+        /// <param name="far">{number} far Far bound of the frustum</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Perspective(Span<float> output, float fovy, float aspect, float near, float far)
         {
             float one = 1;
-            float f = one / GameMath.Tan(fovy / 2);
+            float f = one / GameMath.Tan(fovy / 2f);
             float nf = 1 / (near - far);
             output[0] = f / aspect;
             output[1] = 0;
@@ -930,55 +780,51 @@ namespace Vintagestory.API.MathTools
             output[11] = -1;
             output[12] = 0;
             output[13] = 0;
-            output[14] = (2 * far * near) * nf;
+            output[14] = (2f * far * near) * nf;
             output[15] = 0;
-            return output;
         }
 
         /// <summary>
         /// Generates a orthogonal projection matrix with the given bounds
         /// </summary>
-        /// <param name="output">mat4 frustum matrix will be written into</param>
-        /// <param name="left">Left bound of the frustum</param>
-        /// <param name="right">Right bound of the frustum</param>
-        /// <param name="bottom">Bottom bound of the frustum</param>
-        /// <param name="top">Top bound of the frustum</param>
-        /// <param name="near">Near bound of the frustum</param>
-        /// <param name="far">Far bound of the frustum</param>
-        /// <returns></returns>
-        public static float[] Ortho(float[] output, float left, float right, float bottom, float top, float near, float far)
+        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
+        /// <param name="left">{number} left Left bound of the frustum</param>
+        /// <param name="right">{number} right Right bound of the frustum</param>
+        /// <param name="bottom">{number} bottom Bottom bound of the frustum</param>
+        /// <param name="top">{number} top Top bound of the frustum</param>
+        /// <param name="near">{number} near Near bound of the frustum</param>
+        /// <param name="far">{number} far Far bound of the frustum</param>
+        public static void Ortho(Span<float> output, float left, float right, float bottom, float top, float near, float far)
         {
             float lr = 1 / (left - right);
             float bt = 1 / (bottom - top);
             float nf = 1 / (near - far);
-            output[0] = -2 * lr;
+            output[0] = -2f * lr;
             output[1] = 0;
             output[2] = 0;
             output[3] = 0;
             output[4] = 0;
-            output[5] = -2 * bt;
+            output[5] = -2f * bt;
             output[6] = 0;
             output[7] = 0;
             output[8] = 0;
             output[9] = 0;
-            output[10] = 2 * nf;
+            output[10] = 2f * nf;
             output[11] = 0;
             output[12] = (left + right) * lr;
             output[13] = (top + bottom) * bt;
             output[14] = (far + near) * nf;
             output[15] = 1;
-            return output;
         }
 
         /// <summary>
         /// Generates a look-at matrix with the given eye position, focal point, and up axis
         /// </summary>
-        /// <param name="output">mat4 frustum matrix will be written into</param>
-        /// <param name="eye">Position of the viewer</param>
-        /// <param name="center">Point the viewer is looking at</param>
-        /// <param name="up">vec3 pointing up</param>
-        /// <returns></returns>
-        public static float[] LookAt(float[] output, float[] eye, float[] center, float[] up)
+        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
+        /// <param name="eye">{vec3} eye Position of the viewer</param>
+        /// <param name="center">{vec3} center Point the viewer is looking at</param>
+        /// <param name="up">{vec3} up vec3 pointing up</param>
+        public static void LookAt(Span<float> output, ReadOnlySpan<float> eye, ReadOnlySpan<float> center, ReadOnlySpan<float> up)
         {
             float x0; float x1; float x2; float y0; float y1; float y2; float z0; float z1; float z2; float len;
             float eyex = eye[0];
@@ -991,11 +837,12 @@ namespace Vintagestory.API.MathTools
             float centery = center[1];
             float centerz = center[2];
 
-            if (GlMatrixMathf.Abs(eyex - centerx) < GlMatrixMathf.GLMAT_EPSILON() &&
-                GlMatrixMathf.Abs(eyey - centery) < GlMatrixMathf.GLMAT_EPSILON() &&
-                GlMatrixMathf.Abs(eyez - centerz) < GlMatrixMathf.GLMAT_EPSILON())
+            if (Math.Abs(eyex - centerx) < GLMAT_EPSILON &&
+                Math.Abs(eyey - centery) < GLMAT_EPSILON &&
+                Math.Abs(eyez - centerz) < GLMAT_EPSILON)
             {
-                return Mat4f.Identity(output);
+                Identity(output);
+                return;
             }
 
             z0 = eyex - centerx;
@@ -1060,55 +907,10 @@ namespace Vintagestory.API.MathTools
             output[13] = -(y0 * eyex + y1 * eyey + y2 * eyez);
             output[14] = -(z0 * eyex + z1 * eyey + z2 * eyez);
             output[15] = 1;
-
-            return output;
         }
 
-        /// <summary>
-        /// Multiply the matrix with a vec4. Reference: http://mathinsight.org/matrix_vector_multiplication
-        /// Returns a new vec4 vector
-        /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="vec4"></param>
-        /// <returns></returns>
-        public static float[] MulWithVec4(float[] matrix, float[] vec4)
-        {
-            float[] output = new float[] { 0, 0, 0, 0 };
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    output[row] += matrix[4 * col + row] * vec4[col];
-                }
-            }
-
-            return output;
-        }
-
-
-        public static float[] MulWithVec4(float[] matrix, float v1, float v2, float v3, float v4)
-        {
-            float[] output = new float[] { 0, 0, 0, 0 };
-
-            for (int row = 0; row < 4; row++)
-            {
-                output[row] += matrix[4 * 0 + row] * v1;
-                output[row] += matrix[4 * 1 + row] * v2;
-                output[row] += matrix[4 * 2 + row] * v3;
-                output[row] += matrix[4 * 3 + row] * v4;
-            }
-
-            return output;
-        }
-
-
-        public static void MulWithVec4(float[] matrix, float[] vec, float[] output)
-        {
-            MulWithVec4((Span<float>)matrix, vec, output);
-        }
-
-        public static void MulWithVec4(Span<float> matrix, float[] vec, float[] output)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MulVec4(Span<float> output, ReadOnlySpan<float> matrix, ReadOnlySpan<float> vec)
         {
             float vx = vec[0];
             float vy = vec[1];
@@ -1120,19 +922,11 @@ namespace Vintagestory.API.MathTools
             output[3] = matrix[3] * vx + matrix[7] * vy + matrix[11] * vz + matrix[15] * va;
         }
 
-
         /// <summary>
         /// Used for vec3 representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
         /// </summary>
-        public static void MulWithVec3(float[] matrix, float[] vec, float[] output)
-        {
-            MulWithVec3((Span<float>)matrix, vec, output);
-        }
-
-        /// <summary>
-        /// Used for vec3 representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
-        /// </summary>
-        public static void MulWithVec3(Span<float> matrix, float[] vec, float[] output)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MulVec3(Span<float> output, ReadOnlySpan<float> matrix, ReadOnlySpan<float> vec)
         {
             float x = vec[0];
             float y = vec[1];
@@ -1144,43 +938,51 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
-        /// The offset is used to index within the original and output arrays - e.g. in MeshData.xyz
         /// </summary>
-        public static void MulWithVec3_Position(float[] matrix, float[] vec, float[] output, int offset)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MulVec3_Position(Span<float> output, ReadOnlySpan<float> matrix, ReadOnlySpan<float> vec)
         {
-            MulWithVec3_Position((Span<float>)matrix, vec, output, offset);
+            float x = vec[0];
+            float y = vec[1];
+            float z = vec[2];
+            output[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
         }
 
-        public static void MulWithVec3_Position(Span<float> matrix, float[] vec, float[] output, int offset)
+        /// <summary>
+        /// Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MulVec3_Position(Span<float> output, ReadOnlySpan<float> matrix, float x, float y, float z)
         {
-            float x = vec[offset + 0];
-            float y = vec[offset + 1];
-            float z = vec[offset + 2];
-            output[offset + 0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
-            output[offset + 1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
-            output[offset + 2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
-        }
-
-
-        public static void MulWithVec3_Position_AndScale(float[] matrix, float[] vec, float[] output, int offset, float scaleFactor)
-        {
-            float x = (vec[offset + 0] - 0.5f) * scaleFactor + 0.5f;
-            float y = vec[offset + 1] * scaleFactor;
-            float z = (vec[offset + 2] - 0.5f) *scaleFactor + 0.5f;
-            output[offset + 0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
-            output[offset + 1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
-            output[offset + 2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+            output[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
         }
 
 
-        public static void MulWithVec3_Position_AndScaleXY(float[] matrix, float[] vec, float[] output, int offset, float scaleFactor)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MulVec3_Position_AndScale(Span<float> output, ReadOnlySpan<float> matrix, ReadOnlySpan<float> vec, float scaleFactor)
         {
-            float x = (vec[offset + 0] - 0.5f) * scaleFactor + 0.5f;
-            float y = vec[offset + 1];
-            float z = (vec[offset + 2] - 0.5f) * scaleFactor + 0.5f;
-            output[offset + 0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
-            output[offset + 1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
-            output[offset + 2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+            float x = (vec[0] - 0.5f) * scaleFactor + 0.5f;
+            float y = vec[1] * scaleFactor;
+            float z = (vec[2] - 0.5f) * scaleFactor + 0.5f;
+            output[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+        }
+
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MulVec3_Position_AndScaleXY(Span<float> output, ReadOnlySpan<float> matrix, ReadOnlySpan<float> vec, float scaleFactor)
+        {
+            float x = (vec[0] - 0.5f) * scaleFactor + 0.5f;
+            float y = vec[1];
+            float z = (vec[2] - 0.5f) * scaleFactor + 0.5f;
+            output[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
         }
 
         /// <summary>
@@ -1188,162 +990,23 @@ namespace Vintagestory.API.MathTools
         /// The offset is used to index within the original and output arrays - e.g. in MeshData.xyz
         /// The origin is the origin for the rotation
         /// </summary>
-        public static void MulWithVec3_Position_WithOrigin(float[] matrix, float[] vec, float[] output, int offset, Vec3f origin)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MulVec3_Position_WithOrigin(Span<float> output, ReadOnlySpan<float> matrix, ReadOnlySpan<float> vec, ReadOnlySpan<float> origin)
         {
-            MulWithVec3_Position_WithOrigin((Span<float>)matrix, vec, output, offset, origin);
+            float vx = vec[0] - origin[0];
+            float vy = vec[1] - origin[1];
+            float vz = vec[2] - origin[2];
+            output[0] = origin[0] + matrix[0] * vx + matrix[4] * vy + matrix[8] * vz + matrix[12];
+            output[1] = origin[1] + matrix[1] * vx + matrix[5] * vy + matrix[9] * vz + matrix[13];
+            output[2] = origin[2] + matrix[2] * vx + matrix[6] * vy + matrix[10] * vz + matrix[14];
         }
 
-        public static void MulWithVec3_Position_WithOrigin(Span<float> matrix, float[] vec, float[] output, int offset, Vec3f origin)
-        {
-            float vx = vec[offset + 0] - origin.X;
-            float vy = vec[offset + 1] - origin.Y;
-            float vz = vec[offset + 2] - origin.Z;
-            output[offset + 0] = origin.X + matrix[0] * vx + matrix[4] * vy + matrix[8] * vz + matrix[12];
-            output[offset + 1] = origin.Y + matrix[1] * vx + matrix[5] * vy + matrix[9] * vz + matrix[13];
-            output[offset + 2] = origin.Z + matrix[2] * vx + matrix[6] * vy + matrix[10] * vz + matrix[14];
-        }
-
-
-        /// <summary>
-        /// Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
-        /// </summary>
-        public static void MulWithVec3_Position(float[] matrix, float x, float y, float z, Vec3f output)
-        {
-            output.X = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
-            output.Y = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
-            output.Z = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
-        }
-
-
-        /// <summary>
-        /// Used for Vec3f representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
-        /// </summary>
-        public static void MulWithVec3(float[] matrix, Vec3f vec, Vec3f output)
-        {
-            output.X = matrix[0] * vec.X + matrix[4] * vec.Y + matrix[8] * vec.Z;
-            output.Y = matrix[1] * vec.X + matrix[5] * vec.Y + matrix[9] * vec.Z;
-            output.Z = matrix[2] * vec.X + matrix[6] * vec.Y + matrix[10] * vec.Z;
-        }
-
-
-        /// <summary>
-        /// Used for x,y,z representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
-        /// </summary>
-        public static FastVec3f MulWithVec3(float[] matrix, float x, float y, float z)
-        {
-            float xOut = matrix[0] * x + matrix[4] * y + matrix[8] * z;
-            float yOut = matrix[1] * x + matrix[5] * y + matrix[9] * z;
-            float zOut = matrix[2] * x + matrix[6] * y + matrix[10] * z;
-            return new FastVec3f(xOut, yOut, zOut);
-        }
-
-
-        public static BlockFacing MulWithVec3_BlockFacing(float[] matrix, Vec3f vec)
-        {
-            return MulWithVec3_BlockFacing((Span<float>) matrix, vec);
-        }
-
-        public static BlockFacing MulWithVec3_BlockFacing(Span<float> matrix, Vec3f vec)
-        {
-            float x = matrix[0] * vec.X + matrix[4] * vec.Y + matrix[8] * vec.Z;
-            float y = matrix[1] * vec.X + matrix[5] * vec.Y + matrix[9] * vec.Z;
-            float z = matrix[2] * vec.X + matrix[6] * vec.Y + matrix[10] * vec.Z;
-            return BlockFacing.FromVector(x, y, z);
-        }
-
-
-        public static double[] MulWithVec4(float[] matrix, double[] vec4)
-        {
-            double[] output = new double[] { 0, 0, 0, 0 };
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    output[row] += matrix[4 * col + row] * vec4[col];
-                }
-            }
-
-            return output;
-        }
-
-        /// <summary>
-        /// Multiply the matrix with a vec4. Reference: http://mathinsight.org/matrix_vector_multiplication
-        /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="vec4"></param>
-        /// <param name="outVal"></param>
-        /// <returns></returns>
-        public static void MulWithVec4(float[] matrix, float[] vec4, Vec4f outVal)
-        {
-            outVal.Set(0, 0, 0, 0);
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    outVal[row] += matrix[4 * col + row] * vec4[col];
-                }
-            }
-        }
-
-
-
-        /// <summary>
-        /// Multiply the matrix with a vec4. Reference: http://mathinsight.org/matrix_vector_multiplication
-        /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="inVal"></param>
-        /// <param name="outVal"></param>
-        public static void MulWithVec4(float[] matrix, Vec4d inVal, Vec4d outVal)
-        {
-            outVal.Set(0, 0, 0, 0);
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    outVal[row] += matrix[4 * col + row] * inVal[col];
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// Multiply the matrix with a vec4. Reference: http://mathinsight.org/matrix_vector_multiplication
-        /// 
-        /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="inVal"></param>
-        /// <param name="outVal"></param>
-        /// <returns></returns>
-        public static void MulWithVec4(float[] matrix, Vec4f inVal, Vec4f outVal)
-        {
-            outVal.Set(0, 0, 0, 0);
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    outVal[row] += matrix[4 * col + row] * inVal[col];
-                }
-            }
-        }
-
-        public static void ExtractEulerAngles(float[] m, ref float thetaX, ref float thetaY, ref float thetaZ)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void ExtractEulerAngles(ReadOnlySpan<float> m, ref float thetaX, ref float thetaY, ref float thetaZ)
         {
             float sinY = m[8];
-            if (Math.Abs(sinY) == 1f)
+            if (Math.Abs(sinY) == 0)
             {
-                //    thetaZ = sinY * (float)Math.Atan2(-m[6], m[5]);
-                //    thetaY = -sinY * GameMath.PIHALF;
-                //    thetaX = 0;
-                //}
-                //else
-                //{
-                //    thetaX = (float)Math.Atan2(m[9], m[10]);
-                //    thetaY = GameMath.Asin(-sinY);
-                //    thetaZ = (float)Math.Atan2(m[4], m[0]);
                 thetaX = sinY * (float)Math.Atan2(m[1], m[5]);
                 thetaY = sinY * GameMath.PIHALF;
                 thetaZ = 0;
@@ -1356,24 +1019,21 @@ namespace Vintagestory.API.MathTools
             }
         }
 
-        class GlMatrixMathf
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void ExtractEulerAngles(Span<float> output, ReadOnlySpan<float> m)
         {
-            public static float Abs(float len)
+            float sinY = m[8];
+            if (Math.Abs(sinY) == 1)
             {
-                if (len < 0)
-                {
-                    return -len;
-                }
-                else
-                {
-                    return len;
-                }
+                output[0] = sinY * (float)Math.Atan2(m[1], m[5]);
+                output[1] = sinY * GameMath.PIHALF;
+                output[2] = 0;
             }
-
-            public static float GLMAT_EPSILON()
+            else
             {
-                float one = 1;
-                return one / 1000000;
+                output[0] = (float)Math.Atan2(-m[9], m[10]);
+                output[1] = GameMath.Asin(sinY);
+                output[2] = (float)Math.Atan2(-m[4], m[0]);
             }
         }
     }

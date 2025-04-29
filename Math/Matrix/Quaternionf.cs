@@ -26,7 +26,7 @@ using System;
 
 namespace Vintagestory.API.MathTools
 {
-    public class Quaternionf
+    public partial class Quaternionf
     {
         /// <summary>
         /// Creates a new identity quat
@@ -585,7 +585,7 @@ namespace Vintagestory.API.MathTools
     }
 
 
-    class QVec4f
+    partial class QVec4f
     {
 
         /// <summary>
@@ -1033,7 +1033,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Don't use this class unless you need it to interoperate with Mat4d
     /// </summary>
-    public class Vec3Utilsf
+    public partial class Vec3Utilsf
     {
         /// Creates a new, empty vec3
         /// Returns {vec3} a new 3D vector.

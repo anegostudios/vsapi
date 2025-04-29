@@ -1,32 +1,38 @@
-﻿using Vintagestory.API.MathTools;
+﻿using System;
+using System.Runtime.CompilerServices;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
     public partial class MatrixToolsd
     {
-        public static Vec3d Project(Vec3d pos, double[] projection, double[] view, int viewportWidth, int viewportHeight)
+        public static void Project(Span<double> output, ReadOnlySpan<double> pos,
+            ReadOnlySpan<double> projection, ReadOnlySpan<double> view,
+            int viewportWidth, int viewportHeight)
         {
-            double[] outmat = new double[16];
+            Span<double> outmat = stackalloc double[16];
             Mat4d.Mul(outmat, projection, view);
 
-            double[] outpos = Mat4d.MulWithVec4(outmat, new double[] { pos.X, pos.Y, pos.Z, 1 });
+            ReadOnlySpan<double> pos4 = stackalloc double[4] { pos[0], pos[1], pos[2], 1 };
+            Span<double> outpos = stackalloc double[4];
+            Mat4d.MulVec4(outpos, outmat, pos4);
 
-            return new Vec3d(
-                (outpos[0] / outpos[3] + 1) * (viewportWidth / 2),
-                (outpos[1] / outpos[3] + 1) * (viewportHeight / 2),
-                outpos[2]
-            );
+            output[0] = (outpos[0] / outpos[3] + 1) * (viewportWidth / 2);
+            output[1] = (outpos[1] / outpos[3] + 1) * (viewportHeight / 2);
+            output[2] = outpos[2];
         }
-        
 
-        public static void MatFollowPlayer(double[] m)
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MatFollowPlayer(Span<double> m)
         {
             m[12] = 0;
             m[13] = 0;
             m[14] = 0;
         }
 
-        public static void LoadPlayerFacingMatrix(double[] m)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void LoadPlayerFacingMatrix(Span<double> m)
         {
             // http://stackoverflow.com/a/5487981
             // | d 0 0 T.x |
@@ -57,13 +63,11 @@ namespace Vintagestory.API.Client
 
             Mat4d.RotateX(m, m, GameMath.PI);
 
-           // game.GlLoadMatrix(m);
+            // game.GlLoadMatrix(m);
         }
 
-
-        
-
-        public static void MatFacePlayer(double[] m)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MatFacePlayer(Span<double> m)
         {
             // http://stackoverflow.com/a/5487981
             // | d 0 0 T.x |

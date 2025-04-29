@@ -7,12 +7,12 @@
 //  * Redistributions of source code must retain the above copyright notice, this
 //    list of conditions and the following disclaimer.
 //  * Redistributions in binary form must reproduce the above copyright notice,
-//    this list of conditions and the following disclaimer in the documentation 
+//    this list of conditions and the following disclaimer in the documentation
 //    and/or other materials provided with the distribution.
 
 //THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 //ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-//WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+//WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 //DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
 //ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 //(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
@@ -21,36 +21,20 @@
 //(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+using System;
+using System.Runtime.CompilerServices;
+
 namespace Vintagestory.API.MathTools
 {
     public partial class Mat3f
     {
         /// <summary>
-        /// Creates a new identity mat3
-        /// </summary>
-        /// <returns>new 3x3 matrix</returns>
-        public static float[] Create()
-        {
-            float[] output = new float[9];
-            output[0] = 1;
-            output[1] = 0;
-            output[2] = 0;
-            output[3] = 0;
-            output[4] = 1;
-            output[5] = 0;
-            output[6] = 0;
-            output[7] = 0;
-            output[8] = 1;
-            return output;
-        }
-
-        /// <summary>
         /// Copies the upper-left 3x3 values into the given mat3.
         /// </summary>
         /// <param name="output">the receiving 3x3 matrix</param>
         /// <param name="a">the source 4x4 matrix</param>
-        /// <returns>output</returns>
-        public static float[] FromMat4(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void FromMat4(Span<float> output, ReadOnlySpan<float> a)
         {
             output[0] = a[0];
             output[1] = a[1];
@@ -61,66 +45,24 @@ namespace Vintagestory.API.MathTools
             output[6] = a[8];
             output[7] = a[9];
             output[8] = a[10];
-            return output;
-        }
-
-        /// <summary>
-        /// Creates a new mat3 initialized with values from an existing matrix
-        /// </summary>
-        /// <param name="a">matrix to clone</param>
-        /// <returns>new 3x3 matrix</returns>
-        public static float[] CloneIt(float[] a)
-        {
-            float[] output = new float[9];
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            output[3] = a[3];
-            output[4] = a[4];
-            output[5] = a[5];
-            output[6] = a[6];
-            output[7] = a[7];
-            output[8] = a[8];
-            return output;
-        }
-
-        /// <summary>
-        /// Copy the values from one mat3 to another
-        /// </summary>
-        /// <param name="output">the receiving matrix</param>
-        /// <param name="a">the source matrix</param>
-        /// <returns>output</returns>
-        public static float[] Copy(float[] output, float[] a)
-        {
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            output[3] = a[3];
-            output[4] = a[4];
-            output[5] = a[5];
-            output[6] = a[6];
-            output[7] = a[7];
-            output[8] = a[8];
-            return output;
         }
 
         /// <summary>
         /// Set a mat3 to the identity matrix
         /// </summary>
         /// <param name="output">the receiving matrix</param>
-        /// <returns>output</returns>
-        public static float[] Identity_(float[] output)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Identity(Span<float> output)
         {
-            output[0] = 1;
-            output[1] = 0;
-            output[2] = 0;
-            output[3] = 0;
-            output[4] = 1;
-            output[5] = 0;
-            output[6] = 0;
-            output[7] = 0;
-            output[8] = 1;
-            return output;
+            output[0] = 1f;
+            output[1] = 0f;
+            output[2] = 0f;
+            output[3] = 0f;
+            output[4] = 1f;
+            output[5] = 0f;
+            output[6] = 0f;
+            output[7] = 0f;
+            output[8] = 1f;
         }
 
         /// <summary>
@@ -128,8 +70,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the source matrix</param>
-        /// <returns>output</returns>
-        public static float[] Transpose(float[] output, float[] a)
+        public static void Transpose(Span<float> output, ReadOnlySpan<float> a)
         {
             // If we are transposing ourselves we can skip a few steps but have to cache some values
             if (output == a)
@@ -156,8 +97,6 @@ namespace Vintagestory.API.MathTools
                 output[7] = a[5];
                 output[8] = a[8];
             }
-
-            return output;
         }
 
         /// <summary>
@@ -165,8 +104,8 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the source matrix</param>
-        /// <returns>output</returns>
-        public static float[] Invert(float[] output, float[] a)
+        /// <returns><see langword="true"/> if the operation was successful</returns>
+        public static bool Invert(Span<float> output, ReadOnlySpan<float> a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2];
             float a10 = a[3]; float a11 = a[4]; float a12 = a[5];
@@ -179,11 +118,11 @@ namespace Vintagestory.API.MathTools
             // Calculate the determinant
             float det = a00 * b01 + a01 * b11 + a02 * b21;
 
-            if (det == 0)
+            if (det == 0f)
             {
-                return null;
+                return false;
             }
-            float one = 1;
+            float one = 1f;
             det = one / det;
 
             output[0] = b01 * det;
@@ -195,7 +134,7 @@ namespace Vintagestory.API.MathTools
             output[6] = b21 * det;
             output[7] = (-a21 * a00 + a01 * a20) * det;
             output[8] = (a11 * a00 - a01 * a10) * det;
-            return output;
+            return true;
         }
 
         /// <summary>
@@ -203,8 +142,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the source matrix</param>
-        /// <returns>output</returns>
-        public static float[] Adjoint(float[] output, float[] a)
+        public static void Adjoint(Span<float> output, ReadOnlySpan<float> a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2];
             float a10 = a[3]; float a11 = a[4]; float a12 = a[5];
@@ -219,15 +157,13 @@ namespace Vintagestory.API.MathTools
             output[6] = (a10 * a21 - a11 * a20);
             output[7] = (a01 * a20 - a00 * a21);
             output[8] = (a00 * a11 - a01 * a10);
-            return output;
         }
 
         /// <summary>
         /// Calculates the determinant of a mat3
         /// </summary>
         /// <param name="a">the source matrix</param>
-        /// <returns>determinant of a</returns>
-        public static float Determinant(float[] a)
+        public static float Determinant(ReadOnlySpan<float> a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2];
             float a10 = a[3]; float a11 = a[4]; float a12 = a[5];
@@ -242,8 +178,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Multiply(float[] output, float[] a, float[] b)
+        public static void Multiply(Span<float> output, ReadOnlySpan<float> a, ReadOnlySpan<float> b)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2];
             float a10 = a[3]; float a11 = a[4]; float a12 = a[5];
@@ -264,15 +199,15 @@ namespace Vintagestory.API.MathTools
             output[6] = b20 * a00 + b21 * a10 + b22 * a20;
             output[7] = b20 * a01 + b21 * a11 + b22 * a21;
             output[8] = b20 * a02 + b21 * a12 + b22 * a22;
-            return output;
         }
 
         /// <summary>
-        /// Alias for <see cref="Multiply(float[], float[], float[])"/>
+        /// Alias for <see cref="Multiply(Span{float}, ReadOnlySpan{float}, ReadOnlySpan{float})"/>
         /// </summary>
-        public static float[] Mul(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Mul(Span<float> output, ReadOnlySpan<float> a, ReadOnlySpan<float> b)
         {
-            return Multiply(output, a, b);
+            Multiply(output, a, b);
         }
 
         /// <summary>
@@ -281,8 +216,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the matrix to translate</param>
         /// <param name="v">vector to translate by</param>
-        /// <returns>output</returns>
-        public static float[] Translate(float[] output, float[] a, float[] v)
+        public static void Translate(Span<float> output, ReadOnlySpan<float> a, ReadOnlySpan<float> v)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2];
             float a10 = a[3]; float a11 = a[4]; float a12 = a[5];
@@ -300,7 +234,6 @@ namespace Vintagestory.API.MathTools
             output[6] = x * a00 + y * a10 + a20;
             output[7] = x * a01 + y * a11 + a21;
             output[8] = x * a02 + y * a12 + a22;
-            return output;
         }
 
         /// <summary>
@@ -309,8 +242,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the matrix to rotate</param>
         /// <param name="rad">the angle to rotate the matrix by</param>
-        /// <returns>output</returns>
-        public static float[] Rotate(float[] output, float[] a, float rad)
+        public static void Rotate(Span<float> output, ReadOnlySpan<float> a, float rad)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2];
             float a10 = a[3]; float a11 = a[4]; float a12 = a[5];
@@ -330,7 +262,6 @@ namespace Vintagestory.API.MathTools
             output[6] = a20;
             output[7] = a21;
             output[8] = a22;
-            return output;
         }
 
         /// <summary>
@@ -339,8 +270,8 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the matrix to rotate</param>
         /// <param name="v">the vec2 to scale the matrix by</param>
-        /// <returns>output</returns>
-        public static float[] Scale(float[] output, float[] a, float[] v)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Scale(Span<float> output, ReadOnlySpan<float> a, ReadOnlySpan<float> v)
         {
             float x = v[0]; float y = v[1];
 
@@ -355,7 +286,6 @@ namespace Vintagestory.API.MathTools
             output[6] = a[6];
             output[7] = a[7];
             output[8] = a[8];
-            return output;
         }
 
         /// <summary>
@@ -363,22 +293,20 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving matrix</param>
         /// <param name="a">the matrix to copy</param>
-        /// <returns>output</returns>
-        /// */
-        public static float[] FromMat2d(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void FromMat2d(Span<float> output, ReadOnlySpan<float> a)
         {
             output[0] = a[0];
             output[1] = a[1];
-            output[2] = 0;
+            output[2] = 0f;
 
             output[3] = a[2];
             output[4] = a[3];
-            output[5] = 0;
+            output[5] = 0f;
 
             output[6] = a[4];
             output[7] = a[5];
-            output[8] = 1;
-            return output;
+            output[8] = 1f;
         }
 
         /// <summary>
@@ -386,8 +314,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">mat3 receiving operation result</param>
         /// <param name="q">Quaternion to create matrix from</param>
-        /// <returns>output</returns>
-        public static float[] FromQuat(float[] output, float[] q)
+        public static void FromQuat(Span<float> output, ReadOnlySpan<float> q)
         {
             float x = q[0]; float y = q[1]; float z = q[2]; float w = q[3];
             float x2 = x + x;
@@ -404,19 +331,17 @@ namespace Vintagestory.API.MathTools
             float wy = w * y2;
             float wz = w * z2;
 
-            output[0] = 1 - (yy + zz);
+            output[0] = 1f - (yy + zz);
             output[3] = xy + wz;
             output[6] = xz - wy;
 
             output[1] = xy - wz;
-            output[4] = 1 - (xx + zz);
+            output[4] = 1f - (xx + zz);
             output[7] = yz + wx;
 
             output[2] = xz + wy;
             output[5] = yz - wx;
-            output[8] = 1 - (xx + yy);
-
-            return output;
+            output[8] = 1f - (xx + yy);
         }
 
         /// <summary>
@@ -424,8 +349,8 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">mat3 receiving operation result</param>
         /// <param name="a">Mat4 to derive the normal matrix from</param>
-        /// <returns>output</returns>
-        public static float[] NormalFromMat4(float[] output, float[] a)
+        /// <returns><see langword="true"/> if the operation was successful</returns>
+        public static bool NormalFromMat4(Span<float> output, ReadOnlySpan<float> a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
             float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
@@ -448,11 +373,11 @@ namespace Vintagestory.API.MathTools
             // Calculate the determinant
             float det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
 
-            if (det == 0)
+            if (det == 0f)
             {
-                return null;
+                return false;
             }
-            float one = 1;
+            float one = 1f;
             det = one / det;
 
             output[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
@@ -467,7 +392,7 @@ namespace Vintagestory.API.MathTools
             output[7] = (a32 * b02 - a30 * b05 - a33 * b01) * det;
             output[8] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
 
-            return output;
+            return true;
         }
     }
 }
