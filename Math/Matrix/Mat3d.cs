@@ -25,17 +25,10 @@ namespace Vintagestory.API.MathTools
 {
     public class Mat3d
     {
-        //    /**
-        // * @class 3x3 Matrix
-        // * @name mat3
-        // */
-        //var mat3 = {};
-
-        ///**
-        // * Creates a new identity mat3
-        // *
-        // * @returns {mat3} a new 3x3 matrix
-        // */
+        /// <summary>
+        /// Creates a new identity mat3
+        /// </summary>
+        /// <returns>new 3x3 matrix</returns>
         public static double[] Create()
         {
             double[] output = new double[9];
@@ -51,13 +44,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Copies the upper-left 3x3 values into the given mat3.
-        // *
-        // * @param {mat3} output the receiving 3x3 matrix
-        // * @param {mat4} a   the source 4x4 matrix
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Copies the upper-left 3x3 values into the given mat3.
+        /// </summary>
+        /// <param name="output">the receiving 3x3 matrix</param>
+        /// <param name="a">the source 4x4 matrix</param>
+        /// <returns>output</returns>
         public static double[] FromMat4(double[] output, double[] a)
         {
             output[0] = a[0];
@@ -72,12 +64,11 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Creates a new mat3 initialized with values from an existing matrix
-        // *
-        // * @param {mat3} a matrix to clone
-        // * @returns {mat3} a new 3x3 matrix
-        // */
+        /// <summary>
+        /// Creates a new mat3 initialized with values from an existing matrix
+        /// </summary>
+        /// <param name="a">matrix to clone</param>
+        /// <returns>new 3x3 matrix</returns>
         public static double[] CloneIt(double[] a)
         {
             double[] output = new double[9];
@@ -93,13 +84,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Copy the values from one mat3 to another
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the source matrix
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Copy the values from one mat3 to another
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns>output</returns>
         public static double[] Copy(double[] output, double[] a)
         {
             output[0] = a[0];
@@ -114,12 +104,11 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Set a mat3 to the identity matrix
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Set a mat3 to the identity matrix
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <returns>output</returns>
         public static double[] Identity_(double[] output)
         {
             output[0] = 1;
@@ -134,13 +123,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Transpose the values of a mat3
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the source matrix
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Transpose the values of a mat3
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns>output</returns>
         public static double[] Transpose(double[] output, double[] a)
         {
             // If we are transposing ourselves we can skip a few steps but have to cache some values
@@ -172,13 +160,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Inverts a mat3
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the source matrix
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Inverts a mat3
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns>output</returns>
         public static double[] Invert(double[] output, double[] a)
         {
             double a00 = a[0]; double a01 = a[1]; double a02 = a[2];
@@ -211,13 +198,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the adjugate of a mat3
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the source matrix
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Calculates the adjugate of a mat3
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns>output</returns>
         public static double[] Adjoint(double[] output, double[] a)
         {
             double a00 = a[0]; double a01 = a[1]; double a02 = a[2];
@@ -236,12 +222,11 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the determinant of a mat3
-        // *
-        // * @param {mat3} a the source matrix
-        // * @returns {Number} determinant of a
-        // */
+        /// <summary>
+        /// Calculates the determinant of a mat3
+        /// </summary>
+        /// <param name="a">the source matrix</param>
+        /// <returns>determinant of a</returns>
         public static double Determinant(double[] a)
         {
             double a00 = a[0]; double a01 = a[1]; double a02 = a[2];
@@ -251,14 +236,13 @@ namespace Vintagestory.API.MathTools
             return a00 * (a22 * a11 - a12 * a21) + a01 * (-a22 * a10 + a12 * a20) + a02 * (a21 * a10 - a11 * a20);
         }
 
-        ///**
-        // * Multiplies two mat3's
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the first operand
-        // * @param {mat3} b the second operand
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Multiplies two mat3's
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Multiply(double[] output, double[] a, double[] b)
         {
             double a00 = a[0]; double a01 = a[1]; double a02 = a[2];
@@ -283,22 +267,21 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Alias for {@link mat3.multiply}
-        // * @function
-        // */
+        /// <summary>
+        /// Alias for <see cref="Multiply(double[], double[], double[])"/>
+        /// </summary>
         public static double[] Mul(double[] output, double[] a, double[] b)
         {
             return Multiply(output, a, b);
         }
-        ///**
-        // * Translate a mat3 by the given vector
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the matrix to translate
-        // * @param {vec2} v vector to translate by
-        // * @returns {mat3} output
-        // */
+
+        /// <summary>
+        /// Translate a mat3 by the given vector
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to translate</param>
+        /// <param name="v">vector to translate by</param>
+        /// <returns>output</returns>
         public static double[] Translate(double[] output, double[] a, double[] v)
         {
             double a00 = a[0]; double a01 = a[1]; double a02 = a[2];
@@ -320,14 +303,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Rotates a mat3 by the given angle
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the matrix to rotate
-        // * @param {Number} rad the angle to rotate the matrix by
-        // * @returns {mat3} output
-        // */
+        /// <summary>
+        /// Rotates a mat3 by the given angle
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to rotate</param>
+        /// <param name="rad">the angle to rotate the matrix by</param>
+        /// <returns>output</returns>
         public static double[] Rotate(double[] output, double[] a, double rad)
         {
             double a00 = a[0]; double a01 = a[1]; double a02 = a[2];
@@ -351,14 +333,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Scales the mat3 by the dimensions in the given vec2
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat3} a the matrix to rotate
-        // * @param {vec2} v the vec2 to scale the matrix by
-        // * @returns {mat3} output
-        // **/
+        /// <summary>
+        /// Scales the mat3 by the dimensions in the given vec2
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to rotate</param>
+        /// <param name="v">the vec2 to scale the matrix by</param>
+        /// <returns>output</returns>
         public static double[] Scale(double[] output, double[] a, double[] v)
         {
             double x = v[0]; double y = v[1];
@@ -377,13 +358,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Copies the values from a mat2d into a mat3
-        // *
-        // * @param {mat3} output the receiving matrix
-        // * @param {mat2d} a the matrix to copy
-        // * @returns {mat3} output
-        // **/
+        /// <summary>
+        /// Copies the values from a mat2d into a mat3
+        /// </summary>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to copy</param>
+        /// <returns>output</returns>
         public static double[] FromMat2d(double[] output, double[] a)
         {
             output[0] = a[0];
@@ -400,14 +380,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        //* Calculates a 3x3 matrix from the given quaternion
-        //*
-        //* @param {mat3} output mat3 receiving operation result
-        //* @param {quat} q Quaternion to create matrix from
-        //*
-        //* @returns {mat3} output
-        //*/
+        /// <summary>
+        /// Calculates a 3x3 matrix from the given quaternion
+        /// </summary>
+        /// <param name="output">mat3 receiving operation result</param>
+        /// <param name="q">Quaternion to create matrix from</param>
+        /// <returns>output</returns>
         public static double[] FromQuat(double[] output, double[] q)
         {
             double x = q[0]; double y = q[1]; double z = q[2]; double w = q[3];
@@ -440,14 +418,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        //* Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
-        //*
-        //* @param {mat3} output mat3 receiving operation result
-        //* @param {mat4} a Mat4 to derive the normal matrix from
-        //*
-        //* @returns {mat3} output
-        //*/
+        /// <summary>
+        /// Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
+        /// </summary>
+        /// <param name="output">mat3 receiving operation result</param>
+        /// <param name="a">Mat4 to derive the normal matrix from</param>
+        /// <returns>output</returns>
         public static double[] NormalFromMat4(double[] output, double[] a)
         {
             double a00 = a[0]; double a01 = a[1]; double a02 = a[2]; double a03 = a[3];
@@ -492,25 +468,5 @@ namespace Vintagestory.API.MathTools
 
             return output;
         }
-
-        ///**
-        // * Returns a string representation of a mat3
-        // *
-        // * @param {mat3} mat matrix to represent as a string
-        // * @returns {String} string representation of the matrix
-        // */
-        //mat3.str = function (a) {
-        //    return 'mat3(' + a[0] + ', ' + a[1] + ', ' + a[2] + ', ' + 
-        //                    a[3] + ', ' + a[4] + ', ' + a[5] + ', ' + 
-        //                    a[6] + ', ' + a[7] + ', ' + a[8] + ')';
-        //};
-
-        //if(typeof(exports) !== 'undefined') {
-        //    exports.mat3 = mat3;
-        //}
-        void f()
-        {
-        }
     }
-
 }

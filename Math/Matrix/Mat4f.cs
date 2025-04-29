@@ -38,7 +38,7 @@ namespace Vintagestory.API.MathTools
         /// 2 6 10 14
         /// 3 7 11 15
         /// </summary>
-        /// <returns>{mat4} a new 4x4 matrix</returns>
+        /// <returns>new 4x4 matrix</returns>
         public static float[] Create()
         {
             float[] output = new float[16];  // a new array is automatically initialised to the default float value of 0f
@@ -54,7 +54,7 @@ namespace Vintagestory.API.MathTools
         /// Creates a new mat4 initialized with values from an existing matrix
         /// </summary>
         /// <param name="a">a matrix to clone</param>
-        /// <returns>{mat4} a new 4x4 matrix</returns>
+        /// <returns>new 4x4 matrix</returns>
         public static float[] CloneIt(float[] a)
         {
             float[] output = new float[16];
@@ -80,9 +80,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Copy the values from one mat4 to another
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the source matrix</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns></returns>
         public static float[] Copy(float[] output, float[] a)
         {
             output[0] = a[0];
@@ -107,8 +107,8 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Set a mat4 to the identity matrix
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <returns></returns>
         public static float[] Identity(float[] output)
         {
             output[0] = 1;
@@ -134,9 +134,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Set a mat4 to the identity matrix with a scale applied
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="output">the receiving matrix</param>
         /// <param name="scale"></param>
-        /// <returns>{mat4} out</returns>
+        /// <returns></returns>
         public static float[] Identity_Scaled(float[] output, float scale)
         {
             output[0] = scale;
@@ -162,9 +162,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Transpose the values of a mat4
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the source matrix</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns></returns>
         public static float[] Transpose(float[] output, float[] a)
         {
             // If we are transposing ourselves we can skip a few steps but have to cache some values
@@ -213,9 +213,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Inverts a mat4
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the source matrix</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns></returns>
         public static float[] Invert(float[] output, float[] a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
@@ -269,9 +269,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Calculates the adjugate of a mat4   
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the source matrix</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the source matrix</param>
+        /// <returns></returns>
         public static float[] Adjoint(float[] output, float[] a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
@@ -301,8 +301,8 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Calculates the determinant of a mat4
         /// </summary>
-        /// <param name="a">{mat4} a the source matrix</param>
-        /// <returns>{Number} determinant of a</returns>
+        /// <param name="a">the source matrix</param>
+        /// <returns>of a</returns>
         public static float Determinant(float[] a)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
@@ -331,10 +331,10 @@ namespace Vintagestory.API.MathTools
         /// Multiplies two mat4's
         /// 
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the first operand</param>
-        /// <param name="b">{mat4} b the second operand</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns></returns>
         public static float[] Multiply(float[] output, float[] a, float[] b)
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
@@ -385,12 +385,12 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Translate a mat4 by the given vector
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="input">{mat4} a the matrix to translate</param>
-        /// <param name="x">{vec3} v vector to translate by</param>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="input">the matrix to translate</param>
+        /// <param name="x">vector to translate by</param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        /// <returns>{mat4} out</returns>
+        /// <returns></returns>
         public static float[] Translate(float[] output, float[] input, float x, float y, float z)
         {
             if (input == output)
@@ -426,10 +426,10 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Translate a mat4 by the given vector
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="input">{mat4} a the matrix to translate</param>
-        /// <param name="translate">{vec3} v vector to translate by</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="input">the matrix to translate</param>
+        /// <param name="translate">vector to translate by</param>
+        /// <returns></returns>
         public static float[] Translate(float[] output, float[] input, float[] translate)
         {
             float x = translate[0]; float y = translate[1]; float z = translate[2];
@@ -466,10 +466,10 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Scales the mat4 by the dimensions in the given vec3
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the matrix to scale</param>
-        /// <param name="v">{vec3} v the vec3 to scale the matrix by</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to scale</param>
+        /// <param name="v">the vec3 to scale the matrix by</param>
+        /// <returns></returns>
         public static float[] Scale(float[] output, float[] a, float[] v)
         {
             float x = v[0]; float y = v[1]; float z = v[2];
@@ -506,12 +506,12 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Scales the mat4 by the dimensions in the given vec3
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the matrix to scale</param>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to scale</param>
         /// <param name="xScale"></param>
         /// <param name="yScale"></param>
         /// <param name="zScale"></param>
-        /// <returns>{mat4} out</returns>
+        /// <returns></returns>
         public static float[] Scale(float[] output, float[] a, float xScale, float yScale, float zScale)
         {
             output[0] = a[0] * xScale;
@@ -536,11 +536,11 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Rotates a mat4 by the given angle
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the matrix to rotate</param>
-        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
-        /// <param name="axis">{vec3} axis the axis to rotate around</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to rotate</param>
+        /// <param name="rad">the angle to rotate the matrix by</param>
+        /// <param name="axis">the axis to rotate around</param>
+        /// <returns></returns>
         public static float[] Rotate(float[] output, float[] a, float rad, float[] axis)
         {
             float x = axis[0]; float y = axis[1]; float z = axis[2];
@@ -601,10 +601,10 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Rotates a matrix by the given angle around the X axis
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the matrix to rotate</param>
-        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to rotate</param>
+        /// <param name="rad">the angle to rotate the matrix by</param>
+        /// <returns></returns>
         public static float[] RotateX(float[] output, float[] a, float rad)
         {
             float s = GameMath.Sin(rad);
@@ -646,10 +646,10 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Rotates a matrix by the given angle around the Y axis
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the matrix to rotate</param>
-        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to rotate</param>
+        /// <param name="rad">the angle to rotate the matrix by</param>
+        /// <returns></returns>
         public static float[] RotateY(float[] output, float[] a, float rad)
         {
             float s = GameMath.Sin(rad);
@@ -691,10 +691,10 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Rotates a matrix by the given angle around the Z axis
         /// </summary>
-        /// <param name="output">{mat4} out the receiving matrix</param>
-        /// <param name="a">{mat4} a the matrix to rotate</param>
-        /// <param name="rad">{Number} rad the angle to rotate the matrix by</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">the receiving matrix</param>
+        /// <param name="a">the matrix to rotate</param>
+        /// <param name="rad">the angle to rotate the matrix by</param>
+        /// <returns></returns>
         public static float[] RotateZ(float[] output, float[] a, float rad)
         {
             float s = GameMath.Sin(rad);
@@ -779,10 +779,10 @@ namespace Vintagestory.API.MathTools
         ///     quat4.toMat4(quat, quatMat);
         ///     mat4.multiply(dest, quatMat);
         /// </summary>
-        /// <param name="output">{mat4} out mat4 receiving operation result</param>
-        /// <param name="q">{quat4} q Rotation quaternion</param>
-        /// <param name="v">{vec3} v Translation vector</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">mat4 receiving operation result</param>
+        /// <param name="q">Rotation quaternion</param>
+        /// <param name="v">Translation vector</param>
+        /// <returns></returns>
         public static float[] FromRotationTranslation(float[] output, float[] q, float[] v)
         {
             // Quaternion math
@@ -824,9 +824,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Calculates a 4x4 matrix from the given quaternion
         /// </summary>
-        /// <param name="output">{mat4} out mat4 receiving operation result</param>
-        /// <param name="q">{quat} q Quaternion to create matrix from</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">mat4 receiving operation result</param>
+        /// <param name="q">Quaternion to create matrix from</param>
+        /// <returns></returns>
         public static float[] FromQuat(float[] output, float[] q)
         {
             float x = q[0]; float y = q[1]; float z = q[2]; float w = q[3];
@@ -870,14 +870,14 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Generates a frustum matrix with the given bounds
         /// </summary>
-        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
-        /// <param name="left">{Number} left Left bound of the frustum</param>
-        /// <param name="right">{Number} right Right bound of the frustum</param>
-        /// <param name="bottom">{Number} bottom Bottom bound of the frustum</param>
-        /// <param name="top">{Number} top Top bound of the frustum</param>
-        /// <param name="near">{Number} near Near bound of the frustum</param>
-        /// <param name="far">{Number} far Far bound of the frustum</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">mat4 frustum matrix will be written into</param>
+        /// <param name="left">Left bound of the frustum</param>
+        /// <param name="right">Right bound of the frustum</param>
+        /// <param name="bottom">Bottom bound of the frustum</param>
+        /// <param name="top">Top bound of the frustum</param>
+        /// <param name="near">Near bound of the frustum</param>
+        /// <param name="far">Far bound of the frustum</param>
+        /// <returns></returns>
         public static float[] Frustum(float[] output, float left, float right, float bottom, float top, float near, float far)
         {
             float rl = 1 / (right - left);
@@ -905,12 +905,12 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Generates a perspective projection matrix with the given bounds
         /// </summary>
-        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
-        /// <param name="fovy">{number} fovy Vertical field of view in radians</param>
-        /// <param name="aspect">{number} aspect Aspect ratio. typically viewport width/height</param>
-        /// <param name="near">{number} near Near bound of the frustum</param>
-        /// <param name="far">{number} far Far bound of the frustum</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">mat4 frustum matrix will be written into</param>
+        /// <param name="fovy">Vertical field of view in radians</param>
+        /// <param name="aspect">Aspect ratio. typically viewport width/height</param>
+        /// <param name="near">Near bound of the frustum</param>
+        /// <param name="far">Far bound of the frustum</param>
+        /// <returns></returns>
         public static float[] Perspective(float[] output, float fovy, float aspect, float near, float far)
         {
             float one = 1;
@@ -938,14 +938,14 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Generates a orthogonal projection matrix with the given bounds
         /// </summary>
-        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
-        /// <param name="left">{number} left Left bound of the frustum</param>
-        /// <param name="right">{number} right Right bound of the frustum</param>
-        /// <param name="bottom">{number} bottom Bottom bound of the frustum</param>
-        /// <param name="top">{number} top Top bound of the frustum</param>
-        /// <param name="near">{number} near Near bound of the frustum</param>
-        /// <param name="far">{number} far Far bound of the frustum</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">mat4 frustum matrix will be written into</param>
+        /// <param name="left">Left bound of the frustum</param>
+        /// <param name="right">Right bound of the frustum</param>
+        /// <param name="bottom">Bottom bound of the frustum</param>
+        /// <param name="top">Top bound of the frustum</param>
+        /// <param name="near">Near bound of the frustum</param>
+        /// <param name="far">Far bound of the frustum</param>
+        /// <returns></returns>
         public static float[] Ortho(float[] output, float left, float right, float bottom, float top, float near, float far)
         {
             float lr = 1 / (left - right);
@@ -973,11 +973,11 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Generates a look-at matrix with the given eye position, focal point, and up axis
         /// </summary>
-        /// <param name="output">{mat4} out mat4 frustum matrix will be written into</param>
-        /// <param name="eye">{vec3} eye Position of the viewer</param>
-        /// <param name="center">{vec3} center Point the viewer is looking at</param>
-        /// <param name="up">{vec3} up vec3 pointing up</param>
-        /// <returns>{mat4} out</returns>
+        /// <param name="output">mat4 frustum matrix will be written into</param>
+        /// <param name="eye">Position of the viewer</param>
+        /// <param name="center">Point the viewer is looking at</param>
+        /// <param name="up">vec3 pointing up</param>
+        /// <returns></returns>
         public static float[] LookAt(float[] output, float[] eye, float[] center, float[] up)
         {
             float x0; float x1; float x2; float y0; float y1; float y2; float z0; float z1; float z2; float len;

@@ -28,11 +28,10 @@ namespace Vintagestory.API.MathTools
 {
     public class Quaterniond
     {
-        ///**
-        // * Creates a new identity quat
-        // *
-        // * @returns {quat} a new quaternion
-        // */
+        /// <summary>
+        /// Creates a new identity quat
+        /// </summary>
+        /// <returns>new quaternion</returns>
         public static double[] Create()
         {
             double[] output = new double[4];
@@ -43,17 +42,16 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Sets a quaternion to represent the shortest rotation from one
-        // * vector to another.
-        // *
-        // * Both vectors are assumed to be unit length.
-        // *
-        // * @param {quat} output the receiving quaternion.
-        // * @param {vec3} a the initial vector
-        // * @param {vec3} b the destination vector
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Sets a quaternion to represent the shortest rotation from one
+        /// vector to another.
+        ///
+        /// Both vectors are assumed to be unit length.
+        /// </summary>
+        /// <param name="output">the receiving quaternion.</param>
+        /// <param name="a">the initial vector</param>
+        /// <param name="b">the destination vector</param>
+        /// <returns>output</returns>
         public static double[] RotationTo(double[] output, double[] a, double[] b)
         {
             double[] tmpvec3 = Vec3Utilsd.Create();
@@ -98,16 +96,15 @@ namespace Vintagestory.API.MathTools
             //    };
         }
 
-        ///**
-        // * Sets the specified quaternion with values corresponding to the given
-        // * axes. Each axis is a vec3 and is expected to be unit length and
-        // * perpendicular to all other specified axes.
-        // *
-        // * @param {vec3} view  the vector representing the viewing direction
-        // * @param {vec3} right the vector representing the local "right" direction
-        // * @param {vec3} up    the vector representing the local "up" direction
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Sets the specified quaternion with values corresponding to the given
+        /// axes. Each axis is a vec3 and is expected to be unit length and
+        /// perpendicular to all other specified axes.
+        /// </summary>
+        /// <param name="view">the vector representing the viewing direction</param>
+        /// <param name="right">the vector representing the local "right" direction</param>
+        /// <param name="up">the vector representing the local "up" direction</param>
+        /// <returns>output</returns>
         public static double[] SetAxes(double[] output, double[] view, double[] right, double[] up)
         {
             double[] matr = Mat3d.Create();
@@ -126,71 +123,61 @@ namespace Vintagestory.API.MathTools
             matr[8] = view[2];
 
             return Quaterniond.Normalize(output, Quaterniond.FromMat3(output, matr));
-            //    };
         }
 
-        ///**
-        // * Creates a new quat initialized with values from an existing quaternion
-        // *
-        // * @param {quat} a quaternion to clone
-        // * @returns {quat} a new quaternion
-        // * @function
-        // */
+        /// <summary>
+        /// Creates a new quat initialized with values from an existing quaternion
+        /// </summary>
+        /// <param name="a">quaternion to clone</param>
+        /// <returns>new quaternion</returns>
         public static double[] CloneIt(double[] a)
         {
             return QVec4d.CloneIt(a);
         }
 
-        ///**
-        // * Creates a new quat initialized with the given values
-        // *
-        // * @param {Number} x X component
-        // * @param {Number} y Y component
-        // * @param {Number} z Z component
-        // * @param {Number} w W component
-        // * @returns {quat} a new quaternion
-        // * @function
-        // */
+        /// <summary>
+        /// Creates a new quat initialized with the given values
+        /// </summary>
+        /// <param name="x">X component</param>
+        /// <param name="y">Y component</param>
+        /// <param name="z">Z component</param>
+        /// <param name="w">W component</param>
+        /// <returns>new quaternion</returns>
         public static double[] FromValues(double x, double y, double z, double w)
         {
             return QVec4d.FromValues(x, y, z, w);
         }
 
-        ///**
-        // * Copy the values from one quat to another
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a the source quaternion
-        // * @returns {quat} output
-        // * @function
-        // */
+        /// <summary>
+        /// Copy the values from one quat to another
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">the source quaternion</param>
+        /// <returns>output</returns>
         public static double[] Copy(double[] output, double[] a)
         {
             return QVec4d.Copy(output, a);
         }
 
-        ///**
-        // * Set the components of a quat to the given values
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {Number} x X component
-        // * @param {Number} y Y component
-        // * @param {Number} z Z component
-        // * @param {Number} w W component
-        // * @returns {quat} output
-        // * @function
-        // */
+        /// <summary>
+        /// Set the components of a quat to the given values
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="x">X component</param>
+        /// <param name="y">Y component</param>
+        /// <param name="z">Z component</param>
+        /// <param name="w">W component</param>
+        /// <returns>output</returns>
         public static double[] Set(double[] output, double x, double y, double z, double w)
         {
             return QVec4d.Set(output, x, y, z, w);
         }
 
-        ///**
-        // * Set a quat to the identity quaternion
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Set a quat to the identity quaternion
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <returns>output</returns>
         public static double[] Identity_(double[] output)
         {
             output[0] = 0;
@@ -200,15 +187,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Sets a quat from the given angle and rotation axis,
-        // * then returns it.
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {vec3} axis the axis around which to rotate
-        // * @param {Number} rad the angle in radians
-        // * @returns {quat} output
-        // **/
+        /// <summary>
+        /// Sets a quat from the given angle and rotation axis,
+        /// then returns it.
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="axis">the axis around which to rotate</param>
+        /// <param name="rad">the angle in radians</param>
+        /// <returns>output</returns>
         public static double[] SetAxisAngle(double[] output, double[] axis, double rad)
         {
             rad = rad / 2;
@@ -220,29 +206,25 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Adds two quat's
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a the first operand
-        // * @param {quat} b the second operand
-        // * @returns {quat} output
-        // * @function
-        // */
-        //quat.add = QVec4d.add;
+        /// <summary>
+        /// Adds two quat's
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Add(double[] output, double[] a, double[] b)
         {
             return QVec4d.Add(output, a, b);
         }
 
-        ///**
-        // * Multiplies two quat's
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a the first operand
-        // * @param {quat} b the second operand
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Multiplies two quat's
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Multiply(double[] output, double[] a, double[] b)
         {
             double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
@@ -255,29 +237,25 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Scales a quat by a scalar number
-        // *
-        // * @param {quat} output the receiving vector
-        // * @param {quat} a the vector to scale
-        // * @param {Number} b amount to scale the vector by
-        // * @returns {quat} output
-        // * @function
-        // */
-        //quat.scale = QVec4d.scale;
+        /// <summary>
+        /// Scales a quat by a scalar number
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the vector to scale</param>
+        /// <param name="b">amount to scale the vector by</param>
+        /// <returns>output</returns>
         public static double[] Scale(double[] output, double[] a, double b)
         {
             return QVec4d.Scale(output, a, b);
         }
 
-        ///**
-        // * Rotates a quaternion by the given angle aboutput the X axis
-        // *
-        // * @param {quat} output quat receiving operation result
-        // * @param {quat} a quat to rotate
-        // * @param {number} rad angle (in radians) to rotate
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Rotates a quaternion by the given angle aboutput the X axis
+        /// </summary>
+        /// <param name="output">quat receiving operation result</param>
+        /// <param name="a">quat to rotate</param>
+        /// <param name="rad">angle (in radians) to rotate</param>
+        /// <returns>output</returns>
         public static double[] RotateX(double[] output, double[] a, double rad)
         {
             rad /= 2;
@@ -292,14 +270,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Rotates a quaternion by the given angle aboutput the Y axis
-        // *
-        // * @param {quat} output quat receiving operation result
-        // * @param {quat} a quat to rotate
-        // * @param {number} rad angle (in radians) to rotate
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Rotates a quaternion by the given angle aboutput the Y axis
+        /// </summary>
+        /// <param name="output">quat receiving operation result</param>
+        /// <param name="a">quat to rotate</param>
+        /// <param name="rad">angle (in radians) to rotate</param>
+        /// <returns>output</returns>
         public static double[] RotateY(double[] output, double[] a, double rad)
         {
             rad /= 2;
@@ -314,14 +291,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Rotates a quaternion by the given angle aboutput the Z axis
-        // *
-        // * @param {quat} output quat receiving operation result
-        // * @param {quat} a quat to rotate
-        // * @param {number} rad angle (in radians) to rotate
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Rotates a quaternion by the given angle aboutput the Z axis
+        /// </summary>
+        /// <param name="output">quat receiving operation result</param>
+        /// <param name="a">quat to rotate</param>
+        /// <param name="rad">angle (in radians) to rotate</param>
+        /// <returns>output</returns>
         public static double[] RotateZ(double[] output, double[] a, double rad)
         {
             rad /= 2;
@@ -336,15 +312,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the W component of a quat from the X, Y, and Z components.
-        // * Assumes that quaternion is 1 unit in length.
-        // * Any existing W component will be ignored.
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a quat to calculate W component of
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Calculates the W component of a quat from the X, Y, and Z components.
+        /// Assumes that quaternion is 1 unit in length.
+        /// Any existing W component will be ignored.
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">quat to calculate W component of</param>
+        /// <returns>output</returns>
         public static double[] CalculateW(double[] output, double[] a)
         {
             double x = a[0]; double y = a[1]; double z = a[2];
@@ -357,14 +332,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the dot product of two quat's
-        // *
-        // * @param {quat} a the first operand
-        // * @param {quat} b the second operand
-        // * @returns {Number} dot product of a and b
-        // * @function
-        // */
+        /// <summary>
+        /// Calculates the dot product of two quat's
+        /// </summary>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>dot product of a and b</returns>
         public static double Dot(double[] a, double[] b)
         {
             return QVec4d.Dot(a, b);
@@ -395,30 +368,27 @@ namespace Vintagestory.API.MathTools
             return angles;
         }
 
-        ///**
-        // * Performs a linear interpolation between two quat's
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a the first operand
-        // * @param {quat} b the second operand
-        // * @param {Number} t interpolation amount between the two inputs
-        // * @returns {quat} output
-        // * @function
-        // */
+        /// <summary>
+        /// Performs a linear interpolation between two quat's
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <param name="t">interpolation amount between the two inputs</param>
+        /// <returns>output</returns>
         public static double[] Lerp(double[] output, double[] a, double[] b, double t)
         {
             return QVec4d.Lerp(output, a, b, t);
         }
 
-        ///**
-        // * Performs a spherical linear interpolation between two quat
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a the first operand
-        // * @param {quat} b the second operand
-        // * @param {Number} t interpolation amount between the two inputs
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Performs a spherical linear interpolation between two quat
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <param name="t">interpolation amount between the two inputs</param>
+        /// <returns>output</returns>
         //quat.slerp = function (output, a, b, t) {
         public static double[] Slerp(double[] output, double[] a, double[] b, double t)
         {
@@ -468,13 +438,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the inverse of a quat
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a quat to calculate inverse of
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Calculates the inverse of a quat
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">quat to calculate inverse of</param>
+        /// <returns>output</returns>
         public double[] Invert(double[] output, double[] a)
         {
             double a0 = a[0]; double a1 = a[1]; double a2 = a[2]; double a3 = a[3];
@@ -491,14 +460,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the conjugate of a quat
-        // * If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a quat to calculate conjugate of
-        // * @returns {quat} output
-        // */
+        /// <summary>
+        /// Calculates the conjugate of a quat
+        /// If the quaternion is normalized, this function is faster than quat.inverse and produces the same result.
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">quat to calculate conjugate of</param>
+        /// <returns>output</returns>
         public double[] Conjugate(double[] output, double[] a)
         {
             output[0] = -a[0];
@@ -508,56 +476,48 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the length of a quat
-        // *
-        // * @param {quat} a vector to calculate length of
-        // * @returns {Number} length of a
-        // * @function
-        // */
+        /// <summary>
+        /// Calculates the length of a quat
+        /// </summary>
+        /// <param name="a">vector to calculate length of</param>
+        /// <returns>length of a</returns>
         //quat.length = QVec4d.length;
         public static double Length_(double[] a)
         {
             return QVec4d.Length_(a);
         }
 
-        ///**
-        // * Calculates the squared length of a quat
-        // *
-        // * @param {quat} a vector to calculate squared length of
-        // * @returns {Number} squared length of a
-        // * @function
-        // */
+        /// <summary>
+        /// Calculates the squared length of a quat
+        /// </summary>
+        /// <param name="a">vector to calculate squared length of</param>
+        /// <returns>squared length of a</returns>
         public static double SquaredLength(double[] a)
         {
             return QVec4d.SquaredLength(a);
         }
 
 
-        ///**
-        // * Normalize a quat
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {quat} a quaternion to normalize
-        // * @returns {quat} output
-        // * @function
-        // */
+        /// <summary>
+        /// Normalize a quat
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="a">quaternion to normalize</param>
+        /// <returns>output</returns>
         public static double[] Normalize(double[] output, double[] a)
         {
             return QVec4d.Normalize(output, a);
         }
 
-        ///**
-        // * Creates a quaternion from the given 3x3 rotation matrix.
-        // *
-        // * NOTE: The resultant quaternion is not normalized, so you should be sure
-        // * to renormalize the quaternion yourself where necessary.
-        // *
-        // * @param {quat} output the receiving quaternion
-        // * @param {mat3} m rotation matrix
-        // * @returns {quat} output
-        // * @function
-        // */
+        /// <summary>
+        /// Creates a quaternion from the given 3x3 rotation matrix.
+        ///
+        /// NOTE: The resultant quaternion is not normalized, so you should be sure
+        /// to renormalize the quaternion yourself where necessary.
+        /// </summary>
+        /// <param name="output">the receiving quaternion</param>
+        /// <param name="m">rotation matrix</param>
+        /// <returns>output</returns>
         public static double[] FromMat3(double[] output, double[] m)
         {
             // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
@@ -604,12 +564,11 @@ namespace Vintagestory.API.MathTools
 
     class QVec4d
     {
-        
-        ///**
-        // * Creates a new, empty QVec4d
-        // *
-        // * @returns {QVec4d} a new 4D vector
-        // */
+
+        /// <summary>
+        /// Creates a new, empty QVec4d
+        /// </summary>
+        /// <returns>new 4D vector</returns>
         public static double[] Create()
         {
             double[] output = new double[4];
@@ -620,12 +579,11 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Creates a new QVec4d initialized with values from an existing vector
-        // *
-        // * @param {QVec4d} a vector to clone
-        // * @returns {QVec4d} a new 4D vector
-        // */
+        /// <summary>
+        /// Creates a new QVec4d initialized with values from an existing vector
+        /// </summary>
+        /// <param name="a">vector to clone</param>
+        /// <returns>new 4D vector</returns>
         public static double[] CloneIt(double[] a)
         {
             double[] output = new double[4];
@@ -636,15 +594,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Creates a new QVec4d initialized with the given values
-        // *
-        // * @param {Number} x X component
-        // * @param {Number} y Y component
-        // * @param {Number} z Z component
-        // * @param {Number} w W component
-        // * @returns {QVec4d} a new 4D vector
-        // */
+        /// <summary>
+        /// Creates a new QVec4d initialized with the given values
+        /// </summary>
+        /// <param name="x">X component</param>
+        /// <param name="y">Y component</param>
+        /// <param name="z">Z component</param>
+        /// <param name="w">W component</param>
+        /// <returns>new 4D vector</returns>
         public static double[] FromValues(double x, double y, double z, double w)
         {
             double[] output = new double[4];
@@ -655,13 +612,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Copy the values from one QVec4d to another
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the source vector
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Copy the values from one QVec4d to another
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the source vector</param>
+        /// <returns>output</returns>
         public static double[] Copy(double[] output, double[] a)
         {
             output[0] = a[0];
@@ -671,16 +627,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Set the components of a QVec4d to the given values
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {Number} x X component
-        // * @param {Number} y Y component
-        // * @param {Number} z Z component
-        // * @param {Number} w W component
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Set the components of a QVec4d to the given values
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="x">X component</param>
+        /// <param name="y">Y component</param>
+        /// <param name="z">Z component</param>
+        /// <param name="w">W component</param>
+        /// <returns>output</returns>
         public static double[] Set(double[] output, double x, double y, double z, double w)
         {
             output[0] = x;
@@ -690,14 +645,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Adds two QVec4d's
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Adds two QVec4d's
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Add(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] + b[0];
@@ -707,14 +661,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Subtracts vector b from vector a
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Subtracts vector b from vector a
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Subtract(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] - b[0];
@@ -725,14 +678,13 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        ///**
-        // * Multiplies two QVec4d's
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Multiplies two QVec4d's
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Multiply(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] * b[0];
@@ -743,14 +695,13 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        ///**
-        // * Divides two QVec4d's
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Divides two QVec4d's
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Divide(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] / b[0];
@@ -761,14 +712,13 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        ///**
-        // * Returns the minimum of two QVec4d's
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Returns the minimum of two QVec4d's
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Min(double[] output, double[] a, double[] b)
         {
             output[0] = Math.Min(a[0], b[0]);
@@ -778,14 +728,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Returns the maximum of two QVec4d's
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Returns the maximum of two QVec4d's
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>output</returns>
         public static double[] Max(double[] output, double[] a, double[] b)
         {
             output[0] = Math.Max(a[0], b[0]);
@@ -795,14 +744,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Scales a QVec4d by a scalar number
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the vector to scale
-        // * @param {Number} b amount to scale the vector by
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Scales a QVec4d by a scalar number
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the vector to scale</param>
+        /// <param name="b">amount to scale the vector by</param>
+        /// <returns>output</returns>
         public static double[] Scale(double[] output, double[] a, double b)
         {
             output[0] = a[0] * b;
@@ -812,15 +760,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Adds two QVec4d's after scaling the second operand by a scalar value
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @param {Number} scale the amount to scale b by before adding
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Adds two QVec4d's after scaling the second operand by a scalar value
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <param name="scale">the amount to scale b by before adding</param>
+        /// <returns>output</returns>
         public static double[] ScaleAndAdd(double[] output, double[] a, double[] b, double scale)
         {
             output[0] = a[0] + (b[0] * scale);
@@ -830,13 +777,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the euclidian distance between two QVec4d's
-        // *
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {Number} distance between a and b
-        // */
+        /// <summary>
+        /// Calculates the euclidian distance between two QVec4d's
+        /// </summary>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>distance between a and b</returns>
         public static double Distance(double[] a, double[] b)
         {
             double x = b[0] - a[0];
@@ -847,13 +793,12 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        ///**
-        // * Calculates the squared euclidian distance between two QVec4d's
-        // *
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {Number} squared distance between a and b
-        // */
+        /// <summary>
+        /// Calculates the squared euclidian distance between two QVec4d's
+        /// </summary>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>squared distance between a and b</returns>
         public static double SquaredDistance(double[] a, double[] b)
         {
             double x = b[0] - a[0];
@@ -863,12 +808,11 @@ namespace Vintagestory.API.MathTools
             return x * x + y * y + z * z + w * w;
         }
 
-        ///**
-        // * Calculates the length of a QVec4d
-        // *
-        // * @param {QVec4d} a vector to calculate length of
-        // * @returns {Number} length of a
-        // */
+        /// <summary>
+        /// Calculates the length of a QVec4d
+        /// </summary>
+        /// <param name="a">vector to calculate length of</param>
+        /// <returns>length of a</returns>
         public static double Length_(double[] a)
         {
             double x = a[0];
@@ -879,12 +823,11 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        ///**
-        // * Calculates the squared length of a QVec4d
-        // *
-        // * @param {QVec4d} a vector to calculate squared length of
-        // * @returns {Number} squared length of a
-        // */
+        /// <summary>
+        /// Calculates the squared length of a QVec4d
+        /// </summary>
+        /// <param name="a">vector to calculate squared length of</param>
+        /// <returns>squared length of a</returns>
         public static double SquaredLength(double[] a)
         {
             double x = a[0];
@@ -895,13 +838,12 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        ///**
-        // * Negates the components of a QVec4d
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a vector to negate
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Negates the components of a QVec4d
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">vector to negate</param>
+        /// <returns>output</returns>
         public static double[] Negate(double[] output, double[] a)
         {
             output[0] = -a[0];
@@ -911,13 +853,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Normalize a QVec4d
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a vector to normalize
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Normalize a QVec4d
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">vector to normalize</param>
+        /// <returns>output</returns>
         public static double[] Normalize(double[] output, double[] a)
         {
             double x = a[0];
@@ -937,27 +878,25 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Calculates the dot product of two QVec4d's
-        // *
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {Number} dot product of a and b
-        // */
+        /// <summary>
+        /// Calculates the dot product of two QVec4d's
+        /// </summary>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns>dot product of a and b</returns>
         public static double Dot(double[] a, double[] b)
         {
             return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
         }
 
-        ///**
-        // * Performs a linear interpolation between two QVec4d's
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @param {Number} t interpolation amount between the two inputs
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Performs a linear interpolation between two QVec4d's
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <param name="t">interpolation amount between the two inputs</param>
+        /// <returns>output</returns>
         public static double[] Lerp(double[] output, double[] a, double[] b, double t)
         {
             double ax = a[0];
@@ -972,14 +911,13 @@ namespace Vintagestory.API.MathTools
         }
         
 
-        ///**
-        // * Transforms the QVec4d with a mat4.
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the vector to transform
-        // * @param {mat4} m matrix to transform with
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Transforms the QVec4d with a mat4.
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the vector to transform</param>
+        /// <param name="m">matrix to transform with</param>
+        /// <returns>output</returns>
         public static double[] TransformMat4(double[] output, double[] a, double[] m)
         {
             double x = a[0]; double y = a[1]; double z = a[2]; double w = a[3];
@@ -990,14 +928,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Transforms the QVec4d with a quat
-        // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the vector to transform
-        // * @param {quat} q quaternion to transform with
-        // * @returns {QVec4d} output
-        // */
+        /// <summary>
+        /// Transforms the QVec4d with a quat
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the vector to transform</param>
+        /// <param name="q">quaternion to transform with</param>
+        /// <returns>output</returns>
         public static double[] transformQuat(double[] output, double[] a, double[] q)
         {
             double x = a[0]; double y = a[1]; double z = a[2];

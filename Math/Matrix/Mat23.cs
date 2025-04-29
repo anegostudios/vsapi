@@ -177,7 +177,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Alias for {@link mat2d.multiply} @function
+        /// Alias for <see cref="Multiply(float[], float[], float[])"/>
         /// </summary>
         /// <param name="output"></param>
         /// <param name="a"></param>
