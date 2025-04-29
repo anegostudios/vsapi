@@ -2,6 +2,7 @@
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
@@ -10,6 +11,7 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     [ProtoContract]
     [JsonObject(MemberSerialization.OptIn)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public class Vec3i : IEquatable<Vec3i>, IVec3
     {
         [ProtoMember(1)]

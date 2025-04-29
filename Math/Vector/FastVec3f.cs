@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct FastVec3f
     {
         /// <summary>
