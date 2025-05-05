@@ -80,6 +80,16 @@ namespace Vintagestory.API.Client
                 maxWidth = Math.Max(w, maxWidth);
             }
 
+            // Make new surface with new size.
+            // Could be set as an option (size to text) and set after creating the element in the creative tab.
+            Bounds.fixedWidth = maxWidth;
+            if (!Right) Bounds.fixedX = -maxWidth;
+            Bounds.CalcWorldBounds();
+            surface.Dispose();
+            ctx.Dispose();
+            surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
+            ctx = new Context(surface);
+            Font.SetupContext(ctx);
 
             for (int i = 0; i < tabs.Length; i++)
             {
