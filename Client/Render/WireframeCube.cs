@@ -1,4 +1,5 @@
 ﻿using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.Client.NoObf
@@ -89,7 +90,10 @@ namespace Vintagestory.Client.NoObf
                 capi.Render.LineWidth = 1.6f;
             }
 
-            capi.Render.GLDepthMask(true);
+            if (RuntimeEnv.OS != OS.Mac)
+            {
+                capi.Render.GLDepthMask(true);
+            }
         }
 
         public void Dispose()
