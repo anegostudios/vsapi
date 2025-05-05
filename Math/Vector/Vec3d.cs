@@ -2,6 +2,7 @@
 using ProtoBuf;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.MathTools
@@ -11,6 +12,7 @@ namespace Vintagestory.API.MathTools
     /// </summary>
 
     [ProtoContract]
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public class Vec3d : IVec3, IEquatable<Vec3d>
     {
         [ProtoMember(1)]

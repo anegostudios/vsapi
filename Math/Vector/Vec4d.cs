@@ -1,5 +1,8 @@
-﻿namespace Vintagestory.API.MathTools
+﻿using System.Runtime.InteropServices;
+
+namespace Vintagestory.API.MathTools
 {
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public class Vec4d
     {
         public double X;

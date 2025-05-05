@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public class Vec2d
     {
         public double X;

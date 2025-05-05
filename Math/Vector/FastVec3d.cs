@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 3 doubles
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct FastVec3d
     {
         /// <summary>

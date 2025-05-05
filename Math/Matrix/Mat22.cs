@@ -26,7 +26,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// 2x2 Matrix
     /// </summary>
-    public class Mat22
+    public partial class Mat22
     {
         /// <summary>
         /// Creates a new identity mat2
