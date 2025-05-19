@@ -36,7 +36,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Called after initializing all the behaviors in case they need to cross-refer to each other or set some initial values only at spawn-time
         /// </summary>
-        public virtual void AfterInitialized(bool onFirstSpawn)
+        public virtual void AfterInitialized(bool onRuntimeSpawn)
         {
         }
 
