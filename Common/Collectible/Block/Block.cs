@@ -1249,7 +1249,7 @@ namespace Vintagestory.API.Common
                 if (dstack.Tool != null && (byPlayer == null || dstack.Tool != byPlayer.InventoryManager.ActiveTool)) continue;
 
                 float extraMul = 1f;
-                if (dstack.DropModbyStat != null)
+                if (byPlayer != null && dstack.DropModbyStat != null)
                 {
                     // If the stat does not exist, then GetBlended returns 1 \o/
                     extraMul = byPlayer.Entity.Stats.GetBlended(dstack.DropModbyStat);
