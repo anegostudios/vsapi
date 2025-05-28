@@ -926,7 +926,10 @@ public bool WithFpVariant</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Not a deep clone of all fields. Scalar fields, for example AnimationSpeed, are fresh copies and can be changed dynamically or per-entity, after cloning the AnimationMetaData.
+<br> For performance reasons, the non-scalar fields such as the Attributes, ElementWeight, ElementBlendMode and TriggeredBy are not deep-cloned as these fields are usually unchanging for all entities using the animation.
+<br> Note: If any implementing entity needs to change the non-scalar fields dynamically, or on a per-entity basis, that entity's code can clone and replace the object in its own individual copy of the AnimationMetaData.  e.g. EntityDrifter replaces .TriggeredBy in some of its animations</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

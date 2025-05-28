@@ -9,6 +9,7 @@ namespace Vintagestory.API.Common;
 
 public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickable, IRemotePhysics
 {
+    public Entity Entity { get { return entity; } }
     public bool Ticking { get; set; } = true;
 
     // State info.
@@ -51,6 +52,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     {
         prevPos.Set(pos);
         motionBeforeY = pos.Motion.Y;
+        var entity = this.entity;
         onGroundBefore = entity.OnGround;
         feetInLiquidBefore = entity.FeetInLiquid;
         swimmingBefore = entity.Swimming;
@@ -121,20 +123,22 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
         float dtFactor = dt * 60;
 
+        var lPos = this.lPos;
         lPos.SetFrom(nPos);
         nPos.Set(entity.ServerPos);
+        var lPosMotion = lPos.Motion;
 
         if (isTeleport) lPos.SetFrom(nPos);
 
-        lPos.Motion.X = (nPos.X - lPos.X) / dtFactor;
-        lPos.Motion.Y = (nPos.Y - lPos.Y) / dtFactor;
-        lPos.Motion.Z = (nPos.Z - lPos.Z) / dtFactor;
+        lPosMotion.X = (nPos.X - lPos.X) / dtFactor;
+        lPosMotion.Y = (nPos.Y - lPos.Y) / dtFactor;
+        lPosMotion.Z = (nPos.Z - lPos.Z) / dtFactor;
 
-        if (lPos.Motion.Length() > 20) lPos.Motion.Set(0, 0, 0);
+        if (lPosMotion.Length() > 20) lPosMotion.Set(0, 0, 0);
 
         // Set client motion.
-        entity.Pos.Motion.Set(lPos.Motion);
-        entity.ServerPos.Motion.Set(lPos.Motion);
+        entity.Pos.Motion.Set(lPosMotion);
+        entity.ServerPos.Motion.Set(lPosMotion);
 
         collisionTester.NewTick(lPos);
 
@@ -160,15 +164,25 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     public void MotionAndCollision(EntityPos pos, float dt)
     {
         float dtFactor = 60 * dt;
+        var entity = this.entity;
+        var motion = pos.Motion;
+        var blockAccessor = entity.World.BlockAccessor;
 
         // Apply drag from block below entity.
         if (onGroundBefore)
         {
-            if (!feetInLiquidBefore)
+            if (motion.HorLength() < 0.00001D)
             {
-                Block belowBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - 0.05f), (int)pos.Z, BlockLayersAccess.Solid);
-                pos.Motion.X *= 1 - (groundDragValue * belowBlock.DragMultiplier);
-                pos.Motion.Z *= 1 - (groundDragValue * belowBlock.DragMultiplier);
+                // for performance, set tiny horizontal motion to zero due to friction, instead of continuing to move by ever-diminishing amounts for many more ticks (IRL behavior is similar, as friction mainly results from millimeter-scale or less bumps in the contact surfaces)
+                motion.X = 0;
+                motion.Z = 0;
+            }
+            else if (!feetInLiquidBefore)
+            {
+                Block belowBlock = blockAccessor.GetBlock((int)pos.X, (int)(pos.Y - 0.05f), (int)pos.Z, BlockLayersAccess.Solid);
+                double friction = 1 - (groundDragValue * belowBlock.DragMultiplier);
+                motion.X *= friction;
+                motion.Z *= friction;
             }
         }
 
@@ -176,9 +190,9 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         Block insideFluid = null;
         if (feetInLiquidBefore || swimmingBefore)
         {
-            pos.Motion *= Math.Pow(waterDragValue, dt * 33);
+            motion.Scale(Math.Pow(waterDragValue, dt * 33));
 
-            insideFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.Y, (int)pos.Z, BlockLayersAccess.Fluid);
+            insideFluid = blockAccessor.GetBlock((int)pos.X, (int)pos.Y, (int)pos.Z, BlockLayersAccess.Fluid);
 
             if (feetInLiquidBefore)
             {
@@ -187,7 +201,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
                 {
                     float pushStrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500) * dtFactor;
 
-                    pos.Motion.Add(
+                    motion.Add(
                         pushVector.X * pushStrength,
                         pushVector.Y * pushStrength,
                         pushVector.Z * pushStrength
@@ -197,13 +211,13 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         }
         else
         {
-            pos.Motion *= (float)Math.Pow(airDragValue, dt * 33);
+            motion.Scale((float)Math.Pow(airDragValue, dt * 33));    // We use .Scale() here because if instead we used *= it would replace the local variable, which destroys the reference held to the original pos.Motion
         }
 
         // Apply gravity.
         if (entity.ApplyGravity)
         {
-            double gravityStrength = (gravityPerSecond / 60f * dtFactor) + Math.Max(0, -0.015f * pos.Motion.Y * dtFactor);
+            double gravityStrength = (gravityPerSecond / 60f * dtFactor) + Math.Max(0, -0.015f * motion.Y * dtFactor);
 
             if (entity.Swimming)
             {
@@ -211,7 +225,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
                 // Below 0 => sinks.
                 float boyancy = GameMath.Clamp(1 - (entity.MaterialDensity / insideFluid.MaterialDensity), -1, 1);
 
-                Block aboveFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
+                Block aboveFluid = blockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
                 float waterY = (int)pos.Y + (insideFluid.LiquidLevel / 8f) + (aboveFluid.IsLiquid() ? 9 / 8f : 0);
 
                 // 0 => at swim line.
@@ -221,37 +235,37 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
                 double boyancyStrength = GameMath.Clamp(60 * boyancy * swimLineSubmergedness, -1.5f, 1.5f) - 1;
 
-                double waterDrag = GameMath.Clamp((100 * Math.Abs(pos.Motion.Y * dtFactor)) - 0.02f, 1, 1.25f);
+                double waterDrag = GameMath.Clamp((100 * Math.Abs(motion.Y * dtFactor)) - 0.02f, 1, 1.25f);
 
-                pos.Motion.Y += gravityStrength * boyancyStrength;
-                pos.Motion.Y /= waterDrag;
+                motion.Y += gravityStrength * boyancyStrength;
+                motion.Y /= waterDrag;
             }
             else
             {
-                pos.Motion.Y -= gravityStrength;
+                motion.Y -= gravityStrength;
             }
         }
 
-        double nextX = (pos.Motion.X * dtFactor) + pos.X;
-        double nextY = (pos.Motion.Y * dtFactor) + pos.Y;
-        double nextZ = (pos.Motion.Z * dtFactor) + pos.Z;
+        double nextX = (motion.X * dtFactor) + pos.X;
+        double nextY = (motion.Y * dtFactor) + pos.Y;
+        double nextZ = (motion.Z * dtFactor) + pos.Z;
 
         applyCollision(pos, dtFactor);
-        
+        var newPos = this.newPos;
 
         // Clamp inside the world.
-        if (entity.World.BlockAccessor.IsNotTraversable((int)nextX, (int)pos.Y, (int)pos.Z)) newPos.X = pos.X;
-        if (entity.World.BlockAccessor.IsNotTraversable((int)pos.X, (int)nextY, (int)pos.Z)) newPos.Y = pos.Y;
-        if (entity.World.BlockAccessor.IsNotTraversable((int)pos.X, (int)pos.Y, (int)nextZ)) newPos.Z = pos.Z;
+        if (blockAccessor.IsNotTraversable((int)nextX, (int)pos.Y, (int)pos.Z)) newPos.X = pos.X;
+        if (blockAccessor.IsNotTraversable((int)pos.X, (int)nextY, (int)pos.Z)) newPos.Y = pos.Y;
+        if (blockAccessor.IsNotTraversable((int)pos.X, (int)pos.Y, (int)nextZ)) newPos.Z = pos.Z;
 
         // Finally set position.
         pos.SetPos(newPos);
         
 
         // Stop motion if collided.
-        if ((nextX < newPos.X && pos.Motion.X < 0) || (nextX > newPos.X && pos.Motion.X > 0)) pos.Motion.X = 0;
-        if ((nextY < newPos.Y && pos.Motion.Y < 0) || (nextY > newPos.Y && pos.Motion.Y > 0)) pos.Motion.Y = 0;
-        if ((nextZ < newPos.Z && pos.Motion.Z < 0) || (nextZ > newPos.Z && pos.Motion.Z > 0)) pos.Motion.Z = 0;
+        if ((nextX < newPos.X && motion.X < 0) || (nextX > newPos.X && motion.X > 0)) motion.X = 0;
+        if ((nextY < newPos.Y && motion.Y < 0) || (nextY > newPos.Y && motion.Y > 0)) motion.Y = 0;
+        if ((nextZ < newPos.Z && motion.Z < 0) || (nextZ > newPos.Z && motion.Z > 0)) motion.Z = 0;
     }
 
     protected virtual void applyCollision(EntityPos pos, float dtFactor)
@@ -261,39 +275,36 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
     public void ApplyTests(EntityPos pos)
     {
+        var entity = this.entity;
+        var blockAccessor = entity.World.BlockAccessor;
         bool falling = pos.Motion.Y <= 0;
         entity.OnGround = entity.CollidedVertically && falling;
 
-        Block fluidBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.Y, (int)pos.Z, BlockLayersAccess.Fluid);
+        Block fluidBlock = blockAccessor.GetBlockRaw((int)pos.X, (int)pos.InternalY, (int)pos.Z, BlockLayersAccess.Fluid);
         entity.FeetInLiquid = fluidBlock.MatterState == EnumMatterState.Liquid;
         entity.InLava = fluidBlock.LiquidCode == "lava";
 
         if (entity.FeetInLiquid)
         {
-            Block aboveBlockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
+            Block aboveBlockFluid = blockAccessor.GetBlockRaw((int)pos.X, (int)(pos.InternalY + 1), (int)pos.Z, BlockLayersAccess.Fluid);
             float waterY = (int)pos.Y + (fluidBlock.LiquidLevel / 8f) + (aboveBlockFluid.IsLiquid() ? 9 / 8f : 0);
             float submergedLevel = waterY - (float)pos.Y;
             float swimlineSubmergedness = submergedLevel - (entity.SelectionBox.Y2 - (float)entity.SwimmingOffsetY);
             entity.Swimming = swimlineSubmergedness > 0;
+
+            if (!feetInLiquidBefore)
+            {
+                entity.OnCollideWithLiquid();
+            }
         }
         else
         {
             entity.Swimming = false;
-        }
 
-        if (!onGroundBefore && entity.OnGround)
-        {
-            entity.OnFallToGround(motionBeforeY);
-        }
-
-        if (!feetInLiquidBefore && entity.FeetInLiquid)
-        {
-            entity.OnCollideWithLiquid();
-        }
-
-        if ((swimmingBefore || feetInLiquidBefore ) && !entity.Swimming && !entity.FeetInLiquid)
-        {
-            entity.OnExitedLiquid();
+            if (swimmingBefore || feetInLiquidBefore)
+            {
+                entity.OnExitedLiquid();
+            }
         }
 
         if (!collidedBefore && entity.Collided)
@@ -303,6 +314,11 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
         if (entity.OnGround)
         {
+            if (!onGroundBefore)
+            {
+                entity.OnFallToGround(motionBeforeY);
+            }
+
             entity.PositionBeforeFalling.Set(newPos);
         }
 
@@ -322,14 +338,15 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         int yMax = (int)entityBox.Y2;
         int zMax = (int)entityBox.Z2;
         int zMin = (int)entityBox.Z1;
+        var tmpPos = collisionTester.tmpPos;
         for (int y = (int)entityBox.Y1; y <= yMax; y++)
         {
             for (int x = (int)entityBox.X1; x <= xMax; x++)
             {
                 for (int z = zMin; z <= zMax; z++)
                 {
-                    collisionTester.tmpPos.Set(x, y, z);
-                    entity.World.BlockAccessor.GetBlock(x, y, z).OnEntityInside(entity.World, entity, collisionTester.tmpPos);
+                    tmpPos.Set(x, y, z);
+                    blockAccessor.GetBlock(x, y, z).OnEntityInside(entity.World, entity, tmpPos);
                 }
             }
         }
@@ -341,6 +358,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
     public void OnPhysicsTick(float dt)
     {
+        var entity = this.entity;
         if (entity.State != EnumEntityState.Active || !Ticking) return;
 
         if (mountableSupplier?.IsBeingControlled() == true && entity.World.Side == EnumAppSide.Server) return;
@@ -364,6 +382,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
     public void AfterPhysicsTick(float dt)
     {
+        entity.AfterPhysicsTick?.Invoke();
     }
 
     public override void OnEntityDespawn(EntityDespawnData despawn)

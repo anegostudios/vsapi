@@ -778,6 +778,12 @@ namespace Vintagestory.API.Client
         /// <param name="color"></param>
         void RenderLine(BlockPos origin, float posX1, float posY1, float posZ1, float posX2, float posY2, float posZ2, int color);
 
+        FrameBufferRef CreateFrameBuffer(LoadedTexture intoTexture);
+
+        void RenderTextureIntoFrameBuffer(int atlasTextureId, LoadedTexture fromTexture, float sourceX, float sourceY, float sourceWidth, float sourceHeight, FrameBufferRef fb, float targetX, float targetY, float alphaTest = 0.005f);
+
+        void DestroyFrameBuffer(FrameBufferRef fb);
+
         #endregion
 
         #region Util

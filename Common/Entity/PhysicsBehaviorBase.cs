@@ -17,13 +17,12 @@ public abstract class PhysicsBehaviorBase : EntityBehavior
 
     protected int previousVersion;
 
-    protected IMountable mountableSupplier;
+    public IMountable mountableSupplier;
 
     protected readonly EntityPos lPos = new();
     protected Vec3d nPos;
 
     public float CollisionYExtra = 1f;
-    private volatile int serverPhysicsTickDone = 0;
 
     [ThreadStatic]
     protected internal static CachingCollisionTester collisionTester;
@@ -51,15 +50,5 @@ public abstract class PhysicsBehaviorBase : EntityBehavior
     public override void AfterInitialized(bool onFirstSpawn)
     {
         mountableSupplier = entity.GetInterface<IMountable>();
-    }
-
-    public bool CanProceedOnThisThread()
-    {
-        return AsyncHelper.CanProceedOnThisThread(ref serverPhysicsTickDone);
-    }
-
-    public void OnPhysicsTickDone()
-    {
-        serverPhysicsTickDone = 0;
     }
 }

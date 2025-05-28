@@ -116,6 +116,11 @@ Classes
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Util.CustomFastSerializerAttribute.html">CustomFastSerializerAttribute</a></dt>
+      <dd><p>Indicates that the FastSerialize() method should call a custom method to serialize this field: the custom method being of the pattern FastSerializerDelegate</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Util.DictExtensions.html">DictExtensions</a></dt>
       <dd></dd>
     </dl>
@@ -130,6 +135,13 @@ Classes
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Util.EqualityUtil.html">EqualityUtil</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Util.FastSerializer.html">FastSerializer</a></dt>
+      <dd><p>A faster implementation of a ProtoBuf serializer.
+<br>Note 1: for int and ushort and other primitives/structs, the default value of 0 will not be written (because the read value will be 0 anyhow, so not writing the 0 value makes no difference to what the reader eventually reads): except in arrays and other simple collections such as List, where 0 values will be written, so that the reader reads out all subsequent values in the array with the correct indexing
+<br>Note 2: for reference types including string, if the value is null then nothing will be written.  A read collection may therefore be shorter than the written collection, if the written collection included null values: be careful serializing arrays of reference types, if necessary replace null values with something else prior to serialization.  For convenience, one special exception here is arrays or lists of string: if a null string is in the array, FastSerializer will instead automatically write an empty string &quot;&quot;. (We don't do that for other reference types because it is not necessarily clear what the default non-null value should be....)</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Util.GCHandleProvider.html">GCHandleProvider</a></dt>
@@ -206,6 +218,14 @@ Structs
       <dt><a class="xref" href="Vintagestory.API.Util.UriInfo.html">UriInfo</a></dt>
       <dd></dd>
     </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Util.IWithFastSerialize.html">IWithFastSerialize</a></dt>
+      <dd><p>Detected by the VintagestorySourcegen source generator, which replaces this default FastSerialize method with a source-generated version</p>
+</dd>
+    </dl>
     <h3 id="enums">
 Enums
 </h3>
@@ -218,6 +238,10 @@ Delegates
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Util.CreateCachableObjectDelegate-1.html">CreateCachableObjectDelegate&lt;T&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Util.FastSerializerDelegate.html">FastSerializerDelegate</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">

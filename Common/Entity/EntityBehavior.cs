@@ -47,6 +47,10 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnGameTick(float deltaTime) { }
 
         /// <summary>
+        /// An implementing behavior can return true if it is thread-safe: allows the behavior to be multi-threaded for better multiplayer performance
+        /// </summary>
+        public virtual bool ThreadSafe { get { return false; } }
+        /// <summary>
         /// The event fired when the entity is spawned (not called when loaded from the savegame).
         /// </summary>
         public virtual void OnEntitySpawn() { }
@@ -288,6 +292,12 @@ namespace Vintagestory.API.Common.Entities
             
         }
 
+        /// <summary>
+        /// The distance at which entities are counted as "touching" each other, for example used by EntityPartitioning and RepulseAgents
+        /// <br/>Note: from 1.20.4 this is gathered and cached in a field when each entity is Initialized, if for any reason a mod or behavior needs to change the result later than Initialization then you should also update the Entity field .touchDistance
+        /// </summary>
+        /// <param name="handling"></param>
+        /// <returns></returns>
         public virtual float GetTouchDistance(ref EnumHandling handling)
         {
             return 0;

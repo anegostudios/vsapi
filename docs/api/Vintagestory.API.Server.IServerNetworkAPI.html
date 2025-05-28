@@ -138,7 +138,7 @@ Interface IServerNetworkAPI
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Sends a packet data to everyone except given players.This let's you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.</p>
+  <div class="markdown level1 summary"><p>Sends a packet data to everyone except given players. This lets you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -149,6 +149,40 @@ Interface IServerNetworkAPI
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+    <dt><code>exceptPlayers</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerNetworkAPI_BroadcastArbitraryPacket_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.BroadcastArbitraryPacket*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerNetworkAPI_BroadcastArbitraryPacket_System_Object_Vintagestory_API_Server_IServerPlayer___" data-uid="Vintagestory.API.Server.IServerNetworkAPI.BroadcastArbitraryPacket(System.Object,Vintagestory.API.Server.IServerPlayer[])">
+  BroadcastArbitraryPacket(object, params IServerPlayer[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>(for internal use: packet should be a Packet_Server)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void BroadcastArbitraryPacket(object packet, params IServerPlayer[] exceptPlayers)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>packet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd></dd>
     <dt><code>exceptPlayers</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a>[]</dt>
     <dd></dd>
@@ -473,7 +507,7 @@ Do not send larger messages then 508 bytes since some clients may be behind NAT/
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Sends a packet data to given players. This let's you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.</p>
+  <div class="markdown level1 summary"><p>Sends a packet data to given players. This lets you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -484,6 +518,40 @@ Do not send larger messages then 508 bytes since some clients may be behind NAT/
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+    <dt><code>players</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerNetworkAPI_SendArbitraryPacket_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerNetworkAPI_SendArbitraryPacket_System_Object_Vintagestory_API_Server_IServerPlayer___" data-uid="Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket(System.Object,Vintagestory.API.Server.IServerPlayer[])">
+  SendArbitraryPacket(object, params IServerPlayer[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>(for internal use: packet should be a Packet_Server)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendArbitraryPacket(object packet, params IServerPlayer[] players)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>packet</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd></dd>
     <dt><code>players</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a>[]</dt>
     <dd></dd>

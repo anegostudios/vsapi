@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Buffers.Binary;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace Vintagestory.API.Datastructures;
 
@@ -115,6 +117,11 @@ public class FastMemoryStream : Stream
         Position += count;
     }
 
+    public void Write(FastMemoryStream src)
+    {
+        Write(src.buffer, 0, (int)src.Position);
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void CheckCapacity(int count)
     {
@@ -148,6 +155,91 @@ public class FastMemoryStream : Stream
     {
         CheckCapacity(1);
         buffer[Position++] = p;
+    }
+
+    public void WriteTwoBytes(int v)
+    {
+        CheckCapacity(2);
+        buffer[Position] = (byte)(v | 0x80);
+        buffer[Position + 1] = (byte)(v >> 7);
+        Position += 2;
+    }
+
+    public void WriteThreeBytes(int v)
+    {
+        CheckCapacity(3);
+        buffer[Position] = (byte)(v | 0x80);
+        buffer[Position + 1] = (byte)(v >> 7 | 0x80);
+        buffer[Position + 2] = (byte)(v >> 14);
+        Position += 3;
+    }
+
+    public void WriteUTF8String(string s, int lengthInBytes)
+    {
+        CheckCapacity(lengthInBytes);
+        Position += Encoding.UTF8.GetBytes(s, 0, s.Length, buffer, (int)Position);
+    }
+
+    /// <summary>
+    /// Used for Protobuf serialization if we need to go back and re-write a varInt value, for example the count of entities written
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="v"></param>
+    /// <param name="size"></param>
+    /// <exception cref="Exception"></exception>
+    public void WriteAt(int pos, int v, int size)
+    {
+        if (v < 0 && size != 5) throw new Exception("cannot retroactively write a negative number");
+        switch (size)
+        {
+            case 1:
+                if (v >= 0x80) throw new Exception("unsupported increase in count while serializing: " + v + " was " + buffer[pos]);
+                buffer[pos] = (byte)v;
+                break;
+            case 2:
+                if (v >= 0x4000) throw new Exception("unsupported increase in count while serializing: " + v + " was " + buffer[pos] + " " + buffer[pos + 1]);
+                buffer[pos] = (byte)(v | 0x80);
+                buffer[pos + 1] = (byte)(v >> 7);
+                break;
+            case 3:
+                if (v >= 0x20_0000) throw new Exception("unsupported increase in count while serializing: " + v + " was " + buffer[pos] + " " + buffer[pos + 1] + " " + buffer[pos + 2]);
+                buffer[pos] = (byte)(v | 0x80);
+                buffer[pos + 1] = (byte)(v >> 7 | 0x80);
+                buffer[pos + 2] = (byte)(v >> 14);
+                break;
+            case 4:
+                if (v >= 0x1000_0000) throw new Exception("unsupported increase in count while serializing: " + v + " was " + buffer[pos] + " " + buffer[pos + 1] + " " + buffer[pos + 2] + " " + buffer[pos + 3]);
+                buffer[pos] = (byte)(v | 0x80);
+                buffer[pos + 1] = (byte)(v >> 7 | 0x80);
+                buffer[pos + 2] = (byte)(v >> 14 | 0x80);
+                buffer[pos + 3] = (byte)(v >> 21);
+                break;
+            case 5:
+                buffer[pos] = (byte)(v | 0x80);
+                buffer[pos + 1] = (byte)(v >> 7 | 0x80);
+                buffer[pos + 2] = (byte)(v >> 14 | 0x80);
+                buffer[pos + 3] = (byte)(v >> 21 | 0x80);
+                buffer[pos + 4] = (byte)(v >> 28);
+                break;
+        }
+    }
+
+    public void WriteInt32(int v)
+    {
+        CheckCapacity(4);
+        buffer[Position] = (byte)v;
+        buffer[Position + 1] = (byte)(v >> 8);
+        buffer[Position + 2] = (byte)(v >> 16);
+        buffer[Position + 3] = (byte)(v >> 24);
+        Position += 4;
+    }
+
+    public void Write(float v)
+    {
+        CheckCapacity(4);
+        Span<byte> streamBuffer = new Span<byte>(this.buffer, (int)this.Position, 4);
+        BinaryPrimitives.WriteSingleLittleEndian(streamBuffer, v);
+        Position += 4;
     }
 
     public override void Write(ReadOnlySpan<byte> inputBuffer)
@@ -196,7 +288,6 @@ public class FastMemoryStream : Stream
 
     public override void Flush()
     {
-
     }
 
     public void Reset()

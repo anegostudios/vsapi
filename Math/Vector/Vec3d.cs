@@ -2,6 +2,7 @@
 using ProtoBuf;
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.MathTools
@@ -122,6 +123,7 @@ namespace Vintagestory.API.MathTools
             Z = a.X * b.Y - a.Y * b.X;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vec3d Add(Vec3d a)
         {
             this.X += a.X;
@@ -191,6 +193,7 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vec3d Add(double x, double y, double z)
         {
             X += x;

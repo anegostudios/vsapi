@@ -28,17 +28,17 @@ public class PModuleMotionDrag : PModule
         // In the water, multiply by water drag value.
         if (entity.FeetInLiquid || entity.Swimming)
         {
-            pos.Motion *= (float)Math.Pow(waterDragValue, dt * 33);
+            pos.Motion.Scale((float)Math.Pow(waterDragValue, dt * 33));
         }
         else // Apply air drag otherwise.
         {
-            pos.Motion *= (float)Math.Pow(airDragValue, dt * 33);
+            pos.Motion.Scale((float)Math.Pow(airDragValue, dt * 33));
         }
 
         // If you're flying and not gliding (creative) apply air drag that slows you down gently.
         if (controls.IsFlying && !controls.Gliding)
         {
-            pos.Motion *= (float)Math.Pow(GlobalConstants.AirDragFlying, dt * 33);
+            pos.Motion.Scale((float)Math.Pow(GlobalConstants.AirDragFlying, dt * 33));
         }
     }
 }

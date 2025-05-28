@@ -14,14 +14,5 @@ public interface IPhysicsTickable
 
     public bool Ticking { get; set; }
 
-    /// <summary>
-    /// If physics is multithreaded, indicates whether this tickable can proceed to be worked on on this particular thread, or not
-    /// </summary>
-    /// <returns></returns>
-    public bool CanProceedOnThisThread();
-
-    /// <summary>
-    /// Should be called at the end of each individual physics tick, necessary for multithreading to share the work properly
-    /// </summary>
-    public void OnPhysicsTickDone();
+    public Entity Entity { get; }
 }

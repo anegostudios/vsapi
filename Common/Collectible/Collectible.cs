@@ -884,6 +884,7 @@ namespace Vintagestory.API.Common
         /// Sets the items durability
         /// </summary>
         /// <param name="itemstack"></param>
+        /// <param name="amount"></param>
         public virtual void SetDurability(ItemStack itemstack, int amount)
         {
             itemstack.Attributes.SetInt("durability", amount);
@@ -3009,7 +3010,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns true if this blocks matterstate is liquid.  (Liquid blocks should also implement IBlockFlowing)
         /// <br/>
-        /// IMPORTANT: Calling code should have looked up the block using IBlockAccessor.GetBlock(pos, BlockLayersAccess.Fluid) !!!
+        /// IMPORTANT: Calling code should have looked up the block using IBlockAccessor.GetBlock(pos, BlockLayersAccess.Fluid)
         /// </summary>
         /// <returns></returns>
         public virtual bool IsLiquid()

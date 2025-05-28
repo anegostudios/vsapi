@@ -16,26 +16,28 @@ public class PModuleGravity : PModule
     }
 
     // No gravity applied if:
-    // Flying or gliding
-    // If you're a bird
-    // If you're a fish
-    // If you're swimming
-    // Or if you're climbing.
+    //   Flying (but not gliding!)
+    //   If you're a butterfly/bird
+    //   If you're a fish or frog who is currently swimming (a fish or frog on land is subject to gravity)
+    //   Or if you're climbing.
     public override bool Applicable(Entity entity, EntityPos pos, EntityControls controls)
     {
-        return (!controls.IsFlying || controls.Gliding)
-               && entity.Properties.Habitat != EnumHabitat.Air
-               && ((entity.Properties.Habitat != EnumHabitat.Sea && entity.Properties.Habitat != EnumHabitat.Underwater) || !entity.Swimming)
-               && !controls.IsClimbing;
+        var Habitat = entity.Properties.Habitat;
+        if (Habitat == EnumHabitat.Air) return false;     // Butterflies and future flying birds are not subject to gravity (this may need future modification for birds such as ducks which can both swim and fly)
+                                                          // For performance we check the habitat things first because they have to be checked every time anyhow: for the relevant creatures it saves having to do the following checks
+
+        if ((Habitat == EnumHabitat.Sea || Habitat == EnumHabitat.Underwater) && entity.Swimming) return false;   // Water creatures have buoyancy
+
+        if (controls.IsFlying && !controls.Gliding) return false;
+
+        // Also, if gravity is off for this entity don't apply.
+        return !controls.IsClimbing && entity.ApplyGravity;
     }
 
     public override void DoApply(float dt, Entity entity, EntityPos pos, EntityControls controls)
     {
         // Don't apply if you're swimming and trying to move.
         if (entity.Swimming && controls.TriesToMove && entity.Alive) return;
-
-        // If gravity is off for this entity don't apply.
-        if (!entity.ApplyGravity) return;
 
         // Drag motion down while above y -100.
         if (pos.Y > -100)

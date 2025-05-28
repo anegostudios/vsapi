@@ -1,9 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Vintagestory.API.Datastructures
 {
     public class ByteArrayAttribute : ArrayAttribute<byte>, IAttribute
     {
+        private const int AttributeID = 8;
+
         public ByteArrayAttribute()
         {
 
@@ -12,6 +15,11 @@ namespace Vintagestory.API.Datastructures
         public ByteArrayAttribute(byte[] value)
         {
             this.value = value;
+        }
+
+        public ByteArrayAttribute(FastMemoryStream ms)
+        {
+            this.value = ms.ToArray();
         }
 
         public void ToBytes(BinaryWriter stream)
@@ -28,13 +36,12 @@ namespace Vintagestory.API.Datastructures
 
         public int GetAttributeId()
         {
-            return 8;
+            return AttributeID;
         }
 
         public IAttribute Clone()
         {
             return new ByteArrayAttribute((byte[])value.Clone());
         }
-
     }
 }

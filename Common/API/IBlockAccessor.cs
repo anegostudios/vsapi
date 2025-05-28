@@ -540,6 +540,7 @@ namespace Vintagestory.API.Common
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
+        /// <param name="dim"></param>
         /// <returns></returns>
         bool IsNotTraversable(double x, double y, double z, int dim);
 

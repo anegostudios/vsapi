@@ -16,8 +16,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class ClientAnimator : AnimatorBase
     {
-        protected HashSet<int> jointsDone = new HashSet<int>();
         public Dictionary<int, AnimationJoint> jointsById;
+        protected HashSet<int> jointsDone = new HashSet<int>();
 
         public static int MaxConcurrentAnimations = 16;
         int maxDepth;
@@ -72,7 +72,8 @@ namespace Vintagestory.API.Common
                     entity.AnimManager.TriggerAnimationStopped,
                     entity.AnimManager.ShouldPlaySound
                 );
-            } else
+            }
+            else
             {
                 return new ClientAnimator(
                     () => 1,
@@ -85,7 +86,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public ClientAnimator(
+        public ClientAnimator(                  // This constructor is called only on the server side, by ServerAnimator constructors.  Note, no call to initMatrices, to save RAM on a server
             WalkSpeedSupplierDelegate walkSpeedSupplier,
             Animation[] animations,
             Action<string> onAnimationStoppedListener = null,
@@ -96,7 +97,7 @@ namespace Vintagestory.API.Common
             initFields();
         }
 
-        public ClientAnimator(
+        public ClientAnimator(                  // This constructor is called only on the client side
             WalkSpeedSupplierDelegate walkSpeedSupplier,
             List<ElementPose> rootPoses,
             Animation[] animations,
@@ -112,9 +113,10 @@ namespace Vintagestory.API.Common
             this.onShouldPlaySoundListener = onShouldPlaySoundListener;
             LoadAttachmentPoints(RootPoses);
             initFields();
+            initMatrices(MaxJointId);
         }
 
-        public ClientAnimator(
+        public ClientAnimator(                  // This constructor is called only on the client side
             WalkSpeedSupplierDelegate walkSpeedSupplier,
             Animation[] animations,
             ShapeElement[] rootElements,
@@ -130,6 +132,7 @@ namespace Vintagestory.API.Common
             LoadPosesAndAttachmentPoints(rootElements, RootPoses);
             this.onShouldPlaySoundListener = onShouldPlaySoundListener;
             initFields();
+            initMatrices(MaxJointId);
         }
 
         protected virtual void initFields()
@@ -146,6 +149,19 @@ namespace Vintagestory.API.Common
                 nextFrameTransformsByAnimation[i] = new List<ElementPose>[MaxConcurrentAnimations];
                 weightsByAnimationAndElement[i] = new ShapeElementWeights[MaxConcurrentAnimations][];
             }
+        }
+
+        protected virtual void initMatrices(int maxJointId)
+        {
+            // Matrices are only required on client side; and from 1.20.5 limited to the MaxJointId (x16) in length to avoid wasting RAM
+            var identMat = ClientAnimator.identMat;
+            var defaultPoseMatrices = new float[16 * maxJointId];
+            for (int i = 0; i < defaultPoseMatrices.Length; i++)
+            {
+                defaultPoseMatrices[i] = identMat[i % 16];
+            }
+            TransformationMatricesDefaultPose = defaultPoseMatrices;
+            TransformationMatrices = new float[defaultPoseMatrices.Length];
         }
 
         public override void ReloadAttachmentPoints()
@@ -292,7 +308,7 @@ namespace Vintagestory.API.Common
         protected override void calculateMatrices(float dt)
         {
             if (!CalculateMatrices) return;
-            
+
             jointsDone.Clear();
 
             int animVersion = 0;
@@ -331,14 +347,17 @@ namespace Vintagestory.API.Common
                 0
             );
 
-
-            for (int jointid = 0; jointid < GlobalConstants.MaxAnimatedElements; jointid++)
+            var TransformationMatrices = this.TransformationMatrices;
+            if (TransformationMatrices != null)
             {
-                if (jointsById.ContainsKey(jointid)) continue;
-
-                for (int j = 0; j < 16; j++)
+                for (int jointidMul16 = 0; jointidMul16 < TransformationMatrices.Length; jointidMul16 += 16)    // radfast 20.2.25:  jointIdMul16 is (jointId * 16); I think this is the highest performance way to loop through this, taking account of the many array bounds checks
                 {
-                    TransformationMatrices[jointid * 16 + j] = identMat[j];
+                    if (jointsById.ContainsKey(jointidMul16 / 16)) continue;
+
+                    for (int j = 0; j < 16; j++)
+                    {
+                        TransformationMatrices[jointidMul16 + j] = identMat[j];
+                    }
                 }
             }
 
@@ -437,17 +456,30 @@ namespace Vintagestory.API.Common
                 elem.GetLocalTransformMatrix(animVersion, localTransformMatrix, outFramePose);
                 Mat4f.Mul(outFramePose.AnimModelMatrix, outFramePose.AnimModelMatrix, localTransformMatrix);
 
-                if (elem.JointId > 0 && !jointsDone.Contains(elem.JointId))
+                if (TransformationMatrices != null)     // It is null on a server, non-null on a client
                 {
-                    Mat4f.Mul(tmpMatrix, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
-
-                    int index = 16 * elem.JointId;
-                    for (int i = 0; i < 16; i++)
+                    if (elem.JointId > 0 && !jointsDone.Contains(elem.JointId))
                     {
-                        TransformationMatrices[index+i] = tmpMatrix[i];
-                    }
+                        Mat4f.Mul(tmpMatrix, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
 
-                    jointsDone.Add(elem.JointId);
+                        int index = 16 * elem.JointId;
+                        var transformationMatrices = TransformationMatrices;
+                        var tmpMatrixLocal = tmpMatrix;
+                        if (index + 16 > transformationMatrices.Length)     // Check we have space for this joint: we normally should, if MaxJointId was correct, but a mod could have modified the shape or something
+                        {
+                            var transformationMatricesDefault = this.TransformationMatricesDefaultPose;
+                            initMatrices(elem.JointId + 1);    // This replaces the matrices in both fields, but our local references are still the old populated matrices
+                            Array.Copy(transformationMatrices, this.TransformationMatrices, transformationMatrices.Length);
+                            Array.Copy(transformationMatricesDefault, this.TransformationMatricesDefaultPose, transformationMatricesDefault.Length);
+                            transformationMatrices = this.TransformationMatrices;
+                        }
+                        for (int i = 0; i < 16; i++)
+                        {
+                            transformationMatrices[index + i] = tmpMatrixLocal[i];
+                        }
+
+                        jointsDone.Add(elem.JointId);
+                    }
                 }
 
                 if (outFramePose.ChildElementPoses != null)

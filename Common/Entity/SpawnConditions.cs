@@ -246,6 +246,11 @@ namespace Vintagestory.API.Common.Entities
         [DocumentAsJson] public int MinDistanceToPlayer = 18;
 
         /// <summary>
+        /// Set server-side after this has been loaded once, used only for error logging purposes
+        /// </summary>
+        public bool doneInitialLoad;
+
+        /// <summary>
         /// Creates a deep copy of this set of spawn conditions.
         /// </summary>
         /// <returns></returns>

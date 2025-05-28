@@ -333,6 +333,37 @@ Class Entity
 
 
 
+  <h3 id="Vintagestory_API_Common_Entities_Entity_AfterPhysicsTick" data-uid="Vintagestory.API.Common.Entities.Entity.AfterPhysicsTick">
+  AfterPhysicsTick
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Invoked once per server tick, immediately following the physics ticking, if this Entity has any of the Physics behaviors. Example use, anything which requires an update of the entity's current position, such as BehaviorRepulseAgents</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action AfterPhysicsTick</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_Entities_Entity_AirBubbleParticleProps" data-uid="Vintagestory.API.Common.Entities.Entity.AirBubbleParticleProps">
   AirBubbleParticleProps
   
@@ -413,6 +444,37 @@ Class Entity
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Datastructures.SyncedTreeAttribute.html">SyncedTreeAttribute</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_BHRepulseAgents" data-uid="Vintagestory.API.Common.Entities.Entity.BHRepulseAgents">
+  BHRepulseAgents
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The Entity's BehaviorRepulseAgents, if it has one - here for critical performance reasons. This may also be accessed from Physics ticking</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityBehavior BHRepulseAgents</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html">EntityBehavior</a></dt>
     <dd></dd>
   </dl>
 
@@ -1255,6 +1317,38 @@ Class Entity
 
 
 
+  <h3 id="Vintagestory_API_Common_Entities_Entity_PositionTicked" data-uid="Vintagestory.API.Common.Entities.Entity.PositionTicked">
+  PositionTicked
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used by PhysicsManager. Added here to increase performance
+Set to true when position packet prepared during physics ticking, set to false following AfterPhysicsTick()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PositionTicked</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_Entities_Entity_PreviousServerPos" data-uid="Vintagestory.API.Common.Entities.Entity.PreviousServerPos">
   PreviousServerPos
   
@@ -1305,6 +1399,69 @@ Class Entity
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_ServerBehaviorsMainThread" data-uid="Vintagestory.API.Common.Entities.Entity.ServerBehaviorsMainThread">
+  ServerBehaviorsMainThread
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used for efficiency in multi-player servers, to speed up iterating over relevant behaviors only. These are the behaviors returning Threadsafe == false (which is the default)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityBehavior[] ServerBehaviorsMainThread</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html">EntityBehavior</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_ServerBehaviorsThreadsafe" data-uid="Vintagestory.API.Common.Entities.Entity.ServerBehaviorsThreadsafe">
+  ServerBehaviorsThreadsafe
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used for efficiency in multi-player servers, to speed up iterating over relevant behaviors only. These are the behaviors returning Threadsafe == true;
+These behaviors may have their regular ticking (including ShouldExecute() etc) called EITHER from the main thread OR from another physics thread, depending on PhysicsManager logic</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityBehavior[] ServerBehaviorsThreadsafe</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html">EntityBehavior</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -1693,7 +1850,8 @@ Class Entity
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool customRepulseBehavior</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Unused but retained for mod API backwards compatibility&quot;)]
+public bool customRepulseBehavior</code></pre>
   </div>
 
 
@@ -1753,7 +1911,8 @@ Class Entity
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool hasRepulseBehavior</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Unused but retained for mod API backwards compatibility&quot;)]
+public bool hasRepulseBehavior</code></pre>
   </div>
 
 
@@ -1792,36 +1951,6 @@ Class Entity
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_Entities_Entity_ownPosRepulse" data-uid="Vintagestory.API.Common.Entities.Entity.ownPosRepulse">
-  ownPosRepulse
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d ownPosRepulse</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
     <dd></dd>
   </dl>
 
@@ -1945,6 +2074,37 @@ If false, only root level attachment points will be available server side</p>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_touchDistance" data-uid="Vintagestory.API.Common.Entities.Entity.touchDistance">
+  touchDistance
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set during initialization by calling Entity.GetTouchDistance().  A mod wishing to change the value returned by .GetTouchDistance() dynamically should probably call .updateColSelBoxes() or update this field directly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double touchDistance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -2380,6 +2540,38 @@ Set and Called by the Entities ServerSystem</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float IdleSoundChanceModifier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_ImpactBlockUpdateChance_" data-uid="Vintagestory.API.Common.Entities.Entity.ImpactBlockUpdateChance*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_ImpactBlockUpdateChance" data-uid="Vintagestory.API.Common.Entities.Entity.ImpactBlockUpdateChance">
+  ImpactBlockUpdateChance
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The chance that this entity, walking or jumping on or falling onto a block, will trigger a block-update - so potentially unstable dirt or sand falling, avalanche etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual float ImpactBlockUpdateChance { get; set; }</code></pre>
   </div>
 
 
@@ -2964,6 +3156,33 @@ A density below 1000 means the entity floats on top of water if has a physics si
     <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_CacheServerBehaviors_" data-uid="Vintagestory.API.Common.Entities.Entity.CacheServerBehaviors*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_CacheServerBehaviors" data-uid="Vintagestory.API.Common.Entities.Entity.CacheServerBehaviors">
+  CacheServerBehaviors()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create the cached arrays of thread-safe and mainthread behaviors, for ticking performance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CacheServerBehaviors()</code></pre>
+  </div>
+
 
 
 
@@ -3568,7 +3787,9 @@ position in relation to the target position of the schematic to be imported.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The distance at which entities are counted as &quot;touching&quot; each other, for example used by EntityPartitioning and RepulseAgents
+<br>Note: from 1.20.4 this is gathered and cached in a field when each entity is Initialized, if for any reason a mod or behavior needs to change the result later than Initialization then you should also update the Entity field .touchDistance</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

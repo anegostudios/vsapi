@@ -60,6 +60,7 @@ namespace Vintagestory.API.Common
         /// <param name="entity"></param>
         /// <param name="entityShape"></param>
         /// <param name="copyOverAnims"></param>
+        /// <param name="requirePosesOnServer"></param>
         /// <param name="requireJointsForElements"></param>
         /// <returns></returns>
         [Obsolete("Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead")]
@@ -74,6 +75,7 @@ namespace Vintagestory.API.Common
 
             var animCache = ObjectCacheUtil.GetOrCreate(api, "animCache", () => new Dictionary<string, AnimCacheEntry>());
 
+            entityShape.InitForAnimations(api.Logger, entity.Properties.Client.ShapeForEntity.Base.ToString(), requireJointsForElements);
             IAnimator animator = null;
 
             AnimCacheEntry cacheObj;
@@ -83,7 +85,7 @@ namespace Vintagestory.API.Common
 
                 animator = api.Side == EnumAppSide.Client ?
                     ClientAnimator.CreateForEntity(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById) :
-                    ServerAnimator.CreateForEntity(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById)
+                    ServerAnimator.CreateForEntity(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById, requirePosesOnServer)
                 ;
 
                 manager.Animator = animator;

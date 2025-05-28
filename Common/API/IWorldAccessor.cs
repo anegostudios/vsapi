@@ -258,16 +258,22 @@ namespace Vintagestory.API.Common
         /// Returns the entity spawned (may be null!)
         /// </summary>
         /// <param name="itemstack"></param>
-        /// <param name="position"></param>
+        /// <param name="pos"></param>
         /// <param name="velocity"></param>
         Entity SpawnItemEntity(ItemStack itemstack, BlockPos pos, Vec3d velocity = null);
 
         /// <summary>
-        /// Creates a new entity. It's the responsibility of the given Entity to call set it's EntityType.
-        /// This should be done inside it's Initialize method before base.Initialize is called.
+        /// Creates a new entity. It's the responsibility of the given Entity to call set its EntityType.
+        /// This should be done inside its Initialize method before base.Initialize is called.
         /// </summary>
         /// <param name="entity"></param>
         void SpawnEntity(Entity entity);
+
+        /// <summary>
+        /// Like SpawnEntity() but sends out the entity spawn and motion packets to nearby clients immediately. Use this e.g. for more responsive projectiles
+        /// </summary>
+        /// <param name="entity"></param>
+        void SpawnPriorityEntity(Entity entity);
 
         /// <summary>
         /// Loads a previously created entity into the loadedEntities list. Used when a chunk is loaded.

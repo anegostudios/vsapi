@@ -7,6 +7,9 @@ namespace Vintagestory.API.Common.Entities;
 
 public class PModuleOnGround : PModule
 {
+    // Time in milliseconds when jumping is blocked, after last jump
+    private const long MinimumJumpInterval = 500;
+
     // Time the player last jumped.
     private long lastJump;
 
@@ -20,7 +23,8 @@ public class PModuleOnGround : PModule
     // Getting knocked back disables coyote time for a while
     private float antiCoyoteTimer;
 
-    private readonly Vec3d motionDelta = new();
+    private double motionDeltaX;
+    private double motionDeltaZ;
 
     public override void Initialize(JsonObject config, Entity entity)
     {
@@ -36,13 +40,19 @@ public class PModuleOnGround : PModule
             coyoteTimer = 0.15f;
         }
 
-        if (coyoteTimer > 0 && entity.Attributes.GetInt("dmgkb") > 0)
+        if (coyoteTimer > 0)
         {
-            coyoteTimer = 0;
-            antiCoyoteTimer = 0.16f;
+            if (entity.Attributes.GetInt("dmgkb") > 0)
+            {
+                coyoteTimer = 0;
+                antiCoyoteTimer = 0.16f;
+                return onGround;    //  Effectively:     return onGround || coyoteTimer > 0;
+            }
+
+            return true;
         }
 
-        return onGround || coyoteTimer > 0;
+        return onGround;
     }
 
     public override void DoApply(float dt, Entity entity, EntityPos pos, EntityControls controls)
@@ -50,42 +60,42 @@ public class PModuleOnGround : PModule
         // Tick coyote time.
         coyoteTimer -= dt;
 
-        antiCoyoteTimer = Math.Max(0, antiCoyoteTimer - dt);
+        if (antiCoyoteTimer > 0) antiCoyoteTimer = Math.Max(0, antiCoyoteTimer - dt);    // radfast 6.2.25: coded for performance, antiCoyoteTimer is rarely non-zero, only following knockback
 
-        // Get block below.
-        Block belowBlock = entity.World.BlockAccessor.GetBlockRaw((int)pos.X, (int)(pos.InternalY - 0.05f), (int)pos.Z);
+        // Get block below's drag - or lack thereof, in the case of ice :)
+        float belowBlockDragMultiplier = entity.World.BlockAccessor.GetBlockRaw((int)pos.X, (int)(pos.InternalY - 0.05f), (int)pos.Z).DragMultiplier;
 
         // Only accumulator in physics modules.
-        accum = Math.Min(1, accum + dt);
+        float accum = Math.Min(1, this.accum + dt);    // Local variable for accum for performance, we set back the field at the end of checks
         float frameTime = 1 / 60f;
 
-        while (accum > frameTime)
+        // Move by current walk vector (set in AI and by player).
+        double multiplier = (entity as EntityAgent).GetWalkSpeedMultiplier(groundDragFactor);
+        double walkX = controls.WalkVector.X * multiplier;
+        double walkZ = controls.WalkVector.Z * multiplier;
+        var motion = pos.Motion;
+        double groundDrag = 1 - groundDragFactor;
+        while (accum > frameTime)                   // radfast 6.2.25: This is always going to be true at least once and likely twice on a server, as frameTime is so small. Therefore in perfomance terms it's OK to get the belowBlock even prior to testing this condition
         {
             accum -= frameTime;
 
             if (entity.Alive)
             {
-                // Move by current walk vector (set in AI and by player).
-                double multiplier = (entity as EntityAgent).GetWalkSpeedMultiplier(groundDragFactor);
+                motionDeltaX += (walkX - motionDeltaX) * belowBlockDragMultiplier;     // The value will trend towards walkX, at a rate depending on belowBlockDragMultiplier
+                motionDeltaZ += (walkZ - motionDeltaZ) * belowBlockDragMultiplier;     // The value will trend towards walkZ, at a rate depending on belowBlockDragMultiplier
 
-                motionDelta.Set(
-                    motionDelta.X + (((controls.WalkVector.X * multiplier) - motionDelta.X) * belowBlock.DragMultiplier),
-                    0,
-                    motionDelta.Z + (((controls.WalkVector.Z * multiplier) - motionDelta.Z) * belowBlock.DragMultiplier)
-                );
-
-                pos.Motion.Add(motionDelta.X, 0, motionDelta.Z);
+                motion.Add(motionDeltaX, 0, motionDeltaZ);
             }
 
             // Apply ground drag
-            double dragStrength = 1 - groundDragFactor;
-
-            pos.Motion.X *= dragStrength;
-            pos.Motion.Z *= dragStrength;
+            motion.X *= groundDrag;
+            motion.Z *= groundDrag;
         }
 
-        // Only able to jump every 500ms. Only works while on the ground.
-        if (controls.Jump && entity.World.ElapsedMilliseconds - lastJump > 500 && entity.Alive)
+        this.accum = accum;
+
+        // Only able to jump every 500ms. Only works while on the ground or coyoteTimer still active...
+        if (controls.Jump && entity.World.ElapsedMilliseconds - lastJump > MinimumJumpInterval && entity.Alive)
         {
             EntityPlayer entityPlayer = entity as EntityPlayer;
 

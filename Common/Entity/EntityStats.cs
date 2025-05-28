@@ -7,19 +7,24 @@ namespace Vintagestory.API.Common
 {
     public class EntityStats : IEnumerable<KeyValuePair<string, EntityFloatStats>>, IEnumerable
     {
-        Dictionary<string, EntityFloatStats> floatStats = new Dictionary<string, EntityFloatStats>();
+        IDictionary<string, EntityFloatStats> floatStats = new FastSmallDictionary<string, EntityFloatStats>(0);
         Entity entity;
 
         bool ignoreChange = false;
         public EntityStats(Entity entity)
         {
             this.entity = entity;
-            entity.WatchedAttributes.RegisterModifiedListener("stats", onStatsChanged);
+        }
+
+        public void Initialize(ICoreAPI api)
+        {
+            // We only register the listener client-side, because only client-side will we call FromTreeAtttributes() in the onStatsChanged method
+            if (api.Side == EnumAppSide.Client) entity.WatchedAttributes.RegisterModifiedListener("stats", onStatsChanged);
         }
 
         private void onStatsChanged()
         {
-            if (entity.World?.Side == EnumAppSide.Client && !ignoreChange)
+            if (!ignoreChange)
             {
                 FromTreeAttributes(entity.WatchedAttributes);
             }
@@ -58,16 +63,24 @@ namespace Vintagestory.API.Common
 
         public void ToTreeAttributes(ITreeAttribute tree, bool forClient)
         {
-            TreeAttribute statstree = new TreeAttribute();
+            if (floatStats.Count == 0) return;
+
+            if (tree.TryGetAttribute("stats", out IAttribute attr) && attr is TreeAttribute statstree)
+            {
+                statstree.Clear();
+            }
+            else
+            {
+                statstree = new TreeAttribute();
+                tree["stats"] = statstree;
+            }
 
             foreach (var stats in floatStats)
             {
-                TreeAttribute subtree = new TreeAttribute();
+                TreeAttribute subtree = new TreeAttribute();            // radfast 14.3.25: costly to create a new TreeAttribute with its Dictionary for each floatStats, each time this method is called, but hey what can you do...
                 stats.Value.ToTreeAttributes(subtree, forClient);
                 statstree[stats.Key] = subtree;
             }
-
-            tree["stats"] = statstree;
         }
 
         public void FromTreeAttributes(ITreeAttribute tree)

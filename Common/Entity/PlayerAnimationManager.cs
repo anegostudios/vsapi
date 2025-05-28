@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using Vintagestory.API.Client;
@@ -375,18 +376,28 @@ namespace Vintagestory.API.Common
         public override void ToAttributes(ITreeAttribute tree, bool forClient)
         {
             base.ToAttributes(tree, forClient);
+            WriteAdditionalAttributes(forClient, tree.SetString);
+        }
 
+        public override void ToAttributeBytes(BinaryWriter writer, bool forClient)
+        {
+            base.ToAttributeBytes(writer, forClient);
+            WriteAdditionalAttributes(forClient, (key, value) => StringAttribute.DirectWrite(writer, key, value));
+        }
+
+        private void WriteAdditionalAttributes(bool forClient, Action<string, string> output)
+        {
             if (lastActiveHeldUseAnimation != null)
             {
-                tree.SetString("lrHeldUseAnim", lastActiveHeldUseAnimation);
+                output("lrHeldUseAnim", lastActiveHeldUseAnimation);
             }
             if (lastActiveHeldHitAnimation != null)
             {
-                tree.SetString("lrHeldHitAnim", lastActiveHeldHitAnimation);
+                output("lrHeldHitAnim", lastActiveHeldHitAnimation);
             }
             if (lastActiveRightHeldIdleAnimation != null)
             {
-                tree.SetString("lrRightHeldIdleAnim", lastActiveRightHeldIdleAnimation);
+                output("lrRightHeldIdleAnim", lastActiveRightHeldIdleAnimation);
             }
         }
 

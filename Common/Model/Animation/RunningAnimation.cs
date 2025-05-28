@@ -17,7 +17,13 @@ namespace Vintagestory.API.Common
 
         public float CurrentFrame;
         public Animation Animation;
+        /// <summary>
+        /// The animation is required to be active: if not started it should now start; if it ever ceases to be Active it should do whatever stop behavior is required (e.g. ease-out)
+        /// </summary>
         public bool Active;
+        /// <summary>
+        /// The animation is currently running in any way, including play-till-end after it is no longer active
+        /// </summary>
         public bool Running;
         public int Iterations;
 

@@ -148,6 +148,70 @@ Class SerializerUtil
 
 
 
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Util_SerializerUtil_SerializedOne" data-uid="Vintagestory.API.Util.SerializerUtil.SerializedOne">
+  SerializedOne
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly byte[] SerializedOne</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Util_SerializerUtil_SerializedZero" data-uid="Vintagestory.API.Util.SerializerUtil.SerializedZero">
+  SerializedZero
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly byte[] SerializedZero</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -333,6 +397,51 @@ Class SerializerUtil
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>data</code> <span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_SerializerUtil_Serialize_" data-uid="Vintagestory.API.Util.SerializerUtil.Serialize*"></a>
+
+  <h3 id="Vintagestory_API_Util_SerializerUtil_Serialize__1___0_Vintagestory_API_Datastructures_FastMemoryStream_" data-uid="Vintagestory.API.Util.SerializerUtil.Serialize``1(``0,Vintagestory.API.Datastructures.FastMemoryStream)">
+  Serialize&lt;T&gt;(T, FastMemoryStream)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>For performance, version using a reusable FastMemoryStream provided as a parameter.
+<br>(Caution: do not re-use the same stream in a nested way e.g. serializing individual elements within a larger object, as every call to this resets the stream)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] Serialize&lt;T&gt;(T data, FastMemoryStream ms)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <span class="xref">T</span></dt>
+    <dd></dd>
+    <dt><code>ms</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
     <dd></dd>
   </dl>
 

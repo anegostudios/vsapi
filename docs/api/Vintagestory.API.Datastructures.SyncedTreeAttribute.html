@@ -173,6 +173,9 @@ Class SyncedTreeAttribute
       <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html#Vintagestory_API_Datastructures_TreeAttribute_GetEnumerator">TreeAttribute.GetEnumerator()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html#Vintagestory_API_Datastructures_TreeAttribute_Clear">TreeAttribute.Clear()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html#Vintagestory_API_Datastructures_TreeAttribute_Set_System_String_Vintagestory_API_Datastructures_IAttribute_">TreeAttribute.Set(string, IAttribute)</a>
     </div>
     <div>
@@ -303,6 +306,12 @@ Class SyncedTreeAttribute
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html#Vintagestory_API_Datastructures_TreeAttribute_GetHashCode_System_String___">TreeAttribute.GetHashCode(string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html#Vintagestory_API_Datastructures_TreeAttribute_BeginDirectWrite_System_IO_BinaryWriter_System_String_">TreeAttribute.BeginDirectWrite(BinaryWriter, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html#Vintagestory_API_Datastructures_TreeAttribute_TerminateWrite_System_IO_BinaryWriter_">TreeAttribute.TerminateWrite(BinaryWriter)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -561,6 +570,45 @@ Class SyncedTreeAttribute
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_SyncedTreeAttribute_GetIntAndIncrement_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.GetIntAndIncrement*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_SyncedTreeAttribute_GetIntAndIncrement_System_String_System_Int32_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.GetIntAndIncrement(System.String,System.Int32)">
+  GetIntAndIncrement(string, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Equivalent to i++ within the TreeAttribute, i.e. it increases the stored value but returns the current read value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int GetIntAndIncrement(string key, int defaultValue = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

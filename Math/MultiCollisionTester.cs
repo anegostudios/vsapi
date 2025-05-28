@@ -219,7 +219,8 @@ namespace Vintagestory.API.MathTools
         /// If given cuboidf collides with the terrain, returns the collision box it collides with. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
         /// </summary>
         /// <param name="blockAccessor"></param>
-        /// <param name="entityBoxRel"></param>
+        /// <param name="ecollisionBoxes"></param>
+        /// <param name="collBoxCount"></param>
         /// <param name="pos"></param>
         /// <param name="alsoCheckTouch"></param>
         /// <returns></returns>

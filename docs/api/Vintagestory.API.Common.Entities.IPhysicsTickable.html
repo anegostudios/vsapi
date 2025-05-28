@@ -130,6 +130,37 @@ Interface IPhysicsTickable
 </h2>
 
 
+  <a id="Vintagestory_API_Common_Entities_IPhysicsTickable_Entity_" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.Entity*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IPhysicsTickable_Entity" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.Entity">
+  Entity
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Entity Entity { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_IPhysicsTickable_Ticking_" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.Ticking*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_IPhysicsTickable_Ticking" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.Ticking">
@@ -197,38 +228,6 @@ Interface IPhysicsTickable
 
 
 
-  <a id="Vintagestory_API_Common_Entities_IPhysicsTickable_CanProceedOnThisThread_" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.CanProceedOnThisThread*"></a>
-
-  <h3 id="Vintagestory_API_Common_Entities_IPhysicsTickable_CanProceedOnThisThread" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.CanProceedOnThisThread">
-  CanProceedOnThisThread()
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>If physics is multithreaded, indicates whether this tickable can proceed to be worked on on this particular thread, or not</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool CanProceedOnThisThread()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_Entities_IPhysicsTickable_OnPhysicsTick_" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_IPhysicsTickable_OnPhysicsTick_System_Single_" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(System.Single)">
@@ -249,33 +248,6 @@ Interface IPhysicsTickable
     <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_Entities_IPhysicsTickable_OnPhysicsTickDone_" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTickDone*"></a>
-
-  <h3 id="Vintagestory_API_Common_Entities_IPhysicsTickable_OnPhysicsTickDone" data-uid="Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTickDone">
-  OnPhysicsTickDone()
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Should be called at the end of each individual physics tick, necessary for multithreading to share the work properly</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnPhysicsTickDone()</code></pre>
-  </div>
-
 
 
 

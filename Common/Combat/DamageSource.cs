@@ -76,6 +76,8 @@ namespace Vintagestory.API.Common
         /// If we have a hitposition this returns the pitch between the attacker and the attacked position
         /// </summary>
         /// <param name="attackedPos"></param>
+        /// <param name="attackYaw"></param>
+        /// <param name="attackPitch"></param>
         /// <returns></returns>
         public bool GetAttackAngle(Vec3d attackedPos, out double attackYaw, out double attackPitch)
         {

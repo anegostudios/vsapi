@@ -3226,8 +3226,8 @@ Ignores any subsequent registers for the same blockpos while a callback is still
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Creates a new entity. It's the responsibility of the given Entity to call set it's EntityType.
-This should be done inside it's Initialize method before base.Initialize is called.</p>
+  <div class="markdown level1 summary"><p>Creates a new entity. It's the responsibility of the given Entity to call set its EntityType.
+This should be done inside its Initialize method before base.Initialize is called.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -3411,6 +3411,38 @@ Returns the entity spawned (may be null!)</p>
     <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
     <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IWorldAccessor_SpawnPriorityEntity_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnPriorityEntity*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnPriorityEntity_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnPriorityEntity(Vintagestory.API.Common.Entities.Entity)">
+  SpawnPriorityEntity(Entity)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Like SpawnEntity() but sends out the entity spawn and motion packets to nearby clients immediately. Use this e.g. for more responsive projectiles</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SpawnPriorityEntity(Entity entity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
   </dl>
 
 

@@ -655,6 +655,22 @@ namespace Vintagestory.API.MathTools
             return new BlockPos(X / factor, Y / factor, Z / factor, dimension);
         }
 
+        /// <summary>
+        /// Iterate through NESW offsets from the starting position.  See also BlockFacing.IterateThruFacingOffset
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void IterateHorizontalOffsets(int i)
+        {
+            // i = 0,1,2,3 corresponds with NESW
+            //   i = 0: Z -1, X +0
+            //   i = 1: Z +1, X +1
+            //   i = 2: Z +1, X -1
+            //   i = 3: Z -1, X -1
+            Z += ((i + 1) & 2) - 1;       // First bracket is 1,2,3,4  Second bracket is 0,2,2,0  Final is -1,+1,+1,-1
+            X += (i % 3 & 1) - (i / 2);   // First bracket is 0,1,0,0  Second bracket is 0,0,1,1  Final is 0,+1,-1,-1
+        }
         #endregion
 
         #region Distance

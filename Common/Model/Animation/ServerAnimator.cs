@@ -38,11 +38,12 @@ namespace Vintagestory.API.Common
 
         public static ServerAnimator CreateForEntity(Entity entity, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, bool requirePosesOnServer)
         {
+            ServerAnimator animator;
             if (entity is EntityAgent)
             {
                 EntityAgent entityag = entity as EntityAgent;
 
-                return new ServerAnimator(
+                animator = new ServerAnimator(
                     () => entityag.Controls.MovespeedMultiplier * entityag.GetWalkSpeedMultiplier(0.3),
                     animations,
                     rootElements,
@@ -51,7 +52,7 @@ namespace Vintagestory.API.Common
                     requirePosesOnServer
                 );
             } else {
-                return new ServerAnimator(
+                animator = new ServerAnimator(
                     () => 1,
                     animations,
                     rootElements,
@@ -60,6 +61,9 @@ namespace Vintagestory.API.Common
                     requirePosesOnServer
                 );
             }
+
+            animator.entityForLogging = entity;
+            return animator;
         }
 
 

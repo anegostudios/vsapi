@@ -18,14 +18,14 @@ public class PModuleWind : PModule
     public override bool Applicable(Entity entity, EntityPos pos, EntityControls controls)
     {
         // Applies if trying to walk on the surface.
-        return controls.TriesToMove && entity.OnGround && !entity.Swimming;
+        if (controls.TriesToMove) return entity.OnGround && !entity.Swimming;
+        return false;
     }
 
     public override void DoApply(float dt, Entity entity, EntityPos pos, EntityControls controls)
     {
         // Update wind force every 5 seconds and apply the motion to the entity.
-        accum += dt;
-        if (accum > 5)
+        if ((accum += dt) > 5)
         {
             accum = 0;
             UpdateWindForce(entity);

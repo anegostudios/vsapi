@@ -1,0 +1,1098 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class FastSerializer | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class FastSerializer | VintageStory API ">
+      
+      <meta name="description" content="A faster implementation of a ProtoBuf serializer. Note 1: for int and ushort and other primitives/structs, the default value of 0 will not be written (because the read value will be 0 anyhow, so not writing the 0 value makes no difference to what the reader eventually reads): except in arrays and other simple collections such as List, where 0 values will be written, so that the reader reads out all subsequent values in the array with the correct indexing Note 2: for reference types including string, if the value is null then nothing will be written.  A read collection may therefore be shorter than the written collection, if the written collection included null values: be careful serializing arrays of reference types, if necessary replace null values with something else prior to serialization.  For convenience, one special exception here is arrays or lists of string: if a null string is in the array, FastSerializer will instead automatically write an empty string &amp;quot;&amp;quot;. (We don&#39;t do that for other reference types because it is not necessarily clear what the default non-null value should be....)">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Util.FastSerializer">
+
+
+
+  <h1 id="Vintagestory_API_Util_FastSerializer" data-uid="Vintagestory.API.Util.FastSerializer" class="text-break">
+Class FastSerializer  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Util.html">Util</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>A faster implementation of a ProtoBuf serializer.
+<br>Note 1: for int and ushort and other primitives/structs, the default value of 0 will not be written (because the read value will be 0 anyhow, so not writing the 0 value makes no difference to what the reader eventually reads): except in arrays and other simple collections such as List, where 0 values will be written, so that the reader reads out all subsequent values in the array with the correct indexing
+<br>Note 2: for reference types including string, if the value is null then nothing will be written.  A read collection may therefore be shorter than the written collection, if the written collection included null values: be careful serializing arrays of reference types, if necessary replace null values with something else prior to serialization.  For convenience, one special exception here is arrays or lists of string: if a null string is in the array, FastSerializer will instead automatically write an empty string &quot;&quot;. (We don't do that for other reference types because it is not necessarily clear what the default non-null value should be....)</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class FastSerializer</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">FastSerializer</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_GetSize_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_GetSize_System_Byte___" data-uid="Vintagestory.API.Util.FastSerializer.GetSize(System.Byte[])">
+  GetSize(byte[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetSize(byte[] val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_GetSize_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_GetSize_System_Int32_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize(System.Int32)">
+  GetSize(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetSize(int v)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_GetSize_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_GetSize_System_Single_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize(System.Single)">
+  GetSize(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetSize(float v)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_GetSize_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_GetSize_System_String_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize(System.String)">
+  GetSize(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetSize(string s)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_GetSize_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_GetSize_System_UInt16_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize(System.UInt16)">
+  GetSize(ushort)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetSize(ushort v)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_GetSize_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_GetSize_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize(Vintagestory.API.MathTools.Vec2i)">
+  GetSize(Vec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetSize(Vec2i val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>val</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Boolean)">
+  Write(FastMemoryStream, int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, bool val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Byte___" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Byte[])">
+  Write(FastMemoryStream, int, byte[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, byte[] val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IDictionary_System_String_System_Byte____" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IDictionary{System.String,System.Byte[]})">
+  Write(FastMemoryStream, int, IDictionary&lt;string, byte[]&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IDictionary&lt;string, byte[]&gt; dict)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>dict</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IDictionary_Vintagestory_API_MathTools_Vec2i_System_Single__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IDictionary{Vintagestory.API.MathTools.Vec2i,System.Single})">
+  Write(FastMemoryStream, int, IDictionary&lt;Vec2i, float&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IDictionary&lt;Vec2i, float&gt; dict)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>dict</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_Byte____" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.Byte[]})">
+  Write(FastMemoryStream, int, IEnumerable&lt;byte[]&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IEnumerable&lt;byte[]&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_Int32__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
+  Write(FastMemoryStream, int, IEnumerable&lt;int&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IEnumerable&lt;int&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_String__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.String})">
+  Write(FastMemoryStream, int, IEnumerable&lt;string&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IEnumerable&lt;string&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_UInt16__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.UInt16})">
+  Write(FastMemoryStream, int, IEnumerable&lt;ushort&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IEnumerable&lt;ushort&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_Vintagestory_API_MathTools_BlockPos__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{Vintagestory.API.MathTools.BlockPos})">
+  Write(FastMemoryStream, int, IEnumerable&lt;BlockPos&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IEnumerable&lt;BlockPos&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_Vintagestory_API_MathTools_Vec4i__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{Vintagestory.API.MathTools.Vec4i})">
+  Write(FastMemoryStream, int, IEnumerable&lt;Vec4i&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IEnumerable&lt;Vec4i&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.Vec4i.html">Vec4i</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Int32_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Int32)">
+  Write(FastMemoryStream, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, int val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Single_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Single)">
+  Write(FastMemoryStream, int, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, float val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_String_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.String)">
+  Write(FastMemoryStream, int, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, string s)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_Vintagestory_API_Datastructures_FastMemoryStream_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,Vintagestory.API.Datastructures.FastMemoryStream)">
+  Write(FastMemoryStream, int, FastMemoryStream)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, FastMemoryStream val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,Vintagestory.API.MathTools.BlockPos)">
+  Write(FastMemoryStream, int, BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, BlockPos val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,Vintagestory.API.MathTools.Vec2i)">
+  Write(FastMemoryStream, int, Vec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, Vec2i val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_Vintagestory_API_MathTools_Vec4i_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,Vintagestory.API.MathTools.Vec4i)">
+  Write(FastMemoryStream, int, Vec4i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, Vec4i val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="Vintagestory.API.MathTools.Vec4i.html">Vec4i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_WritePacked_" data-uid="Vintagestory.API.Util.FastSerializer.WritePacked*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_WritePacked_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_Int32__" data-uid="Vintagestory.API.Util.FastSerializer.WritePacked(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.Int32})">
+  WritePacked(FastMemoryStream, int, IEnumerable&lt;int&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WritePacked(FastMemoryStream stream, int field, IEnumerable&lt;int&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_WritePacked_" data-uid="Vintagestory.API.Util.FastSerializer.WritePacked*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_WritePacked_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_UInt16__" data-uid="Vintagestory.API.Util.FastSerializer.WritePacked(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.UInt16})">
+  WritePacked(FastMemoryStream, int, IEnumerable&lt;ushort&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WritePacked(FastMemoryStream stream, int field, IEnumerable&lt;ushort&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_WriteTagLengthDelim_" data-uid="Vintagestory.API.Util.FastSerializer.WriteTagLengthDelim*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_WriteTagLengthDelim_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Int32_" data-uid="Vintagestory.API.Util.FastSerializer.WriteTagLengthDelim(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Int32)">
+  WriteTagLengthDelim(FastMemoryStream, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void WriteTagLengthDelim(FastMemoryStream stream, int field, int length)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

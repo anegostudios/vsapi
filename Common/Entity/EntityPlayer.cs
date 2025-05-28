@@ -681,6 +681,8 @@ namespace Vintagestory.API.Common
                 selfClimateCond = Api.World.BlockAccessor.GetClimateAt(Pos.XYZ.AsBlockPos, EnumGetClimateMode.NowValues);
             }
 
+            World.FrameProfiler.Mark("entityPlayer-ticking");
+
             if (!servercontrols.Sneak && !PrevFrameCanStandUp)
             {
                 // So the sneak animation plays still
@@ -724,9 +726,10 @@ namespace Vintagestory.API.Common
             bool wasHoldPos = holdPosition;
             holdPosition = false;
 
-            for (int i = 0; i < AnimManager.Animator.Animations.Length; i++)
+            var animations = AnimManager.Animator.Animations;
+            for (int i = 0; i < animations.Length; i++)
             {
-                RunningAnimation anim = AnimManager.Animator.Animations[i];
+                RunningAnimation anim = animations[i];
                 if (anim.Running && anim.EasingFactor >= anim.meta.HoldEyePosAfterEasein)
                 {
                     if (!wasHoldPos)
@@ -993,7 +996,7 @@ namespace Vintagestory.API.Common
                         if (!edgeSitActive)
                         {
                             AnimManager.StartAnimation("sitflooredge");
-                            capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(1));
+                            capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.SerializedOne);
                             BodyYaw = (float)Math.Round(BodyYaw * GameMath.RAD2DEG / 90) * 90f * GameMath.DEG2RAD;
 
                             BodyYawLimits = new AngleConstraint(BodyYaw, 0.2f);
@@ -1004,7 +1007,7 @@ namespace Vintagestory.API.Common
                     if (edgeSitActive && !canDoEdgeSit && !floorSitActive)
                     {
                         AnimManager.StopAnimation("sitidle");
-                        capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(0));
+                        capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.SerializedZero);
                         BodyYawLimits = null;
                         HeadYawLimits = null;
                     }
@@ -1014,7 +1017,7 @@ namespace Vintagestory.API.Common
                     if (wasActive)
                     {
                         AnimManager.StopAnimation("sitidle");
-                        capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(0));
+                        capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.SerializedZero);
                         BodyYawLimits = null;
                         HeadYawLimits = null;
                     }
@@ -1483,7 +1486,7 @@ namespace Vintagestory.API.Common
 
             }, 50);
 
-            WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+            WatchedAttributes.GetIntAndIncrement("positionVersionNumber", 0);
             WatchedAttributes.MarkAllDirty();       // Force sending of server position to the client (i.e. a full entity update packet) at the same time as sending the new positionVersionNumber
             if (oldX / GlobalConstants.ChunkSize != x / GlobalConstants.ChunkSize || oldZ / GlobalConstants.ChunkSize != z / GlobalConstants.ChunkSize)
             {

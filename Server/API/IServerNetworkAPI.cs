@@ -76,18 +76,32 @@ namespace Vintagestory.API.Server
 
 
         /// <summary>
-        /// Sends a packet data to given players. This let's you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.
+        /// Sends a packet data to given players. This lets you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="players"></param>
         void SendArbitraryPacket(byte[] data, params IServerPlayer[] players);
 
         /// <summary>
-        /// Sends a packet data to everyone except given players.This let's you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.
+        /// (for internal use: packet should be a Packet_Server)
+        /// </summary>
+        /// <param name="packet"></param>
+        /// <param name="players"></param>
+        void SendArbitraryPacket(object packet, params IServerPlayer[] players);
+
+        /// <summary>
+        /// Sends a packet data to everyone except given players. This lets you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="exceptPlayers"></param>
         void BroadcastArbitraryPacket(byte[] data, params IServerPlayer[] exceptPlayers);
+
+        /// <summary>
+        /// (for internal use: packet should be a Packet_Server)
+        /// </summary>
+        /// <param name="packet"></param>
+        /// <param name="exceptPlayers"></param>
+        void BroadcastArbitraryPacket(object packet, params IServerPlayer[] exceptPlayers);
 
 
         /// <summary>

@@ -77,6 +77,12 @@ namespace Vintagestory.API.Server
         /// <param name="threadname"></param>
         void ResumeThread(string threadname);
 
+        /// <summary>
+        /// If true, code should generally aim to reduce the number of CPU threads used on the server, even at the cost of slight performance delays
+        /// </summary>
+        bool ReducedServerThreads { get; }
+
+
 
         long TotalReceivedBytes { get; }
         long TotalSentBytes { get; }

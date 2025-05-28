@@ -1003,6 +1003,109 @@ Class FastMemoryStream
 
 
 
+  <a id="Vintagestory_API_Datastructures_FastMemoryStream_Write_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.Write*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_Write_System_Single_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.Write(System.Single)">
+  Write(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(float v)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_FastMemoryStream_Write_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.Write*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_Write_Vintagestory_API_Datastructures_FastMemoryStream_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.Write(Vintagestory.API.Datastructures.FastMemoryStream)">
+  Write(FastMemoryStream)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(FastMemoryStream src)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>src</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_FastMemoryStream_WriteAt_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteAt*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_WriteAt_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteAt(System.Int32,System.Int32,System.Int32)">
+  WriteAt(int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used for Protobuf serialization if we need to go back and re-write a varInt value, for example the count of entities written</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteAt(int pos, int v, int size)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
   <a id="Vintagestory_API_Datastructures_FastMemoryStream_WriteByte_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteByte*"></a>
 
   <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_WriteByte_System_Byte_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteByte(System.Byte)">
@@ -1044,6 +1147,132 @@ Class FastMemoryStream
     <dd><p>Methods were called after the stream was closed.</p>
 </dd>
   </dl>
+
+
+
+  <a id="Vintagestory_API_Datastructures_FastMemoryStream_WriteInt32_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteInt32*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_WriteInt32_System_Int32_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteInt32(System.Int32)">
+  WriteInt32(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteInt32(int v)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_FastMemoryStream_WriteThreeBytes_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteThreeBytes*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_WriteThreeBytes_System_Int32_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteThreeBytes(System.Int32)">
+  WriteThreeBytes(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteThreeBytes(int v)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_FastMemoryStream_WriteTwoBytes_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteTwoBytes*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_WriteTwoBytes_System_Int32_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteTwoBytes(System.Int32)">
+  WriteTwoBytes(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteTwoBytes(int v)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_FastMemoryStream_WriteUTF8String_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteUTF8String*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_FastMemoryStream_WriteUTF8String_System_String_System_Int32_" data-uid="Vintagestory.API.Datastructures.FastMemoryStream.WriteUTF8String(System.String,System.Int32)">
+  WriteUTF8String(string, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteUTF8String(string s, int lengthInBytes)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>s</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>lengthInBytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
 

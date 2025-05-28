@@ -320,24 +320,29 @@ namespace Vintagestory.API.Common
             return (TriggeredBy?.MatchExact == true) ? (currentActivities == withActivitiesMerged) : ((currentActivities & withActivitiesMerged) > 0);
         }
 
+        /// <summary>
+        /// Not a deep clone of all fields. Scalar fields, for example AnimationSpeed, are fresh copies and can be changed dynamically or per-entity, after cloning the AnimationMetaData.
+        /// <br/> For performance reasons, the non-scalar fields such as the Attributes, ElementWeight, ElementBlendMode and TriggeredBy are not deep-cloned as these fields are usually unchanging for all entities using the animation.
+        /// <br/> Note: If any implementing entity needs to change the non-scalar fields dynamically, or on a per-entity basis, that entity's code can clone and replace the object in its own individual copy of the AnimationMetaData.  e.g. EntityDrifter replaces .TriggeredBy in some of its animations
+        /// </summary>
         public AnimationMetaData Clone()
         {
             return new AnimationMetaData()
             {
                 Code = this.Code,
                 Animation = this.Animation,
-                AnimationSound = this.AnimationSound?.Clone(),
+                AnimationSound = this.AnimationSound,
                 Weight = this.Weight,
-                Attributes = this.Attributes?.Clone(),
+                Attributes = this.Attributes,
                 ClientSide = this.ClientSide,
-                ElementWeight = new Dictionary<string, float>(this.ElementWeight),
+                ElementWeight = this.ElementWeight,
                 AnimationSpeed = this.AnimationSpeed,
                 MulWithWalkSpeed = this.MulWithWalkSpeed,
                 EaseInSpeed = this.EaseInSpeed,
                 EaseOutSpeed = this.EaseOutSpeed,
-                TriggeredBy = this.TriggeredBy?.Clone(),
+                TriggeredBy = this.TriggeredBy,
                 BlendMode = this.BlendMode,
-                ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(this.ElementBlendMode),
+                ElementBlendMode = this.ElementBlendMode,
                 withActivitiesMerged = this.withActivitiesMerged,
                 CodeCrc32 = this.CodeCrc32,
                 WasStartedFromTrigger = this.WasStartedFromTrigger,

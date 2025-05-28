@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Util
 {
@@ -39,6 +40,11 @@ namespace Vintagestory.API.Util
             }
 
             return defaultValue;
+        }
+
+        public static void Remove<K, V>(this CachingConcurrentDictionary<K, V> dict, K key)
+        {
+            dict.TryRemove(key, out _);
         }
 
         public static void Remove<K, V>(this ConcurrentDictionary<K,V> dict, K key)

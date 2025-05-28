@@ -29,8 +29,8 @@ namespace Vintagestory.API.Datastructures
 
         public FastSmallDictionary(int size)
         {
-            keys = new TKey[size];
-            values = new TValue[size];
+            keys = size == 0 ? Array.Empty<TKey>() : new TKey[size];
+            values = size == 0 ? Array.Empty<TValue>() : new TValue[size];
         }
 
         public FastSmallDictionary(TKey key, TValue value) : this(1)

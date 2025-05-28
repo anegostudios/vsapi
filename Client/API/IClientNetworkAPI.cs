@@ -166,6 +166,7 @@ namespace Vintagestory.API.Client
         /// Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
         /// </summary>
         /// <param name="entityid"></param>
+        /// <param name="packetIdOffset"></param>
         /// <param name="internalPacket"></param>
         void SendEntityPacketWithOffset(long entityid, int packetIdOffset, object internalPacket);
 

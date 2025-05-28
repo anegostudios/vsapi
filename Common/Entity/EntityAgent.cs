@@ -478,13 +478,16 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
-            var nowSuggestedAnim = MountedOn?.SuggestedAnimation;
-
-            if (curMountedAnim?.Code != nowSuggestedAnim?.Code)
+            if (MountedOn != null && curMountedAnim != null)
             {
-                AnimManager?.StopAnimation(curMountedAnim?.Code);
-                if (nowSuggestedAnim != null) AnimManager?.StartAnimation(nowSuggestedAnim);
-                curMountedAnim = nowSuggestedAnim;
+                var nowSuggestedAnim = MountedOn.SuggestedAnimation;
+
+                if (curMountedAnim.Code != nowSuggestedAnim?.Code)
+                {
+                    AnimManager?.StopAnimation(curMountedAnim.Code);
+                    if (nowSuggestedAnim != null) AnimManager?.StartAnimation(nowSuggestedAnim);
+                    curMountedAnim = nowSuggestedAnim;
+                }
             }
 
 
@@ -518,12 +521,9 @@ namespace Vintagestory.API.Common
                 {
                     CurrentControls &= ~EnumEntityActivity.Idle;
                 }
-            }
 
-            HandleHandAnimations(dt);
+                HandleHandAnimations(dt);
 
-            if (World.Side == EnumAppSide.Client)
-            {
                 AnimationMetaData defaultAnim = null;
                 bool anyAverageAnimActive = false;
                 bool skipDefaultAnim = false;
@@ -569,8 +569,9 @@ namespace Vintagestory.API.Common
                 {
                     if (anyAverageAnimActive || MountedOn != null)
                     {
-                         if (!alwaysRunIdle && AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StopAnimation(defaultAnim.Animation);
-                    } else
+                        if (!alwaysRunIdle && AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StopAnimation(defaultAnim.Animation);
+                    }
+                    else
                     {
                         defaultAnim.WasStartedFromTrigger = true;
                         if (!AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StartAnimation(defaultAnim);
@@ -588,19 +589,22 @@ namespace Vintagestory.API.Common
                     SpawnSnowStepParticles();
                 }
             }
-
-            if (Properties.RotateModelOnClimb && World.Side == EnumAppSide.Server)
+            else   // Server side
             {
-                if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
+                HandleHandAnimations(dt);
+
+                if (Properties.RotateModelOnClimb)
                 {
-                    ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
-                }
-                else
-                {
-                    ServerPos.Pitch = 0;
+                    if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
+                    {
+                        ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
+                    }
+                    else
+                    {
+                        ServerPos.Pitch = 0;
+                    }
                 }
             }
-
 
             World.FrameProfiler.Mark("entityAgent-ticking");
             base.OnGameTick(dt);

@@ -231,14 +231,32 @@ namespace Vintagestory.API.Common
         public void Warning(string message)
             => Log(EnumLogType.Warning, message, _emptyArgs);
         public void Warning(Exception e)
-            => Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+            => Log(EnumLogType.Warning, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
 
         public void Error(string format, params object[] args)
-            => Log(EnumLogType.Error, format, args);
+        {
+            try
+            {
+                Log(EnumLogType.Error, format, args);
+            }
+            catch (Exception ex) { Log(EnumLogType.Error, "The logger itself threw an exception"); Error(ex); }
+        }
         public void Error(string message)
-            => Log(EnumLogType.Error, message, _emptyArgs);
+        {
+            try
+            {
+                Log(EnumLogType.Error, message, _emptyArgs);
+            }
+            catch (Exception ex) { Log(EnumLogType.Error, "The logger itself threw an exception"); Error(ex); }
+        }
         public void Error(Exception e)
-            => Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+        {
+            try
+            {
+                Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+            }
+            catch (Exception ex) { Log(EnumLogType.Error, "The logger itself threw an exception"); Error(ex); }
+        }
 
         /// <summary>
         /// Remove the full path from the stacktrace of the machine that compiled the code

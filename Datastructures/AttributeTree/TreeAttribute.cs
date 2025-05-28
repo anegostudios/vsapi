@@ -88,6 +88,7 @@ namespace Vintagestory.API.Datastructures
     /// </summary>
     public class TreeAttribute : ITreeAttribute
     {
+        private const int AttributeID = 6;
         public static Dictionary<int, Type> AttributeIdMapping = new Dictionary<int, Type>();
 
         protected int depth = 0;
@@ -246,12 +247,12 @@ namespace Vintagestory.API.Datastructures
                 val.Value.ToBytes(stream);
             }
 
-            stream.Write((byte)0);
+            TerminateWrite(stream);
         }
 
         public int GetAttributeId()
         {
-            return 6;
+            return AttributeID;
         }
 
 
@@ -286,6 +287,11 @@ namespace Vintagestory.API.Datastructures
         IEnumerator IEnumerable.GetEnumerator()
         {
             return attributes.GetEnumerator();
+        }
+
+        public void Clear()
+        {
+            attributes.Clear();
         }
 
         /// <summary>
@@ -1098,6 +1104,16 @@ namespace Vintagestory.API.Datastructures
             return hashcode;
         }
 
+        public static void BeginDirectWrite(BinaryWriter writer, string key)
+        {
+            writer.Write((byte)AttributeID);
+            writer.Write(key);
+        }
+
+        public static void TerminateWrite(BinaryWriter writer)
+        {
+            writer.Write((byte)0);
+        }
     }
 
     public static class DictionaryExtensions

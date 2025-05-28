@@ -639,7 +639,7 @@ namespace Vintagestory.API.Common
         /// Should returns the blocks sounds
         /// </summary>
         /// <param name="blockAccessor"></param>
-        /// <param name="pos">May be null and therfore stack is non-null</param>
+        /// <param name="blockSel"></param>
         /// <param name="stack"></param>
         /// <returns></returns>
         public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockSelection blockSel, ItemStack stack = null)
@@ -1573,16 +1573,14 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            // entity height
-            // Player: 1.85
-            // Chicken: 0.6
-            // Hare: 0.5
-            // Fox: 0.75
-            float chanceReduction = Math.Max(0, 0.75f - entity.CollisionBox.Height);
-            float triggerChance = entity.WatchedAttributes.GetFloat("impactBlockUpdateChance", 0.2f - chanceReduction);
-            if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < triggerChance)
+            if (api is Server.ICoreServerAPI sapi)    // Do this check server-side only, as the rand.NextDouble() would be different on a client
             {
-                OnNeighbourBlockChange(world, pos, pos.UpCopy());
+                float triggerChance = entity.ImpactBlockUpdateChance;
+                if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < triggerChance)
+                {
+                    BlockPos updatePos = pos.Copy();
+                    sapi.Event.EnqueueMainThreadTask(() => OnNeighbourBlockChange(world, updatePos, updatePos.UpCopy()), "entityBlockImpact");
+                }
             }
         }
 

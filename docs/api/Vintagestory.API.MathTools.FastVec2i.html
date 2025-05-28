@@ -1,0 +1,1369 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Struct FastVec2i | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct FastVec2i | VintageStory API ">
+      
+      <meta name="description" content="Represents a vector of 2 ints. Go bug Tyron if you need more utility methods in this class.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.MathTools.FastVec2i">
+
+
+
+  <h1 id="Vintagestory_API_MathTools_FastVec2i" data-uid="Vintagestory.API.MathTools.FastVec2i" class="text-break">
+Struct FastVec2i  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.MathTools.html">MathTools</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a vector of 2 ints. Go bug Tyron if you need more utility methods in this class.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ProtoContract]
+public struct FastVec2i : IEquatable&lt;FastVec2i&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i__ctor_" data-uid="Vintagestory.API.MathTools.FastVec2i.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i__ctor" data-uid="Vintagestory.API.MathTools.FastVec2i.#ctor">
+  FastVec2i()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec2i()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i__ctor_" data-uid="Vintagestory.API.MathTools.FastVec2i.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i__ctor_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.#ctor(System.Int32,System.Int32)">
+  FastVec2i(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec2i(int x, int y)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i__ctor_" data-uid="Vintagestory.API.MathTools.FastVec2i.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i__ctor_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.FastVec2i.#ctor(Vintagestory.API.MathTools.Vec3d)">
+  FastVec2i(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec2i(Vec3d pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_val" data-uid="Vintagestory.API.MathTools.FastVec2i.val">
+  val
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+public ulong val</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Item_" data-uid="Vintagestory.API.MathTools.FastVec2i.Item*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Item_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.Item(System.Int32)">
+  this[int]
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int this[int index] { get; set; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_X_" data-uid="Vintagestory.API.MathTools.FastVec2i.X*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_X" data-uid="Vintagestory.API.MathTools.FastVec2i.X">
+  X
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int X { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Y_" data-uid="Vintagestory.API.MathTools.FastVec2i.Y*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Y" data-uid="Vintagestory.API.MathTools.FastVec2i.Y">
+  Y
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Y { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Zero_" data-uid="Vintagestory.API.MathTools.FastVec2i.Zero*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Zero" data-uid="Vintagestory.API.MathTools.FastVec2i.Zero">
+  Zero
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i Zero { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Add_" data-uid="Vintagestory.API.MathTools.FastVec2i.Add*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Add_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.Add(System.Int32,System.Int32)">
+  Add(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec2i Add(int dx, int dy)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>dy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Copy_" data-uid="Vintagestory.API.MathTools.FastVec2i.Copy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Copy" data-uid="Vintagestory.API.MathTools.FastVec2i.Copy">
+  Copy()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec2i Copy()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Equals_" data-uid="Vintagestory.API.MathTools.FastVec2i.Equals*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Equals_System_Object_" data-uid="Vintagestory.API.MathTools.FastVec2i.Equals(System.Object)">
+  Equals(object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current instance.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Equals_" data-uid="Vintagestory.API.MathTools.FastVec2i.Equals*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Equals_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.Equals(Vintagestory.API.MathTools.FastVec2i)">
+  Equals(FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(FastVec2i other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_GetHashCode_" data-uid="Vintagestory.API.MathTools.FastVec2i.GetHashCode*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_GetHashCode" data-uid="Vintagestory.API.MathTools.FastVec2i.GetHashCode">
+  GetHashCode()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_ManhattenDistance_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattenDistance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_ManhattenDistance_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattenDistance(System.Int32,System.Int32)">
+  ManhattenDistance(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ManhattenDistance(int x, int y)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_ManhattenDistance_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattenDistance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_ManhattenDistance_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattenDistance(Vintagestory.API.MathTools.Vec2i)">
+  ManhattenDistance(Vec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ManhattenDistance(Vec2i point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>point</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Set_" data-uid="Vintagestory.API.MathTools.FastVec2i.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Set_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.Set(System.Int32,System.Int32)">
+  Set(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec2i Set(int x, int y)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_Set_" data-uid="Vintagestory.API.MathTools.FastVec2i.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Set_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.Set(Vintagestory.API.MathTools.Vec2i)">
+  Set(Vec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec2i Set(Vec2i vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_ToChunkIndex_" data-uid="Vintagestory.API.MathTools.FastVec2i.ToChunkIndex*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_ToChunkIndex" data-uid="Vintagestory.API.MathTools.FastVec2i.ToChunkIndex">
+  ToChunkIndex()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>27 lowest bits for X Coordinate, then 27 bits for Z coordinate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong ToChunkIndex()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_ToString_" data-uid="Vintagestory.API.MathTools.FastVec2i.ToString*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_ToString" data-uid="Vintagestory.API.MathTools.FastVec2i.ToString">
+  ToString()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the fully qualified type name of this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fully qualified type name.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Addition_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Addition*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Addition_Vintagestory_API_MathTools_FastVec2i_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Addition(Vintagestory.API.MathTools.FastVec2i,System.Int32)">
+  operator +(FastVec2i, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator +(FastVec2i left, int right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Addition_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Addition*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Addition_Vintagestory_API_MathTools_FastVec2i_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Addition(Vintagestory.API.MathTools.FastVec2i,Vintagestory.API.MathTools.FastVec2i)">
+  operator +(FastVec2i, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator +(FastVec2i left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Division_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Division*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Division_Vintagestory_API_MathTools_FastVec2i_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Division(Vintagestory.API.MathTools.FastVec2i,System.Int32)">
+  operator /(FastVec2i, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator /(FastVec2i left, int right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Division_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Division*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Division_Vintagestory_API_MathTools_FastVec2i_System_Single_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Division(Vintagestory.API.MathTools.FastVec2i,System.Single)">
+  operator /(FastVec2i, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator /(FastVec2i left, float right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Equality_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Equality*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Equality_Vintagestory_API_MathTools_FastVec2i_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Equality(Vintagestory.API.MathTools.FastVec2i,Vintagestory.API.MathTools.FastVec2i)">
+  operator ==(FastVec2i, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(FastVec2i left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Inequality_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Inequality*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Inequality_Vintagestory_API_MathTools_FastVec2i_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Inequality(Vintagestory.API.MathTools.FastVec2i,Vintagestory.API.MathTools.FastVec2i)">
+  operator !=(FastVec2i, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(FastVec2i left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_System_Double_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply(System.Double,Vintagestory.API.MathTools.FastVec2i)">
+  operator *(double, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator *(double left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_System_Int32_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply(System.Int32,Vintagestory.API.MathTools.FastVec2i)">
+  operator *(int, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator *(int left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_Vintagestory_API_MathTools_FastVec2i_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply(Vintagestory.API.MathTools.FastVec2i,System.Double)">
+  operator *(FastVec2i, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator *(FastVec2i left, double right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_Vintagestory_API_MathTools_FastVec2i_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply(Vintagestory.API.MathTools.FastVec2i,System.Int32)">
+  operator *(FastVec2i, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator *(FastVec2i left, int right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Multiply_Vintagestory_API_MathTools_FastVec2i_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Multiply(Vintagestory.API.MathTools.FastVec2i,Vintagestory.API.MathTools.FastVec2i)">
+  operator *(FastVec2i, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double operator *(FastVec2i left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Subtraction_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Subtraction*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Subtraction_System_Int32_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Subtraction(System.Int32,Vintagestory.API.MathTools.FastVec2i)">
+  operator -(int, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator -(int left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Subtraction_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Subtraction*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Subtraction_Vintagestory_API_MathTools_FastVec2i_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Subtraction(Vintagestory.API.MathTools.FastVec2i,System.Int32)">
+  operator -(FastVec2i, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator -(FastVec2i left, int right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_op_Subtraction_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Subtraction*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_op_Subtraction_Vintagestory_API_MathTools_FastVec2i_Vintagestory_API_MathTools_FastVec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.op_Subtraction(Vintagestory.API.MathTools.FastVec2i,Vintagestory.API.MathTools.FastVec2i)">
+  operator -(FastVec2i, FastVec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec2i operator -(FastVec2i left, FastVec2i right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec2i.html">FastVec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

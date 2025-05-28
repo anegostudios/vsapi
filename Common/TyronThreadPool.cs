@@ -21,6 +21,7 @@ namespace Vintagestory.API.Common
 
         public TyronThreadPool()
         {
+            // radfast note 13.3.25:  setting below the number of physical CPU cores has no effect, see https://learn.microsoft.com/en-us/dotnet/api/system.threading.threadpool.setmaxthreads?view=net-8.0
             ThreadPool.SetMaxThreads(10, 1);
         }
 

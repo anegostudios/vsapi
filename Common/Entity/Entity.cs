@@ -6,11 +6,9 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Server;
 using Vintagestory.API.Config;
 using System;
-using System.Linq;
 using Vintagestory.API.Util;
 using System.Text;
 using static Vintagestory.API.Common.EntityAgent;
-using System.Numerics;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -309,17 +307,33 @@ namespace Vintagestory.API.Common.Entities
         public EntityStats Stats;
         protected float fireDamageAccum;
 
-
-        // Used by EntityBehaviorRepulseAgents. Added here to increase performance, as its one of the most perf heavy operations
-        public double touchDistanceSq;
-        public Vec3d ownPosRepulse = new Vec3d();
+        /// <summary>
+        /// Set during initialization by calling Entity.GetTouchDistance().  A mod wishing to change the value returned by .GetTouchDistance() dynamically should probably call .updateColSelBoxes() or update this field directly
+        /// </summary>
+        public double touchDistance;   // Here for performance
+        public double touchDistanceSq;   // Here for performance
+        [Obsolete("Unused but retained for mod API backwards compatibility")]
         public bool hasRepulseBehavior = false;
+        [Obsolete("Unused but retained for mod API backwards compatibility")]
         public bool customRepulseBehavior = false;
+        /// <summary>
+        /// The Entity's BehaviorRepulseAgents, if it has one - here for critical performance reasons. This may also be accessed from Physics ticking
+        /// </summary>
+        public EntityBehavior BHRepulseAgents;   // Here for performance. This helps with the N-squared problem where every entity with BehaviorRepulseAgents needs to interact with the BehaviorRepulseAgents of every other nearby entity, it would be a costly waste of CPU time to iterate all the Behaviors for every other entity each tick searching for this Behavior
+        /// <summary>
+        /// Invoked once per server tick, immediately following the physics ticking, if this Entity has any of the Physics behaviors. Example use, anything which requires an update of the entity's current position, such as BehaviorRepulseAgents
+        /// </summary>
+        public Action AfterPhysicsTick;
         /// <summary>
         /// Used by PhysicsManager. Added here to increase performance
         /// 0 = not tracked, 1 = lowResTracked, 2 = fullyTracked
         /// </summary>
         public byte IsTracked;
+        /// <summary>
+        /// Used by PhysicsManager. Added here to increase performance
+        /// Set to true when position packet prepared during physics ticking, set to false following AfterPhysicsTick()
+        /// </summary>
+        public bool PositionTicked;
         /// <summary>
         /// Used by the PhysicsManager to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
         /// </summary>
@@ -339,6 +353,17 @@ namespace Vintagestory.API.Common.Entities
         /// Used for efficiency in multi-player servers, to avoid regenerating the packet again for each connected client
         /// </summary>
         public object packet;
+
+        /// <summary>
+        /// Used for efficiency in multi-player servers, to speed up iterating over relevant behaviors only. These are the behaviors returning Threadsafe == false (which is the default)
+        /// </summary>
+        public EntityBehavior[] ServerBehaviorsMainThread;
+
+        /// <summary>
+        /// Used for efficiency in multi-player servers, to speed up iterating over relevant behaviors only. These are the behaviors returning Threadsafe == true;
+        /// These behaviors may have their regular ticking (including ShouldExecute() etc) called EITHER from the main thread OR from another physics thread, depending on PhysicsManager logic
+        /// </summary>
+        public EntityBehavior[] ServerBehaviorsThreadsafe;
 
         /// <summary>
         /// Used only when deserialising an entity, otherwise null
@@ -473,6 +498,11 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual double LadderFixDelta { get { return 0D; } }
 
+        /// <summary>
+        /// The chance that this entity, walking or jumping on or falling onto a block, will trigger a block-update - so potentially unstable dirt or sand falling, avalanche etc. 
+        /// </summary>
+        public virtual float ImpactBlockUpdateChance { get; set; }   // (Here for performance reasons! radfast 6.2.25  This is read every tick for every entity on the ground, maybe even more than once if the entity is covering 2 or 4 blocks. See Block.OnEntityCollide().)
+
         #endregion
 
 
@@ -523,6 +553,7 @@ namespace Vintagestory.API.Common.Entities
             Class = properties.Class;
             this.InChunkIndex3d = InChunkIndex3d;
 
+            Stats.Initialize(api);
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
             WatchedAttributes.SetFloat("onHurt", 0);
             int onHurtCounter = WatchedAttributes.GetInt("onHurtCounter");
@@ -596,15 +627,27 @@ namespace Vintagestory.API.Common.Entities
 
             LocalEyePos.Y = Properties.EyeHeight;
 
+            // entity height:
+            //   Player: 1.85
+            //   Chicken: 0.6  - reduce chance to 0.05f (!)
+            //   Hare: 0.5     - reduces chance to 0
+            //   Fox: 0.75     - same chance as player (!)
+            float chanceReduction = Math.Max(0, 0.75f - CollisionBox.Height);
+            ImpactBlockUpdateChance = Attributes.GetFloat("impactBlockUpdateChance", 0.2f - chanceReduction);
+
             TriggerOnInitialized();
         }
 
         public virtual void AfterInitialized(bool onFirstSpawn)
         {
+            touchDistance = GetTouchDistance();
+
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.AfterInitialized(onFirstSpawn);
             }
+
+            if (Api is ICoreServerAPI) CacheServerBehaviors();
         }
 
         protected void TriggerOnInitialized()
@@ -656,13 +699,14 @@ namespace Vintagestory.API.Common.Entities
                 SetSelectionBox(selboxs.X, selboxs.Y);
             }
 
-            double touchdist = Math.Max(0.001f, SelectionBox.XSize / 2);
-            touchDistanceSq = touchdist * touchdist;
-
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.UpdateColSelBoxes();
             }
+
+            double touchdist = GetTouchDistance();
+            touchDistance = touchdist;
+            touchDistanceSq = touchdist * touchdist;
         }
 
         protected void updateOnFire()
@@ -927,6 +971,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="dt"></param>
         public virtual void OnGameTick(float dt)
         {
+            var World = this.World;
             if (World.EntityDebugMode) {
                 UpdateDebugAttributes();
                 DebugAttributes.MarkAllDirty();
@@ -945,7 +990,7 @@ namespace Vintagestory.API.Common.Entities
                 if (World.FrameProfiler.Enabled)
                 {
                     World.FrameProfiler.Enter("behaviors");
-                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    foreach (EntityBehavior behavior in Properties.Client.Behaviors)
                     {
                         behavior.OnGameTick(dt);
                         World.FrameProfiler.Mark(behavior.ProfilerName);
@@ -955,7 +1000,7 @@ namespace Vintagestory.API.Common.Entities
                 }
                 else
                 {
-                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    foreach (EntityBehavior behavior in Properties.Client.Behaviors)
                     {
                         behavior.OnGameTick(dt);
                     }
@@ -968,7 +1013,7 @@ namespace Vintagestory.API.Common.Entities
             }
             else   // Serverside
             {
-                if (!shapeFresh && requirePosesOnServer)
+                if (requirePosesOnServer && !shapeFresh)
                 {
                     CompositeShape compositeShape = Properties.Client.Shape;
                     Shape entityShape = Properties.Client.LoadedShapeForEntity;
@@ -980,22 +1025,27 @@ namespace Vintagestory.API.Common.Entities
                     }
                 }
 
+                // We include this check in case a mod changed the Behaviors without using .AddBehavior() or .RemoveBehavior()
+                if (Properties.Server.Behaviors.Count != ServerBehaviorsMainThread.Length + ServerBehaviorsThreadsafe.Length) CacheServerBehaviors();
 
+                var serverBehaviors = ServerBehaviorsMainThread;     // Thread-safe behaviors will be ticked from PhysicsManager
                 if (World.FrameProfiler.Enabled)
                 {
-                    World.FrameProfiler.Enter("behaviors");
-                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    var profiler = World.FrameProfiler;
+                    profiler.Enter("behaviors");
+                    for (int i = 0; i < serverBehaviors.Length; i++)
                     {
+                        EntityBehavior behavior = serverBehaviors[i];
                         behavior.OnGameTick(dt);
-                        World.FrameProfiler.Mark(behavior.ProfilerName);
+                        profiler.Mark(behavior.ProfilerName);
                     }
-                    World.FrameProfiler.Leave();
+                    profiler.Leave();
                 }
                 else
                 {
-                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    for (int i = 0; i < serverBehaviors.Length; i++)
                     {
-                        behavior.OnGameTick(dt);
+                        serverBehaviors[i].OnGameTick(dt);
                     }
                 }
 
@@ -1041,7 +1091,7 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            if (World.Side == EnumAppSide.Server)
+            if (World.Side == EnumAppSide.Server && State == EnumEntityState.Active)
             {
                 try
                 {
@@ -1052,17 +1102,9 @@ namespace Vintagestory.API.Common.Entities
                     World.Logger.Error("Error ticking animations for entity " + Code.ToShortString() + " at " + SidedPos.AsBlockPos);
                     throw;
                 }
-            }
 
-            if (CollisionBox != null)
-            {
-                ownPosRepulse.Set(
-                    SidedPos.X + (CollisionBox.X2 - OriginCollisionBox.X2),
-                    SidedPos.Y + (CollisionBox.Y2 - OriginCollisionBox.Y2),
-                    SidedPos.Z + (CollisionBox.Z2 - OriginCollisionBox.Z2)
-                );
+                World.FrameProfiler.Mark("entity-animation-ticking");
             }
-            World.FrameProfiler.Mark("entity-animation-ticking");
         }
 
         protected void ApplyFireDamage(float dt)
@@ -1551,7 +1593,7 @@ namespace Vintagestory.API.Common.Entities
         {
             EnumHandling handled = EnumHandling.PassThrough;
 
-            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            foreach (EntityBehavior behavior in Properties.Server.Behaviors)
             {
                 behavior.OnStateChanged(beforeState, ref handled);
                 if (handled == EnumHandling.PreventSubsequent) return;
@@ -1599,6 +1641,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual void AddBehavior(EntityBehavior behavior)
         {
             SidedProperties.Behaviors.Add(behavior);
+            if (Api is ICoreServerAPI) CacheServerBehaviors();
         }
 
 
@@ -1609,6 +1652,31 @@ namespace Vintagestory.API.Common.Entities
         public virtual void RemoveBehavior(EntityBehavior behavior)
         {
             SidedProperties.Behaviors.Remove(behavior);
+            if (Api is ICoreServerAPI) CacheServerBehaviors();
+        }
+
+        /// <summary>
+        /// Create the cached arrays of thread-safe and mainthread behaviors, for ticking performance
+        /// </summary>
+        public void CacheServerBehaviors()
+        {
+            int threadsafeCount = 0;
+            var behaviors = SidedProperties.Behaviors;
+            for (int i = 0; i < behaviors.Count; i++)
+            {
+                if (behaviors[i].ThreadSafe) threadsafeCount++;
+            }
+
+            ServerBehaviorsMainThread = new EntityBehavior[behaviors.Count - threadsafeCount];
+            ServerBehaviorsThreadsafe = new EntityBehavior[threadsafeCount];
+            int mt = 0;
+            int ts = 0;
+            for (int i = 0; i < behaviors.Count; i++)
+            {
+                var bh = behaviors[i];
+                if (bh.ThreadSafe) ServerBehaviorsThreadsafe[ts++] = bh;
+                else ServerBehaviorsMainThread[mt++] = bh;
+            }
         }
 
         /// <summary>
@@ -1618,9 +1686,10 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual bool HasBehavior(string behaviorName)
         {
-            for (int i = 0; i < SidedProperties.Behaviors.Count; i++)
+            var behaviors = SidedProperties.Behaviors;
+            for (int i = 0; i < behaviors.Count; i++)
             {
-                if (SidedProperties.Behaviors[i].PropertyName().Equals(behaviorName)) return true;
+                if (behaviors[i].PropertyName().Equals(behaviorName)) return true;
             }
 
             return false;
@@ -1628,9 +1697,10 @@ namespace Vintagestory.API.Common.Entities
 
         public virtual bool HasBehavior<T>() where T : EntityBehavior
         {
-            for (int i = 0; i < SidedProperties.Behaviors.Count; i++)
+            var behaviors = SidedProperties.Behaviors;
+            for (int i = 0; i < behaviors.Count; i++)
             {
-                if (SidedProperties.Behaviors[i] is T) return true;
+                if (behaviors[i] is T) return true;
             }
 
             return false;
@@ -1643,7 +1713,12 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual EntityBehavior GetBehavior(string name)
         {
-            return SidedProperties.Behaviors.FirstOrDefault(bh => bh.PropertyName().Equals(name));
+            var behaviors = SidedProperties.Behaviors;
+            for (int i = 0; i < behaviors.Count; i++)
+            {
+                if (behaviors[i].PropertyName().Equals(name)) return behaviors[i];
+            }
+            return null;
         }
 
         /// <summary>
@@ -1652,7 +1727,12 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual T GetBehavior<T>() where T : EntityBehavior
         {
-            return (T)SidedProperties.Behaviors.FirstOrDefault(bh => bh is T);
+            var behaviors = SidedProperties.Behaviors;
+            for (int i = 0; i < behaviors.Count; i++)
+            {
+                if (behaviors[i] is T result) return result;
+            }
+            return null;
         }
 
         /// <summary>
@@ -1663,11 +1743,12 @@ namespace Vintagestory.API.Common.Entities
         public virtual List<T> GetInterfaces<T>() where T : class
         {
             List<T> interfaces = new List<T>();
+            if (this is T self) interfaces.Add(self);
 
-            if (this is T) interfaces.Add(this as T);
-            for (int i = 0; i < SidedProperties.Behaviors.Count; i++)
+            var behaviors = SidedProperties.Behaviors;
+            for (int i = 0; i < behaviors.Count; i++)
             {
-                if (SidedProperties.Behaviors[i] is T) interfaces.Add(SidedProperties.Behaviors[i] as T);
+                if (behaviors[i] is T found) interfaces.Add(found);
             }
 
             return interfaces;
@@ -1681,7 +1762,12 @@ namespace Vintagestory.API.Common.Entities
         public virtual T GetInterface<T>() where T : class
         {
             if (this is T) return this as T;
-            return SidedProperties.Behaviors.FirstOrDefault(bh => bh is T) as T;
+            var behaviors = SidedProperties.Behaviors;
+            for (int i = 0; i < behaviors.Count; i++)
+            {
+                if (behaviors[i] is T found) return found;
+            }
+            return null;
         }
 
 
@@ -1751,7 +1837,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     if (!anim.Running) continue;
 
-                    if (i++ > 0) runninganims.Append(",");
+                    if (i++ > 0) runninganims.Append(',');
                     runninganims.Append(anim.Animation.Code);
                 }
 
@@ -1795,7 +1881,7 @@ namespace Vintagestory.API.Common.Entities
                 WatchedAttributes["extraInfoText"] = new TreeAttribute();
             }
 
-            if (GameVersion.IsLowerVersionThan(version, "1.7.0") && this is EntityPlayer)
+            if (this is EntityPlayer && GameVersion.IsLowerVersionThan(version, "1.7.0"))
             {
                 ITreeAttribute healthTree = WatchedAttributes.GetTreeAttribute("health");
                 if (healthTree != null)
@@ -1846,7 +1932,7 @@ namespace Vintagestory.API.Common.Entities
 
 
             // Upgrade to 1500 sat
-            if (GameVersion.IsLowerVersionThan(version, "1.10-dev.2") && this is EntityPlayer)
+            if (this is EntityPlayer && GameVersion.IsLowerVersionThan(version, "1.10-dev.2"))
             {
                 ITreeAttribute hungerTree = WatchedAttributes.GetTreeAttribute("hunger");
                 if (hungerTree != null)
@@ -1890,6 +1976,8 @@ namespace Vintagestory.API.Common.Entities
 
             SetHeadPositionToWatchedAttributes();
 
+            Stats.ToTreeAttributes(WatchedAttributes, forClient);
+
             WatchedAttributes.ToBytes(writer);
             ServerPos.ToBytes(writer);
             writer.Write(PositionBeforeFalling.X);
@@ -1908,19 +1996,28 @@ namespace Vintagestory.API.Common.Entities
                 Attributes.ToBytes(writer);
             }
 
-            TreeAttribute tree = new TreeAttribute();
-            // Tyron 19.oct 2019. Don't write animations to the savegame. I think it causes that some animations start but never stop
-            // if we want to save the creatures current state to disk, we would also need to save the current AI state!
-            // Tyron 26 oct. Do write animations, but only the die one.
-            // Tyron 8 nov. Do write all animations if its for the client
-            //if (forClient)
+            if (AnimManager is AnimationManager animManager)
             {
-                AnimManager?.ToAttributes(tree, forClient);
+                // Tyron 19.oct 2019. Don't write animations to the savegame. I think it causes that some animations start but never stop
+                // if we want to save the creatures current state to disk, we would also need to save the current AI state!
+                // Tyron 26 oct. Do write animations, but only the die one.
+                // Tyron 8 nov. Do write all animations if its for the client
+                //if (forClient)
+                {
+                    animManager.ToAttributeBytes(writer, forClient);
+                }
+                TreeAttribute.TerminateWrite(writer);
             }
-
-            Stats.ToTreeAttributes(WatchedAttributes, forClient);
-
-            tree.ToBytes(writer);
+            else if (AnimManager == null || AnimManager is NoAnimationManager)
+            {
+                TreeAttribute.TerminateWrite(writer);    // Effectively, write an empty TreeAttribute
+            }
+            else    // For mod backwards compatibility, if it makes its own IAnimationManager
+            {
+                TreeAttribute tree = new TreeAttribute();
+                AnimManager.ToAttributes(tree, forClient);
+                tree.ToBytes(writer);
+            }
         }
 
         /// <summary>
@@ -1993,9 +2090,9 @@ namespace Vintagestory.API.Common.Entities
                         WatchedAttributes.SetString("deathByEntityLangCode", "prefixandcreature-" + byEntity.Code.Path.Replace("-", ""));
                         WatchedAttributes.SetString("deathByEntity", byEntity.Code.ToString());
                     }
-                    if (byEntity is EntityPlayer)
+                    if (byEntity is EntityPlayer eplayer)
                     {
-                        WatchedAttributes.SetString("deathByPlayer", (byEntity as EntityPlayer).Player?.PlayerName);
+                        WatchedAttributes.SetString("deathByPlayer", eplayer.Player?.PlayerName);
                     }
                 }
 
@@ -2235,6 +2332,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="ray"></param>
         /// <param name="interesectionTester">Is already preloaded with the ray</param>
         /// <param name="intersectionDistance"></param>
+        /// <param name="selectionBoxIndex"></param>
         /// <returns></returns>
         public virtual bool IntersectsRay(Ray ray, AABBIntersectionTest interesectionTester, out double intersectionDistance, ref int selectionBoxIndex)
         {
@@ -2265,6 +2363,11 @@ namespace Vintagestory.API.Common.Entities
             return false;
         }
 
+        /// <summary>
+        /// The distance at which entities are counted as "touching" each other, for example used by EntityPartitioning and RepulseAgents
+        /// <br/>Note: from 1.20.4 this is gathered and cached in a field when each entity is Initialized, if for any reason a mod or behavior needs to change the result later than Initialization then you should also update the Entity field .touchDistance
+        /// </summary>
+        /// <returns></returns>
         public virtual double GetTouchDistance()
         {
             float dist = SelectionBox?.XSize / 2 ?? 0.25f;

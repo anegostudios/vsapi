@@ -1,6 +1,7 @@
 ﻿using ProtoBuf;
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -374,6 +375,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="z"></param>
         /// <param name="squareDistance"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool InRangeOf(double x, double y, double z, float squareDistance)
         {
             double dx = this.x - x;

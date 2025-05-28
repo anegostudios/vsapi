@@ -58,7 +58,6 @@ namespace Vintagestory.API.Common
         /// <param name="dt"></param>
         public void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
         {
-            
         }
 
         public void ReloadAttachmentPoints()

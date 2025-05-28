@@ -323,6 +323,7 @@ namespace Vintagestory.API.Common.Entities
 
         /// <summary>
         /// When this property is attached to an entity - the behaviors attached of entity.
+        /// <br/>To modify this list, please call Entity.AddBehavior() or Entity.RemoveBehavior()
         /// </summary>
         public List<EntityBehavior> Behaviors = new List<EntityBehavior>();
 
@@ -435,8 +436,8 @@ namespace Vintagestory.API.Common.Entities
         public CompositeShape Shape;
 
         /// <summary>
-        /// Only loaded for World.EntityTypes instances of EntityProperties, because it makes no sense to have 1000 loaded entities needing to load 1000 shapes. During entity load/spawn this value is assigned however
-        /// On the client it gets set by the EntityTextureAtlasManager
+        /// Only loaded for World.EntityTypes instances of EntityProperties, because it makes no sense to have 1000 loaded entities needing to load 1000 shapes. During entity load/spawn this value is assigned however.
+        /// On the client it gets set by the EntityTextureAtlasManager.
         /// On the server by the EntitySimulation system
         /// </summary>
         public Shape LoadedShape;
@@ -529,41 +530,32 @@ namespace Vintagestory.API.Common.Entities
                 LoadedAlternateShapes = cprop?.LoadedAlternateShapes;
             }
         }
-        
+
         /// <summary>
-        /// Does not clone textures, but does clone shapes
+        /// Does not clone textures, but does clone Shape
+        /// <br/>Note: This method does not clone the LoadedShape (nor the LoadedAlternateShapes, if present). The LoadedShape (and any alternate) is not normally modified after entityType loading. An Entity created at runtime (each Entity carries a clone of its EntityProperties) should not normally require its own unique copy of the LoadedShape or the LoadedAlternateShapes. Exceptionally, an entity needing to clone and modify LoadedShape or one of the LoadedAlternateShapes (e.g. EntityDressedHumanoid, or a boat furling and unfurling sails) should do so in its own custom OnTesselation() method, likely accessing the shape via EntityClientProperties.LoadedShapeForEntity.
         /// </summary>
         /// <returns></returns>
         public override EntitySidedProperties Clone()
         {
+            Dictionary<string, AnimationMetaData> newAnimationsByMetaData = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
+
+            Dictionary<uint, AnimationMetaData> animsByCrc32 = new Dictionary<uint, AnimationMetaData>();
+
             AnimationMetaData[] newAnimations = null;
             if (Animations != null)
             {
                 var oldAnimations = Animations;
                 newAnimations = new AnimationMetaData[oldAnimations.Length];
                 for (int i = 0; i < newAnimations.Length; i++)
-                    newAnimations[i] = oldAnimations[i].Clone();
-            }
-
-            Dictionary<string, AnimationMetaData> newAnimationsByMetaData = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
-
-            Dictionary<uint, AnimationMetaData> animsByCrc32 = new Dictionary<uint, AnimationMetaData>();
-
-            foreach (var animation in AnimationsByMetaCode)
-            {
-                var clonedAnimation = animation.Value.Clone();
-                newAnimationsByMetaData[animation.Key] = clonedAnimation;
-                animsByCrc32[clonedAnimation.CodeCrc32] = clonedAnimation;
-            }
-
-            Shape[] newAlternates = null;
-            if (LoadedAlternateShapes != null)
-            {
-                var oldAlternates = LoadedAlternateShapes;
-                newAlternates = new Shape[oldAlternates.Length];
-                for (int i = 0; i < newAlternates.Length; i++)
                 {
-                    newAlternates[i] = oldAlternates[i].Clone();
+                    var clonedAnimation = oldAnimations[i].Clone();
+                    newAnimations[i] = clonedAnimation;
+                    if (AnimationsByMetaCode.ContainsKey(clonedAnimation.Code))    // Only include in newAnimationsByMetaData if it was in the old one (guess it always should be, but then you never know ...)
+                    {
+                        newAnimationsByMetaData[clonedAnimation.Code] = clonedAnimation;
+                        animsByCrc32[clonedAnimation.CodeCrc32] = clonedAnimation;
+                    }
                 }
             }
 
@@ -577,7 +569,7 @@ namespace Vintagestory.API.Common.Entities
                 Size = Size,
                 SizeGrowthFactor = SizeGrowthFactor,
                 Shape = Shape?.Clone(),
-                LoadedAlternateShapes = newAlternates,
+                LoadedAlternateShapes = this.LoadedAlternateShapes,
                 Animations = newAnimations,
                 AnimationsByMetaCode = newAnimationsByMetaData,
                 AnimationsByCrc32 = animsByCrc32

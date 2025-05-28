@@ -875,6 +875,39 @@ Class AnimationManager
 
 
 
+  <a id="Vintagestory_API_Common_AnimationManager_SerializeActiveAnimations_" data-uid="Vintagestory.API.Common.AnimationManager.SerializeActiveAnimations*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationManager_SerializeActiveAnimations_System_Boolean_System_Action_System_String_Vintagestory_API_Datastructures_FastMemoryStream__" data-uid="Vintagestory.API.Common.AnimationManager.SerializeActiveAnimations(System.Boolean,System.Action{System.String,Vintagestory.API.Datastructures.FastMemoryStream})">
+  SerializeActiveAnimations(bool, Action&lt;string, FastMemoryStream&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void SerializeActiveAnimations(bool forClient, Action&lt;string, FastMemoryStream&gt; output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forClient</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_AnimationManager_ShouldPlaySound_" data-uid="Vintagestory.API.Common.AnimationManager.ShouldPlaySound*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimationManager_ShouldPlaySound_Vintagestory_API_Common_AnimationSound_" data-uid="Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)">
@@ -1015,6 +1048,40 @@ Server: Sends all active anims to all connected clients then purges the ActiveAn
 
 
 
+  <a id="Vintagestory_API_Common_AnimationManager_ToAttributeBytes_" data-uid="Vintagestory.API.Common.AnimationManager.ToAttributeBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationManager_ToAttributeBytes_System_IO_BinaryWriter_System_Boolean_" data-uid="Vintagestory.API.Common.AnimationManager.ToAttributeBytes(System.IO.BinaryWriter,System.Boolean)">
+  ToAttributeBytes(BinaryWriter, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>For performance, serializes the animations to be stored directly to the provided stream</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ToAttributeBytes(BinaryWriter stream, bool forClient)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+    <dt><code>forClient</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_AnimationManager_ToAttributes_" data-uid="Vintagestory.API.Common.AnimationManager.ToAttributes*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimationManager_ToAttributes_Vintagestory_API_Datastructures_ITreeAttribute_System_Boolean_" data-uid="Vintagestory.API.Common.AnimationManager.ToAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.Boolean)">
@@ -1022,7 +1089,7 @@ Server: Sends all active anims to all connected clients then purges the ActiveAn
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Serializes the slots contents to be stored in the SaveGame</p>
+  <div class="markdown level1 summary"><p>Serializes the animations to be stored in the SaveGame</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

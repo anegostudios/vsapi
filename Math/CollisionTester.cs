@@ -357,7 +357,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="blockAccessor"></param>
         /// <param name="entityBoxRel"></param>
         /// <param name="pos"></param>
-        /// <param name="intoCubuid"></param>
+        /// <param name="intoCuboid"></param>
         /// <param name="alsoCheckTouch"></param>
         /// <returns></returns>
         public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCuboid, bool alsoCheckTouch = true)

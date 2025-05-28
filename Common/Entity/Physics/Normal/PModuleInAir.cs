@@ -25,7 +25,8 @@ public class PModuleInAir : PModule
     /// </summary>
     public override bool Applicable(Entity entity, EntityPos pos, EntityControls controls)
     {
-        return (controls.IsFlying || (!entity.Collided && !entity.FeetInLiquid)) && entity.Alive;
+        if ((!entity.Collided && !entity.FeetInLiquid) || controls.IsFlying) return entity.Alive;
+        return false;
     }
 
     public override void DoApply(float dt, Entity entity, EntityPos pos, EntityControls controls)
@@ -46,14 +47,13 @@ public class PModuleInAir : PModule
         if (controls.IsClimbing)
         {
             pos.Motion.Add(controls.WalkVector);
-            pos.Motion.X *= Math.Pow(1 - WallDragFactor, dt * 60);
-            pos.Motion.Y *= Math.Pow(1 - WallDragFactor, dt * 60);
-            pos.Motion.Z *= Math.Pow(1 - WallDragFactor, dt * 60);
+            pos.Motion.Scale(Math.Pow(1 - WallDragFactor, dt * 60));
         }
         else // Try to move around in the air very slowly as if walking.
         {
             float strength = AirMovingStrength * dt * 60f;
-            pos.Motion.Add(controls.WalkVector.X * strength, controls.WalkVector.Y * strength, controls.WalkVector.Z * strength);
+            var WalkVector = controls.WalkVector;
+            pos.Motion.Add(WalkVector.X * strength, WalkVector.Y * strength, WalkVector.Z * strength);
         }
     }
 
@@ -62,7 +62,8 @@ public class PModuleInAir : PModule
     /// </summary>
     public virtual void ApplyFlying(float dt, Entity entity, EntityPos pos, EntityControls controls)
     {
-        double deltaY = controls.FlyVector.Y;
+        var FlyVector = controls.FlyVector;
+        double deltaY = FlyVector.Y;
         if (controls.Up || controls.Down)
         {
             float moveSpeed = Math.Min(0.2f, dt) * GlobalConstants.BaseMoveSpeed * controls.MovespeedMultiplier / 2;
@@ -74,6 +75,6 @@ public class PModuleInAir : PModule
             deltaY = 0; // Prevent entities from flying too close to dimension boundaries.
         }
 
-        pos.Motion.Add(controls.FlyVector.X, deltaY, controls.FlyVector.Z);
+        pos.Motion.Add(FlyVector.X, deltaY, FlyVector.Z);
     }
 }

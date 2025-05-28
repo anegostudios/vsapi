@@ -158,36 +158,6 @@ Class AnimationFrame
 
 
 
-  <h2 class="section" id="constructors">Constructors
-</h2>
-
-
-  <a id="Vintagestory_API_Common_AnimationFrame__ctor_" data-uid="Vintagestory.API.Common.AnimationFrame.#ctor*"></a>
-
-  <h3 id="Vintagestory_API_Common_AnimationFrame__ctor" data-uid="Vintagestory.API.Common.AnimationFrame.#ctor">
-  AnimationFrame()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimationFrame()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <h2 class="section" id="fields">Fields
 </h2>
 
@@ -254,68 +224,6 @@ Class AnimationFrame
 
 
 
-
-  <h3 id="Vintagestory_API_Common_AnimationFrame_animTransforms" data-uid="Vintagestory.API.Common.AnimationFrame.animTransforms">
-  animTransforms
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>The transformations for this frame.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float[][] animTransforms</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[][]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_AnimationFrame_transformationMatrices" data-uid="Vintagestory.API.Common.AnimationFrame.transformationMatrices">
-  transformationMatrices
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>The transformation matricies for this frame</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float[] transformationMatrices</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -332,7 +240,8 @@ Class AnimationFrame
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void FinalizeMatrices(Dictionary&lt;int, AnimationJoint&gt; jointsById)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Does nothing in 1.20.11 - actually it had no useful effect even before 1.20&quot;)]
+public void FinalizeMatrices(Dictionary&lt;int, AnimationJoint&gt; jointsById)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -364,7 +273,8 @@ Class AnimationFrame
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetTransform(int jointId, float[] modelTransform)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Does nothing in 1.20.11 - actually it had no useful effect even before 1.20&quot;)]
+public void SetTransform(int jointId, float[] modelTransform)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

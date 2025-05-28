@@ -370,8 +370,8 @@ Class EntityClientProperties
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Only loaded for World.EntityTypes instances of EntityProperties, because it makes no sense to have 1000 loaded entities needing to load 1000 shapes. During entity load/spawn this value is assigned however
-On the client it gets set by the EntityTextureAtlasManager
+  <div class="markdown level1 summary"><p>Only loaded for World.EntityTypes instances of EntityProperties, because it makes no sense to have 1000 loaded entities needing to load 1000 shapes. During entity load/spawn this value is assigned however.
+On the client it gets set by the EntityTextureAtlasManager.
 On the server by the EntitySimulation system</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -786,7 +786,8 @@ On the server by the EntitySimulation system</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Does not clone textures, but does clone shapes</p>
+  <div class="markdown level1 summary"><p>Does not clone textures, but does clone Shape
+<br>Note: This method does not clone the LoadedShape (nor the LoadedAlternateShapes, if present). The LoadedShape (and any alternate) is not normally modified after entityType loading. An Entity created at runtime (each Entity carries a clone of its EntityProperties) should not normally require its own unique copy of the LoadedShape or the LoadedAlternateShapes. Exceptionally, an entity needing to clone and modify LoadedShape or one of the LoadedAlternateShapes (e.g. EntityDressedHumanoid, or a boat furling and unfurling sails) should do so in its own custom OnTesselation() method, likely accessing the shape via EntityClientProperties.LoadedShapeForEntity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

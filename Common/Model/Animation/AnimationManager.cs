@@ -16,6 +16,8 @@ namespace Vintagestory.API.Common
         protected ICoreAPI api;
         protected ICoreClientAPI capi;
 
+        [ThreadStatic] static FastMemoryStream reusableStream;
+
         /// <summary>
         /// Are the animations dirty in this AnimationManager?
         /// </summary>
@@ -131,6 +133,7 @@ namespace Vintagestory.API.Common
         /// <param name="animCode"></param>
         public virtual void ResetAnimation(string animCode)
         {
+            if (animCode == null) return;
             var state = Animator?.GetAnimationState(animCode);
             if (state != null)
             {
@@ -342,7 +345,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Serializes the slots contents to be stored in the SaveGame
+        /// Serializes the animations to be stored in the SaveGame
         /// </summary>
         /// <param name="tree"></param>
         /// <param name="forClient"></param>
@@ -352,10 +355,30 @@ namespace Vintagestory.API.Common
 
             ITreeAttribute animtree = new TreeAttribute();
             tree["activeAnims"] = animtree;
+            SerializeActiveAnimations(forClient, (code, ms) => { animtree[code] = new ByteArrayAttribute(ms); });
+        }
 
+        /// <summary>
+        /// For performance, serializes the animations to be stored directly to the provided stream
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="forClient"></param>
+        public virtual void ToAttributeBytes(BinaryWriter stream, bool forClient)
+        {
+            if (Animator == null) return;
+
+            StreamedTreeAttribute streamedAnimTree = new StreamedTreeAttribute(stream);
+            streamedAnimTree.WithKey("activeAnims");
+            SerializeActiveAnimations(forClient, (code, ms) => { streamedAnimTree[code] = new StreamedByteArrayAttribute(ms); } );
+            streamedAnimTree.EndKey();
+        }
+
+        protected virtual void SerializeActiveAnimations(bool forClient, Action<string, FastMemoryStream> output)
+        {
             if (ActiveAnimationsByAnimCode.Count == 0) return;
 
-            using FastMemoryStream ms = new FastMemoryStream();
+            using FastMemoryStream ms = reusableStream ??= new();
+            using BinaryWriter writer = new BinaryWriter(ms);
             foreach (var val in ActiveAnimationsByAnimCode)
             {
                 if (val.Value.Code == null) val.Value.Code = val.Key; // ah wtf.
@@ -369,14 +392,10 @@ namespace Vintagestory.API.Common
                 }
 
                 ms.Reset();
-                using (BinaryWriter writer = new BinaryWriter(ms))
-                {
-                    val.Value.ToBytes(writer);
-                }
-
-                animtree[val.Key] = new ByteArrayAttribute(ms.ToArray());
-
+                val.Value.ToBytes(writer);
                 val.Value.StartFrameOnce = 0;
+
+                output(val.Key, ms);
             }
         }
 
@@ -413,8 +432,8 @@ namespace Vintagestory.API.Common
         {
             if (Animator != null)
             {
-                Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
                 Animator.CalculateMatrices = !entity.Alive || entity.requirePosesOnServer;
+                Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
             }
             
             runTriggers();
@@ -448,6 +467,7 @@ namespace Vintagestory.API.Common
 
         private void runTriggers()
         {
+            var Triggers = this.Triggers;
             if (Triggers == null) return;
             for (int i = 0; i < Triggers.Count; i++)
             {

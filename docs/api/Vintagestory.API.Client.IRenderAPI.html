@@ -1365,6 +1365,42 @@ It is recommended to use this methods in a few spots during render code to track
 
 
 
+  <a id="Vintagestory_API_Client_IRenderAPI_CreateFrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateFrameBuffer*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_CreateFrameBuffer_Vintagestory_API_Client_LoadedTexture_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateFrameBuffer(Vintagestory.API.Client.LoadedTexture)">
+  CreateFrameBuffer(LoadedTexture)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FrameBufferRef CreateFrameBuffer(LoadedTexture intoTexture)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>intoTexture</code> <a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.FrameBufferRef.html">FrameBufferRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_IRenderAPI_CreateUBO_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateUBO*"></a>
 
   <h3 id="Vintagestory_API_Client_IRenderAPI_CreateUBO_Vintagestory_API_Client_IShaderProgram_System_Int32_System_String_System_Int32_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateUBO(Vintagestory.API.Client.IShaderProgram,System.Int32,System.String,System.Int32)">
@@ -1425,6 +1461,37 @@ It is recommended to use this methods in a few spots during render code to track
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>vao</code> <a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_DestroyFrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.DestroyFrameBuffer*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_DestroyFrameBuffer_Vintagestory_API_Client_FrameBufferRef_" data-uid="Vintagestory.API.Client.IRenderAPI.DestroyFrameBuffer(Vintagestory.API.Client.FrameBufferRef)">
+  DestroyFrameBuffer(FrameBufferRef)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DestroyFrameBuffer(FrameBufferRef fb)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fb</code> <a class="xref" href="Vintagestory.API.Client.FrameBufferRef.html">FrameBufferRef</a></dt>
     <dd></dd>
   </dl>
 
@@ -3654,6 +3721,55 @@ void RenderItemstackToGui(ItemStack itemstack, double posX, double posY, double 
     <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>color</code> <a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_RenderTextureIntoFrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.RenderTextureIntoFrameBuffer*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_RenderTextureIntoFrameBuffer_System_Int32_Vintagestory_API_Client_LoadedTexture_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_Client_FrameBufferRef_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.IRenderAPI.RenderTextureIntoFrameBuffer(System.Int32,Vintagestory.API.Client.LoadedTexture,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.Client.FrameBufferRef,System.Single,System.Single,System.Single)">
+  RenderTextureIntoFrameBuffer(int, LoadedTexture, float, float, float, float, FrameBufferRef, float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RenderTextureIntoFrameBuffer(int atlasTextureId, LoadedTexture fromTexture, float sourceX, float sourceY, float sourceWidth, float sourceHeight, FrameBufferRef fb, float targetX, float targetY, float alphaTest = 0.005)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>atlasTextureId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>fromTexture</code> <a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></dt>
+    <dd></dd>
+    <dt><code>sourceX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>sourceY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>sourceWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>sourceHeight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>fb</code> <a class="xref" href="Vintagestory.API.Client.FrameBufferRef.html">FrameBufferRef</a></dt>
+    <dd></dd>
+    <dt><code>targetX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>targetY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>alphaTest</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 

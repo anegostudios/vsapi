@@ -269,6 +269,38 @@ Class EntityBehavior
 
 
 
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_ThreadSafe_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.ThreadSafe*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_ThreadSafe" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.ThreadSafe">
+  ThreadSafe
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>An implementing behavior can return true if it is thread-safe: allows the behavior to be multi-threaded for better multiplayer performance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ThreadSafe { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -575,7 +607,9 @@ Class EntityBehavior
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The distance at which entities are counted as &quot;touching&quot; each other, for example used by EntityPartitioning and RepulseAgents
+<br>Note: from 1.20.4 this is gathered and cached in a field when each entity is Initialized, if for any reason a mod or behavior needs to change the result later than Initialization then you should also update the Entity field .touchDistance</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
