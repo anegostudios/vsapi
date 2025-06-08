@@ -588,11 +588,14 @@ namespace Vintagestory.API.Common.Entities
             {
                 WatchedAttributes.RegisterModifiedListener("grow", () =>
                 {
-                    float factor = Properties.Client.SizeGrowthFactor;
-                    if (factor != 0)
+                    if (World != null && Properties != null)   // The following code can crash if the entity is not yet initialised e.g. during updating from packets (see SyncedTreeAttribute.FromBytes() which calls all listeners)
                     {
-                        var origc = World.GetEntityType(this.Code).Client;
-                        Properties.Client.Size = origc.Size + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
+                        float factor = Properties.Client.SizeGrowthFactor;
+                        if (factor != 0)
+                        {
+                            var origc = World.GetEntityType(this.Code).Client;
+                            Properties.Client.Size = origc.Size + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
+                        }
                     }
                 });
             }

@@ -478,16 +478,20 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
-            if (MountedOn != null && curMountedAnim != null)
+            if (MountedOn != null)
             {
                 var nowSuggestedAnim = MountedOn.SuggestedAnimation;
-
-                if (curMountedAnim.Code != nowSuggestedAnim?.Code)
+                if (curMountedAnim?.Code != nowSuggestedAnim?.Code)
                 {
-                    AnimManager?.StopAnimation(curMountedAnim.Code);
+                    if (curMountedAnim != null) AnimManager?.StopAnimation(curMountedAnim.Code);
                     if (nowSuggestedAnim != null) AnimManager?.StartAnimation(nowSuggestedAnim);
                     curMountedAnim = nowSuggestedAnim;
                 }
+            }
+            else if (curMountedAnim != null)
+            {
+                AnimManager?.StopAnimation(curMountedAnim.Code);
+                curMountedAnim = null;
             }
 
 
