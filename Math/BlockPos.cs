@@ -6,6 +6,8 @@ using ProtoBuf;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>

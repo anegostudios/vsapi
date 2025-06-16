@@ -191,6 +191,38 @@ Class GridRecipe
 
 
 
+  <h3 id="Vintagestory_API_Common_GridRecipe_AllowedVariants" data-uid="Vintagestory.API.Common.GridRecipe.AllowedVariants">
+  AllowedVariants
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If '{code}' is used in ingredient code, allowed variants for this code should be specified in this map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string[]&gt; AllowedVariants</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_GridRecipe_Attributes" data-uid="Vintagestory.API.Common.GridRecipe.Attributes">
   Attributes
   
@@ -245,38 +277,6 @@ public JsonObject Attributes</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom">
-  CopyAttributesFrom
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>If set, it will copy over the itemstack attributes from given ingredient code</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string CopyAttributesFrom</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -415,6 +415,38 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_MergeAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.MergeAttributesFrom">
+  MergeAttributesFrom
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>Attributes from thise ingredients will be merged into output itemstack</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] MergeAttributesFrom</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -619,6 +651,38 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
 
 
 
+  <h3 id="Vintagestory_API_Common_GridRecipe_SkipVariants" data-uid="Vintagestory.API.Common.GridRecipe.SkipVariants">
+  SkipVariants
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If '{code}' is used in ingredient code, skip variants for this code should be specified in this map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string[]&gt; SkipVariants</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_GridRecipe_Width" data-uid="Vintagestory.API.Common.GridRecipe.Width">
   Width
   
@@ -639,6 +703,36 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_World" data-uid="Vintagestory.API.Common.GridRecipe.World">
+  World
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IWorldAccessor World</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
     <dd></dd>
   </dl>
 
@@ -673,6 +767,43 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom_" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom">
+  CopyAttributesFrom
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If set, it will copy over the itemstack attributes from given ingredient code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CopyAttributesFrom { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -740,6 +871,88 @@ consumes the required items from the input slots</p>
     <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
     <dd></dd>
     <dt><code>gridWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_ConsumeInputAt_" data-uid="Vintagestory.API.Common.GridRecipe.ConsumeInputAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_ConsumeInputAt_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.GridRecipe.ConsumeInputAt(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot[],System.Int32,System.Int32,System.Int32)">
+  ConsumeInputAt(IPlayer, ItemSlot[], int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool ConsumeInputAt(IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth, int colStart, int rowStart)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>gridWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>colStart</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>rowStart</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_ConsumeInputShapeLess_" data-uid="Vintagestory.API.Common.GridRecipe.ConsumeInputShapeLess*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_ConsumeInputShapeLess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___" data-uid="Vintagestory.API.Common.GridRecipe.ConsumeInputShapeLess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot[])">
+  ConsumeInputShapeLess(IPlayer, ItemSlot[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool ConsumeInputShapeLess(IPlayer byPlayer, ItemSlot[] inputSlots)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -1022,6 +1235,221 @@ consumes the required items from the input slots</p>
 
 
 
+  <a id="Vintagestory_API_Common_GridRecipe_GetNameToCodeMappingForAdvancedWildcard_" data-uid="Vintagestory.API.Common.GridRecipe.GetNameToCodeMappingForAdvancedWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_GetNameToCodeMappingForAdvancedWildcard_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_CraftingRecipeIngredient_System_Collections_Generic_Dictionary_System_String_System_String____" data-uid="Vintagestory.API.Common.GridRecipe.GetNameToCodeMappingForAdvancedWildcard(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.CraftingRecipeIngredient,System.Collections.Generic.Dictionary{System.String,System.String[]})">
+  GetNameToCodeMappingForAdvancedWildcard(IWorldAccessor, CraftingRecipeIngredient, Dictionary&lt;string, string[]&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void GetNameToCodeMappingForAdvancedWildcard(IWorldAccessor world, CraftingRecipeIngredient ingredient, Dictionary&lt;string, string[]&gt; mappings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>mappings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_GetNameToCodeMappingForBasicWildcard_" data-uid="Vintagestory.API.Common.GridRecipe.GetNameToCodeMappingForBasicWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_GetNameToCodeMappingForBasicWildcard_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_CraftingRecipeIngredient_System_Collections_Generic_Dictionary_System_String_System_String____" data-uid="Vintagestory.API.Common.GridRecipe.GetNameToCodeMappingForBasicWildcard(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.CraftingRecipeIngredient,System.Collections.Generic.Dictionary{System.String,System.String[]})">
+  GetNameToCodeMappingForBasicWildcard(IWorldAccessor, CraftingRecipeIngredient, Dictionary&lt;string, string[]&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void GetNameToCodeMappingForBasicWildcard(IWorldAccessor world, CraftingRecipeIngredient ingredient, Dictionary&lt;string, string[]&gt; mappings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>mappings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_IsAdvancedWildcard_" data-uid="Vintagestory.API.Common.GridRecipe.IsAdvancedWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_IsAdvancedWildcard_System_String_" data-uid="Vintagestory.API.Common.GridRecipe.IsAdvancedWildcard(System.String)">
+  IsAdvancedWildcard(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static bool IsAdvancedWildcard(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_IsBasicWildcard_" data-uid="Vintagestory.API.Common.GridRecipe.IsBasicWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_IsBasicWildcard_System_String_" data-uid="Vintagestory.API.Common.GridRecipe.IsBasicWildcard(System.String)">
+  IsBasicWildcard(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static bool IsBasicWildcard(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_IsRegex_" data-uid="Vintagestory.API.Common.GridRecipe.IsRegex*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_IsRegex_System_String_" data-uid="Vintagestory.API.Common.GridRecipe.IsRegex(System.String)">
+  IsRegex(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static bool IsRegex(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_MatchCollectibleCode_" data-uid="Vintagestory.API.Common.GridRecipe.MatchCollectibleCode*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_MatchCollectibleCode_Vintagestory_API_Common_AssetLocation_System_Text_RegularExpressions_Regex_System_Collections_Generic_List_System_String__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___" data-uid="Vintagestory.API.Common.GridRecipe.MatchCollectibleCode(Vintagestory.API.Common.AssetLocation,System.Text.RegularExpressions.Regex,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}})">
+  MatchCollectibleCode(AssetLocation, Regex, List&lt;string&gt;, Dictionary&lt;string, List&lt;string&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void MatchCollectibleCode(AssetLocation code, Regex regex, List&lt;string&gt; variants, Dictionary&lt;string, List&lt;string&gt;&gt; variantCodes)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>regex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.regularexpressions.regex">Regex</a></dt>
+    <dd></dd>
+    <dt><code>variants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>variantCodes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_GridRecipe_Matches_" data-uid="Vintagestory.API.Common.GridRecipe.Matches*"></a>
 
   <h3 id="Vintagestory_API_Common_GridRecipe_Matches_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___System_Int32_" data-uid="Vintagestory.API.Common.GridRecipe.Matches(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot[],System.Int32)">
@@ -1106,6 +1534,82 @@ consumes the required items from the input slots</p>
 
 
 
+  <a id="Vintagestory_API_Common_GridRecipe_MatchesShapeLess_" data-uid="Vintagestory.API.Common.GridRecipe.MatchesShapeLess*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_MatchesShapeLess_Vintagestory_API_Common_ItemSlot___System_Int32_" data-uid="Vintagestory.API.Common.GridRecipe.MatchesShapeLess(Vintagestory.API.Common.ItemSlot[],System.Int32)">
+  MatchesShapeLess(ItemSlot[], int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool MatchesShapeLess(ItemSlot[] suppliedSlots, int gridWidth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>suppliedSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>gridWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_ReplaceVariantsToRegex_" data-uid="Vintagestory.API.Common.GridRecipe.ReplaceVariantsToRegex*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_ReplaceVariantsToRegex_System_String_System_Collections_Generic_List_System_String___" data-uid="Vintagestory.API.Common.GridRecipe.ReplaceVariantsToRegex(System.String,System.Collections.Generic.List{System.String}@)">
+  ReplaceVariantsToRegex(string, out List&lt;string&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static string ReplaceVariantsToRegex(string value, out List&lt;string&gt; variants)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>variants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_GridRecipe_ResolveIngredients_" data-uid="Vintagestory.API.Common.GridRecipe.ResolveIngredients*"></a>
 
   <h3 id="Vintagestory_API_Common_GridRecipe_ResolveIngredients_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.GridRecipe.ResolveIngredients(Vintagestory.API.Common.IWorldAccessor)">
@@ -1165,6 +1669,42 @@ consumes the required items from the input slots</p>
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_WildCardToRegex_" data-uid="Vintagestory.API.Common.GridRecipe.WildCardToRegex*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_WildCardToRegex_System_String_" data-uid="Vintagestory.API.Common.GridRecipe.WildCardToRegex(System.String)">
+  WildCardToRegex(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static string WildCardToRegex(string value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

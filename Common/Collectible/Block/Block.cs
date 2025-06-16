@@ -10,6 +10,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public delegate void BlockBehaviorDelegate(BlockBehavior behavior, ref EnumHandling handling);
@@ -26,8 +28,6 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class Block : CollectibleObject
     {
-        public readonly static bool[] DefaultSideOpaque = new bool[] { true, true, true, true, true, true };
-        public readonly static bool[] DefaultSideAo = new bool[] { true, true, true, true, true, true };
         public readonly static CompositeShape DefaultCubeShape = new CompositeShape() { Base = new AssetLocation("block/basic/cube") };
         public readonly static string[] DefaultAllowAllSpawns = new string[] { "*" };
         /// <summary>
@@ -231,7 +231,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines which of the 6 block sides are completely opaque. Used to determine which block faces can be culled during tesselation.
         /// </summary>
-        public bool[] SideOpaque = DefaultSideOpaque;
+        public SmallBoolArray SideOpaque = new SmallBoolArray(SmallBoolArray.OnAllSides);
 
         /// <summary>
         /// Defines which of the 6 block side are solid. Used to determine if attachable blocks can be attached to this block. Also used to determine if snow can rest on top of this block.
@@ -241,7 +241,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines which of the 6 block side should be shaded with ambient occlusion
         /// </summary>
-        public bool[] SideAo = DefaultSideAo;
+        public SmallBoolArray SideAo = new SmallBoolArray(SmallBoolArray.OnAllSides);
 
         /// <summary>
         /// Defines which of the 6 block neighbours should receive AO if this block is in front of them
@@ -326,12 +326,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Modifiers that can alter the behavior of a block, particularly when being placed or removed
         /// </summary>
-        public BlockBehavior[] BlockBehaviors = new BlockBehavior[0];
+        public BlockBehavior[] BlockBehaviors = Array.Empty<BlockBehavior>();
 
         /// <summary>
         /// Modifiers that can alter the behavior of a block entity
         /// </summary>
-        public BlockEntityBehaviorType[] BlockEntityBehaviors = new BlockEntityBehaviorType[0];
+        public BlockEntityBehaviorType[] BlockEntityBehaviors = Array.Empty<BlockEntityBehaviorType>();
 
         /// <summary>
         /// The items that should drop from breaking this block
@@ -475,22 +475,11 @@ namespace Vintagestory.API.Common
         {
             set
             {
-                if (ReferenceEquals(SideOpaque, DefaultSideOpaque))    // Do not modify the values within DefaultSideOpaque
-                {
-                    if (!value) SideOpaque = new bool[6];
-                    return;
-                }
-
-                SideOpaque[0] = value;
-                SideOpaque[1] = value;
-                SideOpaque[2] = value;
-                SideOpaque[3] = value;
-                SideOpaque[4] = value;
-                SideOpaque[5] = value;
+                SideOpaque.All = value;
             }
             get
             {
-                return SideOpaque[0] && SideOpaque[1] && SideOpaque[2] && SideOpaque[3] && SideOpaque[4] && SideOpaque[5];
+                return SideOpaque.All;
             }
         }
 
@@ -1007,8 +996,7 @@ namespace Vintagestory.API.Common
             }
 
             long totalMsBreaking = 0;
-            object val;
-            if (api.ObjectCache.TryGetValue("totalMsBlockBreaking", out val))
+            if (api.ObjectCache.TryGetValue("totalMsBlockBreaking", out object val))
             {
                 totalMsBreaking = (long)val;
             }
@@ -1172,6 +1160,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
         {
+            if (HasBehavior("Unplaceable", api.ClassRegistry)) return null; // We pretend these blocks are items instead
+
             if (Drops != null)
             {
                 IEnumerable<BlockDropItemStack> drops = Array.Empty<BlockDropItemStack>();
@@ -1203,8 +1193,10 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         protected virtual BlockDropItemStack[] GetHandbookDropsFromBreakDrops(ItemStack handbookStack, IPlayer forPlayer)
         {
+            if (HasBehavior("Unplaceable", api.ClassRegistry)) return null; // We pretend these blocks are items instead
+
             ItemStack[] stacks = GetDrops(api.World, forPlayer.Entity.Pos.XYZ.AsBlockPos, forPlayer);
-            if (stacks == null) return new BlockDropItemStack[0];
+            if (stacks == null) return Array.Empty<BlockDropItemStack>();
 
             BlockDropItemStack[] drops = new BlockDropItemStack[stacks.Length];
             for (int i = 0; i < stacks.Length; i++)
@@ -1249,7 +1241,7 @@ namespace Vintagestory.API.Common
                 if (dstack.Tool != null && (byPlayer == null || dstack.Tool != byPlayer.InventoryManager.ActiveTool)) continue;
 
                 float extraMul = 1f;
-                if (dstack.DropModbyStat != null)
+                if (byPlayer != null && dstack.DropModbyStat != null)
                 {
                     // If the stat does not exist, then GetBlended returns 1 \o/
                     extraMul = byPlayer.Entity.Stats.GetBlended(dstack.DropModbyStat);
@@ -1345,6 +1337,11 @@ namespace Vintagestory.API.Common
         /// <param name="byItemStack">May be null!</param>
         public virtual void OnBlockPlaced(IWorldAccessor world, BlockPos blockPos, ItemStack byItemStack = null)
         {
+            if (EntityClass != null)
+            {
+                world.BlockAccessor.SpawnBlockEntity(EntityClass, blockPos, byItemStack);
+            }
+
             bool preventDefault = false;
 
             foreach (BlockBehavior behavior in BlockBehaviors)
@@ -1358,10 +1355,6 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return;
 
-            if (EntityClass != null)
-            {
-                world.BlockAccessor.SpawnBlockEntity(EntityClass, blockPos, byItemStack);
-            }
         }
 
 
@@ -1576,8 +1569,8 @@ namespace Vintagestory.API.Common
             if (api is Server.ICoreServerAPI sapi)    // Do this check server-side only, as the rand.NextDouble() would be different on a client
             {
                 float triggerChance = entity.ImpactBlockUpdateChance;
-                if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < triggerChance)
-                {
+            if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < triggerChance)
+            {
                     BlockPos updatePos = pos.Copy();
                     sapi.Event.EnqueueMainThreadTask(() => OnNeighbourBlockChange(world, updatePos, updatePos.UpCopy()), "entityBlockImpact");
                 }
@@ -2010,7 +2003,7 @@ namespace Vintagestory.API.Common
             return Climbable;
         }
 
-        
+
 
         /// <summary>
         /// The cost of traversing this block as part of the AI pathfinding system.
@@ -2161,7 +2154,7 @@ namespace Vintagestory.API.Common
         public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
         {
             EnumHandling handled = EnumHandling.PassThrough;
-            WorldInteraction[] interactions = new WorldInteraction[0];
+            WorldInteraction[] interactions = Array.Empty<WorldInteraction>();
 
             bool notProtected = true;
 
@@ -2429,6 +2422,13 @@ namespace Vintagestory.API.Common
             return BlockMaterialUtil.MaterialBlastDropChances(blastType, GetBlockMaterial(world.BlockAccessor, pos));
         }
 
+        [Obsolete("Please use OnBlockExploded() with parameter ignitedByPlayerUid")]
+        public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter,
+            EnumBlastType blastType)
+        {
+            OnBlockExploded(world, pos, explosionCenter, blastType, null);
+        }
+
         /// <summary>
         /// Called when the block was blown up by explosives
         /// </summary>
@@ -2436,7 +2436,8 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="explosionCenter"></param>
         /// <param name="blastType"></param>
-        public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType)
+        /// <param name="ignitedByPlayerUid"></param>
+        public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, string ignitedByPlayerUid)
         {
             EnumHandling handled = EnumHandling.PassThrough;
 
@@ -2495,8 +2496,7 @@ namespace Vintagestory.API.Common
         public virtual int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing, int rndIndex = -1)
         {
             if (Textures == null || Textures.Count == 0) return 0;
-            CompositeTexture tex;
-            if (!Textures.TryGetValue(facing.Code, out tex))
+            if (!Textures.TryGetValue(facing.Code, out CompositeTexture tex))
             {
                 tex = Textures.First().Value;
             }
@@ -2660,10 +2660,7 @@ namespace Vintagestory.API.Common
 
             cloned.Shape = Shape.Clone();
 
-            if (LightHsv != null)
-            {
-                cloned.LightHsv = (byte[])LightHsv.Clone();
-            }
+            cloned.LightHsv = LightHsv;
 
             if (ParticleProperties != null)
             {
@@ -2683,17 +2680,11 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            if (SideOpaque != null)
-            {
-                cloned.SideOpaque = (bool[])SideOpaque.Clone();
-            }
+            cloned.SideOpaque = SideOpaque;
 
             cloned.SideSolid = SideSolid;
 
-            if (SideAo != null)
-            {
-                cloned.SideAo = (bool[])SideAo.Clone();
-            }
+            cloned.SideAo = SideAo;
 
             if (CombustibleProps != null)
             {
@@ -2832,6 +2823,11 @@ namespace Vintagestory.API.Common
             Lod2Shape = null;
             Textures = null;
             TexturesInventory = null;
+            GuiTransform = null;
+            FpHandTransform = null;
+            TpHandTransform = null;
+            TpOffHandTransform = null;
+            GroundTransform = null;
         }
     }
 }

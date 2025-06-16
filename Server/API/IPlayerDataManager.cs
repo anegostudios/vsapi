@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Server
 {
     public enum EnumServerResponse

@@ -170,16 +170,7 @@ Class GuiElementContainer
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DrawOrder">GuiElement.DrawOrder</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Focusable">GuiElement.Focusable</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Scale">GuiElement.Scale</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusGained">GuiElement.OnFocusGained()</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusLost">GuiElement.OnFocusLost()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_PostRenderInteractiveElements_System_Single_">GuiElement.PostRenderInteractiveElements(float)</a>
@@ -279,9 +270,6 @@ Class GuiElementContainer
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseLeaveSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_">GuiElement.OnMouseLeaveSlot(ICoreClientAPI, ItemSlot)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyUp(ICoreClientAPI, KeyEvent)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_IsPositionInside_System_Int32_System_Int32_">GuiElement.IsPositionInside(int, int)</a>
@@ -415,6 +403,36 @@ Class GuiElementContainer
 
 
 
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_Tabbable" data-uid="Vintagestory.API.Client.GuiElementContainer.Tabbable">
+  Tabbable
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Tabbable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Client_GuiElementContainer_UnscaledCellHorPadding" data-uid="Vintagestory.API.Client.GuiElementContainer.UnscaledCellHorPadding">
   UnscaledCellHorPadding
   
@@ -477,6 +495,36 @@ Class GuiElementContainer
 
 
 
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_currentFocusableElementKey" data-uid="Vintagestory.API.Client.GuiElementContainer.currentFocusableElementKey">
+  currentFocusableElementKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int currentFocusableElementKey</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Client_GuiElementContainer_unscaledCellSpacing" data-uid="Vintagestory.API.Client.GuiElementContainer.unscaledCellSpacing">
   unscaledCellSpacing
   
@@ -499,6 +547,137 @@ Class GuiElementContainer
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_CurrentTabIndexElement_" data-uid="Vintagestory.API.Client.GuiElementContainer.CurrentTabIndexElement*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_CurrentTabIndexElement" data-uid="Vintagestory.API.Client.GuiElementContainer.CurrentTabIndexElement">
+  CurrentTabIndexElement
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the currently tabbed index element, if there is one currently focused.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElement CurrentTabIndexElement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_FirstTabbableElement_" data-uid="Vintagestory.API.Client.GuiElementContainer.FirstTabbableElement*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_FirstTabbableElement" data-uid="Vintagestory.API.Client.GuiElementContainer.FirstTabbableElement">
+  FirstTabbableElement
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElement FirstTabbableElement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_Focusable_" data-uid="Vintagestory.API.Client.GuiElementContainer.Focusable*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_Focusable" data-uid="Vintagestory.API.Client.GuiElementContainer.Focusable">
+  Focusable
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the element can be focused.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Focusable { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_MaxTabIndex_" data-uid="Vintagestory.API.Client.GuiElementContainer.MaxTabIndex*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_MaxTabIndex" data-uid="Vintagestory.API.Client.GuiElementContainer.MaxTabIndex">
+  MaxTabIndex
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the maximum tab index of the components.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxTabIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -688,6 +867,99 @@ Class GuiElementContainer
 
 
 
+  <a id="Vintagestory_API_Client_GuiElementContainer_FocusElement_" data-uid="Vintagestory.API.Client.GuiElementContainer.FocusElement*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_FocusElement_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementContainer.FocusElement(System.Int32)">
+  FocusElement(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>marks an element as in focus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FocusElement(int tabIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tabIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The tab index to focus at.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether or not the focus could be done.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_OnFocusGained_" data-uid="Vintagestory.API.Client.GuiElementContainer.OnFocusGained*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_OnFocusGained" data-uid="Vintagestory.API.Client.GuiElementContainer.OnFocusGained">
+  OnFocusGained()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the element gains focus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnFocusGained()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_OnFocusLost_" data-uid="Vintagestory.API.Client.GuiElementContainer.OnFocusLost*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_OnFocusLost" data-uid="Vintagestory.API.Client.GuiElementContainer.OnFocusLost">
+  OnFocusLost()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the element looses focus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnFocusLost()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementContainer_OnKeyDown_" data-uid="Vintagestory.API.Client.GuiElementContainer.OnKeyDown*"></a>
 
   <h3 id="Vintagestory_API_Client_GuiElementContainer_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementContainer.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">
@@ -746,6 +1018,42 @@ Class GuiElementContainer
 </dd>
     <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></dt>
     <dd><p>The keyboard state when the key was pressed.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_OnKeyUp_" data-uid="Vintagestory.API.Client.GuiElementContainer.OnKeyUp*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementContainer.OnKeyUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">
+  OnKeyUp(ICoreClientAPI, KeyEvent)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when a key is held down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnKeyUp(ICoreClientAPI api, KeyEvent args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The client API</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></dt>
+    <dd><p>The key event arguments.</p>
 </dd>
   </dl>
 
@@ -955,6 +1263,65 @@ Class GuiElementContainer
   <dl class="parameters">
     <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd><p>The change in time.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_UnfocusOwnElements_" data-uid="Vintagestory.API.Client.GuiElementContainer.UnfocusOwnElements*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_UnfocusOwnElements" data-uid="Vintagestory.API.Client.GuiElementContainer.UnfocusOwnElements">
+  UnfocusOwnElements()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnfocusOwnElements()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementContainer_UnfocusOwnElementsExcept_" data-uid="Vintagestory.API.Client.GuiElementContainer.UnfocusOwnElementsExcept*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementContainer_UnfocusOwnElementsExcept_Vintagestory_API_Client_GuiElement_" data-uid="Vintagestory.API.Client.GuiElementContainer.UnfocusOwnElementsExcept(Vintagestory.API.Client.GuiElement)">
+  UnfocusOwnElementsExcept(GuiElement)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Unfocuses all elements except one specific element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnfocusOwnElementsExcept(GuiElement elem)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elem</code> <a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></dt>
+    <dd><p>The element to remain in focus.</p>
 </dd>
   </dl>
 

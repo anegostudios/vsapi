@@ -2,6 +2,8 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class DamagedPerceptionEffect : PerceptionEffect

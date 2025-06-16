@@ -1,5 +1,7 @@
 ﻿using Cairo;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementStaticText : GuiElementTextBase

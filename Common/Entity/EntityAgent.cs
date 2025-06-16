@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Util;
+
+#nullable disable
 
 namespace Vintagestory.API.Common
 {
@@ -190,12 +190,19 @@ namespace Vintagestory.API.Common
                 if (seat != null) seat.DoTeleportOnUnmount = true;
             }
 
-            TreeAttribute mountableTree = new TreeAttribute();
-            onmount?.MountableToTreeAttributes(mountableTree);
-            WatchedAttributes["mountedOn"] = mountableTree;
             doMount(onmount);
+            var mountableTree = new TreeAttribute();
+            onmount.MountableToTreeAttributes(mountableTree);
+            WatchedAttributes["mountedOn"] = mountableTree;
             if (World.Side == EnumAppSide.Server)
             {
+                var sebh = MountedOn?.MountSupplier.OnEntity?.GetBehavior("seatable");
+                if (sebh != null)
+                {
+                    sebh.ToBytes(true);
+                    MountedOn?.MountSupplier.OnEntity.WatchedAttributes.MarkPathDirty("seatdata");
+                }
+
                 WatchedAttributes.MarkPathDirty("mountedOn");
             }
             return true;
@@ -206,6 +213,13 @@ namespace Vintagestory.API.Common
             if (WatchedAttributes.HasAttribute("mountedOn"))
             {
                 var mountable = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+                if (MountedOn != null && MountedOn.Entity?.EntityId != mountable.Entity?.EntityId)
+                {
+                    var seat = MountedOn.MountSupplier.GetSeatOfMountedEntity(this);
+                    if (seat != null) seat.DoTeleportOnUnmount = false;
+                    TryUnmount();
+                    if (seat != null) seat.DoTeleportOnUnmount = true;
+                }
                 doMount(mountable);
             }
             else
@@ -258,6 +272,16 @@ namespace Vintagestory.API.Common
             if (WatchedAttributes.HasAttribute("mountedOn"))
             {
                 WatchedAttributes.RemoveAttribute("mountedOn");
+            }
+
+            if (World.Side == EnumAppSide.Server)
+            {
+                var sebh = oldMountedOn?.MountSupplier.OnEntity?.GetBehavior("seatable");
+                if (sebh != null)
+                {
+                    sebh.ToBytes(true);
+                    oldMountedOn?.MountSupplier.OnEntity.WatchedAttributes.MarkPathDirty("seatdata");
+                }
             }
 
             if (Api.Side == EnumAppSide.Server && oldMountedOn != null && oldMountedOn.MountSupplier?.OnEntity is Entity entity) Api.World.Logger.Audit("{0} dismounts/disembarks from a {1} at {2}", GetName(), entity.Code.ToShortString(), entity.ServerPos.AsBlockPos);
@@ -370,6 +394,9 @@ namespace Vintagestory.API.Common
                     DamageTier = damagetier
                 };
 
+                var im = GetInterface<IMountable>();
+                if (im != null && im.Controller == byEntity) return;   // A rider cannot damage the entity he is currently riding on: prevents accidental hits due to hitboxes (we gamify this and assume the rider swings the falx to miss his own mount)
+
                 if (ReceiveDamage(dmgSource, damage))
                 {
                     byEntity.DidAttack(dmgSource, this);
@@ -378,7 +405,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        protected bool ignoreTeleportCall;  
+        protected bool ignoreTeleportCall;
         public override void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
         {
             if (ignoreTeleportCall) return;
@@ -526,7 +553,7 @@ namespace Vintagestory.API.Common
                     CurrentControls &= ~EnumEntityActivity.Idle;
                 }
 
-                HandleHandAnimations(dt);
+            HandleHandAnimations(dt);
 
                 AnimationMetaData defaultAnim = null;
                 bool anyAverageAnimActive = false;
@@ -573,7 +600,7 @@ namespace Vintagestory.API.Common
                 {
                     if (anyAverageAnimActive || MountedOn != null)
                     {
-                        if (!alwaysRunIdle && AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StopAnimation(defaultAnim.Animation);
+                         if (!alwaysRunIdle && AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StopAnimation(defaultAnim.Animation);
                     }
                     else
                     {
@@ -598,16 +625,16 @@ namespace Vintagestory.API.Common
                 HandleHandAnimations(dt);
 
                 if (Properties.RotateModelOnClimb)
+            {
+                if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
                 {
-                    if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
-                    {
-                        ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
-                    }
-                    else
-                    {
-                        ServerPos.Pitch = 0;
-                    }
+                    ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
                 }
+                else
+                {
+                    ServerPos.Pitch = 0;
+                }
+            }
             }
 
             World.FrameProfiler.Mark("entityAgent-ticking");
@@ -846,6 +873,27 @@ namespace Vintagestory.API.Common
             }
 
             return handling != EnumHandling.PassThrough;
+        }
+
+        /// <summary>
+        /// If true, then this entity will not retaliate if attacked by the specified eOther
+        /// </summary>
+        /// <param name="eOther"></param>
+        public bool ToleratesDamageFrom(Entity eOther)
+        {
+            bool tolerate = false;
+
+            foreach (var bh in SidedProperties?.Behaviors)
+            {
+                EnumHandling handling = EnumHandling.PassThrough;
+                bool thisTolerate = bh.ToleratesDamageFrom(eOther, ref handling);
+                if (handling != EnumHandling.PassThrough) {
+                    tolerate = thisTolerate;
+                }
+                if (handling == EnumHandling.PreventSubsequent) return thisTolerate;
+            }
+
+            return tolerate;
         }
     }
 }

@@ -216,6 +216,27 @@ Class BlockBehavior
       <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnCreatedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnCreatedByCrafting(ItemSlot[], ItemSlot, ref EnumHandling)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnGetMiningSpeed_Vintagestory_API_Common_IItemStack_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_Block_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnGetMiningSpeed(IItemStack, BlockSelection, Block, IPlayer, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnGetMaxDurability_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnGetMaxDurability(ItemStack, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnGetRemainingDurability_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnGetRemainingDurability(ItemStack, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnDamageItem_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_System_Int32__Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnDamageItem(IWorldAccessor, Entity, ItemSlot, ref int, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnSetDurability_Vintagestory_API_Common_ItemStack_System_Int32__Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnSetDurability(ItemStack, ref int, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnTransitionNow_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_TransitionableProperties_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnTransitionNow(ItemSlot, TransitionableProperties, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHandbookRecipeRender_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot_System_Double_System_Double_System_Double_System_Double_">CollectibleBehavior.OnHandbookRecipeRender(ICoreClientAPI, GridRecipe, ItemSlot, double, double, double, double)</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
     <div>
@@ -1395,8 +1416,8 @@ public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing, ref EnumHa
   </h3>
 
   <div class="markdown level1 summary"><p>Step 4: Block was placed. Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
-Until 1.20: The BlockEntity does not exist yet at this point and will not be generated if handling is set to PreventSubsequent
-<br>(Note, we intend to change this in game version 1.21 so that the BlockEntity (if the block has one) will always be created before calling BlockBehavior.OnBlockPlaced())</p>
+Until 1.20: The BlockEntity (if the block has one) does not exist yet at this point and will not be generated if handling is not PassThrough
+1.21+: The BlockEntity (if the block has one) exists at this point. Setting handling to PreventDefault or PreventSubsequent has no effect on BlockEntity creation, but may affect/prevent later behaviors</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

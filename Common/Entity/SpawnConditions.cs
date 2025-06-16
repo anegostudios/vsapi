@@ -5,6 +5,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities
 {
     /// <summary>
@@ -380,7 +382,7 @@ namespace Vintagestory.API.Common.Entities
         /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Additional companions for the spawn.
         /// </summary>
-        [DocumentAsJson] public AssetLocation[] Companions = new AssetLocation[0];
+        [DocumentAsJson] public AssetLocation[] Companions = Array.Empty<AssetLocation>();
 
         /// <summary>
         /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>"air"</jsondefault>-->
@@ -447,8 +449,7 @@ namespace Vintagestory.API.Common.Entities
                 bool anyBlockOk = false;
                 foreach (var val in InsideBlockCodes)
                 {
-                    Block[] foundBlocks;
-                    if (!searchCache.TryGetValue(val, out foundBlocks))
+                    if (!searchCache.TryGetValue(val, out Block[] foundBlocks))
                     {
                         foundBlocks = server.SearchBlocks(val);
                         searchCache[val] = foundBlocks;

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
+
+#nullable disable
 
 namespace Vintagestory.API.MathTools
 {
@@ -77,6 +80,13 @@ namespace Vintagestory.API.MathTools
             this.Z = vec3i.Z;
         }
 
+        public FastVec3f(Vec3f vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+        }
+
         /// <summary>
         /// Returns the n-th coordinate
         /// </summary>
@@ -105,7 +115,11 @@ namespace Vintagestory.API.MathTools
             this.Z = -Z;
         }
 
-
+        public override bool Equals([NotNullWhen(true)] object obj)
+        {
+            if (obj is FastVec3f v && v.X == X && v.Y == Y && v.Z == Z) return true;
+            return false;
+        }
 
         /// <summary>
         /// Returns the dot product with given vector
@@ -376,6 +390,21 @@ namespace Vintagestory.API.MathTools
         public static FastVec3f CreateFromBytes(BinaryReader reader)
         {
             return new FastVec3f(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+        }
+
+        public static FastVec3f operator +(FastVec3f left, float right)
+        {
+            return new FastVec3f(left.X + right, left.Y + right, left.Z + right);
+        }
+
+        public static FastVec3f operator -(FastVec3f left, float right)
+        {
+            return new FastVec3f(left.X - right, left.Y - right, left.Z - right);
+        }
+
+        public static FastVec3f operator *(FastVec3f left, float right)
+        {
+            return new FastVec3f(left.X * right, left.Y * right, left.Z * right);
         }
     }
 }

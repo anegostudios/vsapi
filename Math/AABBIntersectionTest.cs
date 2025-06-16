@@ -2,6 +2,8 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     public class Line3D

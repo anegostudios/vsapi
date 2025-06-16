@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿
+#nullable disable
+namespace Vintagestory.API.Client
 {
     /// <summary>
     /// Just some default sizings for various ui elements

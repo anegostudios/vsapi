@@ -2,6 +2,8 @@
 using System.Runtime.Serialization;
 using Vintagestory.API.Client;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

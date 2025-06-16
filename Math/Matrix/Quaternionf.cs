@@ -24,6 +24,8 @@
 
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     public class Quaternionf

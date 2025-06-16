@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿
+#nullable disable
+namespace Vintagestory.API.Common
 {
     /// <summary>
     /// When picking a random seed for this block, what axes should we base it on?

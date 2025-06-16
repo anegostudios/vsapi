@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿
+#nullable disable
+namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Used for blocks (e.g. tallgrass and flowers) where the drawnHeight is set in attributes

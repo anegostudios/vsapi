@@ -3,6 +3,8 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities;
 
 public class PModuleGravity : PModule
@@ -19,7 +21,7 @@ public class PModuleGravity : PModule
     //   Flying (but not gliding!)
     //   If you're a butterfly/bird
     //   If you're a fish or frog who is currently swimming (a fish or frog on land is subject to gravity)
-    //   Or if you're climbing.
+    // Or if you're climbing.
     public override bool Applicable(Entity entity, EntityPos pos, EntityControls controls)
     {
         var Habitat = entity.Properties.Habitat;

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 
+#nullable disable
+
 namespace Vintagestory.API.Config
 {
     public static class GamePaths
@@ -33,7 +35,7 @@ namespace Vintagestory.API.Config
 
             // Denv env
             {
-                AssetsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "assets");
+                AssetsPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "assets"));
             }
         }
 
@@ -57,7 +59,7 @@ namespace Vintagestory.API.Config
 
 
         public static string DefaultSaveFilenameWithoutExtension = "default";
-        
+
 
         public static void EnsurePathExists(string path)
         {
@@ -108,6 +110,10 @@ namespace Vintagestory.API.Config
                 Directory.CreateDirectory(DataPathMods);
             }
 
+            if (!File.Exists(Path.Combine(DataPathMods, "Creating_Mods.txt")) && File.Exists(Path.Combine(Binaries, "Creating_Mods.txt")))
+            {
+                File.Copy(Path.Combine(Binaries, "Creating_Mods.txt"),Path.Combine(DataPathMods, "Creating_Mods.txt"));
+            }
         }
 
         public static bool IsValidName(string s)

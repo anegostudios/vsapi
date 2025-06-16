@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿
+#nullable disable
+namespace Vintagestory.API.Client
 {
     /// <summary>
     /// First word = X Alignment (left, center, right or fixed)

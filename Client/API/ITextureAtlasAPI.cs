@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate IBitmap CreateTextureDelegate();
@@ -84,8 +86,9 @@ namespace Vintagestory.API.Client
         /// <param name="height"></param>
         /// <param name="textureSubId"></param>
         /// <param name="texPos"></param>
+        /// <param name="loc">If set, said texture space can be looked up by the tesselated element faces during shape tesselation</param>
         /// <returns></returns>
-        bool AllocateTextureSpace(int width, int height, out int textureSubId, out TextureAtlasPosition texPos);
+        bool AllocateTextureSpace(int width, int height, out int textureSubId, out TextureAtlasPosition texPos, AssetLocationAndSource loc = null);
 
         /// <summary>
         /// Inserts a texture into the texture atlas after the atlas has been generated. Updates the in-ram texture atlas as well as the in-gpu-ram texture atlas. 

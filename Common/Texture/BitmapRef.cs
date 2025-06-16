@@ -1,6 +1,8 @@
 ﻿using System;
 using SkiaSharp;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface IBitmap

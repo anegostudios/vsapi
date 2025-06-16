@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class IntArrayAttribute : ArrayAttribute<int>, IAttribute

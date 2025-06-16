@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     // https://youtu.be/cieheqt7eqc?t=11m51s

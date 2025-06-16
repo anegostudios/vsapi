@@ -4,6 +4,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public enum EnumMountAngleMode
@@ -80,9 +82,11 @@ namespace Vintagestory.API.Common
         public Vec3f MountRotation = new Vec3f();
         public float? BodyYawLimit;
         public float EyeHeight = 1.5f;
+        public EnumMountAngleMode AngleMode = EnumMountAngleMode.FixateYaw;
 
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;
+        public string Animation { get; set; }
     }
 
 
@@ -94,7 +98,7 @@ namespace Vintagestory.API.Common
 
     public interface IMountableListener
     {
-        void DidUnnmount(EntityAgent entityAgent);
+        void DidUnmount(EntityAgent entityAgent);
         void DidMount(EntityAgent entityAgent);
     }
 

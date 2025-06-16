@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>
@@ -189,7 +191,7 @@ namespace Vintagestory.API.Client
         {
             int curVertexPos = 0;
             int curIndexPos = 0;
-            
+
             for (int i = 0; i < poolLocations.Count; i++)
             {
                 ModelDataPoolLocation location = poolLocations[i];
@@ -199,9 +201,8 @@ namespace Vintagestory.API.Client
                     return InsertAt(capi, modeldata, modelOrigin, frustumCullSphere, curIndexPos, curVertexPos, i);
                 }
 
-                curIndexPos = location.IndicesEnd + 1;
-                curVertexPos = location.VerticesEnd + 1;
-
+                curIndexPos = location.IndicesEnd;
+                curVertexPos = location.VerticesEnd;
             }
 
             return null;
@@ -218,6 +219,9 @@ namespace Vintagestory.API.Client
 
             indicesPosition += modeldata.IndicesCount;
             verticesPosition += modeldata.VerticesCount;
+#if DEBUG
+            if (verticesPosition % 4 != 0 && capi.Render.UseSSBOs) { throw new Exception("Vertices in pool not aligned on 4-vertex boundary. Try disabling clientsetting: allowSSBOs."); }
+#endif
 
             return location;
         }
@@ -262,6 +266,11 @@ namespace Vintagestory.API.Client
                 modeldata.CustomFloats.BaseOffset = vertexPosition * modeldata.CustomFloats.InterleaveStride;
             }
 
+            if (modeldata.CustomShorts != null)
+            {
+                modeldata.CustomShorts.BaseOffset = vertexPosition * modeldata.CustomShorts.InterleaveStride;
+            }
+
             if (modeldata.CustomBytes != null)
             {
                 modeldata.CustomBytes.BaseOffset = vertexPosition * modeldata.CustomBytes.InterleaveStride;
@@ -273,7 +282,7 @@ namespace Vintagestory.API.Client
             }
 
             // Load into graphics card
-            capi.Render.UpdateMesh(modelRef, modeldata);
+            capi.Render.UpdateChunkMesh(modelRef, modeldata);
             
             
             // Assign a location to it
@@ -438,7 +447,7 @@ namespace Vintagestory.API.Client
             {
                 UsedVertices += location.VerticesEnd - location.VerticesStart;
                 unusedVertices += Math.Max(0, location.VerticesStart - curPos);
-                curPos = location.VerticesEnd + 1;
+                curPos = location.VerticesEnd;
             }
 
             CurrentFragmentation = (float)unusedVertices / verticesPosition;

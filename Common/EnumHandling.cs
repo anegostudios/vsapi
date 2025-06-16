@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿
+#nullable disable
+namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Tells the engine how to handle default or subsequent similar behaviors

@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public class IgnoreFile

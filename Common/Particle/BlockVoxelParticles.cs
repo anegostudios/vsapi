@@ -2,6 +2,8 @@
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class BlockCubeParticles : CollectibleParticleProperties

@@ -3,6 +3,8 @@ using Newtonsoft.Json.Linq;
 using System;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class JsonAttributesConverter : JsonConverter

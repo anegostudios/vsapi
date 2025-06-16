@@ -1,5 +1,7 @@
 ﻿using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public enum EnumMergePriority

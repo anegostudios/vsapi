@@ -4,6 +4,8 @@ using System.Linq;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class AnimCacheEntry
@@ -78,8 +80,7 @@ namespace Vintagestory.API.Common
             entityShape.InitForAnimations(api.Logger, entity.Properties.Client.ShapeForEntity.Base.ToString(), requireJointsForElements);
             IAnimator animator = null;
 
-            AnimCacheEntry cacheObj;
-            if (animCache.TryGetValue(dictKey, out cacheObj))
+            if (animCache.TryGetValue(dictKey, out AnimCacheEntry cacheObj))
             {
                 manager.Init(entity.Api, entity);
 
@@ -101,7 +102,7 @@ namespace Vintagestory.API.Common
                     RootElems = (animator as AnimatorBase).RootElements,
                     RootPoses = (animator as AnimatorBase).RootPoses
                 };
-            }            
+            }
 
             return manager;
         }

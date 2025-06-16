@@ -4,6 +4,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

@@ -3,6 +3,8 @@ using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate void RenderSkillItemDelegate(AssetLocation code, float dt, double atPosX, double atPosY);

@@ -5,6 +5,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
 
@@ -226,11 +228,13 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDown(MouseEvent args)
         {
+            if (slot.Itemstack == null) return;
+
             foreach (var val in BoundsPerLine)
             {
                 if (val.PointInside(args.X, args.Y))
                 {
-                    onStackClicked?.Invoke(Itemstacks[curItemIndex]);
+                    onStackClicked?.Invoke(slot.Itemstack);
                 }
             }
         }

@@ -1,6 +1,8 @@
 using System;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public static class GlKeyNames

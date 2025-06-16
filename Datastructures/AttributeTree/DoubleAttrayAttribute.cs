@@ -2,6 +2,8 @@
 using System.Text;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class DoubleArrayAttribute : ArrayAttribute<double>, IAttribute

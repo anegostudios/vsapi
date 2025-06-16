@@ -2,6 +2,8 @@
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 
 // Contributed by Apache#8842 over discord 20th of October 2021. Edited by Tyron
 // Apache — Today at 11:45 AM
@@ -33,6 +35,14 @@ namespace Vintagestory.API.Config
         /// <param name="assetsPath">The root assets path to load the vanilla files from.</param>
         /// <param name="lazyLoad"></param>
         void PreLoad(string assetsPath, bool lazyLoad = false);
+
+        /// <summary>
+        ///     Loads the mod worldconfig language JSON files only.
+        /// </summary>
+        /// <param name="modPath">The assets path to load the mod files from.</param>
+        /// <param name="modDomain">The mod domain to use when loading the files.</param>
+        /// <param name="lazyLoad"></param>
+        void PreLoadModWorldConfig(string modPath, string modDomain, bool lazyLoad = false);
 
         /// <summary>
         ///     Gets a translation for a given key, if any matching wildcarded keys are found within the cache.

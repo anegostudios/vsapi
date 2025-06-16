@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface IRecipeIngredient

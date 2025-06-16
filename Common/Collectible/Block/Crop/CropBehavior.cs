@@ -1,4 +1,7 @@
-﻿using Vintagestory.API.Datastructures;
+﻿using System;
+using Vintagestory.API.Datastructures;
+
+#nullable disable
 
 namespace Vintagestory.API.Common
 {
@@ -36,9 +39,12 @@ namespace Vintagestory.API.Common
         /// The event fired when the crop is planted.
         /// </summary>
         /// <param name="api">The core API.</param>
-        public virtual void OnPlanted(ICoreAPI api)
+        /// <param name="itemslot">The itemslot that the plant was planted with.</param>
+        /// <param name="byEntity">The entity that planted the plant.</param>
+        /// <param name="blockSel">The block selection used when the seed was planted.</param>
+        public virtual void OnPlanted(ICoreAPI api, ItemSlot itemslot, EntityAgent byEntity, BlockSelection blockSel)
         {
-            
+
         }
         
     }

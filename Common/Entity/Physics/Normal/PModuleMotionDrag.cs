@@ -2,6 +2,8 @@
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities;
 
 public class PModuleMotionDrag : PModule

@@ -1,6 +1,8 @@
 ﻿using SkiaSharp;
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     public static class SkColorFix

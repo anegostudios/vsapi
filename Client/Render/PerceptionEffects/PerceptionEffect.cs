@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public abstract class PerceptionEffect

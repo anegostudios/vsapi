@@ -2,6 +2,8 @@
 using System;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     /// <summary>
@@ -44,7 +46,7 @@ namespace Vintagestory.API.Datastructures
         {
             return new IntDataMap2D()
             {
-                Data = new int[0],
+                Data = Array.Empty<int>(),
                 Size = 0
             };
         }

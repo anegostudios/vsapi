@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class RecipeRegistryGeneric<T> : RecipeRegistryBase where T : IByteSerializable, new()

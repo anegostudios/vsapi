@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public delegate T fillCallback<T>(int index);
@@ -158,6 +160,8 @@ namespace Vintagestory.API.Util
 
             return found;
         }
+
+        public static bool Contains<T>(this T[] array, Func<T, bool> predicate) => IndexOf(array, predicate) >= 0;
 
         public static int IndexOf<T>(this T[] array, Func<T, bool> predicate)
         {

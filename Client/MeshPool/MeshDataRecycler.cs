@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /*

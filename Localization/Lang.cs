@@ -7,6 +7,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 
 // Rewrite contributed by Apache#8842 over discord 20th of October 2021. Edited by Tyron
 // Apache — Today at 11:45 AM
@@ -114,11 +116,7 @@ namespace Vintagestory.API.Config
                 translationService.PreLoad(assetsPath, lazyLoad);
                 AvailableLanguages[languageCode] = translationService;
 
-                if (languageCode == defaultLanguage)
-                {
-                    AvailableLanguages[languageCode].PreLoad(assetsPath);
-                    found = true;
-                }
+                if (languageCode == defaultLanguage) found = true;
             }
 
             if (defaultLanguage != "en" && !found)
@@ -126,6 +124,27 @@ namespace Vintagestory.API.Config
                 logger.Error("Language '{0}' not found. Will default to english.", defaultLanguage);
                 AvailableLanguages["en"].PreLoad(assetsPath);
                 CurrentLocale = "en";
+            }
+        }
+
+        /// <summary>
+        /// Loads the mod worldconfig language JSON files only.
+        /// </summary>
+        /// <param name="modPath">The assets path to load the mod files from.</param>
+        /// <param name="modDomain">The mod domain to use when loading the files.</param>
+        /// <param name="defaultLanguage">The language code to use as the default language.</param>
+        public static void PreLoadModWorldConfig(string modPath, string modDomain, string defaultLanguage = "en")
+        {
+            var languageFile = Path.Combine(GamePaths.AssetsPath, "game", "lang", "languages.json");
+            var json = JsonObject.FromJson(File.ReadAllText(languageFile)).AsArray();
+
+            foreach (var jsonObject in json)
+            {
+                var languageCode = jsonObject["code"].AsString();
+                EnumLinebreakBehavior lbBehavior = (EnumLinebreakBehavior)Enum.Parse(typeof(EnumLinebreakBehavior), jsonObject["linebreakBehavior"].AsString("AfterWord"));
+
+                bool lazyLoad = languageCode != defaultLanguage;
+                AvailableLanguages[languageCode].PreLoadModWorldConfig(modPath, modDomain, lazyLoad);
             }
         }
 

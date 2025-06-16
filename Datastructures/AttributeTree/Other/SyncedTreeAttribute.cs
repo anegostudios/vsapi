@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class TreeModifiedListener
@@ -179,7 +181,7 @@ namespace Vintagestory.API.Datastructures
 
         #endregion
 
-        internal new SyncedTreeAttribute Clone()
+        public override SyncedTreeAttribute Clone()
         {
             MemoryStream ms = new MemoryStream();
             BinaryWriter writer = new BinaryWriter(ms);
@@ -202,7 +204,7 @@ namespace Vintagestory.API.Datastructures
         {
             try
             {
-                paths = attributePathsDirty.ToArray();
+            paths = attributePathsDirty.ToArray();
             }
             catch
             {

@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common.Entities
+﻿
+#nullable disable
+namespace Vintagestory.API.Common.Entities
 {
     public class EntityDespawnData
     {

@@ -1122,6 +1122,38 @@ string StandardFontName { get; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_Client_IRenderAPI_UseSSBOs_" data-uid="Vintagestory.API.Client.IRenderAPI.UseSSBOs*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_UseSSBOs" data-uid="Vintagestory.API.Client.IRenderAPI.UseSSBOs">
+  UseSSBOs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, chunk rendering will use SSBOs - a OpenGL 4.30+ feature - for higher performance in game version 1.21+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool UseSSBOs { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_IRenderAPI_WireframeDebugRender_" data-uid="Vintagestory.API.Client.IRenderAPI.WireframeDebugRender*"></a>
 
   <h3 id="Vintagestory_API_Client_IRenderAPI_WireframeDebugRender" data-uid="Vintagestory.API.Client.IRenderAPI.WireframeDebugRender">
@@ -3878,6 +3910,40 @@ void RenderItemstackToGui(ItemStack itemstack, double posX, double posY, double 
     <dt><code>zfar</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>fov</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_UpdateChunkMesh_" data-uid="Vintagestory.API.Client.IRenderAPI.UpdateChunkMesh*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_UpdateChunkMesh_Vintagestory_API_Client_MeshRef_Vintagestory_API_Client_MeshData_" data-uid="Vintagestory.API.Client.IRenderAPI.UpdateChunkMesh(Vintagestory.API.Client.MeshRef,Vintagestory.API.Client.MeshData)">
+  UpdateChunkMesh(MeshRef, MeshData)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the existing mesh. Updates any non null data from <code class="paramref">updatedata</code>. Version for chunks only (also decals, as they use chunk MeshDataPool system)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateChunkMesh(MeshRef meshRef, MeshData updatedata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>meshRef</code> <a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
+    <dd></dd>
+    <dt><code>updatedata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
     <dd></dd>
   </dl>
 

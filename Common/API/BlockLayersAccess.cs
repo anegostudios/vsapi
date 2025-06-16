@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿
+#nullable disable
+namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Constants used for GetBlock or GetBlockId calls throughout the engine, to guide whether the block should be read from the solid blocks layer, the fluids layer, or perhaps both.

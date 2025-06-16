@@ -4,6 +4,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class BlockOffsetAndNumber : Vec4i
@@ -36,8 +38,7 @@ namespace Vintagestory.API.Common
 
         public int GetOrCreateBlockNumber(Block block)
         {
-            int blockNum;
-            if (!BlockNumbers.TryGetValue(block.Code, out blockNum))
+            if (!BlockNumbers.TryGetValue(block.Code, out int blockNum))
             {
                 blockNum = BlockNumbers[block.Code] = 1 + BlockNumbers.Count;
             }

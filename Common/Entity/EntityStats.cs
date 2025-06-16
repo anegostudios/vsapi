@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class EntityStats : IEnumerable<KeyValuePair<string, EntityFloatStats>>, IEnumerable
@@ -123,8 +125,7 @@ namespace Vintagestory.API.Common
         {
             ignoreChange = true;
 
-            EntityFloatStats stats;
-            if (!floatStats.TryGetValue(category, out stats))
+            if (!floatStats.TryGetValue(category, out EntityFloatStats stats))
             {
                 floatStats[category] = stats = new EntityFloatStats();
             }
@@ -149,8 +150,7 @@ namespace Vintagestory.API.Common
         {
             ignoreChange = true;
 
-            EntityFloatStats stats;
-            if (floatStats.TryGetValue(category, out stats))
+            if (floatStats.TryGetValue(category, out EntityFloatStats stats))
             {
                 stats.Remove(code);
             }
@@ -171,8 +171,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public float GetBlended(string category)
         {
-            EntityFloatStats stats;
-            if (floatStats.TryGetValue(category, out stats))
+            if (floatStats.TryGetValue(category, out EntityFloatStats stats))
             {
                 return stats.GetBlended();
             }
@@ -191,7 +190,7 @@ namespace Vintagestory.API.Common
 
     public class EntityFloatStats
     {
-        public OrderedDictionary<string, EntityStat<float>> ValuesByKey = new OrderedDictionary<string, EntityStat<float>>();
+        public Datastructures.OrderedDictionary<string, EntityStat<float>> ValuesByKey = new ();
         public EnumStatBlendType BlendType = EnumStatBlendType.WeightedSum;
         public EntityFloatStats()
         {
@@ -201,7 +200,7 @@ namespace Vintagestory.API.Common
         public float GetBlended()
         {
             float blended = 0;
-            bool first = true; 
+            bool first = true;
 
             switch (BlendType)
             {

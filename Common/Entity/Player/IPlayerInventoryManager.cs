@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface ISkillItemRenderer
@@ -15,9 +17,14 @@ namespace Vintagestory.API.Common
     public interface IPlayerInventoryManager
     {
         /// <summary>
-        /// If the player currently holds a tool in his hands, this value will be set
+        /// If the player currently holds a tool in the active hand, this value will be set
         /// </summary>
         EnumTool? ActiveTool { get; }
+
+        /// <summary>
+        /// If the player currently holds a tool in the off hand, this value will be set
+        /// </summary>
+        EnumTool? OffhandTool { get; }
 
         /// <summary>
         /// The players currently active hot bar slot
@@ -29,6 +36,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns></returns>
         ItemSlot ActiveHotbarSlot { get; }
+
+        /// <summary>
+        /// Returns the off hand hotbar slot. Might return null if there is no hotbar!
+        /// </summary>
+        /// <returns></returns>
+        ItemSlot OffhandHotbarSlot { get; }
 
         /// <summary>
         /// Dictionary of all inventories currently available to the player (some may however not be opened)
@@ -182,7 +195,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="inventory"></param>
         object CloseInventory(IInventory inventory);
-        
+
+        /// <summary>
+        /// Like CloseInventory() but also sends the necessary packet to the server, if called from the client side: exactly like CloseInventory() if called from the server side
+        /// </summary>
+        /// <param name="inventory"></param>
+        void CloseInventoryAndSync(IInventory inventory);
+
         /// <summary>
         /// Iterates over all inventory slots, returns true if your matcher returns true
         /// </summary>

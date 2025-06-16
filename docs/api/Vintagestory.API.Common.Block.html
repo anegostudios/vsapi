@@ -1319,66 +1319,6 @@ This will help both RAM performance (avoids duplicate copies) and physics tick p
 
 
 
-  <h3 id="Vintagestory_API_Common_Block_DefaultSideAo" data-uid="Vintagestory.API.Common.Block.DefaultSideAo">
-  DefaultSideAo
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly bool[] DefaultSideAo</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_Block_DefaultSideOpaque" data-uid="Vintagestory.API.Common.Block.DefaultSideOpaque">
-  DefaultSideOpaque
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly bool[] DefaultSideOpaque</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_API_Common_Block_DoNotRenderAtLod2" data-uid="Vintagestory.API.Common.Block.DoNotRenderAtLod2">
   DoNotRenderAtLod2
   
@@ -2666,7 +2606,7 @@ Examples:
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool[] SideAo</code></pre>
+    <pre><code class="lang-csharp hljs">public SmallBoolArray SideAo</code></pre>
   </div>
 
 
@@ -2674,7 +2614,7 @@ Examples:
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.SmallBoolArray.html">SmallBoolArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -2697,7 +2637,7 @@ Examples:
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool[] SideOpaque</code></pre>
+    <pre><code class="lang-csharp hljs">public SmallBoolArray SideOpaque</code></pre>
   </div>
 
 
@@ -2705,7 +2645,7 @@ Examples:
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.SmallBoolArray.html">SmallBoolArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -6225,12 +6165,12 @@ Default value is 0</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the block was blown up by explosives</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Please use OnBlockExploded() with parameter ignitedByPlayerUid&quot;)]
+public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -6242,6 +6182,46 @@ Default value is 0</p>
     <dt><code>explosionCenter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
     <dd></dd>
     <dt><code>blastType</code> <a class="xref" href="Vintagestory.API.Common.EnumBlastType.html">EnumBlastType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Block_OnBlockExploded_" data-uid="Vintagestory.API.Common.Block.OnBlockExploded*"></a>
+
+  <h3 id="Vintagestory_API_Common_Block_OnBlockExploded_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_System_String_" data-uid="Vintagestory.API.Common.Block.OnBlockExploded(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlastType,System.String)">
+  OnBlockExploded(IWorldAccessor, BlockPos, BlockPos, EnumBlastType, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the block was blown up by explosives</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, string ignitedByPlayerUid)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>explosionCenter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>blastType</code> <a class="xref" href="Vintagestory.API.Common.EnumBlastType.html">EnumBlastType</a></dt>
+    <dd></dd>
+    <dt><code>ignitedByPlayerUid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Threading;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class TyronThreadPool
@@ -15,7 +17,7 @@ namespace Vintagestory.API.Common
         public ILogger Logger;
 
         public ConcurrentDictionary<int, string> RunningTasks = new ConcurrentDictionary<int, string>();
-        public ConcurrentDictionary<string, Thread> DedicatedThreads = new ConcurrentDictionary<string, Thread>();
+        public ConcurrentDictionary<int, Thread> DedicatedThreads = new ConcurrentDictionary<int, Thread>();
         int keyCounter = 0;
         int dedicatedCounter = 0;
 
@@ -54,13 +56,20 @@ namespace Vintagestory.API.Common
         public string ListAllThreads()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Server threads ("+DedicatedThreads.Count+"):");
+            sb.AppendLine("Server threads (" + DedicatedThreads.Count + "):");
+            List<Thread> dediThreads = new List<Thread>(DedicatedThreads.Count);   // We make an ordered list from the unordered Dictionary
             foreach (var entry in DedicatedThreads)
             {
-                Thread t = entry.Value;
-                if (t.ThreadState == System.Threading.ThreadState.Stopped) continue;
+                int index = entry.Key;
+                while (index >= dediThreads.Count) dediThreads.Add(null);   // Create space for it, if the index is greater than size of the list
+
+                dediThreads[index] = entry.Value;
+            }
+            foreach (Thread t in dediThreads)
+            {
+                if (t == null || t.ThreadState == System.Threading.ThreadState.Stopped) continue;
                 sb.Append("tid" + t.ManagedThreadId + " ");
-                sb.Append(entry.Key);
+                sb.Append(t.Name);
                 sb.Append(": ");
                 sb.AppendLine(t.ThreadState.ToString());
             }
@@ -69,7 +78,7 @@ namespace Vintagestory.API.Common
             foreach (ProcessThread thread in threadcoll) if (thread != null) threads.Add(thread);
             threads = threads.OrderByDescending(t => t.UserProcessorTime.Ticks).ToList();
 
-            sb.AppendLine("\nAll process threads ("+threads.Count+"):");
+            sb.AppendLine("\nAll process threads (" + threads.Count + "):");
             foreach (ProcessThread thread in threads)
             {
                 if (thread == null) continue;
@@ -116,7 +125,7 @@ namespace Vintagestory.API.Common
             {
                 Inst.Logger.VerboseDebug("QueueTask." + Environment.StackTrace);
             }
-            
+
             ThreadPool.QueueUserWorkItem((a) =>
             {
                 callback();
@@ -136,12 +145,19 @@ namespace Vintagestory.API.Common
             });
         }
 
+        /// <summary>
+        /// Use this to create any dedicated thread (by default, IsBackground is true, but that can be changed by calling code)
+        /// <br/>This records the thread in the list of DedicatedThreads we maintain here, for stats purposes
+        /// </summary>
+        /// <param name="starter"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static Thread CreateDedicatedThread(ThreadStart starter, string name)
         {
             Thread thread = new Thread(starter);
             thread.IsBackground = true;
             thread.Name = name;
-            Inst.DedicatedThreads[name + "." + Inst.dedicatedCounter++] = thread;
+            Inst.DedicatedThreads[Inst.dedicatedCounter++] = thread;
             return thread;
         }
 
@@ -151,6 +167,14 @@ namespace Vintagestory.API.Common
             DedicatedThreads.Clear();
             keyCounter = 0;
             dedicatedCounter = 0;
+        }
+    }
+
+    public static class ThreadExtensions
+    {
+        public static void TryStart(this Thread t)
+        {
+            if (!t.IsAlive) t.Start();
         }
     }
 }

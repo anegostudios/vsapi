@@ -3,6 +3,8 @@ using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public abstract class ArrayAttribute<T>

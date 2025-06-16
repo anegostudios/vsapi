@@ -261,7 +261,7 @@ public Block[]? CoralBaseBlock</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>How thick the base coral full block layer should be for this patch (goes down into the ground, helpfull for cliffs)
+  <div class="markdown level1 summary"><p>How thick the base coral full block layer should be for this patch (goes down into the ground, helpful for cliffs)
 1 -&gt; replace the gravel with coral
 2 -&gt; go 1 block below gravel and also replace and so on</p>
 </div>
@@ -320,6 +320,132 @@ public Block[]? CoralBlock</code></pre>
 
 
 
+  <h3 id="Vintagestory_API_Common_BlockPatchAttributes_CoralChance" data-uid="Vintagestory.API.Common.BlockPatchAttributes.CoralChance">
+  CoralChance
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Chance to spawn a coral [brain, fan] on top of base blocks or structures</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float CoralChance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockPatchAttributes_CoralDecor" data-uid="Vintagestory.API.Common.BlockPatchAttributes.CoralDecor">
+  CoralDecor
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>List of asset codes for the coral decor of a coral reef blockpatch
+These will be placed on solid surfaces around coral base blocks and on top of structures</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[]? CoralDecor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockPatchAttributes_CoralDecorBlock" data-uid="Vintagestory.API.Common.BlockPatchAttributes.CoralDecorBlock">
+  CoralDecorBlock
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public Block[]? CoralDecorBlock</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockPatchAttributes_CoralDecorChance" data-uid="Vintagestory.API.Common.BlockPatchAttributes.CoralDecorChance">
+  CoralDecorChance
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>When a coral [brain, fan] gets spawned also try if a decor should spawn below it
+Also on vertical growth we try to spawn decors cliffs</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float CoralDecorChance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_BlockPatchAttributes_CoralMinSize" data-uid="Vintagestory.API.Common.BlockPatchAttributes.CoralMinSize">
   CoralMinSize
   
@@ -330,7 +456,7 @@ public Block[]? CoralBlock</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? CoralMinSize</code></pre>
+    <pre><code class="lang-csharp hljs">public int CoralMinSize</code></pre>
   </div>
 
 
@@ -338,7 +464,7 @@ public Block[]? CoralBlock</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -356,7 +482,7 @@ public Block[]? CoralBlock</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Specifiy which plants should spawn for this blockpatch and their heigh and how often a specific plant should be choosen</p>
+  <div class="markdown level1 summary"><p>Specifiy which plants should spawn for this blockpatch and their heigh and how often a specific plant should be chosen</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -392,7 +518,7 @@ public Block[]? CoralBlock</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? CoralPlantsChance</code></pre>
+    <pre><code class="lang-csharp hljs">public float CoralPlantsChance</code></pre>
   </div>
 
 
@@ -400,7 +526,7 @@ public Block[]? CoralBlock</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -423,7 +549,7 @@ public Block[]? CoralBlock</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? CoralRandomSize</code></pre>
+    <pre><code class="lang-csharp hljs">public int CoralRandomSize</code></pre>
   </div>
 
 
@@ -431,7 +557,7 @@ public Block[]? CoralBlock</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -449,12 +575,12 @@ public Block[]? CoralBlock</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Chance that coral generatin will replace all other block patches in its area</p>
+  <div class="markdown level1 summary"><p>Chance that coral generating will replace all other block patches in its area</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? CoralReplaceOtherPatches</code></pre>
+    <pre><code class="lang-csharp hljs">public float CoralReplaceOtherPatches</code></pre>
   </div>
 
 
@@ -462,7 +588,7 @@ public Block[]? CoralBlock</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -548,7 +674,7 @@ public Block[][]? CoralShelveBlock</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? CoralShelveChance</code></pre>
+    <pre><code class="lang-csharp hljs">public float CoralShelveChance</code></pre>
   </div>
 
 
@@ -556,7 +682,7 @@ public Block[][]? CoralShelveBlock</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -636,14 +762,14 @@ public Block[]? CoralStructureBlock</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If no shelf was spanwed this chance controls how likely a structure will spawn instead of a coral.
+  <div class="markdown level1 summary"><p>If no shelf was spawned this chance controls how likely a structure will spawn instead of a coral.
 If a structure is spawned then a coral will spawn on top
 If no shelve nor structure was spawned then also a coral will be spawned</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? CoralStructureChance</code></pre>
+    <pre><code class="lang-csharp hljs">public float CoralStructureChance</code></pre>
   </div>
 
 
@@ -651,7 +777,7 @@ If no shelve nor structure was spawned then also a coral will be spawned</p>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -675,7 +801,7 @@ The patch will try to spawn them until it reaches minWaterDepth</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? CoralVerticalGrowChance</code></pre>
+    <pre><code class="lang-csharp hljs">public float CoralVerticalGrowChance</code></pre>
   </div>
 
 
@@ -683,7 +809,7 @@ The patch will try to spawn them until it reaches minWaterDepth</p>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -706,7 +832,7 @@ The patch will try to spawn them until it reaches minWaterDepth</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? FlowerChance</code></pre>
+    <pre><code class="lang-csharp hljs">public float FlowerChance</code></pre>
   </div>
 
 
@@ -714,7 +840,7 @@ The patch will try to spawn them until it reaches minWaterDepth</p>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -746,6 +872,67 @@ The patch will try to spawn them until it reaches minWaterDepth</p>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockPatchAttributes_StructureDecor" data-uid="Vintagestory.API.Common.BlockPatchAttributes.StructureDecor">
+  StructureDecor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[]? StructureDecor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockPatchAttributes_StructureDecorBlock" data-uid="Vintagestory.API.Common.BlockPatchAttributes.StructureDecorBlock">
+  StructureDecorBlock
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public Block[]? StructureDecorBlock</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>[]</dt>
     <dd></dd>
   </dl>
 

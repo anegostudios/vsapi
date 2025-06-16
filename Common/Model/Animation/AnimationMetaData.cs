@@ -10,6 +10,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     [DocumentAsJson]
@@ -264,7 +266,9 @@ namespace Vintagestory.API.Common
         int withActivitiesMerged;
         public uint CodeCrc32;
         public bool WasStartedFromTrigger;
-        
+
+        [JsonProperty]
+        public bool AdjustCollisionBox { get; set; }
 
         public float GetCurrentAnimationSpeed(float walkspeed)
         {
@@ -327,6 +331,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public AnimationMetaData Clone()
         {
+            // radfast 1.3.25: things like the Attributes, ElementWeight, ElementBlendMode and TriggeredBy do not need to be .Clone() as these are only read, not written to
+            // If any entity needs to change these dynamically or on a per-entity basis, that entity's code can replace the object read from properties with its own version or a clone before modifying it.  As does vanilla EntityDrifter already, for TriggeredBy, for example
+            // But a *few* fields can be changed dynamically or per-entity, for example AnimationSpeed.  That's the reason why we need to clone the AnimationMetaData.
+
             return new AnimationMetaData()
             {
                 Code = this.Code,
@@ -341,6 +349,7 @@ namespace Vintagestory.API.Common
                 EaseInSpeed = this.EaseInSpeed,
                 EaseOutSpeed = this.EaseOutSpeed,
                 TriggeredBy = this.TriggeredBy,
+                AdjustCollisionBox = this.AdjustCollisionBox,
                 BlendMode = this.BlendMode,
                 ElementBlendMode = this.ElementBlendMode,
                 withActivitiesMerged = this.withActivitiesMerged,
@@ -427,6 +436,8 @@ namespace Vintagestory.API.Common
                 writer.Write(AnimationSound.Frame);
                 writer.Write(AnimationSound.RandomizePitch);
             }
+
+            writer.Write(AdjustCollisionBox);
         }
 
         public static AnimationMetaData FromBytes(BinaryReader reader, string version)
@@ -512,6 +523,11 @@ namespace Vintagestory.API.Common
                         RandomizePitch = reader.ReadBoolean()
                     };
                 }
+            }
+
+            if (GameVersion.IsAtLeastVersion(version, "1.21.0-dev.1"))
+            {
+                animdata.AdjustCollisionBox = reader.ReadBoolean();
             }
 
             animdata.Init();

@@ -3,6 +3,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -56,6 +58,15 @@ namespace Vintagestory.API.Common
     /// <typeparam name="T3">The additional type to pass in.</typeparam>
     /// <returns></returns>
     public delegate bool ActionBoolReturn<T1, T2, T3>(T1 t1, T2 t2, T3 t3);
+
+    /// <summary>
+    /// Returns true if the action/event was successfull.
+    /// </summary>
+    /// <typeparam name="T1">The additional type to pass in.</typeparam>
+    /// <typeparam name="T2">The additional type to pass in.</typeparam>
+    /// <typeparam name="T3">The additional type to pass in.</typeparam>
+    /// <returns></returns>
+    public delegate bool ActionBoolReturn<T1, T2, T3, T4>(T1 t1, T2 t2, T3 t3, T4 t4);
 
     /// <summary>
     /// Return true if the action/event should be "consumed" (e.g. mark a mouse click as handled)

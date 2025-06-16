@@ -1,5 +1,7 @@
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.Datastructures;
 
 public class ShapeCell

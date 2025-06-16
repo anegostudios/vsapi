@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿
+#nullable disable
+namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Types for each tool in the game. Some of these are unused. 

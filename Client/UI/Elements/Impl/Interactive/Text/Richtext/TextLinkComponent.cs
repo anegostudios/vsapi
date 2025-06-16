@@ -2,6 +2,8 @@
 using Cairo;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class LinkTextComponent : RichTextComponent

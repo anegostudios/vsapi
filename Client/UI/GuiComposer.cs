@@ -5,6 +5,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
 
@@ -87,8 +89,7 @@ namespace Vintagestory.API.Client
         {
             get
             {
-                GuiElement elem = null;
-                if (!interactiveElements.TryGetValue(key, out elem))
+                if (!interactiveElements.TryGetValue(key, out GuiElement elem))
                 {
                     staticElements.TryGetValue(key, out elem);
                 }

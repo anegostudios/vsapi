@@ -3,6 +3,8 @@ using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>

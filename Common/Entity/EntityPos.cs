@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities
 {
     public class FuzzyEntityPos : EntityPos
@@ -74,6 +76,9 @@ namespace Vintagestory.API.Common.Entities
             set { y = value; }
         }
 
+        /// <summary>
+        /// Dimension unaware Y position of the Entity.
+        /// </summary>
         public virtual double InternalY
         {
             get { return y + Dimension * BlockPos.DimensionBoundary; }
@@ -513,6 +518,14 @@ namespace Vintagestory.API.Common.Entities
         {
             double dx = this.x - pos.X;
             double dz = this.z - pos.Z;
+
+            return GameMath.Sqrt(dx * dx + dz * dz);
+        }
+
+        public double HorDistanceTo(double x, double z)
+        {
+            double dx = this.x - x;
+            double dz = this.z - z;
 
             return GameMath.Sqrt(dx * dx + dz * dz);
         }

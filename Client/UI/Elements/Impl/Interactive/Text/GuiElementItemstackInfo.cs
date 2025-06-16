@@ -4,6 +4,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate string InfoTextDelegate(ItemSlot slot);
@@ -53,13 +55,13 @@ namespace Vintagestory.API.Client
             descBounds.WithParent(bounds);
             textBounds.WithParent(bounds);
 
-            descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
+            descriptionElement = new GuiElementRichtext(capi, Array.Empty<RichTextComponentBase>(), descBounds);
             descriptionElement.zPos = 1001;
 
             titleFont = Font.Clone();
             titleFont.FontWeight = FontWeight.Bold;
 
-            titleElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
+            titleElement = new GuiElementRichtext(capi, Array.Empty<RichTextComponentBase>(), textBounds);
             titleElement.zPos = 1001;
 
             maxWidth = bounds.fixedWidth;

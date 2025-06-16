@@ -7,6 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     public static class Easings
@@ -47,11 +49,21 @@ namespace Vintagestory.API.MathTools
 
 
         #region Standard Sin/Cos Methods
+        /// <summary>
+        /// The sine of the angle, expressed as a float.  The angle is in radians
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static float Sin(float value)
         {
             return (float)Math.Sin(value);
         }
 
+        /// <summary>
+        /// The cosine of the angle, expressed as a float.  The angle is in radians
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static float Cos(float value)
         {
             return (float)Math.Cos(value);
@@ -945,6 +957,11 @@ namespace Vintagestory.API.MathTools
 
         #region MinMax
 
+        public static double Max(double a, double b)
+        {
+            return Math.Max(a, b);
+        }
+
         public static double Max(params double[] values)
         {
             double max = values[0];
@@ -953,6 +970,11 @@ namespace Vintagestory.API.MathTools
                 max = Math.Max(max, values[i]);
             }
             return max;
+        }
+
+        public static float Max(float a, float b)
+        {
+            return Math.Max(a, b);
         }
 
         public static float Max(params float[] values)
@@ -965,6 +987,11 @@ namespace Vintagestory.API.MathTools
             return max;
         }
 
+        public static int Max(int a, int b)
+        {
+            return Math.Max(a, b);
+        }
+
         public static int Max(params int[] values)
         {
             int max = values[0];
@@ -975,6 +1002,11 @@ namespace Vintagestory.API.MathTools
             return max;
         }
 
+        public static int Min(int a, int b)
+        {
+            return Math.Min(a, b);
+        }
+
         public static int Min(params int[] values)
         {
             int min = values[0];
@@ -983,6 +1015,11 @@ namespace Vintagestory.API.MathTools
                 min = Math.Min(min, values[i]);
             }
             return min;
+        }
+
+        public static float Min(float a, float b)
+        {
+            return Math.Min(a, b);
         }
 
         public static float Min(params float[] values)

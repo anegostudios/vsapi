@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     public static class ShapeUtil
@@ -83,7 +85,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static Vec2i[] GetSquarePointsSortedByMDist(int halflength)
         {
-            if (halflength == 0) return new Vec2i[0];
+            if (halflength == 0) return Array.Empty<Vec2i>();
 
             Vec2i[] result = new Vec2i[(2 * halflength + 1) * (2 * halflength + 1) - 1];
             int i = 0;
@@ -108,7 +110,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static Vec2i[] GetHollowSquarePoints(int halflength)
         {
-            if (halflength == 0) return new Vec2i[0];
+            if (halflength == 0) return Array.Empty<Vec2i>();
 
             int radius = halflength * 2 + 1;
 

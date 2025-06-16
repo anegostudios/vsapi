@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.MathTools
+﻿
+#nullable disable
+namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Used to define how variant types interact with each other to create unique objects.

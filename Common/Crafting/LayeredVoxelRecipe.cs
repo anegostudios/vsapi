@@ -4,6 +4,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

@@ -1,6 +1,8 @@
 ﻿using Vintagestory.API.Client;
 using Vintagestory.API.Server;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

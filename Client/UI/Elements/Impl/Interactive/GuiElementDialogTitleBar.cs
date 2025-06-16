@@ -4,6 +4,8 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 
 namespace Vintagestory.API.Client
 {
@@ -386,11 +388,11 @@ namespace Vintagestory.API.Client
         /// <param name="onClose">The event fired when the title bar is closed.</param>
         /// <param name="font">The font of the title bar.</param>
         /// <param name="bounds">The bounds of the title bar.</param>
-        public static GuiComposer AddDialogTitleBar(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null)
+        public static GuiComposer AddDialogTitleBar(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementDialogTitleBar(composer.Api, text, composer, onClose, font, bounds));
+                composer.AddInteractiveElement(new GuiElementDialogTitleBar(composer.Api, text, composer, onClose, font, bounds), key);
             }
 
             return composer;
@@ -405,13 +407,13 @@ namespace Vintagestory.API.Client
         /// <param name="onClose">The event fired when the title bar is closed.</param>
         /// <param name="font">The font of the title bar.</param>
         /// <param name="bounds">The bounds of the title bar.</param>
-        public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null)
+        public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null, string key = null)
         {
             if (!composer.Composed)
             {
                 GuiElementDialogTitleBar elem = new GuiElementDialogTitleBar(composer.Api, text, composer, onClose, font, bounds);
                 elem.drawBg = true;
-                composer.AddInteractiveElement(elem);
+                composer.AddInteractiveElement(elem, key);
             }
 
             return composer;

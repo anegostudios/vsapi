@@ -5,6 +5,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class StackAndWildCard
@@ -289,8 +291,7 @@ namespace Vintagestory.API.Client
 
             GridRecipeAndUnnamedIngredients recipeunin = CurrentVisibleRecipe = GridRecipesAndUnIn[curItemIndex];
 
-            LoadedTexture extraTextTexture;
-            if (extraTexts.TryGetValue(curItemIndex, out extraTextTexture))
+            if (extraTexts.TryGetValue(curItemIndex, out LoadedTexture extraTextTexture))
             {
                 capi.Render.Render2DTexturePremultipliedAlpha(extraTextTexture.TextureId, (float)(renderX + bounds.X), (float)(renderY + bounds.Y + 3 * (size + 3)), extraTextTexture.Width, extraTextTexture.Height);
             }
@@ -322,12 +323,12 @@ namespace Vintagestory.API.Client
 
                     api.Render.PushScissor(scissorBounds, true);
 
-                    ItemStack[] unnamedWildcardStacklist = null;
-                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true && unnamedWildcardStacklist.Length > 0)
+                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out ItemStack[] unnamedWildcardStacklist) == true && unnamedWildcardStacklist.Length > 0)
                     {
-                        dummyslot.Itemstack = unnamedWildcardStacklist[variantDisplaySequence[secondCounter % 30][x,y] % unnamedWildcardStacklist.Length];
+                        dummyslot.Itemstack = unnamedWildcardStacklist[variantDisplaySequence[secondCounter % 30][x, y] % unnamedWildcardStacklist.Length];
                         dummyslot.Itemstack.StackSize = ingred.Quantity;
-                    } else
+                    }
+                    else
                     {
                         dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
                     }
@@ -370,8 +371,7 @@ namespace Vintagestory.API.Client
                     if (ingred == null) return;
 
                     int index = recipe.GetGridIndex(y, x, recipe.resolvedIngredients, recipe.Width);
-                    ItemStack[] unnamedWildcardStacklist = null;
-                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true)
+                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out ItemStack[] unnamedWildcardStacklist) == true)
                     {
                         onStackClicked?.Invoke(unnamedWildcardStacklist[variantDisplaySequence[secondCounter % 30][x, y] % unnamedWildcardStacklist.Length]);
                     }

@@ -10,6 +10,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 
 // Contributed by Apache#8842 over discord 20th of October 2021. Edited by Tyron
 // Apache — Today at 11:45 AM
@@ -33,6 +35,8 @@ namespace Vintagestory.API.Config
         private readonly ILogger logger;
         internal bool loaded = false;
         private string preLoadAssetsPath = null;
+        private Dictionary<string, string> preLoadModPaths = new Dictionary<string, string>();
+        private bool modWorldConfig = false;
         public EnumLinebreakBehavior LineBreakBehavior { get; set; }
 
 
@@ -73,7 +77,7 @@ namespace Vintagestory.API.Config
 
             var origins = assetManager.Origins;
 
-            foreach (var asset in origins.SelectMany(p => p.GetAssets(AssetCategory.lang).Where(a => a.Name.Equals($"{LanguageCode}.json"))))
+            foreach (var asset in origins.SelectMany(p => p.GetAssets(AssetCategory.lang).Where(a => a.Name.Equals($"{LanguageCode}.json") || a.Name.Equals($"worldconfig-{LanguageCode}.json"))))
             {
 
                 try
@@ -134,11 +138,69 @@ namespace Vintagestory.API.Config
             
         }
 
+        /// <summary>
+        /// Loads the mod worldconfig language JSON files only.
+        /// </summary>
+        /// <param name="modPath">The assets path to load the mod files from.</param>
+        /// <param name="modDomain">The mod domain to use when loading the files.</param>
+        /// <param name="lazyLoad"></param>
+        public void PreLoadModWorldConfig(string modPath = null, string modDomain = null, bool lazyLoad = false)
+        {
+            modWorldConfig = true;
+            if (modPath != null && modDomain != null && !preLoadModPaths.ContainsKey(modDomain))
+            {
+                preLoadModPaths.Add(modDomain, modPath);
+            }
+            if (lazyLoad || modPath == null || modDomain == null) return;
+
+            // Don't work on dicts directly for thread safety (client and local server access the same dict)
+            var entryCache = new Dictionary<string, string>();
+            var regexCache = new Dictionary<string, KeyValuePair<Regex, string>>();
+            var wildcardCache = new Dictionary<string, string>();
+
+            var loadPaths = new Dictionary<string, string>();
+            if (modPath == null && modDomain == null) loadPaths = preLoadModPaths;
+            else loadPaths.Add(modDomain, modPath);
+
+            loadPaths.Foreach(mod =>
+            {
+                var assetsDirectory = new DirectoryInfo(Path.Combine(mod.Value, "assets", "game", "lang"));
+                try
+                {
+                    var files = assetsDirectory.EnumerateFiles($"worldconfig-{LanguageCode}.json", SearchOption.AllDirectories);
+
+                    foreach (var file in files)
+                    {
+                        try
+                        {
+                            var json = File.ReadAllText(file.FullName);
+                            LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.Error($"Failed to load language file: {file.Name}");
+                            logger.Error(ex);
+                        }
+                    }
+                }
+                catch { logger.Error($"Failed to find language folder: {assetsDirectory.FullName}"); }
+            });
+
+            this.entryCache.AddRange(entryCache);
+            this.regexCache.AddRange(regexCache);
+            this.wildcardCache.AddRange(wildcardCache);
+
+        }
+
         protected void EnsureLoaded()
         {
             if (!loaded)
             {
-                if (preLoadAssetsPath != null) PreLoad(preLoadAssetsPath);
+                if (preLoadAssetsPath != null)
+                {
+                    PreLoad(preLoadAssetsPath);
+                    if (modWorldConfig) PreLoadModWorldConfig();
+                }
                 else Load();
             }
         }

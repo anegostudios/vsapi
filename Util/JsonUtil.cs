@@ -5,6 +5,8 @@ using System.IO;
 using System.Text;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public static class JsonUtil

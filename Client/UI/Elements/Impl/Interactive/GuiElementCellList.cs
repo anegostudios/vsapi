@@ -4,6 +4,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Config;
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public interface IGuiElementCell : IDisposable

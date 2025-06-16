@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class ListDictionary<TKey, TValue> : Dictionary<TKey, List<TValue>>

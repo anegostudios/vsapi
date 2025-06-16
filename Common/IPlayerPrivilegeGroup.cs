@@ -2,6 +2,8 @@
 using System.Drawing;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
 

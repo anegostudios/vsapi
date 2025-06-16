@@ -3,6 +3,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     [JsonObject(MemberSerialization.OptIn)]
@@ -23,8 +25,7 @@ namespace Vintagestory.API.Client
             if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return false;
             if (musicEngine.LastPlayedTrack == this) return false;
 
-            long trackCoolDownMs;
-            tracksCooldownUntilMs.TryGetValue(Name, out trackCoolDownMs);
+            tracksCooldownUntilMs.TryGetValue(Name, out long trackCoolDownMs);
             if (capi.World.ElapsedMilliseconds < trackCoolDownMs)
             {
                 return false;

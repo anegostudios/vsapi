@@ -319,6 +319,38 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
 
 
 
+  <h3 id="Vintagestory_API_Common_GridRecipe_AllowedVariants" data-uid="Vintagestory.API.Common.GridRecipe.AllowedVariants">
+  AllowedVariants (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If '{code}' is used in ingredient code, allowed variants for this code should be specified in this map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string[]&gt; AllowedVariants</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_GridRecipe_Attributes" data-uid="Vintagestory.API.Common.GridRecipe.Attributes">
   Attributes (Optional) (Default: None)
   
@@ -385,38 +417,6 @@ public JsonObject Attributes</code></pre>
 
 
 
-  <h3 id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom">
-  CopyAttributesFrom (Optional) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If set, it will copy over the itemstack attributes from given ingredient code</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string CopyAttributesFrom</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_API_Common_GridRecipe_Enabled" data-uid="Vintagestory.API.Common.GridRecipe.Enabled">
   Enabled (Optional) (Default: True)
   
@@ -438,6 +438,38 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_MergeAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.MergeAttributesFrom">
+  MergeAttributesFrom (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Attributes from thise ingredients will be merged into output itemstack</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] MergeAttributesFrom</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -601,6 +633,75 @@ If loaded, you can use this field to disable recipes during runtime.</p>
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_SkipVariants" data-uid="Vintagestory.API.Common.GridRecipe.SkipVariants">
+  SkipVariants (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If '{code}' is used in ingredient code, skip variants for this code should be specified in this map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string[]&gt; SkipVariants</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom_" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom">
+  CopyAttributesFrom (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, it will copy over the itemstack attributes from given ingredient code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string CopyAttributesFrom { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

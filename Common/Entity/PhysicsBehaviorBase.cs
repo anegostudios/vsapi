@@ -5,6 +5,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities;
 
 public abstract class PhysicsBehaviorBase : EntityBehavior

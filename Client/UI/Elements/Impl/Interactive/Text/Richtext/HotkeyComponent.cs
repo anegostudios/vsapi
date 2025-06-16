@@ -2,6 +2,8 @@ using Cairo;
 using System.Collections.Generic;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class HotkeyComponent : RichTextComponent
@@ -141,7 +143,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(new double[] { 1, 1, 1, 1 });
 
             int textX = (int)(x + 1 + GuiElement.scaled(leftRightPadding));
-            int textY = (int)(y + (lineheight - textHeight) / 2 + GuiElement.scaled(2));
+            int textY = (int)(y + (lineheight - textHeight) / 2 + GuiElement.scaled(1));
             
             capi.Gui.Text.DrawTextLine(ctx, font, keycode, textX, textY);
 

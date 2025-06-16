@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     class JsonObject_ReadOnly : JsonObject

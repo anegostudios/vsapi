@@ -7,6 +7,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities
 {
     public class EntityProperties
@@ -26,7 +28,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Variant values as resolved from blocktype/itemtype or entitytype
         /// </summary>
-        public OrderedDictionary<string, string> Variant = new OrderedDictionary<string, string>();
+        public Datastructures.OrderedDictionary<string, string> Variant = new ();
 
         /// <summary>
         /// The classification of the entity.
@@ -228,7 +230,7 @@ namespace Vintagestory.API.Common.Entities
                 SwimmingEyeHeight = SwimmingEyeHeight,
                 Client = Client?.Clone() as EntityClientProperties,
                 Server = Server?.Clone() as EntityServerProperties,
-                Variant = new OrderedDictionary<string, string>(Variant)
+                Variant = new (Variant)
             };
         }
 
@@ -328,7 +330,7 @@ namespace Vintagestory.API.Common.Entities
         public List<EntityBehavior> Behaviors = new List<EntityBehavior>();
 
 
-        
+
         public EntitySidedProperties(JsonObject[] behaviors, Dictionary<string, JsonObject> commonConfigs)
         {
             BehaviorsAsJsonObj = new JsonObject[behaviors.Length];
@@ -348,7 +350,7 @@ namespace Vintagestory.API.Common.Entities
                     clonedObj.Merge(jobj.Token as JObject);
                     mergedobj = new JsonObject(clonedObj);
                 }
-                
+
                 BehaviorsAsJsonObj[count++] = new JsonObject_ReadOnly(mergedobj);
             }
 
@@ -515,7 +517,7 @@ namespace Vintagestory.API.Common.Entities
                     {
                         AnimationsByMetaCode[animMeta.Code] = animMeta;
                     }
-                    
+
                     if (animMeta.Animation != null)
                     {
                         AnimationsByCrc32[animMeta.CodeCrc32] = animMeta;
@@ -602,7 +604,7 @@ namespace Vintagestory.API.Common.Entities
         /// The conditions for spawning the entity.
         /// </summary>
         public SpawnConditions SpawnConditions;
-        
+
         /// <summary>
         /// Makes a copy of this EntiyServerProperties type
         /// </summary>
@@ -616,5 +618,5 @@ namespace Vintagestory.API.Common.Entities
             };
         }
     }
-    
+
 }

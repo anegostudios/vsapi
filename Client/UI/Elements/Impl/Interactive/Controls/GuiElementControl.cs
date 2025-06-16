@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿
+#nullable disable
+namespace Vintagestory.API.Client
 {
     /// <summary>
     /// An element that allows input and can be disabled

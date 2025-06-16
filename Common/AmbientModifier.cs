@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class AmbientModifier

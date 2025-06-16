@@ -1,6 +1,8 @@
 ﻿using ProtoBuf;
 using System.IO;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public static class SerializerUtil

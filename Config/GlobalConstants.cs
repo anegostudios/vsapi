@@ -5,6 +5,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Config
 {
     public delegate float FoodSpoilageCalcDelegate(float spoilState, ItemStack stack, EntityAgent byEntity);

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
 

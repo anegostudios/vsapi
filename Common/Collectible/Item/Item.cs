@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -146,6 +148,11 @@ namespace Vintagestory.API.Common
         {
             // Shape = null;     // We need to keep the Shape for any block which is IAttachableToEntity or has an AttachableToEntity attribute
             Textures = null;
+            GuiTransform = null;
+            FpHandTransform = null;
+            TpHandTransform = null;
+            TpOffHandTransform = null;
+            GroundTransform = null;
         }
     }
 }

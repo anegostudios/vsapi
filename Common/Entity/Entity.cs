@@ -8,6 +8,8 @@ using Vintagestory.API.Config;
 using System;
 using Vintagestory.API.Util;
 using System.Text;
+
+#nullable disable
 using static Vintagestory.API.Common.EntityAgent;
 
 namespace Vintagestory.API.Common.Entities
@@ -478,9 +480,10 @@ namespace Vintagestory.API.Common.Entities
             }
         }
         protected bool alive=true;
-        public float minHorRangeToClient;
+        // Distance to the nearest player, updated every 1.5s
+        public float NearestPlayerDistance;
 
-        public virtual bool AdjustCollisionBoxToAnimation => !alive;
+        public virtual bool AdjustCollisionBoxToAnimation => !alive || AnimManager.AdjustCollisionBoxToAnimation;
 
         public float IdleSoundChanceModifier
         {
@@ -1071,7 +1074,7 @@ namespace Vintagestory.API.Common.Entities
                     {
                         int index = Math.Min(FireParticleProps.Length - 1, Api.World.Rand.Next(FireParticleProps.Length + 1));
                         AdvancedParticleProperties particles = FireParticleProps[index];
-                        particles.basePos.Set(Pos.X, Pos.Y + SelectionBox.YSize / 2, Pos.Z);
+                        particles.basePos.Set(Pos.X, Pos.InternalY + SelectionBox.YSize / 2, Pos.Z);
 
                         particles.PosOffset[0].var = SelectionBox.XSize / 2;
                         particles.PosOffset[1].var = SelectionBox.YSize / 2;
@@ -1106,8 +1109,8 @@ namespace Vintagestory.API.Common.Entities
                     throw;
                 }
 
-                World.FrameProfiler.Mark("entity-animation-ticking");
-            }
+            World.FrameProfiler.Mark("entity-animation-ticking");
+        }
         }
 
         protected void ApplyFireDamage(float dt)
@@ -1126,8 +1129,8 @@ namespace Vintagestory.API.Common.Entities
             Api.World.SpawnParticles(
                 q,
                 ColorUtil.ColorFromRgba(20, 20, 20, 255),
-                new Vec3d(ServerPos.X + SelectionBox.X1, ServerPos.Y + SelectionBox.Y1, ServerPos.Z + SelectionBox.Z1),
-                new Vec3d(ServerPos.X + SelectionBox.X2, ServerPos.Y + SelectionBox.Y2, ServerPos.Z + SelectionBox.Z2),
+                new Vec3d(ServerPos.X + SelectionBox.X1, ServerPos.InternalY + SelectionBox.Y1, ServerPos.Z + SelectionBox.Z1),
+                new Vec3d(ServerPos.X + SelectionBox.X2, ServerPos.InternalY + SelectionBox.Y2, ServerPos.Z + SelectionBox.Z2),
                 new Vec3f(-1f, -1f, -1f),
                 new Vec3f(2f, 2f, 2f),
                 2, 1, 1, EnumParticleModel.Cube
@@ -1781,8 +1784,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual bool IsActivityRunning(string key)
         {
-            long val;
-            ActivityTimers.TryGetValue(key, out val);
+            ActivityTimers.TryGetValue(key, out long val);
             return val > World.ElapsedMilliseconds;
         }
 
@@ -1793,8 +1795,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual int RemainingActivityTime(string key)
         {
-            long val;
-            ActivityTimers.TryGetValue(key, out val);
+            ActivityTimers.TryGetValue(key, out long val);
             return (int)(val - World.ElapsedMilliseconds);
         }
 
@@ -2007,7 +2008,7 @@ namespace Vintagestory.API.Common.Entities
                 // Tyron 8 nov. Do write all animations if its for the client
                 //if (forClient)
                 {
-                    animManager.ToAttributeBytes(writer, forClient);
+                        animManager.ToAttributeBytes(writer, forClient);
                 }
                 TreeAttribute.TerminateWrite(writer);
             }
@@ -2122,8 +2123,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="range"></param>
         public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
         {
-            AssetLocation[] locations;
-            if (Properties.ResolvedSounds != null && Properties.ResolvedSounds.TryGetValue(type, out locations) && locations.Length > 0)
+            if (Properties.ResolvedSounds != null && Properties.ResolvedSounds.TryGetValue(type, out AssetLocation[] locations) && locations.Length > 0)
             {
                 World.PlaySoundAt(
                     locations[World.Rand.Next(locations.Length)],

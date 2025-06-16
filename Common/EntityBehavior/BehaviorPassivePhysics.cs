@@ -5,6 +5,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
+#nullable disable
+
 namespace Vintagestory.API.Common;
 
 public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickable, IRemotePhysics
@@ -302,9 +304,9 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
             entity.Swimming = false;
 
             if (swimmingBefore || feetInLiquidBefore)
-            {
-                entity.OnExitedLiquid();
-            }
+        {
+            entity.OnExitedLiquid();
+        }
         }
 
         if (!collidedBefore && entity.Collided)

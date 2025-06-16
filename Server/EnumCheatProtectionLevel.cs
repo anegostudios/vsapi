@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Server
+﻿
+#nullable disable
+namespace Vintagestory.API.Server
 {
     /// <summary>
     /// How strongly the Server should protect against hacking

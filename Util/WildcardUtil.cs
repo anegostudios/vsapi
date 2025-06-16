@@ -2,6 +2,8 @@
 using System.Text.RegularExpressions;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public static class WildcardUtil

@@ -2,6 +2,8 @@
 using System.IO;
 using SkiaSharp;
 
+#nullable disable
+
 namespace Vintagestory.API.Util;
 
 public static class BitmapExtensions

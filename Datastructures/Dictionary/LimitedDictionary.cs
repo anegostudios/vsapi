@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     /// <summary>
@@ -39,9 +41,8 @@ namespace Vintagestory.API.Datastructures
         public TValue this[TKey key]
         {
             get {
-               TValue val = default(TValue);
-               dictionary.TryGetValue(key, out val);
-               return val;
+                dictionary.TryGetValue(key, out TValue val);
+                return val;
             }
             set
             {

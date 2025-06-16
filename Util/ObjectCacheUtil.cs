@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public delegate T CreateCachableObjectDelegate<T>();
@@ -8,8 +10,7 @@ namespace Vintagestory.API.Util
     {
         public static T TryGet<T>(ICoreAPI api, string key)
         {
-            object obj;
-            if (api.ObjectCache.TryGetValue(key, out obj))
+            if (api.ObjectCache.TryGetValue(key, out object obj))
             {
                 return (T)obj;
             }
@@ -18,8 +19,7 @@ namespace Vintagestory.API.Util
 
         public static T GetOrCreate<T>(ICoreAPI api, string key, CreateCachableObjectDelegate<T> onRequireCreate)
         {
-            object obj;
-            if (!api.ObjectCache.TryGetValue(key, out obj) || obj == null)
+            if (!api.ObjectCache.TryGetValue(key, out object obj) || obj == null)
             {
                 T typedObj = onRequireCreate();
                 api.ObjectCache[key] = typedObj;

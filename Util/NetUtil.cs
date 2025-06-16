@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Net;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public struct UriInfo {
@@ -58,8 +60,7 @@ namespace Vintagestory.API.Util
             string[] parts = ip.Split('.');
             if (parts.Length < 2) return false;
 
-            int secondnum = 0;
-            int.TryParse(parts[1], out secondnum);
+            int.TryParse(parts[1], out int secondnum);
 
             return
                 (parts[0] == "10")
@@ -88,8 +89,7 @@ namespace Vintagestory.API.Util
                 uri = parts[1];
             }
 
-            IPAddress addr = null;
-            if (IPAddress.TryParse(uri, out addr))
+            if (IPAddress.TryParse(uri, out IPAddress addr))
             {
                 isipv4 = addr.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork;
                 isipv6 = addr.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6;

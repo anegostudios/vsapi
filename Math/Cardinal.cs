@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     // North: Negative Z
@@ -75,17 +77,20 @@ namespace Vintagestory.API.MathTools
             byInitial.Add(initial, this);
         }
 
+        public static implicit operator int(Cardinal card)
+        {
+            return card.Index;
+        }
+
         public static Cardinal FromNormali(Vec3i normali)
         {
-            Cardinal card;
-            byNormali.TryGetValue(normali, out card);
+            byNormali.TryGetValue(normali, out Cardinal card);
             return card;
         }
 
         public static Cardinal FromInitial(string initials)
         {
-            Cardinal card;
-            byInitial.TryGetValue(initials, out card);
+            byInitial.TryGetValue(initials, out Cardinal card);
             return card;
         }
 

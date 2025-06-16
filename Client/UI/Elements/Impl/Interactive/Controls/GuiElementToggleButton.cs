@@ -1,5 +1,8 @@
-﻿using System;
-using Cairo;
+﻿using Cairo;
+using System;
+using Vintagestory.API.Config;
+
+#nullable disable
 
 namespace Vintagestory.API.Client
 {
@@ -34,7 +37,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Is this element capable of being in the focus?
         /// </summary>
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Constructor for the button
@@ -88,8 +91,10 @@ namespace Vintagestory.API.Client
 
             EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, false, (int)depth);
 
-            double height = GetMultilineTextHeight();
-            nonPressedYOffset = (Bounds.InnerHeight - height) / 2 - 1;
+            // Pretty elaborate way of vertically centering the text. Le sigh.
+            double textexYBearing = Font.GetTextExtents(GetText()).YBearing;
+            nonPressedYOffset = (-Font.GetFontExtents().Ascent - textexYBearing + (Bounds.InnerHeight + textexYBearing) / 2 - 2) / RuntimeEnv.GUIScale;
+
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + nonPressedYOffset, EnumTextOrientation.Center);
 
             if (icon != null && icon.Length > 0)
@@ -119,8 +124,9 @@ namespace Vintagestory.API.Client
 
             EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, true, (int)depth);
 
-            double height = GetMultilineTextHeight();
-            pressedYOffset = (Bounds.InnerHeight - height) / 2 + depth / 2 - 1;
+            // Pretty elaborate way of vertically centering the text. Le sigh.
+            double textexYBearing = Font.GetTextExtents(GetText()).YBearing;
+            pressedYOffset = (-Font.GetFontExtents().Ascent - textexYBearing + (Bounds.InnerHeight + textexYBearing) / 2) / RuntimeEnv.GUIScale;
 
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + pressedYOffset, EnumTextOrientation.Center);
 

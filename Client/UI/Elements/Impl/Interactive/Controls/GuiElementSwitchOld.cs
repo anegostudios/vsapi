@@ -1,6 +1,8 @@
 ﻿using System;
 using Cairo;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementSwitchOld : GuiElementTextBase

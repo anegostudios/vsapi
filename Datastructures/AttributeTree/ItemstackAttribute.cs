@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class ItemstackAttribute : IAttribute

@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Server
+﻿
+#nullable disable
+namespace Vintagestory.API.Server
 {
     // When adding a pass here, also increase the value Const.donePass
 

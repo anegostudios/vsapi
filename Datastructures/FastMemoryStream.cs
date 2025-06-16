@@ -4,6 +4,8 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures;
 
 public class FastMemoryStream : Stream

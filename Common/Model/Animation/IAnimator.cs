@@ -5,6 +5,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class AttachmentPointAndPose
@@ -184,7 +186,8 @@ namespace Vintagestory.API.Common
         /// Gets the AnimationMetaData for the target action.
         /// </summary>
         Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode { get; }
-        
+        bool AdjustCollisionBoxToAnimation { get; }
+
         /// <summary>
         /// The event fired when the client recieves the server animations
         /// </summary>

@@ -10,6 +10,8 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 using Vintagestory.Common.Collectible.Block;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public delegate int PlaceBlockDelegate(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta);
@@ -291,9 +293,9 @@ namespace Vintagestory.API.Common
 
             if (pathwayPositions.Count == 0)
             {
-                PathwayStarts = new BlockPos[0];
-                PathwayOffsets = new BlockPos[0][];
-                PathwaySides = new BlockFacing[0];
+                PathwayStarts = Array.Empty<BlockPos>();
+                PathwayOffsets = Array.Empty<BlockPos[]>();
+                PathwaySides = Array.Empty<BlockFacing>();
                 return;
             }
 
@@ -471,8 +473,7 @@ namespace Vintagestory.API.Common
 
             foreach (var val in BlocksUnpacked)
             {
-                int fluidid;
-                if (!FluidsLayerUnpacked.TryGetValue(val.Key, out fluidid)) fluidid = 0;
+                if (!FluidsLayerUnpacked.TryGetValue(val.Key, out int fluidid)) fluidid = 0;
                 int blockid = val.Value;
                 if (blockid == 0 && fluidid == 0) continue;
 

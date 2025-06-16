@@ -7,6 +7,8 @@ using System.Globalization;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     /// <summary>
@@ -208,8 +210,7 @@ namespace Vintagestory.API.Datastructures
             if (value is bool) return (bool)value;
             if (value is string)
             {
-                bool val;
-                if (!bool.TryParse("" + value, out val))
+                if (!bool.TryParse("" + value, out bool val))
                 {
                     val = defaultValue;
                 }
@@ -237,8 +238,7 @@ namespace Vintagestory.API.Datastructures
             if (value is double) return (int)((double)value);
             if (value is string)
             {
-                int val;
-                if (!int.TryParse("" + value, out val))
+                if (!int.TryParse("" + value, out int val))
                 {
                     val = defaultValue;
                 }
@@ -265,8 +265,7 @@ namespace Vintagestory.API.Datastructures
             if (value is double) return (float)((double)value);
             if (value is string)
             {
-                float val;
-                if (!float.TryParse(""+value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val))
+                if (!float.TryParse("" + value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out float val))
                 {
                     val = defaultValue;
                 }
@@ -293,8 +292,7 @@ namespace Vintagestory.API.Datastructures
             if (value is double) return (double)value;
             if (value is string)
             {
-                double val;
-                if (!double.TryParse("" + value, out val))
+                if (!double.TryParse("" + value, out double val))
                 {
                     val = defaultValue;
                 }
@@ -429,7 +427,7 @@ namespace Vintagestory.API.Datastructures
             if (jarr != null)
             {
                 if (!jarr.HasValues)
-                    return new TreeArrayAttribute(new TreeAttribute[0]);
+                    return new TreeArrayAttribute(Array.Empty<TreeAttribute>());
 
                 JToken first = jarr[0];
 
@@ -497,8 +495,7 @@ namespace Vintagestory.API.Datastructures
                 if (jvalue.Value is bool result) return result;
                 if (jvalue.Value is string boolString)
                 {
-                    bool val;
-                    bool.TryParse(boolString, out val);
+                    bool.TryParse(boolString, out bool val);
                     return val;
                 }
             }

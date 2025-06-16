@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.Client;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities
 {
     /// <summary>

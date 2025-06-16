@@ -1,5 +1,7 @@
 ﻿using SkiaSharp;
 
+#nullable disable
+
 namespace Vintagestory.API.Client;
 
 public class FastBitmap

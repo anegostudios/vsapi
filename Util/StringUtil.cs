@@ -6,6 +6,8 @@ using System.Numerics;
 using System.Text;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public static class StringUtil
@@ -124,8 +126,7 @@ namespace Vintagestory.API.Util
 
         public static int ToInt(this string text, int defaultValue = 0)
         {
-            int value;
-            if (!int.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            if (!int.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out int value))
             {
                 return defaultValue;
             }
@@ -134,8 +135,7 @@ namespace Vintagestory.API.Util
 
         public static long ToLong(this string text, long defaultValue = 0)
         {
-            long value;
-            if (!long.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            if (!long.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out long value))
             {
                 return defaultValue;
             }
@@ -145,8 +145,7 @@ namespace Vintagestory.API.Util
 
         public static float ToFloat(this string text, float defaultValue = 0)
         {
-            float value;
-            if (!float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            if (!float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out float value))
             {
                 return defaultValue;
             }
@@ -155,8 +154,7 @@ namespace Vintagestory.API.Util
 
         public static double ToDouble(this string text, double defaultValue = 0)
         {
-            double value;
-            if (!double.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            if (!double.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out double value))
             {
                 return defaultValue;
             }
@@ -165,9 +163,8 @@ namespace Vintagestory.API.Util
 
         public static double? ToDoubleOrNull(this string text, double? defaultValue = 0)
         {
-            double value;
 
-            if (!double.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            if (!double.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out double value))
             {
                 return defaultValue;
             }
@@ -177,9 +174,8 @@ namespace Vintagestory.API.Util
 
         public static float? ToFloatOrNull(this string text, float? defaultValue = 0)
         {
-            float value;
 
-            if (!float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            if (!float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out float value))
             {
                 return defaultValue;
             }

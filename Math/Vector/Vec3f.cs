@@ -3,6 +3,9 @@ using ProtoBuf;
 using System;
 using System.IO;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+
+#nullable disable
 
 namespace Vintagestory.API.MathTools
 {
@@ -64,6 +67,11 @@ namespace Vintagestory.API.MathTools
 
         public bool IsZero => X == 0 && Y == 0 && Z == 0;
 
+        public static implicit operator FastVec3f(Vec3f a)     // For backwards compatibility for ModelTransform, mods should only require a recompile against 1.21 API
+        {
+            return new FastVec3f(a);
+        }
+
         /// <summary>
         /// Create a new vector with given coordinates
         /// </summary>
@@ -104,6 +112,13 @@ namespace Vintagestory.API.MathTools
             this.X = vec3i.X;
             this.Y = vec3i.Y;
             this.Z = vec3i.Z;
+        }
+
+        public Vec3f(float xyz)
+        {
+            this.X = xyz;
+            this.Y = xyz;
+            this.Z = xyz;
         }
 
         /// <summary>

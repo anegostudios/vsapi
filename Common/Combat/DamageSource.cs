@@ -2,6 +2,8 @@
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class DamageSource
@@ -28,6 +30,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// The entity that caused this damage, e.g. the entity that threw the SourceEntity projectile, if any
+        /// <br/>NOTE: will be null for non-projectile damage e.g. melee attacks: to get the attacking entity properly for both melee and projectile damage, use GetCauseEntity()
         /// </summary>
         public Entity CauseEntity;
 

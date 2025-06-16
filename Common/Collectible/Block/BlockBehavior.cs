@@ -5,6 +5,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -243,7 +245,7 @@ namespace Vintagestory.API.Common
         public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
-            return new WorldInteraction[0];
+            return Array.Empty<WorldInteraction>();
         }
 
 
@@ -314,8 +316,8 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Step 4: Block was placed. Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
-        /// Until 1.20: The BlockEntity does not exist yet at this point and will not be generated if handling is set to PreventSubsequent
-        /// <br/>(Note, we intend to change this in game version 1.21 so that the BlockEntity (if the block has one) will always be created before calling BlockBehavior.OnBlockPlaced())
+        /// Until 1.20: The BlockEntity (if the block has one) does not exist yet at this point and will not be generated if handling is not PassThrough
+        /// 1.21+: The BlockEntity (if the block has one) exists at this point. Setting handling to PreventDefault or PreventSubsequent has no effect on BlockEntity creation, but may affect/prevent later behaviors
         /// </summary>
         /// <param name="world"></param>
         /// <param name="blockPos"></param>

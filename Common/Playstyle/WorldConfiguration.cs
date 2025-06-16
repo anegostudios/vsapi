@@ -2,6 +2,8 @@
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class ModWorldConfiguration
@@ -12,7 +14,7 @@ namespace Vintagestory.API.Common
 
     public enum EnumDataType
     {
-        Bool, IntInput, DoubleInput, IntRange, String, DropDown
+        Bool, IntInput, DoubleInput, IntRange, String, DropDown, DoubleRange, StringRange
     }
 
     public class WorldConfigurationAttribute
@@ -24,38 +26,39 @@ namespace Vintagestory.API.Common
         public double Min;
         public double Max;
         public double Step;
+        public double Alarm = int.MaxValue;
+        public decimal Multiplier = 1;
+        public decimal DisplayUnit = 1;
 
         public bool OnCustomizeScreen = true;
 
         public string Default;
         public string[] Values;
         public string[] Names;
+        public string[] SkipValues = null;
 
         public bool OnlyDuringWorldCreate = false;
+
+        public ModInfo ModInfo { get; set; }
 
         public object stringToValue(string text)
         {
             switch (DataType)
             {
-
                 case EnumDataType.Bool:
-                    bool on;
-                    bool.TryParse(text, out on);
+                    bool.TryParse(text, out bool on);
                     return on;
-
                 case EnumDataType.DoubleInput:
-                    float fval;
-                    float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out fval);
-                    return fval;
-                case EnumDataType.DropDown:
-                    return text;
-
+                case EnumDataType.DoubleRange:
+                    double.TryParse(text, NumberStyles.Float, GlobalConstants.DefaultCultureInfo, out double dval);
+                    return dval;
                 case EnumDataType.IntInput:
                 case EnumDataType.IntRange:
-                    int val;
-                    int.TryParse(text, out val);
+                    int.TryParse(text, NumberStyles.Integer, GlobalConstants.DefaultCultureInfo, out int val);
                     return val;
                 case EnumDataType.String:
+                case EnumDataType.DropDown:
+                case EnumDataType.StringRange:
                     return text;
             }
 
@@ -68,18 +71,16 @@ namespace Vintagestory.API.Common
             {
                 case EnumDataType.Bool:
                     return value.ToLowerInvariant() == "true" ? Lang.Get("On") : Lang.Get("Off");
-
-                case EnumDataType.DoubleInput:
-                    return value+"";
                 case EnumDataType.DropDown:
-                    int index = Values.IndexOf((string)value);
+                case EnumDataType.StringRange:
+                    int index = Values.IndexOf(value);
                     return index >= 0 ? Lang.Get("worldconfig-" + Code + "-" + Names[index]) : value+"";
-
+                case EnumDataType.DoubleInput:
+                case EnumDataType.DoubleRange:
                 case EnumDataType.IntInput:
                 case EnumDataType.IntRange:
-                    return value + "";
                 case EnumDataType.String:
-                    return value + "";
+                    return value.ToString();
             }
 
             return null;

@@ -4,6 +4,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementSliderOld : GuiElement

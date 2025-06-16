@@ -4,6 +4,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate ItemStack[] InteractionStacksDelegate(WorldInteraction wi, BlockSelection blockSelection, EntitySelection entitySelection);

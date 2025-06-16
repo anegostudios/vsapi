@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public class RelaxedReadOnlyDictionary<T, K> : IDictionary<T, K>
@@ -17,8 +19,7 @@ namespace Vintagestory.API.Util
         {
             get
             {
-                K value;
-                if (!dict.TryGetValue(key, out value))
+                if (!dict.TryGetValue(key, out K value))
                 {
                     value = default(K);
                 }

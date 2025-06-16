@@ -1,5 +1,7 @@
 ﻿using Cairo;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate void DrawDelegateWithBounds(Context ctx, ImageSurface surface, ElementBounds currentBounds);

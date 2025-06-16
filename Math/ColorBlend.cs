@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
 

@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using System.Text;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class StringArrayAttribute : ArrayAttribute<string>, IAttribute

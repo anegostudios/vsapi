@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -22,7 +24,7 @@ namespace Vintagestory.API.Common
 
         public bool CalculateMatrices { get; set; }
 
-        public RunningAnimation[] Animations => new RunningAnimation[0];
+        public RunningAnimation[] Animations => Array.Empty<RunningAnimation>();
 
         public int MaxJointId => throw new NotImplementedException();
 
@@ -85,6 +87,8 @@ namespace Vintagestory.API.Common
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode => new Dictionary<string, AnimationMetaData>();
 
         public EntityHeadController HeadController { get; set; }
+
+        public bool AdjustCollisionBoxToAnimation => throw new NotImplementedException();
 
         public event StartAnimationDelegate OnStartAnimation;
         public event Action<string> OnAnimationStopped;

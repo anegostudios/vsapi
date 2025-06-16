@@ -3,6 +3,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class EntityCubeParticles : CollectibleParticleProperties
@@ -31,8 +33,7 @@ namespace Vintagestory.API.Common
 
             if (world.Side == EnumAppSide.Client)
             {
-                Entity entity;
-                if ((world as IClientWorldAccessor).LoadedEntities.TryGetValue(entityId, out entity))
+                if ((world as IClientWorldAccessor).LoadedEntities.TryGetValue(entityId, out Entity entity))
                 {
                     textureSubId = entity.Properties.Client.FirstTexture.Baked.TextureSubId;
                 }
@@ -45,8 +46,7 @@ namespace Vintagestory.API.Common
 
             if (textureSubId == 0 && api.Side == EnumAppSide.Client)
             {
-                Entity entity;
-                if ((api.World as IClientWorldAccessor).LoadedEntities.TryGetValue(entityId, out entity))
+                if ((api.World as IClientWorldAccessor).LoadedEntities.TryGetValue(entityId, out Entity entity))
                 {
                     textureSubId = entity.Properties.Client.FirstTexture.Baked.TextureSubId;
                 }

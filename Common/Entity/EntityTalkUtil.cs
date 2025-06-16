@@ -7,6 +7,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public enum EnumTalkType

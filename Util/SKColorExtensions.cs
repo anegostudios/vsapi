@@ -1,5 +1,7 @@
 using SkiaSharp;
 
+#nullable disable
+
 namespace Vintagestory.Util;
 
 public static class SKColorExtensions

@@ -4,6 +4,8 @@ using Cairo;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate void DrawDelegate(Context ctx, ImageSurface surface);
@@ -186,10 +188,6 @@ namespace Vintagestory.API.Client
 
                 case "redo":
                     Drawredo_svg(cr, x, y, width, height, rgba);
-                    break;
-
-                case "copy":
-                    Drawduplicate_svg(cr, x, y, width, height, rgba);
                     break;
 
                 case "select":
@@ -847,8 +845,14 @@ namespace Vintagestory.API.Client
             float w = 450;
             float h = 450;
             float scale = Math.Min(width / w, height / h);
+            
+            
             matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
             matrix.Scale(scale, scale);
+            matrix.Rotate(GameMath.PIHALF);
+            matrix.Translate(-5, -5);
+
+
             cr.Matrix = matrix;
 
             cr.Operator = Operator.Over;
@@ -21107,126 +21111,6 @@ namespace Vintagestory.API.Client
             cr.CurveTo(12.761719, 2.789063, 13.480469, 5.464844, 14.265625, 7.433594);
             cr.ClosePath();
             cr.MoveTo(14.265625, 7.433594);
-            cr.Tolerance = 0.1;
-            cr.Antialias = Antialias.Default;
-            cr.FillRule = FillRule.Winding;
-            cr.FillPreserve();
-            if (pattern != null) pattern.Dispose();
-
-            cr.Restore();
-        }
-
-
-        public void Drawduplicate_svg(Context cr, int x, int y, float width, float height, double[] rgba)
-        {
-            Pattern pattern = null;
-            Matrix matrix = cr.Matrix;
-
-            cr.Save();
-            float w = 129;
-            float h = 129;
-            float scale = Math.Min(width / w, height / h);
-            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
-            matrix.Scale(scale, scale);
-            cr.Matrix = matrix;
-
-            cr.Operator = Operator.Over;
-            cr.LineWidth = 5;
-            cr.MiterLimit = 10;
-            cr.LineCap = LineCap.Butt;
-            cr.LineJoin = LineJoin.Miter;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
-            cr.SetSource(pattern);
-
-            cr.NewPath();
-            cr.MoveTo(71.328125, 66.042969);
-            cr.Tolerance = 0.1;
-            cr.Antialias = Antialias.Default;
-            cr.StrokePreserve();
-            if (pattern != null) pattern.Dispose();
-
-            cr.Operator = Operator.Over;
-            cr.LineWidth = 5;
-            cr.MiterLimit = 10;
-            cr.LineCap = LineCap.Butt;
-            cr.LineJoin = LineJoin.Miter;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
-            cr.SetSource(pattern);
-
-            cr.NewPath();
-            cr.MoveTo(71.328125, 46.078125);
-            cr.LineTo(71.328125, 30.828125);
-            cr.CurveTo(71.328125, 29.691406, 70.667969, 28.097656, 69.863281, 27.292969);
-            cr.LineTo(60.363281, 17.792969);
-            cr.CurveTo(59.558594, 16.988281, 57.96875, 16.328125, 56.828125, 16.328125);
-            cr.LineTo(29.898438, 16.328125);
-            cr.CurveTo(28.761719, 16.328125, 27.828125, 17.261719, 27.828125, 18.398438);
-            cr.LineTo(27.828125, 76.398438);
-            cr.CurveTo(27.828125, 77.539063, 28.761719, 78.472656, 29.898438, 78.472656);
-            cr.LineTo(50.828125, 78.472656);
-            cr.Tolerance = 0.1;
-            cr.Antialias = Antialias.Default;
-            cr.StrokePreserve();
-            if (pattern != null) pattern.Dispose();
-
-            cr.Operator = Operator.Over;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
-            cr.SetSource(pattern);
-
-            cr.NewPath();
-            cr.MoveTo(58.035156, 27.6875);
-            cr.CurveTo(58.035156, 28.828125, 58.96875, 29.757813, 60.109375, 29.757813);
-            cr.LineTo(68.394531, 29.757813);
-            cr.CurveTo(69.535156, 29.757813, 69.804688, 29.097656, 69, 28.292969);
-            cr.LineTo(59.5, 18.796875);
-            cr.CurveTo(58.695313, 17.988281, 58.035156, 18.261719, 58.035156, 19.402344);
-            cr.ClosePath();
-            cr.MoveTo(58.035156, 27.6875);
-            cr.Tolerance = 0.1;
-            cr.Antialias = Antialias.Default;
-            cr.FillRule = FillRule.Winding;
-            cr.FillPreserve();
-            if (pattern != null) pattern.Dispose();
-
-            cr.Operator = Operator.Over;
-            cr.LineWidth = 5;
-            cr.MiterLimit = 10;
-            cr.LineCap = LineCap.Butt;
-            cr.LineJoin = LineJoin.Miter;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
-            cr.SetSource(pattern);
-
-            cr.NewPath();
-            cr.MoveTo(94.328125, 95.792969);
-            cr.LineTo(94.328125, 60.578125);
-            cr.CurveTo(94.328125, 59.441406, 93.667969, 57.847656, 92.863281, 57.042969);
-            cr.LineTo(83.363281, 47.542969);
-            cr.CurveTo(82.558594, 46.738281, 80.96875, 46.078125, 79.828125, 46.078125);
-            cr.LineTo(52.898438, 46.078125);
-            cr.CurveTo(51.761719, 46.078125, 50.828125, 47.011719, 50.828125, 48.148438);
-            cr.LineTo(50.828125, 106.148438);
-            cr.CurveTo(50.828125, 107.289063, 51.761719, 108.222656, 52.898438, 108.222656);
-            cr.LineTo(92.257813, 108.222656);
-            cr.CurveTo(93.398438, 108.222656, 94.328125, 107.289063, 94.328125, 106.148438);
-            cr.LineTo(94.328125, 95.792969);
-            cr.Tolerance = 0.1;
-            cr.Antialias = Antialias.Default;
-            cr.StrokePreserve();
-            if (pattern != null) pattern.Dispose();
-
-            cr.Operator = Operator.Over;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
-            cr.SetSource(pattern);
-
-            cr.NewPath();
-            cr.MoveTo(81.035156, 57.4375);
-            cr.CurveTo(81.035156, 58.578125, 81.96875, 59.507813, 83.109375, 59.507813);
-            cr.LineTo(91.394531, 59.507813);
-            cr.CurveTo(92.535156, 59.507813, 92.804688, 58.847656, 92, 58.042969);
-            cr.LineTo(82.5, 48.546875);
-            cr.CurveTo(81.695313, 47.738281, 81.035156, 48.011719, 81.035156, 49.152344);
-            cr.ClosePath();
-            cr.MoveTo(81.035156, 57.4375);
             cr.Tolerance = 0.1;
             cr.Antialias = Antialias.Default;
             cr.FillRule = FillRule.Winding;

@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     //(-1,-1,-1) to (1,1,1)

@@ -3,6 +3,8 @@ using System.Collections.Concurrent;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface IServerMapChunk : IMapChunk

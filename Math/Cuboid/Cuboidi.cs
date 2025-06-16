@@ -1,6 +1,8 @@
 ﻿using ProtoBuf;
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     [ProtoContract]

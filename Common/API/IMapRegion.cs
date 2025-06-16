@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     [ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]

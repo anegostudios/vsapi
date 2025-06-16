@@ -1,4 +1,8 @@
-﻿namespace Vintagestory.API.Client
+﻿
+#nullable disable
+using System;
+
+namespace Vintagestory.API.Client
 {
     /// <summary>
     /// Holds arbitrary int data for meshes to be used in the shader

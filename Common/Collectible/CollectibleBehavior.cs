@@ -4,6 +4,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public abstract class CollectibleBehavior
@@ -209,7 +211,7 @@ namespace Vintagestory.API.Common
         public virtual WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
-            return new WorldInteraction[0];
+            return Array.Empty<WorldInteraction>();
         }
 
         /// <summary>
@@ -300,6 +302,69 @@ namespace Vintagestory.API.Common
         }
 
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)
+        {
+            
+        }
+
+        /// <summary>
+        /// Multiplies resulted mining speed of the item by return value if 'bhHandling' is not equal to 'PassThrough'.
+        /// If 'bhHandling' is not set to 'PreventDefault', the mining speed will be multiplied by standard item mining speed.
+        /// </summary>
+        /// <returns>Mining speed multiplier</returns>
+        public virtual float OnGetMiningSpeed(IItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
+        {
+            return 1;
+        }
+
+        /// <summary>
+        /// Adds return value to resulted durability if 'bhHandling' is not equal to 'PassThrough'.
+        /// If 'bhHandling' is not set to 'PreventDefault', standard item durability will be added to result.
+        /// </summary>
+        /// <returns>Additional durability</returns>
+        public virtual int OnGetMaxDurability(ItemStack itemstack, ref EnumHandling bhHandling)
+        {
+            return 0;
+        }
+
+        /// <summary>
+        /// Adds return value to resulted durability if 'bhHandling' is not equal to 'PassThrough'.
+        /// If 'bhHandling' is not set to 'PreventDefault', standard item durability will be added to result.
+        /// </summary>
+        /// <returns>Additional durability</returns>
+        public virtual int OnGetRemainingDurability(ItemStack itemstack, ref EnumHandling bhHandling)
+        {
+            return 0;
+        }
+
+        /// <summary>
+        /// Called when item is damaged via 'CollectibleObject.DamageItem'
+        /// </summary>
+        public virtual void OnDamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, ref int amount, ref EnumHandling bhHandling)
+        {
+
+        }
+
+        /// <summary>
+        /// Called when item durability is set via 'CollectibleObject.SetDurability'
+        /// </summary>
+        public virtual void OnSetDurability(ItemStack itemstack, ref int amount, ref EnumHandling bhHandling)
+        {
+
+        }
+
+        /// <summary>
+        /// Called when any of its TransitionableProperties causes the stack to transition to another stack. Default behavior is to return props.TransitionedStack.ResolvedItemstack and set the stack size according to the transition rtio
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <param name="props"></param>
+        /// <returns>The stack it should transition into</returns>
+        public virtual ItemStack OnTransitionNow(ItemSlot slot, TransitionableProperties props, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return null;
+        }
+
+        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
         {
             
         }

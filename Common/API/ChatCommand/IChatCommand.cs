@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+#nullable disable
+
 namespace Vintagestory.API.Common;
 
 public interface IChatCommand

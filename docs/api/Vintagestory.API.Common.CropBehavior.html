@@ -265,8 +265,8 @@ Class CropBehavior
 
   <a id="Vintagestory_API_Common_CropBehavior_OnPlanted_" data-uid="Vintagestory.API.Common.CropBehavior.OnPlanted*"></a>
 
-  <h3 id="Vintagestory_API_Common_CropBehavior_OnPlanted_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.CropBehavior.OnPlanted(Vintagestory.API.Common.ICoreAPI)">
-  OnPlanted(ICoreAPI)
+  <h3 id="Vintagestory_API_Common_CropBehavior_OnPlanted_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_" data-uid="Vintagestory.API.Common.CropBehavior.OnPlanted(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.BlockSelection)">
+  OnPlanted(ICoreAPI, ItemSlot, EntityAgent, BlockSelection)
   
   </h3>
 
@@ -275,13 +275,22 @@ Class CropBehavior
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnPlanted(ICoreAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void OnPlanted(ICoreAPI api, ItemSlot itemslot, EntityAgent byEntity, BlockSelection blockSel)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
     <dd><p>The core API.</p>
+</dd>
+    <dt><code>itemslot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd><p>The itemslot that the plant was planted with.</p>
+</dd>
+    <dt><code>byEntity</code> <a class="xref" href="Vintagestory.API.Common.EntityAgent.html">EntityAgent</a></dt>
+    <dd><p>The entity that planted the plant.</p>
+</dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd><p>The block selection used when the seed was planted.</p>
 </dd>
   </dl>
 

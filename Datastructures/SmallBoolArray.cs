@@ -2,6 +2,8 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
 
@@ -80,7 +82,10 @@ namespace Vintagestory.API.Datastructures
 
         public bool Any => bits != 0;
 
-        public bool All => bits == OnAllSides;
+        public bool All {
+            get { return bits == OnAllSides; }
+            set { bits = value ? OnAllSides : 0; }
+        }
 
         public int Value()
         {

@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Net;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Config
 {
     /// <summary>

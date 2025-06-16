@@ -1,4 +1,6 @@
-﻿//glMatrix license:
+﻿
+#nullable disable
+//glMatrix license:
 //Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 //Redistribution and use in source and binary forms, with or without modification,

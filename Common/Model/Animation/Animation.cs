@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public enum EnumEntityActivityStoppedHandling
@@ -131,8 +133,7 @@ namespace Vintagestory.API.Common
             PrevNextKeyFrameByFrame = new AnimationFrame[QuantityFrames][];
             for (int i = 0; i < QuantityFrames; i++)
             {
-                AnimationFrame left, right;
-                getLeftRightResolvedFrame(i, resolvedKeyFrames, out left, out right);
+                getLeftRightResolvedFrame(i, resolvedKeyFrames, out AnimationFrame left, out AnimationFrame right);
 
                 PrevNextKeyFrameByFrame[i] = new AnimationFrame[] { left, right };
             }
@@ -180,9 +181,8 @@ namespace Vintagestory.API.Common
         {
             for (int flag = 0; flag < 3; flag++)
             {
-                AnimationKeyFrameElement curKelem, nextKelem;
 
-                getTwoKeyFramesElementForFlag(frameNumber, element, flag, out curKelem, out nextKelem);
+                getTwoKeyFramesElementForFlag(frameNumber, element, flag, out AnimationKeyFrameElement curKelem, out AnimationKeyFrameElement nextKelem);
 
                 if (curKelem == null) continue;
 

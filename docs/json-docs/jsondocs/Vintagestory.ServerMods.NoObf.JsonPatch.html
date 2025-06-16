@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class JsonPatch | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class JsonPatch | VintageStory Json Docs ">
+      
+      <meta name="description" content="Defines a patch for a json asset. This allows modifying json files through mods without directly editing them. To help with creating patches, it is highly recommended to learn how to use the in-built modmaker program. See https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker for more info.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.ServerMods.NoObf.JsonPatch">
+
+
+
+  <h1 id="Vintagestory_ServerMods_NoObf_JsonPatch" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch" class="text-break">
+Class JsonPatch  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.ServerMods.html">ServerMods</a>.<a class="xref" href="Vintagestory.ServerMods.NoObf.html">NoObf</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines a patch for a json asset. This allows modifying json files through mods without directly editing them.
+To help with creating patches, it is highly recommended to learn how to use the in-built modmaker program.
+See <a href="https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker">https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker</a> for more info.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class JsonPatch</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">JsonPatch</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_File" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.File">
+  File (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The asset location of the file where the patch should be applied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetLocation File</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_Op" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.Op">
+  Op (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The operation for the patch. Essentially controls what the patch actually does.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumJsonPatchOp Op</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html">EnumJsonPatchOp</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_Path" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.Path">
+  Path (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>This is the path to the json property where the operation will take place.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Path</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_Value" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.Value">
+  Value (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If adding, this is the value (or values) that will be added.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[JsonConverter(typeof(JsonAttributesConverter))]
+public JsonObject Value</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_Condition" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.Condition">
+  Condition (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A condition that this patch must satisfy to be applied. Uses specific values from the world config. Useful in conjunction with code mods.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PatchCondition Condition</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.PatchCondition.html">PatchCondition</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_DependsOn" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.DependsOn">
+  DependsOn (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A list of mod dependencies for the patch. Can be used to create patches that are specific on certain mods being installed. Useful for compatibility!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PatchModDependence[] DependsOn</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.PatchModDependence.html">PatchModDependence</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_Enabled" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.Enabled">
+  Enabled (Optional) (Default: True)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Should this patch be applied or not?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Enabled</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_FromPath" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.FromPath">
+  FromPath (Optional)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If using <a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html#Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Move">Move</a> or <a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html#Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Copy">Copy</a>, this is the path to the json property to move or copy from.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FromPath</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_Side" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.Side">
+  Side (Optional) (Default: Universal)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The app side that the patch should be loaded on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumAppSide? Side</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumAppSide.html">EnumAppSide</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_ServerMods_NoObf_JsonPatch_SideType_" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.SideType*"></a>
+
+  <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_SideType" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.SideType">
+  SideType (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The app side that the patch should be loaded on. Obsolete, please use <a class="xref" href="Vintagestory.ServerMods.NoObf.JsonPatch.html#Vintagestory_ServerMods_NoObf_JsonPatch_Side">Side</a> instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Side instead&quot;)]
+public EnumAppSide? SideType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumAppSide.html">EnumAppSide</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

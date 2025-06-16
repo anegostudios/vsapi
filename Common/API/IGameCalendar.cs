@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public enum EnumMonth
@@ -124,6 +126,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IGameCalendar
     {
+        public const int StartYear = 1386;
+
         /// <summary>
         /// Assigned by the survival mod. Must return the hemisphere at give location
         /// </summary>

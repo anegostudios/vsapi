@@ -3,6 +3,8 @@ using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementMainMenuCell : GuiElementTextBase, IGuiElementCell

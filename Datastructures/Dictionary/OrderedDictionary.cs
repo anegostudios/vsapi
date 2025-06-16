@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
 

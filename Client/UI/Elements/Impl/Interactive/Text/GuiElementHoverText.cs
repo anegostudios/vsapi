@@ -3,6 +3,8 @@ using System;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementHoverText : GuiElementTextBase
@@ -89,7 +91,7 @@ namespace Vintagestory.API.Client
             descBounds.IsDrawingSurface = true;
             descBounds.fixedWidth = maxWidth;
 
-            descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
+            descriptionElement = new GuiElementRichtext(capi, Array.Empty<RichTextComponentBase>(), descBounds);
             descriptionElement.zPos = 1001;
             
         }

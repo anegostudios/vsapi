@@ -1,6 +1,8 @@
 ﻿using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface IFarmlandBlockEntity

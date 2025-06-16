@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.Datastructures;
 
 public class NaturalShape
@@ -132,7 +134,7 @@ public class NaturalShape
             var cell = outline.ElementAt(next);
 
             next = rand.NextInt(4);
-            ShapeCell? newCell = null;
+            ShapeCell newCell = null;
             for (var j = next; j < next + 4; j++)
             {
                 if (!cell.Value.OpenSides[j % 4]) continue;

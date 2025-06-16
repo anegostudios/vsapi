@@ -6,6 +6,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
 
@@ -274,8 +276,7 @@ namespace Vintagestory.API.Client
             float latitude = (float)Math.Abs(capi.World.Calendar.OnGetLatitude(pos.Z));
             if (latitude < MinLatitude || latitude > MaxLatitude) return false;
 
-            long trackCoolDownMs;
-            tracksCooldownUntilMs.TryGetValue(Name, out trackCoolDownMs);
+            tracksCooldownUntilMs.TryGetValue(Name, out long trackCoolDownMs);
             if (capi.World.ElapsedMilliseconds < trackCoolDownMs)
             {
                 //capi.Logger.Debug("{0}: On track cooldown ({1}s)", Name, (trackCoolDownMs - capi.World.ElapsedMilliseconds) / 1000);

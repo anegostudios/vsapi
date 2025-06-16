@@ -3,10 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
+
+#nullable disable
 using Color = System.Drawing.Color;
 
 namespace Vintagestory.API.Common
@@ -74,6 +77,7 @@ namespace Vintagestory.API.Common
 
                     case "hotkey":
                     case "hk":
+                        if (string.IsNullOrEmpty(tagToken.ContentText) || tagToken.ContentText.All(char.IsWhiteSpace)) break;
                         string hotkeyName = tagToken.ContentText;
                         if (hotkeyName == "leftmouse") hotkeyName = "primarymouse";    //alias names for a few, to make things simpler for handbook editors
                         if (hotkeyName == "rightmouse") hotkeyName = "secondarymouse";
@@ -243,8 +247,6 @@ namespace Vintagestory.API.Common
 
         static CairoFont getFont(VtmlTagToken tag, Stack<CairoFont> fontStack)
         {
-            double size = 0;
-            double lineHeight = 1;
             string fontName = "";
             EnumTextOrientation orient = EnumTextOrientation.Left;
             double[] color = ColorUtil.WhiteArgbDouble;
@@ -252,7 +254,7 @@ namespace Vintagestory.API.Common
 
             CairoFont prevFont = fontStack.Pop();
 
-            if (!tag.Attributes.ContainsKey("size") || !double.TryParse(tag.Attributes["size"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out size))
+            if (!tag.Attributes.ContainsKey("size") || !double.TryParse(tag.Attributes["size"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out double size))
             {
                 size = prevFont.UnscaledFontsize;
             }
@@ -278,8 +280,7 @@ namespace Vintagestory.API.Common
                 color = prevFont.Color;
             }
 
-            double opacity;
-            if (tag.Attributes.ContainsKey("opacity") && double.TryParse(tag.Attributes["opacity"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out opacity))
+            if (tag.Attributes.ContainsKey("opacity") && double.TryParse(tag.Attributes["opacity"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out double opacity))
             {
                 color = (double[])color.Clone();
                 color[3] *= opacity;
@@ -294,7 +295,7 @@ namespace Vintagestory.API.Common
                 weight = prevFont.FontWeight;
             }
 
-            if (!tag.Attributes.ContainsKey("lineheight") || !double.TryParse(tag.Attributes["lineheight"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out lineHeight))
+            if (!tag.Attributes.ContainsKey("lineheight") || !double.TryParse(tag.Attributes["lineheight"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out double lineHeight))
             {
                 lineHeight = prevFont.LineHeightMultiplier;
             }

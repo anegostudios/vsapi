@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate void OnValueSetDelegate(string elementCode, string newValue);

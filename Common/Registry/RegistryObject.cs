@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -20,7 +22,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Variant values as resolved from blocktype/itemtype.  NOT set for entities - use entity.Properties.VariantStrict instead.
         /// </summary>
-        public OrderedDictionary<string, string> VariantStrict = new OrderedDictionary<string, string>();
+        public Datastructures.OrderedDictionary<string, string> VariantStrict = new ();
 
         /// <summary>
         /// Variant values as resolved from blocktype/itemtype. Will not throw an null pointer exception when the key does not exist, but return null instead. NOT set for entities - use entity.Properties.Variant instead
@@ -146,9 +148,8 @@ namespace Vintagestory.API.Common
             {
                 sb.Append("-");
 
-                string value;
 
-                if (valuesByType.TryGetValue(val.Key, out value))
+                if (valuesByType.TryGetValue(val.Key, out string value))
                 {
                     sb.Append(value);
                 }
@@ -290,7 +291,7 @@ namespace Vintagestory.API.Common
         /// <param name="input"></param>
         /// <param name="searchReplace"></param>
         /// <returns></returns>
-        public static AssetLocation FillPlaceHolder(AssetLocation input, OrderedDictionary<string, string> searchReplace)
+        public static AssetLocation FillPlaceHolder(AssetLocation input, Datastructures.OrderedDictionary<string, string> searchReplace)
         {
             foreach (var val in searchReplace)
             {
@@ -306,7 +307,7 @@ namespace Vintagestory.API.Common
         /// <param name="input"></param>
         /// <param name="searchReplace"></param>
         /// <returns></returns>
-        public static string FillPlaceHolder(string input, OrderedDictionary<string, string> searchReplace)
+        public static string FillPlaceHolder(string input, Datastructures.OrderedDictionary<string, string> searchReplace)
         {
             foreach (var val in searchReplace)
             {

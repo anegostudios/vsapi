@@ -1,6 +1,8 @@
 ﻿using System;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

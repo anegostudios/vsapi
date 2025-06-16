@@ -132,9 +132,6 @@ Class GuiElementSlider
       <a class="xref" href="Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_enabled">GuiElementControl.enabled</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_Enabled">GuiElementControl.Enabled</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_dirtTextureName">GuiElement.dirtTextureName</a>
     </div>
     <div>
@@ -288,9 +285,6 @@ Class GuiElementSlider
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseLeaveSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_">GuiElement.OnMouseLeaveSlot(ICoreClientAPI, ItemSlot)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyDown(ICoreClientAPI, KeyEvent)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyUp(ICoreClientAPI, KeyEvent)</a>
     </div>
     <div>
@@ -400,6 +394,36 @@ Class GuiElementSlider
 
 
 
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_OnSliderRestingText" data-uid="Vintagestory.API.Client.GuiElementSlider.OnSliderRestingText">
+  OnSliderRestingText
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SliderTooltipDelegate OnSliderRestingText</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.SliderTooltipDelegate.html">SliderTooltipDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Client_GuiElementSlider_OnSliderTooltip" data-uid="Vintagestory.API.Client.GuiElementSlider.OnSliderTooltip">
   OnSliderTooltip
   
@@ -431,6 +455,38 @@ Class GuiElementSlider
 
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="Vintagestory_API_Client_GuiElementSlider_Enabled_" data-uid="Vintagestory.API.Client.GuiElementSlider.Enabled*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_Enabled" data-uid="Vintagestory.API.Client.GuiElementSlider.Enabled">
+  Enabled
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enables/disables the given element (default is enabled)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Enabled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Client_GuiElementSlider_Focusable_" data-uid="Vintagestory.API.Client.GuiElementSlider.Focusable*"></a>
@@ -465,8 +521,127 @@ Class GuiElementSlider
 
 
 
+  <a id="Vintagestory_API_Client_GuiElementSlider_ShowTextWhenResting_" data-uid="Vintagestory.API.Client.GuiElementSlider.ShowTextWhenResting*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_ShowTextWhenResting" data-uid="Vintagestory.API.Client.GuiElementSlider.ShowTextWhenResting">
+  ShowTextWhenResting
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShowTextWhenResting { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementSlider_TooltipExceedClipBounds_" data-uid="Vintagestory.API.Client.GuiElementSlider.TooltipExceedClipBounds*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_TooltipExceedClipBounds" data-uid="Vintagestory.API.Client.GuiElementSlider.TooltipExceedClipBounds">
+  TooltipExceedClipBounds
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TooltipExceedClipBounds { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Client_GuiElementSlider_AddSkipValue_" data-uid="Vintagestory.API.Client.GuiElementSlider.AddSkipValue*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_AddSkipValue_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementSlider.AddSkipValue(System.Int32)">
+  AddSkipValue(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddSkipValue(int skipValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>skipValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementSlider_ClearSkipValues_" data-uid="Vintagestory.API.Client.GuiElementSlider.ClearSkipValues*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_ClearSkipValues" data-uid="Vintagestory.API.Client.GuiElementSlider.ClearSkipValues">
+  ClearSkipValues()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearSkipValues()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Client_GuiElementSlider_ComposeElements_" data-uid="Vintagestory.API.Client.GuiElementSlider.ComposeElements*"></a>
@@ -552,6 +727,42 @@ Class GuiElementSlider
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementSlider_OnKeyDown_" data-uid="Vintagestory.API.Client.GuiElementSlider.OnKeyDown*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementSlider.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">
+  OnKeyDown(ICoreClientAPI, KeyEvent)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when a key is held down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The client API</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></dt>
+    <dd><p>The key event arguments.</p>
+</dd>
+  </dl>
+
 
 
 
@@ -707,6 +918,37 @@ Class GuiElementSlider
 
 
 
+  <a id="Vintagestory_API_Client_GuiElementSlider_RemoveSkipValue_" data-uid="Vintagestory.API.Client.GuiElementSlider.RemoveSkipValue*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_RemoveSkipValue_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementSlider.RemoveSkipValue(System.Int32)">
+  RemoveSkipValue(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveSkipValue(int skipValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>skipValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementSlider_RenderInteractiveElements_" data-uid="Vintagestory.API.Client.GuiElementSlider.RenderInteractiveElements*"></a>
 
   <h3 id="Vintagestory_API_Client_GuiElementSlider_RenderInteractiveElements_System_Single_" data-uid="Vintagestory.API.Client.GuiElementSlider.RenderInteractiveElements(System.Single)">
@@ -760,6 +1002,37 @@ Class GuiElementSlider
     <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>The maximum limit before things break down.</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementSlider_SetSkipValues_" data-uid="Vintagestory.API.Client.GuiElementSlider.SetSkipValues*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementSlider_SetSkipValues_System_Collections_Generic_HashSet_System_Int32__" data-uid="Vintagestory.API.Client.GuiElementSlider.SetSkipValues(System.Collections.Generic.HashSet{System.Int32})">
+  SetSkipValues(HashSet&lt;int&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSkipValues(HashSet&lt;int&gt; skipValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>skipValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
   </dl>
 
 

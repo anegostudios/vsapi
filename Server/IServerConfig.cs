@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Server
 {
     public enum EnumWhitelistMode
@@ -11,7 +13,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         Default,
         /// <summary>
-        /// All players can join 
+        /// All players can join
         /// </summary>
         Off,
         /// <summary>
@@ -41,6 +43,7 @@ namespace Vintagestory.API.Server
         string WelcomeMessage { get; set; }
         /// <summary>
         /// Max amount of concurrent players, any beyond will be denied to join
+        /// If the cli argument --maxclients is set then the value provided by the cli arg will be returned instead of the one from the config
         /// </summary>
         int MaxClients { get; set; }
         /// <summary>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -235,6 +237,15 @@ namespace Vintagestory.API.Common
             return ct;
         }
 
+        /// <summary>
+        /// Alias to LoadAlternates
+        /// </summary>
+        /// <param name="assetManager"></param>
+        /// <param name="logger"></param>
+        public void Bake(IAssetManager assetManager, ILogger logger)
+        {
+            LoadAlternates(assetManager, logger);
+        }
 
         /// <summary>
         /// Expands the Composite Shape and populates the Baked field
@@ -319,7 +330,7 @@ namespace Vintagestory.API.Common
                 else
                 {
                     logger.Warning("Could not find any variants for wildcard shape {0}.", shape.Base.Path);
-                    return new CompositeShape[] { };
+                    return Array.Empty<CompositeShape>();
                 }
             }
 

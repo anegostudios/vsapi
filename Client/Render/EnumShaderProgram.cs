@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿
+#nullable disable
+namespace Vintagestory.API.Client
 {
     // No camel casing because these names relate to file names
     public enum EnumShaderProgram
@@ -108,7 +110,7 @@
         Shadowmap = 29,
         Particlesquad2d = 30,
         Shadowmapentityanimated = 31,
-        Shadowmapgeneric = 32,
+        Chunkshadowmap = 32,
         Texture2texture = 33,
         Celestialobject = 34,
         Guitopsoil = 35,

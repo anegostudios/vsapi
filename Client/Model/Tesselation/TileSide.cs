@@ -1,6 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client.Tesselation
 {
     public class TileSideEnum

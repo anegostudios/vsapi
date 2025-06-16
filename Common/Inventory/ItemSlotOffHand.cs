@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿
+#nullable disable
+namespace Vintagestory.API.Common
 {
     /// <summary>
     /// A slot that only accepts collectibles designated for the off-hand slot
@@ -9,7 +11,7 @@
 
         public ItemSlotOffhand(InventoryBase inventory) : base(inventory)
         {
-            this.BackgroundIcon = "offhand";
+            this.BackgroundIcon = "left_hand";
         }
     }
 

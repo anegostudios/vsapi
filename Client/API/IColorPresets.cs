@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿
+#nullable disable
+namespace Vintagestory.API.Client
 {
     /// <summary>
     /// Facilitates the Accessibility tab wireframe colors setting.  Offers three preset color options, "Default", "Preset2" and "Preset3". The selection between these three options is chosen by the ClientSettings int value "guiColorsPreset".

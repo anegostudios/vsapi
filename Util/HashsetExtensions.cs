@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Text;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public static class HashsetExtensions

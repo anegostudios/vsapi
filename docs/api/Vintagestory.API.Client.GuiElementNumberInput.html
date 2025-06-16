@@ -142,13 +142,13 @@ Class GuiElementNumberInput
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextInput.html#Vintagestory_API_Client_GuiElementTextInput_refocusStage">GuiElementTextInput.refocusStage</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementTextInput.html#Vintagestory_API_Client_GuiElementTextInput_Enabled">GuiElementTextInput.Enabled</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextInput.html#Vintagestory_API_Client_GuiElementTextInput_HideCharacters">GuiElementTextInput.HideCharacters()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextInput.html#Vintagestory_API_Client_GuiElementTextInput_SetPlaceHolderText_System_String_">GuiElementTextInput.SetPlaceHolderText(string)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElementTextInput.html#Vintagestory_API_Client_GuiElementTextInput_OnFocusLost">GuiElementTextInput.OnFocusLost()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextInput.html#Vintagestory_API_Client_GuiElementTextInput_OnFocusGained">GuiElementTextInput.OnFocusGained()</a>
@@ -217,9 +217,6 @@ Class GuiElementNumberInput
       <a class="xref" href="Vintagestory.API.Client.GuiElementEditableTextBase.html#Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_System_String_System_Boolean_">GuiElementEditableTextBase.SetValue(string, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElementEditableTextBase.html#Vintagestory_API_Client_GuiElementEditableTextBase_LoadValue_System_Collections_Generic_List_System_String__">GuiElementEditableTextBase.LoadValue(List&lt;string&gt;)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementEditableTextBase.html#Vintagestory_API_Client_GuiElementEditableTextBase_Lineize_System_String_">GuiElementEditableTextBase.Lineize(string)</a>
     </div>
     <div>
@@ -269,9 +266,6 @@ Class GuiElementNumberInput
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_enabled">GuiElementControl.enabled</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_Enabled">GuiElementControl.Enabled</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_dirtTextureName">GuiElement.dirtTextureName</a>
@@ -662,6 +656,37 @@ Class GuiElementNumberInput
 
 
 
+  <a id="Vintagestory_API_Client_GuiElementNumberInput_IntMode_" data-uid="Vintagestory.API.Client.GuiElementNumberInput.IntMode*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementNumberInput_IntMode" data-uid="Vintagestory.API.Client.GuiElementNumberInput.IntMode">
+  IntMode
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IntMode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -748,6 +773,65 @@ Class GuiElementNumberInput
     <dd><p>A float representing the value.</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementNumberInput_LoadValue_" data-uid="Vintagestory.API.Client.GuiElementNumberInput.LoadValue*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementNumberInput_LoadValue_System_Collections_Generic_List_System_String__" data-uid="Vintagestory.API.Client.GuiElementNumberInput.LoadValue(System.Collections.Generic.List{System.String})">
+  LoadValue(List&lt;string&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets given texts, leaves cursor position unchanged</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void LoadValue(List&lt;string&gt; newLines)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newLines</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementNumberInput_OnFocusLost_" data-uid="Vintagestory.API.Client.GuiElementNumberInput.OnFocusLost*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementNumberInput_OnFocusLost" data-uid="Vintagestory.API.Client.GuiElementNumberInput.OnFocusLost">
+  OnFocusLost()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the element looses focus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnFocusLost()</code></pre>
+  </div>
+
+
 
 
 

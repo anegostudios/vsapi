@@ -4,6 +4,8 @@ using System.IO;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -93,6 +95,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool IsWildCard = false;
 
+        public bool IsBasicWildCard = false;
+        public bool IsAdvancedWildCard = false;
+        public bool IsRegex = false;
+
         /// <summary>
         /// Turns Type, Code and Attributes into an IItemStack
         /// </summary>
@@ -103,6 +109,12 @@ namespace Vintagestory.API.Common
             if (ReturnedStack != null)
             {
                 ReturnedStack.Resolve(resolver, sourceForErrorLogging + " recipe with output ", Code);
+            }
+
+            if (IsBasicWildCard || IsAdvancedWildCard || IsRegex)
+            {
+                IsWildCard = true;
+                return true;
             }
 
             if (Code.Path.Contains('*'))
@@ -179,7 +191,7 @@ namespace Vintagestory.API.Common
             return CloneTo<CraftingRecipeIngredient>();
         }
 
-        public T CloneTo<T>() where T:CraftingRecipeIngredient, new()
+        public T CloneTo<T>()  where T:CraftingRecipeIngredient, new()
         {
             T stack = new T()
             {
@@ -188,6 +200,9 @@ namespace Vintagestory.API.Common
                 Name = Name,
                 Quantity = Quantity,
                 IsWildCard = IsWildCard,
+                IsBasicWildCard = IsBasicWildCard,
+                IsAdvancedWildCard = IsAdvancedWildCard,
+                IsRegex = IsRegex,
                 IsTool = IsTool,
                 ToolDurabilityCost = ToolDurabilityCost,
                 AllowedVariants = AllowedVariants == null ? null : (string[])AllowedVariants.Clone(),
@@ -223,6 +238,9 @@ namespace Vintagestory.API.Common
         public virtual void ToBytes(BinaryWriter writer)
         {
             writer.Write(IsWildCard);
+            writer.Write(IsBasicWildCard);
+            writer.Write(IsAdvancedWildCard);
+            writer.Write(IsRegex);
             writer.Write((int)Type);
             writer.Write(Code.ToShortString());
             writer.Write(Quantity);
@@ -274,6 +292,9 @@ namespace Vintagestory.API.Common
         public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)
         {
             IsWildCard = reader.ReadBoolean();
+            IsBasicWildCard = reader.ReadBoolean();
+            IsAdvancedWildCard = reader.ReadBoolean();
+            IsRegex = reader.ReadBoolean();
             Type = (EnumItemClass)reader.ReadInt32();
             Code = new AssetLocation(reader.ReadString());
             Quantity = reader.ReadInt32();

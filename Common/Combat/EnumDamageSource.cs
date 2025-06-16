@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿
+#nullable disable
+namespace Vintagestory.API.Common
 {
     public enum EnumDamageSource
     {
@@ -59,6 +61,11 @@
         /// </summary>
         Unknown,
 
-        Weather
+        Weather,
+
+        /// <summary>
+        /// It came from entity bleeding
+        /// </summary>
+        Bleed
     }
 }

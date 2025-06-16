@@ -3,6 +3,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -51,6 +53,7 @@ namespace Vintagestory.API.Common
     public delegate void ChunkColumnUnloadDelegate(Vec3i chunkCoord);
 
 
+    public delegate void EntityMountDelegate(EntityAgent mountingEntity, IMountableSeat mountedSeat);
 
     /// <summary>
     /// Triggered when the server loaded a map region from disk or generated a new one
@@ -78,6 +81,9 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IEventAPI
     {
+        event EntityMountDelegate EntityMounted;
+        event EntityMountDelegate EntityUnmounted;
+
         /// <summary>
         /// Called when a player changed dimension
         /// </summary>
@@ -241,5 +247,7 @@ namespace Vintagestory.API.Common
         void TriggerPlayerDimensionChanged(IPlayer player);
         void TriggerEntityDeath(Entity entity, DamageSource damageSourceForDeath);
         bool TriggerMatchesRecipe(IPlayer forPlayer, GridRecipe gridRecipe, ItemSlot[] ingredients, int gridWidth);
+        void TriggerEntityMounted(EntityAgent entityAgent, IMountableSeat entityRideableSeat);
+        void TriggerEntityUnmounted(EntityAgent entityAgent, IMountableSeat entityRideableSeat);
     }
 }

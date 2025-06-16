@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class StringAttribute : ScalarAttribute<string>, IAttribute

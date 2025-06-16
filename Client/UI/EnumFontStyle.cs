@@ -1,5 +1,7 @@
 ﻿using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     [Flags]

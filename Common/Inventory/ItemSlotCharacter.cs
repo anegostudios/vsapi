@@ -1,5 +1,7 @@
 ﻿using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public enum EnumCharacterDressType
@@ -28,22 +30,22 @@ namespace Vintagestory.API.Common
     {
         public override EnumItemStorageFlags StorageType => EnumItemStorageFlags.Outfit;
 
-        EnumCharacterDressType type;
+        public EnumCharacterDressType Type;
 
         public ItemSlotCharacter(EnumCharacterDressType type, InventoryBase inventory) : base(inventory)
         {
-            this.type = type;
+            this.Type = type;
         }
 
         public override bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
-            if (!IsDressType(sourceSlot.Itemstack, type)) return false;
+            if (!IsDressType(sourceSlot.Itemstack, Type)) return false;
             return base.CanTakeFrom(sourceSlot, priority);
         }
 
         public override bool CanHold(ItemSlot itemstackFromSourceSlot)
         {
-            if (!IsDressType(itemstackFromSourceSlot.Itemstack, type)) return false;
+            if (!IsDressType(itemstackFromSourceSlot.Itemstack, Type)) return false;
 
             return base.CanHold(itemstackFromSourceSlot);
         }

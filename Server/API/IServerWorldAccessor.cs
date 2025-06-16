@@ -6,6 +6,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Server
 {
     /// <summary>
@@ -28,19 +30,20 @@ namespace Vintagestory.API.Server
         void DespawnEntity(Entity entity, EntityDespawnData reason);
 
         /// <summary>
-        /// Creates an explosion at given position. 
+        /// Creates an explosion at given position.
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="blastType"></param>
         /// <param name="destructionRadius"></param>
         /// <param name="injureRadius"></param>
         /// <param name="blockDropChanceMultiplier"></param>
-        void CreateExplosion(BlockPos pos, EnumBlastType blastType, double destructionRadius, double injureRadius, float blockDropChanceMultiplier = 1);
+        /// <param name="ignitedByPlayerUid"></param>
+        void CreateExplosion(BlockPos pos, EnumBlastType blastType, double destructionRadius, double injureRadius, float blockDropChanceMultiplier = 1, string ignitedByPlayerUid = null);
 
         /// <summary>
         /// List of all loaded tree generators
         /// </summary>
-        OrderedDictionary<AssetLocation, ITreeGenerator> TreeGenerators { get; }
+        Datastructures.OrderedDictionary<AssetLocation, ITreeGenerator> TreeGenerators { get; }
 
         /// <summary>
         /// Dictionary of entity codes to remap, old codes (which may be present in save files or schematics) as keys

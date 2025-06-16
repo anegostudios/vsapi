@@ -1,8 +1,13 @@
-﻿using System;
-using Cairo;
-using Vintagestory.API.MathTools;
+﻿using Cairo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
+
+#nullable disable
 
 namespace Vintagestory.API.Client
 {
@@ -18,24 +23,32 @@ namespace Vintagestory.API.Client
         int currentValue;
         int alarmValue; // Shows red beyond this point
 
+        HashSet<int> skipValues = [];
+        List<int> allowValues = [];
+
         bool mouseDownOnSlider = false;
         bool mouseOnSlider = false;
 
         bool triggerOnMouseUp = false;
         bool didChangeValue = false;
+        public bool TooltipExceedClipBounds { get; set; } = false;
+        public bool ShowTextWhenResting { get; set; } = false;
 
         LoadedTexture handleTexture;
         LoadedTexture hoverTextTexture;
-        LoadedTexture waterTexture;
+        LoadedTexture restingTextTexture;
+        LoadedTexture sliderFillTexture;
         LoadedTexture alarmValueTexture;
 
         GuiElementStaticText textElem;
+        GuiElementStaticText textElemResting;
 
-        
+
         Rectangled alarmTextureRect;
 
         ActionConsumable<int> onNewSliderValue;
         public SliderTooltipDelegate OnSliderTooltip;
+        public SliderTooltipDelegate OnSliderRestingText;
 
 
         internal const int unscaledHeight = 20;
@@ -48,12 +61,24 @@ namespace Vintagestory.API.Client
 
         double handleWidth;
         double handleHeight;
-        double hoverTextWidth;
-        double hoverTextHeight;
         double padding;
 
 
-        public override bool Focusable { get { return true; } }
+        public override bool Enabled
+        {
+            get => base.Enabled;
+            set
+            {
+                enabled = value;
+                ComposeHandleElement();
+                if (alarmValue > minValue && alarmValue < maxValue) MakeAlarmValueTexture();
+                ComposeHoverTextElement();
+                ComposeRestingTextElement();
+                ComposeFillTexture();
+            }
+        }
+
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Builds a slider.  A horizontal customizeable slider.
@@ -65,7 +90,8 @@ namespace Vintagestory.API.Client
         {
             handleTexture = new LoadedTexture(capi);
             hoverTextTexture = new LoadedTexture(capi);
-            waterTexture = new LoadedTexture(capi);
+            restingTextTexture = new LoadedTexture(capi);
+            sliderFillTexture = new LoadedTexture(capi);
             alarmValueTexture = new LoadedTexture(capi);
 
             this.onNewSliderValue = onNewSliderValue;
@@ -76,8 +102,6 @@ namespace Vintagestory.API.Client
         {
             handleWidth = scaled(unscaledHandleWidth) * Scale;
             handleHeight = scaled(unscaledHandleHeight) * Scale;
-            hoverTextWidth = scaled(unscaledHoverTextHeight);
-            hoverTextHeight = scaled(unscaledHoverTextHeight);
             padding = scaled(unscaledPadding) * Scale;
 
             Bounds.CalcWorldBounds();
@@ -93,38 +117,44 @@ namespace Vintagestory.API.Client
 
 
 
-            /*** 2. Handle ***/
+            ComposeHandleElement();
+            ComposeFillTexture();
+            ComposeHoverTextElement();
+            ComposeRestingTextElement();
+        }
+
+
+        internal void ComposeHandleElement()
+        {
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)handleWidth + 4, (int)handleHeight + 4);
             Context ctx = genContext(surface);
 
             ctx.SetSourceRGBA(1, 1, 1, 0);
             ctx.Paint();
-            
+
             RoundRectangle(ctx, 2, 2, handleWidth, handleHeight, 1);
-            fillWithPattern(api, ctx, woodTextureName, false, true, 255, 0.5f);
+            if (!enabled)
+            {
+                ctx.SetSourceRGB(43 / 255.0, 33 / 255.0, 24 / 255.0);
+                ctx.FillPreserve();
+            }
+            fillWithPattern(api, ctx, woodTextureName, false, true, enabled ? 255 : 159, 0.5f);
 
             ctx.SetSourceRGB(43 / 255.0, 33 / 255.0, 24 / 255.0);
             ctx.LineWidth = 2;
             ctx.Stroke();
-            
+
             generateTexture(surface, ref handleTexture);
             ctx.Dispose();
             surface.Dispose();
-
-            ComposeWaterTexture();
-            ComposeHoverTextElement();
         }
-
 
         internal void ComposeHoverTextElement()
         {
             ElementBounds bounds = new ElementBounds().WithFixedPadding(7).WithParent(ElementBounds.Empty);
 
             string text = currentValue + unit;
-            if (OnSliderTooltip != null)
-            {
-                text = OnSliderTooltip(currentValue);
-            }
+            if (OnSliderTooltip != null) text = OnSliderTooltip(currentValue);
 
             textElem = new GuiElementStaticText(api, text, EnumTextOrientation.Center, bounds, CairoFont.WhiteMediumText().WithFontSize((float)GuiStyle.SubNormalFontSize));
             textElem.Font.UnscaledFontsize = GuiStyle.SmallishFontSize;
@@ -150,7 +180,36 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
-        internal void ComposeWaterTexture()
+        internal void ComposeRestingTextElement()
+        {
+            ElementBounds bounds = new ElementBounds().WithFixedPadding(7).WithParent(ElementBounds.Empty);
+            double sliderWidth = Bounds.InnerWidth - 2 * padding - handleWidth / 2;
+            double handlePosition = sliderWidth * (1.0 * currentValue - minValue) / (maxValue - minValue);
+
+            string text = currentValue + unit;
+            if (OnSliderRestingText != null) text = OnSliderRestingText(currentValue);
+            else if (OnSliderTooltip != null) text = OnSliderTooltip(currentValue);
+
+            textElemResting = new GuiElementStaticText(api, text, EnumTextOrientation.Center, bounds, CairoFont.WhiteSmallText());
+            textElemResting.AutoBoxSize();
+            textElemResting.Bounds.CalcWorldBounds();
+            textElemResting.Bounds.fixedY = ((int)(scaled(30) * Scale) - textElemResting.Font.GetFontExtents().Height) / 2 / RuntimeEnv.GUIScale;
+
+            if (!enabled) textElemResting.Font.Color[3] = 0.35;
+            if ((handlePosition - 10) >= textElemResting.Bounds.InnerWidth) textElemResting.Font.Color = [0, 0, 0, enabled? 1 : 0.5];
+
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)bounds.OuterWidth, (int)bounds.OuterHeight);
+            Context ctx = genContext(surface);
+
+            textElemResting.ComposeElements(ctx, surface);
+
+            generateTexture(surface, ref restingTextTexture);
+            ctx.Dispose();
+            surface.Dispose();
+        }
+
+
+        internal void ComposeFillTexture()
         {
             double sliderWidth = Bounds.InnerWidth - 2 * padding - handleWidth / 2;
             double handlePosition = sliderWidth * (1.0 * currentValue - minValue) / (maxValue - minValue);
@@ -159,12 +218,15 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)(handlePosition + 5), (int)insetHeight);
             Context ctx = genContext(surface);
 
-            SurfacePattern pattern = getPattern(api, waterTextureName, true, 255, 0.5f);
+            SurfacePattern pattern = getPattern(api, waterTextureName, true, enabled ? 255 : 127, 0.5f);
             RoundRectangle(ctx, 0, 0, surface.Width, surface.Height, 1);
+            if (enabled) ctx.SetSourceRGBA(0, 0, 0, 1);
+            else ctx.SetSourceRGBA(0.15, 0.15, 0, 0.65);
+            ctx.FillPreserve();
             ctx.SetSource(pattern);
-            ctx.Fill();           
+            ctx.Fill();
 
-            generateTexture(surface, ref waterTexture);
+            generateTexture(surface, ref sliderFillTexture);
             ctx.Dispose();
             surface.Dispose();
         }
@@ -184,16 +246,13 @@ namespace Vintagestory.API.Client
             double insetHeight = Bounds.InnerHeight - 2 * padding;
             double dy = (handleHeight - Bounds.OuterHeight + padding) / 2;
 
-            api.Render.Render2DTexturePremultipliedAlpha(waterTexture.TextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)(handlePosition + 5), (int)insetHeight);
-
-            if (Enabled)
-            {
-                api.Render.Render2DTexturePremultipliedAlpha(handleTexture.TextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
-            }
+            api.Render.Render2DTexturePremultipliedAlpha(sliderFillTexture.TextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)(handlePosition + 5), (int)insetHeight);
+            api.Render.Render2DTexturePremultipliedAlpha(handleTexture.TextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
 
 
             if (mouseDownOnSlider || mouseOnSlider)
             {
+                if (TooltipExceedClipBounds) api.Render.PopScissor();
                 ElementBounds elemBounds = textElem.Bounds;
                 api.Render.Render2DTexturePremultipliedAlpha(
                     hoverTextTexture.TextureId,
@@ -203,6 +262,22 @@ namespace Vintagestory.API.Client
                     elemBounds.OuterHeightInt,
                     300
                 );
+                if (TooltipExceedClipBounds) api.Render.PushScissor(InsideClipBounds);
+            }
+            if (ShowTextWhenResting)
+            {
+                api.Render.PushScissor(Bounds, true);
+                ElementBounds elemBounds = textElemResting.Bounds;
+                double xOffset = (handlePosition - 10) < elemBounds.InnerWidth ? (Bounds.renderX + padding + handlePosition - elemBounds.OuterWidth / 2 + handleWidth / 2 + (restingTextTexture.Width / 2) + 10) : (int)Bounds.renderX;
+                api.Render.Render2DTexturePremultipliedAlpha(
+                    restingTextTexture.TextureId,
+                    xOffset,
+                    Bounds.renderY + (insetHeight - elemBounds.OuterHeight - (padding / 2)) / 2,
+                    elemBounds.OuterWidthInt,
+                    elemBounds.OuterHeightInt,
+                    300
+                );
+                api.Render.PopScissor();
             }
         }
 
@@ -220,7 +295,7 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)alarmTextureRect.Width, (int)alarmTextureRect.Height);
             Context ctx = genContext(surface);
 
-            ctx.SetSourceRGBA(1, 0, 1, 0.4);
+            ctx.SetSourceRGBA(1, 0, 1, enabled ? 0.4 : 0.25);
 
             RoundRectangle(ctx, 0, 0, alarmTextureRect.Width, alarmTextureRect.Height, GuiStyle.ElementBGRadius);
             ctx.Fill();
@@ -277,12 +352,34 @@ namespace Vintagestory.API.Client
             args.SetHandled(true);
 
             int dir = Math.Sign(args.deltaPrecise);
-            currentValue = Math.Max(minValue, Math.Min(maxValue, currentValue + dir * step));
+            if (currentValue <= minValue && dir < 0 || currentValue >= maxValue && dir > 0) return;
+            currentValue = allowValues[allowValues.IndexOf(currentValue) + dir];
 
             ComposeHoverTextElement();
-            ComposeWaterTexture();
+            ComposeRestingTextElement();
+            ComposeFillTexture();
 
             onNewSliderValue?.Invoke(currentValue);
+        }
+
+        public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
+        {
+            if (!HasFocus) return;
+
+            int dir = 0;
+            if (args.KeyCode == (int)GlKeys.Left && currentValue > minValue) dir = -1;
+            if (args.KeyCode == (int)GlKeys.Right && currentValue < maxValue) dir = 1;
+
+            if (dir != 0)
+            {
+                currentValue = allowValues[allowValues.IndexOf(currentValue) + dir];
+
+                ComposeHoverTextElement();
+                ComposeRestingTextElement();
+                ComposeFillTexture();
+
+                onNewSliderValue?.Invoke(currentValue);
+            }
         }
 
 
@@ -306,19 +403,20 @@ namespace Vintagestory.API.Client
             double value = minValue + (maxValue - minValue) * mouseDeltaX / sliderWidth;
 
             // Round to next step
-            int newValue = Math.Max(minValue, Math.Min(maxValue, step * (int)Math.Round(1.0 * value / step)));
+            int newValue = allowValues.OrderBy(item => Math.Abs(value - item)).First();
 
-            bool didChangeNow = newValue != currentValue;
+            if (newValue == currentValue) return true;
+            didChangeValue = true;
 
-            if (didChangeNow) didChangeValue = true;
             currentValue = newValue;
 
             ComposeHoverTextElement();
+            ComposeRestingTextElement();
+            ComposeFillTexture();
 
-            if (onNewSliderValue != null)
+            if (onNewSliderValue != null && !triggerOnMouseUp)
             {
-                ComposeWaterTexture();
-                if (!triggerOnMouseUp && didChangeNow) return onNewSliderValue(currentValue);
+                return onNewSliderValue(currentValue);
             }
 
             return true;
@@ -333,6 +431,31 @@ namespace Vintagestory.API.Client
         {
             alarmValue = value;
             MakeAlarmValueTexture();
+        }
+
+        public void SetSkipValues(HashSet<int> skipValues)
+        {
+            this.skipValues = skipValues;
+            allowValues.Clear();
+            for (int i = minValue; i <= maxValue; i += step) if (!skipValues.Contains(i)) allowValues.Add(i);
+        }
+
+        public void ClearSkipValues()
+        {
+            skipValues.Clear();
+            for (int i = minValue; i <= maxValue; i += step) allowValues.Add(i);
+        }
+
+        public void AddSkipValue(int skipValue)
+        {
+            skipValues.Add(skipValue);
+            allowValues.Remove(skipValue);
+        }
+
+        public void RemoveSkipValue(int skipValue)
+        {
+            skipValues.Remove(skipValue);
+            for (int i = minValue; i <= maxValue; i += step) if (!skipValues.Contains(i)) allowValues.Add(i);
         }
 
         /// <summary>
@@ -351,8 +474,11 @@ namespace Vintagestory.API.Client
             this.step = step;
             this.unit = unit;
 
+            for (int i = minValue; i <= maxValue; i += step) if (!skipValues.Contains(i)) allowValues.Add(i);
+
             ComposeHoverTextElement();
-            ComposeWaterTexture();
+            ComposeRestingTextElement();
+            ComposeFillTexture();
         }
 
         public void SetValue(int currentValue)
@@ -374,7 +500,7 @@ namespace Vintagestory.API.Client
 
             handleTexture.Dispose();
             hoverTextTexture.Dispose();
-            waterTexture.Dispose();
+            sliderFillTexture.Dispose();
             alarmValueTexture.Dispose();
         }
     }

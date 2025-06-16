@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Server
+﻿
+#nullable disable
+namespace Vintagestory.API.Server
 {
     /// <summary>
     /// The current connection state of a player thats currently connecting to the server

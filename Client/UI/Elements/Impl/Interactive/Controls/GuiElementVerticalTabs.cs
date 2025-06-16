@@ -2,6 +2,8 @@
 using Cairo;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementVerticalTabs : GuiElementTextBase
@@ -26,7 +28,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool ToggleTabs = false;
 
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Creates a new vertical tab group.

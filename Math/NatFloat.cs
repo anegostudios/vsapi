@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
@@ -38,15 +40,15 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         NARROWINVERSEGAUSSIAN = 5,
         /// <summary>
-        /// Select numbers in the form of avg + var, wheras low value of var are preferred
+        /// Select random numbers in the form of avg + var, with numbers near avg being preferred
         /// </summary>
         INVEXP = 6,
         /// <summary>
-        /// Select numbers in the form of avg + var, wheras low value of var are strongly preferred
+        /// Select random numbers in the form of avg + var, with numbers near avg being strongly preferred
         /// </summary>
         STRONGINVEXP = 7,
         /// <summary>
-        /// Select numbers in the form of avg + var, wheras low value of var are very strongly preferred
+        /// Select random numbers in the form of avg + var, with numbers near avg being very strongly preferred
         /// </summary>
         STRONGERINVEXP = 8,
         /// <summary>
@@ -432,17 +434,19 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public float ClampToRange(float value)
         {
+            float min = avg - var;
+            float max = avg + var;
+
             switch (dist)
             {
                 case EnumDistribution.INVEXP:
                 case EnumDistribution.STRONGINVEXP:
                 case EnumDistribution.STRONGERINVEXP:
-                    return Math.Min(value, value + var);
-                default:
-                    float min = avg - var;
-                    float max = avg + var;
-                    return GameMath.Clamp(value, Math.Min(min, max), Math.Max(min, max));
+                    min = avg;
+                    break;
             }
+
+            return GameMath.Clamp(value, Math.Min(min, max), Math.Max(min, max));
         }
 
 

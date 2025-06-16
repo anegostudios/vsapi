@@ -2,6 +2,8 @@
 using Cairo;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementScrollbar : GuiElementControl
@@ -25,7 +27,7 @@ namespace Vintagestory.API.Client
 
         protected LoadedTexture handleTexture;
 
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Moving 1 pixel of the scrollbar moves the content by ScrollConversionFactor of pixels

@@ -4,6 +4,8 @@ using System.Linq;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public enum EnumOwnerType
@@ -180,12 +182,11 @@ namespace Vintagestory.API.Common
                 return EnumPlayerAccessResult.OkPrivilege;
             }
 
-            EnumBlockAccessFlags flags;
-            if (PermittedPlayerUids.TryGetValue(player.PlayerUID, out flags) && (flags & claimFlag) > 0)
+            if (PermittedPlayerUids.TryGetValue(player.PlayerUID, out EnumBlockAccessFlags flags) && (flags & claimFlag) > 0)
             {
                 return EnumPlayerAccessResult.OkGrantedPlayer;
             }
-            
+
             foreach (PlayerGroupMembership group in player.Groups)
             {
                 if (PermittedPlayerGroupIds.TryGetValue(group.GroupUid, out flags) && (flags & claimFlag) > 0)

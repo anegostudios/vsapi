@@ -11,6 +11,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public delegate bool CanSpawnNearbyDelegate(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc);
@@ -168,10 +170,11 @@ namespace Vintagestory.API.Common
 
         bool newSpawnGlow;
 
-
+        byte[] baseLightHsv;
         public override byte[] LightHsv
         {
-            get {
+            get
+            {
                 if (Player?.WorldData.CurrentGameMode == EnumGameMode.Spectator) return null;
 
                 byte[] rightHsv = RightHandItemSlot?.Itemstack?.Collectible?.GetLightHsv(World.BlockAccessor, null, RightHandItemSlot.Itemstack);
@@ -195,7 +198,8 @@ namespace Vintagestory.API.Common
                             33, 7, (byte)Math.Min(10, (11 * (1.5f - hoursAlive)))
                         };
                     }
-                } else
+                }
+                else
                 {
                     if (newSpawnGlow) // Don't repeatedly set glowlevel to 0, but only once after our respawn glow expired.
                     {
@@ -204,19 +208,34 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                if (rightHsv == null) return leftHsv;
-                if (leftHsv == null) return rightHsv;
+                if (baseLightHsv == null) return MergeHSV(rightHsv, leftHsv);
+                if (leftHsv == null) return MergeHSV(rightHsv, baseLightHsv);
+                if (rightHsv == null) return MergeHSV(leftHsv, baseLightHsv);
 
-                float totalval = rightHsv[2] + leftHsv[2];
-                float t = leftHsv[2] / totalval;
+                // If we've reached here then all three possible light sources are non-null, so let's merge the two brightest and ignore the third
+                if (leftHsv[2] > rightHsv[2]) return MergeHSV(leftHsv, baseLightHsv[2] > rightHsv[2] ? baseLightHsv : rightHsv);
+                else return MergeHSV(rightHsv, baseLightHsv[2] > leftHsv[2] ? baseLightHsv : leftHsv);
+            }
+            set
+            {
+                baseLightHsv = value;
+            }
+        }
 
-                return new byte[]
-                {
+        private byte[] MergeHSV(byte[] rightHsv, byte[] leftHsv)
+        {
+            if (leftHsv == null) return rightHsv;
+            if (rightHsv == null) return leftHsv;
+
+            float totalval = rightHsv[2] + leftHsv[2];
+            float t = leftHsv[2] / totalval;
+
+            return new byte[]
+            {
                     (byte)(leftHsv[0] * t + rightHsv[0] * (1-t)),
                     (byte)(leftHsv[1] * t + rightHsv[1] * (1-t)),
                     Math.Max(leftHsv[2], rightHsv[2])
-                };
-            }
+            };
         }
 
         public override bool AlwaysActive
@@ -937,10 +956,10 @@ namespace Vintagestory.API.Common
                 float discomfortColdSnowStorm = climate == null ? 0 : (GlobalConstants.CurrentWindSpeedClient.Length() * climate.Rainfall * Math.Max(0, (1 - climate.Temperature) / 5f));
                 float discomfortLevel = Math.Max(discomfortLevelSandstorm, discomfortColdSnowStorm);
 
-                strongWindAccum = (discomfortLevel > 0.75 && !Swimming) ? strongWindAccum + dt : 0;
+                strongWindAccum = (discomfortLevel > 0.68 && !Swimming) ? strongWindAccum + dt : 0;
 
                 float windAngle = (float)Math.Atan2(GlobalConstants.CurrentWindSpeedClient.X, GlobalConstants.CurrentWindSpeedClient.Z);
-                float yawDiff = GameMath.AngleRadDistance(windAngle, Pos.Yaw - GameMath.PIHALF);
+                float yawDiff = GameMath.AngleRadDistance(windAngle, Pos.Yaw + GameMath.PI);
                 bool lookingIntoWind = Math.Abs(yawDiff) < 45 * GameMath.DEG2RAD;
                 bool isOutside = GlobalConstants.CurrentDistanceToRainfallClient < 6;
 
@@ -1446,7 +1465,7 @@ namespace Vintagestory.API.Common
             Teleporting = true;
 
            sapi.WorldManager.LoadChunkColumnPriority((int)x / GlobalConstants.ChunkSize, (int)z / GlobalConstants.ChunkSize, new ChunkLoadOptions()
-            {
+           {
                 OnLoaded = () =>
                 {
                     onplrteleported(x, y, z, onTeleported, sapi);

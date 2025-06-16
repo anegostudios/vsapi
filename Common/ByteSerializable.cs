@@ -1,5 +1,7 @@
 ﻿using System.IO;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface IByteSerializable

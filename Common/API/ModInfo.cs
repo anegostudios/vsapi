@@ -10,6 +10,8 @@ using Newtonsoft.Json.Linq;
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -41,7 +43,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class ModInfo : IComparable<ModInfo>
     {
-        private IReadOnlyList<string> _authors = new string[0];
+        private IReadOnlyList<string> _authors = Array.Empty<string>();
 
         
         /// <summary> The type of this mod. Can be "Theme", "Content" or "Code". </summary>
@@ -75,6 +77,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         [JsonProperty]
         public string NetworkVersion = null;
+
+        /// <summary>
+        /// The path relative to the mod root to load the icon from.
+        /// If this is not set, the game will also try to load "./modicon.png" before giving up.
+        /// </summary>
+        [JsonProperty]
+        public string IconPath = null;
 
         /// <summary> A short description of what this mod does. (optional) </summary>
         [JsonProperty]
@@ -271,7 +280,7 @@ namespace Vintagestory.API.Common
                 var listType    = typeof(List<>).MakeGenericType(elementType);
                 var list        = (IList)Activator.CreateInstance(listType);
                 foreach (var element in elements) list.Add(element);
-                return listType.GetMethod("AsReadOnly").Invoke(list, new object[0]);
+                return listType.GetMethod("AsReadOnly").Invoke(list, Array.Empty<object>());
             }
 
             public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

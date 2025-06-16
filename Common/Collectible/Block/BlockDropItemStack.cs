@@ -4,6 +4,8 @@ using System.IO;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -144,7 +146,7 @@ namespace Vintagestory.API.Common
         {
             if (ResolvedItemstack == null) return null;
 
-            int quantity = GameMath.RoundRandom(random, Quantity.nextFloat() * dropQuantityMultiplier);
+            int quantity = GameMath.RoundRandom(random, Quantity.nextFloat(dropQuantityMultiplier));
 
             if (quantity <= 0) return null;
 

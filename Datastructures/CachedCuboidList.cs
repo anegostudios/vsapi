@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class CachedCuboidList : IEnumerable<Cuboidd>
     {
-        public Cuboidd[] cuboids = new Cuboidd[0];   //initialised with size 0 because cuboids.Length test and the enumerator may use this
+        public Cuboidd[] cuboids = System.Array.Empty<Cuboidd>();   //initialised with size 0 because cuboids.Length test and the enumerator may use this
         public BlockPos[] positions;
         public Block[] blocks;
         public int Count;

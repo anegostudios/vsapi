@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
-using Cairo;
-using Vintagestory.API.MathTools;
+﻿using Cairo;
 using System;
+using System.Collections.Generic;
+using Vintagestory.API.MathTools;
+
+#nullable disable
 
 namespace Vintagestory.API.Client
 {
@@ -28,16 +30,18 @@ namespace Vintagestory.API.Client
         /// </summary>
         public int UnscaledCellHorPadding = 7;
 
+        public bool Tabbable = false;
+        bool renderFocusHighlight;
+
+        public override bool Focusable { get { return Tabbable; } }
+
 
         LoadedTexture listTexture;
 
         ElementBounds insideBounds;
 
+        protected int currentFocusableElementKey;
 
-        int childFocusIndex;
-
-
-        
 
 
         /// <summary>
@@ -111,10 +115,116 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
+        /// <summary>
+        /// Gets the currently tabbed index element, if there is one currently focused.
+        /// </summary>
+        public GuiElement CurrentTabIndexElement
+        {
+            get
+            {
+                foreach (GuiElement element in Elements)
+                {
+                    if (element.Focusable && element.HasFocus)
+                    {
+                        return element;
+                    }
+                }
+
+                return null;
+            }
+        }
+
+        public GuiElement FirstTabbableElement
+        {
+            get
+            {
+                foreach (GuiElement element in Elements)
+                {
+                    if (element.Focusable)
+                    {
+                        return element;
+                    }
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets the maximum tab index of the components.
+        /// </summary>
+        public int MaxTabIndex
+        {
+            get
+            {
+                int tabIndex = -1;
+                foreach (GuiElement element in Elements)
+                {
+                    if (element.Focusable)
+                    {
+                        tabIndex = Math.Max(tabIndex, element.TabIndex);
+                    }
+                }
+
+                return tabIndex;
+            }
+        }
+
+        /// <summary>
+        /// marks an element as in focus.  
+        /// </summary>
+        /// <param name="tabIndex">The tab index to focus at.</param>
+        /// <returns>Whether or not the focus could be done.</returns>
+        public bool FocusElement(int tabIndex)
+        {
+            GuiElement newFocusedElement = null;
+
+            foreach (GuiElement element in Elements)
+            {
+                if (element.Focusable && element.TabIndex == tabIndex)
+                {
+                    newFocusedElement = element;
+                    break;
+                }
+            }
+
+            if (newFocusedElement != null)
+            {
+                UnfocusOwnElementsExcept(newFocusedElement);
+                newFocusedElement.OnFocusGained();
+                return true;
+            }
+
+            return false;
+        }
+
+        public void UnfocusOwnElements()
+        {
+            UnfocusOwnElementsExcept(null);
+        }
+
+        /// <summary>
+        /// Unfocuses all elements except one specific element.
+        /// </summary>
+        /// <param name="elem">The element to remain in focus.</param>
+        public void UnfocusOwnElementsExcept(GuiElement elem)
+        {
+            foreach (GuiElement element in Elements)
+            {
+                if (element == elem) continue;
+
+                if (element.Focusable && element.HasFocus)
+                {
+                    element.OnFocusLost();
+                }
+            }
+        }
+
         public void Clear()
         {
             Elements.Clear();
             Bounds.ChildBounds.Clear();
+            currentFocusableElementKey = 0;
         }
 
         /// <summary>
@@ -133,6 +243,15 @@ namespace Vintagestory.API.Client
                 Elements.Insert(afterPosition, elem);
             }
 
+            if (elem.Focusable)
+            {
+                elem.TabIndex = currentFocusableElementKey++;
+            }
+            else
+            {
+                elem.TabIndex = -1;
+            }
+
             elem.InsideClipBounds = InsideClipBounds;
 
             Bounds.WithChild(elem.Bounds);
@@ -149,61 +268,45 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
-            int nowFocusIndex = -1;
-            int i = 0;
             foreach (GuiElement element in Elements)
             {
                 element.OnMouseUp(api, args);
-                if (args.Handled)
-                {
-                    nowFocusIndex = i;
-                    break;
-                }
-                i++;
             }
-
-            if (childFocusIndex >= 0 && childFocusIndex < Elements.Count && nowFocusIndex != childFocusIndex)
-            {
-                Elements[childFocusIndex].OnFocusLost();
-            }
-            if (nowFocusIndex >= 0)
-            {
-
-                Elements[nowFocusIndex].OnFocusGained();
-            }
-            childFocusIndex = nowFocusIndex;
-
 
             if (!args.Handled) base.OnMouseUp(api, args);
-
         }
 
         public override void OnMouseDown(ICoreClientAPI api, MouseEvent args)
         {
-            int nowFocusIndex = -1;
-            int i = 0;
+            bool beforeHandled = false;
+            bool nowHandled = false;
+            renderFocusHighlight = false;
 
             foreach (GuiElement element in Elements)
             {
-                element.OnMouseDown(api, args);
-                if (args.Handled)
+                if (!beforeHandled)
                 {
-                    nowFocusIndex = i;
-                    break;
+                    element.OnMouseDown(api, args);
+                    nowHandled = args.Handled;
                 }
-                i++;
-            }
 
-            if (childFocusIndex >= 0 && nowFocusIndex != childFocusIndex)
-            {
-                Elements[childFocusIndex].OnFocusLost();
-            }
-            if (nowFocusIndex >= 0) {
-                
-                Elements[nowFocusIndex].OnFocusGained();
-            }
-            childFocusIndex = nowFocusIndex;
+                if (!beforeHandled && nowHandled)
+                {
+                    if (element.Focusable && !element.HasFocus)
+                    {
+                        element.OnFocusGained();
+                    }
+                }
+                else
+                {
+                    if (element.Focusable && element.HasFocus)
+                    {
+                        element.OnFocusLost();
+                    }
+                }
 
+                beforeHandled = nowHandled;
+            }
 
             if (!args.Handled) base.OnMouseDown(api, args);
         }
@@ -214,30 +317,85 @@ namespace Vintagestory.API.Client
             foreach (GuiElement element in Elements)
             {
                 element.OnMouseMove(api, args);
+                if (args.Handled)
+                {
+                    break;
+                }
             }
 
             if (!args.Handled) base.OnMouseMove(api, args);
         }
 
 
-
+        bool tabPressed = false;
+        bool shiftTabPressed = false;
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
+            tabPressed = args.KeyCode == (int)GlKeys.Tab;
+            shiftTabPressed = tabPressed && args.ShiftPressed;
+
+            if (!HasFocus) return;
+
             base.OnKeyDown(api, args);
 
-            if (childFocusIndex >= 0)
+            foreach (GuiElement element in Elements)
             {
-                Elements[childFocusIndex].OnKeyDown(api, args);
+                element.OnKeyDown(api, args);
+                if (args.Handled) break;
+            }
+
+            if (!args.Handled && args.KeyCode == (int)GlKeys.Tab && Tabbable)
+            {
+                renderFocusHighlight = true;
+                GuiElement elem = CurrentTabIndexElement;
+                if (elem != null && MaxTabIndex > 0)
+                {
+                    int dir = args.ShiftPressed ? -1 : 1;
+                    int tb = elem.TabIndex + dir;
+                    if (tb < 0 || tb > MaxTabIndex || args.CtrlPressed) return;
+                    FocusElement(tb);
+                    args.Handled = true;
+                }
+                else if (MaxTabIndex > 0)
+                {
+                    FocusElement(args.ShiftPressed ? GameMath.Mod(-1, MaxTabIndex + 1) : 0);
+                    args.Handled = true;
+                }
+            }
+
+            // Hardcoded element class type :/
+            if (!args.Handled && (args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.KeypadEnter) && CurrentTabIndexElement is GuiElementEditableTextBase)
+            {
+                UnfocusOwnElementsExcept(null);
+            }
+        }
+
+        public override void OnKeyUp(ICoreClientAPI api, KeyEvent args)
+        {
+            tabPressed = false;
+            shiftTabPressed = false;
+
+            if (!HasFocus) return;
+
+            base.OnKeyUp(api, args);
+
+            foreach (GuiElement element in Elements)
+            {
+                element.OnKeyUp(api, args);
+                if (args.Handled) break;
             }
         }
 
         public override void OnKeyPress(ICoreClientAPI api, KeyEvent args)
         {
+            if (!HasFocus) return;
+
             base.OnKeyPress(api, args);
 
-            if (childFocusIndex >= 0)
+            foreach (GuiElement element in Elements)
             {
-                Elements[childFocusIndex].OnKeyPress(api, args);
+                element.OnKeyPress(api, args);
+                if (args.Handled) break;
             }
         }
 
@@ -245,16 +403,41 @@ namespace Vintagestory.API.Client
         {
             if (!Bounds.ParentBounds.PointInside(api.Input.MouseX, api.Input.MouseY)) return;
 
+            // Prefer an element that is currently hovered 
+            foreach (var element in Elements)
+            {
+                if (element.IsPositionInside(api.Input.MouseX, api.Input.MouseY))
+                {
+                    element.OnMouseWheel(api, args);
+                }
 
-            int dx = api.Input.MouseX - (int)Bounds.absX;
-            int dy = api.Input.MouseY - (int)Bounds.absY;
-
+                if (args.IsHandled) return;
+            }
 
             foreach (GuiElement element in Elements)
             {
-                Vec2d pos = element.Bounds.PositionInside(dx, dy);
                 element.OnMouseWheel(api, args);
+                if (args.IsHandled) break;
             }
+        }
+
+        public override void OnFocusGained()
+        {
+            base.OnFocusGained();
+
+            if (CurrentTabIndexElement != null) return;
+
+            renderFocusHighlight = tabPressed;
+            if (shiftTabPressed) FocusElement(MaxTabIndex);
+            else FocusElement(FirstTabbableElement.TabIndex);
+        }
+
+        public override void OnFocusLost()
+        {
+            base.OnFocusLost();
+
+            renderFocusHighlight = false;
+            UnfocusOwnElements();
         }
 
 
@@ -262,9 +445,32 @@ namespace Vintagestory.API.Client
         {
             api.Render.Render2DTexturePremultipliedAlpha(listTexture.TextureId, Bounds);
 
+            MouseOverCursor = null;
             foreach (GuiElement element in Elements)
             {
                 element.RenderInteractiveElements(deltaTime);
+
+                if (element.IsPositionInside(api.Input.MouseX, api.Input.MouseY))
+                {
+                    MouseOverCursor = element.MouseOverCursor;
+                }
+            }
+
+            ElementBounds tempClipBounds;
+            foreach (GuiElement element in Elements)
+            {
+                // Seperate due to clipping
+                if (element.HasFocus && renderFocusHighlight)
+                {
+                    if (InsideClipBounds != null)
+                    {
+                        tempClipBounds = element.InsideClipBounds;
+                        element.InsideClipBounds = null;
+                        element.RenderFocusOverlay(deltaTime);
+                        element.InsideClipBounds = tempClipBounds;
+                    }
+                    else element.RenderFocusOverlay(deltaTime);
+                }
             }
         }
 

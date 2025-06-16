@@ -3,6 +3,8 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities;
 
 public class PModuleOnGround : PModule
@@ -43,11 +45,11 @@ public class PModuleOnGround : PModule
         if (coyoteTimer > 0)
         {
             if (entity.Attributes.GetInt("dmgkb") > 0)
-            {
-                coyoteTimer = 0;
-                antiCoyoteTimer = 0.16f;
+        {
+            coyoteTimer = 0;
+            antiCoyoteTimer = 0.16f;
                 return onGround;    //  Effectively:     return onGround || coyoteTimer > 0;
-            }
+        }
 
             return true;
         }

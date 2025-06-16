@@ -1,6 +1,8 @@
 ﻿using Cairo;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class RichTextComponent : RichTextComponentBase

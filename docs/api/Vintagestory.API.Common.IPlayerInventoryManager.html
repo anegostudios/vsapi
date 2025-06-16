@@ -202,7 +202,7 @@ Interface IPlayerInventoryManager
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If the player currently holds a tool in his hands, this value will be set</p>
+  <div class="markdown level1 summary"><p>If the player currently holds a tool in the active hand, this value will be set</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -356,6 +356,70 @@ Interface IPlayerInventoryManager
 
 
 
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_OffhandHotbarSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OffhandHotbarSlot*"></a>
+
+  <h3 id="Vintagestory_API_Common_IPlayerInventoryManager_OffhandHotbarSlot" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OffhandHotbarSlot">
+  OffhandHotbarSlot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the off hand hotbar slot. Might return null if there is no hotbar!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemSlot OffhandHotbarSlot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_OffhandTool_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OffhandTool*"></a>
+
+  <h3 id="Vintagestory_API_Common_IPlayerInventoryManager_OffhandTool" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OffhandTool">
+  OffhandTool
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If the player currently holds a tool in the off hand, this value will be set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumTool? OffhandTool { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IPlayerInventoryManager_OpenedInventories_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories*"></a>
 
   <h3 id="Vintagestory_API_Common_IPlayerInventoryManager_OpenedInventories" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories">
@@ -446,6 +510,38 @@ Client side: No effect</p>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_CloseInventoryAndSync_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.CloseInventoryAndSync*"></a>
+
+  <h3 id="Vintagestory_API_Common_IPlayerInventoryManager_CloseInventoryAndSync_Vintagestory_API_Common_IInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.CloseInventoryAndSync(Vintagestory.API.Common.IInventory)">
+  CloseInventoryAndSync(IInventory)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Like CloseInventory() but also sends the necessary packet to the server, if called from the client side: exactly like CloseInventory() if called from the server side</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CloseInventoryAndSync(IInventory inventory)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inventory</code> <a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

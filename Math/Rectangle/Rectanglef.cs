@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Datastructures
+﻿
+#nullable disable
+namespace Vintagestory.API.Datastructures
 {
     public class Rectanglef
     {

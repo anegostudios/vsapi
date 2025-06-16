@@ -6,11 +6,13 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
 
     /// <summary>
-    /// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary 
+    /// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary
     /// and does recursive interpolation on the rotation, position and scale value for each frame, for each element and for each active element
     /// this produces always correctly blended animations but is significantly more costly for the cpu when compared to the technique used by the <see cref="AnimatorBase"/>.
     /// </summary>
@@ -275,7 +277,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        
+
 
         int[] prevFrame = new int[MaxConcurrentAnimations];
         int[] nextFrame = new int[MaxConcurrentAnimations];
@@ -316,6 +318,7 @@ namespace Vintagestory.API.Common
             for (int j = 0; j < activeAnimCount; j++)
             {
                 RunningAnimation anim = CurAnims[j];
+
                 weightsByAnimationAndElement[0][j] = anim.ElementWeights;
 
                 animVersion = Math.Max(animVersion, anim.Animation.Version);
@@ -354,8 +357,8 @@ namespace Vintagestory.API.Common
                 {
                     if (jointsById.ContainsKey(jointidMul16 / 16)) continue;
 
-                    for (int j = 0; j < 16; j++)
-                    {
+                for (int j = 0; j < 16; j++)
+                {
                         TransformationMatrices[jointidMul16 + j] = identMat[j];
                     }
                 }
@@ -408,6 +411,7 @@ namespace Vintagestory.API.Common
                 for (int animIndex = 0; animIndex < activeAnimCount; animIndex++)
                 {
                     RunningAnimation anim = CurAnims[animIndex];
+
                     ShapeElementWeights sew = weightsByAnimationAndElement[animIndex][childPoseIndex];
 
                     if (sew.BlendMode != EnumAnimationBlendMode.Add)
@@ -458,11 +462,11 @@ namespace Vintagestory.API.Common
 
                 if (TransformationMatrices != null)     // It is null on a server, non-null on a client
                 {
-                    if (elem.JointId > 0 && !jointsDone.Contains(elem.JointId))
-                    {
-                        Mat4f.Mul(tmpMatrix, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
+                if (elem.JointId > 0 && !jointsDone.Contains(elem.JointId))
+                {
+                    Mat4f.Mul(tmpMatrix, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
 
-                        int index = 16 * elem.JointId;
+                    int index = 16 * elem.JointId;
                         var transformationMatrices = TransformationMatrices;
                         var tmpMatrixLocal = tmpMatrix;
                         if (index + 16 > transformationMatrices.Length)     // Check we have space for this joint: we normally should, if MaxJointId was correct, but a mod could have modified the shape or something
@@ -473,13 +477,13 @@ namespace Vintagestory.API.Common
                             Array.Copy(transformationMatricesDefault, this.TransformationMatricesDefaultPose, transformationMatricesDefault.Length);
                             transformationMatrices = this.TransformationMatrices;
                         }
-                        for (int i = 0; i < 16; i++)
-                        {
+                    for (int i = 0; i < 16; i++)
+                    {
                             transformationMatrices[index + i] = tmpMatrixLocal[i];
-                        }
-
-                        jointsDone.Add(elem.JointId);
                     }
+
+                    jointsDone.Add(elem.JointId);
+                }
                 }
 
                 if (outFramePose.ChildElementPoses != null)

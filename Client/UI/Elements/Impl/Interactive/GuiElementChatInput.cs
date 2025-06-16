@@ -1,6 +1,8 @@
 ﻿using Cairo;
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementChatInput : GuiElementEditableTextBase

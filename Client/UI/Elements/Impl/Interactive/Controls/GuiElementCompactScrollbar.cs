@@ -1,6 +1,8 @@
 ﻿using System;
 using Cairo;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementCompactScrollbar : GuiElementScrollbar
@@ -13,7 +15,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Can this GUIElement be focusable? (default: true).
         /// </summary>
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Scrollbar constructor.

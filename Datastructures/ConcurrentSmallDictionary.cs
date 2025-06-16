@@ -6,6 +6,8 @@ using System.Reflection.Metadata;
 using System.Threading;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.Common
 {
     /// <summary>
@@ -33,12 +35,12 @@ namespace Vintagestory.Common
 
         public ICollection<TKey> Keys { get {
                 var contents = this.contents;
-                return contents == null ? new TKey[0] : contents.KeysCopy();
+                return contents == null ? Array.Empty<TKey>() : contents.KeysCopy();
         } }
 
         public ICollection<TValue> Values { get {
                 var contents = this.contents;
-                return contents == null ? new TValue[0] : contents.ValuesCopy();
+                return contents == null ? Array.Empty<TValue>() : contents.ValuesCopy();
         } }
 
         public bool IsReadOnly => false;

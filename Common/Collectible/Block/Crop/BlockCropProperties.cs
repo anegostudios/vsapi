@@ -1,5 +1,7 @@
 ﻿using ProtoBuf;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -69,6 +71,6 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Allows customization of crop growth behavior. BlockEntityFarmland calls methods on all behaviors to allow greater control.
         /// </summary>
-        public CropBehavior[] Behaviors = new CropBehavior[0];
+        public CropBehavior[] Behaviors = System.Array.Empty<CropBehavior>();
     }
 }

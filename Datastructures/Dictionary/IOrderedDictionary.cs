@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     /// <summary>

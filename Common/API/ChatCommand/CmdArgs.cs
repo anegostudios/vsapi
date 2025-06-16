@@ -7,6 +7,8 @@ using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -35,7 +37,7 @@ namespace Vintagestory.API.Common
 
         public void Push(string joinedargs)
         {
-            string[] args = new string[0];
+            string[] args = Array.Empty<string>();
 
             if (joinedargs.Length > 0)
             {
@@ -225,8 +227,7 @@ namespace Vintagestory.API.Common
             string arg = PopWord();
             if (arg == null) return defaultValue;
 
-            int val;
-            if (int.TryParse(arg, out val))
+            if (int.TryParse(arg, out int val))
             {
                 if (Enum.IsDefined(typeof(T), val))
                 {
@@ -247,8 +248,7 @@ namespace Vintagestory.API.Common
             string arg = PopWord();
             if (arg == null) return defaultValue;
 
-            int val;
-            if (TryParseIntFancy(arg, out val))
+            if (TryParseIntFancy(arg, out int val))
             {
                 return val;
             }
@@ -287,8 +287,7 @@ namespace Vintagestory.API.Common
             string arg = PopWord();
             if (arg == null) return defaultValue;
 
-            long val;
-            if (long.TryParse(arg, out val))
+            if (long.TryParse(arg, out long val))
             {
                 return val;
             }

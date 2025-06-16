@@ -3,6 +3,8 @@ using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate string StatbarValueDelegate();
@@ -15,19 +17,30 @@ namespace Vintagestory.API.Client
         float minValue = 0;
         float maxValue = 100;
         float value = 32;
+        float? futureValue;
+        float? previousValue;
+        float valueChangeVelocity;
         float lineInterval = 10;
+        float prevValueDisplayRemainingSec;
+        float prevValueSize = 0f;
+
+        float? nowRenderingPreviousValue;
 
         double[] color;
         bool rightToLeft = false;
 
         public bool HideWhenFull { get; set; }
 
+        public bool PrevValueBeingDisplayed => prevValueDisplayRemainingSec > 0;
+
+        public float PreviousValueDisplayTime { get; set; } = 2;
+
         LoadedTexture baseTexture;
         LoadedTexture barTexture;
         LoadedTexture flashTexture;
         LoadedTexture valueTexture;
+        LoadedTexture previousValueTexture;
 
-        int valueWidth;
         int valueHeight;
 
         public bool ShouldFlash;
@@ -54,6 +67,7 @@ namespace Vintagestory.API.Client
             barTexture = new LoadedTexture(capi);
             flashTexture = new LoadedTexture(capi);
             valueTexture = new LoadedTexture(capi);
+            previousValueTexture = new LoadedTexture(capi);
 
             if (hideable) baseTexture = new LoadedTexture(capi);
 
@@ -80,7 +94,7 @@ namespace Vintagestory.API.Client
                 EmbossRoundRectangleElement(ctx, 0, 0, Bounds.InnerWidth, Bounds.InnerHeight, false, 3, 1);
             } else
             {
-                ctx.Operator = Operator.Over; // WTF man, somehwere within this code or within cairo the main context operator is being changed
+                ctx.Operator = Operator.Over; // WTF man, somewhere within this code or within cairo the main context operator is being changed
                 RoundRectangle(ctx, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1);
 
                 ctx.SetSourceRGBA(0.15, 0.15, 0.15, 1);
@@ -121,40 +135,111 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        
         void ComposeValueOverlay()
         {
             Bounds.CalcWorldBounds();
 
             double widthRel = (double)value / (maxValue - minValue);
-            valueWidth = (int)(widthRel * Bounds.OuterWidth) + 1;
+
             valueHeight = (int)Bounds.OuterHeight + 1;
             ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt+1, valueHeight);
             Context ctx = new Context(surface);
 
+            double mainValueX = 0;
+            
             if (widthRel > 0.01)
             {
                 double width = Bounds.OuterWidth * widthRel;
                 double x = rightToLeft ? Bounds.OuterWidth - width : 0;
+
+                mainValueX = rightToLeft ? Bounds.OuterWidth - width : width;
 
                 RoundRectangle(ctx, x, 0, width, Bounds.OuterHeight, 1);
                 ctx.SetSourceRGB(color[0], color[1], color[2]);
                 ctx.FillPreserve();
 
                 ctx.SetSourceRGB(color[0] * 0.4, color[1] * 0.4, color[2] * 0.4);
-                ctx.LineWidth = scaled(3);
+                ctx.LineWidth = scaled(2);
                 ctx.StrokePreserve();
-                surface.BlurFull(3);
+                surface.BlurFull(2);
 
                 width = Bounds.InnerWidth * widthRel;
                 x = rightToLeft ? Bounds.InnerWidth - width : 0;
-
+    
                 EmbossRoundRectangleElement(ctx, x, 0, width, Bounds.InnerHeight, false, 2, 1);
             }
 
+            ImageSurface surfacePrev = null;
+            Context ctxPrev = null;
+            if (previousValue != null)
+            {
+                float pval = (float)previousValue;
+
+                if (pval > value && (getMs() - visibleSinceMs < PreviousValueDisplayTime * 1000)) // Might be no longer relevant to display?
+                {
+                    double widthRelPrev = pval / (maxValue - minValue);
+
+                    if (widthRelPrev > 0.01)
+                    {
+                        surfacePrev = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt + 1, valueHeight);
+                        ctxPrev = new Context(surfacePrev);
+
+                        double width = Bounds.OuterWidth * widthRelPrev;
+                        double x = rightToLeft ? Bounds.OuterWidth - width : 0;
+
+                        RoundRectangle(ctxPrev, x, 0, width, Bounds.OuterHeight, 1);
+                        ctxPrev.SetSourceRGB(color[0], color[1], color[2]);
+                        ctxPrev.FillPreserve();
+
+                        ctxPrev.SetSourceRGB(color[0] * 0.4, color[1] * 0.4, color[2] * 0.4);
+                        ctxPrev.LineWidth = scaled(2);
+                        ctxPrev.StrokePreserve();
+                        surfacePrev.BlurFull(2);
+
+                        width = Bounds.InnerWidth * widthRelPrev;
+                        x = rightToLeft ? Bounds.InnerWidth - width : 0;
+
+                        EmbossRoundRectangleElement(ctxPrev, x, 0, width, Bounds.InnerHeight, false, 2, 1);
+                    }
+                }
+            }
+
+
+
+            if (futureValue != null)
+            {
+                float gval = (float)futureValue;
+                double widthRelFt = (gval - value) / (maxValue - minValue);
+                if (widthRelFt > 0.01)
+                {
+                    double x1 = mainValueX;
+                    double width = Bounds.OuterWidth * widthRelFt;
+
+                    if (rightToLeft)
+                    {
+                        x1 = mainValueX - width;
+                    }
+
+                    RoundRectangle(ctx, x1, 0, width, Bounds.OuterHeight, 1);
+                    ctx.SetSourceRGBA(0, 1, 0, 0.35);// color[0], color[1], color[2]);
+                    ctx.FillPreserve();
+
+                    ctx.SetSourceRGBA(0, 0.5, 0, 0.35);// color[0] * 0.4, color[1] * 0.4, color[2] * 0.4);
+                    ctx.LineWidth = scaled(2);
+                    ctx.StrokePreserve();
+                    surface.BlurFull(2);
+
+                    width = Bounds.InnerWidth * widthRel;
+                    x1 = rightToLeft ? Bounds.InnerWidth - width : 0;
+
+                    EmbossRoundRectangleElement(ctx, x1, 0, width, Bounds.InnerHeight, false, 2, 1);
+                }
+            }
+
+
             ctx.SetSourceRGBA(0, 0, 0, 0.5);
             ctx.LineWidth = scaled(2.2);
-
 
             int lines = Math.Min(50, (int)((maxValue - minValue) / lineInterval));
             
@@ -174,7 +259,13 @@ namespace Vintagestory.API.Client
             api.Event.EnqueueMainThreadTask(() =>
             {
                 generateTexture(surface, ref barTexture);
-
+                if (surfacePrev != null)
+                {
+                    generateTexture(surfacePrev, ref previousValueTexture);
+                    surfacePrev.Dispose();
+                    ctxPrev.Dispose();
+                    prevValueSize = 1;
+                }
                 ctx.Dispose();
                 surface.Dispose();
             }, "recompstatbar");
@@ -208,8 +299,6 @@ namespace Vintagestory.API.Client
                 ctx.Dispose();
                 surface.Dispose();
             }, "recompstatbar");
-
-            
         }
 
 
@@ -246,6 +335,15 @@ namespace Vintagestory.API.Client
                 api.Render.RenderTexture(flashTexture.TextureId, x - 14, y - 14, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28, 50, new Vec4f(1.5f, 1, 1, alpha));
             }
 
+            if (previousValue != null && previousValueTexture.TextureId > 0 && prevValueSize > 0.01)
+            {
+                if (getMs() - visibleSinceMs > PreviousValueDisplayTime*1000)
+                {
+                    prevValueSize = Math.Max(0, prevValueSize - deltaTime);
+                }
+                api.Render.RenderTexture(previousValueTexture.TextureId, x, y, Bounds.OuterWidthInt * prevValueSize, valueHeight, 50, new Vec4f(1,1,1,0.35f));
+            }
+
             if (barTexture.TextureId > 0)
             {
                 api.Render.RenderTexture(barTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
@@ -257,7 +355,6 @@ namespace Vintagestory.API.Client
                 double ty = api.Input.MouseY + valueTexture.Height - 4;
                 api.Render.RenderTexture(valueTexture.TextureId, tx, ty, valueTexture.Width, valueTexture.Height, 2000);
             }
-            
         }
 
         /// <summary>
@@ -317,8 +414,25 @@ namespace Vintagestory.API.Client
             base.Dispose();
             baseTexture?.Dispose();
             barTexture.Dispose();
+            previousValueTexture.Dispose();
             flashTexture.Dispose();
             valueTexture.Dispose();
+        }
+
+        public void SetFutureValues(float? futureValue, float velocity)
+        {
+            this.futureValue = futureValue;
+            this.valueChangeVelocity = velocity;
+        }
+
+
+        long visibleSinceMs;
+        Func<long> getMs;
+        public void SetPrevValue(float? previousValue, long visibleSinceMs, Func<long> getMs)
+        {
+            this.previousValue = previousValue;
+            this.visibleSinceMs = visibleSinceMs;
+            this.getMs = getMs;
         }
     }
 

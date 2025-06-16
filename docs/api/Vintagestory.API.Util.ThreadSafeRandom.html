@@ -122,6 +122,15 @@ Class ThreadSafeRandom
     <dt>Inherited Members</dt>
     <dd>
     <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.getitems#system-random-getitems-1(system-readonlyspan((-0))-system-int32)">Random.GetItems&lt;T&gt;(ReadOnlySpan&lt;T&gt;, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.getitems#system-random-getitems-1(system-readonlyspan((-0))-system-span((-0)))">Random.GetItems&lt;T&gt;(ReadOnlySpan&lt;T&gt;, Span&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.getitems#system-random-getitems-1(-0()-system-int32)">Random.GetItems&lt;T&gt;(T[], int)</a>
+    </div>
+    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.nextbytes#system-random-nextbytes(system-span((system-byte)))">Random.NextBytes(Span&lt;byte&gt;)</a>
     </div>
     <div>
@@ -138,6 +147,12 @@ Class ThreadSafeRandom
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.sample">Random.Sample()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.shuffle#system-random-shuffle-1(system-span((-0)))">Random.Shuffle&lt;T&gt;(Span&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.shuffle#system-random-shuffle-1(-0())">Random.Shuffle&lt;T&gt;(T[])</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.random.shared">Random.Shared</a>
@@ -303,7 +318,7 @@ Class ThreadSafeRandom
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>A 32-bit signed integer that is greater than or equal to 0, and less than <code class="paramref">maxValue</code>; that is, the range of return values ordinarily includes 0 but not <code class="paramref">maxValue</code>. However, if <code class="paramref">maxValue</code> equals 0, <code class="paramref">maxValue</code> is returned.</p>
+    <dd><p>A 32-bit signed integer that is greater than or equal to 0, and less than <code class="paramref">maxValue</code>; that is, the range of return values ordinarily includes 0 but not <code class="paramref">maxValue</code>. However, if <code class="paramref">maxValue</code> equals 0, 0 is returned.</p>
 </dd>
   </dl>
 

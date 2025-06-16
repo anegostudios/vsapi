@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -490,6 +492,11 @@ namespace Vintagestory.API.Common
         public virtual WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op = null, List<ItemSlot> skipSlots = null)
         {
             return inventory.GetBestSuitedSlot(sourceSlot, op, skipSlots);
+        }
+
+        public virtual void OnBeforeRender(ItemRenderInfo renderInfo)
+        {
+            // The default is to do nothing, but classes can override this to do something with the renderInfo.Transform            
         }
     }
 }

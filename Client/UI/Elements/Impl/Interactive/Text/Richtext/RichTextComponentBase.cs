@@ -1,6 +1,8 @@
 ﻿using Cairo;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public enum EnumFloat

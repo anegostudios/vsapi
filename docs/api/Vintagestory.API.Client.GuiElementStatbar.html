@@ -669,6 +669,68 @@ Class GuiElementStatbar
 
 
 
+  <a id="Vintagestory_API_Client_GuiElementStatbar_PrevValueBeingDisplayed_" data-uid="Vintagestory.API.Client.GuiElementStatbar.PrevValueBeingDisplayed*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementStatbar_PrevValueBeingDisplayed" data-uid="Vintagestory.API.Client.GuiElementStatbar.PrevValueBeingDisplayed">
+  PrevValueBeingDisplayed
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PrevValueBeingDisplayed { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementStatbar_PreviousValueDisplayTime_" data-uid="Vintagestory.API.Client.GuiElementStatbar.PreviousValueDisplayTime*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementStatbar_PreviousValueDisplayTime" data-uid="Vintagestory.API.Client.GuiElementStatbar.PreviousValueDisplayTime">
+  PreviousValueDisplayTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float PreviousValueDisplayTime { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -799,6 +861,39 @@ Class GuiElementStatbar
 
 
 
+  <a id="Vintagestory_API_Client_GuiElementStatbar_SetFutureValues_" data-uid="Vintagestory.API.Client.GuiElementStatbar.SetFutureValues*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementStatbar_SetFutureValues_System_Nullable_System_Single__System_Single_" data-uid="Vintagestory.API.Client.GuiElementStatbar.SetFutureValues(System.Nullable{System.Single},System.Single)">
+  SetFutureValues(float?, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFutureValues(float? futureValue, float velocity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>futureValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+    <dt><code>velocity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementStatbar_SetLineInterval_" data-uid="Vintagestory.API.Client.GuiElementStatbar.SetLineInterval*"></a>
 
   <h3 id="Vintagestory_API_Client_GuiElementStatbar_SetLineInterval_System_Single_" data-uid="Vintagestory.API.Client.GuiElementStatbar.SetLineInterval(System.Single)">
@@ -855,6 +950,41 @@ Class GuiElementStatbar
     <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd><p>The maximum value of the status bar.</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementStatbar_SetPrevValue_" data-uid="Vintagestory.API.Client.GuiElementStatbar.SetPrevValue*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementStatbar_SetPrevValue_System_Nullable_System_Single__System_Int64_System_Func_System_Int64__" data-uid="Vintagestory.API.Client.GuiElementStatbar.SetPrevValue(System.Nullable{System.Single},System.Int64,System.Func{System.Int64})">
+  SetPrevValue(float?, long, Func&lt;long&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPrevValue(float? previousValue, long visibleSinceMs, Func&lt;long&gt; getMs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>previousValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+    <dt><code>visibleSinceMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+    <dt><code>getMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
+    <dd></dd>
   </dl>
 
 

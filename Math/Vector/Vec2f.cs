@@ -2,6 +2,8 @@
 using ProtoBuf;
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     public class AngleConstraint : Vec2f

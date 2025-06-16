@@ -1,6 +1,8 @@
 ﻿using System;
 using Cairo;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementTextInput : GuiElementEditableTextBase
@@ -14,6 +16,15 @@ namespace Vintagestory.API.Client
 
         LoadedTexture placeHolderTextTexture;
 
+        public override bool Enabled
+        {
+            get => base.Enabled;
+            set
+            {
+                enabled = value;
+                MouseOverCursor = value ? "textselect" : null;
+            }
+        }
 
         /// <summary>
         /// Adds a text input to the GUI
@@ -49,7 +60,7 @@ namespace Vintagestory.API.Client
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
         {
             EmbossRoundRectangleElement(ctx, Bounds, true, 2, 1);
-            ctx.SetSourceRGBA(0, 0, 0, 0.3);
+            ctx.SetSourceRGBA(0, 0, 0, 0.2);
             ElementRoundRectangle(ctx, Bounds, false, 1);
             ctx.Fill();
 
@@ -57,8 +68,10 @@ namespace Vintagestory.API.Client
             ImageSurface surfaceHighlight = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
             Context ctxHighlight = genContext(surfaceHighlight);
 
-            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.3);
+            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.2);
             ctxHighlight.Paint();
+
+            if (!enabled) Font.Color[3] = 0.35f;
 
             generateTexture(surfaceHighlight, ref highlightTexture);
 

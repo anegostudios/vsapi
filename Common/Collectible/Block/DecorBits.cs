@@ -2,6 +2,8 @@
 using System.Runtime.CompilerServices;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

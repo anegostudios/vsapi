@@ -140,6 +140,23 @@ Any json file inside the &quot;assets/itemtypes&quot; folder will be loaded as a
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.JsonPatch.html">JsonPatch</a></dt>
+      <dd><p>Defines a patch for a json asset. This allows modifying json files through mods without directly editing them.
+To help with creating patches, it is highly recommended to learn how to use the in-built modmaker program.
+See <a href="https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker">https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker</a> for more info.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.PatchCondition.html">PatchCondition</a></dt>
+      <dd><p>A condition for a json patch. Conditions are based on the currently loaded worldconfig.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.PatchModDependence.html">PatchModDependence</a></dt>
+      <dd><p>A mod-dependence for a json patch. If your patch depends on another mod, you need to use this.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a></dt>
       <dd><p>The very base class for an in-game object. Extended by blocktypes, itemtypes, and entitytypes.
 Controls the object's code, variant types, allowed/disallowed variants, world interactions, and a class for extra functionality.</p>
@@ -148,6 +165,15 @@ Controls the object's code, variant types, allowed/disallowed variants, world in
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ServerEntityConfig.html">ServerEntityConfig</a></dt>
       <dd><p>Specific configuration settings for entities on the server-side.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html">EnumJsonPatchOp</a></dt>
+      <dd><p>A set of operations that define what a patch will do.
+See <a href="https://datatracker.ietf.org/doc/html/rfc6902#section-4.1">https://datatracker.ietf.org/doc/html/rfc6902#section-4.1</a> for more information on each operation type.</p>
 </dd>
     </dl>
 

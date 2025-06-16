@@ -4,6 +4,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class AnimationUtil : IRenderer
@@ -159,9 +161,8 @@ namespace Vintagestory.API.Common
 
             cacheDictKey = "animutil-" + cacheDictKey;
 
-            object animCacheObj;
             Dictionary<string, AnimCacheEntry> animCache = null;
-            api.ObjectCache.TryGetValue("animUtil-animCache", out animCacheObj);
+            api.ObjectCache.TryGetValue("animUtil-animCache", out object animCacheObj);
             animCache = animCacheObj as Dictionary<string, AnimCacheEntry>;
             if (animCache == null)
             {
@@ -170,8 +171,7 @@ namespace Vintagestory.API.Common
 
             AnimatorBase animator;
 
-            AnimCacheEntry cacheObj = null;
-            if (animCache.TryGetValue(cacheDictKey, out cacheObj))
+            if (animCache.TryGetValue(cacheDictKey, out AnimCacheEntry cacheObj))
             {
                 animator = api.Side == EnumAppSide.Client ?
                     new ClientAnimator(() => 1, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, shape.JointsById) :

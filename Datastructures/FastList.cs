@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     /// <summary>
@@ -8,7 +10,7 @@ namespace Vintagestory.API.Datastructures
     /// <typeparam name="TElem"></typeparam>
     public class FastList<TElem> : IEnumerable
     {
-        TElem[] elements = new TElem[0];
+        TElem[] elements = System.Array.Empty<TElem>();
         int count=0;
 
         public FastList()

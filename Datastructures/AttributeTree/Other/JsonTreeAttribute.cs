@@ -4,6 +4,8 @@ using System.Globalization;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class JsonTreeAttribute
@@ -39,22 +41,19 @@ namespace Vintagestory.API.Datastructures
                     }
                 case EnumAttributeType.Int:
                     {
-                        int val = 0;
-                        int.TryParse(value, out val);
+                        int.TryParse(value, out int val);
                         return new IntAttribute(val);
                     }
 
                 case EnumAttributeType.Double:
                     {
-                        double val = 0;
-                        double.TryParse(value, out val);
+                        double.TryParse(value, out double val);
                         return new DoubleAttribute(val);
                     }
 
                 case EnumAttributeType.Float:
                     {
-                        float val = 0;
-                        float.TryParse(value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val);
+                        float.TryParse(value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out float val);
                         return new FloatAttribute(val);
                     }
 

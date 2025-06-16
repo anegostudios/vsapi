@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.Common.Entities;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface IInventoryNetworkUtil

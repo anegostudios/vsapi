@@ -1,3 +1,5 @@
+
+#nullable disable
 namespace Vintagestory.API.Common.Entities;
 
 public interface IRemotePhysics

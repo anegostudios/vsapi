@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+#nullable disable
+
 namespace ProperVersion
 {
 	/// <summary>
@@ -22,8 +24,8 @@ namespace ProperVersion
 		
 		
 		public SemVer(int major, int minor, int patch)
-			: this(major, minor, patch, new string[0], null,
-			                            new string[0], null) {  }
+			: this(major, minor, patch, Array.Empty<string>(), null,
+                                        Array.Empty<string>(), null) {  }
 		
 		public SemVer(int major, int minor, int patch,
 		              string preRelease = "", string buildMetadata = "")
@@ -50,7 +52,7 @@ namespace ProperVersion
 				nameof(patch), patch, "Patch value must be 0 or positive");
 			
 			if (preReleaseIdentifiers == null)
-				preReleaseIdentifiers = new string[0];
+				preReleaseIdentifiers = Array.Empty<string>();
 			for (var i = 0; i < preReleaseIdentifiers.Length; i++) {
 				var ident = preReleaseIdentifiers[i];
 				if (ident == null) throw new ArgumentException(
@@ -64,7 +66,7 @@ namespace ProperVersion
 			}
 			
 			if (buildMetadataIdentifiers == null)
-				buildMetadataIdentifiers = new string[0];
+				buildMetadataIdentifiers = Array.Empty<string>();
 			for (var i = 0; i < buildMetadataIdentifiers.Length; i++) {
 				var ident = buildMetadataIdentifiers[i];
 				if (ident == null) throw new ArgumentException(
@@ -368,6 +370,6 @@ namespace ProperVersion
 		///   Both null and empty strings return an empty array.
 		/// </summary>
 		private static string[] SplitIdentifiers(string str)
-			=> !string.IsNullOrEmpty(str) ? str.Split('.') : new string[0];
+			=> !string.IsNullOrEmpty(str) ? str.Split('.') : Array.Empty<string>();
 	}
 }

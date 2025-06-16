@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
+
+#nullable disable
 
 namespace Vintagestory.API.MathTools
 {

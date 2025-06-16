@@ -2,6 +2,8 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     /// <summary>
@@ -38,8 +40,7 @@ namespace Vintagestory.API.Datastructures
         {
             get
             {
-                TValue value;
-                if (!TryGetValue(key, out value))
+                if (!TryGetValue(key, out TValue value))
                 {
                     throw new KeyNotFoundException();
                 }

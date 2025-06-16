@@ -6,6 +6,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public abstract class GuiDialog : IDisposable
@@ -764,8 +766,7 @@ namespace Vintagestory.API.Client
         {
             var values = Enum.GetValues(typeof(EnumPosFlag));
 
-            int flags = 0;
-            posFlagDict().TryGetValue(code, out flags);
+            posFlagDict().TryGetValue(code, out int flags);
 
             foreach (EnumPosFlag flag in values)
             {
@@ -779,22 +780,19 @@ namespace Vintagestory.API.Client
 
         public void OccupyPos(string code, EnumPosFlag pos)
         {
-            int flags = 0;
-            posFlagDict().TryGetValue(code, out flags);
+            posFlagDict().TryGetValue(code, out int flags);
             posFlagDict()[code] = flags | (int)pos;
         }
 
         public void FreePos(string code, EnumPosFlag pos)
         {
-            int flags = 0;
-            posFlagDict().TryGetValue(code, out flags);
+            posFlagDict().TryGetValue(code, out int flags);
             posFlagDict()[code] = flags & ~(int)pos;
         }
 
         Dictionary<string, int> posFlagDict()
         {
-            object valObj;
-            capi.ObjectCache.TryGetValue("dialogCount", out valObj);
+            capi.ObjectCache.TryGetValue("dialogCount", out object valObj);
             Dictionary<string, int> val = valObj as Dictionary<string, int>;
             if (val == null) capi.ObjectCache["dialogCount"] = val = new Dictionary<string, int>();
             return val;

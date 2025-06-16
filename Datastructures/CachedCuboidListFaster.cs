@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     /// <summary>
@@ -10,7 +12,7 @@ namespace Vintagestory.API.Datastructures
     /// </summary>
     public class CachedCuboidListFaster: IEnumerable<Cuboidd>
     {
-        public Cuboidd[] cuboids = new Cuboidd[0];   //initialised with size 0 because cuboids.Length test and the enumerator may use this
+        public Cuboidd[] cuboids = System.Array.Empty<Cuboidd>();   //initialised with size 0 because cuboids.Length test and the enumerator may use this
         public FastVec3i[] positions;
         public Block[] blocks;
         public int Count;

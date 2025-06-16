@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.MathTools
+﻿
+#nullable disable
+namespace Vintagestory.API.MathTools
 {
     public class Vec3iAndFacingFlags
     {

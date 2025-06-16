@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class FastSetOfInts : IEnumerable<int>

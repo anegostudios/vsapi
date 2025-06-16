@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public interface IMetaBlock
@@ -40,6 +42,10 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Special render pass for meta blocks
         /// </summary>
-        Meta = 6
+        Meta = 6,
+        /// <summary>
+        /// Uses the depth buffer from the OIT pass to prevent water plants showing in sailboats 
+        /// </summary>
+        OpaqueWaterPlant = 7
     }
 }

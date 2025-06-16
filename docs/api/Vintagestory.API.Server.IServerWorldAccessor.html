@@ -512,8 +512,8 @@ Interface IServerWorldAccessor
 
   <a id="Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion*"></a>
 
-  <h3 id="Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_System_Double_System_Double_System_Single_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlastType,System.Double,System.Double,System.Single)">
-  CreateExplosion(BlockPos, EnumBlastType, double, double, float)
+  <h3 id="Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_System_Double_System_Double_System_Single_System_String_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlastType,System.Double,System.Double,System.Single,System.String)">
+  CreateExplosion(BlockPos, EnumBlastType, double, double, float, string)
   
   </h3>
 
@@ -522,7 +522,7 @@ Interface IServerWorldAccessor
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void CreateExplosion(BlockPos pos, EnumBlastType blastType, double destructionRadius, double injureRadius, float blockDropChanceMultiplier = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void CreateExplosion(BlockPos pos, EnumBlastType blastType, double destructionRadius, double injureRadius, float blockDropChanceMultiplier = 1, string ignitedByPlayerUid = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -536,6 +536,8 @@ Interface IServerWorldAccessor
     <dt><code>injureRadius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
     <dt><code>blockDropChanceMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>ignitedByPlayerUid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 

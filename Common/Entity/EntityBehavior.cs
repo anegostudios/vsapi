@@ -6,6 +6,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
+#nullable disable
+
 namespace Vintagestory.API.Common.Entities
 {
     /// <summary>
@@ -306,6 +308,16 @@ namespace Vintagestory.API.Common.Entities
         public virtual string GetName(ref EnumHandling handling)
         {
             return null;
+        }
+
+        /// <summary>
+        /// If true, then this entity will not retaliate if attacked by the specified eOther
+        /// If false, then this entity will always retaliate (disregarding subsequent)
+        /// </summary>
+        /// <param name="eOther"></param>
+        public virtual bool ToleratesDamageFrom(Entity eOther, ref EnumHandling handling)
+        {
+            return false;
         }
     }
 }

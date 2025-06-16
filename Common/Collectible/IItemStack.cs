@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

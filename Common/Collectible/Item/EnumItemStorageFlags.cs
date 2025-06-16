@@ -1,6 +1,8 @@
 ﻿
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>

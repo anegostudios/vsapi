@@ -2,6 +2,8 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>

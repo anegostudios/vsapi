@@ -4,6 +4,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>
@@ -194,33 +196,46 @@ namespace Vintagestory.API.Client
         /// <param name="allocatedTris">The number of tris allocated by this pool.</param>
         public void GetStats(ref long usedVideoMemory, ref long renderedTris, ref long allocatedTris)
         {
-            // 1 index = 4 byte
-            // 1 vertex =
+            // 1 vertex =  (without SSBOs)
             // - 3 xyz floats  = 12 byte
             // - 2 uv floats   = 8 byte
             // - 4 rgba bytes  = 4 byte
-            // - 4 rgba2 bytes = 4 byte
             // - 1 flags int    = 4 byte
-            //[ - 1 normals int = 4 byte]
-            // - 2 custom floats (uv2)  = 8 byte    when customdata is there
+            // - 1 custom int (colormapData) = 4 byte
 
-            // Total vertex: 32 bytes or 40 bytes
-            // % size normals: 11% or 9%
-            // Total index: 4 bytes
+            // Optionally, for liquids
+            // - 2 custom floats (flowvector)  = 8 byte    when customdata is there e.g. for liquids
+            // - 1 custom int (waterflags or uv2)  = 4 byte    when customdata is there e.g. for liquids or topsoil
 
-            // So 10mil tris => 30mil indices, 30m*0.75=23 mil vertices
-            // = 114mb indices, 789mb vertices => 903mb video memory   (no custom floats)
-            //                  88mb normals
+            // Total vertex: 32 bytes plus optional custom data
+            // Total indices: 6 bytes  (for every 4 vertices, 6 indices of 4 bytes each)
 
-            long vertexSize = 12 + 8 + 4 + 4 + 4 + (customFloats == null ? 0 : customFloats.InterleaveStride) + (customShorts == null ? 0 : customShorts.InterleaveStride) + (customBytes == null ? 0 : customBytes.InterleaveStride) + (customInts == null ? 0 : customInts.InterleaveStride);
+            // So 10mil tris => 30mil indices, 20mil vertices
+            // = 114mb indices, 610mb vertices => 724mb video memory   (ignoring custom data)
+            //    (Most vertices also have at least some custom data)
 
+            // If we use SSBOs, video memory per vertex (base, no custom data) reduces from 32 bytes to 20 bytes, assuming 4 bytes of CustomInts per vertex for the colormapData
+            // and we use 0 bytes for indices  (apart from the single standard index buffer)
+            // so overall, 38 bytes per vertex became 20 bytes per vertex, which is quite good.
+
+            long vertexSize = (capi.Render.UseSSBOs ? 16 + 4 - 4 : 12 + 8 + 4 + 4) + (customFloats == null ? 0 : customFloats.InterleaveStride) + (customShorts == null ? 0 : customShorts.InterleaveStride) + (customBytes == null ? 0 : customBytes.InterleaveStride) + (customInts == null ? 0 : customInts.InterleaveStride);
+            int indexSize = capi.Render.UseSSBOs ? 0 : 4;
+
+            int maxIndices = 0;
             for (int i = 0; i < pools.Count; i++)
             {
                 MeshDataPool pool = pools[i];
 
-                usedVideoMemory += pool.VerticesPoolSize * vertexSize + pool.IndicesPoolSize * 4;
+                usedVideoMemory += pool.VerticesPoolSize * vertexSize + pool.IndicesPoolSize * indexSize;
                 renderedTris += pool.RenderedTriangles;
                 allocatedTris += pool.AllocatedTris;
+
+                if (pool.IndicesPoolSize > maxIndices) maxIndices = pool.IndicesPoolSize;
+            }
+
+            if (capi.Render.UseSSBOs)
+            {
+                usedVideoMemory += maxIndices * 4;
             }
         }
     }

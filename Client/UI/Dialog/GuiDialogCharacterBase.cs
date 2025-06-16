@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public abstract class GuiDialogCharacterBase : GuiDialog

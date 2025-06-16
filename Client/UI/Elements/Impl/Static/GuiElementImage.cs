@@ -1,6 +1,8 @@
 ﻿using Cairo;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementImage : GuiElementTextBase

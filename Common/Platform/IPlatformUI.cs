@@ -2,6 +2,8 @@
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -13,7 +15,7 @@ namespace Vintagestory.API.Common
         public GameWindow Window { get; set; }
 
         void SetClipboardText(string text);
-        
+
         string GetClipboardText();
 
         void ShowMessageBox(string title, string text);
@@ -37,6 +39,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns></returns>
         long GetRamCapacity();
+
+        string GetCpuInfo();
 
         void FocusWindow();
     }

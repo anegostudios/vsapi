@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>

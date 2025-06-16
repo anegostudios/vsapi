@@ -3,6 +3,8 @@ using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public enum EnumButtonStyle
@@ -39,7 +41,7 @@ namespace Vintagestory.API.Client
 
         public bool Visible = true;
 
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         public string Text
         {

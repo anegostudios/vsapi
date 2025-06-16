@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     // Contains quite some ugly hacks to make the scrollbar work :<
@@ -38,7 +40,7 @@ namespace Vintagestory.API.Client
             {
                 if (value < 0)
                 {
-                    SelectedIndices = new int[] { };
+                    SelectedIndices = Array.Empty<int>();
                     return;
                 }
 
@@ -61,7 +63,7 @@ namespace Vintagestory.API.Client
         public int[] SelectedIndices { get; set; }
 
         // on/off on multiselect
-        GuiElementSwitch[] switches = new GuiElementSwitch[0];
+        GuiElementSwitch[] switches = Array.Empty<GuiElementSwitch>();
 
 
         protected SelectionChangedDelegate onSelectionChanged;
@@ -95,7 +97,7 @@ namespace Vintagestory.API.Client
 
         public override bool Focusable
         {
-            get { return true; }
+            get { return enabled; }
         }
 
         /// <summary>
@@ -135,7 +137,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < values.Length; i++)
             {
                 ElementBounds textBounds = ElementBounds.Fixed(0, 0, 700, 100).WithEmptyParent();
-                richtTextElem[i] = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
+                richtTextElem[i] = new GuiElementRichtext(capi, Array.Empty<RichTextComponentBase>(), textBounds);
             }
         }
 
@@ -175,7 +177,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < Values.Length; i++)
             {
                 ElementBounds textBounds = ElementBounds.Fixed(0, 0, 700, 100).WithEmptyParent();
-                richtTextElem[i] = new GuiElementRichtext(api, new RichTextComponentBase[0], textBounds);
+                richtTextElem[i] = new GuiElementRichtext(api, Array.Empty<RichTextComponentBase>(), textBounds);
             }
 
 
@@ -194,11 +196,8 @@ namespace Vintagestory.API.Client
                 elem.SetNewTextWithoutRecompose(Names[i], Font);
                 elem.BeforeCalcBounds();
                 
-                expandedBoxWidth = Math.Max(expandedBoxWidth, elem.MaxLineWidth + scaled(scrollbarWidth + 5));
+                expandedBoxWidth = Math.Max(expandedBoxWidth, elem.MaxLineWidth + 5 * scaleMul + scaled(scrollbarWidth + 5));
             }
-            expandedBoxWidth++;
-
-            //expandedBoxWidth += 5 * scaleMul;
 
 
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)expandedBoxHeight);
@@ -574,7 +573,7 @@ namespace Vintagestory.API.Client
         {
             if (value == null)
             {
-                this.SelectedIndices = new int[0];
+                this.SelectedIndices = Array.Empty<int>();
                 return;
             }
 

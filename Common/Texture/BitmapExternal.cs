@@ -6,6 +6,8 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 
 namespace Vintagestory.API.Common
 {
@@ -42,10 +44,7 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                var decode = SKBitmap.Decode(ms);
-                bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, decode.Info.AlphaType);
-                using var canvas = new SKCanvas(bmp);
-                canvas.DrawBitmap(decode, 0, 0);
+                bmp = Decode(ms.ToArray());
             }
             catch (Exception e)
             {
@@ -72,10 +71,7 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                var decode = SKBitmap.Decode(filePath);
-                bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, decode.Info.AlphaType);
-                using var canvas = new SKCanvas(bmp);
-                canvas.DrawBitmap(decode, 0, 0);
+                bmp = Decode(File.ReadAllBytes(filePath));
             }
             catch (Exception)
             {
@@ -92,10 +88,12 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                var decode = SKBitmap.Decode(stream);
-                bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, decode.Info.AlphaType);
-                using var canvas = new SKCanvas(bmp);
-                canvas.DrawBitmap(decode, 0, 0);
+                var buffer = new byte[stream.Length];
+                if (stream.Read(buffer, 0, (int)stream.Length) != stream.Length)
+                {
+                    throw new Exception("Failed to read image from stream");
+                }
+                bmp = Decode(buffer);
             }
             catch (Exception)
             {
@@ -114,17 +112,7 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                if (RuntimeEnv.OS == OS.Mac)
-                {
-                    var decode = SKBitmap.Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
-                    bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, SKAlphaType.Unpremul);
-                    using var canvas = new SKCanvas(bmp);
-                    canvas.DrawBitmap(decode, 0, 0);
-                }
-                else
-                {
-                    bmp = Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
-                }
+                bmp = Decode(data);
             }
             catch (Exception ex)
             {
@@ -145,7 +133,8 @@ namespace Vintagestory.API.Common
 
                 SKImageInfo bitmapInfo = codec.Info;
                 bitmapInfo.AlphaType = SKAlphaType.Unpremul;
-
+                // needs to be set so on MacOS so we load the pixel in the correct color format for the GPU upload, else we get R / B swaped channels
+                bitmapInfo.ColorType = SKColorType.Bgra8888;
                 return SKBitmap.Decode(codec, bitmapInfo);
             }
         }

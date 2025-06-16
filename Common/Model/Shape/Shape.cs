@@ -7,6 +7,8 @@ using System.Runtime.Serialization;
 using System.Xml.Linq;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -549,6 +551,16 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        public ShapeElement FindElement(string wildcard, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase)
+        {
+            if (Elements == null) return null;
+
+            return GetElementByName(wildcard, Elements, true);
+        }
+
+        
+
         /// <summary>
         /// Recursively searches the element by name from the shape.
         /// </summary>
@@ -559,17 +571,17 @@ namespace Vintagestory.API.Common
         {
             if (Elements == null) return null;
 
-            return GetElementByName(name, Elements);
+            return GetElementByName(name, Elements, false);
         }
 
-        ShapeElement GetElementByName(string name, ShapeElement[] elems)
+        ShapeElement GetElementByName(string name, ShapeElement[] elems, bool isWildcard)
         {
             foreach (ShapeElement elem in elems)
             {
-                if (elem.Name.EqualsFastIgnoreCase(name)) return elem;
+                if (isWildcard ? WildcardUtil.Match(name, elem.Name) : elem.Name.EqualsFastIgnoreCase(name)) return elem;
                 if (elem.Children != null)
                 {
-                    ShapeElement foundElem = GetElementByName(name, elem.Children);
+                    ShapeElement foundElem = GetElementByName(name, elem.Children, isWildcard);
                     if (foundElem != null) return foundElem;
                 }
             }
@@ -611,7 +623,7 @@ namespace Vintagestory.API.Common
             {
                 if (elems[i].Name.Equals(name, stringComparison))
                 {
-                    elems = elems.RemoveEntry(i);
+                    elems = elems.RemoveAt(i);
                     removed = true;
                     i--;
                     continue;
@@ -706,8 +718,7 @@ namespace Vintagestory.API.Common
 
             foreach (var val in kf.Elements)
             {
-                ShapeElement elem;
-                if (elementsByName.TryGetValue(val.Key, out elem))
+                if (elementsByName.TryGetValue(val.Key, out ShapeElement elem))
                 {
                     val.Value.ForElement = elem;
                 }

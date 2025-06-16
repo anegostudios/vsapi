@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Cairo;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>

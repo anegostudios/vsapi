@@ -1,6 +1,8 @@
 ﻿using Cairo;
 using System;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>
@@ -31,7 +33,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Is this element capable of being in the focus?
         /// </summary>
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Constructor for the button

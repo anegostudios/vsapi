@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class ProfileEntry
@@ -98,9 +100,8 @@ namespace Vintagestory.API.Common
                 CallCount = 0
             };
 
-            ProfileEntryRange entry;
             if (currentEntry.ChildRanges == null) currentEntry.ChildRanges = new Dictionary<string, ProfileEntryRange>();
-            if (!currentEntry.ChildRanges.TryGetValue(code, out entry))
+            if (!currentEntry.ChildRanges.TryGetValue(code, out ProfileEntryRange entry))
             {
                 currentEntry.ChildRanges[code] = entry = new ProfileEntryRange()
                 {
@@ -160,8 +161,7 @@ namespace Vintagestory.API.Common
                 var marks = entry.Marks;
                 if (marks == null) entry.Marks = marks = new Dictionary<string, ProfileEntry>();
 
-                ProfileEntry ms;
-                if (!marks.TryGetValue(code, out ms))
+                if (!marks.TryGetValue(code, out ProfileEntry ms))
                 {
                     ms = new ProfileEntry();
                     marks[code] = ms;

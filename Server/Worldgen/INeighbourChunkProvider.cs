@@ -3,6 +3,8 @@ using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 
+#nullable disable
+
 namespace Vintagestory.API.Server
 {
     public interface IChunkProvider

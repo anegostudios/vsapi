@@ -1,5 +1,7 @@
 ﻿using System.IO;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     public class WeightedValue<T>

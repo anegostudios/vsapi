@@ -6,6 +6,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>
@@ -317,9 +319,7 @@ namespace Vintagestory.API.Client
         {
             BitmapRef bmp = capi.Assets.Get(btex.BakedName).ToBitmap(capi);
 
-            int textureSubId;
-            TextureAtlasPosition texpos;
-            if (intoAtlas.InsertTexture(bmp, out textureSubId, out texpos))
+            if (intoAtlas.InsertTexture(bmp, out int textureSubId, out TextureAtlasPosition texpos))
             {
                 btex.TextureSubId = textureSubId;
                 capi.Render.RemoveTexture(btex.BakedName);
@@ -341,7 +341,7 @@ namespace Vintagestory.API.Client
             BakedCompositeTexture bct = new BakedCompositeTexture();
 
             ct.WildCardNoFiles = null;
-
+            
             if (ct.Base.EndsWithWildCard)
             {
                 if (wildcardsCache == null) wildcardsCache = new Dictionary<AssetLocation, List<IAsset>>();
@@ -413,7 +413,7 @@ namespace Vintagestory.API.Client
                 {
                     BlendedOverlayTexture bov = ct.BlendedOverlays[i];
                     bct.TextureFilenames[i + 1] = bov.Base;
-                    bct.BakedName.Path += OverlaysSeparator + ((int)bov.BlendMode).ToString() + BlendmodeSeparator + bov.Base.ToShortString();
+                    bct.BakedName.Path += OverlaysSeparator + ((int)bov.BlendMode).ToString() + BlendmodeSeparator + bov.Base.ToString();
                 }
             }
             else
@@ -475,13 +475,16 @@ namespace Vintagestory.API.Client
                             var act = new CompositeTexture(newLocation);
                             act.Rotation = ct.Rotation;
                             act.Alpha = ct.Alpha;
+                            act.BlendedOverlays = ct.BlendedOverlays;
                             var bt = Bake(assetManager, act);
                             bt.TilesWidth = ct.TilesWidth;
                             tiles.Add(bt);
                         }
                     } else
                     {
-                        var bt = Bake(assetManager, ct.Tiles[i]);
+                        var act = ct.Tiles[i];
+                        act.BlendedOverlays = ct.BlendedOverlays;
+                        var bt = Bake(assetManager, act);
                         bt.TilesWidth = ct.TilesWidth;
                         tiles.Add(bt);
                     }
@@ -598,5 +601,80 @@ namespace Vintagestory.API.Client
         public BakedCompositeTexture[] BakedTiles = null;
 
         public int TilesWidth;
+
+        /// <summary>
+        /// For tiled textures, returns the selector index for which one of the tiles to use, for the given x,y,z position and tileSide
+        /// </summary>
+        /// <param name="tiles"></param>
+        /// <param name="tileSide"></param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <returns></returns>
+        public static int GetTiledTexturesSelector(BakedCompositeTexture[] tiles, int tileSide, int posX, int posY, int posZ)
+        {
+            var baseTile = tiles[0];
+            int width = baseTile.TilesWidth;
+            int height = tiles.Length / width;
+            string name = baseTile.BakedName.Path;
+            int index = name.IndexOf('@');
+            int rotation = 0;
+            if (index > 0)
+            {
+                int.TryParse(name[(index + 1)..name.Length], out rotation);
+                rotation /= 90;
+            }
+
+            int x = 0;
+            int y = 0;
+            int z = 0;
+            switch (tileSide)
+            {
+                case 0:
+                    x = posX;
+                    y = posZ;
+                    z = posY;
+                    break;
+                case 1:
+                    x = posZ;
+                    y = -posX;
+                    z = posY;
+                    break;
+                case 2:
+                    x = -posX;
+                    y = posZ;
+                    z = posY;
+                    break;
+                case 3:
+                    x = -posZ;
+                    y = -posX;
+                    z = posY;
+                    break;
+                case 4:
+                    x = posX;
+                    y = posY;
+                    z = posZ;
+                    break;
+                case 5:
+                    x = posX;
+                    y = posY;
+                    z = -posZ;
+                    break;
+            }
+
+            switch (rotation)
+            {
+                case 0:
+                    return GameMath.Mod(-x + y, width) + width * GameMath.Mod(-z, height);
+                case 1:
+                    return GameMath.Mod(z + y, width) + width * GameMath.Mod(x, height);
+                case 2:
+                    return GameMath.Mod(x + y, width) + width * GameMath.Mod(z, height);
+                case 3:
+                    return GameMath.Mod(-z + y, width) + width * GameMath.Mod(-x, height);
+            }
+
+            return 0;
+        }
     }
 }

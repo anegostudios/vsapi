@@ -10,6 +10,8 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
 
@@ -249,12 +251,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Modifiers that can alter the behavior of the item or block, mostly for held interaction
         /// </summary>
-        public CollectibleBehavior[] CollectibleBehaviors = new CollectibleBehavior[0];
+        public CollectibleBehavior[] CollectibleBehaviors = Array.Empty<CollectibleBehavior>();
 
         /// <summary>
         /// For light emitting collectibles: hue, saturation and brightness value
         /// </summary>
-        public byte[] LightHsv = new byte[3];
+        public ThreeBytes LightHsv = new ThreeBytes();
 
 
 
@@ -426,12 +428,44 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetMaxDurability(ItemStack itemstack)
         {
-            return Durability;
+            int durability = 0;
+
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    int additionalDurability = bh.OnGetMaxDurability(itemstack, ref bhHandling);
+                    if (bhHandling != EnumHandling.PassThrough)
+                    {
+                        durability += additionalDurability;
+                    }
+                },
+                () => {
+                    durability += Durability;
+                }
+            );
+
+            return durability;
         }
 
         public virtual int GetRemainingDurability(ItemStack itemstack)
         {
-            return (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack));
+            int durability = 0;
+
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    int additionalDurability = bh.OnGetMaxDurability(itemstack, ref bhHandling);
+                    if (bhHandling != EnumHandling.PassThrough)
+                    {
+                        durability += additionalDurability;
+                    }
+                },
+                () => {
+                    durability += (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack));
+                }
+            );
+
+            return durability;
         }
 
         /// <summary>
@@ -607,15 +641,36 @@ namespace Vintagestory.API.Common
         {
             float traitRate = 1f;
 
-            var mat = block.GetBlockMaterial(api.World.BlockAccessor, blockSel.Position);
+            EnumBlockMaterial material = block.GetBlockMaterial(api.World.BlockAccessor, blockSel.Position);
 
-            if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone) {
+            if (material == EnumBlockMaterial.Ore || material == EnumBlockMaterial.Stone) {
                 traitRate = forPlayer.Entity.Stats.GetBlended("miningSpeedMul");
             }
 
-            if (MiningSpeed == null || !MiningSpeed.ContainsKey(mat)) return traitRate;
+            float toolMiningSpeed = 1;
 
-            return MiningSpeed[mat] * GlobalConstants.ToolMiningSpeedModifier * traitRate;
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    float miningSpeedMultiplier = bh.OnGetMiningSpeed(itemstack, blockSel, block, forPlayer, ref bhHandling);
+                    if (bhHandling != EnumHandling.PassThrough)
+                    {
+                        toolMiningSpeed *= miningSpeedMultiplier;
+                    }
+                },
+                () => {
+                    if (MiningSpeed == null || !MiningSpeed.ContainsKey(material))
+                    {
+                        toolMiningSpeed *= traitRate;
+                    }
+                    else
+                    {
+                        toolMiningSpeed *= MiningSpeed[material] * traitRate * GlobalConstants.ToolMiningSpeedModifier;
+                    }
+                }
+            );
+
+            return toolMiningSpeed;
         }
 
 
@@ -887,7 +942,15 @@ namespace Vintagestory.API.Common
         /// <param name="amount"></param>
         public virtual void SetDurability(ItemStack itemstack, int amount)
         {
-            itemstack.Attributes.SetInt("durability", amount);
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    bh.OnSetDurability(itemstack, ref amount, ref bhHandling);
+                },
+                () => {
+                    itemstack.Attributes.SetInt("durability", amount);
+                }
+            );
         }
 
         /// <summary>
@@ -899,43 +962,57 @@ namespace Vintagestory.API.Common
         /// <param name="amount">Amount of damage</param>
         public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1)
         {
-            ItemStack itemstack = itemslot.Itemstack;
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    bh.OnDamageItem(world, byEntity, itemslot, ref amount, ref bhHandling);
+                },
+                () => {
+                    ItemStack itemstack = itemslot.Itemstack;
 
-            int leftDurability = itemstack.Collectible.GetRemainingDurability(itemstack);
-            leftDurability -= amount;
-            itemstack.Attributes.SetInt("durability", leftDurability);
+                    int leftDurability = itemstack.Collectible.GetRemainingDurability(itemstack);
+                    leftDurability -= amount;
+                    itemstack.Attributes.SetInt("durability", leftDurability);
 
-            if (leftDurability <= 0)
-            {
-                itemslot.Itemstack = null;
-
-                IPlayer player = (byEntity as EntityPlayer)?.Player;
-
-                if (player != null)
-                {
-                    if (Tool != null)
+                    if (leftDurability <= 0)
                     {
-                        string ident = Attributes?["slotRefillIdentifier"].ToString();
-                        RefillSlotIfEmpty(itemslot, byEntity as EntityAgent, (stack) => {
-                            return ident != null ? stack.ItemAttributes?["slotRefillIdentifier"]?.ToString() == ident : stack.Collectible.Tool == Tool;
-                        });
-                    }
+                        itemslot.Itemstack = null;
 
-                    if (itemslot.Itemstack != null && !itemslot.Itemstack.Attributes.HasAttribute("durability"))
-                    {
-                        itemstack = itemslot.Itemstack;
-                        itemstack.Attributes.SetInt("durability", itemstack.Collectible.GetMaxDurability(itemstack));
-                        // This forces update of durability when slot is marked dirty (otherwise the durability attribute would be unset, therefore not updated, for a new item)
-                    }
+                        IPlayer player = (byEntity as EntityPlayer)?.Player;
 
-                    world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), player, null);
-                } else
-                {
-                    world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), byEntity.SidedPos.X, byEntity.SidedPos.Y, byEntity.SidedPos.Z, null, 1, 16);
+                        if (player != null)
+                        {
+                            if (Tool != null)
+                            {
+                                string ident = Attributes?["slotRefillIdentifier"].ToString();
+                                RefillSlotIfEmpty(itemslot, byEntity as EntityAgent, (stack) => {
+                                    return ident != null ? stack.ItemAttributes?["slotRefillIdentifier"]?.ToString() == ident : stack.Collectible.Tool == Tool;
+                                });
+
+                                if (!itemslot.Empty && Attributes?.IsTrue("rememberToolModeWhenBroken") == true)
+                                {
+                                    itemslot.Itemstack.Collectible.SetToolMode(itemslot, player, null, GetToolMode(new DummySlot(itemstack), player, null));
+                                }
+                            }
+
+                            if (itemslot.Itemstack != null && !itemslot.Itemstack.Attributes.HasAttribute("durability"))
+                            {
+                                itemstack = itemslot.Itemstack;
+                                itemstack.Attributes.SetInt("durability", itemstack.Collectible.GetMaxDurability(itemstack));
+                                // This forces update of durability when slot is marked dirty (otherwise the durability attribute would be unset, therefore not updated, for a new item)
+                            }
+
+                            world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), player, null);
+                        }
+                        else
+                        {
+                            world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), byEntity.SidedPos.X, byEntity.SidedPos.Y, byEntity.SidedPos.Z, null, 1, 16);
+                        }
+
+                        world.SpawnCubeParticles(byEntity.SidedPos.XYZ.Add(byEntity.SelectionBox.Y2 / 2), itemstack, 0.25f, 30, 1, player);
+                    }
                 }
-
-                world.SpawnCubeParticles(byEntity.SidedPos.XYZ.Add(byEntity.SelectionBox.Y2 / 2), itemstack, 0.25f, 30, 1, player);
-            }
+            );
 
             itemslot.MarkDirty();
         }
@@ -986,7 +1063,7 @@ namespace Vintagestory.API.Common
         /// <param name="slot"></param>
         /// <param name="byPlayer"></param>
         /// <param name="blockSelection"></param>
-        /// <returns></returns>
+        /// <returns>The tool mode to display or -1 to not display the current mode</returns>
         public virtual int GetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection)
         {
             for (int i = 0; i < CollectibleBehaviors.Length; i++)
@@ -1785,7 +1862,7 @@ namespace Vintagestory.API.Common
                 };
             } else
             {
-                interactions = new WorldInteraction[0];
+                interactions = Array.Empty<WorldInteraction>();
             }
 
             EnumHandling handled = EnumHandling.PassThrough;
@@ -2055,6 +2132,11 @@ namespace Vintagestory.API.Common
                 z, (float)size * 0.58f, ColorUtil.WhiteArgb,
                 true, false, true
             );
+
+            for (int i = 0; i < CollectibleBehaviors.Length; i++)
+            {
+                CollectibleBehaviors[i].OnHandbookRecipeRender(capi, recipe, slot, x, y, z, size);
+            }
         }
 
 
@@ -2190,8 +2272,7 @@ namespace Vintagestory.API.Common
 
                 foreach (var sourceState in sourceTransitionStates)
                 {
-                    TransitionState targetState = null;
-                    if (!targetStatesByType.TryGetValue(sourceState.Props.Type, out targetState))
+                    if (!targetStatesByType.TryGetValue(sourceState.Props.Type, out TransitionState targetState))
                     {
                         canAutoStack = false;
                         canDirectStack = false;
@@ -2625,7 +2706,24 @@ namespace Vintagestory.API.Common
         /// <returns>The stack it should transition into</returns>
         public virtual ItemStack OnTransitionNow(ItemSlot slot, TransitionableProperties props)
         {
+            bool preventDefault = false;
             ItemStack newStack = props.TransitionedStack.ResolvedItemstack.Clone();
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                ItemStack bhStack = behavior.OnTransitionNow(slot, props, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                    newStack = bhStack;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return newStack;
+            }
+
+            if (preventDefault) return newStack;
+
             newStack.StackSize = GameMath.RoundRandom(api.World.Rand, slot.Itemstack.StackSize * props.TransitionRatio);
             return newStack;
         }

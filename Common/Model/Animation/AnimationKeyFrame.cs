@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     [JsonObject(MemberSerialization.OptIn)]
@@ -64,8 +66,7 @@ namespace Vintagestory.API.Common
         internal AnimationKeyFrameElement GetKeyFrameElement(ShapeElement forElem)
         {
             if (forElem == null) return null;
-            AnimationKeyFrameElement kelem;
-            ElementsByShapeElement.TryGetValue(forElem, out kelem);
+            ElementsByShapeElement.TryGetValue(forElem, out AnimationKeyFrameElement kelem);
             return kelem;
         }
 

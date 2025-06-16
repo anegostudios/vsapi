@@ -2,6 +2,8 @@
 using System;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -191,16 +193,15 @@ namespace Vintagestory.API.Common
 
 
         // Bit 25
-        public const int LiquidIsLavaBitMask = 1 << 25;
+        public const int LiquidIsLavaBitMask = 1 << 27;
         // Bit 26
-        public const int LiquidWeakFoamBitMask = 1 << 26;
+        public const int LiquidWeakFoamBitMask = 1 << 28;
         // Bit 27
-        public const int LiquidWeakWaveBitMask = 1 << 27;
+        public const int LiquidWeakWaveBitMask = 1 << 29;
         // Bit 28
-        public const int LiquidFullAlphaBitMask = 1 << 28;
+        public const int LiquidFullAlphaBitMask = 1 << 30;
         // Bit 29
-        public const int LiquidExposedToSkyBitMask = 1 << 29;
-
+        public const int LiquidExposedToSkyBitMask = 1 << 31;
 
 
         public const int ClearWindBitsMask = ~WindBitsMask;

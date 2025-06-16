@@ -11,6 +11,8 @@ using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public static class TreeAttributeUtil
@@ -774,7 +776,7 @@ namespace Vintagestory.API.Datastructures
             ITreeAttribute ttranslation = attr.GetTreeAttribute("translation");
             float scale = attr.GetFloat("scale", 1);
 
-            Vec3f origin = new Vec3f(0.5f, 0.5f, 0.5f);
+            FastVec3f origin = new FastVec3f(0.5f, 0.5f, 0.5f);
             if (torigin != null)
             {
                 origin.X = torigin.GetFloat("x");
@@ -782,7 +784,7 @@ namespace Vintagestory.API.Datastructures
                 origin.Z = torigin.GetFloat("z");
             }
 
-            Vec3f rotation = new Vec3f();
+            FastVec3f rotation = new FastVec3f();
             if (trotation != null)
             {
                 rotation.X = trotation.GetFloat("x");
@@ -790,7 +792,7 @@ namespace Vintagestory.API.Datastructures
                 rotation.Z = trotation.GetFloat("z");
             }
 
-            Vec3f translation = new Vec3f();
+            FastVec3f translation = new FastVec3f();
             if (ttranslation != null)
             {
                 translation.X = ttranslation.GetFloat("x");

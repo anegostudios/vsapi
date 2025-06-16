@@ -2,6 +2,8 @@
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
 
@@ -45,40 +47,40 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static int[] CubeVertices = {
             // North face
-            -1, -1, -1,
-            -1,  1, -1,
-            1,  1, -1,
-            1, -1, -1,
+            -1, -1, -1,    // bot right   -- Correct!
+            -1,  1, -1,    // top right
+            1,  1, -1,     // top left
+            1, -1, -1,     // bot left
 
             // East face
-            1, -1, -1,     // bot left
-            1,  1, -1,     // top left
-            1,  1,  1,     // top right
-            1, -1,  1,     // bot right
+            1, -1, -1,     // bot right
+            1,  1, -1,     // top right
+            1,  1,  1,     // top left
+            1, -1,  1,     // bot left
 
             // South face
-            -1, -1,  1,
-            1, -1,  1,
-            1,  1,  1,
-            -1,  1,  1,
+            1, -1,  1,     // bot right
+            1,  1,  1,     // top right
+            -1,  1,  1,    // top left
+            -1, -1,  1,    // bot left
 
             // West face
-            -1, -1, -1,
-            -1, -1,  1,
-            -1,  1,  1,
-            -1,  1, -1,
+            -1, -1,  1,    // bot right
+            -1,  1,  1,    // top right
+            -1,  1, -1,    // top left
+            -1, -1, -1,    // bot left
             
-            // Top face
-            -1,  1, -1,
-            -1,  1,  1,
-            1,  1,  1,
-            1,  1, -1,
+            // Top face    ("bot" is south, "right" is east)
+            1,  1,  1,     // bot right SE
+            1,  1, -1,     // top right
+            -1,  1, -1,    // top left
+            -1,  1,  1,    // bot left
                           
-            // Bottom face
-            -1, -1, -1,
-            1, -1, -1,
-            1, -1,  1,
-            -1, -1,  1
+            // Bottom face  ("bot" is south, "right" is west)
+            -1, -1,  1,    // bot right
+            -1, -1, -1,    // top right
+            1, -1, -1,     // top left
+            1, -1,  1      // bot left
         };
 
         /// <summary>
@@ -112,28 +114,28 @@ namespace Vintagestory.API.Client
             0, 0,
 
             // South
-            0, 0,
             1, 0,
             1, 1,
             0, 1,
+            0, 0,
             
             // West
-            0, 0,
             1, 0,
             1, 1,
             0, 1,
+            0, 0,
 
             // Top face
-            0, 1,
-            0, 0,
             1, 0,
             1, 1,
+            0, 1,
+            0, 0,
 
             // Bottom face
+            1, 0,
             1, 1,
             0, 1,
-            0, 0,
-            1, 0,
+            0, 0
         };
 
         /// <summary>

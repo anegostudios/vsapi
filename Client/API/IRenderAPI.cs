@@ -5,6 +5,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class WireframeModes
@@ -512,6 +514,13 @@ namespace Vintagestory.API.Client
         void UpdateMesh(MeshRef meshRef, MeshData updatedata);
 
         /// <summary>
+        /// Updates the existing mesh. Updates any non null data from <paramref name="updatedata"/>. Version for chunks only (also decals, as they use chunk MeshDataPool system)
+        /// </summary>
+        /// <param name="meshRef"></param>
+        /// <param name="updatedata"></param>
+        void UpdateChunkMesh(MeshRef meshRef, MeshData updatedata);
+
+        /// <summary>
         /// Frees up the memory on the graphics card. Should always be called at the end of a meshes lifetime to prevent memory leaks. Equivalent to calling Dispose on the meshref itself
         /// </summary>
         /// <param name="vao"></param>
@@ -807,6 +816,11 @@ namespace Vintagestory.API.Client
         /// Density of the current fog. Fog is calculated as followed in the shaders: clamp(fogMin + 1 - 1 / exp(gl_FragDepth * fogDensity), 0, 1)
         /// </summary>
         float FogDensity { get; }
+
+        /// <summary>
+        /// If true, chunk rendering will use SSBOs - a OpenGL 4.30+ feature - for higher performance in game version 1.21+
+        /// </summary>
+        bool UseSSBOs { get; }
 
 
         #endregion

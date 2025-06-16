@@ -1,5 +1,7 @@
 ﻿using System.IO;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class IntAttribute : ScalarAttribute<int>, IAttribute

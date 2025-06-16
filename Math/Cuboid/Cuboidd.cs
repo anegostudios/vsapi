@@ -1,6 +1,8 @@
 ﻿using System;
 using Vintagestory.API.Common.Entities;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>

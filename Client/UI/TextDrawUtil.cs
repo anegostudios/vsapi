@@ -5,6 +5,8 @@ using System.Text;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public enum EnumLinebreakBehavior
@@ -240,7 +242,7 @@ namespace Vintagestory.API.Client
         /// <returns>The text broken up into lines.</returns>
         public TextLine[] Lineize(CairoFont font, string fulltext, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, bool keepLinebreakChar = false)
         {
-            if (fulltext == null || fulltext.Length == 0) return new TextLine[0];
+            if (fulltext == null || fulltext.Length == 0) return Array.Empty<TextLine>();
 
             ImageSurface surface = new ImageSurface(Format.Argb32, 1, 1);
             Context ctx = new Context(surface);
@@ -269,7 +271,7 @@ namespace Vintagestory.API.Client
         /// <returns>The text broken up into lines.</returns>
         public TextLine[] Lineize(Context ctx, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, double lineHeightMultiplier = 1f, bool keepLinebreakChar = false)
         {
-            if (text == null || text.Length == 0) return new TextLine[0];
+            if (text == null || text.Length == 0) return Array.Empty<TextLine>();
 
             if (linebreak == EnumLinebreakBehavior.Default)
             {

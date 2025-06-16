@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     /// <summary>
@@ -260,7 +262,7 @@ namespace Vintagestory.API.Client
 
 
             // Only if the parent element has been initialized already
-            if (ParentBounds.Initialized)
+            if (ParentBounds?.Initialized == true)
             {
                 calcMarginFromAlignment(ParentBounds.InnerWidth, ParentBounds.InnerHeight);
             }

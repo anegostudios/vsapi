@@ -5,6 +5,8 @@ using Cairo;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public abstract class GuiElementEditableTextBase : GuiElementTextBase
@@ -124,7 +126,7 @@ namespace Vintagestory.API.Client
 
         public override bool Focusable
         {
-            get { return true; }
+            get { return enabled; }
         }
 
         /// <summary>
@@ -284,7 +286,7 @@ namespace Vintagestory.API.Client
         /// Sets given texts, leaves cursor position unchanged
         /// </summary>
         /// <param name="newLines"></param>
-        public void LoadValue(List<string> newLines)
+        public virtual void LoadValue(List<string> newLines)
         {
             // Disallow edit if prevent by event or if it adds another line beyond max lines
             if (OnTryTextChangeText?.Invoke(newLines) == false || (newLines.Count > maxlines && newLines.Count >= lines.Count))

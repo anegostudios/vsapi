@@ -71,6 +71,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+#nullable disable
+
 namespace CompactExifLib
 {
   public class ExifData
@@ -207,9 +209,8 @@ namespace CompactExifLib
     //                false = The tag was not found or is of wrong type.
     public bool GetTagValue(ExifTag TagSpec, out string Value, StrCoding Coding)
     {
-      TagItem t;
-      bool Success = false;
-      int i, j;
+            bool Success = false;
+            int i, j;
 
       StrCodingFormat StringTagFormat = (StrCodingFormat)((uint)Coding & 0xFFFF0000);
       ushort CodePage = (ushort)Coding;
@@ -220,7 +221,7 @@ namespace CompactExifLib
       else
       {
         Value = null;
-        if (GetTagItem(TagSpec, out t))
+        if (GetTagItem(TagSpec, out TagItem t))
         {
           i = t.ValueCount;
           j = t.ValueIndex;
@@ -339,11 +340,10 @@ namespace CompactExifLib
     //                false = The tag was not found, is of wrong type or is out of range.
     public bool GetTagValue(ExifTag TagSpec, out int Value, int Index = 0)
     {
-      TagItem t;
-      bool Success = false;
-      uint TempValue = 0;
+            bool Success = false;
+            uint TempValue = 0;
 
-      if (GetTagItem(TagSpec, out t) && ReadUintElement(t, Index, out TempValue))
+      if (GetTagItem(TagSpec, out TagItem t) && ReadUintElement(t, Index, out TempValue))
       {
         Success = ((t.TagType != ExifTagType.ULong) || ((int)TempValue >= 0));
         if (!Success) TempValue = 0;
@@ -394,11 +394,10 @@ namespace CompactExifLib
 
     public bool GetTagValue(ExifTag TagSpec, out uint Value, int Index = 0)
     {
-      TagItem t;
-      bool Success = false;
-      uint TempValue = 0;
+            bool Success = false;
+            uint TempValue = 0;
 
-      if (GetTagItem(TagSpec, out t) && ReadUintElement(t, Index, out TempValue))
+      if (GetTagItem(TagSpec, out TagItem t) && ReadUintElement(t, Index, out TempValue))
       {
         Success = ((t.TagType != ExifTagType.SLong) || ((int)TempValue >= 0));
         if (!Success) TempValue = 0;
@@ -439,27 +438,25 @@ namespace CompactExifLib
 
     public bool GetTagValue(ExifTag TagSpec, out ExifRational Value, int Index = 0)
     {
-      TagItem t;
-      bool Success = false;
-      uint Numer, Denom;
+            bool Success = false;
 
-      if (GetTagItem(TagSpec, out t) && ReadURatElement(t, Index, out Numer, out Denom) == true)
-      {
-        if (t.TagType == ExifTagType.URational)
-        {
-          Value = new ExifRational(Numer, Denom);
-        }
-        else // ExifTagType.SRational
-        {
-          Value = new ExifRational((int)Numer, (int)Denom);
-        }
-        Success = true;
-      }
-      else
-      {
-        Value = new ExifRational(0, 0);
-      }
-      return (Success);
+            if (GetTagItem(TagSpec, out TagItem t) && ReadURatElement(t, Index, out uint Numer, out uint Denom) == true)
+            {
+                if (t.TagType == ExifTagType.URational)
+                {
+                    Value = new ExifRational(Numer, Denom);
+                }
+                else // ExifTagType.SRational
+                {
+                    Value = new ExifRational((int)Numer, (int)Denom);
+                }
+                Success = true;
+            }
+            else
+            {
+                Value = new ExifRational(0, 0);
+            }
+            return (Success);
     }
 
 
@@ -506,13 +503,12 @@ namespace CompactExifLib
     //                false = The tag was not found, is of wrong type or wrong format.
     public bool GetTagValue(ExifTag TagSpec, out DateTime Value, ExifDateFormat Format = ExifDateFormat.DateAndTime)
     {
-      TagItem t;
-      bool Success;
-      int i, Year, Month, Day, Hour, Minute, Second;
+            bool Success;
+            int i, Year, Month, Day, Hour, Minute, Second;
 
       Success = false;
       Value = DateTime.MinValue;
-      if (GetTagItem(TagSpec, out t) && (t.TagType == ExifTagType.Ascii))
+      if (GetTagItem(TagSpec, out TagItem t) && (t.TagType == ExifTagType.Ascii))
       {
         try
         {
@@ -690,15 +686,14 @@ namespace CompactExifLib
     //                  false = The IFD is invalid.
     public bool SetTagRawData(ExifTag TagSpec, ExifTagType TagType, int ValueCount, byte[] RawData, int RawDataIndex = 0)
     {
-      TagItem t;
-      bool Success = false;
+            bool Success = false;
 
-      ExifIfd Ifd = ExtractIfd(TagSpec);
+            ExifIfd Ifd = ExtractIfd(TagSpec);
       if ((uint)Ifd < ExifIfdCount)
       {
         int RawDataByteCount = GetTagByteCount(TagType, ValueCount);
         Dictionary<ExifTagId, TagItem> IfdTagTable = TagTable[(uint)Ifd];
-        if (IfdTagTable.TryGetValue(ExtractTagId(TagSpec), out t))
+        if (IfdTagTable.TryGetValue(ExtractTagId(TagSpec), out TagItem t))
         {
           t.TagType = TagType;
           t.ValueCount = ValueCount;
@@ -1323,20 +1318,18 @@ namespace CompactExifLib
     public bool GetGpsAltitude(out decimal Value)
     {
       bool Success = false;
-      ExifRational AltitudeRat;
-      uint BelowSeaLevel;
 
-      if (GetTagValue(ExifTag.GpsAltitude, out AltitudeRat) && AltitudeRat.IsValid())
-      {
-        Value = ExifRational.ToDecimal(AltitudeRat);
-        if (GetTagValue(ExifTag.GpsAltitudeRef, out BelowSeaLevel) && (BelowSeaLevel == 1))
-        {
-          Value = -Value;
-        }
-        Success = true;
-      }
-      else Value = 0;
-      return (Success);
+            if (GetTagValue(ExifTag.GpsAltitude, out ExifRational AltitudeRat) && AltitudeRat.IsValid())
+            {
+                Value = ExifRational.ToDecimal(AltitudeRat);
+                if (GetTagValue(ExifTag.GpsAltitudeRef, out uint BelowSeaLevel) && (BelowSeaLevel == 1))
+                {
+                    Value = -Value;
+                }
+                Success = true;
+            }
+            else Value = 0;
+            return (Success);
     }
 
 
@@ -1369,24 +1362,23 @@ namespace CompactExifLib
     public bool GetGpsDateTimeStamp(out DateTime Value)
     {
       bool Success = false;
-      ExifRational Hour, Min, Sec;
 
-      if (GetTagValue(ExifTag.GpsDateStamp, out Value, ExifDateFormat.DateOnly))
-      {
-        if (GetTagValue(ExifTag.GpsTimeStamp, out Hour, 0) && !Hour.IsNegative() && Hour.IsValid() &&
-            GetTagValue(ExifTag.GpsTimeStamp, out Min, 1) && !Min.IsNegative() && Min.IsValid() &&
-            GetTagValue(ExifTag.GpsTimeStamp, out Sec, 2) && !Sec.IsNegative() && Sec.IsValid())
-        {
-          Value = Value.AddHours(((double)Hour.Numer) / Hour.Denom);
-          Value = Value.AddMinutes(((double)Min.Numer) / Min.Denom);
-          double ms = Math.Truncate(((double)Sec.Numer * 1000) / Sec.Denom);
-          Value = Value.AddMilliseconds(ms);
-          Success = true;
-        }
-        else Value = DateTime.MinValue;
-      }
-      else Value = DateTime.MinValue;
-      return (Success);
+            if (GetTagValue(ExifTag.GpsDateStamp, out Value, ExifDateFormat.DateOnly))
+            {
+                if (GetTagValue(ExifTag.GpsTimeStamp, out ExifRational Hour, 0) && !Hour.IsNegative() && Hour.IsValid() &&
+                    GetTagValue(ExifTag.GpsTimeStamp, out ExifRational Min, 1) && !Min.IsNegative() && Min.IsValid() &&
+                    GetTagValue(ExifTag.GpsTimeStamp, out ExifRational Sec, 2) && !Sec.IsNegative() && Sec.IsValid())
+                {
+                    Value = Value.AddHours(((double)Hour.Numer) / Hour.Denom);
+                    Value = Value.AddMinutes(((double)Min.Numer) / Min.Denom);
+                    double ms = Math.Truncate(((double)Sec.Numer * 1000) / Sec.Denom);
+                    Value = Value.AddMilliseconds(ms);
+                    Success = true;
+                }
+                else Value = DateTime.MinValue;
+            }
+            else Value = DateTime.MinValue;
+            return (Success);
     }
 
 
@@ -1558,14 +1550,12 @@ namespace CompactExifLib
     {
       byte[] BlockContent = new byte[65536];
       ushort BlockMarker;
-      ImageFileBlock BlockType;
-      int MetaDataIndex;
-      bool ExifBlockFound = false;
+            bool ExifBlockFound = false;
 
-      SourceExifStream.Position = 2;
+            SourceExifStream.Position = 2;
       do
       {
-        ReadJpegBlock(SourceExifStream, BlockContent, out int BlockContentSize, out BlockMarker, out BlockType, out MetaDataIndex);
+        ReadJpegBlock(SourceExifStream, BlockContent, out int BlockContentSize, out BlockMarker, out ImageFileBlock BlockType, out int MetaDataIndex);
         if (BlockType != ImageFileBlock.Unknown)
         {
           if ((BlockType == ImageFileBlock.Exif) && (!ExifBlockFound))
@@ -2183,22 +2173,21 @@ namespace CompactExifLib
       SubExifBlock.SourceExifStream = TiffStream;
 
       ExifBlockOffset = SubExifBlock.EvaluateExifBlock(ExifBlockOffset);
-      TagItem SegmentOffsetsTagItem, SegmentByteCountsTagItem;
-      if (SubExifBlock.GetTagItem(ExifTag.StripOffsets, out SegmentOffsetsTagItem) &&
-          SubExifBlock.GetTagItem(ExifTag.StripByteCounts, out SegmentByteCountsTagItem))
-      {
-        SegmentOffsetsTag = ExifTag.StripOffsets;
-        SegmentByteCountsTag = ExifTag.StripByteCounts;
-      }
-      else if (SubExifBlock.GetTagItem(ExifTag.TileOffsets, out SegmentOffsetsTagItem) &&
-               SubExifBlock.GetTagItem(ExifTag.TileByteCounts, out SegmentByteCountsTagItem))
-      {
-        SegmentOffsetsTag = ExifTag.TileOffsets;
-        SegmentByteCountsTag = ExifTag.TileByteCounts;
-      }
-      else throw new ExifException(ExifErrCode.InternalImageStructureIsWrong);
+            if (SubExifBlock.GetTagItem(ExifTag.StripOffsets, out TagItem SegmentOffsetsTagItem) &&
+                SubExifBlock.GetTagItem(ExifTag.StripByteCounts, out TagItem SegmentByteCountsTagItem))
+            {
+                SegmentOffsetsTag = ExifTag.StripOffsets;
+                SegmentByteCountsTag = ExifTag.StripByteCounts;
+            }
+            else if (SubExifBlock.GetTagItem(ExifTag.TileOffsets, out SegmentOffsetsTagItem) &&
+                     SubExifBlock.GetTagItem(ExifTag.TileByteCounts, out SegmentByteCountsTagItem))
+            {
+                SegmentOffsetsTag = ExifTag.TileOffsets;
+                SegmentByteCountsTag = ExifTag.TileByteCounts;
+            }
+            else throw new ExifException(ExifErrCode.InternalImageStructureIsWrong);
 
-      int ValueCount = SegmentOffsetsTagItem.ValueCount;
+            int ValueCount = SegmentOffsetsTagItem.ValueCount;
       SegmentOffsetTable = new uint[ValueCount];
       SegmentByteCountTable = new uint[ValueCount];
       bool IsOffsetTable16Bit = (SegmentOffsetsTagItem.TagType == ExifTagType.UShort);
@@ -2951,14 +2940,13 @@ namespace CompactExifLib
     // TIFF: Stream "SourceStream" is used to read the EXIF data successively. "SourceExifBlock" is "null" in this case.
     private int EvaluateExifBlock(int PrimaryDataOffset)
     {
-      int PrivateDataOffset, GpsInfoDataOffset, InteroperabilityOffset, ThumbnailDataOffset, IfdIndex, TiffNextExifBlockOffset = 0;
-      byte[] IfdTable;
+            int TiffNextExifBlockOffset = 0;
 
-      TagTable = new Dictionary<ExifTagId, TagItem>[ExifIfdCount];
-      GetNextIfd(PrimaryDataOffset, out IfdTable, out IfdIndex);
-      InitIfdPrimaryData(IfdTable, IfdIndex, out PrivateDataOffset, out GpsInfoDataOffset, out ThumbnailDataOffset);
+            TagTable = new Dictionary<ExifTagId, TagItem>[ExifIfdCount];
+            GetNextIfd(PrimaryDataOffset, out byte[] IfdTable, out int IfdIndex);
+      InitIfdPrimaryData(IfdTable, IfdIndex, out int PrivateDataOffset, out int GpsInfoDataOffset, out int ThumbnailDataOffset);
       GetNextIfd(PrivateDataOffset, out IfdTable, out IfdIndex);
-      InitIfdPrivateData(IfdTable, IfdIndex, out InteroperabilityOffset);
+      InitIfdPrivateData(IfdTable, IfdIndex, out int InteroperabilityOffset);
       GetNextIfd(GpsInfoDataOffset, out IfdTable, out IfdIndex);
       InitIfdGpsInfoData(IfdTable, IfdIndex);
       GetNextIfd(InteroperabilityOffset, out IfdTable, out IfdIndex);
@@ -3097,12 +3085,11 @@ namespace CompactExifLib
 
     private bool GetTagValueWithIdCode(ExifTag TagSpec, out string Value, ushort CodePage)
     {
-      TagItem t;
-      bool Success = false, IsUtf16Coded = false, IsAsciiCoded = false;
-      int i, j;
+            bool Success = false, IsUtf16Coded = false, IsAsciiCoded = false;
+            int i, j;
 
       Value = null;
-      if (GetTagItem(TagSpec, out t) && (t.TagType == ExifTagType.Undefined) && (t.ValueCount >= IdCodeLength))
+      if (GetTagItem(TagSpec, out TagItem t) && (t.TagType == ExifTagType.Undefined) && (t.ValueCount >= IdCodeLength))
       {
         if (CompareArrays(t.ValueData, t.ValueIndex, IdCodeUtf16))
         {
@@ -3386,14 +3373,12 @@ namespace CompactExifLib
     private bool GetGpsCoordinateHelper(out GeoCoordinate Value, ExifTag ValueTag, ExifTag RefTag, char Cp1, char Cp2)
     {
       bool Success = false;
-      ExifRational Deg, Min, Sec;
-      string Ref;
-      char CardinalPoint;
+            char CardinalPoint;
 
-      if (GetTagValue(ValueTag, out Deg, 0) && Deg.IsValid() &&
-          GetTagValue(ValueTag, out Min, 1) && Min.IsValid() &&
-          GetTagValue(ValueTag, out Sec, 2) && Sec.IsValid() &&
-          GetTagValue(RefTag, out Ref, StrCoding.Utf8) && (Ref.Length == 1))
+            if (GetTagValue(ValueTag, out ExifRational Deg, 0) && Deg.IsValid() &&
+          GetTagValue(ValueTag, out ExifRational Min, 1) && Min.IsValid() &&
+          GetTagValue(ValueTag, out ExifRational Sec, 2) && Sec.IsValid() &&
+          GetTagValue(RefTag, out string Ref, StrCoding.Utf8) && (Ref.Length == 1))
       {
         CardinalPoint = Ref[0];
         if ((CardinalPoint == Cp1) || (CardinalPoint == Cp2))

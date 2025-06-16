@@ -7,6 +7,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public delegate bool StartAnimationDelegate(ref AnimationMetaData animationMeta, ref EnumHandling handling);
@@ -38,6 +40,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, AnimationMetaData> IAnimationManager.ActiveAnimationsByAnimCode => ActiveAnimationsByAnimCode;
+
+        public bool AdjustCollisionBoxToAnimation { get; set; }
 
         public List<AnimFrameCallback> Triggers;
 
@@ -175,10 +179,9 @@ namespace Vintagestory.API.Common
                 if (preventDefault) return started;
             }
 
-            AnimationMetaData activeAnimdata;
 
             // Already active, won't do anything
-            if (ActiveAnimationsByAnimCode.TryGetValue(animdata.Animation, out activeAnimdata) && activeAnimdata == animdata) return false;
+            if (ActiveAnimationsByAnimCode.TryGetValue(animdata.Animation, out AnimationMetaData activeAnimdata) && activeAnimdata == animdata) return false;
 
             if (animdata.Code == null)
             {
@@ -202,9 +205,8 @@ namespace Vintagestory.API.Common
         {
             if (configCode == null) return false;
 
-            AnimationMetaData animdata;
 
-            if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode, out animdata))
+            if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode, out AnimationMetaData animdata))
             {
                 StartAnimation(animdata);
 
@@ -264,8 +266,7 @@ namespace Vintagestory.API.Common
             {
                 uint crc32 = (uint)(activeAnimations[i] & mask);
 
-                AnimationMetaData animmetadata;
-                if (entity.Properties.Client.AnimationsByCrc32.TryGetValue(crc32, out animmetadata))
+                if (entity.Properties.Client.AnimationsByCrc32.TryGetValue(crc32, out AnimationMetaData animmetadata))
                 {
                     toKeep.Add(animmetadata.Animation);
 
@@ -276,8 +277,8 @@ namespace Vintagestory.API.Common
                     continue;
                 }
 
-                Animation anim;
-                if (entity.Properties.Client.LoadedShapeForEntity.AnimationsByCrc32.TryGetValue(crc32, out anim)) {
+                if (entity.Properties.Client.LoadedShapeForEntity.AnimationsByCrc32.TryGetValue(crc32, out Animation anim))
+                {
 
                     toKeep.Add(anim.Code);
 
@@ -285,8 +286,7 @@ namespace Vintagestory.API.Common
 
                     string code = anim.Code == null ? anim.Name.ToLowerInvariant() : anim.Code;
                     active += ", " + code;
-                    AnimationMetaData animmeta;
-                    entity.Properties.Client.AnimationsByMetaCode.TryGetValue(code, out animmeta);
+                    entity.Properties.Client.AnimationsByMetaCode.TryGetValue(code, out AnimationMetaData animmeta);
 
                     if (animmeta == null)
                     {
@@ -315,8 +315,7 @@ namespace Vintagestory.API.Common
 
                     if (!toKeep.Contains(key) && !animMeta.ClientSide)
                     {
-                        AnimationMetaData animmetadata;
-                        if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(key, out animmetadata))
+                        if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(key, out AnimationMetaData animmetadata))
                         {
                             if (animmetadata.TriggeredBy != null && animmetadata.WasStartedFromTrigger) continue;
 
@@ -392,7 +391,7 @@ namespace Vintagestory.API.Common
                 }
 
                 ms.Reset();
-                val.Value.ToBytes(writer);
+                    val.Value.ToBytes(writer);
                 val.Value.StartFrameOnce = 0;
 
                 output(val.Key, ms);
@@ -434,6 +433,7 @@ namespace Vintagestory.API.Common
             {
                 Animator.CalculateMatrices = !entity.Alive || entity.requirePosesOnServer;
                 Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
+                AdjustCollisionBoxToAnimation = ActiveAnimationsByAnimCode.Any(anim => anim.Value.AdjustCollisionBox);
             }
             
             runTriggers();
@@ -455,6 +455,7 @@ namespace Vintagestory.API.Common
             if (entity.IsRendered || entity.IsShadowRendered || !entity.Alive)
             {
                 Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
+                AdjustCollisionBoxToAnimation = ActiveAnimationsByAnimCode.Any(anim => anim.Value.AdjustCollisionBox);
                 runTriggers();
             }
         }

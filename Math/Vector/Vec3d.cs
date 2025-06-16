@@ -5,6 +5,8 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using Vintagestory.API.Client;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>

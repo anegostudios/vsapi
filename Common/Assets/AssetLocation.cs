@@ -6,6 +6,8 @@ using System.Globalization;
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public interface ITextureLocationDictionary

@@ -1,6 +1,8 @@
 ﻿using System;
 using Cairo;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public class GuiElementSwitch : GuiElementControl
@@ -17,7 +19,7 @@ namespace Vintagestory.API.Client
         internal double unscaledPadding;
         internal double unscaledSize;
 
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Creates a switch which can be toggled.
@@ -60,7 +62,10 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             RoundRectangle(ctx, 0, 0, size, size, 1);
-            fillWithPattern(api, ctx, waterTextureName, false, true, 255, 0.5f);
+            if (enabled) ctx.SetSourceRGBA(0, 0, 0, 1);
+            else ctx.SetSourceRGBA(0.15, 0.15, 0, 0.65);
+            ctx.FillPreserve();
+            fillWithPattern(api, ctx, waterTextureName, false, true, enabled ? 255 : 127, 0.5f);
 
             generateTexture(surface, ref onTexture);
 
@@ -83,6 +88,7 @@ namespace Vintagestory.API.Client
         {
             base.OnMouseDownOnElement(api, args);
 
+            if (!enabled) return;
             On = !On;
             handler?.Invoke(On);
             api.Gui.PlaySound("toggleswitch");

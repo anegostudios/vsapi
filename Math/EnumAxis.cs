@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.MathTools
+﻿
+#nullable disable
+namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents an axis in the cartesian coordinate system

@@ -2,6 +2,8 @@
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.Client.NoObf
 {
     public class WireframeCube

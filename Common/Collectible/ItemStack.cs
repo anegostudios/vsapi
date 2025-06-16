@@ -5,6 +5,8 @@ using Vintagestory.API.Datastructures;
 using System.Collections.Generic;
 using Vintagestory.API.Util;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class ItemStack : IItemStack

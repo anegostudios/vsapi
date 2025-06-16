@@ -364,8 +364,8 @@ Interface ITextureAtlasAPI
 
   <a id="Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace*"></a>
 
-  <h3 id="Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_System_Int32_System_Int32_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(System.Int32,System.Int32,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@)">
-  AllocateTextureSpace(int, int, out int, out TextureAtlasPosition)
+  <h3 id="Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_System_Int32_System_Int32_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Common_AssetLocationAndSource_" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(System.Int32,System.Int32,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Common.AssetLocationAndSource)">
+  AllocateTextureSpace(int, int, out int, out TextureAtlasPosition, AssetLocationAndSource)
   
   </h3>
 
@@ -375,7 +375,7 @@ Can be used to render onto it through the Render API</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool AllocateTextureSpace(int width, int height, out int textureSubId, out TextureAtlasPosition texPos)</code></pre>
+    <pre><code class="lang-csharp hljs">bool AllocateTextureSpace(int width, int height, out int textureSubId, out TextureAtlasPosition texPos, AssetLocationAndSource loc = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -388,6 +388,9 @@ Can be used to render onto it through the Render API</p>
     <dd></dd>
     <dt><code>texPos</code> <a class="xref" href="Vintagestory.API.Client.TextureAtlasPosition.html">TextureAtlasPosition</a></dt>
     <dd></dd>
+    <dt><code>loc</code> <a class="xref" href="Vintagestory.API.Common.AssetLocationAndSource.html">AssetLocationAndSource</a></dt>
+    <dd><p>If set, said texture space can be looked up by the tesselated element faces during shape tesselation</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>

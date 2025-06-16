@@ -4,6 +4,8 @@ using System.Data.Common;
 using System.IO;
 using Microsoft.Data.Sqlite;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class SQLiteDBConnection : IDisposable
@@ -48,7 +50,7 @@ namespace Vintagestory.API.Common
 
             try
             {
-                var conf = new DbConnectionStringBuilder { 
+                var conf = new DbConnectionStringBuilder {
                     { "Data Source", databaseFileName },
                     { "Pooling","false" }
                 };
@@ -57,12 +59,12 @@ namespace Vintagestory.API.Common
                 {
                     conf.Add("Mode", "ReadOnly");
                 }
-            
+
                 sqliteConn = new SqliteConnection(conf.ToString());
                 sqliteConn.Open();
-            
                 using (var cmd = sqliteConn.CreateCommand())
                 {
+                    cmd.CommandTimeout = 1;
                     if (corruptionProtection)
                     {
                         cmd.CommandText = "PRAGMA journal_mode=WAL;PRAGMA synchronous=Normal;";
@@ -71,7 +73,7 @@ namespace Vintagestory.API.Common
                     {
                         cmd.CommandText = "PRAGMA journal_mode=Off;";
                     }
-                
+
                     cmd.ExecuteNonQuery();
                 }
 

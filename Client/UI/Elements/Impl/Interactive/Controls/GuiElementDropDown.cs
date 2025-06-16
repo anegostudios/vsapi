@@ -3,6 +3,8 @@ using Cairo;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate void SelectionChangedDelegate(string code, bool selected);
@@ -45,7 +47,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public override bool Focusable
         {
-            get { return true; }
+            get { return enabled; }
         }
 
         /// <summary>
@@ -110,13 +112,14 @@ namespace Vintagestory.API.Client
             arrowDownButtonReleased = new LoadedTexture(capi);
             arrowDownButtonPressed = new LoadedTexture(capi);
 
-            listMenu = new GuiElementListMenu(capi, values, names, selectedIndex, didSelect, bounds, font, multiSelect)
+            var listBounds = bounds.ForkChildOffseted(-bounds.fixedX, -bounds.fixedY).WithAlignment(EnumDialogArea.None);
+            listMenu = new GuiElementListMenu(capi, values, names, selectedIndex, didSelect, listBounds, font, multiSelect)
             {
                 HoveredIndex = selectedIndex   
             };
 
             ElementBounds textBounds = ElementBounds.Fixed(0, 0, 900, 100).WithEmptyParent();
-            richTextElem = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
+            richTextElem = new GuiElementRichtext(capi, System.Array.Empty<RichTextComponentBase>(), textBounds);
 
             this.onSelectionChanged = onSelectionChanged;
             this.multiSelect = multiSelect;
@@ -227,8 +230,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
 
-            highlightBounds = Bounds.CopyOffsetedSibling().WithFixedPadding(0, 0).FixedGrow(2 * Bounds.absPaddingX, 2 * Bounds.absPaddingY);
-            highlightBounds.fixedWidth -= btnWidth / RuntimeEnv.GUIScale;
+            highlightBounds = Bounds.ForkChildOffseted(-Bounds.fixedX, -Bounds.fixedY).WithFixedWidth(Bounds.fixedWidth - btnWidth / RuntimeEnv.GUIScale).WithAlignment(EnumDialogArea.None);
 
             highlightBounds.CalcWorldBounds();
 
@@ -251,7 +253,7 @@ namespace Vintagestory.API.Client
 
             if (!enabled)
             {
-                Font.Color[3] = 0.5f;
+                Font.Color[3] = 0.35f;
             }
 
             Font.SetupContext(ctx);
@@ -295,7 +297,7 @@ namespace Vintagestory.API.Client
             else
             {
 
-                if (listMenu.SelectedIndices.Length == 1)
+                if (listMenu.SelectedIndices.Length == 1 && listMenu.Names.Length > 0)
                 {
                     text = listMenu.Names[listMenu.SelectedIndex];
                 }
@@ -354,6 +356,8 @@ namespace Vintagestory.API.Client
 
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
+            if (!HasFocus) return;
+
             listMenu.OnKeyDown(api, args);
         }
 
@@ -383,6 +387,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
+            if (!enabled) return;
+
             listMenu.OnMouseUp(api, args);
 
             args.Handled |= IsPositionInside(args.X, args.Y);
@@ -408,6 +414,12 @@ namespace Vintagestory.API.Client
                 return;
             }
 
+        }
+
+        public override void OnFocusGained()
+        {
+            base.OnFocusGained();
+            listMenu.OnFocusGained();
         }
 
         public override void OnFocusLost()

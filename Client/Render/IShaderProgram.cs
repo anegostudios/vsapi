@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public enum EnumShaderType
@@ -34,6 +36,8 @@ namespace Vintagestory.API.Client
 
     public interface IShaderProgram : IDisposable
     {
+        int ProgramId { get; }
+
         /// <summary>
         /// When loading from file this is the asset domain to load from
         /// </summary>
@@ -53,12 +57,12 @@ namespace Vintagestory.API.Client
         /// If true, it well configure the textures to clamp to the edge (CLAMP_TO_EDGE). Requires the textureid to be defined using SetTextureIds
         /// </summary>
         bool ClampTexturesToEdge { get; set; }
-        
+
         /// <summary>
         /// The vertex shader of this shader program
         /// </summary>
         IShader VertexShader { get; set; }
-        
+
         /// <summary>
         /// The fragment shader of this shader program
         /// </summary>
@@ -105,7 +109,7 @@ namespace Vintagestory.API.Client
         bool Disposed { get; }
         bool LoadError { get; }
 
-        OrderedDictionary<string, UBORef> UBOs { get; }
+        Datastructures.OrderedDictionary<string, UBORef> UBOs { get; }
     }
 
 

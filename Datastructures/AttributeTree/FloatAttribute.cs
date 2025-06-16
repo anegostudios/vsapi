@@ -2,6 +2,8 @@
 using System.IO;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Datastructures
 {
     public class FloatAttribute : ScalarAttribute<float>, IAttribute

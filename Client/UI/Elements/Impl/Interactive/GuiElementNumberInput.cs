@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Cairo;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
-using Cairo;
+using System.Linq;
+using System.Text;
 using Vintagestory.API.Config;
+
+#nullable disable
 
 namespace Vintagestory.API.Client
 {
@@ -16,8 +21,9 @@ namespace Vintagestory.API.Client
 
         public LoadedTexture buttonHighlightTexture;
         private bool focusable = true;
+        public bool IntMode { get; set; } = false;
 
-        public override bool Focusable => focusable;
+        public override bool Focusable => focusable && enabled;
 
         /// <summary>
         /// When enabled and a button is clicked it wont focus on it, leaving your focus on the game to move around 
@@ -42,8 +48,7 @@ namespace Vintagestory.API.Client
         /// <returns>A float representing the value.</returns>
         public float GetValue()
         {
-            float val;
-            float.TryParse(GetText(), NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val);
+            float.TryParse(GetText(), NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out float val);
             return val;
         }
 
@@ -53,14 +58,14 @@ namespace Vintagestory.API.Client
             rightSpacing = scaled(17);
 
             EmbossRoundRectangleElement(ctx, Bounds, true, 2, 1);
-            ctx.SetSourceRGBA(0, 0, 0, 0.3);
+            ctx.SetSourceRGBA(0, 0, 0, 0.2);
             ElementRoundRectangle(ctx, Bounds, false, 1);
             ctx.Fill();
 
             GenTextHighlightTexture();
             GenButtonHighlightTexture();
 
-
+            if (!enabled) Font.Color[3] = 0.35f;
 
             highlightBounds = Bounds.CopyOffsetedSibling().WithFixedPadding(0, 0).FixedGrow(2 * Bounds.absPaddingX, 2 * Bounds.absPaddingY);
             highlightBounds.CalcWorldBounds();
@@ -68,9 +73,11 @@ namespace Vintagestory.API.Client
             RecomposeText();
 
             double heightHalf = Bounds.OuterHeight / 2 - 1;
+            double[] buttonColor = GuiStyle.DialogHighlightColor.ToArray();
+            if (!enabled) buttonColor[3] = 0.315;
 
             // Arrow up
-            ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
+            ctx.SetSourceRGBA(buttonColor);
             RoundRectangle(ctx, Bounds.drawX + Bounds.InnerWidth - scaled(17 + 1) * Scale, Bounds.drawY, rightSpacing * Scale, heightHalf, 1);
             ctx.Fill();
 
@@ -81,12 +88,12 @@ namespace Vintagestory.API.Client
             ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(14) * Scale, Bounds.drawY + (heightHalf - scaled(2)) * Scale);
             ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(4) * Scale, Bounds.drawY + (heightHalf - scaled(2)) * Scale);
             ctx.ClosePath();
-            ctx.SetSourceRGBA(1, 1, 1, 0.4);
+            ctx.SetSourceRGBA(1, 1, 1, enabled ? 0.4 : 0.14);
             ctx.Fill();
 
 
             // Arrow down
-            ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
+            ctx.SetSourceRGBA(buttonColor);
             RoundRectangle(ctx, Bounds.drawX + Bounds.InnerWidth - (rightSpacing + scaled(1)) * Scale, Bounds.drawY + heightHalf + scaled(1) * Scale, rightSpacing * Scale, heightHalf, 1);
             ctx.Fill();
 
@@ -97,7 +104,7 @@ namespace Vintagestory.API.Client
             ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(4) * Scale, Bounds.drawY + (heightHalf + scaled(3)) * Scale);
             ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(9) * Scale, Bounds.drawY + (heightHalf * 2) * Scale);
             ctx.ClosePath();
-            ctx.SetSourceRGBA(1, 1, 1, 0.4);
+            ctx.SetSourceRGBA(1, 1, 1, enabled ? 0.4 : 0.14);
             ctx.Fill();
 
             highlightBounds.fixedWidth -= rightSpacing / RuntimeEnv.GUIScale;
@@ -126,7 +133,7 @@ namespace Vintagestory.API.Client
             ImageSurface surfaceHighlight = new ImageSurface(Format.Argb32, (int)(Bounds.OuterWidth - rightSpacing), (int)Bounds.OuterHeight);
             Context ctxHighlight = genContext(surfaceHighlight);
 
-            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.3);
+            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.2);
             ctxHighlight.Paint();
 
             generateTexture(surfaceHighlight, ref highlightTexture);
@@ -138,6 +145,8 @@ namespace Vintagestory.API.Client
         public override void RenderInteractiveElements(float deltaTime)
         {
             base.RenderInteractiveElements(deltaTime);
+
+            if (!enabled) return;
 
             int mouseX = api.Input.MouseX;
             int mouseY = api.Input.MouseY;
@@ -163,6 +172,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
+            if (!enabled) return;
             if (!IsPositionInside(api.Input.MouseX, api.Input.MouseY)) return;
 
             rightSpacing = scaled(17);
@@ -170,8 +180,8 @@ namespace Vintagestory.API.Client
             float size = args.deltaPrecise > 0 ? 1 : -1;
             size *= Interval;
 
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft]) size /= 10;
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
+            if (api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft]) size /= 10;
+            if (api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft]) size /= 100;
 
             UpdateValue(size);
             args.SetHandled(true);
@@ -179,12 +189,40 @@ namespace Vintagestory.API.Client
 
         private void UpdateValue(float size)
         {
+            if (IntMode) size = (int)(size > 0 ? Math.Ceiling(size) : Math.Floor(size));
             double.TryParse(lines[0], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out var val);
             val += size;
             lines[0] = Math.Round(val, 4).ToString(GlobalConstants.DefaultCultureInfo);
             SetValue(lines[0]);
         }
 
+        public override void LoadValue(List<string> newLines)
+        {
+            // Disallow edit if not a valid number for this input
+            if (newLines.Any(line => !isValidText(line)))
+            {
+                // Revert edits
+                linesStaging = [.. lines];
+                return;
+            }
+
+            base.LoadValue(newLines);
+        }
+
+        bool isValidText(string text)
+        {
+            if (text == string.Empty) return true; // Allow an empty box, we'll set it to 0 if left empty when it loses focus
+            if (!IntMode && !double.TryParse(text, NumberStyles.Float, GlobalConstants.DefaultCultureInfo, out _)) return false;
+            if (IntMode && !int.TryParse(text, NumberStyles.Integer, GlobalConstants.DefaultCultureInfo, out _)) return false;
+
+            return true;
+        }
+
+        public override void OnFocusLost()
+        {
+            base.OnFocusLost();
+            if (GetText() == string.Empty) SetValue(0);
+        }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
@@ -196,31 +234,21 @@ namespace Vintagestory.API.Client
 
             float size = Interval;
 
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft]) size /= 10;
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
+            if (api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft]) size /= 10;
+            if (api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft]) size /= 100;
 
             if (mouseX >= Bounds.absX + Bounds.OuterWidth - rightSpacing && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)
             {
-                if (DisableButtonFocus)
-                {
-                    focusable = false;
-                }
+                if (DisableButtonFocus) focusable = false;
+
                 double heightHalf = Bounds.OuterHeight / 2 - 1;
 
-                if (mouseY > Bounds.absY + heightHalf + 1)
-                {
-                    UpdateValue(-size);
-                }
-                else
-                {
-                    UpdateValue(size);
-                }
-            } else {
-                if (DisableButtonFocus)
-                {
-                    focusable = true;
-                }
+                if (mouseY > Bounds.absY + heightHalf + 1) UpdateValue(-size);
+                else UpdateValue(size);
+
+                api.Gui.PlaySound("tick");
             }
+            else if (DisableButtonFocus) focusable = true;
         }
 
         public override void Dispose()

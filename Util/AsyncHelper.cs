@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using Vintagestory.API.Common;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     /// <summary>

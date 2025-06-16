@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿
+#nullable disable
+namespace Vintagestory.API.Client
 {
     /// <summary>
     /// Holds arbitrary short data for meshes to be used in the shader
@@ -33,6 +35,12 @@
         public CustomMeshDataPartShort EmptyClone()
         {
             return EmptyClone(new CustomMeshDataPartShort()) as CustomMeshDataPartShort;
+        }
+
+        public void AddPackedUV(float u1, float v1)
+        {
+            Add((short)(u1 * 32768 + 0.5f));
+            Add((short)(v1 * 32768 + 0.5f));
         }
     }
 }

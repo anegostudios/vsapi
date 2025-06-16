@@ -6,21 +6,19 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common;
 
-#nullable enable
-
 public class CoralPlantConfig
 {
     /// <summary>
     /// Height distribution for plants inside the coral reef
     /// </summary>
-    public NatFloat Height;
+    public required NatFloat Height;
     /// <summary>
     /// chance for this plant to spawn in a reef if
     /// </summary>
     public float Chance;
 
     [JsonIgnore]
-    public Block[] Block;
+    public required Block[] Block;
 }
 
 public class BlockPatchAttributes
@@ -42,6 +40,13 @@ public class BlockPatchAttributes
     public string[]? CoralShelve;
 
     /// <summary>
+    /// List of asset codes for the coral decor of a coral reef blockpatch
+    /// These will be placed on solid surfaces around coral base blocks and on top of structures
+    /// </summary>
+    public string[]? CoralDecor;
+    public string[]? StructureDecor;
+
+    /// <summary>
     /// List of asset codes for the coral types of a coral reef blockpatch coral-brain, coral-fan ...
     /// </summary>
     public string[]? Coral;
@@ -49,48 +54,59 @@ public class BlockPatchAttributes
     /// <summary>
     /// Defines the minimum 2D size of the coral reef
     /// </summary>
-    public int? CoralMinSize;
+    public int CoralMinSize = -1;
 
     /// <summary>
     /// Defines the random size between 0 - X that will be added additionally to the reef
     /// </summary>
-    public int? CoralRandomSize;
+    public int CoralRandomSize = -1;
 
     /// <summary>
     /// Chance for a shelf block to spawn on a under water cliff. The chance is rolled for each height
     /// The patch will try to spawn them until it reaches minWaterDepth
     /// </summary>
-    public float? CoralVerticalGrowChance;
+    public float CoralVerticalGrowChance = -1;
 
     /// <summary>
     /// Chance that any Plant will spawn
     /// </summary>
-    public float? CoralPlantsChance;
+    public float CoralPlantsChance = -1;
 
     /// <summary>
-    /// Specifiy which plants should spawn for this blockpatch and their heigh and how often a specific plant should be choosen
+    /// Specifiy which plants should spawn for this blockpatch and their heigh and how often a specific plant should be chosen
     /// </summary>
     public Dictionary<string, CoralPlantConfig>? CoralPlants;
 
     /// <summary>
     /// Chance that a shelf will spawn instead of a structure on top of a coralblock
     /// </summary>
-    public float? CoralShelveChance;
+    public float CoralShelveChance = -1;
 
     /// <summary>
-    /// Chance that coral generatin will replace all other block patches in its area
+    /// Chance that coral generating will replace all other block patches in its area
     /// </summary>
-    public float? CoralReplaceOtherPatches;
+    public float CoralReplaceOtherPatches = -1;
 
     /// <summary>
-    /// If no shelf was spanwed this chance controls how likely a structure will spawn instead of a coral.
+    /// If no shelf was spawned this chance controls how likely a structure will spawn instead of a coral.
     /// If a structure is spawned then a coral will spawn on top
     /// If no shelve nor structure was spawned then also a coral will be spawned
     /// </summary>
-    public float? CoralStructureChance;
+    public float CoralStructureChance = -1;
 
     /// <summary>
-    /// How thick the base coral full block layer should be for this patch (goes down into the ground, helpfull for cliffs)
+    /// When a coral [brain, fan] gets spawned also try if a decor should spawn below it
+    /// Also on vertical growth we try to spawn decors cliffs
+    /// </summary>
+    public float CoralDecorChance = -1;
+
+    /// <summary>
+    /// Chance to spawn a coral [brain, fan] on top of base blocks or structures
+    /// </summary>
+    public float CoralChance = 0.5f;
+
+    /// <summary>
+    /// How thick the base coral full block layer should be for this patch (goes down into the ground, helpful for cliffs)
     /// 1 -> replace the gravel with coral
     /// 2 -> go 1 block below gravel and also replace and so on
     /// </summary>
@@ -99,7 +115,7 @@ public class BlockPatchAttributes
     /// <summary>
     /// Chance that a BlockCrowfoot will spawn a flower when it reaches the water surface
     /// </summary>
-    public float? FlowerChance;
+    public float FlowerChance = -1;
 
     /// <summary>
     /// Heigh distribution for BlockSeaweed and BlockCrowfoot types
@@ -114,6 +130,10 @@ public class BlockPatchAttributes
     public Block[][]? CoralShelveBlock;
     [JsonIgnore]
     public Block[]? CoralBlock;
+    [JsonIgnore]
+    public Block[]? CoralDecorBlock;
+    [JsonIgnore]
+    public Block[]? StructureDecorBlock;
 
     public void Init(ICoreServerAPI sapi, int i)
     {
@@ -148,7 +168,7 @@ public class BlockPatchAttributes
                 }
                 else
                 {
-                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve CoralBaseBlocks block with code {1}. Will ignore.", i, code);
+                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve CoralStructure block with code {1}. Will ignore.", i, code);
                 }
             }
             CoralStructureBlock = foundBlocksList.ToArray();
@@ -182,7 +202,7 @@ public class BlockPatchAttributes
                 }
                 else
                 {
-                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve CoralBaseBlocks block with code {1}. Will ignore.", i, code);
+                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve CoralShelve block with code {1}. Will ignore.", i, code);
                 }
             }
             CoralShelveBlock = foundShelveBlocks.ToArray();
@@ -199,7 +219,7 @@ public class BlockPatchAttributes
                 }
                 else
                 {
-                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve CoralBaseBlocks block with code {1}. Will ignore.", i, code);
+                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve Coral block with code {1}. Will ignore.", i, code);
                 }
             }
             CoralBlock = foundBlocksList.ToArray();
@@ -220,6 +240,42 @@ public class BlockPatchAttributes
                     sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve CoralPlants block with code {1}. Will ignore.", i, code);
                 }
             }
+        }
+
+        if (CoralDecor != null)
+        {
+            foreach (var code in CoralDecor)
+            {
+                var searchBlocks = sapi.World.SearchBlocks(new AssetLocation(code));
+                if (searchBlocks != null)
+                {
+                    foundBlocksList.AddRange(searchBlocks);
+                }
+                else
+                {
+                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve CoralDecor block with code {1}. Will ignore.", i, code);
+                }
+            }
+            CoralDecorBlock = foundBlocksList.ToArray();
+            foundBlocksList.Clear();
+        }
+
+        if (StructureDecor != null)
+        {
+            foreach (var code in StructureDecor)
+            {
+                var searchBlocks = sapi.World.SearchBlocks(new AssetLocation(code));
+                if (searchBlocks != null)
+                {
+                    foundBlocksList.AddRange(searchBlocks);
+                }
+                else
+                {
+                    sapi.World.Logger.Warning("Block patch Nr. {0}: Unable to resolve StructureDecor block with code {1}. Will ignore.", i, code);
+                }
+            }
+            StructureDecorBlock = foundBlocksList.ToArray();
+            foundBlocksList.Clear();
         }
     }
 }

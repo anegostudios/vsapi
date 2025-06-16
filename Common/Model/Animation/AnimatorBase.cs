@@ -6,6 +6,8 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public delegate double WalkSpeedSupplierDelegate();
@@ -73,8 +75,8 @@ namespace Vintagestory.API.Common
         {
             if (code == null) return null;
             animsByCode.TryGetValue(code.ToLowerInvariant(), out var anim);
-            return anim;
-        }
+                    return anim;
+                }
 
         public AnimatorBase(WalkSpeedSupplierDelegate WalkSpeedSupplier, Animation[] Animations, Action<string> onAnimationStoppedListener = null)
         {
@@ -114,7 +116,7 @@ namespace Vintagestory.API.Common
                 walkSpeed = WalkSpeedSupplier == null ? 1f : WalkSpeedSupplier();
                 accum = 0;
             }
-
+            
             string missingAnimCode = null;
             foreach (var code in activeAnimationsByAnimCode.Keys)
             {
@@ -137,11 +139,11 @@ namespace Vintagestory.API.Common
                         entityForLogging.World.Logger.Debug(entityCode + " attempted to play an animation code which its shape does not have: \"" + missingAnimCode + "\"");
                     }
                 }
-            }
+                }
 
             var activeAnims = this.activeOrRunning;
             for (int i = activeAnims.Count - 1; i >= 0; i--)
-            {
+                {
                 RunningAnimation anim = activeAnims[i];
                 if (anim.Active && !activeAnimationsByAnimCode.ContainsKey(anim.Animation.Code))   // wasActive and now should not be active because it is no longer in activeAnimationsByCode
                 {
@@ -210,24 +212,24 @@ namespace Vintagestory.API.Common
                 shouldStop = !anim.Active && onActivityStopped == EnumEntityActivityStoppedHandling.Rewind && anim.EasingFactor < 0.002f;
             }
 
-            if (shouldStop)
-            {
-                anim.Stop();
-                if (onAnimationEnd == EnumEntityAnimationEndHandling.Stop || onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut)
+                if (shouldStop)
                 {
+                    anim.Stop();
+                if (onAnimationEnd == EnumEntityAnimationEndHandling.Stop || onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut)
+                    {
                     return false;
-                }
+                    }
                 return true;
-            }
+                }
 
             CurAnims[activeAnimCount++] = anim;
 
             if (anim.Iterations != 0 && ((!anim.Active && onAnimationEnd == EnumEntityAnimationEndHandling.Hold) || (onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut)))
-            {
-                anim.EaseOut(dt);
-            }
+                {
+                    anim.EaseOut(dt);
+                }
 
-            anim.Progress(dt, (float)walkSpeed);
+                anim.Progress(dt, (float)walkSpeed);
             return true;
         }
 
@@ -273,8 +275,7 @@ namespace Vintagestory.API.Common
 
         public AttachmentPointAndPose GetAttachmentPointPose(string code)
         {
-            AttachmentPointAndPose apap;
-            AttachmentPointByCode.TryGetValue(code, out apap);
+            AttachmentPointByCode.TryGetValue(code, out AttachmentPointAndPose apap);
             return apap;
         }
 

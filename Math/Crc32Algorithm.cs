@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Security.Cryptography;
 
+#nullable disable
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>

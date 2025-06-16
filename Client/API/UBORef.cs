@@ -2,6 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public abstract class UBORef : IDisposable

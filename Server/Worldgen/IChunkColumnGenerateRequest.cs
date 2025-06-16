@@ -1,5 +1,7 @@
 ﻿using Vintagestory.API.Datastructures;
 
+#nullable disable
+
 namespace Vintagestory.API.Server
 {
     public interface IChunkColumnGenerateRequest

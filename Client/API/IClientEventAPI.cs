@@ -2,11 +2,15 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public delegate void MouseEventDelegate(MouseEvent e);
     public delegate void KeyEventDelegate(KeyEvent e);
     public delegate void PlayerEventDelegate(IClientPlayer byPlayer);
+
+    
 
     public delegate bool IsPlayerReadyDelegate(ref EnumHandling handling);
 

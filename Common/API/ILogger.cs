@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -154,7 +156,7 @@ namespace Vintagestory.API.Common
     public abstract class LoggerBase : ILogger
     {
         // Reusable empty argument array to avoid unnecessary allocation.
-        private static readonly object[] _emptyArgs = new object[0];
+        private static readonly object[] _emptyArgs = Array.Empty<object>();
 
         public bool TraceLog { get; set; }
 

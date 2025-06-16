@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.MathTools
+﻿
+#nullable disable
+namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Perlin noise of supplied amplitude and frequency. The resulting value is clamped to 0...1

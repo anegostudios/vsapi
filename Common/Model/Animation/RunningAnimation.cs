@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Common
 {
     public class ShapeElementWeights
@@ -54,9 +56,8 @@ namespace Vintagestory.API.Common
             {
                 ShapeElement elem = elements[i];
                 intoList[i] = new ShapeElementWeights();
-                
-                float w;
-                if (elementWeight.TryGetValue(elem.Name, out w))
+
+                if (elementWeight.TryGetValue(elem.Name, out float w))
                 {
                     intoList[i].Weight = w;
                 }
@@ -64,12 +65,12 @@ namespace Vintagestory.API.Common
                 {
                     intoList[i].Weight = meta.Weight;
                 }
-                
-                EnumAnimationBlendMode blendMode;
-                if (elementBlendMode.TryGetValue(elem.Name, out blendMode))
+
+                if (elementBlendMode.TryGetValue(elem.Name, out EnumAnimationBlendMode blendMode))
                 {
                     intoList[i].BlendMode = blendMode;
-                } else
+                }
+                else
                 {
                     intoList[i].BlendMode = meta.BlendMode;
                 }
@@ -85,6 +86,8 @@ namespace Vintagestory.API.Common
 
         internal void CalcBlendedWeight(float weightSum, EnumAnimationBlendMode blendMode)
         {
+            if (meta.AnimationSpeed == 0) return;
+
             if (weightSum == 0)
             {
                 BlendedWeight = EasingFactor;
@@ -96,6 +99,8 @@ namespace Vintagestory.API.Common
 
         public void Progress(float dt, float walkspeed)
         {
+            if (meta.AnimationSpeed == 0) return;
+
             dt *= meta.GetCurrentAnimationSpeed(walkspeed);
 
             if ((Active && (Iterations == 0 || Animation.OnAnimationEnd != EnumEntityAnimationEndHandling.EaseOut)) || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))

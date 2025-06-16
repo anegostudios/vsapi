@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+#nullable disable
+
 namespace Vintagestory.API.Net
 {
     public class GameReleaseVersion

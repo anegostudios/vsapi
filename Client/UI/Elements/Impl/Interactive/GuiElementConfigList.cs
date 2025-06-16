@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Cairo;
 using Vintagestory.API.Config;
 
+#nullable disable
+
 namespace Vintagestory.API.Client
 {
     public enum EnumItemType

@@ -2,6 +2,8 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
+#nullable disable
+
 namespace Vintagestory.API.Util
 {
     public static class PosUtil

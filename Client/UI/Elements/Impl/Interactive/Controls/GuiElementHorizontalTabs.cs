@@ -1,6 +1,8 @@
-﻿using System;
-using Cairo;
+﻿using Cairo;
+using System;
 using Vintagestory.API.MathTools;
+
+#nullable disable
 
 namespace Vintagestory.API.Client
 {
@@ -21,8 +23,18 @@ namespace Vintagestory.API.Client
         LoadedTexture baseTexture;
         LoadedTexture[] hoverTextures;
         LoadedTexture[] notifyTextures;
+        LoadedTexture[] arrowTextures;
         int[] tabWidths;
+        double[] tabOffsets;
         CairoFont selectedFont;
+
+        double totalWidth;
+        double currentScrollOffset = 0;
+
+        double maxScrollOffset => Math.Max(0, totalWidth - Bounds.InnerWidth + scaled(unscaledTabSpacing));
+
+        bool displayLeftArrow => currentScrollOffset > scaled(unscaledTabSpacing);
+        bool displayRightArrow => currentScrollOffset < maxScrollOffset - scaled(unscaledTabSpacing);
 
         public int activeElement = 0;
 
@@ -34,7 +46,7 @@ namespace Vintagestory.API.Client
 
         float fontHeight;
 
-        public override bool Focusable { get { return true; } }
+        public override bool Focusable { get { return enabled; } }
 
         /// <summary>
         /// Creates a collection of horizontal tabs.
@@ -54,7 +66,12 @@ namespace Vintagestory.API.Client
             hoverTextures = new LoadedTexture[tabs.Length];
             for (int i = 0; i < tabs.Length; i++) hoverTextures[i] = new LoadedTexture(capi);
 
+            arrowTextures = new LoadedTexture[2];
+            arrowTextures[0] = new LoadedTexture(capi);
+            arrowTextures[1] = new LoadedTexture(capi);
+
             tabWidths = new int[tabs.Length];
+            tabOffsets = new double[tabs.Length];
             baseTexture = new LoadedTexture(capi);
         }
 
@@ -89,14 +106,23 @@ namespace Vintagestory.API.Client
             double spacing = scaled(unscaledTabSpacing);
             double padding = scaled(unscaledTabPadding);
 
+            totalWidth = 0;
+
+            for (int i = 0; i < tabs.Length; i++)
+            {
+                tabWidths[i] = (int)(ctx.TextExtents(tabs[i].Name).Width + 2 * padding + 1);
+                totalWidth += spacing + tabWidths[i];
+            }
+
+            surface = new ImageSurface(Format.Argb32, (int)totalWidth + 1, (int)Bounds.InnerHeight + 1);
+            ctx = new Context(surface);
+
             double xpos = spacing;
 
             Font.Color[3] = 0.5;
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                tabWidths[i] = (int)(ctx.TextExtents(tabs[i].Name).Width + 2 * padding + 1);
-
                 ctx.NewPath();
                 ctx.MoveTo(xpos, Bounds.InnerHeight);
                 ctx.LineTo(xpos, radius);
@@ -122,11 +148,14 @@ namespace Vintagestory.API.Client
                 DrawTextLineAt(ctx, tabs[i].Name, xpos + padding, (surface.Height - fontHeight) / 2);
 
                 xpos += tabWidths[i] + spacing;
+
+                tabOffsets[i] = xpos;
             }
 
             Font.Color[3] = 1;
 
             ComposeOverlays();
+            ComposeArrows();
 
             generateTexture(surface, ref baseTexture);
 
@@ -210,9 +239,64 @@ namespace Vintagestory.API.Client
             }
         }
 
+        private void ComposeArrows()
+        {
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)((Bounds.InnerHeight - 2) / 2), (int)Bounds.InnerHeight - 2);
+            Context ctx = genContext(surface);
+
+            // Arrow left
+            ctx.SetSourceRGBA(ColorUtil.Hex2Doubles("#a88b6c", 1));
+            RoundRectangle(ctx, 0, 0, surface.Width, surface.Height, 1);
+            ctx.Fill();
+
+            EmbossRoundRectangleElement(ctx, 0, 0, surface.Width, surface.Height, false, 2, 1);
+
+            ctx.NewPath();
+            ctx.LineTo(scaled(1) * Scale + 1, surface.Height - scaled(9.5) * Scale);
+            ctx.LineTo((surface.Width - scaled(2) - 1) * Scale, surface.Height - scaled(14.25) * Scale);
+            ctx.LineTo((surface.Width - scaled(2) - 1) * Scale, surface.Height - scaled(4.75) * Scale);
+            ctx.ClosePath();
+            ctx.SetSourceRGBA(1, 1, 1, 1);
+            ctx.Fill();
+
+            generateTexture(surface, ref arrowTextures[0]);
+
+            surface = new ImageSurface(Format.Argb32, (int)((Bounds.InnerHeight - 2) / 2), (int)Bounds.InnerHeight - 2);
+            ctx = genContext(surface);
+
+            // Arrow right
+            ctx.SetSourceRGBA(ColorUtil.Hex2Doubles("#a88b6c", 1));
+            RoundRectangle(ctx, 0, 0, surface.Width, surface.Height, 1);
+            ctx.Fill();
+
+            EmbossRoundRectangleElement(ctx, 0, 0, surface.Width, surface.Height, false, 2, 1);
+
+            ctx.NewPath();
+            ctx.LineTo((surface.Width - scaled(2) - 1) * Scale, surface.Height - scaled(9.5) * Scale);
+            ctx.LineTo(scaled(1) * Scale + 1, surface.Height - scaled(14.25) * Scale);
+            ctx.LineTo(scaled(1) * Scale + 1, surface.Height - scaled(4.75) * Scale);
+            ctx.ClosePath();
+            ctx.SetSourceRGBA(1, 1, 1, 1);
+            ctx.Fill();
+
+            generateTexture(surface, ref arrowTextures[1]);
+
+            ctx.Dispose();
+            surface.Dispose();
+        }
+
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexture(baseTexture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
+            /*double xoffset = 0;
+            for (int i = 0; i < activeElement; i++)
+            {
+                xoffset += tabWidths[i] + scaled(unscaledTabSpacing);
+            }
+            currentScrollOffset = (xoffset + tabWidths[activeElement] > Bounds.InnerWidth) ? totalWidth - Bounds.InnerWidth + scaled(unscaledTabSpacing) : 0;*/
+
+            api.Render.PushScissor(Bounds, true);
+            api.Render.Render2DTexture(baseTexture.TextureId, (int)(Bounds.renderX - currentScrollOffset), (int)Bounds.renderY, (int)totalWidth + 1, (int)Bounds.InnerHeight + 1);
+            api.Render.PopScissor();
 
             double spacing = scaled(unscaledTabSpacing);
 
@@ -223,18 +307,28 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                if (i == activeElement || mouseRelX > xpos && mouseRelX < xpos + tabWidths[i] && mouseRelY > 0 && mouseRelY < Bounds.InnerHeight)
+                if (i == activeElement || mouseRelX > (xpos - currentScrollOffset) && mouseRelX < (xpos + tabWidths[i] - currentScrollOffset) && mouseRelY > 0 && mouseRelY < Bounds.InnerHeight && mouseRelX > 0 && mouseRelX < Bounds.InnerWidth)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
+                    if (i == activeElement || !(displayLeftArrow && mouseRelX > 0 && mouseRelX < arrowTextures[0].Width) && !(displayRightArrow && mouseRelX > Bounds.InnerWidth - arrowTextures[1].Width && mouseRelX < Bounds.InnerWidth))
+                    {
+                        api.Render.PushScissor(Bounds, true);
+                        api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)((int)(Bounds.renderX - currentScrollOffset) + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
+                        api.Render.PopScissor();
+                    }
                 }
 
                 if (TabHasAlarm[i])
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(notifyTextures[i].TextureId, (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
+                    api.Render.PushScissor(Bounds, true);
+                    api.Render.Render2DTexturePremultipliedAlpha(notifyTextures[i].TextureId, (int)((int)(Bounds.renderX - currentScrollOffset) + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
+                    api.Render.PopScissor();
                 }
 
                 xpos += tabWidths[i] + spacing;
             }
+
+            if (displayLeftArrow) api.Render.Render2DTexturePremultipliedAlpha(arrowTextures[0].TextureId, (int)Bounds.renderX, (int)Bounds.renderY + 1, (int)((Bounds.InnerHeight - 2) / 2), (int)Bounds.InnerHeight - 2);
+            if (displayRightArrow) api.Render.Render2DTexturePremultipliedAlpha(arrowTextures[1].TextureId, (int)Bounds.renderX + Bounds.InnerWidth - arrowTextures[1].Width, (int)Bounds.renderY + 1, (int)((Bounds.InnerHeight - 2) / 2), (int)Bounds.InnerHeight - 2);
         }
 
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
@@ -253,6 +347,17 @@ namespace Vintagestory.API.Client
             }
         }
 
+        public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
+        {
+            if (!enabled) return;
+
+            if (!Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) return;
+            args.SetHandled(true);
+
+            double dir = args.deltaPrecise * scaled(10.0);
+            if (currentScrollOffset <= 0 && dir < 0 || currentScrollOffset >= maxScrollOffset && dir > 0) return;
+            currentScrollOffset = Math.Clamp(currentScrollOffset + dir, 0, maxScrollOffset);
+        }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
@@ -264,9 +369,21 @@ namespace Vintagestory.API.Client
             int mouseRelX = api.Input.MouseX - (int)Bounds.absX;
             int mouseRelY = api.Input.MouseY - (int)Bounds.absY;
 
+            if (displayLeftArrow && mouseRelX > 0 && mouseRelX < arrowTextures[0].Width)
+            {
+                currentScrollOffset -= scaled(5);
+                return;
+            }
+
+            if (displayRightArrow && mouseRelX > Bounds.InnerWidth - arrowTextures[1].Width && mouseRelX < Bounds.InnerWidth)
+            {
+                currentScrollOffset += scaled(5);
+                return;
+            }
+
             for (int i = 0; i < tabs.Length; i++)
             {
-                if (mouseRelX > xpos && mouseRelX < xpos + tabWidths[i] && mouseRelY > 0 && mouseRelY < Bounds.InnerHeight)
+                if (mouseRelX > (xpos - currentScrollOffset) && mouseRelX < (xpos + tabWidths[i] - currentScrollOffset) && mouseRelY > 0 && mouseRelY < Bounds.InnerHeight)
                 {
                     SetValue(i);
                     break;
@@ -290,6 +407,18 @@ namespace Vintagestory.API.Client
             }
 
             activeElement = selectedIndex;
+
+            double newOffset = tabOffsets[activeElement] - Bounds.InnerWidth + arrowTextures[1].Width;
+            if (currentScrollOffset < newOffset)
+            {
+                currentScrollOffset = Math.Clamp(newOffset, 0, maxScrollOffset);
+            }
+
+            newOffset = tabOffsets[activeElement] - tabWidths[activeElement] - scaled(unscaledTabSpacing) - arrowTextures[0].Width;
+            if (currentScrollOffset > newOffset)
+            {
+                currentScrollOffset = Math.Clamp(newOffset, 0, maxScrollOffset);
+            }
         }
 
         public override void Dispose()
