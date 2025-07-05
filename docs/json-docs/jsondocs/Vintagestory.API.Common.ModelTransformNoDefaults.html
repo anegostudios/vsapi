@@ -102,7 +102,8 @@ Class ModelTransformNoDefaults
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public class ModelTransformNoDefaults</code></pre>
   </div>
 
@@ -257,6 +258,40 @@ public FastVec3f Rotation</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_ModelTransformNoDefaults_Scale_" data-uid="Vintagestory.API.Common.ModelTransformNoDefaults.Scale*"></a>
+
+  <h3 id="Vintagestory_API_Common_ModelTransformNoDefaults_Scale" data-uid="Vintagestory.API.Common.ModelTransformNoDefaults.Scale">
+  Scale (Optional)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Sets the same scale of an object for all axes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float Scale { set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
   <h3 id="Vintagestory_API_Common_ModelTransformNoDefaults_ScaleXYZ" data-uid="Vintagestory.API.Common.ModelTransformNoDefaults.ScaleXYZ">
   ScaleXYZ (Optional)
@@ -315,44 +350,6 @@ public FastVec3f Translation</code></pre>
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_API_Common_ModelTransformNoDefaults_Scale_" data-uid="Vintagestory.API.Common.ModelTransformNoDefaults.Scale*"></a>
-
-  <h3 id="Vintagestory_API_Common_ModelTransformNoDefaults_Scale" data-uid="Vintagestory.API.Common.ModelTransformNoDefaults.Scale">
-  Scale (Optional)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Sets the same scale of an object for all axes.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public float Scale { set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
 
 
 

@@ -73,6 +73,22 @@ namespace Vintagestory.API.Config
         {
             if (!Directory.Exists(Config))
             {
+                if (RuntimeEnv.OS == OS.Mac)
+                {
+                    var userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile, Environment.SpecialFolderOption.DoNotVerify);
+                    var newPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify);
+                    newPath = Path.Combine(newPath, "VintagestoryData");
+                    // in Net8 the ApplicationData folder on mac was moved from /Users/username/.config to /Users/username/Library/Application Support
+                    // if we are using the new path then we need to move, if we use a custom path (--dataPath) then lets not move files
+                    if (Config.Equals(newPath))
+                    {
+                        var oldPath = Path.Combine(userProfile, ".config", "VintagestoryData");
+                        if (Directory.Exists(oldPath))
+                        {
+                            Directory.Move(oldPath, Config);
+                        }
+                    }
+                }
                 Directory.CreateDirectory(Config);
             }
 

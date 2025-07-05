@@ -65,6 +65,12 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static readonly string EnvSearchPathName;
 
+        /// <summary>
+        /// This will only be set to true on Linux when the session is a wayland session
+        /// This is needed so we can skip adding a app Icon or setting the cursor postion since those are not supported on wayland
+        /// </summary>
+        public static readonly bool IsWaylandSession;
+
         static RuntimeEnv()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -77,8 +83,11 @@ namespace Vintagestory.API.Config
             {
                 OS = OS.Linux;
                 EnvSearchPathName = "LD_LIBRARY_PATH";
+                var sessionType = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE");
+                var useWayland = Environment.GetEnvironmentVariable("OPENTK_4_USE_WAYLAND");
+                IsWaylandSession = sessionType == "wayland" && useWayland != "0";
                 return;
-            } 
+            }
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 OS = OS.Mac;
@@ -98,7 +107,7 @@ namespace Vintagestory.API.Config
             try
             {
                 // This seems to be the preferred / more reliable way of getting the ip
-                // but it seems one of the methods are not implemented in net (crossplatform) so we fallback 
+                // but it seems one of the methods are not implemented in net (crossplatform) so we fallback
                 // to a simple method if an exception is thrown
                 var allNetworkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
                 foreach (var networkInterface in allNetworkInterfaces)

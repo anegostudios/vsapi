@@ -3,10 +3,7 @@ using SkiaSharp;
 using System;
 using System.IO;
 using Vintagestory.API.Client;
-using Vintagestory.API.Config;
 using Vintagestory.API.Util;
-
-#nullable disable
 
 
 namespace Vintagestory.API.Common
@@ -31,8 +28,16 @@ namespace Vintagestory.API.Common
 
         public IntPtr PixelsPtrAndLock => bmp.GetPixels();
 
+        #nullable disable
+        [Obsolete("This requires to manually set the underlying SKBitmap, prefer other overloads.")]
         public BitmapExternal()
         {
+        }
+        #nullable restore
+
+        public BitmapExternal(SKBitmap bmp)
+        {
+            this.bmp = bmp;
         }
 
         public BitmapExternal(int width, int height)
@@ -40,7 +45,7 @@ namespace Vintagestory.API.Common
             bmp = new SKBitmap(width, height);
         }
 
-        public BitmapExternal(MemoryStream ms, ILogger logger, AssetLocation loc = null)
+        public BitmapExternal(MemoryStream ms, ILogger logger, AssetLocation? loc = null)
         {
             try
             {
@@ -66,37 +71,42 @@ namespace Vintagestory.API.Common
         ///// <summary>
         ///// Create a BitmapExternal from a path to an existing image file.  Calling code should check that the file exists
         ///// </summary>
-        ///// <param name="filePath"></param>
-        public BitmapExternal(string filePath)
+        public BitmapExternal(string filePath, ILogger? logger = null)
         {
             try
             {
                 bmp = Decode(File.ReadAllBytes(filePath));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (logger != null) {
+                    logger.Error("Failed loading bitmap from data. Will default to an empty 1x1 bitmap.");
+                    logger.Error(ex);
+                }
+
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
             }
         }
 
         ///// <summary>
-        ///// Create a BitmapExternal from a stream.  Calling code should close the stream
+        ///// Create a BitmapExternal from a stream.  Calling code should close the stream.  The stream must have the Length property.
         ///// </summary>
-        ///// <param name="stream"></param>
-        public BitmapExternal(Stream stream)
+        public BitmapExternal(Stream stream, ILogger? logger = null)
         {
             try
             {
                 var buffer = new byte[stream.Length];
-                if (stream.Read(buffer, 0, (int)stream.Length) != stream.Length)
-                {
-                    throw new Exception("Failed to read image from stream");
-                }
+                stream.ReadExactly(buffer);
                 bmp = Decode(buffer);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (logger != null) {
+                    logger.Error("Failed loading bitmap from data. Will default to an empty 1x1 bitmap.");
+                    logger.Error(ex);
+                }
+
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
             }
@@ -105,14 +115,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Create a BitmapExternal from a byte array
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="dataLength"></param>
-        /// <param name="logger"></param>
         public BitmapExternal(byte[] data, int dataLength, ILogger logger)
         {
             try
             {
-                bmp = Decode(data);
+                bmp = Decode(data.AsSpan()[..dataLength]);
             }
             catch (Exception ex)
             {

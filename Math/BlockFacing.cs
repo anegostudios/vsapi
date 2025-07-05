@@ -582,6 +582,10 @@ namespace Vintagestory.API.MathTools
             return facing;
         }
 
+        public static BlockFacing FromVector(Vec3f vec) => FromVector(vec.X, vec.Y, vec.Z);
+
+        public static BlockFacing FromVector(Vec3d vec) => FromVector(vec.X, vec.Y, vec.Z);
+
         public static BlockFacing FromFlag(int flag)
         {
             switch (flag)

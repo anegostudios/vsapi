@@ -95,6 +95,12 @@
 Classes
 </h3>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.AddDocumentationPropertyAttribute.html">AddDocumentationPropertyAttribute</a></dt>
+      <dd><p>Adds a new property in the DocFX JSON documentation. Useful for attribute types which do not store JSON properties as variables.
+Properties need to be serializable by DocFX, hence why they're all strings. Sorry about that.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.DocumentAsJsonAttribute.html">DocumentAsJsonAttribute</a></dt>
       <dd><p>Specifies that this class or property should be inlcuded in the JSON-only documentation.
 <br>Has no functional use and can be ommited if the property is marked with [JsonProperty].
@@ -102,6 +108,9 @@ Classes
 <p><br><br>
 Note that most fields will also contain the following inside their summary tag:<br>
 &lt;jsonoptional&gt;Optional&lt;/jsonoptional&gt;&lt;jsondefault&gt;None&lt;/jsondefault&gt;</p>
+<p><br><br>
+The attribute now has the ability to add in required, default, and attribute parameters.
+These will be analysed by the docFx plugin.</p>
 </dd>
     </dl>
 

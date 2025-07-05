@@ -102,7 +102,8 @@ Class ClientEntityConfig
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ClientEntityConfig</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class ClientEntityConfig</code></pre>
   </div>
 
 
@@ -207,6 +208,40 @@ public CompositeShape Shape</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Textures_" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Textures*"></a>
+
+  <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Textures" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Textures">
+  Textures (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A list of all available textures for the entity. First texture in the list will be the default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, CompositeTexture&gt; Textures { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html">CompositeTexture</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -441,44 +476,6 @@ protected CompositeTexture Texture</code></pre>
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Textures_" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Textures*"></a>
-
-  <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_Textures" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.Textures">
-  Textures (Recommended) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>A list of all available textures for the entity. First texture in the list will be the default.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public Dictionary&lt;string, CompositeTexture&gt; Textures { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html">CompositeTexture</a>&gt;</dt>
-    <dd></dd>
-  </dl>
 
 
 

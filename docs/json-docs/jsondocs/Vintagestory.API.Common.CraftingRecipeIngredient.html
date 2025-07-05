@@ -102,7 +102,8 @@ Class CraftingRecipeIngredient
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CraftingRecipeIngredient</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class CraftingRecipeIngredient</code></pre>
   </div>
 
 
@@ -134,6 +135,74 @@ Class CraftingRecipeIngredient
 </h2>
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Code_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Code" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code">
+  Code (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The code of the item or block</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation Code { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Name_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Name*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Name" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Name">
+  Name (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Attaches a name to a wildcard in an ingredient. This is used to substitute the value into the output. Only required if using a wildcard.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Quantity" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Quantity">
   Quantity (Recommended) (Default: 1)
@@ -146,7 +215,8 @@ Class CraftingRecipeIngredient
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Quantity</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int Quantity</code></pre>
   </div>
 
 
@@ -178,7 +248,8 @@ Class CraftingRecipeIngredient
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumItemClass Type</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public EnumItemClass Type</code></pre>
   </div>
 
 
@@ -210,7 +281,8 @@ Class CraftingRecipeIngredient
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] AllowedVariants</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string[] AllowedVariants</code></pre>
   </div>
 
 
@@ -277,7 +349,8 @@ If true, the recipe will not consume the item but reduce its durability.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsTool</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool IsTool</code></pre>
   </div>
 
 
@@ -344,7 +417,8 @@ Can also be used to produce multiple outputs for a recipe.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonItemStack ReturnedStack</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public JsonItemStack ReturnedStack</code></pre>
   </div>
 
 
@@ -376,7 +450,8 @@ Can also be used to produce multiple outputs for a recipe.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] SkipVariants</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string[] SkipVariants</code></pre>
   </div>
 
 
@@ -408,7 +483,8 @@ Can also be used to produce multiple outputs for a recipe.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ToolDurabilityCost</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int ToolDurabilityCost</code></pre>
   </div>
 
 
@@ -420,76 +496,6 @@ Can also be used to produce multiple outputs for a recipe.</p>
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Code_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code*"></a>
-
-  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Code" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code">
-  Code (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The code of the item or block</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Code { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Name_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Name*"></a>
-
-  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Name" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Name">
-  Name (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Attaches a name to a wildcard in an ingredient. This is used to substitute the value into the output. Only required if using a wildcard.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
 
 
 

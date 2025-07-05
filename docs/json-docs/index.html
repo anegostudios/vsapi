@@ -80,7 +80,7 @@
 <li>To see the functionality of a specific JSON property found within an asset. To do this, enter the exact property name in the search bar at the top-right of this page.</li>
 <li>To see what properties or options are available for specific assets. To do this, use the below <a href="index.html#pages-of-interest">Pages of Interest</a> to find the asset type, and navigate through the properties available.</li>
 </ul>
-<h3 id="fields">Fields</h3>
+<h3 id="json-properties">JSON Properties</h3>
 <p>Each JSON type has a set of properties, known as fields, that will control how it works. The following is the standard look of every field in the following pages.</p>
 <p><img src="images/jsonfields.png" alt="jsonfields"></p>
 <p>Each field will list its name, its recommended status, and its default value if there is one.<br>
@@ -92,6 +92,10 @@ Field statuses include:</p>
 <li>Obsolete - Obsolete and should not be used. Usually contains a link to an alternative property that should be used.</li>
 </ul>
 <p>Below this will be the description or usage of the property, and a link to the property type. Many JSON types have properties which contain other JSON types, so following the link will allow you to see child properties that can be included. Note that many JSON types have examples on their page.</p>
+<h3 id="json-attributes">JSON Attributes</h3>
+<p>Some JSON types, especially behaviors, may use attributes. Attributes are identical to properties, but will need to be placed inside of a &quot;attributes&quot; property of a relevant JSON type.
+All attributes will appear under the 'Attributes' title on a type.</p>
+<p><img src="images/jsonattributes.png" alt="jsonattributes"></p>
 <h3 id="inheritance">Inheritance</h3>
 <p>Many JSON types use properties (extend) from other JSON types. This is referred to as inheritance. Pages that use inheritance will have the following heading near the top of their page.</p>
 <p><img src="images/inheritance.png" alt="showinheritance"></p>
@@ -104,8 +108,12 @@ Field statuses include:</p>
 <li>Entities</li>
 <li>Recipes (All Types)</li>
 <li>Patches</li>
+<li>Behaviors
+<ul>
+<li>Block Behaviors</li>
 </ul>
-<p>It does not yet contain any behaviors (BlockBehavior, CollectibleBehaviors, etc) for the above asset types.</p>
+</li>
+</ul>
 <h2 id="pages-of-interest">Pages of Interest</h2>
 <ul>
 <li><a href="jsondocs/Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a> - All blocks, items, and entities extend from this. Controls IDs and variant types.</li>
@@ -125,6 +133,7 @@ Field statuses include:</p>
 </ul>
 </li>
 <li><a href="jsondocs/Vintagestory.ServerMods.NoObf.JsonPatch.html">JsonPatch</a> - All properties for JSON patches. Consider using the modmaker to create these.</li>
+<li><a href="jsondocs/Vintagestory.API.Common.BlockBehavior.html">BlockBehaviors</a> - The base class of all Block Behaviors. Use the 'derived' section or search feature to find specific behaviors.</li>
 </ul>
 
 </article>

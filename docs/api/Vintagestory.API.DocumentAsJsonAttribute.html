@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class DocumentAsJsonAttribute | VintageStory API ">
       
-      <meta name="description" content="Specifies that this class or property should be inlcuded in the JSON-only documentation. Has no functional use and can be ommited if the property is marked with [JsonProperty]. When using with enum types, only specify this attribute on the type itself, not each value.  Note that most fields will also contain the following inside their summary tag: &amp;lt;jsonoptional&amp;gt;Optional&amp;lt;/jsonoptional&amp;gt;&amp;lt;jsondefault&amp;gt;None&amp;lt;/jsondefault&amp;gt;">
+      <meta name="description" content="Specifies that this class or property should be inlcuded in the JSON-only documentation. Has no functional use and can be ommited if the property is marked with [JsonProperty]. When using with enum types, only specify this attribute on the type itself, not each value.  Note that most fields will also contain the following inside their summary tag: &amp;lt;jsonoptional&amp;gt;Optional&amp;lt;/jsonoptional&amp;gt;&amp;lt;jsondefault&amp;gt;None&amp;lt;/jsondefault&amp;gt;  The attribute now has the ability to add in required, default, and attribute parameters. These will be analysed by the docFx plugin.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -103,6 +103,9 @@ Class DocumentAsJsonAttribute
 <p><br><br>
 Note that most fields will also contain the following inside their summary tag:<br>
 &lt;jsonoptional&gt;Optional&lt;/jsonoptional&gt;&lt;jsondefault&gt;None&lt;/jsondefault&gt;</p>
+<p><br><br>
+The attribute now has the ability to add in required, default, and attribute parameters.
+These will be analysed by the docFx plugin.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -265,6 +268,71 @@ Note that most fields will also contain the following inside their summary tag:<
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
   </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_DocumentAsJsonAttribute__ctor_" data-uid="Vintagestory.API.DocumentAsJsonAttribute.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_DocumentAsJsonAttribute__ctor" data-uid="Vintagestory.API.DocumentAsJsonAttribute.#ctor">
+  DocumentAsJsonAttribute()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DocumentAsJsonAttribute()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_DocumentAsJsonAttribute__ctor_" data-uid="Vintagestory.API.DocumentAsJsonAttribute.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_DocumentAsJsonAttribute__ctor_System_String_System_String_System_Boolean_" data-uid="Vintagestory.API.DocumentAsJsonAttribute.#ctor(System.String,System.String,System.Boolean)">
+  DocumentAsJsonAttribute(string, string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DocumentAsJsonAttribute(string requiredStatus, string defaultValue = &quot;&quot;, bool isAttribute = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>requiredStatus</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>isAttribute</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 
 

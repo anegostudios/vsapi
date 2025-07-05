@@ -350,7 +350,7 @@ namespace Vintagestory.API.Common
 
                 IPlayer byPlayer = null;
 
-                if (byEntity is EntityPlayer && !IsActivityRunning("invulnerable"))
+                if (byEntity is EntityPlayer)
                 {
                     byPlayer = (byEntity as EntityPlayer).Player;
 
@@ -358,7 +358,7 @@ namespace Vintagestory.API.Common
                     slot?.Itemstack?.Collectible.OnAttackingWith(byEntity.World, byEntity, this, slot);
                 }
 
-                if (Api.Side == EnumAppSide.Client && damage > 1 && !IsActivityRunning("invulnerable") && Properties.Attributes?["spawnDamageParticles"].AsBool() == true)
+                if (Api.Side == EnumAppSide.Client && damage > 1 && Properties.Attributes?["spawnDamageParticles"].AsBool() == true)
                 {
                     Vec3d pos = SidedPos.XYZ + hitPosition;
                     Vec3d minPos = pos.AddCopy(-0.15, -0.15, -0.15);

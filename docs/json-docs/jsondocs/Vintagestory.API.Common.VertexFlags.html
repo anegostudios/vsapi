@@ -109,7 +109,8 @@ Bit 29, 30, 31: Wind data  (also sometimes used for other data, e.g. reflection 
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public class VertexFlags</code></pre>
   </div>
 
@@ -143,7 +144,7 @@ public class VertexFlags</code></pre>
 
 
 
-  <h2 class="section" id="properties">Properties
+  <h2 class="section" id="fields">Fields
 </h2>
 
 
@@ -166,12 +167,12 @@ public int All { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -198,12 +199,12 @@ public byte GlowLevel { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -230,12 +231,12 @@ public bool Lod0 { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -262,12 +263,12 @@ public short Normal { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -294,12 +295,12 @@ public bool Reflective { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -326,12 +327,12 @@ public byte WindData { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -358,12 +359,12 @@ public EnumWindBitMode WindMode { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.EnumWindBitMode.html">EnumWindBitMode</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -390,12 +391,12 @@ public byte ZOffset { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
     <dd></dd>
   </dl>
+
 
 
 

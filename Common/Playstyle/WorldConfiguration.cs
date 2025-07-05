@@ -39,6 +39,7 @@ namespace Vintagestory.API.Common
 
         public bool OnlyDuringWorldCreate = false;
 
+        [Newtonsoft.Json.JsonIgnore] // This is set during startup and should not be deserialized from worldsettings.json.
         public ModInfo ModInfo { get; set; }
 
         public object stringToValue(string text)

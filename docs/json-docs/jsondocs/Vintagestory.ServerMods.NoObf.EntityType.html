@@ -103,7 +103,8 @@ Any json files inside of assets/entities will be loaded in as this type.</p>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public class EntityType : RegistryObjectType</code></pre>
   </div>
 
@@ -495,6 +496,40 @@ public Vec2f DeadCollisionBoxSize</code></pre>
 
 
 
+  <a id="Vintagestory_ServerMods_NoObf_EntityType_DeadHitBoxSize_" data-uid="Vintagestory.ServerMods.NoObf.EntityType.DeadHitBoxSize*"></a>
+
+  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_DeadHitBoxSize" data-uid="Vintagestory.ServerMods.NoObf.EntityType.DeadHitBoxSize">
+  DeadHitBoxSize (Optional)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Sets both <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_DeadCollisionBoxSize">DeadCollisionBoxSize</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_DeadSelectionBoxSize">DeadSelectionBoxSize</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Vec2f DeadHitBoxSize { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_DeadSelectionBoxSize" data-uid="Vintagestory.ServerMods.NoObf.EntityType.DeadSelectionBoxSize">
   DeadSelectionBoxSize (Optional) (Default: DeadCollisionBoxSize)
@@ -649,6 +684,40 @@ public EnumHabitat Habitat</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.EnumHabitat.html">EnumHabitat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_ServerMods_NoObf_EntityType_HitBoxSize_" data-uid="Vintagestory.ServerMods.NoObf.EntityType.HitBoxSize*"></a>
+
+  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_HitBoxSize" data-uid="Vintagestory.ServerMods.NoObf.EntityType.HitBoxSize">
+  HitBoxSize (Optional)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Sets both <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_CollisionBoxSize">CollisionBoxSize</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_SelectionBoxSize">SelectionBoxSize</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Vec2f HitBoxSize { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></dt>
     <dd></dd>
   </dl>
 
@@ -883,78 +952,6 @@ public float Weight</code></pre>
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_ServerMods_NoObf_EntityType_DeadHitBoxSize_" data-uid="Vintagestory.ServerMods.NoObf.EntityType.DeadHitBoxSize*"></a>
-
-  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_DeadHitBoxSize" data-uid="Vintagestory.ServerMods.NoObf.EntityType.DeadHitBoxSize">
-  DeadHitBoxSize (Optional)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Sets both <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_DeadCollisionBoxSize">DeadCollisionBoxSize</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_DeadSelectionBoxSize">DeadSelectionBoxSize</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public Vec2f DeadHitBoxSize { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_ServerMods_NoObf_EntityType_HitBoxSize_" data-uid="Vintagestory.ServerMods.NoObf.EntityType.HitBoxSize*"></a>
-
-  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_HitBoxSize" data-uid="Vintagestory.ServerMods.NoObf.EntityType.HitBoxSize">
-  HitBoxSize (Optional)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Sets both <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_CollisionBoxSize">CollisionBoxSize</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html#Vintagestory_ServerMods_NoObf_EntityType_SelectionBoxSize">SelectionBoxSize</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public Vec2f HitBoxSize { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></dt>
-    <dd></dd>
-  </dl>
 
 
 

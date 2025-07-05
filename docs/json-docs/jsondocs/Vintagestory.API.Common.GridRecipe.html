@@ -102,7 +102,8 @@ Class GridRecipe
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class GridRecipe</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class GridRecipe</code></pre>
   </div>
 
 
@@ -169,7 +170,8 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string IngredientPattern</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string IngredientPattern</code></pre>
   </div>
 
 
@@ -202,7 +204,8 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, CraftingRecipeIngredient&gt; Ingredients</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public Dictionary&lt;string, CraftingRecipeIngredient&gt; Ingredients</code></pre>
   </div>
 
 
@@ -234,7 +237,8 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CraftingRecipeIngredient Output</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public CraftingRecipeIngredient Output</code></pre>
   </div>
 
 
@@ -266,7 +270,8 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Height</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int Height</code></pre>
   </div>
 
 
@@ -298,7 +303,8 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Width</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int Width</code></pre>
   </div>
 
 
@@ -330,7 +336,8 @@ Commas seperate each horizontal row, and an underscore ( _ ) marks a space as em
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string[]&gt; AllowedVariants</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public Dictionary&lt;string, string[]&gt; AllowedVariants</code></pre>
   </div>
 
 
@@ -364,6 +371,7 @@ See dough.json grid recipe file for example.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson]
 public JsonObject Attributes</code></pre>
   </div>
 
@@ -396,7 +404,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AverageDurability</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool AverageDurability</code></pre>
   </div>
 
 
@@ -405,6 +414,40 @@ public JsonObject Attributes</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom_" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom*"></a>
+
+  <h3 id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom">
+  CopyAttributesFrom (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, it will copy over the itemstack attributes from given ingredient code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string CopyAttributesFrom { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -429,7 +472,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Enabled</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool Enabled</code></pre>
   </div>
 
 
@@ -461,7 +505,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] MergeAttributesFrom</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string[] MergeAttributesFrom</code></pre>
   </div>
 
 
@@ -493,7 +538,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Name</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation Name</code></pre>
   </div>
 
 
@@ -525,7 +571,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int RecipeGroup</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int RecipeGroup</code></pre>
   </div>
 
 
@@ -557,7 +604,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string RequiresTrait</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string RequiresTrait</code></pre>
   </div>
 
 
@@ -589,7 +637,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Shapeless</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool Shapeless</code></pre>
   </div>
 
 
@@ -621,7 +670,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ShowInCreatedBy</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool ShowInCreatedBy</code></pre>
   </div>
 
 
@@ -653,7 +703,8 @@ If loaded, you can use this field to disable recipes during runtime.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string[]&gt; SkipVariants</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public Dictionary&lt;string, string[]&gt; SkipVariants</code></pre>
   </div>
 
 
@@ -665,43 +716,6 @@ If loaded, you can use this field to disable recipes during runtime.</p>
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom_" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom*"></a>
-
-  <h3 id="Vintagestory_API_Common_GridRecipe_CopyAttributesFrom" data-uid="Vintagestory.API.Common.GridRecipe.CopyAttributesFrom">
-  CopyAttributesFrom (Optional) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If set, it will copy over the itemstack attributes from given ingredient code</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string CopyAttributesFrom { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
 
 
 

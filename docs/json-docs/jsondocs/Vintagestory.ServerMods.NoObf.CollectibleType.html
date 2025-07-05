@@ -104,7 +104,8 @@ This is mainly used to control items (and block's items) when they are in the in
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public abstract class CollectibleType : RegistryObjectType</code></pre>
   </div>
 
@@ -616,6 +617,41 @@ public EnumItemDamageSource[] DamagedBy</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.EnumItemDamageSource.html">EnumItemDamageSource</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_ServerMods_NoObf_CollectibleType_Dimensions_" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Dimensions*"></a>
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Dimensions" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Dimensions">
+  Dimensions (Optional) (Default: 0.5, 0.5, 0.5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Notional physical size of this collectible, 0.5 x 0.5 x 0.5 meters by default. Explicitly setting a null value in JSON will result in the default 0.5m size</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[Obsolete(&quot;Use Size instead from game version 1.20.4 onwards, with the same values&quot;)]
+public Size3f Dimensions { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Size3f.html">Size3f</a></dt>
     <dd></dd>
   </dl>
 
@@ -1520,45 +1556,6 @@ private string HeldOldTpIdleAnimation</code></pre>
 
 
 
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_ServerMods_NoObf_CollectibleType_Dimensions_" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Dimensions*"></a>
-
-  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Dimensions" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Dimensions">
-  Dimensions (Optional) (Default: 0.5, 0.5, 0.5)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Notional physical size of this collectible, 0.5 x 0.5 x 0.5 meters by default. Explicitly setting a null value in JSON will result in the default 0.5m size</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-[Obsolete(&quot;Use Size instead from game version 1.20.4 onwards, with the same values&quot;)]
-public Size3f Dimensions { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Size3f.html">Size3f</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Vintagestory_ServerMods_NoObf_CollectibleType_MiningTier_" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MiningTier*"></a>
 
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_MiningTier" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MiningTier">
@@ -1580,12 +1577,12 @@ public int MiningTier { get; set; }</code></pre>
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
+
 
 
 

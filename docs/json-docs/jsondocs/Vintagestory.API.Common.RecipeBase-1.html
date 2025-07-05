@@ -102,7 +102,8 @@ Class RecipeBase&lt;T&gt;
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class RecipeBase&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public abstract class RecipeBase&lt;T&gt;</code></pre>
   </div>
 
 
@@ -140,6 +141,41 @@ Class RecipeBase&lt;T&gt;
 </h2>
 
 
+  <a id="Vintagestory_API_Common_RecipeBase_1_Ingredient_" data-uid="Vintagestory.API.Common.RecipeBase`1.Ingredient*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_1_Ingredient" data-uid="Vintagestory.API.Common.RecipeBase`1.Ingredient">
+  Ingredient (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A single ingredient for this recipe. If you need to use more than one ingredient, see <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients">Ingredients</a>.<br>
+Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients">Ingredients</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public CraftingRecipeIngredient Ingredient { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
   <h3 id="Vintagestory_API_Common_RecipeBase_1_Ingredients" data-uid="Vintagestory.API.Common.RecipeBase`1.Ingredients">
   Ingredients (Required)
@@ -153,7 +189,8 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CraftingRecipeIngredient[] Ingredients</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public CraftingRecipeIngredient[] Ingredients</code></pre>
   </div>
 
 
@@ -185,7 +222,8 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonItemStack Output</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public JsonItemStack Output</code></pre>
   </div>
 
 
@@ -197,44 +235,6 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_API_Common_RecipeBase_1_Ingredient_" data-uid="Vintagestory.API.Common.RecipeBase`1.Ingredient*"></a>
-
-  <h3 id="Vintagestory_API_Common_RecipeBase_1_Ingredient" data-uid="Vintagestory.API.Common.RecipeBase`1.Ingredient">
-  Ingredient (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>A single ingredient for this recipe. If you need to use more than one ingredient, see <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients">Ingredients</a>.<br>
-Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients">Ingredients</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CraftingRecipeIngredient Ingredient { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -256,18 +256,19 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Enabled { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool Enabled { get; set; }</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
+
 
 
 
@@ -289,18 +290,19 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation Name { get; set; }</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
     <dd></dd>
   </dl>
+
 
 
 

@@ -11,7 +11,9 @@ namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Allows for definitions of behaviors of a block that can be applied to any block
+    /// See the derived types for a list of all documented block behaviors.
     /// </summary>
+    [DocumentAsJson]
     public abstract class BlockBehavior : CollectibleBehavior
     {
         /// <summary>

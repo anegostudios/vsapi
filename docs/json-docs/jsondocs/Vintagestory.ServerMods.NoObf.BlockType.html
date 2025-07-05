@@ -103,7 +103,8 @@ Any json file placed in your &quot;assets/blocktypes&quot; folder will be loaded
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public class BlockType : CollectibleType</code></pre>
   </div>
 
@@ -1312,39 +1313,6 @@ public bool RandomDrawOffset</code></pre>
 
 
 
-  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomSizeAdjust" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomSizeAdjust">
-  RandomSizeAdjust (Optional) (Default: false)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If set, the block will have a random size between 1 and 1+RandomSizeAdjust.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public float RandomSizeAdjust</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomizeAxes" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomizeAxes">
   RandomizeAxes (Optional) (Default: XYZ)
   
@@ -1400,6 +1368,39 @@ public bool RandomizeRotations</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomSizeAdjust" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomSizeAdjust">
+  RandomSizeAdjust (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, the block will have a random size between 1 and 1+RandomSizeAdjust.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float RandomSizeAdjust</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 

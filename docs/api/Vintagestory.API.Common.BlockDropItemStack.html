@@ -102,7 +102,8 @@ Class BlockDropItemStack
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BlockDropItemStack</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class BlockDropItemStack</code></pre>
   </div>
 
 
@@ -284,7 +285,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Code</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation Code</code></pre>
   </div>
 
 
@@ -316,7 +318,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DropModbyStat</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string DropModbyStat</code></pre>
   </div>
 
 
@@ -348,7 +351,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool LastDrop</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool LastDrop</code></pre>
   </div>
 
 
@@ -380,7 +384,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat Quantity</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public NatFloat Quantity</code></pre>
   </div>
 
 
@@ -443,7 +448,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumTool? Tool</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public EnumTool? Tool</code></pre>
   </div>
 
 
@@ -475,7 +481,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumItemClass Type</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public EnumItemClass Type</code></pre>
   </div>
 
 
@@ -667,6 +674,46 @@ public JsonObject Attributes</code></pre>
 </dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockDropItemStack_ToRandomItemstackForPlayer_" data-uid="Vintagestory.API.Common.BlockDropItemStack.ToRandomItemstackForPlayer*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockDropItemStack_ToRandomItemstackForPlayer_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IWorldAccessor_System_Single_" data-uid="Vintagestory.API.Common.BlockDropItemStack.ToRandomItemstackForPlayer(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.IWorldAccessor,System.Single)">
+  ToRandomItemstackForPlayer(IPlayer, IWorldAccessor, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ItemStack ToRandomItemstackForPlayer(IPlayer byPlayer, IWorldAccessor world, float dropQuantityMultiplier)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>dropQuantityMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

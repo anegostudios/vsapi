@@ -103,7 +103,8 @@ Any json file inside the &quot;assets/itemtypes&quot; folder will be loaded as a
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public class ItemType : CollectibleType</code></pre>
   </div>
 

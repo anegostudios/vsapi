@@ -951,6 +951,39 @@ namespace Vintagestory.API.MathTools
             }
         }
 
+        /// <summary>
+        /// Like index3d used inside chunks, but the y value can have any value from 0 to worldheight, inside a chunk column
+        /// </summary>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int ToColumnIndex3d()
+        {
+            const int chunksize = GlobalConstants.ChunkSize;
+            int lx = X % chunksize;
+            int lz = Z % chunksize;
+            return (Y * chunksize + lz) * chunksize + lx;
+        }
+
+        public void SetFromColumnIndex3d(int index3d, int cx, int cz)
+        {
+            const int chunksize = GlobalConstants.ChunkSize;
+            X = cx * chunksize + index3d % chunksize;
+            Z = cz * chunksize + index3d / chunksize % chunksize;
+            Y = index3d / (chunksize * chunksize);
+        }
+
+        public int ToSchematicIndex()
+        {
+            return (Y << 20) + (Z << 10) + X;
+        }
+
+        public void SetFromSchematicIndex(int index3d)
+        {
+            const int mask = (int)BlockSchematic.PosBitMask;
+            X = index3d & mask;
+            Z = (index3d >> 10) & mask;
+            Y = (index3d >> 20) & mask;
+        }
     }
 
     // Exactly like BlockPos except using this class signifies the block should be looked for in the fluids layer; used for server block ticking

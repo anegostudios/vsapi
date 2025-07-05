@@ -99,6 +99,7 @@ namespace Vintagestory.API.Client
         MultiTextureMeshRef GetDefaultItemMeshRef(Item block);
 
         Shape GetCachedShape(AssetLocation location);
+        MeshData CreateMesh(string typeForLogging, CompositeShape cshape, TextureSourceBuilder texgen, ITexPositionSource texSource = null);
         void ThreadDispose();
     }
 

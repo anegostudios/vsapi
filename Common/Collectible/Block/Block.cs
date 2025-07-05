@@ -1238,27 +1238,10 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < Drops.Length; i++)
             {
                 BlockDropItemStack dstack = Drops[i];
-                if (dstack.Tool != null && (byPlayer == null || dstack.Tool != byPlayer.InventoryManager.ActiveTool)) continue;
-
-                float extraMul = 1f;
-                if (byPlayer != null && dstack.DropModbyStat != null)
-                {
-                    // If the stat does not exist, then GetBlended returns 1 \o/
-                    extraMul = byPlayer.Entity.Stats.GetBlended(dstack.DropModbyStat);
-                }
-
-                ItemStack stack = Drops[i].GetNextItemStack(dropQuantityMultiplier * extraMul);
+                ItemStack stack = dstack.ToRandomItemstackForPlayer(byPlayer, world, dropQuantityMultiplier);
                 if (stack == null) continue;
-
-                if (stack.Collectible is IResolvableCollectible irc)
-                {
-                    var slot = new DummySlot(stack);
-                    irc.Resolve(slot, world);
-                    stack = slot.Itemstack;
-                }
-
                 todrop.Add(stack);
-                if (Drops[i].LastDrop) break;
+                if (dstack.LastDrop) break;
             }
 
             todrop.AddRange(dropStacks);

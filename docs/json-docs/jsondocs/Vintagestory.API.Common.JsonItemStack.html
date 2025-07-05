@@ -103,7 +103,8 @@ It resembles a standard in-game item stack but can be stored before the game is 
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoContract]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[ProtoContract]
 public class JsonItemStack</code></pre>
   </div>
 
@@ -163,6 +164,7 @@ public class JsonItemStack</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+[DocumentAsJson]
 public AssetLocation Code</code></pre>
   </div>
 
@@ -196,6 +198,7 @@ public AssetLocation Code</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+[DocumentAsJson]
 public EnumItemClass Type</code></pre>
   </div>
 
@@ -251,20 +254,21 @@ public JsonObject Attributes</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_JsonItemStack_Quantity_" data-uid="Vintagestory.API.Common.JsonItemStack.Quantity*"></a>
 
-  <h3 id="Vintagestory_API_Common_JsonItemStack_StackSize" data-uid="Vintagestory.API.Common.JsonItemStack.StackSize">
-  StackSize (Optional) (Default: 1)
+  <h3 id="Vintagestory_API_Common_JsonItemStack_Quantity" data-uid="Vintagestory.API.Common.JsonItemStack.Quantity">
+  Quantity (Optional) (Default: 1)
   
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>Amount of items in this stacks</p>
+<p>Alias of <a class="xref" href="Vintagestory.API.Common.JsonItemStack.html#Vintagestory_API_Common_JsonItemStack_StackSize">StackSize</a>. No real need to use this instead of it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
-public int StackSize</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int Quantity { get; set; }</code></pre>
   </div>
 
 
@@ -284,35 +288,32 @@ public int StackSize</code></pre>
 
 
 
-  <h2 class="section" id="properties">Properties
-</h2>
 
-
-  <a id="Vintagestory_API_Common_JsonItemStack_Quantity_" data-uid="Vintagestory.API.Common.JsonItemStack.Quantity*"></a>
-
-  <h3 id="Vintagestory_API_Common_JsonItemStack_Quantity" data-uid="Vintagestory.API.Common.JsonItemStack.Quantity">
-  Quantity (Optional) (Default: 1)
+  <h3 id="Vintagestory_API_Common_JsonItemStack_StackSize" data-uid="Vintagestory.API.Common.JsonItemStack.StackSize">
+  StackSize (Optional) (Default: 1)
   
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>Alias of <a class="xref" href="Vintagestory.API.Common.JsonItemStack.html#Vintagestory_API_Common_JsonItemStack_StackSize">StackSize</a>. No real need to use this instead of it.</p>
+<p>Amount of items in this stacks</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Quantity { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+[DocumentAsJson]
+public int StackSize</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
+
 
 
 

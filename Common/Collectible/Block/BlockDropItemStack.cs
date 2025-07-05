@@ -215,5 +215,28 @@ namespace Vintagestory.API.Common
                 writer.Write(DropModbyStat);
             }
         }
+
+        public ItemStack ToRandomItemstackForPlayer(IPlayer byPlayer, IWorldAccessor world, float dropQuantityMultiplier)
+        {
+            if (Tool != null && (byPlayer == null || Tool != byPlayer.InventoryManager.ActiveTool)) return null;
+
+            float extraMul = 1f;
+            if (byPlayer != null && DropModbyStat != null)
+            {
+                // If the stat does not exist, then GetBlended returns 1 \o/
+                extraMul = byPlayer.Entity.Stats.GetBlended(DropModbyStat);
+            }
+
+            ItemStack stack = GetNextItemStack(dropQuantityMultiplier * extraMul);
+
+            if (stack?.Collectible is IResolvableCollectible irc)
+            {
+                var slot = new DummySlot(stack);
+                irc.Resolve(slot, world);
+                stack = slot.Itemstack;
+            }
+
+            return stack;
+        }
     }
 }

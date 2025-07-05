@@ -56,6 +56,8 @@ namespace Vintagestory.API.Common
 
         public float YDirKnockbackDiv = 1f;
 
+        public bool IngoreInvFrames = false;
+
         /// <summary>
         /// Fetches the location of the damage source from either SourcePos or SourceEntity
         /// </summary>

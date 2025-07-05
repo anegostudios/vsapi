@@ -102,7 +102,8 @@ Class BaseSpawnConditions
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BaseSpawnConditions : ClimateSpawnCondition</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class BaseSpawnConditions : ClimateSpawnCondition</code></pre>
   </div>
 
 
@@ -193,7 +194,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Group</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string Group</code></pre>
   </div>
 
 
@@ -225,7 +227,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat HerdSize</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public NatFloat HerdSize</code></pre>
   </div>
 
 
@@ -257,7 +260,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumGetClimateMode ClimateValueMode</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public EnumGetClimateMode ClimateValueMode</code></pre>
   </div>
 
 
@@ -289,7 +293,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation[] Companions</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation[] Companions</code></pre>
   </div>
 
 
@@ -321,7 +326,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation[] InsideBlockCodes</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation[] InsideBlockCodes</code></pre>
   </div>
 
 
@@ -353,7 +359,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumLightLevelType LightLevelType</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public EnumLightLevelType LightLevelType</code></pre>
   </div>
 
 
@@ -385,7 +392,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxLightLevel</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int MaxLightLevel</code></pre>
   </div>
 
 
@@ -417,7 +425,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MinLightLevel</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int MinLightLevel</code></pre>
   </div>
 
 
@@ -449,7 +458,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RequireSolidGround</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool RequireSolidGround</code></pre>
   </div>
 
 
@@ -481,7 +491,8 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryOnlySurface</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool TryOnlySurface</code></pre>
   </div>
 
 
@@ -501,10 +512,6 @@ and in locations where hostiles should not spawn.</li>
 
 
 
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
   <a id="Vintagestory_API_Common_Entities_BaseSpawnConditions_GroupSize_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_GroupSize" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize">
@@ -518,19 +525,20 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use HerdSize instead&quot;)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[Obsolete(&quot;Use HerdSize instead&quot;)]
 public NatFloat GroupSize { get; set; }</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
     <dd></dd>
   </dl>
+
 
 
 

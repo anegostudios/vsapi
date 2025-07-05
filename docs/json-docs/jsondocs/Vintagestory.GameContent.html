@@ -115,6 +115,297 @@ Classes
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BehaviorCollectFrom.html">BehaviorCollectFrom</a></dt>
+      <dd><p>When this block is right clicked, harvest its drops and replace it with an empty version.
+Uses the code &quot;CollectFrom&quot;. This behavior has no properties.</p>
+<p>Note that this behavior requires a variant which ends in &quot;-empty&quot;, and also requires at least two drops. The first drop should be the item to collect, the second drop is the block itself. See 'henbox.json' for an example.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BehaviorElevatorControl.html">BehaviorElevatorControl</a></dt>
+      <dd><p>Used in combination with the &quot;BEBehaviorElevatorControl&quot; to create an elevator.
+Uses the code &quot;ElevatorControl&quot;, and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BehaviorMyceliumHost.html">BehaviorMyceliumHost</a></dt>
+      <dd><p>Allows a block to have mushrooms naturally spawn on it.
+Uses the code &quot;MyceliumHost&quot;, and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorBreakIfFloating.html">BlockBehaviorBreakIfFloating</a></dt>
+      <dd><p>Forces the Block to drop as an item when surrounded by air blocks. It will override drops returned by the Block
+when this happens.
+Uses the code &quot;BreakIfFloating&quot;. This behavior doesn't use any properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorBreakSnowFirst.html">BlockBehaviorBreakSnowFirst</a></dt>
+      <dd><p>A simple block behavior that breaks a snow cover first, before breaking the block.
+Uses the code &quot;BreakSnowFirst&quot;. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorCanAttach.html">BlockBehaviorCanAttach</a></dt>
+      <dd><p>Allows some other blocks, such as torches, to be attached onto specific sides of this block.
+Uses the code &quot;CanAttach&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorCanIgnite.html">BlockBehaviorCanIgnite</a></dt>
+      <dd><p>Used if the attached block can ignite other blocks with Shift + Right Click.
+This behavior uses the code &quot;CanIgnite&quot;, and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorChimney.html">BlockBehaviorChimney</a></dt>
+      <dd><p>If this block is placed directly above a smoke emitter (such as a firepit or pit kiln), smoke particles will be emitted.
+Uses the code &quot;chimney&quot; and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorContainer.html">BlockBehaviorContainer</a></dt>
+      <dd><p>Specifies that this block works as a container. Note that it requires a block entity class which implements BlockEntityOpenableContainer.
+Used with the code &quot;Container&quot;. This behavior does not use any properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorCreatureContainer.html">BlockBehaviorCreatureContainer</a></dt>
+      <dd><p>Allows a creature to be contained inside of this block, as well as catching and releasing the entity.
+Note that this behavior is built around use with the reed chest, and may have unexpected results with other blocks.
+This behavior uses the code &quot;CreatureContainer&quot;, and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorDecor.html">BlockBehaviorDecor</a></dt>
+      <dd><p>Allows this block to be placed on the side of another block, as a decorational shape/texture. Uses the code &quot;decor&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorDoor.html">BlockBehaviorDoor</a></dt>
+      <dd><p>A block behavior for a door. Also requires the &quot;door&quot; block entity behavior type on a block to work.
+Defined with the &quot;Door&quot; code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorDropNotSnowCovered.html">BlockBehaviorDropNotSnowCovered</a></dt>
+      <dd><p>Drops the non-snow-covered block, when the snow covered version one is destroyed.
+This behavior uses the &quot;DropNotSnowCovered&quot; code, and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorExchangeOnInteract.html">BlockBehaviorExchangeOnInteract</a></dt>
+      <dd><p>Allows a block to swap between a set of states on activation. Note that this behavior has some small hardcoding for legacy trapdoors.
+This behavior is used with the code &quot;ExchangeOnInteract&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorFiniteSpreadingLiquid.html">BlockBehaviorFiniteSpreadingLiquid</a></dt>
+      <dd><p>Used to create a liquid which distrubutes itself over an area, and has interaction with other liquids.
+Uses the &quot;FiniteSpreadingLiquid&quot; code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorGiveItemPerPlayer.html">BlockBehaviorGiveItemPerPlayer</a></dt>
+      <dd><p>Passes functions through to the <a class="xref" href="Vintagestory.GameContent.BEBehaviorGiveItemPerPlayer.html">BEBehaviorGiveItemPerPlayer</a> block entity behavior. Therefore, requires that.
+Uses the &quot;GiveItemPerPlayer&quot; code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHarvestable.html">BlockBehaviorHarvestable</a></dt>
+      <dd><p>Allows a block to be harvested with the right mouse button for set items.
+Uses the code &quot;harvestable&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHeatSource.html">BlockBehaviorHeatSource</a></dt>
+      <dd><p>Allows this block to work as a heat source for entities. BlockEntities for a block with this behavior may also define their own custom heat strength.
+Uses the code &quot;HeatSource&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHorizontalAttachable.html">BlockBehaviorHorizontalAttachable</a></dt>
+      <dd><p>Forces a block to only allow placement on the side of another block. Requires use of the &quot;horizontalorientation&quot; variant group.
+Uses the code &quot;HorizontalAttachable&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHorizontalOrientable.html">BlockBehaviorHorizontalOrientable</a></dt>
+      <dd><p>Allows a block to automatically rotate between the four horizontal directions based on placement angle. Requires use of the &quot;horizontalorientation&quot; variant group.
+Uses the &quot;HorizontalOrientable&quot; code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorJonasBoilerDoor.html">BlockBehaviorJonasBoilerDoor</a></dt>
+      <dd><p>Provides interaction for the JonasBoilerDoor block entity behavior.
+Uses the &quot;JonasBoilerDoor&quot; code. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorJonasGasifier.html">BlockBehaviorJonasGasifier</a></dt>
+      <dd><p>Passes functions to the <a class="xref" href="Vintagestory.GameContent.BEBehaviorJonasGasifier.html">BEBehaviorJonasGasifier</a> block entity behavior, and therefore requires that.
+Uses the code &quot;JonasGasifier&quot;. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorJonasHydraulicPump.html">BlockBehaviorJonasHydraulicPump</a></dt>
+      <dd><p>Passes functions to the <a class="xref" href="Vintagestory.GameContent.BEBehaviorJonasHydraulicPump.html">BEBehaviorJonasHydraulicPump</a> block entity behavior, and therefore requires that.
+Uses the code &quot;JonasHydraulicPump&quot;. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorLadder.html">BlockBehaviorLadder</a></dt>
+      <dd><p>Used to control ladder behavior, including horizontal orientation, placement, collection. Note that this does not control how entities react to ladders (see &quot;climbable&quot; in blocktype).
+Requires use of the 'horizontalorientation' variants.
+Uses the code &quot;Ladder&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorLockable.html">BlockBehaviorLockable</a></dt>
+      <dd><p>Allows a block to be locked by a player with a padlock, preventing any interaction from any other players.
+Uses the &quot;lockable&quot; code. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorMilkingContainer.html">BlockBehaviorMilkingContainer</a></dt>
+      <dd><p>Allows a block to be used as a container for milking an entity. Must be on a block that has the &quot;BlockLiquidContainerBase&quot; class.
+Uses the code &quot;MilkingContainer&quot;, and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorMultiblock.html">BlockBehaviorMultiblock</a></dt>
+      <dd><p>Turns this block into a multiblock, allowing it to be larger than a single block.
+By default, all blocks will have the same properties. If you need different properties or functionality for each block section, you will need to use a new block class.
+Uses the code &quot;Multiblock&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorNWOrientable.html">BlockBehaviorNWOrientable</a></dt>
+      <dd><p>Automatically swaps between 'North/South' and 'West/East' variants based on placement rotation. Requires an &quot;orientation&quot; or &quot;side&quot; variant with the codes &quot;ns&quot; and &quot;we&quot;.
+Uses the code &quot;NWOrientable&quot;, and has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorOmniAttachable.html">BlockBehaviorOmniAttachable</a></dt>
+      <dd><p>Allows a block to be attached to any face, including vertical faces.
+Requires states from &quot;abstract/horizontalorientation&quot;, as well as additional &quot;up&quot; and &quot;down&quot; states.
+Uses the code &quot;OmniAttachable&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorPillar.html">BlockBehaviorPillar</a></dt>
+      <dd><p>Used to rotate a block that has a 'top' face, such as a wooden log. Requires a &quot;rotation&quot; variant group with &quot;ud&quot;, &quot;ns&quot;, &quot;we&quot; states.
+Uses the &quot;pillar&quot; code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorPushEventOnBlockBroken.html">BlockBehaviorPushEventOnBlockBroken</a></dt>
+      <dd><p>Publishes the BlockPos when a Block is broken with the given event name. Likely used in tandem with code mods.
+Uses the &quot;PushEventOnBlockBroken&quot; code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorRainDrip.html">BlockBehaviorRainDrip</a></dt>
+      <dd><p>Makes a block emit rain particles during or after rainy weather.
+Uses the &quot;RainDrip&quot; code. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorReinforcable.html">BlockBehaviorReinforcable</a></dt>
+      <dd><p>Allows a block to be reinforced, which protects against it being broken as quickly. Appropriate blocks are automatically given this behavior.
+This behavior is not added through the normal property, but instead a custom attribute. This behavior has no properties.
+You can add the &quot;reinforcable&quot; attribute to force an object to be reinforcable.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorReparable.html">BlockBehaviorReparable</a></dt>
+      <dd><p>Blocks which can be repaired using glue. If not repaired, they will shatter (dropping nothing) when broken.
+Requires use of the ShapeFromAttributes block entity behavior.
+Uses the code &quot;Reparable&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorRightClickPickup.html">BlockBehaviorRightClickPickup</a></dt>
+      <dd><p>Allows a block to be picked up with a right click.
+Uses the code &quot;RightClickPickup&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorRopeTieable.html">BlockBehaviorRopeTieable</a></dt>
+      <dd><p>Allows rope to be tied to this block. This behavior does not have any specific JSON properties.
+This block behavior uses the code &quot;RopeTieable&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSlab.html">BlockBehaviorSlab</a></dt>
+      <dd><p>Unused block behavior for slab placement. Consider using <a class="xref" href="Vintagestory.ServerMods.BlockBehaviorOmniRotatable.html">BlockBehaviorOmniRotatable</a> instead.
+Uses the &quot;slab&quot; code. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSneakPlacing.html">BlockBehaviorSneakPlacing</a></dt>
+      <dd><p>Forces a block to only allow to be placed when the player is sneaking.
+Uses the code &quot;SneakPlacing&quot;. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSnowballable.html">BlockBehaviorSnowballable</a></dt>
+      <dd><p>Allows a block to have snowballs taken from it. Many blocks automatically receive this behavior if they have a snow layer or the SnowballableDecrementedBlockCode attribute.
+Uses the code 'Snowballable'.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSteaming.html">BlockBehaviorSteaming</a></dt>
+      <dd><p>Makes a block emit steam particles, and also marks some water blocks as 'boiling'.
+Uses the code &quot;Steaming&quot;. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorTransformBreak.html">BlockBehaviorTransformBreak</a></dt>
+      <dd><p>When a block with this behavior is broken. it will turn into another specified block instead of air.
+This block behavior uses the code &quot;TransformBreak&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorTrapDoor.html">BlockBehaviorTrapDoor</a></dt>
+      <dd><p>Marks a block as an animated trapdoor. Requires the use of the <a class="xref" href="Vintagestory.GameContent.BEBehaviorTrapDoor.html">BEBehaviorTrapDoor</a> block entity behavior.
+Uses the &quot;TrapDoor&quot; code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnplaceable.html">BlockBehaviorUnplaceable</a></dt>
+      <dd><p>Disallows standard placement for this block.
+If a previous listed behavior allows a special placement method (see <a class="xref" href="Vintagestory.GameContent.CollectibleBehaviorGroundStorable.html">CollectibleBehaviorGroundStorable</a>), then that method will be allowed.
+Uses the &quot;unplaceable&quot; code. This behavior has no properties.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnstable.html">BlockBehaviorUnstable</a></dt>
+      <dd><p>Only allows a block to exist if it is attached to another block.
+Uses the code &quot;unstable&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnstableFalling.html">BlockBehaviorUnstableFalling</a></dt>
+      <dd><p>Spawns an EntityBlockFalling when the user places a block that has air underneath it or if a neighbor block is
+removed and causes air to be underneath it. Also has optional functionality to prevent a block being placed if it is unstable.
+Uses the code &quot;UnstableFalling&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnstableRock.html">BlockBehaviorUnstableRock</a></dt>
+      <dd><p>Makes a block potentially unstable, but can be held up using support beams. This behavior will only function if the &quot;caveIns&quot; world config is set to true.
+Uses the code &quot;UnstableRock&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.GameContent.BlockBehaviorWrenchOrientable.html">BlockBehaviorWrenchOrientable</a></dt>
+      <dd><p>Allows a block to cycle through variants when using a wrench.
+Uses the code &quot;WrenchOrientable&quot;.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.GameContent.ClayFormingRecipe.html">ClayFormingRecipe</a></dt>
       <dd><p>Creates a recipe that can be created using clay. This class takes all of its properties from the <a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe-1.html">LayeredVoxelRecipe&lt;T&gt;</a> class.</p>
 </dd>

@@ -77,8 +77,8 @@ namespace Vintagestory.API.Client
 
             if (location == null)
             {
-                int vertexSize = Math.Max(modeldata.VerticesCount+1, defaultVertexPoolSize);
-                int indexSize = Math.Max(modeldata.IndicesCount+1, defaultIndexPoolSize);
+                int vertexSize = Math.Max(modeldata.VerticesCount, defaultVertexPoolSize);
+                int indexSize = Math.Max(modeldata.IndicesCount, defaultIndexPoolSize);
 
                 if (vertexSize > defaultIndexPoolSize)
                 {

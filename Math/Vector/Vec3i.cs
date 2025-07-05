@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -77,6 +77,13 @@ namespace Vintagestory.API.MathTools
             this.X = x;
             this.Y = y;
             this.Z = z;
+        }
+
+        public Vec3i(FastVec3i vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
         }
 
         public Vec3i(BlockPos pos)

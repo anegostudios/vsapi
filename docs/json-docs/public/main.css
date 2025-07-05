@@ -1,4 +1,6 @@
-/* css template that hides some useless information in the json docs. */
+/* css template that hides some useless information in the json docs. 
+	Also changes "Properties" to say "Attributes", and "Fields" to say "JSON Properties".	
+*/
 .text-secondary {
 	display: none;
 }
@@ -11,7 +13,74 @@
 .section {
 	display: none;
 }
+
+/* Fields -> JSON Properties */
+#fields:before {
+	content: "JSON Properties";
+	display: inline;
+	visibility: visible;
+}
 #fields {
 	display: inline;
+	visibility: hidden;
 }
-	
+#fields:after {
+	content: "\AThis type uses the following JSON properties. These can be added in any order.";
+	display: inline;
+	visibility: visible;
+	white-space: pre-wrap;
+	font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+}
+
+/* Properties -> Attributes */
+#properties {
+	visibility: hidden;
+	display: inline;
+}
+#properties:before {
+	content: "Attributes";
+	display: inline;
+	visibility: visible;
+}
+#properties:after {
+	content: "\AThis type makes use of the following attributes. Attributes should be placed in the 'attributes' property for a relevant collectible.";
+	display: inline;
+	visibility: visible;
+	white-space: pre-wrap;
+	font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+}
+
+/* Methods -> Enum Values
+	Enum values start as fields, which makes them JSON Properties, but then the description of JSON Properties doesn't work for enum values.
+	To fix, we convert all fields with an enum parent into methods in the C# script, and then swap the name of methods to enum values.
+*/
+#methods {
+	visibility: hidden;
+	display: inline;
+}
+
+#methods:before {
+	content: "Values";
+	display: inline;
+	visibility: visible;
+}
+
+#methods:after {
+	content: "\AThis type has the following potential values.";
+	display: inline;
+	visibility: visible;
+	white-space: pre-wrap;
+	font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+}

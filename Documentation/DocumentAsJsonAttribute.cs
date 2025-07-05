@@ -12,7 +12,17 @@ namespace Vintagestory.API
     /// <br/><br/>
     /// Note that most fields will also contain the following inside their summary tag:<br/>
     /// &lt;jsonoptional&gt;Optional&lt;/jsonoptional&gt;&lt;jsondefault&gt;None&lt;/jsondefault&gt;
+    ///
+    /// <br/><br/>
+    /// The attribute now has the ability to add in required, default, and attribute parameters.
+    /// These will be analysed by the docFx plugin.
     /// </summary>
     public class DocumentAsJsonAttribute : Attribute
-    {}
+    {
+
+        public DocumentAsJsonAttribute() { }
+
+        public DocumentAsJsonAttribute(string requiredStatus, string defaultValue = "", bool isAttribute = false) { }
+
+    }
 }

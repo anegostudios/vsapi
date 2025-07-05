@@ -102,7 +102,8 @@ Class AssetLocation
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[TypeConverter(typeof(StringAssetLocationConverter))]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[TypeConverter(typeof(StringAssetLocationConverter))]
 [ProtoContract]
 public class AssetLocation : IEquatable&lt;AssetLocation&gt;, IComparable&lt;AssetLocation&gt;</code></pre>
   </div>

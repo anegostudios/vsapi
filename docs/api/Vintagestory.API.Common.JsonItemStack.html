@@ -103,7 +103,8 @@ It resembles a standard in-game item stack but can be stored before the game is 
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoContract]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[ProtoContract]
 public class JsonItemStack : IRecipeOutput</code></pre>
   </div>
 
@@ -231,6 +232,7 @@ public JsonObject Attributes</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+[DocumentAsJson]
 public AssetLocation Code</code></pre>
   </div>
 
@@ -295,6 +297,7 @@ public AssetLocation Code</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+[DocumentAsJson]
 public int StackSize</code></pre>
   </div>
 
@@ -328,6 +331,7 @@ public int StackSize</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+[DocumentAsJson]
 public EnumItemClass Type</code></pre>
   </div>
 
@@ -365,7 +369,8 @@ public EnumItemClass Type</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Quantity { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int Quantity { get; set; }</code></pre>
   </div>
 
 

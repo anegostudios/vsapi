@@ -5,25 +5,35 @@ using System;
 
 namespace Vintagestory.API.MathTools
 {
+    /// <summary>
+    /// A 3D cuboid, created out of integers.
+    /// </summary>
+    [DocumentAsJson]
     [ProtoContract]
     public class Cuboidi : ICuboid<int,Cuboidi>, IEquatable<Cuboidi>
     {
         [ProtoMember(1)]
+        [DocumentAsJson]
         public int X1;
         
         [ProtoMember(2)]
+        [DocumentAsJson]
         public int Y1;
 
         [ProtoMember(3)]
+        [DocumentAsJson]
         public int Z1;
 
         [ProtoMember(4)]
+        [DocumentAsJson]
         public int X2;
 
         [ProtoMember(5)]
+        [DocumentAsJson]
         public int Y2;
 
         [ProtoMember(6)]
+        [DocumentAsJson]
         public int Z2;
 
         public int[] Coordinates => new int[] { X1, Y1, Z1, X2, Y2, Z2 };

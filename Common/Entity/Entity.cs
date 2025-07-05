@@ -900,7 +900,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns>True if the entity actually received damage</returns>
         public virtual bool ReceiveDamage(DamageSource damageSource, float damage)
         {
-            if ((!Alive || IsActivityRunning("invulnerable")) && damageSource.Type != EnumDamageType.Heal) return false;
+            if ((!Alive || IsActivityRunning("invulnerable") && !damageSource.IngoreInvFrames) && damageSource.Type != EnumDamageType.Heal) return false;
 
             if (ShouldReceiveDamage(damageSource, damage)) {
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)

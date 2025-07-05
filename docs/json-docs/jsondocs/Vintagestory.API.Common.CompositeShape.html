@@ -102,7 +102,8 @@ Class CompositeShape
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CompositeShape</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class CompositeShape</code></pre>
   </div>
 
 
@@ -147,7 +148,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Base</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation Base</code></pre>
   </div>
 
 
@@ -179,7 +181,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CompositeShape[] Alternates</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public CompositeShape[] Alternates</code></pre>
   </div>
 
 
@@ -211,7 +214,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumShapeFormat Format</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public EnumShapeFormat Format</code></pre>
   </div>
 
 
@@ -243,167 +247,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool InsertBakedTextures</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CompositeShape_Overlays" data-uid="Vintagestory.API.Common.CompositeShape.Overlays">
-  Overlays (Optional) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CompositeShape[] Overlays</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CompositeShape_QuantityElements" data-uid="Vintagestory.API.Common.CompositeShape.QuantityElements">
-  QuantityElements (Optional) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If non zero will only tesselate the first n elements of the shape</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? QuantityElements</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CompositeShape_Scale" data-uid="Vintagestory.API.Common.CompositeShape.Scale">
-  Scale (Optional) (Default: 1)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The scale of this shape on all axes.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Scale</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CompositeShape_SelectiveElements" data-uid="Vintagestory.API.Common.CompositeShape.SelectiveElements">
-  SelectiveElements (Optional) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If set will only tesselate elements with given name</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] SelectiveElements</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_CompositeShape_VoxelizeTexture" data-uid="Vintagestory.API.Common.CompositeShape.VoxelizeTexture">
-  VoxelizeTexture (Optional) (Default: false)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If true, the shape is created from a voxelized version of the first defined texture</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool VoxelizeTexture</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool InsertBakedTextures</code></pre>
   </div>
 
 
@@ -435,7 +280,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float offsetX</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float offsetX</code></pre>
   </div>
 
 
@@ -467,7 +313,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float offsetY</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float offsetY</code></pre>
   </div>
 
 
@@ -499,7 +346,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float offsetZ</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float offsetZ</code></pre>
   </div>
 
 
@@ -508,6 +356,72 @@ Class CompositeShape
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CompositeShape_Overlays" data-uid="Vintagestory.API.Common.CompositeShape.Overlays">
+  Overlays (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public CompositeShape[] Overlays</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CompositeShape_QuantityElements" data-uid="Vintagestory.API.Common.CompositeShape.QuantityElements">
+  QuantityElements (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If non zero will only tesselate the first n elements of the shape</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public int? QuantityElements</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
     <dd></dd>
   </dl>
 
@@ -531,7 +445,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float rotateX</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float rotateX</code></pre>
   </div>
 
 
@@ -563,7 +478,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float rotateY</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float rotateY</code></pre>
   </div>
 
 
@@ -595,7 +511,8 @@ Class CompositeShape
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float rotateZ</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float rotateZ</code></pre>
   </div>
 
 
@@ -604,6 +521,105 @@ Class CompositeShape
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CompositeShape_Scale" data-uid="Vintagestory.API.Common.CompositeShape.Scale">
+  Scale (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The scale of this shape on all axes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float Scale</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CompositeShape_SelectiveElements" data-uid="Vintagestory.API.Common.CompositeShape.SelectiveElements">
+  SelectiveElements (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set will only tesselate elements with given name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public string[] SelectiveElements</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CompositeShape_VoxelizeTexture" data-uid="Vintagestory.API.Common.CompositeShape.VoxelizeTexture">
+  VoxelizeTexture (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If true, the shape is created from a voxelized version of the first defined texture</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool VoxelizeTexture</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

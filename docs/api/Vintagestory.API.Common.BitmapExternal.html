@@ -181,9 +181,41 @@ Class BitmapExternal
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BitmapExternal()</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This requires to manually set the underlying SKBitmap, prefer other overloads.&quot;)]
+public BitmapExternal()</code></pre>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BitmapExternal__ctor_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_BitmapExternal__ctor_SkiaSharp_SKBitmap_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor(SkiaSharp.SKBitmap)">
+  BitmapExternal(SKBitmap)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BitmapExternal(SKBitmap bmp)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bmp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap">SKBitmap</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -235,7 +267,7 @@ Class BitmapExternal
   <a id="Vintagestory_API_Common_BitmapExternal__ctor_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor*"></a>
 
   <h3 id="Vintagestory_API_Common_BitmapExternal__ctor_System_IO_MemoryStream_Vintagestory_API_Common_ILogger_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.MemoryStream,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.AssetLocation)">
-  BitmapExternal(MemoryStream, ILogger, AssetLocation)
+  BitmapExternal(MemoryStream, ILogger, AssetLocation?)
   
   </h3>
 
@@ -243,7 +275,7 @@ Class BitmapExternal
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BitmapExternal(MemoryStream ms, ILogger logger, AssetLocation loc = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public BitmapExternal(MemoryStream ms, ILogger logger, AssetLocation? loc = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -269,8 +301,8 @@ Class BitmapExternal
 
   <a id="Vintagestory_API_Common_BitmapExternal__ctor_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Common_BitmapExternal__ctor_System_IO_Stream_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.Stream)">
-  BitmapExternal(Stream)
+  <h3 id="Vintagestory_API_Common_BitmapExternal__ctor_System_IO_Stream_Vintagestory_API_Common_ILogger_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.Stream,Vintagestory.API.Common.ILogger)">
+  BitmapExternal(Stream, ILogger?)
   
   </h3>
 
@@ -278,12 +310,14 @@ Class BitmapExternal
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BitmapExternal(Stream stream)</code></pre>
+    <pre><code class="lang-csharp hljs">public BitmapExternal(Stream stream, ILogger? logger = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
+    <dd></dd>
+    <dt><code>logger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
     <dd></dd>
   </dl>
 
@@ -333,8 +367,8 @@ Class BitmapExternal
 
   <a id="Vintagestory_API_Common_BitmapExternal__ctor_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Common_BitmapExternal__ctor_System_String_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor(System.String)">
-  BitmapExternal(string)
+  <h3 id="Vintagestory_API_Common_BitmapExternal__ctor_System_String_Vintagestory_API_Common_ILogger_" data-uid="Vintagestory.API.Common.BitmapExternal.#ctor(System.String,Vintagestory.API.Common.ILogger)">
+  BitmapExternal(string, ILogger?)
   
   </h3>
 
@@ -342,12 +376,14 @@ Class BitmapExternal
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BitmapExternal(string filePath)</code></pre>
+    <pre><code class="lang-csharp hljs">public BitmapExternal(string filePath, ILogger? logger = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>filePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>logger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
     <dd></dd>
   </dl>
 

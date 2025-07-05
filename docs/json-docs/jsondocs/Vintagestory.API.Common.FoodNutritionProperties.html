@@ -102,7 +102,8 @@ Class FoodNutritionProperties
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FoodNutritionProperties</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class FoodNutritionProperties</code></pre>
   </div>
 
 
@@ -154,7 +155,8 @@ Class FoodNutritionProperties
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumFoodCategory FoodCategory</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public EnumFoodCategory FoodCategory</code></pre>
   </div>
 
 
@@ -186,7 +188,8 @@ Class FoodNutritionProperties
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Satiety</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float Satiety</code></pre>
   </div>
 
 
@@ -220,7 +223,8 @@ Possible example: Eating a 'meat on a stick' item would return a single stick.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonItemStack EatenStack</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public JsonItemStack EatenStack</code></pre>
   </div>
 
 
@@ -252,7 +256,42 @@ Possible example: Eating a 'meat on a stick' item would return a single stick.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Health</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float Health</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_FoodNutritionProperties_Intoxication_" data-uid="Vintagestory.API.Common.FoodNutritionProperties.Intoxication*"></a>
+
+  <h3 id="Vintagestory_API_Common_FoodNutritionProperties_Intoxication" data-uid="Vintagestory.API.Common.FoodNutritionProperties.Intoxication">
+  Intoxication (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How much eating this will affect the player's intoxication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float Intoxication { get; set; }</code></pre>
   </div>
 
 
@@ -284,7 +323,8 @@ Possible example: Eating a 'meat on a stick' item would return a single stick.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float SaturationLossDelay</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public float SaturationLossDelay</code></pre>
   </div>
 
 
@@ -296,43 +336,6 @@ Possible example: Eating a 'meat on a stick' item would return a single stick.
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_API_Common_FoodNutritionProperties_Intoxication_" data-uid="Vintagestory.API.Common.FoodNutritionProperties.Intoxication*"></a>
-
-  <h3 id="Vintagestory_API_Common_FoodNutritionProperties_Intoxication" data-uid="Vintagestory.API.Common.FoodNutritionProperties.Intoxication">
-  Intoxication (Optional) (Default: 0)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>How much eating this will affect the player's intoxication.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Intoxication { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -354,19 +357,20 @@ Possible example: Eating a 'meat on a stick' item would return a single stick.
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Satiety instead.&quot;)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[Obsolete(&quot;Use Satiety instead.&quot;)]
 public float Saturation { get; set; }</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
+
 
 
 

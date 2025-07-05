@@ -102,7 +102,8 @@ Class Vec2f
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 [ProtoContract]
 public class Vec2f</code></pre>
   </div>
@@ -268,7 +269,8 @@ public class Vec2f</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonProperty]
 [ProtoMember(1)]
 public float X</code></pre>
   </div>
@@ -302,7 +304,8 @@ public float X</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonProperty]
 [ProtoMember(2)]
 public float Y</code></pre>
   </div>

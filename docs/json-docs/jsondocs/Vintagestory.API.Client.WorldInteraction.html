@@ -102,7 +102,8 @@ Class WorldInteraction
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public class WorldInteraction</code></pre>
   </div>
 
@@ -228,6 +229,40 @@ public string HotKeyCode</code></pre>
 
 
 
+  <a id="Vintagestory_API_Client_WorldInteraction_HotKeyCodes_" data-uid="Vintagestory.API.Client.WorldInteraction.HotKeyCodes*"></a>
+
+  <h3 id="Vintagestory_API_Client_WorldInteraction_HotKeyCodes" data-uid="Vintagestory.API.Client.WorldInteraction.HotKeyCodes">
+  HotKeyCodes (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Does it require pressing multiple keys to perform this action (if set then HotkeyCode is ignored)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string[] HotKeyCodes { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
   <h3 id="Vintagestory_API_Client_WorldInteraction_JsonItemStacks" data-uid="Vintagestory.API.Client.WorldInteraction.JsonItemStacks">
   ItemStacks (Optional) (Default: None)
@@ -254,44 +289,6 @@ public JsonItemStack[] JsonItemStacks</code></pre>
     <dd></dd>
   </dl>
 
-
-
-
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_API_Client_WorldInteraction_HotKeyCodes_" data-uid="Vintagestory.API.Client.WorldInteraction.HotKeyCodes*"></a>
-
-  <h3 id="Vintagestory_API_Client_WorldInteraction_HotKeyCodes" data-uid="Vintagestory.API.Client.WorldInteraction.HotKeyCodes">
-  HotKeyCodes (Optional) (Default: None)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Does it require pressing multiple keys to perform this action (if set then HotkeyCode is ignored)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public string[] HotKeyCodes { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
 
 
 

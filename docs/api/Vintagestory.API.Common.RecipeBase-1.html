@@ -102,7 +102,8 @@ Class RecipeBase&lt;T&gt;
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class RecipeBase&lt;T&gt; : IRecipeBase&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public abstract class RecipeBase&lt;T&gt; : IRecipeBase&lt;T&gt;</code></pre>
   </div>
 
 
@@ -194,7 +195,8 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CraftingRecipeIngredient[] Ingredients</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public CraftingRecipeIngredient[] Ingredients</code></pre>
   </div>
 
 
@@ -226,7 +228,8 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonItemStack Output</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public JsonItemStack Output</code></pre>
   </div>
 
 
@@ -294,7 +297,8 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Enabled { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool Enabled { get; set; }</code></pre>
   </div>
 
 
@@ -328,7 +332,8 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CraftingRecipeIngredient Ingredient { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public CraftingRecipeIngredient Ingredient { get; set; }</code></pre>
   </div>
 
 
@@ -361,7 +366,8 @@ Required if not using <a class="xref" href="Vintagestory.API.Common.RecipeBase-1
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation Name { get; set; }</code></pre>
   </div>
 
 

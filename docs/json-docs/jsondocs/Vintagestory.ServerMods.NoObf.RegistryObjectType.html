@@ -103,7 +103,8 @@ Controls the object's code, variant types, allowed/disallowed variants, world in
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonObject(MemberSerialization.OptIn)]
 public abstract class RegistryObjectType</code></pre>
   </div>
 
@@ -168,7 +169,8 @@ public abstract class RegistryObjectType</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Code</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public AssetLocation Code</code></pre>
   </div>
 
 
@@ -266,7 +268,8 @@ public string Class</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Enabled</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public bool Enabled</code></pre>
   </div>
 
 
@@ -331,7 +334,8 @@ public AssetLocation[] SkipVariants</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RegistryObjectVariantGroup[] VariantGroups</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public RegistryObjectVariantGroup[] VariantGroups</code></pre>
   </div>
 
 

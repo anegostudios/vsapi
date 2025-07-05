@@ -8,6 +8,11 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A behavior object which can be added to any collectible.
+    /// See the derived types for a list of documented collectible behaviors.
+    /// </summary>
+    [DocumentAsJson]
     public abstract class CollectibleBehavior
     {
         /// <summary>

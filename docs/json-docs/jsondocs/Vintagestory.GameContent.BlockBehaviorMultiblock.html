@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BlockBehaviorMultiblock | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockBehaviorMultiblock | VintageStory Json Docs ">
+      
+      <meta name="description" content="Turns this block into a multiblock, allowing it to be larger than a single block. By default, all blocks will have the same properties. If you need different properties or functionality for each block section, you will need to use a new block class. Uses the code &amp;quot;Multiblock&amp;quot;.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.GameContent.BlockBehaviorMultiblock">
+
+
+
+  <h1 id="Vintagestory_GameContent_BlockBehaviorMultiblock" data-uid="Vintagestory.GameContent.BlockBehaviorMultiblock" class="text-break">
+Class BlockBehaviorMultiblock  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.GameContent.html">GameContent</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Turns this block into a multiblock, allowing it to be larger than a single block.
+By default, all blocks will have the same properties. If you need different properties or functionality for each block section, you will need to use a new block class.
+Uses the code &quot;Multiblock&quot;.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class BlockBehaviorMultiblock : BlockBehavior</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html">CollectibleBehavior</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.BlockBehavior.html">BlockBehavior</a></div>
+      <div><span class="xref">BlockBehaviorMultiblock</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+  <h2 id="Vintagestory_GameContent_BlockBehaviorMultiblock_examples">Examples</h2>
+  <pre><code class="lang-csharp">"behaviors": [
+	{
+		"name": "Multiblock",
+		"properties": {
+			"sizex": 1,
+			"sizey": 3,
+			"sizez": 1,
+			"cposition": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			}
+		}
+	}
+],</code></pre>
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_GameContent_BlockBehaviorMultiblock_ControllerPositionRel" data-uid="Vintagestory.GameContent.BlockBehaviorMultiblock.ControllerPositionRel">
+  cposition (Recommended) (Default: (1, 0, 1))
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<!---->
+<p>The controller position of the multiblock. This is the primary placed location of the multiblock.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;(1, 0, 1)&quot;, false)]
+private Vec3i ControllerPositionRel</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Vec3i</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_BlockBehaviorMultiblock_SizeX" data-uid="Vintagestory.GameContent.BlockBehaviorMultiblock.SizeX">
+  SizeX (Recommended) (Default: 3)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The size in blocks, in the X axis, of the multiblock. Maximum of 5.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;3&quot;, false)]
+private int SizeX</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_BlockBehaviorMultiblock_SizeY" data-uid="Vintagestory.GameContent.BlockBehaviorMultiblock.SizeY">
+  SizeY (Recommended) (Default: 3)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The size in blocks, in the Y axis, of the multiblock. Maximum of 5.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;3&quot;, false)]
+private int SizeY</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_BlockBehaviorMultiblock_SizeZ" data-uid="Vintagestory.GameContent.BlockBehaviorMultiblock.SizeZ">
+  SizeZ (Recommended) (Default: 3)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The size in blocks, in the Z axis, of the multiblock. Maximum of 5.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;3&quot;, false)]
+private int SizeZ</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BlockBehavior | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockBehavior | VintageStory Json Docs ">
+      
+      <meta name="description" content="Allows for definitions of behaviors of a block that can be applied to any block See the derived types for a list of all documented block behaviors.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Common.BlockBehavior">
+
+
+
+  <h1 id="Vintagestory_API_Common_BlockBehavior" data-uid="Vintagestory.API.Common.BlockBehavior" class="text-break">
+Class BlockBehavior  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Allows for definitions of behaviors of a block that can be applied to any block
+See the derived types for a list of all documented block behaviors.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public abstract class BlockBehavior : CollectibleBehavior</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html">CollectibleBehavior</a></div>
+      <div><span class="xref">BlockBehavior</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.GameContent.BehaviorCollectFrom.html">BehaviorCollectFrom</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BehaviorElevatorControl.html">BehaviorElevatorControl</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BehaviorMyceliumHost.html">BehaviorMyceliumHost</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorBreakIfFloating.html">BlockBehaviorBreakIfFloating</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorBreakSnowFirst.html">BlockBehaviorBreakSnowFirst</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorCanAttach.html">BlockBehaviorCanAttach</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorCanIgnite.html">BlockBehaviorCanIgnite</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorChimney.html">BlockBehaviorChimney</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorContainer.html">BlockBehaviorContainer</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorCreatureContainer.html">BlockBehaviorCreatureContainer</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorDecor.html">BlockBehaviorDecor</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorDropNotSnowCovered.html">BlockBehaviorDropNotSnowCovered</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorExchangeOnInteract.html">BlockBehaviorExchangeOnInteract</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorFiniteSpreadingLiquid.html">BlockBehaviorFiniteSpreadingLiquid</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorGiveItemPerPlayer.html">BlockBehaviorGiveItemPerPlayer</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHarvestable.html">BlockBehaviorHarvestable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHeatSource.html">BlockBehaviorHeatSource</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHorizontalAttachable.html">BlockBehaviorHorizontalAttachable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorHorizontalOrientable.html">BlockBehaviorHorizontalOrientable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorJonasBoilerDoor.html">BlockBehaviorJonasBoilerDoor</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorJonasGasifier.html">BlockBehaviorJonasGasifier</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorJonasHydraulicPump.html">BlockBehaviorJonasHydraulicPump</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorLadder.html">BlockBehaviorLadder</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorLockable.html">BlockBehaviorLockable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorMilkingContainer.html">BlockBehaviorMilkingContainer</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorMultiblock.html">BlockBehaviorMultiblock</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorNWOrientable.html">BlockBehaviorNWOrientable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorOmniAttachable.html">BlockBehaviorOmniAttachable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorPillar.html">BlockBehaviorPillar</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorPushEventOnBlockBroken.html">BlockBehaviorPushEventOnBlockBroken</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorRainDrip.html">BlockBehaviorRainDrip</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorReinforcable.html">BlockBehaviorReinforcable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorReparable.html">BlockBehaviorReparable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorRightClickPickup.html">BlockBehaviorRightClickPickup</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorRopeTieable.html">BlockBehaviorRopeTieable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSlab.html">BlockBehaviorSlab</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSneakPlacing.html">BlockBehaviorSneakPlacing</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSnowballable.html">BlockBehaviorSnowballable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorSteaming.html">BlockBehaviorSteaming</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorTransformBreak.html">BlockBehaviorTransformBreak</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnplaceable.html">BlockBehaviorUnplaceable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnstable.html">BlockBehaviorUnstable</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnstableFalling.html">BlockBehaviorUnstableFalling</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorUnstableRock.html">BlockBehaviorUnstableRock</a></div>
+      <div><a class="xref" href="Vintagestory.GameContent.BlockBehaviorWrenchOrientable.html">BlockBehaviorWrenchOrientable</a></div>
+      <div><a class="xref" href="Vintagestory.ServerMods.BlockBehaviorOmniRotatable.html">BlockBehaviorOmniRotatable</a></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
