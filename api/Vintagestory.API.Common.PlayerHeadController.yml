@@ -1,0 +1,762 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.PlayerHeadController
+  commentId: T:Vintagestory.API.Common.PlayerHeadController
+  id: PlayerHeadController
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.PlayerHeadController.#ctor(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.EntityPlayer,Vintagestory.API.Common.Shape)
+  - Vintagestory.API.Common.PlayerHeadController.OnFrame(System.Single)
+  - Vintagestory.API.Common.PlayerHeadController.player
+  - Vintagestory.API.Common.PlayerHeadController.rotateTpYawNow
+  - Vintagestory.API.Common.PlayerHeadController.turnOpposite
+  langs:
+  - csharp
+  - vb
+  name: PlayerHeadController
+  nameWithType: PlayerHeadController
+  fullName: Vintagestory.API.Common.PlayerHeadController
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public class PlayerHeadController : EntityHeadController'
+    content.vb: Public Class PlayerHeadController Inherits EntityHeadController
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.EntityHeadController
+  inheritedMembers:
+  - Vintagestory.API.Common.EntityHeadController.HeadPose
+  - Vintagestory.API.Common.EntityHeadController.NeckPose
+  - Vintagestory.API.Common.EntityHeadController.UpperTorsoPose
+  - Vintagestory.API.Common.EntityHeadController.LowerTorsoPose
+  - Vintagestory.API.Common.EntityHeadController.UpperFootLPose
+  - Vintagestory.API.Common.EntityHeadController.UpperFootRPose
+  - Vintagestory.API.Common.EntityHeadController.entity
+  - Vintagestory.API.Common.EntityHeadController.animManager
+  - Vintagestory.API.Common.EntityHeadController.yawOffset
+  - Vintagestory.API.Common.EntityHeadController.pitchOffset
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.PlayerHeadController.player
+  commentId: F:Vintagestory.API.Common.PlayerHeadController.player
+  id: player
+  parent: Vintagestory.API.Common.PlayerHeadController
+  langs:
+  - csharp
+  - vb
+  name: player
+  nameWithType: PlayerHeadController.player
+  fullName: Vintagestory.API.Common.PlayerHeadController.player
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected IPlayer player
+    return:
+      type: Vintagestory.API.Common.IPlayer
+    content.vb: Protected player As IPlayer
+- uid: Vintagestory.API.Common.PlayerHeadController.turnOpposite
+  commentId: F:Vintagestory.API.Common.PlayerHeadController.turnOpposite
+  id: turnOpposite
+  parent: Vintagestory.API.Common.PlayerHeadController
+  langs:
+  - csharp
+  - vb
+  name: turnOpposite
+  nameWithType: PlayerHeadController.turnOpposite
+  fullName: Vintagestory.API.Common.PlayerHeadController.turnOpposite
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected bool turnOpposite
+    return:
+      type: System.Boolean
+    content.vb: Protected turnOpposite As Boolean
+- uid: Vintagestory.API.Common.PlayerHeadController.rotateTpYawNow
+  commentId: F:Vintagestory.API.Common.PlayerHeadController.rotateTpYawNow
+  id: rotateTpYawNow
+  parent: Vintagestory.API.Common.PlayerHeadController
+  langs:
+  - csharp
+  - vb
+  name: rotateTpYawNow
+  nameWithType: PlayerHeadController.rotateTpYawNow
+  fullName: Vintagestory.API.Common.PlayerHeadController.rotateTpYawNow
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected bool rotateTpYawNow
+    return:
+      type: System.Boolean
+    content.vb: Protected rotateTpYawNow As Boolean
+- uid: Vintagestory.API.Common.PlayerHeadController.#ctor(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.EntityPlayer,Vintagestory.API.Common.Shape)
+  commentId: M:Vintagestory.API.Common.PlayerHeadController.#ctor(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.EntityPlayer,Vintagestory.API.Common.Shape)
+  id: '#ctor(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.EntityPlayer,Vintagestory.API.Common.Shape)'
+  parent: Vintagestory.API.Common.PlayerHeadController
+  langs:
+  - csharp
+  - vb
+  name: PlayerHeadController(IAnimationManager, EntityPlayer, Shape)
+  nameWithType: PlayerHeadController.PlayerHeadController(IAnimationManager, EntityPlayer, Shape)
+  fullName: Vintagestory.API.Common.PlayerHeadController.PlayerHeadController(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.EntityPlayer, Vintagestory.API.Common.Shape)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public PlayerHeadController(IAnimationManager animator, EntityPlayer entity, Shape entityShape)
+    parameters:
+    - id: animator
+      type: Vintagestory.API.Common.IAnimationManager
+    - id: entity
+      type: Vintagestory.API.Common.EntityPlayer
+    - id: entityShape
+      type: Vintagestory.API.Common.Shape
+    content.vb: Public Sub New(animator As IAnimationManager, entity As EntityPlayer, entityShape As Shape)
+  overload: Vintagestory.API.Common.PlayerHeadController.#ctor*
+  nameWithType.vb: PlayerHeadController.New(IAnimationManager, EntityPlayer, Shape)
+  fullName.vb: Vintagestory.API.Common.PlayerHeadController.New(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.EntityPlayer, Vintagestory.API.Common.Shape)
+  name.vb: New(IAnimationManager, EntityPlayer, Shape)
+- uid: Vintagestory.API.Common.PlayerHeadController.OnFrame(System.Single)
+  commentId: M:Vintagestory.API.Common.PlayerHeadController.OnFrame(System.Single)
+  id: OnFrame(System.Single)
+  parent: Vintagestory.API.Common.PlayerHeadController
+  langs:
+  - csharp
+  - vb
+  name: OnFrame(float)
+  nameWithType: PlayerHeadController.OnFrame(float)
+  fullName: Vintagestory.API.Common.PlayerHeadController.OnFrame(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The event fired when the game ticks.
+  example: []
+  syntax:
+    content: public override void OnFrame(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    content.vb: Public Overrides Sub OnFrame(dt As Single)
+  overridden: Vintagestory.API.Common.EntityHeadController.OnFrame(System.Single)
+  overload: Vintagestory.API.Common.PlayerHeadController.OnFrame*
+  nameWithType.vb: PlayerHeadController.OnFrame(Single)
+  fullName.vb: Vintagestory.API.Common.PlayerHeadController.OnFrame(Single)
+  name.vb: OnFrame(Single)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.EntityHeadController
+  commentId: T:Vintagestory.API.Common.EntityHeadController
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityHeadController.html
+  name: EntityHeadController
+  nameWithType: EntityHeadController
+  fullName: Vintagestory.API.Common.EntityHeadController
+- uid: Vintagestory.API.Common.EntityHeadController.HeadPose
+  commentId: F:Vintagestory.API.Common.EntityHeadController.HeadPose
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_HeadPose
+  name: HeadPose
+  nameWithType: EntityHeadController.HeadPose
+  fullName: Vintagestory.API.Common.EntityHeadController.HeadPose
+- uid: Vintagestory.API.Common.EntityHeadController.NeckPose
+  commentId: F:Vintagestory.API.Common.EntityHeadController.NeckPose
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_NeckPose
+  name: NeckPose
+  nameWithType: EntityHeadController.NeckPose
+  fullName: Vintagestory.API.Common.EntityHeadController.NeckPose
+- uid: Vintagestory.API.Common.EntityHeadController.UpperTorsoPose
+  commentId: F:Vintagestory.API.Common.EntityHeadController.UpperTorsoPose
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_UpperTorsoPose
+  name: UpperTorsoPose
+  nameWithType: EntityHeadController.UpperTorsoPose
+  fullName: Vintagestory.API.Common.EntityHeadController.UpperTorsoPose
+- uid: Vintagestory.API.Common.EntityHeadController.LowerTorsoPose
+  commentId: F:Vintagestory.API.Common.EntityHeadController.LowerTorsoPose
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_LowerTorsoPose
+  name: LowerTorsoPose
+  nameWithType: EntityHeadController.LowerTorsoPose
+  fullName: Vintagestory.API.Common.EntityHeadController.LowerTorsoPose
+- uid: Vintagestory.API.Common.EntityHeadController.UpperFootLPose
+  commentId: F:Vintagestory.API.Common.EntityHeadController.UpperFootLPose
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_UpperFootLPose
+  name: UpperFootLPose
+  nameWithType: EntityHeadController.UpperFootLPose
+  fullName: Vintagestory.API.Common.EntityHeadController.UpperFootLPose
+- uid: Vintagestory.API.Common.EntityHeadController.UpperFootRPose
+  commentId: F:Vintagestory.API.Common.EntityHeadController.UpperFootRPose
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_UpperFootRPose
+  name: UpperFootRPose
+  nameWithType: EntityHeadController.UpperFootRPose
+  fullName: Vintagestory.API.Common.EntityHeadController.UpperFootRPose
+- uid: Vintagestory.API.Common.EntityHeadController.entity
+  commentId: F:Vintagestory.API.Common.EntityHeadController.entity
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_entity
+  name: entity
+  nameWithType: EntityHeadController.entity
+  fullName: Vintagestory.API.Common.EntityHeadController.entity
+- uid: Vintagestory.API.Common.EntityHeadController.animManager
+  commentId: F:Vintagestory.API.Common.EntityHeadController.animManager
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_animManager
+  name: animManager
+  nameWithType: EntityHeadController.animManager
+  fullName: Vintagestory.API.Common.EntityHeadController.animManager
+- uid: Vintagestory.API.Common.EntityHeadController.yawOffset
+  commentId: F:Vintagestory.API.Common.EntityHeadController.yawOffset
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_yawOffset
+  name: yawOffset
+  nameWithType: EntityHeadController.yawOffset
+  fullName: Vintagestory.API.Common.EntityHeadController.yawOffset
+- uid: Vintagestory.API.Common.EntityHeadController.pitchOffset
+  commentId: F:Vintagestory.API.Common.EntityHeadController.pitchOffset
+  parent: Vintagestory.API.Common.EntityHeadController
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_pitchOffset
+  name: pitchOffset
+  nameWithType: EntityHeadController.pitchOffset
+  fullName: Vintagestory.API.Common.EntityHeadController.pitchOffset
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.PlayerHeadController.#ctor*
+  commentId: Overload:Vintagestory.API.Common.PlayerHeadController.#ctor
+  href: Vintagestory.API.Common.PlayerHeadController.html#Vintagestory_API_Common_PlayerHeadController__ctor_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_EntityPlayer_Vintagestory_API_Common_Shape_
+  name: PlayerHeadController
+  nameWithType: PlayerHeadController.PlayerHeadController
+  fullName: Vintagestory.API.Common.PlayerHeadController.PlayerHeadController
+  nameWithType.vb: PlayerHeadController.New
+  fullName.vb: Vintagestory.API.Common.PlayerHeadController.New
+  name.vb: New
+- uid: Vintagestory.API.Common.IAnimationManager
+  commentId: T:Vintagestory.API.Common.IAnimationManager
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IAnimationManager.html
+  name: IAnimationManager
+  nameWithType: IAnimationManager
+  fullName: Vintagestory.API.Common.IAnimationManager
+- uid: Vintagestory.API.Common.EntityPlayer
+  commentId: T:Vintagestory.API.Common.EntityPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityPlayer.html
+  name: EntityPlayer
+  nameWithType: EntityPlayer
+  fullName: Vintagestory.API.Common.EntityPlayer
+- uid: Vintagestory.API.Common.Shape
+  commentId: T:Vintagestory.API.Common.Shape
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Shape.html
+  name: Shape
+  nameWithType: Shape
+  fullName: Vintagestory.API.Common.Shape
+- uid: Vintagestory.API.Common.EntityHeadController.OnFrame(System.Single)
+  commentId: M:Vintagestory.API.Common.EntityHeadController.OnFrame(System.Single)
+  parent: Vintagestory.API.Common.EntityHeadController
+  isExternal: true
+  href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_OnFrame_System_Single_
+  name: OnFrame(float)
+  nameWithType: EntityHeadController.OnFrame(float)
+  fullName: Vintagestory.API.Common.EntityHeadController.OnFrame(float)
+  nameWithType.vb: EntityHeadController.OnFrame(Single)
+  fullName.vb: Vintagestory.API.Common.EntityHeadController.OnFrame(Single)
+  name.vb: OnFrame(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EntityHeadController.OnFrame(System.Single)
+    name: OnFrame
+    href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_OnFrame_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EntityHeadController.OnFrame(System.Single)
+    name: OnFrame
+    href: Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_OnFrame_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Common.PlayerHeadController.OnFrame*
+  commentId: Overload:Vintagestory.API.Common.PlayerHeadController.OnFrame
+  href: Vintagestory.API.Common.PlayerHeadController.html#Vintagestory_API_Common_PlayerHeadController_OnFrame_System_Single_
+  name: OnFrame
+  nameWithType: PlayerHeadController.OnFrame
+  fullName: Vintagestory.API.Common.PlayerHeadController.OnFrame
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

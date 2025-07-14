@@ -1,0 +1,1528 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  commentId: T:Vintagestory.API.Common.LayeredVoxelRecipe`1
+  id: LayeredVoxelRecipe`1
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.#ctor
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.GenVoxels
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.Pattern
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.QuantityLayers
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.RecipeCategoryCode
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.RotateRecipe
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.ToBytes(System.IO.BinaryWriter)
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.Voxels
+  - Vintagestory.API.Common.LayeredVoxelRecipe`1.WildCardMatch(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  langs:
+  - csharp
+  - vb
+  name: LayeredVoxelRecipe<T>
+  nameWithType: LayeredVoxelRecipe<T>
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public abstract class LayeredVoxelRecipe<T> : RecipeBase<T>, IRecipeBase<T>'
+    typeParameters:
+    - id: T
+    content.vb: Public MustInherit Class LayeredVoxelRecipe(Of T) Inherits RecipeBase(Of T) Implements IRecipeBase(Of T)
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.RecipeBase{{T}}
+  implements:
+  - Vintagestory.API.Common.IRecipeBase{{T}}
+  inheritedMembers:
+  - Vintagestory.API.Common.RecipeBase{{T}}.RecipeId
+  - Vintagestory.API.Common.RecipeBase{{T}}.Ingredients
+  - Vintagestory.API.Common.RecipeBase{{T}}.Ingredient
+  - Vintagestory.API.Common.RecipeBase{{T}}.Output
+  - Vintagestory.API.Common.RecipeBase{{T}}.Name
+  - Vintagestory.API.Common.RecipeBase{{T}}.Enabled
+  - Vintagestory.API.Common.RecipeBase{{T}}.Clone
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  nameWithType.vb: LayeredVoxelRecipe(Of T)
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T)
+  name.vb: LayeredVoxelRecipe(Of T)
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.Pattern
+  commentId: F:Vintagestory.API.Common.LayeredVoxelRecipe`1.Pattern
+  id: Pattern
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: Pattern
+  nameWithType: LayeredVoxelRecipe<T>.Pattern
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.Pattern
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public string[][] Pattern
+    return:
+      type: System.String[][]
+    content.vb: Public Pattern As String()()
+  nameWithType.vb: LayeredVoxelRecipe(Of T).Pattern
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).Pattern
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.Voxels
+  commentId: F:Vintagestory.API.Common.LayeredVoxelRecipe`1.Voxels
+  id: Voxels
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: Voxels
+  nameWithType: LayeredVoxelRecipe<T>.Voxels
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.Voxels
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public bool[,,] Voxels
+    return:
+      type: System.Boolean[,,]
+    content.vb: Public Voxels As Boolean(,,)
+  nameWithType.vb: LayeredVoxelRecipe(Of T).Voxels
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).Voxels
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.QuantityLayers
+  commentId: P:Vintagestory.API.Common.LayeredVoxelRecipe`1.QuantityLayers
+  id: QuantityLayers
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: QuantityLayers
+  nameWithType: LayeredVoxelRecipe<T>.QuantityLayers
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.QuantityLayers
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public abstract int QuantityLayers { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public MustOverride ReadOnly Property QuantityLayers As Integer
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.QuantityLayers*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).QuantityLayers
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).QuantityLayers
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.RecipeCategoryCode
+  commentId: P:Vintagestory.API.Common.LayeredVoxelRecipe`1.RecipeCategoryCode
+  id: RecipeCategoryCode
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: RecipeCategoryCode
+  nameWithType: LayeredVoxelRecipe<T>.RecipeCategoryCode
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.RecipeCategoryCode
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public abstract string RecipeCategoryCode { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public MustOverride ReadOnly Property RecipeCategoryCode As String
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.RecipeCategoryCode*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).RecipeCategoryCode
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).RecipeCategoryCode
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.RotateRecipe
+  commentId: P:Vintagestory.API.Common.LayeredVoxelRecipe`1.RotateRecipe
+  id: RotateRecipe
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: RotateRecipe
+  nameWithType: LayeredVoxelRecipe<T>.RotateRecipe
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.RotateRecipe
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected virtual bool RotateRecipe { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Protected Overridable Property RotateRecipe As Boolean
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.RotateRecipe*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).RotateRecipe
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).RotateRecipe
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.#ctor
+  commentId: M:Vintagestory.API.Common.LayeredVoxelRecipe`1.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: LayeredVoxelRecipe()
+  nameWithType: LayeredVoxelRecipe<T>.LayeredVoxelRecipe()
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.LayeredVoxelRecipe()
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public LayeredVoxelRecipe()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.#ctor*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).New()
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).New()
+  name.vb: New()
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.LayeredVoxelRecipe`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  id: Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: Resolve(IWorldAccessor, string)
+  nameWithType: LayeredVoxelRecipe<T>.Resolve(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.Resolve(Vintagestory.API.Common.IWorldAccessor, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Resolves the recipe.
+  example: []
+  syntax:
+    content: public override bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: sourceForErrorLogging
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overrides Function Resolve(world As IWorldAccessor, sourceForErrorLogging As String) As Boolean
+  overridden: Vintagestory.API.Common.RecipeBase{{T}}.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.Resolve*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).Resolve(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).Resolve(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: Resolve(IWorldAccessor, String)
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.GenVoxels
+  commentId: M:Vintagestory.API.Common.LayeredVoxelRecipe`1.GenVoxels
+  id: GenVoxels
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: GenVoxels()
+  nameWithType: LayeredVoxelRecipe<T>.GenVoxels()
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.GenVoxels()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Generates the voxels for the recipe.
+  example: []
+  syntax:
+    content: public void GenVoxels()
+    content.vb: Public Sub GenVoxels()
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.GenVoxels*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).GenVoxels()
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).GenVoxels()
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.LayeredVoxelRecipe`1.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: LayeredVoxelRecipe<T>.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Serialized the recipe
+  example: []
+  syntax:
+    content: public void ToBytes(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ''
+    content.vb: Public Sub ToBytes(writer As BinaryWriter)
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.ToBytes*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).ToBytes(BinaryWriter)
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).ToBytes(System.IO.BinaryWriter)
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.LayeredVoxelRecipe`1.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  id: FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: LayeredVoxelRecipe<T>.FromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Deserializes the alloy
+  example: []
+  syntax:
+    content: public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ''
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    content.vb: Public Sub FromBytes(reader As BinaryReader, resolver As IWorldAccessor)
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.FromBytes*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).FromBytes(BinaryReader, IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.LayeredVoxelRecipe`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  id: GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: GetNameToCodeMapping(IWorldAccessor)
+  nameWithType: LayeredVoxelRecipe<T>.GetNameToCodeMapping(IWorldAccessor)
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Resolves Wildcards in the ingredients
+  example: []
+  syntax:
+    content: public override Dictionary<string, string[]> GetNameToCodeMapping(IWorldAccessor world)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String[]}
+      description: ''
+    content.vb: Public Overrides Function GetNameToCodeMapping(world As IWorldAccessor) As Dictionary(Of String, String())
+  overridden: Vintagestory.API.Common.RecipeBase{{T}}.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.GetNameToCodeMapping*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).GetNameToCodeMapping(IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.WildCardMatch(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.LayeredVoxelRecipe`1.WildCardMatch(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  id: WildCardMatch(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Common.LayeredVoxelRecipe`1
+  langs:
+  - csharp
+  - vb
+  name: WildCardMatch(AssetLocation, AssetLocation)
+  nameWithType: LayeredVoxelRecipe<T>.WildCardMatch(AssetLocation, AssetLocation)
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.WildCardMatch(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.AssetLocation)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Matches the wildcards for the clay recipe.
+  example: []
+  syntax:
+    content: public static bool WildCardMatch(AssetLocation wildCard, AssetLocation blockCode)
+    parameters:
+    - id: wildCard
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    - id: blockCode
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function WildCardMatch(wildCard As AssetLocation, blockCode As AssetLocation) As Boolean
+  overload: Vintagestory.API.Common.LayeredVoxelRecipe`1.WildCardMatch*
+  nameWithType.vb: LayeredVoxelRecipe(Of T).WildCardMatch(AssetLocation, AssetLocation)
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).WildCardMatch(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.AssetLocation)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.RecipeBase{{T}}
+  commentId: T:Vintagestory.API.Common.RecipeBase{`0}
+  parent: Vintagestory.API.Common
+  definition: Vintagestory.API.Common.RecipeBase`1
+  href: Vintagestory.API.Common.RecipeBase-1.html
+  name: RecipeBase<T>
+  nameWithType: RecipeBase<T>
+  fullName: Vintagestory.API.Common.RecipeBase<T>
+  nameWithType.vb: RecipeBase(Of T)
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T)
+  name.vb: RecipeBase(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase`1
+    name: RecipeBase
+    href: Vintagestory.API.Common.RecipeBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase`1
+    name: RecipeBase
+    href: Vintagestory.API.Common.RecipeBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.IRecipeBase{{T}}
+  commentId: T:Vintagestory.API.Common.IRecipeBase{`0}
+  parent: Vintagestory.API.Common
+  definition: Vintagestory.API.Common.IRecipeBase`1
+  href: Vintagestory.API.Common.IRecipeBase-1.html
+  name: IRecipeBase<T>
+  nameWithType: IRecipeBase<T>
+  fullName: Vintagestory.API.Common.IRecipeBase<T>
+  nameWithType.vb: IRecipeBase(Of T)
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T)
+  name.vb: IRecipeBase(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IRecipeBase`1
+    name: IRecipeBase
+    href: Vintagestory.API.Common.IRecipeBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.IRecipeBase`1
+    name: IRecipeBase
+    href: Vintagestory.API.Common.IRecipeBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.RecipeId
+  commentId: F:Vintagestory.API.Common.RecipeBase{`0}.RecipeId
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.RecipeId
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_RecipeId
+  name: RecipeId
+  nameWithType: RecipeBase<T>.RecipeId
+  fullName: Vintagestory.API.Common.RecipeBase<T>.RecipeId
+  nameWithType.vb: RecipeBase(Of T).RecipeId
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).RecipeId
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.Ingredients
+  commentId: F:Vintagestory.API.Common.RecipeBase{`0}.Ingredients
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.Ingredients
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients
+  name: Ingredients
+  nameWithType: RecipeBase<T>.Ingredients
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Ingredients
+  nameWithType.vb: RecipeBase(Of T).Ingredients
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Ingredients
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.Ingredient
+  commentId: P:Vintagestory.API.Common.RecipeBase{`0}.Ingredient
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.Ingredient
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredient
+  name: Ingredient
+  nameWithType: RecipeBase<T>.Ingredient
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Ingredient
+  nameWithType.vb: RecipeBase(Of T).Ingredient
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Ingredient
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.Output
+  commentId: F:Vintagestory.API.Common.RecipeBase{`0}.Output
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.Output
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Output
+  name: Output
+  nameWithType: RecipeBase<T>.Output
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Output
+  nameWithType.vb: RecipeBase(Of T).Output
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Output
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.Name
+  commentId: P:Vintagestory.API.Common.RecipeBase{`0}.Name
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.Name
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Name
+  name: Name
+  nameWithType: RecipeBase<T>.Name
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Name
+  nameWithType.vb: RecipeBase(Of T).Name
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Name
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.Enabled
+  commentId: P:Vintagestory.API.Common.RecipeBase{`0}.Enabled
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.Enabled
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Enabled
+  name: Enabled
+  nameWithType: RecipeBase<T>.Enabled
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Enabled
+  nameWithType.vb: RecipeBase(Of T).Enabled
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Enabled
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.Clone
+  commentId: M:Vintagestory.API.Common.RecipeBase{`0}.Clone
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.Clone
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Clone
+  name: Clone()
+  nameWithType: RecipeBase<T>.Clone()
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Clone()
+  nameWithType.vb: RecipeBase(Of T).Clone()
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Clone()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase{`0}.Clone
+    name: Clone
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase{`0}.Clone
+    name: Clone
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Clone
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.RecipeBase`1
+  commentId: T:Vintagestory.API.Common.RecipeBase`1
+  href: Vintagestory.API.Common.RecipeBase-1.html
+  name: RecipeBase<T>
+  nameWithType: RecipeBase<T>
+  fullName: Vintagestory.API.Common.RecipeBase<T>
+  nameWithType.vb: RecipeBase(Of T)
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T)
+  name.vb: RecipeBase(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase`1
+    name: RecipeBase
+    href: Vintagestory.API.Common.RecipeBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase`1
+    name: RecipeBase
+    href: Vintagestory.API.Common.RecipeBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.IRecipeBase`1
+  commentId: T:Vintagestory.API.Common.IRecipeBase`1
+  href: Vintagestory.API.Common.IRecipeBase-1.html
+  name: IRecipeBase<T>
+  nameWithType: IRecipeBase<T>
+  fullName: Vintagestory.API.Common.IRecipeBase<T>
+  nameWithType.vb: IRecipeBase(Of T)
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T)
+  name.vb: IRecipeBase(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IRecipeBase`1
+    name: IRecipeBase
+    href: Vintagestory.API.Common.IRecipeBase-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.IRecipeBase`1
+    name: IRecipeBase
+    href: Vintagestory.API.Common.IRecipeBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.RecipeBase`1.RecipeId
+  commentId: F:Vintagestory.API.Common.RecipeBase`1.RecipeId
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_RecipeId
+  name: RecipeId
+  nameWithType: RecipeBase<T>.RecipeId
+  fullName: Vintagestory.API.Common.RecipeBase<T>.RecipeId
+  nameWithType.vb: RecipeBase(Of T).RecipeId
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).RecipeId
+- uid: Vintagestory.API.Common.RecipeBase`1.Ingredients
+  commentId: F:Vintagestory.API.Common.RecipeBase`1.Ingredients
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredients
+  name: Ingredients
+  nameWithType: RecipeBase<T>.Ingredients
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Ingredients
+  nameWithType.vb: RecipeBase(Of T).Ingredients
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Ingredients
+- uid: Vintagestory.API.Common.RecipeBase`1.Ingredient
+  commentId: P:Vintagestory.API.Common.RecipeBase`1.Ingredient
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Ingredient
+  name: Ingredient
+  nameWithType: RecipeBase<T>.Ingredient
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Ingredient
+  nameWithType.vb: RecipeBase(Of T).Ingredient
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Ingredient
+- uid: Vintagestory.API.Common.RecipeBase`1.Output
+  commentId: F:Vintagestory.API.Common.RecipeBase`1.Output
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Output
+  name: Output
+  nameWithType: RecipeBase<T>.Output
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Output
+  nameWithType.vb: RecipeBase(Of T).Output
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Output
+- uid: Vintagestory.API.Common.RecipeBase`1.Name
+  commentId: P:Vintagestory.API.Common.RecipeBase`1.Name
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Name
+  name: Name
+  nameWithType: RecipeBase<T>.Name
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Name
+  nameWithType.vb: RecipeBase(Of T).Name
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Name
+- uid: Vintagestory.API.Common.RecipeBase`1.Enabled
+  commentId: P:Vintagestory.API.Common.RecipeBase`1.Enabled
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Enabled
+  name: Enabled
+  nameWithType: RecipeBase<T>.Enabled
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Enabled
+  nameWithType.vb: RecipeBase(Of T).Enabled
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Enabled
+- uid: Vintagestory.API.Common.RecipeBase`1.Clone
+  commentId: M:Vintagestory.API.Common.RecipeBase`1.Clone
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Clone
+  name: Clone()
+  nameWithType: RecipeBase<T>.Clone()
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Clone()
+  nameWithType.vb: RecipeBase(Of T).Clone()
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Clone()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase`1.Clone
+    name: Clone
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase`1.Clone
+    name: Clone
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Clone
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.String[][]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[][]
+  nameWithType: string[][]
+  fullName: string[][]
+  nameWithType.vb: String()()
+  fullName.vb: String()()
+  name.vb: String()()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: (
+  - name: )
+- uid: System.Boolean[,,]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool[,,]
+  nameWithType: bool[,,]
+  fullName: bool[,,]
+  nameWithType.vb: Boolean(,,)
+  fullName.vb: Boolean(,,)
+  name.vb: Boolean(,,)
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '['
+  - name: ','
+  - name: ','
+  - name: ']'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: (
+  - name: ','
+  - name: ','
+  - name: )
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.QuantityLayers*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.QuantityLayers
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_QuantityLayers
+  name: QuantityLayers
+  nameWithType: LayeredVoxelRecipe<T>.QuantityLayers
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.QuantityLayers
+  nameWithType.vb: LayeredVoxelRecipe(Of T).QuantityLayers
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).QuantityLayers
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.RecipeCategoryCode*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.RecipeCategoryCode
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_RecipeCategoryCode
+  name: RecipeCategoryCode
+  nameWithType: LayeredVoxelRecipe<T>.RecipeCategoryCode
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.RecipeCategoryCode
+  nameWithType.vb: LayeredVoxelRecipe(Of T).RecipeCategoryCode
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).RecipeCategoryCode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.RotateRecipe*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.RotateRecipe
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_RotateRecipe
+  name: RotateRecipe
+  nameWithType: LayeredVoxelRecipe<T>.RotateRecipe
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.RotateRecipe
+  nameWithType.vb: LayeredVoxelRecipe(Of T).RotateRecipe
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).RotateRecipe
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.#ctor*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.#ctor
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1__ctor
+  name: LayeredVoxelRecipe
+  nameWithType: LayeredVoxelRecipe<T>.LayeredVoxelRecipe
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.LayeredVoxelRecipe
+  nameWithType.vb: LayeredVoxelRecipe(Of T).New
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).New
+  name.vb: New
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.RecipeBase{`0}.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: Resolve(IWorldAccessor, string)
+  nameWithType: RecipeBase<T>.Resolve(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Resolve(Vintagestory.API.Common.IWorldAccessor, string)
+  nameWithType.vb: RecipeBase(Of T).Resolve(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Resolve(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: Resolve(IWorldAccessor, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase{`0}.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+    name: Resolve
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase{`0}.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+    name: Resolve
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.Resolve*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.Resolve
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: Resolve
+  nameWithType: LayeredVoxelRecipe<T>.Resolve
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.Resolve
+  nameWithType.vb: LayeredVoxelRecipe(Of T).Resolve
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).Resolve
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Common.RecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.RecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  isExternal: true
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: Resolve(IWorldAccessor, string)
+  nameWithType: RecipeBase<T>.Resolve(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.RecipeBase<T>.Resolve(Vintagestory.API.Common.IWorldAccessor, string)
+  nameWithType.vb: RecipeBase(Of T).Resolve(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).Resolve(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: Resolve(IWorldAccessor, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+    name: Resolve
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+    name: Resolve
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.GenVoxels*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.GenVoxels
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_GenVoxels
+  name: GenVoxels
+  nameWithType: LayeredVoxelRecipe<T>.GenVoxels
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.GenVoxels
+  nameWithType.vb: LayeredVoxelRecipe(Of T).GenVoxels
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).GenVoxels
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.ToBytes
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: LayeredVoxelRecipe<T>.ToBytes
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.ToBytes
+  nameWithType.vb: LayeredVoxelRecipe(Of T).ToBytes
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).ToBytes
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.FromBytes
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: FromBytes
+  nameWithType: LayeredVoxelRecipe<T>.FromBytes
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.FromBytes
+  nameWithType.vb: LayeredVoxelRecipe(Of T).FromBytes
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).FromBytes
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: Vintagestory.API.Common.RecipeBase{{T}}.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.RecipeBase{`0}.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.RecipeBase{{T}}
+  definition: Vintagestory.API.Common.RecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  name: GetNameToCodeMapping(IWorldAccessor)
+  nameWithType: RecipeBase<T>.GetNameToCodeMapping(IWorldAccessor)
+  fullName: Vintagestory.API.Common.RecipeBase<T>.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  nameWithType.vb: RecipeBase(Of T).GetNameToCodeMapping(IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase{`0}.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+    name: GetNameToCodeMapping
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase{`0}.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+    name: GetNameToCodeMapping
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.GetNameToCodeMapping*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.GetNameToCodeMapping
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  name: GetNameToCodeMapping
+  nameWithType: LayeredVoxelRecipe<T>.GetNameToCodeMapping
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.GetNameToCodeMapping
+  nameWithType.vb: LayeredVoxelRecipe(Of T).GetNameToCodeMapping
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).GetNameToCodeMapping
+- uid: System.Collections.Generic.Dictionary{System.String,System.String[]}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, string[]>
+  nameWithType: Dictionary<string, string[]>
+  fullName: System.Collections.Generic.Dictionary<string, string[]>
+  nameWithType.vb: Dictionary(Of String, String())
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, String())
+  name.vb: Dictionary(Of String, String())
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.RecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.RecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  name: GetNameToCodeMapping(IWorldAccessor)
+  nameWithType: RecipeBase<T>.GetNameToCodeMapping(IWorldAccessor)
+  fullName: Vintagestory.API.Common.RecipeBase<T>.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  nameWithType.vb: RecipeBase(Of T).GetNameToCodeMapping(IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.RecipeBase(Of T).GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.RecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+    name: GetNameToCodeMapping
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.RecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+    name: GetNameToCodeMapping
+    href: Vintagestory.API.Common.RecipeBase-1.html#Vintagestory_API_Common_RecipeBase_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.LayeredVoxelRecipe`1.WildCardMatch*
+  commentId: Overload:Vintagestory.API.Common.LayeredVoxelRecipe`1.WildCardMatch
+  href: Vintagestory.API.Common.LayeredVoxelRecipe-1.html#Vintagestory_API_Common_LayeredVoxelRecipe_1_WildCardMatch_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_
+  name: WildCardMatch
+  nameWithType: LayeredVoxelRecipe<T>.WildCardMatch
+  fullName: Vintagestory.API.Common.LayeredVoxelRecipe<T>.WildCardMatch
+  nameWithType.vb: LayeredVoxelRecipe(Of T).WildCardMatch
+  fullName.vb: Vintagestory.API.Common.LayeredVoxelRecipe(Of T).WildCardMatch
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation

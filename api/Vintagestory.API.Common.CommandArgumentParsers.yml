@@ -1,0 +1,2268 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.CommandArgumentParsers
+  commentId: T:Vintagestory.API.Common.CommandArgumentParsers
+  id: CommandArgumentParsers
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.CommandArgumentParsers.#ctor(Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.CommandArgumentParsers.All(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Block(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Bool(System.String,System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Color(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.DateTime(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Double(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(System.String,System.Double,System.Double)
+  - Vintagestory.API.Common.CommandArgumentParsers.Entities(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.EntityType(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Float(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Int(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.IntDirection(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.IntRange(System.String,System.Int32,System.Int32)
+  - Vintagestory.API.Common.CommandArgumentParsers.Item(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Long(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(System.String,System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(System.String,System.Double)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(System.String,System.Single)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(System.String,System.Int32)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(System.String,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(System.String,System.Int32)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(System.String,System.String[])
+  - Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Privilege(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Unparsed(System.String,System.String[])
+  - Vintagestory.API.Common.CommandArgumentParsers.Vec3i(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Word(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.Word(System.String,System.String[])
+  - Vintagestory.API.Common.CommandArgumentParsers.WordRange(System.String,System.String[])
+  - Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(System.String)
+  - Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CommandArgumentParsers
+  nameWithType: CommandArgumentParsers
+  fullName: Vintagestory.API.Common.CommandArgumentParsers
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public class CommandArgumentParsers
+    content.vb: Public Class CommandArgumentParsers
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.CommandArgumentParsers.#ctor(Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.#ctor(Vintagestory.API.Common.ICoreAPI)
+  id: '#ctor(Vintagestory.API.Common.ICoreAPI)'
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: CommandArgumentParsers(ICoreAPI)
+  nameWithType: CommandArgumentParsers.CommandArgumentParsers(ICoreAPI)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.CommandArgumentParsers(Vintagestory.API.Common.ICoreAPI)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public CommandArgumentParsers(ICoreAPI api)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    content.vb: Public Sub New(api As ICoreAPI)
+  overload: Vintagestory.API.Common.CommandArgumentParsers.#ctor*
+  nameWithType.vb: CommandArgumentParsers.New(ICoreAPI)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.New(Vintagestory.API.Common.ICoreAPI)
+  name.vb: New(ICoreAPI)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Unparsed(System.String,System.String[])
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Unparsed(System.String,System.String[])
+  id: Unparsed(System.String,System.String[])
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Unparsed(string, params string[])
+  nameWithType: CommandArgumentParsers.Unparsed(string, params string[])
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Unparsed(string, params string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public UnparsedArg Unparsed(string argname, params string[] validRange)
+    parameters:
+    - id: argname
+      type: System.String
+    - id: validRange
+      type: System.String[]
+    return:
+      type: Vintagestory.API.Common.UnparsedArg
+    content.vb: Public Function Unparsed(argname As String, ParamArray validRange As String()) As UnparsedArg
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Unparsed*
+  nameWithType.vb: CommandArgumentParsers.Unparsed(String, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Unparsed(String, ParamArray String())
+  name.vb: Unparsed(String, ParamArray String())
+- uid: Vintagestory.API.Common.CommandArgumentParsers.IntDirection(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.IntDirection(System.String)
+  id: IntDirection(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: IntDirection(string)
+  nameWithType: CommandArgumentParsers.IntDirection(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.IntDirection(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public DirectionArgParser<Vec3i> IntDirection(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.DirectionArgParser{Vintagestory.API.MathTools.Vec3i}
+    content.vb: Public Function IntDirection(argName As String) As DirectionArgParser(Of Vec3i)
+  overload: Vintagestory.API.Common.CommandArgumentParsers.IntDirection*
+  nameWithType.vb: CommandArgumentParsers.IntDirection(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.IntDirection(String)
+  name.vb: IntDirection(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Entities(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Entities(System.String)
+  id: Entities(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Entities(string)
+  nameWithType: CommandArgumentParsers.Entities(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Entities(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public EntitiesArgParser Entities(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.EntitiesArgParser
+    content.vb: Public Function Entities(argName As String) As EntitiesArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Entities*
+  nameWithType.vb: CommandArgumentParsers.Entities(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Entities(String)
+  name.vb: Entities(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(System.String)
+  id: OptionalEntities(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalEntities(string)
+  nameWithType: CommandArgumentParsers.OptionalEntities(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Defaults to caller entity
+  example: []
+  syntax:
+    content: public EntitiesArgParser OptionalEntities(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.EntitiesArgParser
+      description: ''
+    content.vb: Public Function OptionalEntities(argName As String) As EntitiesArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities*
+  nameWithType.vb: CommandArgumentParsers.OptionalEntities(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(String)
+  name.vb: OptionalEntities(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.EntityType(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.EntityType(System.String)
+  id: EntityType(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: EntityType(string)
+  nameWithType: CommandArgumentParsers.EntityType(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.EntityType(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public EntityTypeArgParser EntityType(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.EntityTypeArgParser
+    content.vb: Public Function EntityType(argName As String) As EntityTypeArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.EntityType*
+  nameWithType.vb: CommandArgumentParsers.EntityType(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.EntityType(String)
+  name.vb: EntityType(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.IntRange(System.String,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.IntRange(System.String,System.Int32,System.Int32)
+  id: IntRange(System.String,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: IntRange(string, int, int)
+  nameWithType: CommandArgumentParsers.IntRange(string, int, int)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.IntRange(string, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public IntArgParser IntRange(string argName, int min, int max)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: min
+      type: System.Int32
+    - id: max
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.IntArgParser
+    content.vb: Public Function IntRange(argName As String, min As Integer, max As Integer) As IntArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.IntRange*
+  nameWithType.vb: CommandArgumentParsers.IntRange(String, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.IntRange(String, Integer, Integer)
+  name.vb: IntRange(String, Integer, Integer)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(System.String,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(System.String,System.Int32,System.Int32,System.Int32)
+  id: OptionalIntRange(System.String,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalIntRange(string, int, int, int)
+  nameWithType: CommandArgumentParsers.OptionalIntRange(string, int, int, int)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(string, int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public IntArgParser OptionalIntRange(string argName, int min, int max, int defaultValue = 0)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: min
+      type: System.Int32
+    - id: max
+      type: System.Int32
+    - id: defaultValue
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.IntArgParser
+    content.vb: Public Function OptionalIntRange(argName As String, min As Integer, max As Integer, defaultValue As Integer = 0) As IntArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange*
+  nameWithType.vb: CommandArgumentParsers.OptionalIntRange(String, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(String, Integer, Integer, Integer)
+  name.vb: OptionalIntRange(String, Integer, Integer, Integer)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(System.String,System.Int32)
+  id: OptionalInt(System.String,System.Int32)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalInt(string, int)
+  nameWithType: CommandArgumentParsers.OptionalInt(string, int)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(string, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public IntArgParser OptionalInt(string argName, int defaultValue = 0)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: defaultValue
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.IntArgParser
+    content.vb: Public Function OptionalInt(argName As String, defaultValue As Integer = 0) As IntArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalInt*
+  nameWithType.vb: CommandArgumentParsers.OptionalInt(String, Integer)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(String, Integer)
+  name.vb: OptionalInt(String, Integer)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Int(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Int(System.String)
+  id: Int(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Int(string)
+  nameWithType: CommandArgumentParsers.Int(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Int(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public IntArgParser Int(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.IntArgParser
+    content.vb: Public Function Int(argName As String) As IntArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Int*
+  nameWithType.vb: CommandArgumentParsers.Int(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Int(String)
+  name.vb: Int(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(System.String,System.Int32)
+  id: OptionalLong(System.String,System.Int32)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalLong(string, int)
+  nameWithType: CommandArgumentParsers.OptionalLong(string, int)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(string, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public LongArgParser OptionalLong(string argName, int defaultValue = 0)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: defaultValue
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.LongArgParser
+    content.vb: Public Function OptionalLong(argName As String, defaultValue As Integer = 0) As LongArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalLong*
+  nameWithType.vb: CommandArgumentParsers.OptionalLong(String, Integer)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(String, Integer)
+  name.vb: OptionalLong(String, Integer)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Long(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Long(System.String)
+  id: Long(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Long(string)
+  nameWithType: CommandArgumentParsers.Long(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Long(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public LongArgParser Long(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.LongArgParser
+    content.vb: Public Function [Long](argName As String) As LongArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Long*
+  nameWithType.vb: CommandArgumentParsers.Long(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Long(String)
+  name.vb: Long(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Bool(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Bool(System.String,System.String)
+  id: Bool(System.String,System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Bool(string, string)
+  nameWithType: CommandArgumentParsers.Bool(string, string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Bool(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BoolArgParser Bool(string argName, string trueAlias = "on")
+    parameters:
+    - id: argName
+      type: System.String
+    - id: trueAlias
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.BoolArgParser
+    content.vb: Public Function Bool(argName As String, trueAlias As String = "on") As BoolArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Bool*
+  nameWithType.vb: CommandArgumentParsers.Bool(String, String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Bool(String, String)
+  name.vb: Bool(String, String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(System.String,System.String)
+  id: OptionalBool(System.String,System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalBool(string, string)
+  nameWithType: CommandArgumentParsers.OptionalBool(string, string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BoolArgParser OptionalBool(string argName, string trueAlias = "on")
+    parameters:
+    - id: argName
+      type: System.String
+    - id: trueAlias
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.BoolArgParser
+    content.vb: Public Function OptionalBool(argName As String, trueAlias As String = "on") As BoolArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalBool*
+  nameWithType.vb: CommandArgumentParsers.OptionalBool(String, String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(String, String)
+  name.vb: OptionalBool(String, String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(System.String,System.Double)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(System.String,System.Double)
+  id: OptionalDouble(System.String,System.Double)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalDouble(string, double)
+  nameWithType: CommandArgumentParsers.OptionalDouble(string, double)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(string, double)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public DoubleArgParser OptionalDouble(string argName, double defaultvalue = 0)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: defaultvalue
+      type: System.Double
+    return:
+      type: Vintagestory.API.Common.DoubleArgParser
+    content.vb: Public Function OptionalDouble(argName As String, defaultvalue As Double = 0) As DoubleArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble*
+  nameWithType.vb: CommandArgumentParsers.OptionalDouble(String, Double)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(String, Double)
+  name.vb: OptionalDouble(String, Double)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Float(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Float(System.String)
+  id: Float(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Float(string)
+  nameWithType: CommandArgumentParsers.Float(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Float(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public FloatArgParser Float(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.FloatArgParser
+    content.vb: Public Function Float(argName As String) As FloatArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Float*
+  nameWithType.vb: CommandArgumentParsers.Float(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Float(String)
+  name.vb: Float(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(System.String,System.Single)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(System.String,System.Single)
+  id: OptionalFloat(System.String,System.Single)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalFloat(string, float)
+  nameWithType: CommandArgumentParsers.OptionalFloat(string, float)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(string, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public FloatArgParser OptionalFloat(string argName, float defaultvalue = 0)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: defaultvalue
+      type: System.Single
+    return:
+      type: Vintagestory.API.Common.FloatArgParser
+    content.vb: Public Function OptionalFloat(argName As String, defaultvalue As Single = 0) As FloatArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat*
+  nameWithType.vb: CommandArgumentParsers.OptionalFloat(String, Single)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(String, Single)
+  name.vb: OptionalFloat(String, Single)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Double(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Double(System.String)
+  id: Double(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Double(string)
+  nameWithType: CommandArgumentParsers.Double(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Double(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public DoubleArgParser Double(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.DoubleArgParser
+    content.vb: Public Function [Double](argName As String) As DoubleArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Double*
+  nameWithType.vb: CommandArgumentParsers.Double(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Double(String)
+  name.vb: Double(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(System.String,System.Double,System.Double)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(System.String,System.Double,System.Double)
+  id: DoubleRange(System.String,System.Double,System.Double)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: DoubleRange(string, double, double)
+  nameWithType: CommandArgumentParsers.DoubleRange(string, double, double)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(string, double, double)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public DoubleArgParser DoubleRange(string argName, double min, double max)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: min
+      type: System.Double
+    - id: max
+      type: System.Double
+    return:
+      type: Vintagestory.API.Common.DoubleArgParser
+    content.vb: Public Function DoubleRange(argName As String, min As Double, max As Double) As DoubleArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.DoubleRange*
+  nameWithType.vb: CommandArgumentParsers.DoubleRange(String, Double, Double)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(String, Double, Double)
+  name.vb: DoubleRange(String, Double, Double)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(System.String)
+  id: OnlinePlayer(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OnlinePlayer(string)
+  nameWithType: CommandArgumentParsers.OnlinePlayer(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A currently online player
+  example: []
+  syntax:
+    content: public OnlinePlayerArgParser OnlinePlayer(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.OnlinePlayerArgParser
+      description: ''
+    content.vb: Public Function OnlinePlayer(argName As String) As OnlinePlayerArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer*
+  nameWithType.vb: CommandArgumentParsers.OnlinePlayer(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(String)
+  name.vb: OnlinePlayer(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(System.String)
+  id: PlayerUids(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: PlayerUids(string)
+  nameWithType: CommandArgumentParsers.PlayerUids(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: All selected players
+  example: []
+  syntax:
+    content: public PlayersArgParser PlayerUids(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.PlayersArgParser
+      description: ''
+    content.vb: Public Function PlayerUids(argName As String) As PlayersArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.PlayerUids*
+  nameWithType.vb: CommandArgumentParsers.PlayerUids(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(String)
+  name.vb: PlayerUids(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(System.String)
+  id: OptionalPlayerUids(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalPlayerUids(string)
+  nameWithType: CommandArgumentParsers.OptionalPlayerUids(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: All selected players
+  example: []
+  syntax:
+    content: public PlayersArgParser OptionalPlayerUids(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.PlayersArgParser
+      description: ''
+    content.vb: Public Function OptionalPlayerUids(argName As String) As PlayersArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids*
+  nameWithType.vb: CommandArgumentParsers.OptionalPlayerUids(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(String)
+  name.vb: OptionalPlayerUids(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(System.String)
+  id: PlayerRole(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: PlayerRole(string)
+  nameWithType: CommandArgumentParsers.PlayerRole(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Parses IPlayerRole, only works on Serverside since it needs the Serverconfig
+  example: []
+  syntax:
+    content: public PlayerRoleArgParser PlayerRole(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.PlayerRoleArgParser
+      description: ''
+    content.vb: Public Function PlayerRole(argName As String) As PlayerRoleArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.PlayerRole*
+  nameWithType.vb: CommandArgumentParsers.PlayerRole(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(String)
+  name.vb: PlayerRole(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(System.String)
+  id: OptionalPlayerRole(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalPlayerRole(string)
+  nameWithType: CommandArgumentParsers.OptionalPlayerRole(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Parses IPlayerRole, only works on Serverside since it needs the Serverconfig
+  example: []
+  syntax:
+    content: public PlayerRoleArgParser OptionalPlayerRole(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.PlayerRoleArgParser
+      description: ''
+    content.vb: Public Function OptionalPlayerRole(argName As String) As PlayerRoleArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole*
+  nameWithType.vb: CommandArgumentParsers.OptionalPlayerRole(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(String)
+  name.vb: OptionalPlayerRole(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Privilege(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Privilege(System.String)
+  id: Privilege(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Privilege(string)
+  nameWithType: CommandArgumentParsers.Privilege(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Privilege(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public PrivilegeArgParser Privilege(string privilege)
+    parameters:
+    - id: privilege
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.PrivilegeArgParser
+    content.vb: Public Function Privilege(privilege As String) As PrivilegeArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Privilege*
+  nameWithType.vb: CommandArgumentParsers.Privilege(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Privilege(String)
+  name.vb: Privilege(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(System.String)
+  id: OptionalPrivilege(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalPrivilege(string)
+  nameWithType: CommandArgumentParsers.OptionalPrivilege(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public PrivilegeArgParser OptionalPrivilege(string privilege)
+    parameters:
+    - id: privilege
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.PrivilegeArgParser
+    content.vb: Public Function OptionalPrivilege(privilege As String) As PrivilegeArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege*
+  nameWithType.vb: CommandArgumentParsers.OptionalPrivilege(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(String)
+  name.vb: OptionalPrivilege(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Word(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Word(System.String)
+  id: Word(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Word(string)
+  nameWithType: CommandArgumentParsers.Word(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Word(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WordArgParser Word(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.WordArgParser
+    content.vb: Public Function Word(argName As String) As WordArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Word*
+  nameWithType.vb: CommandArgumentParsers.Word(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Word(String)
+  name.vb: Word(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(System.String)
+  id: OptionalWord(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalWord(string)
+  nameWithType: CommandArgumentParsers.OptionalWord(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WordArgParser OptionalWord(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.WordArgParser
+    content.vb: Public Function OptionalWord(argName As String) As WordArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalWord*
+  nameWithType.vb: CommandArgumentParsers.OptionalWord(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(String)
+  name.vb: OptionalWord(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(System.String,System.String[])
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(System.String,System.String[])
+  id: OptionalWordRange(System.String,System.String[])
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalWordRange(string, params string[])
+  nameWithType: CommandArgumentParsers.OptionalWordRange(string, params string[])
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(string, params string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WordRangeArgParser OptionalWordRange(string argName, params string[] words)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: words
+      type: System.String[]
+    return:
+      type: Vintagestory.API.Common.WordRangeArgParser
+    content.vb: Public Function OptionalWordRange(argName As String, ParamArray words As String()) As WordRangeArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange*
+  nameWithType.vb: CommandArgumentParsers.OptionalWordRange(String, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(String, ParamArray String())
+  name.vb: OptionalWordRange(String, ParamArray String())
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Word(System.String,System.String[])
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Word(System.String,System.String[])
+  id: Word(System.String,System.String[])
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Word(string, string[])
+  nameWithType: CommandArgumentParsers.Word(string, string[])
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Word(string, string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WordArgParser Word(string argName, string[] wordSuggestions)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: wordSuggestions
+      type: System.String[]
+    return:
+      type: Vintagestory.API.Common.WordArgParser
+    content.vb: Public Function Word(argName As String, wordSuggestions As String()) As WordArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Word*
+  nameWithType.vb: CommandArgumentParsers.Word(String, String())
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Word(String, String())
+  name.vb: Word(String, String())
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Color(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Color(System.String)
+  id: Color(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Color(string)
+  nameWithType: CommandArgumentParsers.Color(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Color(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Parses a string which is either a color name or a hex value as a <xref href="System.Drawing.Color" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public ColorArgParser Color(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.ColorArgParser
+      description: ''
+    content.vb: Public Function Color(argName As String) As ColorArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Color*
+  nameWithType.vb: CommandArgumentParsers.Color(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Color(String)
+  name.vb: Color(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(System.String)
+  id: OptionalColor(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalColor(string)
+  nameWithType: CommandArgumentParsers.OptionalColor(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Parses a string which is either a color name or a hex value as a <xref href="System.Drawing.Color" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public ColorArgParser OptionalColor(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.ColorArgParser
+      description: ''
+    content.vb: Public Function OptionalColor(argName As String) As ColorArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalColor*
+  nameWithType.vb: CommandArgumentParsers.OptionalColor(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(String)
+  name.vb: OptionalColor(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.All(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.All(System.String)
+  id: All(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: All(string)
+  nameWithType: CommandArgumentParsers.All(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.All(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: All remaining arguments together
+  example: []
+  syntax:
+    content: public StringArgParser All(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.StringArgParser
+      description: ''
+    content.vb: Public Function All(argName As String) As StringArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.All*
+  nameWithType.vb: CommandArgumentParsers.All(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.All(String)
+  name.vb: All(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(System.String)
+  id: OptionalAll(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalAll(string)
+  nameWithType: CommandArgumentParsers.OptionalAll(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: All remaining arguments together
+  example: []
+  syntax:
+    content: public StringArgParser OptionalAll(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.StringArgParser
+      description: ''
+    content.vb: Public Function OptionalAll(argName As String) As StringArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalAll*
+  nameWithType.vb: CommandArgumentParsers.OptionalAll(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(String)
+  name.vb: OptionalAll(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.WordRange(System.String,System.String[])
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.WordRange(System.String,System.String[])
+  id: WordRange(System.String,System.String[])
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: WordRange(string, params string[])
+  nameWithType: CommandArgumentParsers.WordRange(string, params string[])
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.WordRange(string, params string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WordRangeArgParser WordRange(string argName, params string[] words)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: words
+      type: System.String[]
+    return:
+      type: Vintagestory.API.Common.WordRangeArgParser
+    content.vb: Public Function WordRange(argName As String, ParamArray words As String()) As WordRangeArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.WordRange*
+  nameWithType.vb: CommandArgumentParsers.WordRange(String, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.WordRange(String, ParamArray String())
+  name.vb: WordRange(String, ParamArray String())
+- uid: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(System.String)
+  id: WorldPosition(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: WorldPosition(string)
+  nameWithType: CommandArgumentParsers.WorldPosition(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WorldPositionArgParser WorldPosition(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.WorldPositionArgParser
+    content.vb: Public Function WorldPosition(argName As String) As WorldPositionArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition*
+  nameWithType.vb: CommandArgumentParsers.WorldPosition(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(String)
+  name.vb: WorldPosition(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(System.String)
+  id: WorldPosition2D(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: WorldPosition2D(string)
+  nameWithType: CommandArgumentParsers.WorldPosition2D(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WorldPosition2DArgParser WorldPosition2D(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.WorldPosition2DArgParser
+    content.vb: Public Function WorldPosition2D(argName As String) As WorldPosition2DArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D*
+  nameWithType.vb: CommandArgumentParsers.WorldPosition2D(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(String)
+  name.vb: WorldPosition2D(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Vec3i(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Vec3i(System.String)
+  id: Vec3i(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Vec3i(string)
+  nameWithType: CommandArgumentParsers.Vec3i(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Vec3i(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Vec3iArgParser Vec3i(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.Vec3iArgParser
+    content.vb: Public Function Vec3i(argName As String) As Vec3iArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Vec3i*
+  nameWithType.vb: CommandArgumentParsers.Vec3i(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Vec3i(String)
+  name.vb: Vec3i(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(System.String)
+  id: OptionalVec3i(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalVec3i(string)
+  nameWithType: CommandArgumentParsers.OptionalVec3i(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Vec3iArgParser OptionalVec3i(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.Vec3iArgParser
+    content.vb: Public Function OptionalVec3i(argName As String) As Vec3iArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i*
+  nameWithType.vb: CommandArgumentParsers.OptionalVec3i(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(String)
+  name.vb: OptionalVec3i(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Item(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Item(System.String)
+  id: Item(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Item(string)
+  nameWithType: CommandArgumentParsers.Item(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Item(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public CollectibleArgParser Item(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.CollectibleArgParser
+    content.vb: Public Function Item(argName As String) As CollectibleArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Item*
+  nameWithType.vb: CommandArgumentParsers.Item(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Item(String)
+  name.vb: Item(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Block(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.Block(System.String)
+  id: Block(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: Block(string)
+  nameWithType: CommandArgumentParsers.Block(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Block(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public CollectibleArgParser Block(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.CollectibleArgParser
+    content.vb: Public Function Block(argName As String) As CollectibleArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.Block*
+  nameWithType.vb: CommandArgumentParsers.Block(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.Block(String)
+  name.vb: Block(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(System.String)
+  id: OptionalWorldPosition(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: OptionalWorldPosition(string)
+  nameWithType: CommandArgumentParsers.OptionalWorldPosition(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Defaults to caller position
+  example: []
+  syntax:
+    content: public WorldPositionArgParser OptionalWorldPosition(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.WorldPositionArgParser
+      description: ''
+    content.vb: Public Function OptionalWorldPosition(argName As String) As WorldPositionArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition*
+  nameWithType.vb: CommandArgumentParsers.OptionalWorldPosition(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(String)
+  name.vb: OptionalWorldPosition(String)
+- uid: Vintagestory.API.Common.CommandArgumentParsers.DateTime(System.String)
+  commentId: M:Vintagestory.API.Common.CommandArgumentParsers.DateTime(System.String)
+  id: DateTime(System.String)
+  parent: Vintagestory.API.Common.CommandArgumentParsers
+  langs:
+  - csharp
+  - vb
+  name: DateTime(string)
+  nameWithType: CommandArgumentParsers.DateTime(string)
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.DateTime(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Currently only supports time spans (i.e. now + time)
+  example: []
+  syntax:
+    content: public DatetimeArgParser DateTime(string argName)
+    parameters:
+    - id: argName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.DatetimeArgParser
+      description: ''
+    content.vb: Public Function DateTime(argName As String) As DatetimeArgParser
+  overload: Vintagestory.API.Common.CommandArgumentParsers.DateTime*
+  nameWithType.vb: CommandArgumentParsers.DateTime(String)
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.DateTime(String)
+  name.vb: DateTime(String)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.CommandArgumentParsers.#ctor*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.#ctor
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers__ctor_Vintagestory_API_Common_ICoreAPI_
+  name: CommandArgumentParsers
+  nameWithType: CommandArgumentParsers.CommandArgumentParsers
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.CommandArgumentParsers
+  nameWithType.vb: CommandArgumentParsers.New
+  fullName.vb: Vintagestory.API.Common.CommandArgumentParsers.New
+  name.vb: New
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Unparsed*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Unparsed
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Unparsed_System_String_System_String___
+  name: Unparsed
+  nameWithType: CommandArgumentParsers.Unparsed
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Unparsed
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.UnparsedArg
+  commentId: T:Vintagestory.API.Common.UnparsedArg
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.UnparsedArg.html
+  name: UnparsedArg
+  nameWithType: UnparsedArg
+  fullName: Vintagestory.API.Common.UnparsedArg
+- uid: Vintagestory.API.Common.CommandArgumentParsers.IntDirection*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.IntDirection
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_IntDirection_System_String_
+  name: IntDirection
+  nameWithType: CommandArgumentParsers.IntDirection
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.IntDirection
+- uid: Vintagestory.API.Common.DirectionArgParser{Vintagestory.API.MathTools.Vec3i}
+  commentId: T:Vintagestory.API.Common.DirectionArgParser{Vintagestory.API.MathTools.Vec3i}
+  parent: Vintagestory.API.Common
+  definition: Vintagestory.API.Common.DirectionArgParser`1
+  href: Vintagestory.API.Common.DirectionArgParser-1.html
+  name: DirectionArgParser<Vec3i>
+  nameWithType: DirectionArgParser<Vec3i>
+  fullName: Vintagestory.API.Common.DirectionArgParser<Vintagestory.API.MathTools.Vec3i>
+  nameWithType.vb: DirectionArgParser(Of Vec3i)
+  fullName.vb: Vintagestory.API.Common.DirectionArgParser(Of Vintagestory.API.MathTools.Vec3i)
+  name.vb: DirectionArgParser(Of Vec3i)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.DirectionArgParser`1
+    name: DirectionArgParser
+    href: Vintagestory.API.Common.DirectionArgParser-1.html
+  - name: <
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.DirectionArgParser`1
+    name: DirectionArgParser
+    href: Vintagestory.API.Common.DirectionArgParser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+- uid: Vintagestory.API.Common.DirectionArgParser`1
+  commentId: T:Vintagestory.API.Common.DirectionArgParser`1
+  href: Vintagestory.API.Common.DirectionArgParser-1.html
+  name: DirectionArgParser<T>
+  nameWithType: DirectionArgParser<T>
+  fullName: Vintagestory.API.Common.DirectionArgParser<T>
+  nameWithType.vb: DirectionArgParser(Of T)
+  fullName.vb: Vintagestory.API.Common.DirectionArgParser(Of T)
+  name.vb: DirectionArgParser(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.DirectionArgParser`1
+    name: DirectionArgParser
+    href: Vintagestory.API.Common.DirectionArgParser-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.DirectionArgParser`1
+    name: DirectionArgParser
+    href: Vintagestory.API.Common.DirectionArgParser-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Entities*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Entities
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Entities_System_String_
+  name: Entities
+  nameWithType: CommandArgumentParsers.Entities
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Entities
+- uid: Vintagestory.API.Common.EntitiesArgParser
+  commentId: T:Vintagestory.API.Common.EntitiesArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntitiesArgParser.html
+  name: EntitiesArgParser
+  nameWithType: EntitiesArgParser
+  fullName: Vintagestory.API.Common.EntitiesArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalEntities_System_String_
+  name: OptionalEntities
+  nameWithType: CommandArgumentParsers.OptionalEntities
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities
+- uid: Vintagestory.API.Common.CommandArgumentParsers.EntityType*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.EntityType
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_EntityType_System_String_
+  name: EntityType
+  nameWithType: CommandArgumentParsers.EntityType
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.EntityType
+- uid: Vintagestory.API.Common.EntityTypeArgParser
+  commentId: T:Vintagestory.API.Common.EntityTypeArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityTypeArgParser.html
+  name: EntityTypeArgParser
+  nameWithType: EntityTypeArgParser
+  fullName: Vintagestory.API.Common.EntityTypeArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.IntRange*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.IntRange
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_IntRange_System_String_System_Int32_System_Int32_
+  name: IntRange
+  nameWithType: CommandArgumentParsers.IntRange
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.IntRange
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.IntArgParser
+  commentId: T:Vintagestory.API.Common.IntArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IntArgParser.html
+  name: IntArgParser
+  nameWithType: IntArgParser
+  fullName: Vintagestory.API.Common.IntArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalIntRange_System_String_System_Int32_System_Int32_System_Int32_
+  name: OptionalIntRange
+  nameWithType: CommandArgumentParsers.OptionalIntRange
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalInt*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalInt
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalInt_System_String_System_Int32_
+  name: OptionalInt
+  nameWithType: CommandArgumentParsers.OptionalInt
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalInt
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Int*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Int
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Int_System_String_
+  name: Int
+  nameWithType: CommandArgumentParsers.Int
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Int
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalLong*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalLong
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalLong_System_String_System_Int32_
+  name: OptionalLong
+  nameWithType: CommandArgumentParsers.OptionalLong
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalLong
+- uid: Vintagestory.API.Common.LongArgParser
+  commentId: T:Vintagestory.API.Common.LongArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.LongArgParser.html
+  name: LongArgParser
+  nameWithType: LongArgParser
+  fullName: Vintagestory.API.Common.LongArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Long*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Long
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Long_System_String_
+  name: Long
+  nameWithType: CommandArgumentParsers.Long
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Long
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Bool*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Bool
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Bool_System_String_System_String_
+  name: Bool
+  nameWithType: CommandArgumentParsers.Bool
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Bool
+- uid: Vintagestory.API.Common.BoolArgParser
+  commentId: T:Vintagestory.API.Common.BoolArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BoolArgParser.html
+  name: BoolArgParser
+  nameWithType: BoolArgParser
+  fullName: Vintagestory.API.Common.BoolArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalBool*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalBool
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalBool_System_String_System_String_
+  name: OptionalBool
+  nameWithType: CommandArgumentParsers.OptionalBool
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalBool
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalDouble_System_String_System_Double_
+  name: OptionalDouble
+  nameWithType: CommandArgumentParsers.OptionalDouble
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Common.DoubleArgParser
+  commentId: T:Vintagestory.API.Common.DoubleArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.DoubleArgParser.html
+  name: DoubleArgParser
+  nameWithType: DoubleArgParser
+  fullName: Vintagestory.API.Common.DoubleArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Float*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Float
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Float_System_String_
+  name: Float
+  nameWithType: CommandArgumentParsers.Float
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Float
+- uid: Vintagestory.API.Common.FloatArgParser
+  commentId: T:Vintagestory.API.Common.FloatArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.FloatArgParser.html
+  name: FloatArgParser
+  nameWithType: FloatArgParser
+  fullName: Vintagestory.API.Common.FloatArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalFloat_System_String_System_Single_
+  name: OptionalFloat
+  nameWithType: CommandArgumentParsers.OptionalFloat
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Double*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Double
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Double_System_String_
+  name: Double
+  nameWithType: CommandArgumentParsers.Double
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Double
+- uid: Vintagestory.API.Common.CommandArgumentParsers.DoubleRange*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.DoubleRange
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_DoubleRange_System_String_System_Double_System_Double_
+  name: DoubleRange
+  nameWithType: CommandArgumentParsers.DoubleRange
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.DoubleRange
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OnlinePlayer_System_String_
+  name: OnlinePlayer
+  nameWithType: CommandArgumentParsers.OnlinePlayer
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer
+- uid: Vintagestory.API.Common.OnlinePlayerArgParser
+  commentId: T:Vintagestory.API.Common.OnlinePlayerArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.OnlinePlayerArgParser.html
+  name: OnlinePlayerArgParser
+  nameWithType: OnlinePlayerArgParser
+  fullName: Vintagestory.API.Common.OnlinePlayerArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.PlayerUids*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.PlayerUids
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_PlayerUids_System_String_
+  name: PlayerUids
+  nameWithType: CommandArgumentParsers.PlayerUids
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.PlayerUids
+- uid: Vintagestory.API.Common.PlayersArgParser
+  commentId: T:Vintagestory.API.Common.PlayersArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayersArgParser.html
+  name: PlayersArgParser
+  nameWithType: PlayersArgParser
+  fullName: Vintagestory.API.Common.PlayersArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerUids_System_String_
+  name: OptionalPlayerUids
+  nameWithType: CommandArgumentParsers.OptionalPlayerUids
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids
+- uid: Vintagestory.API.Common.CommandArgumentParsers.PlayerRole*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.PlayerRole
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_PlayerRole_System_String_
+  name: PlayerRole
+  nameWithType: CommandArgumentParsers.PlayerRole
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.PlayerRole
+- uid: Vintagestory.API.Common.PlayerRoleArgParser
+  commentId: T:Vintagestory.API.Common.PlayerRoleArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayerRoleArgParser.html
+  name: PlayerRoleArgParser
+  nameWithType: PlayerRoleArgParser
+  fullName: Vintagestory.API.Common.PlayerRoleArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerRole_System_String_
+  name: OptionalPlayerRole
+  nameWithType: CommandArgumentParsers.OptionalPlayerRole
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Privilege*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Privilege
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Privilege_System_String_
+  name: Privilege
+  nameWithType: CommandArgumentParsers.Privilege
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Privilege
+- uid: Vintagestory.API.Common.PrivilegeArgParser
+  commentId: T:Vintagestory.API.Common.PrivilegeArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PrivilegeArgParser.html
+  name: PrivilegeArgParser
+  nameWithType: PrivilegeArgParser
+  fullName: Vintagestory.API.Common.PrivilegeArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalPrivilege_System_String_
+  name: OptionalPrivilege
+  nameWithType: CommandArgumentParsers.OptionalPrivilege
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Word*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Word
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Word_System_String_
+  name: Word
+  nameWithType: CommandArgumentParsers.Word
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Word
+- uid: Vintagestory.API.Common.WordArgParser
+  commentId: T:Vintagestory.API.Common.WordArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.WordArgParser.html
+  name: WordArgParser
+  nameWithType: WordArgParser
+  fullName: Vintagestory.API.Common.WordArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalWord*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalWord
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalWord_System_String_
+  name: OptionalWord
+  nameWithType: CommandArgumentParsers.OptionalWord
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalWord
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalWordRange_System_String_System_String___
+  name: OptionalWordRange
+  nameWithType: CommandArgumentParsers.OptionalWordRange
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange
+- uid: Vintagestory.API.Common.WordRangeArgParser
+  commentId: T:Vintagestory.API.Common.WordRangeArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.WordRangeArgParser.html
+  name: WordRangeArgParser
+  nameWithType: WordRangeArgParser
+  fullName: Vintagestory.API.Common.WordRangeArgParser
+- uid: System.Drawing.Color
+  commentId: T:System.Drawing.Color
+  parent: System.Drawing
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.drawing.color
+  name: Color
+  nameWithType: Color
+  fullName: System.Drawing.Color
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Color*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Color
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Color_System_String_
+  name: Color
+  nameWithType: CommandArgumentParsers.Color
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Color
+- uid: Vintagestory.API.Common.ColorArgParser
+  commentId: T:Vintagestory.API.Common.ColorArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ColorArgParser.html
+  name: ColorArgParser
+  nameWithType: ColorArgParser
+  fullName: Vintagestory.API.Common.ColorArgParser
+- uid: System.Drawing
+  commentId: N:System.Drawing
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Drawing
+  nameWithType: System.Drawing
+  fullName: System.Drawing
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Drawing
+    name: Drawing
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.drawing
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Drawing
+    name: Drawing
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.drawing
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalColor*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalColor
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalColor_System_String_
+  name: OptionalColor
+  nameWithType: CommandArgumentParsers.OptionalColor
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalColor
+- uid: Vintagestory.API.Common.CommandArgumentParsers.All*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.All
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_All_System_String_
+  name: All
+  nameWithType: CommandArgumentParsers.All
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.All
+- uid: Vintagestory.API.Common.StringArgParser
+  commentId: T:Vintagestory.API.Common.StringArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.StringArgParser.html
+  name: StringArgParser
+  nameWithType: StringArgParser
+  fullName: Vintagestory.API.Common.StringArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalAll*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalAll
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalAll_System_String_
+  name: OptionalAll
+  nameWithType: CommandArgumentParsers.OptionalAll
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalAll
+- uid: Vintagestory.API.Common.CommandArgumentParsers.WordRange*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.WordRange
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_WordRange_System_String_System_String___
+  name: WordRange
+  nameWithType: CommandArgumentParsers.WordRange
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.WordRange
+- uid: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.WorldPosition
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_WorldPosition_System_String_
+  name: WorldPosition
+  nameWithType: CommandArgumentParsers.WorldPosition
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition
+- uid: Vintagestory.API.Common.WorldPositionArgParser
+  commentId: T:Vintagestory.API.Common.WorldPositionArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.WorldPositionArgParser.html
+  name: WorldPositionArgParser
+  nameWithType: WorldPositionArgParser
+  fullName: Vintagestory.API.Common.WorldPositionArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_WorldPosition2D_System_String_
+  name: WorldPosition2D
+  nameWithType: CommandArgumentParsers.WorldPosition2D
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D
+- uid: Vintagestory.API.Common.WorldPosition2DArgParser
+  commentId: T:Vintagestory.API.Common.WorldPosition2DArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.WorldPosition2DArgParser.html
+  name: WorldPosition2DArgParser
+  nameWithType: WorldPosition2DArgParser
+  fullName: Vintagestory.API.Common.WorldPosition2DArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Vec3i*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Vec3i
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Vec3i_System_String_
+  name: Vec3i
+  nameWithType: CommandArgumentParsers.Vec3i
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Vec3i
+- uid: Vintagestory.API.Common.Vec3iArgParser
+  commentId: T:Vintagestory.API.Common.Vec3iArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Vec3iArgParser.html
+  name: Vec3iArgParser
+  nameWithType: Vec3iArgParser
+  fullName: Vintagestory.API.Common.Vec3iArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalVec3i_System_String_
+  name: OptionalVec3i
+  nameWithType: CommandArgumentParsers.OptionalVec3i
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Item*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Item
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Item_System_String_
+  name: Item
+  nameWithType: CommandArgumentParsers.Item
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Item
+- uid: Vintagestory.API.Common.CollectibleArgParser
+  commentId: T:Vintagestory.API.Common.CollectibleArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CollectibleArgParser.html
+  name: CollectibleArgParser
+  nameWithType: CollectibleArgParser
+  fullName: Vintagestory.API.Common.CollectibleArgParser
+- uid: Vintagestory.API.Common.CommandArgumentParsers.Block*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.Block
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_Block_System_String_
+  name: Block
+  nameWithType: CommandArgumentParsers.Block
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.Block
+- uid: Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_OptionalWorldPosition_System_String_
+  name: OptionalWorldPosition
+  nameWithType: CommandArgumentParsers.OptionalWorldPosition
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition
+- uid: Vintagestory.API.Common.CommandArgumentParsers.DateTime*
+  commentId: Overload:Vintagestory.API.Common.CommandArgumentParsers.DateTime
+  href: Vintagestory.API.Common.CommandArgumentParsers.html#Vintagestory_API_Common_CommandArgumentParsers_DateTime_System_String_
+  name: DateTime
+  nameWithType: CommandArgumentParsers.DateTime
+  fullName: Vintagestory.API.Common.CommandArgumentParsers.DateTime
+- uid: Vintagestory.API.Common.DatetimeArgParser
+  commentId: T:Vintagestory.API.Common.DatetimeArgParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.DatetimeArgParser.html
+  name: DatetimeArgParser
+  nameWithType: DatetimeArgParser
+  fullName: Vintagestory.API.Common.DatetimeArgParser

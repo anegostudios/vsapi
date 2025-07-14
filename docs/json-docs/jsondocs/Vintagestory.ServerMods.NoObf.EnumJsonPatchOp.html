@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum EnumJsonPatchOp | VintageStory Json Docs ">
       
-      <meta name="description" content="A set of operations that define what a patch will do. See https://datatracker.ietf.org/doc/html/rfc6902#section-4.1 for more information on each operation type.">
+      <meta name="description" content="A set of operations that define what a patch will do. See https://datatracker.ietf.org/doc/html/rfc6902#section-4.1 for more information on each operation type. Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Enum EnumJsonPatchOp
   </div>
 
   <div class="markdown summary"><p>A set of operations that define what a patch will do.
-See <a href="https://datatracker.ietf.org/doc/html/rfc6902#section-4.1">https://datatracker.ietf.org/doc/html/rfc6902#section-4.1</a> for more information on each operation type.</p>
+See <a href="https://datatracker.ietf.org/doc/html/rfc6902#section-4.1">https://datatracker.ietf.org/doc/html/rfc6902#section-4.1</a> for more information on each operation type. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/JsonPatchLoader.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -120,25 +120,32 @@ public enum EnumJsonPatchOp</code></pre>
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Add"><code>Add = 0</code></dt>
-    <dd><p>Add an element to a json property at a specific path. Please consider using <a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html#Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_AddMerge">AddMerge</a> for improved mod compatability.</p>
+  
+  <dd><p>Add an element to a json property at a specific path. Please consider using <a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html#Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_AddMerge">AddMerge</a> for improved mod compatability.</p>
 </dd>
     <dt id="Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_AddEach"><code>AddEach = 1</code></dt>
-    <dd><p>Add a set of objects to an array. Will not work if used on other data types.</p>
+  
+  <dd><p>Add a set of objects to an array. Will not work if used on other data types.</p>
 </dd>
     <dt id="Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Remove"><code>Remove = 2</code></dt>
-    <dd><p>Remove a json property at a specific path. Does not require a value to be set.</p>
+  
+  <dd><p>Remove a json property at a specific path. Does not require a value to be set.</p>
 </dd>
     <dt id="Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Replace"><code>Replace = 3</code></dt>
-    <dd><p>Replaces a json property with one of a different value. Identical to a remove and then add.</p>
+  
+  <dd><p>Replaces a json property with one of a different value. Identical to a remove and then add.</p>
 </dd>
     <dt id="Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Copy"><code>Copy = 4</code></dt>
-    <dd><p>Copies a json property from one place and adds it to another. Requires the <a class="xref" href="Vintagestory.ServerMods.NoObf.JsonPatch.html#Vintagestory_ServerMods_NoObf_JsonPatch_FromPath">FromPath</a> property.</p>
+  
+  <dd><p>Copies a json property from one place and adds it to another. Requires the <a class="xref" href="Vintagestory.ServerMods.NoObf.JsonPatch.html#Vintagestory_ServerMods_NoObf_JsonPatch_FromPath">FromPath</a> property.</p>
 </dd>
     <dt id="Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Move"><code>Move = 5</code></dt>
-    <dd><p>Removes a json property from one place and adds it to another. Identical to removing from one place and adding it to another. Requires the <a class="xref" href="Vintagestory.ServerMods.NoObf.JsonPatch.html#Vintagestory_ServerMods_NoObf_JsonPatch_FromPath">FromPath</a> property.</p>
+  
+  <dd><p>Removes a json property from one place and adds it to another. Identical to removing from one place and adding it to another. Requires the <a class="xref" href="Vintagestory.ServerMods.NoObf.JsonPatch.html#Vintagestory_ServerMods_NoObf_JsonPatch_FromPath">FromPath</a> property.</p>
 </dd>
     <dt id="Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_AddMerge"><code>AddMerge = 6</code></dt>
-    <dd><p>Add merge is similar to <a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html#Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Add">Add</a>, however if the target is an array, then the current value and patched value will merge together for improved compatibility.</p>
+  
+  <dd><p>Add merge is similar to <a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html#Vintagestory_ServerMods_NoObf_EnumJsonPatchOp_Add">Add</a>, however if the target is an array, then the current value and patched value will merge together for improved compatibility.</p>
 </dd>
   </dl>
 

@@ -1,0 +1,4155 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  commentId: T:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  id: RelaxedReadOnlyDictionary`2
+  parent: Vintagestory.API.Util
+  children:
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add(`0,`1)
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Clear
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.ContainsKey(`0)
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Count
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.GetEnumerator
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.IsReadOnly
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Item(`0)
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Keys
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove(`0)
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.TryGetValue(`0,`1@)
+  - Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Values
+  langs:
+  - csharp
+  - vb
+  name: RelaxedReadOnlyDictionary<T, K>
+  nameWithType: RelaxedReadOnlyDictionary<T, K>
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: 'public class RelaxedReadOnlyDictionary<T, K> : IDictionary<T, K>, ICollection<KeyValuePair<T, K>>, IEnumerable<KeyValuePair<T, K>>, IEnumerable'
+    typeParameters:
+    - id: T
+    - id: K
+    content.vb: Public Class RelaxedReadOnlyDictionary(Of T, K) Implements IDictionary(Of T, K), ICollection(Of KeyValuePair(Of T, K)), IEnumerable(Of KeyValuePair(Of T, K)), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.HashsetExtensions.PopOne``1
+  - System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{{T},{K}})
+  - System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.Get``2({T},{K})
+  - System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Func{{T},System.Boolean})
+  - System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Func{{T},{K},System.Boolean})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{System.Collections.Generic.KeyValuePair{{T},{K}}})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(Vintagestory.API.Common.ActionBoolReturn{System.Collections.Generic.KeyValuePair{{T},{K}}})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{System.Collections.Generic.KeyValuePair{{T},{K}},System.Double})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{System.Collections.Generic.KeyValuePair{{T},{K}},System.Double})
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K)
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K)
+  name.vb: RelaxedReadOnlyDictionary(Of T, K)
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})
+  id: '#ctor(System.Collections.Generic.IDictionary{`0,`1})'
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: RelaxedReadOnlyDictionary(IDictionary<T, K>)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.RelaxedReadOnlyDictionary(IDictionary<T, K>)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.RelaxedReadOnlyDictionary(System.Collections.Generic.IDictionary<T, K>)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public RelaxedReadOnlyDictionary(IDictionary<T, K> values)
+    parameters:
+    - id: values
+      type: System.Collections.Generic.IDictionary{{T},{K}}
+    content.vb: Public Sub New(values As IDictionary(Of T, K))
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.#ctor*
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).New(IDictionary(Of T, K))
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).New(System.Collections.Generic.IDictionary(Of T, K))
+  name.vb: New(IDictionary(Of T, K))
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Item(`0)
+  commentId: P:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Item(`0)
+  id: Item(`0)
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: this[T]
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.this[T]
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.this[T]
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Gets or sets the element with the specified key.
+  example: []
+  syntax:
+    content: public K this[T key] { get; set; }
+    parameters:
+    - id: key
+      type: '{T}'
+      description: The key of the element to get or set.
+    return:
+      type: '{K}'
+      description: The element with the specified key.
+    content.vb: Public Default Property this[](key As T) As K
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Item*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+  - type: System.Collections.Generic.KeyNotFoundException
+    commentId: T:System.Collections.Generic.KeyNotFoundException
+    description: The property is retrieved and <code class="paramref">key</code> is not found.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The property is set and the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}.Item({T})
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).this[](T)
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).this[](T)
+  name.vb: this[](T)
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Keys
+  commentId: P:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Keys
+  id: Keys
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Keys
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Keys
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Keys
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Gets an <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> containing the keys of the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ICollection<T> Keys { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{{T}}
+      description: An <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> containing the keys of the object that implements <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public ReadOnly Property Keys As ICollection(Of T)
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Keys*
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}.Keys
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Keys
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Keys
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Values
+  commentId: P:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Values
+  id: Values
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Values
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Values
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Values
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Gets an <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> containing the values in the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public ICollection<K> Values { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{{K}}
+      description: An <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> containing the values in the object that implements <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public ReadOnly Property Values As ICollection(Of K)
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Values*
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}.Values
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Values
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Values
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Count
+  commentId: P:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Count
+  id: Count
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Count
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Count
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Gets the number of elements contained in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: The number of elements contained in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Count*
+  implements:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Count
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Count
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Count
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.IsReadOnly
+  commentId: P:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.IsReadOnly
+  id: IsReadOnly
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: IsReadOnly
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.IsReadOnly
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.IsReadOnly
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Gets a value indicating whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  example: []
+  syntax:
+    content: public bool IsReadOnly { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public ReadOnly Property IsReadOnly As Boolean
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.IsReadOnly*
+  implements:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.IsReadOnly
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).IsReadOnly
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).IsReadOnly
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add(`0,`1)
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add(`0,`1)
+  id: Add(`0,`1)
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Add(T, K)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Add(T, K)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Add(T, K)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Adds an element with the provided key and value to the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void Add(T key, K value)
+    parameters:
+    - id: key
+      type: '{T}'
+      description: The object to use as the key of the element to add.
+    - id: value
+      type: '{K}'
+      description: The object to use as the value of the element to add.
+    content.vb: Public Sub Add(key As T, value As K)
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: An element with the same key already exists in the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}.Add({T},{K})
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Add(T, K)
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Add(T, K)
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  id: Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Add(KeyValuePair<T, K>)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Add(KeyValuePair<T, K>)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Add(System.Collections.Generic.KeyValuePair<T, K>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Adds an item to the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void Add(KeyValuePair<T, K> item)
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{{T},{K}}
+      description: The object to add to the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Sub Add(item As KeyValuePair(Of T, K))
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Add(System.Collections.Generic.KeyValuePair{{T},{K}})
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Add(KeyValuePair(Of T, K))
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Add(System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: Add(KeyValuePair(Of T, K))
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Clear
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Clear
+  id: Clear
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Clear()
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Clear()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Removes all items from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Clear*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Clear
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Clear()
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Clear()
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  id: Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Contains(KeyValuePair<T, K>)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Contains(KeyValuePair<T, K>)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Contains(System.Collections.Generic.KeyValuePair<T, K>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Determines whether the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> contains a specific value.
+  example: []
+  syntax:
+    content: public bool Contains(KeyValuePair<T, K> item)
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{{T},{K}}
+      description: The object to locate in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function Contains(item As KeyValuePair(Of T, K)) As Boolean
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Contains*
+  implements:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Contains(System.Collections.Generic.KeyValuePair{{T},{K}})
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Contains(KeyValuePair(Of T, K))
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Contains(System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: Contains(KeyValuePair(Of T, K))
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.ContainsKey(`0)
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.ContainsKey(`0)
+  id: ContainsKey(`0)
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: ContainsKey(T)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.ContainsKey(T)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.ContainsKey(T)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Determines whether the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref> contains an element with the specified key.
+  example: []
+  syntax:
+    content: public bool ContainsKey(T key)
+    parameters:
+    - id: key
+      type: '{T}'
+      description: The key to locate in the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref> contains an element with the key; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function ContainsKey(key As T) As Boolean
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.ContainsKey*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}.ContainsKey({T})
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).ContainsKey(T)
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).ContainsKey(T)
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  id: CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: CopyTo(KeyValuePair<T, K>[], int)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.CopyTo(KeyValuePair<T, K>[], int)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.CopyTo(System.Collections.Generic.KeyValuePair<T, K>[], int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Copies the elements of the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> to an <xref href="System.Array" data-throw-if-not-resolved="false"></xref>, starting at a particular <xref href="System.Array" data-throw-if-not-resolved="false"></xref> index.
+  example: []
+  syntax:
+    content: public void CopyTo(KeyValuePair<T, K>[] array, int arrayIndex)
+    parameters:
+    - id: array
+      type: System.Collections.Generic.KeyValuePair{{T},{K}}[]
+      description: The one-dimensional <xref href="System.Array" data-throw-if-not-resolved="false"></xref> that is the destination of the elements copied from <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>. The <xref href="System.Array" data-throw-if-not-resolved="false"></xref> must have zero-based indexing.
+    - id: arrayIndex
+      type: System.Int32
+      description: The zero-based index in <code class="paramref">array</code> at which copying begins.
+    content.vb: Public Sub CopyTo(array As KeyValuePair(Of T, K)(), arrayIndex As Integer)
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.CopyTo*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">array</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: <code class="paramref">arrayIndex</code> is less than 0.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: The number of elements in the source <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is greater than the available space from <code class="paramref">arrayIndex</code> to the end of the destination <code class="paramref">array</code>.
+  implements:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.CopyTo(System.Collections.Generic.KeyValuePair{{T},{K}}[],System.Int32)
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).CopyTo(KeyValuePair(Of T, K)(), Integer)
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).CopyTo(System.Collections.Generic.KeyValuePair(Of T, K)(), Integer)
+  name.vb: CopyTo(KeyValuePair(Of T, K)(), Integer)
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.GetEnumerator
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.GetEnumerator
+  id: GetEnumerator
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.GetEnumerator()
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.GetEnumerator()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Returns an enumerator that iterates through the collection.
+  example: []
+  syntax:
+    content: public IEnumerator<KeyValuePair<T, K>> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{{T},{K}}}
+      description: An enumerator that can be used to iterate through the collection.
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of KeyValuePair(Of T, K))
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{{T},{K}}}.GetEnumerator
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).GetEnumerator()
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).GetEnumerator()
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove(`0)
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove(`0)
+  id: Remove(`0)
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Remove(T)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Remove(T)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Remove(T)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Removes the element with the specified key from the <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Remove(T key)
+    parameters:
+    - id: key
+      type: '{T}'
+      description: The key of the element to remove.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the element is successfully removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.  This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">key</code> was not found in the original <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function Remove(key As T) As Boolean
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}.Remove({T})
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Remove(T)
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Remove(T)
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  id: Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: Remove(KeyValuePair<T, K>)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Remove(KeyValuePair<T, K>)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Remove(System.Collections.Generic.KeyValuePair<T, K>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Removes the first occurrence of a specific object from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Remove(KeyValuePair<T, K> item)
+    parameters:
+    - id: item
+      type: System.Collections.Generic.KeyValuePair{{T},{K}}
+      description: The object to remove from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found in the original <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function Remove(item As KeyValuePair(Of T, K)) As Boolean
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove*
+  exceptions:
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: The <xref href="System.Collections.Generic.ICollection%601" data-throw-if-not-resolved="false"></xref> is read-only.
+  implements:
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Remove(System.Collections.Generic.KeyValuePair{{T},{K}})
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Remove(KeyValuePair(Of T, K))
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Remove(System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: Remove(KeyValuePair(Of T, K))
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.TryGetValue(`0,`1@)
+  commentId: M:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.TryGetValue(`0,`1@)
+  id: TryGetValue(`0,`1@)
+  parent: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2
+  langs:
+  - csharp
+  - vb
+  name: TryGetValue(T, out K)
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.TryGetValue(T, out K)
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.TryGetValue(T, out K)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Gets the value associated with the specified key.
+  example: []
+  syntax:
+    content: public bool TryGetValue(T key, out K value)
+    parameters:
+    - id: key
+      type: '{T}'
+      description: The key whose value to get.
+    - id: value
+      type: '{K}'
+      description: When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the <code class="paramref">value</code> parameter. This parameter is passed uninitialized.
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the object that implements <xref href="System.Collections.Generic.IDictionary%602" data-throw-if-not-resolved="false"></xref> contains an element with the specified key; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+    content.vb: Public Function TryGetValue(key As T, value As K) As Boolean
+  overload: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.TryGetValue*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: <code class="paramref">key</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.
+  implements:
+  - System.Collections.Generic.IDictionary{{T},{K}}.TryGetValue({T},{K}@)
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).TryGetValue(T, K)
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).TryGetValue(T, K)
+  name.vb: TryGetValue(T, K)
+references:
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.Generic.IDictionary{{T},{K}}
+  commentId: T:System.Collections.Generic.IDictionary{`0,`1}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<T, K>
+  nameWithType: IDictionary<T, K>
+  fullName: System.Collections.Generic.IDictionary<T, K>
+  nameWithType.vb: IDictionary(Of T, K)
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K)
+  name.vb: IDictionary(Of T, K)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  commentId: T:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<KeyValuePair<T, K>>
+  nameWithType: ICollection<KeyValuePair<T, K>>
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K))
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: ICollection(Of KeyValuePair(Of T, K))
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<T, K>>
+  nameWithType: IEnumerable<KeyValuePair<T, K>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<T, K>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of T, K))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: IEnumerable(Of KeyValuePair(Of T, K))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.HashsetExtensions.PopOne``1
+  commentId: M:Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{``0})
+  parent: Vintagestory.API.Util.HashsetExtensions
+  definition: Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{``0})
+  href: Vintagestory.API.Util.HashsetExtensions.html#Vintagestory_API_Util_HashsetExtensions_PopOne__1_System_Collections_Generic_ICollection___0__
+  name: PopOne<KeyValuePair<T, K>>(ICollection<KeyValuePair<T, K>>)
+  nameWithType: HashsetExtensions.PopOne<KeyValuePair<T, K>>(ICollection<KeyValuePair<T, K>>)
+  fullName: Vintagestory.API.Util.HashsetExtensions.PopOne<System.Collections.Generic.KeyValuePair<T, K>>(System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>)
+  nameWithType.vb: HashsetExtensions.PopOne(Of KeyValuePair(Of T, K))(ICollection(Of KeyValuePair(Of T, K)))
+  fullName.vb: Vintagestory.API.Util.HashsetExtensions.PopOne(Of System.Collections.Generic.KeyValuePair(Of T, K))(System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)))
+  name.vb: PopOne(Of KeyValuePair(Of T, K))(ICollection(Of KeyValuePair(Of T, K)))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}})
+    name: PopOne
+    href: Vintagestory.API.Util.HashsetExtensions.html#Vintagestory_API_Util_HashsetExtensions_PopOne__1_System_Collections_Generic_ICollection___0__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}})
+    name: PopOne
+    href: Vintagestory.API.Util.HashsetExtensions.html#Vintagestory_API_Util_HashsetExtensions_PopOne__1_System_Collections_Generic_ICollection___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{{T},{K}})
+  commentId: M:Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})
+  parent: Vintagestory.API.Util.DictExtensions
+  definition: Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_AddRange__2_System_Collections_Generic_IDictionary___0___1__System_Collections_Generic_IDictionary___0___1__
+  name: AddRange<T, K>(IDictionary<T, K>, IDictionary<T, K>)
+  nameWithType: DictExtensions.AddRange<T, K>(IDictionary<T, K>, IDictionary<T, K>)
+  fullName: Vintagestory.API.Util.DictExtensions.AddRange<T, K>(System.Collections.Generic.IDictionary<T, K>, System.Collections.Generic.IDictionary<T, K>)
+  nameWithType.vb: DictExtensions.AddRange(Of T, K)(IDictionary(Of T, K), IDictionary(Of T, K))
+  fullName.vb: Vintagestory.API.Util.DictExtensions.AddRange(Of T, K)(System.Collections.Generic.IDictionary(Of T, K), System.Collections.Generic.IDictionary(Of T, K))
+  name.vb: AddRange(Of T, K)(IDictionary(Of T, K), IDictionary(Of T, K))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IDictionary{`0,`1})
+    name: AddRange
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_AddRange__2_System_Collections_Generic_IDictionary___0___1__System_Collections_Generic_IDictionary___0___1__
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IDictionary{`0,`1})
+    name: AddRange
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_AddRange__2_System_Collections_Generic_IDictionary___0___1__System_Collections_Generic_IDictionary___0___1__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.Get``2({T},{K})
+  commentId: M:Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)
+  parent: Vintagestory.API.Util.DictExtensions
+  definition: Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_Get__2_System_Collections_Generic_IDictionary___0___1____0___1_
+  name: Get<T, K>(IDictionary<T, K>, T, K)
+  nameWithType: DictExtensions.Get<T, K>(IDictionary<T, K>, T, K)
+  fullName: Vintagestory.API.Util.DictExtensions.Get<T, K>(System.Collections.Generic.IDictionary<T, K>, T, K)
+  nameWithType.vb: DictExtensions.Get(Of T, K)(IDictionary(Of T, K), T, K)
+  fullName.vb: Vintagestory.API.Util.DictExtensions.Get(Of T, K)(System.Collections.Generic.IDictionary(Of T, K), T, K)
+  name.vb: Get(Of T, K)(IDictionary(Of T, K), T, K)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{`0,`1},`0,`1)
+    name: Get
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_Get__2_System_Collections_Generic_IDictionary___0___1____0___1_
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{`0,`1},`0,`1)
+    name: Get
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_Get__2_System_Collections_Generic_IDictionary___0___1____0___1_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: ','
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+- uid: System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Func{{T},System.Boolean})
+  commentId: M:Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,System.Boolean})
+  parent: Vintagestory.API.Util.DictExtensions
+  definition: Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,System.Boolean})
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAllByKey__2_System_Collections_Generic_IDictionary___0___1__System_Func___0_System_Boolean__
+  name: RemoveAllByKey<T, K>(IDictionary<T, K>, Func<T, bool>)
+  nameWithType: DictExtensions.RemoveAllByKey<T, K>(IDictionary<T, K>, Func<T, bool>)
+  fullName: Vintagestory.API.Util.DictExtensions.RemoveAllByKey<T, K>(System.Collections.Generic.IDictionary<T, K>, System.Func<T, bool>)
+  nameWithType.vb: DictExtensions.RemoveAllByKey(Of T, K)(IDictionary(Of T, K), Func(Of T, Boolean))
+  fullName.vb: Vintagestory.API.Util.DictExtensions.RemoveAllByKey(Of T, K)(System.Collections.Generic.IDictionary(Of T, K), System.Func(Of T, Boolean))
+  name.vb: RemoveAllByKey(Of T, K)(IDictionary(Of T, K), Func(Of T, Boolean))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{`0,`1},System.Func{`0,System.Boolean})
+    name: RemoveAllByKey
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAllByKey__2_System_Collections_Generic_IDictionary___0___1__System_Func___0_System_Boolean__
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{`0,`1},System.Func{`0,System.Boolean})
+    name: RemoveAllByKey
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAllByKey__2_System_Collections_Generic_IDictionary___0___1__System_Func___0_System_Boolean__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IDictionary{`0,`1}.Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Func{{T},{K},System.Boolean})
+  commentId: M:Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,``1,System.Boolean})
+  parent: Vintagestory.API.Util.DictExtensions
+  definition: Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,``1,System.Boolean})
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAll__2_System_Collections_Generic_IDictionary___0___1__System_Func___0___1_System_Boolean__
+  name: RemoveAll<T, K>(IDictionary<T, K>, Func<T, K, bool>)
+  nameWithType: DictExtensions.RemoveAll<T, K>(IDictionary<T, K>, Func<T, K, bool>)
+  fullName: Vintagestory.API.Util.DictExtensions.RemoveAll<T, K>(System.Collections.Generic.IDictionary<T, K>, System.Func<T, K, bool>)
+  nameWithType.vb: DictExtensions.RemoveAll(Of T, K)(IDictionary(Of T, K), Func(Of T, K, Boolean))
+  fullName.vb: Vintagestory.API.Util.DictExtensions.RemoveAll(Of T, K)(System.Collections.Generic.IDictionary(Of T, K), System.Func(Of T, K, Boolean))
+  name.vb: RemoveAll(Of T, K)(IDictionary(Of T, K), Func(Of T, K, Boolean))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{`0,`1},System.Func{`0,`1,System.Boolean})
+    name: RemoveAll
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAll__2_System_Collections_Generic_IDictionary___0___1__System_Func___0___1_System_Boolean__
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{`0,`1},System.Func{`0,`1,System.Boolean})
+    name: RemoveAll
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAll__2_System_Collections_Generic_IDictionary___0___1__System_Func___0___1_System_Boolean__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{System.Collections.Generic.KeyValuePair{{T},{K}}})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, Action<KeyValuePair<T, K>>)
+  nameWithType: EnumerableExtensions.Foreach<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, Action<KeyValuePair<T, K>>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<System.Collections.Generic.KeyValuePair<T, K>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<T, K>>, System.Action<System.Collections.Generic.KeyValuePair<T, K>>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), Action(Of KeyValuePair(Of T, K)))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of System.Collections.Generic.KeyValuePair(Of T, K))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of T, K)), System.Action(Of System.Collections.Generic.KeyValuePair(Of T, K)))
+  name.vb: Foreach(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), Action(Of KeyValuePair(Of T, K)))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},System.Action{System.Collections.Generic.KeyValuePair{`0,`1}})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},System.Action{System.Collections.Generic.KeyValuePair{`0,`1}})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(Vintagestory.API.Common.ActionBoolReturn{System.Collections.Generic.KeyValuePair{{T},{K}}})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  name: IndexOf<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, ActionBoolReturn<KeyValuePair<T, K>>)
+  nameWithType: EnumerableExtensions.IndexOf<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, ActionBoolReturn<KeyValuePair<T, K>>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.IndexOf<System.Collections.Generic.KeyValuePair<T, K>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<T, K>>, Vintagestory.API.Common.ActionBoolReturn<System.Collections.Generic.KeyValuePair<T, K>>)
+  nameWithType.vb: EnumerableExtensions.IndexOf(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), ActionBoolReturn(Of KeyValuePair(Of T, K)))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.IndexOf(Of System.Collections.Generic.KeyValuePair(Of T, K))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of T, K)), Vintagestory.API.Common.ActionBoolReturn(Of System.Collections.Generic.KeyValuePair(Of T, K)))
+  name.vb: IndexOf(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), ActionBoolReturn(Of KeyValuePair(Of T, K)))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},Vintagestory.API.Common.ActionBoolReturn{System.Collections.Generic.KeyValuePair{`0,`1}})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},Vintagestory.API.Common.ActionBoolReturn{System.Collections.Generic.KeyValuePair{`0,`1}})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{System.Collections.Generic.KeyValuePair{{T},{K}},System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, Func<KeyValuePair<T, K>, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, Func<KeyValuePair<T, K>, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<System.Collections.Generic.KeyValuePair<T, K>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<T, K>>, System.Func<System.Collections.Generic.KeyValuePair<T, K>, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), Func(Of KeyValuePair(Of T, K), Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of System.Collections.Generic.KeyValuePair(Of T, K))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of T, K)), System.Func(Of System.Collections.Generic.KeyValuePair(Of T, K), Double))
+  name.vb: NearestDistance(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), Func(Of KeyValuePair(Of T, K), Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{System.Collections.Generic.KeyValuePair{{T},{K}},System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, Func<KeyValuePair<T, K>, double>)
+  nameWithType: EnumerableExtensions.Nearest<KeyValuePair<T, K>>(IEnumerable<KeyValuePair<T, K>>, Func<KeyValuePair<T, K>, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<System.Collections.Generic.KeyValuePair<T, K>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<T, K>>, System.Func<System.Collections.Generic.KeyValuePair<T, K>, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), Func(Of KeyValuePair(Of T, K), Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of System.Collections.Generic.KeyValuePair(Of T, K))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of T, K)), System.Func(Of System.Collections.Generic.KeyValuePair(Of T, K), Double))
+  name.vb: Nearest(Of KeyValuePair(Of T, K))(IEnumerable(Of KeyValuePair(Of T, K)), Func(Of KeyValuePair(Of T, K), Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}},System.Func{System.Collections.Generic.KeyValuePair{`0,`1},System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{``0})
+  commentId: M:Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.HashsetExtensions.html#Vintagestory_API_Util_HashsetExtensions_PopOne__1_System_Collections_Generic_ICollection___0__
+  name: PopOne<T>(ICollection<T>)
+  nameWithType: HashsetExtensions.PopOne<T>(ICollection<T>)
+  fullName: Vintagestory.API.Util.HashsetExtensions.PopOne<T>(System.Collections.Generic.ICollection<T>)
+  nameWithType.vb: HashsetExtensions.PopOne(Of T)(ICollection(Of T))
+  fullName.vb: Vintagestory.API.Util.HashsetExtensions.PopOne(Of T)(System.Collections.Generic.ICollection(Of T))
+  name.vb: PopOne(Of T)(ICollection(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{``0})
+    name: PopOne
+    href: Vintagestory.API.Util.HashsetExtensions.html#Vintagestory_API_Util_HashsetExtensions_PopOne__1_System_Collections_Generic_ICollection___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.HashsetExtensions.PopOne``1(System.Collections.Generic.ICollection{``0})
+    name: PopOne
+    href: Vintagestory.API.Util.HashsetExtensions.html#Vintagestory_API_Util_HashsetExtensions_PopOne__1_System_Collections_Generic_ICollection___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.HashsetExtensions
+  commentId: T:Vintagestory.API.Util.HashsetExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.HashsetExtensions.html
+  name: HashsetExtensions
+  nameWithType: HashsetExtensions
+  fullName: Vintagestory.API.Util.HashsetExtensions
+- uid: Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})
+  commentId: M:Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})
+  isExternal: true
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_AddRange__2_System_Collections_Generic_IDictionary___0___1__System_Collections_Generic_IDictionary___0___1__
+  name: AddRange<K, V>(IDictionary<K, V>, IDictionary<K, V>)
+  nameWithType: DictExtensions.AddRange<K, V>(IDictionary<K, V>, IDictionary<K, V>)
+  fullName: Vintagestory.API.Util.DictExtensions.AddRange<K, V>(System.Collections.Generic.IDictionary<K, V>, System.Collections.Generic.IDictionary<K, V>)
+  nameWithType.vb: DictExtensions.AddRange(Of K, V)(IDictionary(Of K, V), IDictionary(Of K, V))
+  fullName.vb: Vintagestory.API.Util.DictExtensions.AddRange(Of K, V)(System.Collections.Generic.IDictionary(Of K, V), System.Collections.Generic.IDictionary(Of K, V))
+  name.vb: AddRange(Of K, V)(IDictionary(Of K, V), IDictionary(Of K, V))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})
+    name: AddRange
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_AddRange__2_System_Collections_Generic_IDictionary___0___1__System_Collections_Generic_IDictionary___0___1__
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})
+    name: AddRange
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_AddRange__2_System_Collections_Generic_IDictionary___0___1__System_Collections_Generic_IDictionary___0___1__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.DictExtensions
+  commentId: T:Vintagestory.API.Util.DictExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.DictExtensions.html
+  name: DictExtensions
+  nameWithType: DictExtensions
+  fullName: Vintagestory.API.Util.DictExtensions
+- uid: Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)
+  commentId: M:Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)
+  isExternal: true
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_Get__2_System_Collections_Generic_IDictionary___0___1____0___1_
+  name: Get<K, V>(IDictionary<K, V>, K, V)
+  nameWithType: DictExtensions.Get<K, V>(IDictionary<K, V>, K, V)
+  fullName: Vintagestory.API.Util.DictExtensions.Get<K, V>(System.Collections.Generic.IDictionary<K, V>, K, V)
+  nameWithType.vb: DictExtensions.Get(Of K, V)(IDictionary(Of K, V), K, V)
+  fullName.vb: Vintagestory.API.Util.DictExtensions.Get(Of K, V)(System.Collections.Generic.IDictionary(Of K, V), K, V)
+  name.vb: Get(Of K, V)(IDictionary(Of K, V), K, V)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)
+    name: Get
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_Get__2_System_Collections_Generic_IDictionary___0___1____0___1_
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: ','
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.Get``2(System.Collections.Generic.IDictionary{``0,``1},``0,``1)
+    name: Get
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_Get__2_System_Collections_Generic_IDictionary___0___1____0___1_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: ','
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+- uid: Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,System.Boolean})
+  commentId: M:Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,System.Boolean})
+  isExternal: true
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAllByKey__2_System_Collections_Generic_IDictionary___0___1__System_Func___0_System_Boolean__
+  name: RemoveAllByKey<K, V>(IDictionary<K, V>, Func<K, bool>)
+  nameWithType: DictExtensions.RemoveAllByKey<K, V>(IDictionary<K, V>, Func<K, bool>)
+  fullName: Vintagestory.API.Util.DictExtensions.RemoveAllByKey<K, V>(System.Collections.Generic.IDictionary<K, V>, System.Func<K, bool>)
+  nameWithType.vb: DictExtensions.RemoveAllByKey(Of K, V)(IDictionary(Of K, V), Func(Of K, Boolean))
+  fullName.vb: Vintagestory.API.Util.DictExtensions.RemoveAllByKey(Of K, V)(System.Collections.Generic.IDictionary(Of K, V), System.Func(Of K, Boolean))
+  name.vb: RemoveAllByKey(Of K, V)(IDictionary(Of K, V), Func(Of K, Boolean))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,System.Boolean})
+    name: RemoveAllByKey
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAllByKey__2_System_Collections_Generic_IDictionary___0___1__System_Func___0_System_Boolean__
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAllByKey``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,System.Boolean})
+    name: RemoveAllByKey
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAllByKey__2_System_Collections_Generic_IDictionary___0___1__System_Func___0_System_Boolean__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,``1,System.Boolean})
+  commentId: M:Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,``1,System.Boolean})
+  isExternal: true
+  href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAll__2_System_Collections_Generic_IDictionary___0___1__System_Func___0___1_System_Boolean__
+  name: RemoveAll<K, V>(IDictionary<K, V>, Func<K, V, bool>)
+  nameWithType: DictExtensions.RemoveAll<K, V>(IDictionary<K, V>, Func<K, V, bool>)
+  fullName: Vintagestory.API.Util.DictExtensions.RemoveAll<K, V>(System.Collections.Generic.IDictionary<K, V>, System.Func<K, V, bool>)
+  nameWithType.vb: DictExtensions.RemoveAll(Of K, V)(IDictionary(Of K, V), Func(Of K, V, Boolean))
+  fullName.vb: Vintagestory.API.Util.DictExtensions.RemoveAll(Of K, V)(System.Collections.Generic.IDictionary(Of K, V), System.Func(Of K, V, Boolean))
+  name.vb: RemoveAll(Of K, V)(IDictionary(Of K, V), Func(Of K, V, Boolean))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,``1,System.Boolean})
+    name: RemoveAll
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAll__2_System_Collections_Generic_IDictionary___0___1__System_Func___0___1_System_Boolean__
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.DictExtensions.RemoveAll``2(System.Collections.Generic.IDictionary{``0,``1},System.Func{``0,``1,System.Boolean})
+    name: RemoveAll
+    href: Vintagestory.API.Util.DictExtensions.html#Vintagestory_API_Util_DictExtensions_RemoveAll__2_System_Collections_Generic_IDictionary___0___1__System_Func___0___1_System_Boolean__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: ','
+  - name: " "
+  - name: V
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<T>(IEnumerable<T>, Action<T>)
+  nameWithType: EnumerableExtensions.Foreach<T>(IEnumerable<T>, Action<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T))
+  name.vb: Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions
+  commentId: T:Vintagestory.API.Util.EnumerableExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Vintagestory.API.Util.EnumerableExtensions
+- uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  name: IndexOf<T>(IEnumerable<T>, ActionBoolReturn<T>)
+  nameWithType: EnumerableExtensions.IndexOf<T>(IEnumerable<T>, ActionBoolReturn<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.IndexOf<T>(System.Collections.Generic.IEnumerable<T>, Vintagestory.API.Common.ActionBoolReturn<T>)
+  nameWithType.vb: EnumerableExtensions.IndexOf(Of T)(IEnumerable(Of T), ActionBoolReturn(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.IndexOf(Of T)(System.Collections.Generic.IEnumerable(Of T), Vintagestory.API.Common.ActionBoolReturn(Of T))
+  name.vb: IndexOf(Of T)(IEnumerable(Of T), ActionBoolReturn(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.Nearest<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.#ctor*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.#ctor
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2__ctor_System_Collections_Generic_IDictionary__0__1__
+  name: RelaxedReadOnlyDictionary
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.RelaxedReadOnlyDictionary
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.RelaxedReadOnlyDictionary
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).New
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).New
+  name.vb: New
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Collections.Generic.KeyNotFoundException
+  commentId: T:System.Collections.Generic.KeyNotFoundException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keynotfoundexception
+  name: KeyNotFoundException
+  nameWithType: KeyNotFoundException
+  fullName: System.Collections.Generic.KeyNotFoundException
+- uid: System.NotSupportedException
+  commentId: T:System.NotSupportedException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.notsupportedexception
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Item*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Item
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Item__0_
+  name: this
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.this
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.this
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).this[]
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).this[]
+  name.vb: this[]
+- uid: System.Collections.Generic.IDictionary{{T},{K}}.Item({T})
+  commentId: P:System.Collections.Generic.IDictionary{`0,`1}.Item(`0)
+  parent: System.Collections.Generic.IDictionary{{T},{K}}
+  definition: System.Collections.Generic.IDictionary`2.Item(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.item
+  name: this[T]
+  nameWithType: IDictionary<T, K>.this[T]
+  fullName: System.Collections.Generic.IDictionary<T, K>.this[T]
+  nameWithType.vb: IDictionary(Of T, K).this[](T)
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K).this[](T)
+  name.vb: this[](T)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - name: T
+  - name: ']'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.Item(`0)
+    name: this[]
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.item
+  - name: (
+  - name: T
+  - name: )
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: '{K}'
+  commentId: '!:K'
+  definition: K
+  name: K
+  nameWithType: K
+  fullName: K
+- uid: System.Collections.Generic.IDictionary`2.Item(`0)
+  commentId: P:System.Collections.Generic.IDictionary`2.Item(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.item
+  name: this[TKey]
+  nameWithType: IDictionary<TKey, TValue>.this[TKey]
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>.this[TKey]
+  nameWithType.vb: IDictionary(Of TKey, TValue).this[](TKey)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue).this[](TKey)
+  name.vb: this[](TKey)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - name: TKey
+  - name: ']'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2.Item(`0)
+    name: this[]
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.item
+  - name: (
+  - name: TKey
+  - name: )
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: K
+  name: K
+  nameWithType: K
+  fullName: K
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Keys*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Keys
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Keys
+  name: Keys
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Keys
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Keys
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Keys
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Keys
+- uid: System.Collections.Generic.IDictionary{{T},{K}}.Keys
+  commentId: P:System.Collections.Generic.IDictionary{`0,`1}.Keys
+  parent: System.Collections.Generic.IDictionary{{T},{K}}
+  definition: System.Collections.Generic.IDictionary`2.Keys
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.keys
+  name: Keys
+  nameWithType: IDictionary<T, K>.Keys
+  fullName: System.Collections.Generic.IDictionary<T, K>.Keys
+  nameWithType.vb: IDictionary(Of T, K).Keys
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K).Keys
+- uid: System.Collections.Generic.ICollection{{T}}
+  commentId: T:System.Collections.Generic.ICollection{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2.Keys
+  commentId: P:System.Collections.Generic.IDictionary`2.Keys
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.keys
+  name: Keys
+  nameWithType: IDictionary<TKey, TValue>.Keys
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>.Keys
+  nameWithType.vb: IDictionary(Of TKey, TValue).Keys
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue).Keys
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Values*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Values
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Values
+  name: Values
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Values
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Values
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Values
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Values
+- uid: System.Collections.Generic.IDictionary{{T},{K}}.Values
+  commentId: P:System.Collections.Generic.IDictionary{`0,`1}.Values
+  parent: System.Collections.Generic.IDictionary{{T},{K}}
+  definition: System.Collections.Generic.IDictionary`2.Values
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.values
+  name: Values
+  nameWithType: IDictionary<T, K>.Values
+  fullName: System.Collections.Generic.IDictionary<T, K>.Values
+  nameWithType.vb: IDictionary(Of T, K).Values
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K).Values
+- uid: System.Collections.Generic.ICollection{{K}}
+  commentId: T:System.Collections.Generic.ICollection{`1}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<K>
+  nameWithType: ICollection<K>
+  fullName: System.Collections.Generic.ICollection<K>
+  nameWithType.vb: ICollection(Of K)
+  fullName.vb: System.Collections.Generic.ICollection(Of K)
+  name.vb: ICollection(Of K)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: K
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: K
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2.Values
+  commentId: P:System.Collections.Generic.IDictionary`2.Values
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.values
+  name: Values
+  nameWithType: IDictionary<TKey, TValue>.Values
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>.Values
+  nameWithType.vb: IDictionary(Of TKey, TValue).Values
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue).Values
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Count*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Count
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Count
+  name: Count
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Count
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Count
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Count
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Count
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Count
+  commentId: P:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Count
+  parent: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.ICollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<KeyValuePair<T, K>>.Count
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>.Count
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K)).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)).Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.ICollection`1.Count
+  commentId: P:System.Collections.Generic.ICollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<T>.Count
+  fullName: System.Collections.Generic.ICollection<T>.Count
+  nameWithType.vb: ICollection(Of T).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.IsReadOnly*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.IsReadOnly
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_IsReadOnly
+  name: IsReadOnly
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.IsReadOnly
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.IsReadOnly
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).IsReadOnly
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).IsReadOnly
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.IsReadOnly
+  parent: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.ICollection`1.IsReadOnly
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<KeyValuePair<T, K>>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>.IsReadOnly
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K)).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)).IsReadOnly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Generic.ICollection`1.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection`1.IsReadOnly
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<T>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<T>.IsReadOnly
+  nameWithType.vb: ICollection(Of T).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of T).IsReadOnly
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Add
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Add__0__1_
+  name: Add
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Add
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Add
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Add
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Add
+- uid: System.Collections.Generic.IDictionary{{T},{K}}.Add({T},{K})
+  commentId: M:System.Collections.Generic.IDictionary{`0,`1}.Add(`0,`1)
+  parent: System.Collections.Generic.IDictionary{{T},{K}}
+  definition: System.Collections.Generic.IDictionary`2.Add(`0,`1)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.add
+  name: Add(T, K)
+  nameWithType: IDictionary<T, K>.Add(T, K)
+  fullName: System.Collections.Generic.IDictionary<T, K>.Add(T, K)
+  nameWithType.vb: IDictionary(Of T, K).Add(T, K)
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K).Add(T, K)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.Add(`0,`1)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.add
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.Add(`0,`1)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.add
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2.Add(`0,`1)
+  commentId: M:System.Collections.Generic.IDictionary`2.Add(`0,`1)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.add
+  name: Add(TKey, TValue)
+  nameWithType: IDictionary<TKey, TValue>.Add(TKey, TValue)
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>.Add(TKey, TValue)
+  nameWithType.vb: IDictionary(Of TKey, TValue).Add(TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue).Add(TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2.Add(`0,`1)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.add
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2.Add(`0,`1)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.add
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Add(System.Collections.Generic.KeyValuePair{{T},{K}})
+  commentId: M:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.ICollection`1.Add(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  name: Add(KeyValuePair<T, K>)
+  nameWithType: ICollection<KeyValuePair<T, K>>.Add(KeyValuePair<T, K>)
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>.Add(System.Collections.Generic.KeyValuePair<T, K>)
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K)).Add(KeyValuePair(Of T, K))
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)).Add(System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: Add(KeyValuePair(Of T, K))
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.KeyValuePair{{T},{K}}
+  commentId: T:System.Collections.Generic.KeyValuePair{`0,`1}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.KeyValuePair`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: KeyValuePair<T, K>
+  nameWithType: KeyValuePair<T, K>
+  fullName: System.Collections.Generic.KeyValuePair<T, K>
+  nameWithType.vb: KeyValuePair(Of T, K)
+  fullName.vb: System.Collections.Generic.KeyValuePair(Of T, K)
+  name.vb: KeyValuePair(Of T, K)
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Add(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Add(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  name: Add(T)
+  nameWithType: ICollection<T>.Add(T)
+  fullName: System.Collections.Generic.ICollection<T>.Add(T)
+  nameWithType.vb: ICollection(Of T).Add(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Add(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.KeyValuePair`2
+  commentId: T:System.Collections.Generic.KeyValuePair`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: KeyValuePair<TKey, TValue>
+  nameWithType: KeyValuePair<TKey, TValue>
+  fullName: System.Collections.Generic.KeyValuePair<TKey, TValue>
+  nameWithType.vb: KeyValuePair(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.KeyValuePair(Of TKey, TValue)
+  name.vb: KeyValuePair(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Clear*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Clear
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Clear
+  name: Clear
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Clear
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Clear
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Clear
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Clear
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Clear
+  commentId: M:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Clear
+  parent: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.ICollection`1.Clear
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<KeyValuePair<T, K>>.Clear()
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>.Clear()
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K)).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Clear
+  commentId: M:System.Collections.Generic.ICollection`1.Clear
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<T>.Clear()
+  fullName: System.Collections.Generic.ICollection<T>.Clear()
+  nameWithType.vb: ICollection(Of T).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Contains*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Contains
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Contains_System_Collections_Generic_KeyValuePair__0__1__
+  name: Contains
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Contains
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Contains
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Contains
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Contains
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Contains(System.Collections.Generic.KeyValuePair{{T},{K}})
+  commentId: M:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.ICollection`1.Contains(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(KeyValuePair<T, K>)
+  nameWithType: ICollection<KeyValuePair<T, K>>.Contains(KeyValuePair<T, K>)
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>.Contains(System.Collections.Generic.KeyValuePair<T, K>)
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K)).Contains(KeyValuePair(Of T, K))
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)).Contains(System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: Contains(KeyValuePair(Of T, K))
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Contains(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Contains(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(T)
+  nameWithType: ICollection<T>.Contains(T)
+  fullName: System.Collections.Generic.ICollection<T>.Contains(T)
+  nameWithType.vb: ICollection(Of T).Contains(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Contains(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.ContainsKey*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.ContainsKey
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_ContainsKey__0_
+  name: ContainsKey
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.ContainsKey
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.ContainsKey
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).ContainsKey
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).ContainsKey
+- uid: System.Collections.Generic.IDictionary{{T},{K}}.ContainsKey({T})
+  commentId: M:System.Collections.Generic.IDictionary{`0,`1}.ContainsKey(`0)
+  parent: System.Collections.Generic.IDictionary{{T},{K}}
+  definition: System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.containskey
+  name: ContainsKey(T)
+  nameWithType: IDictionary<T, K>.ContainsKey(T)
+  fullName: System.Collections.Generic.IDictionary<T, K>.ContainsKey(T)
+  nameWithType.vb: IDictionary(Of T, K).ContainsKey(T)
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K).ContainsKey(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.containskey
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.containskey
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+  commentId: M:System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.containskey
+  name: ContainsKey(TKey)
+  nameWithType: IDictionary<TKey, TValue>.ContainsKey(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>.ContainsKey(TKey)
+  nameWithType.vb: IDictionary(Of TKey, TValue).ContainsKey(TKey)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue).ContainsKey(TKey)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.containskey
+  - name: (
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.containskey
+  - name: (
+  - name: TKey
+  - name: )
+- uid: System.Array
+  commentId: T:System.Array
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.array
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.CopyTo*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.CopyTo
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_CopyTo_System_Collections_Generic_KeyValuePair__0__1____System_Int32_
+  name: CopyTo
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.CopyTo
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.CopyTo
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).CopyTo
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).CopyTo
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.CopyTo(System.Collections.Generic.KeyValuePair{{T},{K}}[],System.Int32)
+  commentId: M:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  parent: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  name: CopyTo(KeyValuePair<T, K>[], int)
+  nameWithType: ICollection<KeyValuePair<T, K>>.CopyTo(KeyValuePair<T, K>[], int)
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>.CopyTo(System.Collections.Generic.KeyValuePair<T, K>[], int)
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K)).CopyTo(KeyValuePair(Of T, K)(), Integer)
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)).CopyTo(System.Collections.Generic.KeyValuePair(Of T, K)(), Integer)
+  name.vb: CopyTo(KeyValuePair(Of T, K)(), Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.KeyValuePair{{T},{K}}[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: KeyValuePair<T, K>[]
+  nameWithType: KeyValuePair<T, K>[]
+  fullName: System.Collections.Generic.KeyValuePair<T, K>[]
+  nameWithType.vb: KeyValuePair(Of T, K)()
+  fullName.vb: System.Collections.Generic.KeyValuePair(Of T, K)()
+  name.vb: KeyValuePair(Of T, K)()
+  spec.csharp:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  commentId: M:System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  name: CopyTo(T[], int)
+  nameWithType: ICollection<T>.CopyTo(T[], int)
+  fullName: System.Collections.Generic.ICollection<T>.CopyTo(T[], int)
+  nameWithType.vb: ICollection(Of T).CopyTo(T(), Integer)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).CopyTo(T(), Integer)
+  name.vb: CopyTo(T(), Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.GetEnumerator*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.GetEnumerator
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_GetEnumerator
+  name: GetEnumerator
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.GetEnumerator
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.GetEnumerator
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).GetEnumerator
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{{T},{K}}}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<KeyValuePair<T, K>>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<T, K>>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of T, K)).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of T, K)).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{`0,`1}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  commentId: T:System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{`0,`1}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<KeyValuePair<T, K>>
+  nameWithType: IEnumerator<KeyValuePair<T, K>>
+  fullName: System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<T, K>>
+  nameWithType.vb: IEnumerator(Of KeyValuePair(Of T, K))
+  fullName.vb: System.Collections.Generic.IEnumerator(Of System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: IEnumerator(Of KeyValuePair(Of T, K))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.Remove
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_Remove__0_
+  name: Remove
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.Remove
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.Remove
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).Remove
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).Remove
+- uid: System.Collections.Generic.IDictionary{{T},{K}}.Remove({T})
+  commentId: M:System.Collections.Generic.IDictionary{`0,`1}.Remove(`0)
+  parent: System.Collections.Generic.IDictionary{{T},{K}}
+  definition: System.Collections.Generic.IDictionary`2.Remove(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.remove
+  name: Remove(T)
+  nameWithType: IDictionary<T, K>.Remove(T)
+  fullName: System.Collections.Generic.IDictionary<T, K>.Remove(T)
+  nameWithType.vb: IDictionary(Of T, K).Remove(T)
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K).Remove(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.remove
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.remove
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2.Remove(`0)
+  commentId: M:System.Collections.Generic.IDictionary`2.Remove(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.remove
+  name: Remove(TKey)
+  nameWithType: IDictionary<TKey, TValue>.Remove(TKey)
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>.Remove(TKey)
+  nameWithType.vb: IDictionary(Of TKey, TValue).Remove(TKey)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue).Remove(TKey)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.remove
+  - name: (
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.remove
+  - name: (
+  - name: TKey
+  - name: )
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}.Remove(System.Collections.Generic.KeyValuePair{{T},{K}})
+  commentId: M:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  parent: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{{T},{K}}}
+  definition: System.Collections.Generic.ICollection`1.Remove(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(KeyValuePair<T, K>)
+  nameWithType: ICollection<KeyValuePair<T, K>>.Remove(KeyValuePair<T, K>)
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<T, K>>.Remove(System.Collections.Generic.KeyValuePair<T, K>)
+  nameWithType.vb: ICollection(Of KeyValuePair(Of T, K)).Remove(KeyValuePair(Of T, K))
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of T, K)).Remove(System.Collections.Generic.KeyValuePair(Of T, K))
+  name.vb: Remove(KeyValuePair(Of T, K))
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{`0,`1}}.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Remove(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Remove(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(T)
+  nameWithType: ICollection<T>.Remove(T)
+  fullName: System.Collections.Generic.ICollection<T>.Remove(T)
+  nameWithType.vb: ICollection(Of T).Remove(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Remove(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.TryGetValue*
+  commentId: Overload:Vintagestory.API.Util.RelaxedReadOnlyDictionary`2.TryGetValue
+  href: Vintagestory.API.Util.RelaxedReadOnlyDictionary-2.html#Vintagestory_API_Util_RelaxedReadOnlyDictionary_2_TryGetValue__0__1__
+  name: TryGetValue
+  nameWithType: RelaxedReadOnlyDictionary<T, K>.TryGetValue
+  fullName: Vintagestory.API.Util.RelaxedReadOnlyDictionary<T, K>.TryGetValue
+  nameWithType.vb: RelaxedReadOnlyDictionary(Of T, K).TryGetValue
+  fullName.vb: Vintagestory.API.Util.RelaxedReadOnlyDictionary(Of T, K).TryGetValue
+- uid: System.Collections.Generic.IDictionary{{T},{K}}.TryGetValue({T},{K}@)
+  commentId: M:System.Collections.Generic.IDictionary{`0,`1}.TryGetValue(`0,`1@)
+  parent: System.Collections.Generic.IDictionary{{T},{K}}
+  definition: System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.trygetvalue
+  name: TryGetValue(T, out K)
+  nameWithType: IDictionary<T, K>.TryGetValue(T, out K)
+  fullName: System.Collections.Generic.IDictionary<T, K>.TryGetValue(T, out K)
+  nameWithType.vb: IDictionary(Of T, K).TryGetValue(T, K)
+  fullName.vb: System.Collections.Generic.IDictionary(Of T, K).TryGetValue(T, K)
+  name.vb: TryGetValue(T, K)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.trygetvalue
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: K
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary{`0,`1}.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.trygetvalue
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - name: K
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+  commentId: M:System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.trygetvalue
+  name: TryGetValue(TKey, out TValue)
+  nameWithType: IDictionary<TKey, TValue>.TryGetValue(TKey, out TValue)
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>.TryGetValue(TKey, out TValue)
+  nameWithType.vb: IDictionary(Of TKey, TValue).TryGetValue(TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue).TryGetValue(TKey, TValue)
+  name.vb: TryGetValue(TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.trygetvalue
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2.trygetvalue
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )

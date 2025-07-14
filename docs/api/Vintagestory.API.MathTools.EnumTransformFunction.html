@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum EnumTransformFunction | VintageStory API ">
       
-      <meta name="description" content="Used for EvolvingNatFloat value transforms">
+      <meta name="description" content="Used for EvolvingNatFloat value transforms Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumTransformFunction
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Used for EvolvingNatFloat value transforms</p>
+  <div class="markdown summary"><p>Used for EvolvingNatFloat value transforms <a href=https://github.com/anegostudios/vsapi/blob/master///Math/EnumTransformFunction.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -129,40 +129,52 @@ public enum EnumTransformFunction</code></pre>
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_CLAMPEDPOSITIVESINUS"><code>CLAMPEDPOSITIVESINUS = 9</code></dt>
-    <dd><p>firstval * GameMath.Min(5 * Math.Abs(GameMath.FastSin(factor * seq)), 1)</p>
+  
+  <dd><p>firstval * GameMath.Min(5 * Math.Abs(GameMath.FastSin(factor * seq)), 1)</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_COSINUS"><code>COSINUS = 10</code></dt>
-    <dd><p>firstval + GameMath.FastCos(factor * seq)</p>
+  
+  <dd><p>firstval + GameMath.FastCos(factor * seq)</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_IDENTICAL"><code>IDENTICAL = 0</code></dt>
-    <dd><p>y = firstval</p>
+  
+  <dd><p>y = firstval</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_INVERSELINEAR"><code>INVERSELINEAR = 6</code></dt>
-    <dd><p>firstval + 1f / (1f + factor * seq)</p>
+  
+  <dd><p>firstval + 1f / (1f + factor * seq)</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_LINEAR"><code>LINEAR = 1</code></dt>
-    <dd><p>y = firstval + factor * seq</p>
+  
+  <dd><p>y = firstval + factor * seq</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_LINEARINCREASE"><code>LINEARINCREASE = 4</code></dt>
-    <dd><p>firstval + firstval / Math.Abs(firstval) * factor * seq</p>
+  
+  <dd><p>firstval + firstval / Math.Abs(firstval) * factor * seq</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_LINEARNULLIFY"><code>LINEARNULLIFY = 2</code></dt>
-    <dd><p>y = factor &gt; 0 ? Math.Min(0, firstval + factor * seq) : Math.Max(0, firstval + factor * seq)</p>
+  
+  <dd><p>y = factor &gt; 0 ? Math.Min(0, firstval + factor * seq) : Math.Max(0, firstval + factor * seq)</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_LINEARREDUCE"><code>LINEARREDUCE = 3</code></dt>
-    <dd><p>firstval - firstval / Math.Abs(firstval) * factor * seq</p>
+  
+  <dd><p>firstval - firstval / Math.Abs(firstval) * factor * seq</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_QUADRATIC"><code>QUADRATIC = 5</code></dt>
-    <dd><p>firstval + Math.Sign(factor) * (factor * seq) * (factor * seq)</p>
+  
+  <dd><p>firstval + Math.Sign(factor) * (factor * seq) * (factor * seq)</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_ROOT"><code>ROOT = 7</code></dt>
-    <dd><p>firstval + (float)Math.Sqrt(factor * seq)</p>
+  
+  <dd><p>firstval + (float)Math.Sqrt(factor * seq)</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_SINUS"><code>SINUS = 8</code></dt>
-    <dd><p>firstval + GameMath.FastSin(factor * seq)</p>
+  
+  <dd><p>firstval + GameMath.FastSin(factor * seq)</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumTransformFunction_SMOOTHSTEP"><code>SMOOTHSTEP = 11</code></dt>
-    <dd><p>firstval + GameMath.SmoothStep(factor * seq)</p>
+  
+  <dd><p>firstval + GameMath.SmoothStep(factor * seq)</p>
 </dd>
   </dl>
 

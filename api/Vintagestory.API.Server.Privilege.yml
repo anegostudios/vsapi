@@ -1,0 +1,1137 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.Privilege
+  commentId: T:Vintagestory.API.Server.Privilege
+  id: Privilege
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.Privilege.AllCodes
+  - Vintagestory.API.Server.Privilege.announce
+  - Vintagestory.API.Server.Privilege.attackcreatures
+  - Vintagestory.API.Server.Privilege.attackplayers
+  - Vintagestory.API.Server.Privilege.ban
+  - Vintagestory.API.Server.Privilege.buildblocks
+  - Vintagestory.API.Server.Privilege.buildblockseverywhere
+  - Vintagestory.API.Server.Privilege.chat
+  - Vintagestory.API.Server.Privilege.claimland
+  - Vintagestory.API.Server.Privilege.commandplayer
+  - Vintagestory.API.Server.Privilege.controlplayergroups
+  - Vintagestory.API.Server.Privilege.controlserver
+  - Vintagestory.API.Server.Privilege.freemove
+  - Vintagestory.API.Server.Privilege.gamemode
+  - Vintagestory.API.Server.Privilege.give
+  - Vintagestory.API.Server.Privilege.grantrevoke
+  - Vintagestory.API.Server.Privilege.kick
+  - Vintagestory.API.Server.Privilege.manageplayergroups
+  - Vintagestory.API.Server.Privilege.pickingrange
+  - Vintagestory.API.Server.Privilege.readlists
+  - Vintagestory.API.Server.Privilege.root
+  - Vintagestory.API.Server.Privilege.selfkill
+  - Vintagestory.API.Server.Privilege.setspawn
+  - Vintagestory.API.Server.Privilege.setwelcome
+  - Vintagestory.API.Server.Privilege.time
+  - Vintagestory.API.Server.Privilege.tp
+  - Vintagestory.API.Server.Privilege.useblock
+  - Vintagestory.API.Server.Privilege.useblockseverywhere
+  - Vintagestory.API.Server.Privilege.whitelist
+  langs:
+  - csharp
+  - vb
+  name: Privilege
+  nameWithType: Privilege
+  fullName: Vintagestory.API.Server.Privilege
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public class Privilege
+    content.vb: Public Class Privilege
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Server.Privilege.AllCodes
+  commentId: M:Vintagestory.API.Server.Privilege.AllCodes
+  id: AllCodes
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: AllCodes()
+  nameWithType: Privilege.AllCodes()
+  fullName: Vintagestory.API.Server.Privilege.AllCodes()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public static string[] AllCodes()
+    return:
+      type: System.String[]
+    content.vb: Public Shared Function AllCodes() As String()
+  overload: Vintagestory.API.Server.Privilege.AllCodes*
+- uid: Vintagestory.API.Server.Privilege.buildblocks
+  commentId: F:Vintagestory.API.Server.Privilege.buildblocks
+  id: buildblocks
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: buildblocks
+  nameWithType: Privilege.buildblocks
+  fullName: Vintagestory.API.Server.Privilege.buildblocks
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Place or break blocks
+  example: []
+  syntax:
+    content: public static string buildblocks
+    return:
+      type: System.String
+    content.vb: Public Shared buildblocks As String
+- uid: Vintagestory.API.Server.Privilege.useblock
+  commentId: F:Vintagestory.API.Server.Privilege.useblock
+  id: useblock
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: useblock
+  nameWithType: Privilege.useblock
+  fullName: Vintagestory.API.Server.Privilege.useblock
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Interact with block (e.g. door, chest)
+  example: []
+  syntax:
+    content: public static string useblock
+    return:
+      type: System.String
+    content.vb: Public Shared useblock As String
+- uid: Vintagestory.API.Server.Privilege.buildblockseverywhere
+  commentId: F:Vintagestory.API.Server.Privilege.buildblockseverywhere
+  id: buildblockseverywhere
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: buildblockseverywhere
+  nameWithType: Privilege.buildblockseverywhere
+  fullName: Vintagestory.API.Server.Privilege.buildblockseverywhere
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Place or break blocks everywhere, completely ignoring area permissons. You still need to be in creative mode however.
+  example: []
+  syntax:
+    content: public static string buildblockseverywhere
+    return:
+      type: System.String
+    content.vb: Public Shared buildblockseverywhere As String
+- uid: Vintagestory.API.Server.Privilege.useblockseverywhere
+  commentId: F:Vintagestory.API.Server.Privilege.useblockseverywhere
+  id: useblockseverywhere
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: useblockseverywhere
+  nameWithType: Privilege.useblockseverywhere
+  fullName: Vintagestory.API.Server.Privilege.useblockseverywhere
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Use blocks everywhere, completely ignoring area permissons. You still need to be in creative mode however.
+  example: []
+  syntax:
+    content: public static string useblockseverywhere
+    return:
+      type: System.String
+    content.vb: Public Shared useblockseverywhere As String
+- uid: Vintagestory.API.Server.Privilege.attackplayers
+  commentId: F:Vintagestory.API.Server.Privilege.attackplayers
+  id: attackplayers
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: attackplayers
+  nameWithType: Privilege.attackplayers
+  fullName: Vintagestory.API.Server.Privilege.attackplayers
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Cause damage to a player
+  example: []
+  syntax:
+    content: public static string attackplayers
+    return:
+      type: System.String
+    content.vb: Public Shared attackplayers As String
+- uid: Vintagestory.API.Server.Privilege.attackcreatures
+  commentId: F:Vintagestory.API.Server.Privilege.attackcreatures
+  id: attackcreatures
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: attackcreatures
+  nameWithType: Privilege.attackcreatures
+  fullName: Vintagestory.API.Server.Privilege.attackcreatures
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Cause damage to any non-player creature
+  example: []
+  syntax:
+    content: public static string attackcreatures
+    return:
+      type: System.String
+    content.vb: Public Shared attackcreatures As String
+- uid: Vintagestory.API.Server.Privilege.freemove
+  commentId: F:Vintagestory.API.Server.Privilege.freemove
+  id: freemove
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: freemove
+  nameWithType: Privilege.freemove
+  fullName: Vintagestory.API.Server.Privilege.freemove
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to fly or change movepseed
+  example: []
+  syntax:
+    content: public static string freemove
+    return:
+      type: System.String
+    content.vb: Public Shared freemove As String
+- uid: Vintagestory.API.Server.Privilege.gamemode
+  commentId: F:Vintagestory.API.Server.Privilege.gamemode
+  id: gamemode
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: gamemode
+  nameWithType: Privilege.gamemode
+  fullName: Vintagestory.API.Server.Privilege.gamemode
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to set own game mode
+  example: []
+  syntax:
+    content: public static string gamemode
+    return:
+      type: System.String
+    content.vb: Public Shared gamemode As String
+- uid: Vintagestory.API.Server.Privilege.pickingrange
+  commentId: F:Vintagestory.API.Server.Privilege.pickingrange
+  id: pickingrange
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: pickingrange
+  nameWithType: Privilege.pickingrange
+  fullName: Vintagestory.API.Server.Privilege.pickingrange
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to set own picking range
+  example: []
+  syntax:
+    content: public static string pickingrange
+    return:
+      type: System.String
+    content.vb: Public Shared pickingrange As String
+- uid: Vintagestory.API.Server.Privilege.chat
+  commentId: F:Vintagestory.API.Server.Privilege.chat
+  id: chat
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: chat
+  nameWithType: Privilege.chat
+  fullName: Vintagestory.API.Server.Privilege.chat
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to chat
+  example: []
+  syntax:
+    content: public static string chat
+    return:
+      type: System.String
+    content.vb: Public Shared chat As String
+- uid: Vintagestory.API.Server.Privilege.selfkill
+  commentId: F:Vintagestory.API.Server.Privilege.selfkill
+  id: selfkill
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: selfkill
+  nameWithType: Privilege.selfkill
+  fullName: Vintagestory.API.Server.Privilege.selfkill
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to use the /kill command
+  example: []
+  syntax:
+    content: public static string selfkill
+    return:
+      type: System.String
+    content.vb: Public Shared selfkill As String
+- uid: Vintagestory.API.Server.Privilege.kick
+  commentId: F:Vintagestory.API.Server.Privilege.kick
+  id: kick
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: kick
+  nameWithType: Privilege.kick
+  fullName: Vintagestory.API.Server.Privilege.kick
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to kick players
+  example: []
+  syntax:
+    content: public static string kick
+    return:
+      type: System.String
+    content.vb: Public Shared kick As String
+- uid: Vintagestory.API.Server.Privilege.ban
+  commentId: F:Vintagestory.API.Server.Privilege.ban
+  id: ban
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: ban
+  nameWithType: Privilege.ban
+  fullName: Vintagestory.API.Server.Privilege.ban
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to ban/unban a player
+  example: []
+  syntax:
+    content: public static string ban
+    return:
+      type: System.String
+    content.vb: Public Shared ban As String
+- uid: Vintagestory.API.Server.Privilege.whitelist
+  commentId: F:Vintagestory.API.Server.Privilege.whitelist
+  id: whitelist
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: whitelist
+  nameWithType: Privilege.whitelist
+  fullName: Vintagestory.API.Server.Privilege.whitelist
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to whitelist/unwhitelist a player
+  example: []
+  syntax:
+    content: public static string whitelist
+    return:
+      type: System.String
+    content.vb: Public Shared whitelist As String
+- uid: Vintagestory.API.Server.Privilege.setwelcome
+  commentId: F:Vintagestory.API.Server.Privilege.setwelcome
+  id: setwelcome
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: setwelcome
+  nameWithType: Privilege.setwelcome
+  fullName: Vintagestory.API.Server.Privilege.setwelcome
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to set welcome message
+  example: []
+  syntax:
+    content: public static string setwelcome
+    return:
+      type: System.String
+    content.vb: Public Shared setwelcome As String
+- uid: Vintagestory.API.Server.Privilege.announce
+  commentId: F:Vintagestory.API.Server.Privilege.announce
+  id: announce
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: announce
+  nameWithType: Privilege.announce
+  fullName: Vintagestory.API.Server.Privilege.announce
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to make a server wide announcement
+  example: []
+  syntax:
+    content: public static string announce
+    return:
+      type: System.String
+    content.vb: Public Shared announce As String
+- uid: Vintagestory.API.Server.Privilege.readlists
+  commentId: F:Vintagestory.API.Server.Privilege.readlists
+  id: readlists
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: readlists
+  nameWithType: Privilege.readlists
+  fullName: Vintagestory.API.Server.Privilege.readlists
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to see client, group, banned user and area lists
+  example: []
+  syntax:
+    content: public static string readlists
+    return:
+      type: System.String
+    content.vb: Public Shared readlists As String
+- uid: Vintagestory.API.Server.Privilege.give
+  commentId: F:Vintagestory.API.Server.Privilege.give
+  id: give
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: give
+  nameWithType: Privilege.give
+  fullName: Vintagestory.API.Server.Privilege.give
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to create block from given block id
+  example: []
+  syntax:
+    content: public static string give
+    return:
+      type: System.String
+    content.vb: Public Shared give As String
+- uid: Vintagestory.API.Server.Privilege.claimland
+  commentId: F:Vintagestory.API.Server.Privilege.claimland
+  id: claimland
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: claimland
+  nameWithType: Privilege.claimland
+  fullName: Vintagestory.API.Server.Privilege.claimland
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to claim lands
+  example: []
+  syntax:
+    content: public static string claimland
+    return:
+      type: System.String
+    content.vb: Public Shared claimland As String
+- uid: Vintagestory.API.Server.Privilege.setspawn
+  commentId: F:Vintagestory.API.Server.Privilege.setspawn
+  id: setspawn
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: setspawn
+  nameWithType: Privilege.setspawn
+  fullName: Vintagestory.API.Server.Privilege.setspawn
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to set default spawn
+  example: []
+  syntax:
+    content: public static string setspawn
+    return:
+      type: System.String
+    content.vb: Public Shared setspawn As String
+- uid: Vintagestory.API.Server.Privilege.controlserver
+  commentId: F:Vintagestory.API.Server.Privilege.controlserver
+  id: controlserver
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: controlserver
+  nameWithType: Privilege.controlserver
+  fullName: Vintagestory.API.Server.Privilege.controlserver
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to restart/shutdown server, reload mods, etc.
+  example: []
+  syntax:
+    content: public static string controlserver
+    return:
+      type: System.String
+    content.vb: Public Shared controlserver As String
+- uid: Vintagestory.API.Server.Privilege.tp
+  commentId: F:Vintagestory.API.Server.Privilege.tp
+  id: tp
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: tp
+  nameWithType: Privilege.tp
+  fullName: Vintagestory.API.Server.Privilege.tp
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to teleport
+  example: []
+  syntax:
+    content: public static string tp
+    return:
+      type: System.String
+    content.vb: Public Shared tp As String
+- uid: Vintagestory.API.Server.Privilege.time
+  commentId: F:Vintagestory.API.Server.Privilege.time
+  id: time
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: time
+  nameWithType: Privilege.time
+  fullName: Vintagestory.API.Server.Privilege.time
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to read, modify game world time
+  example: []
+  syntax:
+    content: public static string time
+    return:
+      type: System.String
+    content.vb: Public Shared time As String
+- uid: Vintagestory.API.Server.Privilege.grantrevoke
+  commentId: F:Vintagestory.API.Server.Privilege.grantrevoke
+  id: grantrevoke
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: grantrevoke
+  nameWithType: Privilege.grantrevoke
+  fullName: Vintagestory.API.Server.Privilege.grantrevoke
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to set player role and ability to grant/revoke individual privileges. A player can only grant the same or a lower level group and the same or less privileges.
+  example: []
+  syntax:
+    content: public static string grantrevoke
+    return:
+      type: System.String
+    content.vb: Public Shared grantrevoke As String
+- uid: Vintagestory.API.Server.Privilege.root
+  commentId: F:Vintagestory.API.Server.Privilege.root
+  id: root
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: root
+  nameWithType: Privilege.root
+  fullName: Vintagestory.API.Server.Privilege.root
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to do everything and have all permissions
+  example: []
+  syntax:
+    content: public static string root
+    return:
+      type: System.String
+    content.vb: Public Shared root As String
+- uid: Vintagestory.API.Server.Privilege.commandplayer
+  commentId: F:Vintagestory.API.Server.Privilege.commandplayer
+  id: commandplayer
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: commandplayer
+  nameWithType: Privilege.commandplayer
+  fullName: Vintagestory.API.Server.Privilege.commandplayer
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to issue a command for another player (e.g. teleport another player or set another players game mode)
+  example: []
+  syntax:
+    content: public static string commandplayer
+    return:
+      type: System.String
+    content.vb: Public Shared commandplayer As String
+- uid: Vintagestory.API.Server.Privilege.controlplayergroups
+  commentId: F:Vintagestory.API.Server.Privilege.controlplayergroups
+  id: controlplayergroups
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: controlplayergroups
+  nameWithType: Privilege.controlplayergroups
+  fullName: Vintagestory.API.Server.Privilege.controlplayergroups
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to join/leave/invite/op own player groups and their chat channels
+  example: []
+  syntax:
+    content: public static string controlplayergroups
+    return:
+      type: System.String
+    content.vb: Public Shared controlplayergroups As String
+- uid: Vintagestory.API.Server.Privilege.manageplayergroups
+  commentId: F:Vintagestory.API.Server.Privilege.manageplayergroups
+  id: manageplayergroups
+  parent: Vintagestory.API.Server.Privilege
+  langs:
+  - csharp
+  - vb
+  name: manageplayergroups
+  nameWithType: Privilege.manageplayergroups
+  fullName: Vintagestory.API.Server.Privilege.manageplayergroups
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Ability to create/disband own player groups and their chat channels
+  example: []
+  syntax:
+    content: public static string manageplayergroups
+    return:
+      type: System.String
+    content.vb: Public Shared manageplayergroups As String
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Server.Privilege.AllCodes*
+  commentId: Overload:Vintagestory.API.Server.Privilege.AllCodes
+  href: Vintagestory.API.Server.Privilege.html#Vintagestory_API_Server_Privilege_AllCodes
+  name: AllCodes
+  nameWithType: Privilege.AllCodes
+  fullName: Vintagestory.API.Server.Privilege.AllCodes
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

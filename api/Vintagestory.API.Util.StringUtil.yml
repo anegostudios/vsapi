@@ -1,0 +1,1274 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Util.StringUtil
+  commentId: T:Vintagestory.API.Util.StringUtil
+  id: StringUtil
+  parent: Vintagestory.API.Util
+  children:
+  - Vintagestory.API.Util.StringUtil.CompareOrdinal(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.ContainsFast(System.String,System.Char)
+  - Vintagestory.API.Util.StringUtil.ContainsFast(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.CountChars(System.String,System.Char)
+  - Vintagestory.API.Util.StringUtil.EndsWithOrdinal(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.EqualsFast(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.FastStartsWith(System.String,System.String,System.Int32)
+  - Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode(System.String)
+  - Vintagestory.API.Util.StringUtil.IndexOfOrdinal(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.RemoveDiacritics(System.String)
+  - Vintagestory.API.Util.StringUtil.RemoveFileEnding(System.String)
+  - Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String,System.Int32)
+  - Vintagestory.API.Util.StringUtil.StartsWithOrdinal(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.ToBool(System.String,System.Boolean)
+  - Vintagestory.API.Util.StringUtil.ToDouble(System.String,System.Double)
+  - Vintagestory.API.Util.StringUtil.ToDoubleOrNull(System.String,System.Nullable{System.Double})
+  - Vintagestory.API.Util.StringUtil.ToFloat(System.String,System.Single)
+  - Vintagestory.API.Util.StringUtil.ToFloatOrNull(System.String,System.Nullable{System.Single})
+  - Vintagestory.API.Util.StringUtil.ToInt(System.String,System.Int32)
+  - Vintagestory.API.Util.StringUtil.ToLong(System.String,System.Int64)
+  - Vintagestory.API.Util.StringUtil.UcFirst(System.String)
+  langs:
+  - csharp
+  - vb
+  name: StringUtil
+  nameWithType: StringUtil
+  fullName: Vintagestory.API.Util.StringUtil
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static class StringUtil
+    content.vb: Public Module StringUtil
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode(System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode(System.String)
+  id: GetNonRandomizedHashCode(System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: GetNonRandomizedHashCode(string)
+  nameWithType: StringUtil.GetNonRandomizedHashCode(string)
+  fullName: Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static int GetNonRandomizedHashCode(this string str)
+    parameters:
+    - id: str
+      type: System.String
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function GetNonRandomizedHashCode(str As String) As Integer
+  overload: Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode*
+  nameWithType.vb: StringUtil.GetNonRandomizedHashCode(String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode(String)
+  name.vb: GetNonRandomizedHashCode(String)
+- uid: Vintagestory.API.Util.StringUtil.IndexOfOrdinal(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.IndexOfOrdinal(System.String,System.String)
+  id: IndexOfOrdinal(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: IndexOfOrdinal(string, string)
+  nameWithType: StringUtil.IndexOfOrdinal(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.IndexOfOrdinal(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: >-
+    IMPORTANT!   This method should be used for every IndexOf operation in our code (except possibly in localised output to the user). This is important in order to avoid any
+
+    culture-specific different results even when indexing GLSL shader code or other code strings, etc., or other strings in English, when the current culture is a different language
+
+    (Known issue in the Thai language which has no spaces and treats punctuation marks as invisible, see https://github.com/dotnet/runtime/issues/59120)
+
+    <br />See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+  example: []
+  syntax:
+    content: public static int IndexOfOrdinal(this string a, string b)
+    parameters:
+    - id: a
+      type: System.String
+      description: ''
+    - id: b
+      type: System.String
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Shared Function IndexOfOrdinal(a As String, b As String) As Integer
+  overload: Vintagestory.API.Util.StringUtil.IndexOfOrdinal*
+  nameWithType.vb: StringUtil.IndexOfOrdinal(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.IndexOfOrdinal(String, String)
+  name.vb: IndexOfOrdinal(String, String)
+- uid: Vintagestory.API.Util.StringUtil.StartsWithOrdinal(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.StartsWithOrdinal(System.String,System.String)
+  id: StartsWithOrdinal(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: StartsWithOrdinal(string, string)
+  nameWithType: StringUtil.StartsWithOrdinal(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.StartsWithOrdinal(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: >-
+    IMPORTANT!   This method should be used for every StartsWith operation in our code (except possibly in localised output to the user). This is important in order to avoid any
+
+    culture-specific different results even when examining strings in English, when the user machine's current culture is a different language
+
+    (Known issue in the Thai language which has no spaces and treats punctuation marks as invisible, see https://github.com/dotnet/runtime/issues/59120)
+
+    <br />See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+  example: []
+  syntax:
+    content: public static bool StartsWithOrdinal(this string a, string b)
+    parameters:
+    - id: a
+      type: System.String
+      description: ''
+    - id: b
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function StartsWithOrdinal(a As String, b As String) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.StartsWithOrdinal*
+  nameWithType.vb: StringUtil.StartsWithOrdinal(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.StartsWithOrdinal(String, String)
+  name.vb: StartsWithOrdinal(String, String)
+- uid: Vintagestory.API.Util.StringUtil.EndsWithOrdinal(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.EndsWithOrdinal(System.String,System.String)
+  id: EndsWithOrdinal(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: EndsWithOrdinal(string, string)
+  nameWithType: StringUtil.EndsWithOrdinal(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.EndsWithOrdinal(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: >-
+    IMPORTANT!   This method should be used for every EndsWith operation in our code (except possibly in localised output to the user). This is important in order to avoid any
+
+    culture-specific different results even when examining strings in English, when the user machine's current culture is a different language
+
+    (Known issue in the Thai language which has no spaces and treats punctuation marks as invisible, see https://github.com/dotnet/runtime/issues/59120)
+
+    <br />See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+  example: []
+  syntax:
+    content: public static bool EndsWithOrdinal(this string a, string b)
+    parameters:
+    - id: a
+      type: System.String
+      description: ''
+    - id: b
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function EndsWithOrdinal(a As String, b As String) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.EndsWithOrdinal*
+  nameWithType.vb: StringUtil.EndsWithOrdinal(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.EndsWithOrdinal(String, String)
+  name.vb: EndsWithOrdinal(String, String)
+- uid: Vintagestory.API.Util.StringUtil.CompareOrdinal(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.CompareOrdinal(System.String,System.String)
+  id: CompareOrdinal(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: CompareOrdinal(string, string)
+  nameWithType: StringUtil.CompareOrdinal(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.CompareOrdinal(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: >-
+    This should be used for every string comparison when ordering strings (except possibly in localised output to the user) in order to avoid any
+
+    culture specific string comparison issues in certain languages (worst in the Thai language which has no spaces and treats punctuation marks as invisible)
+
+    <br />See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+  example: []
+  syntax:
+    content: public static int CompareOrdinal(this string a, string b)
+    parameters:
+    - id: a
+      type: System.String
+      description: ''
+    - id: b
+      type: System.String
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Shared Function CompareOrdinal(a As String, b As String) As Integer
+  overload: Vintagestory.API.Util.StringUtil.CompareOrdinal*
+  nameWithType.vb: StringUtil.CompareOrdinal(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.CompareOrdinal(String, String)
+  name.vb: CompareOrdinal(String, String)
+- uid: Vintagestory.API.Util.StringUtil.UcFirst(System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.UcFirst(System.String)
+  id: UcFirst(System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: UcFirst(string)
+  nameWithType: StringUtil.UcFirst(string)
+  fullName: Vintagestory.API.Util.StringUtil.UcFirst(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Convert the first character to an uppercase one
+  example: []
+  syntax:
+    content: public static string UcFirst(this string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Shared Function UcFirst(text As String) As String
+  overload: Vintagestory.API.Util.StringUtil.UcFirst*
+  nameWithType.vb: StringUtil.UcFirst(String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.UcFirst(String)
+  name.vb: UcFirst(String)
+- uid: Vintagestory.API.Util.StringUtil.ToBool(System.String,System.Boolean)
+  commentId: M:Vintagestory.API.Util.StringUtil.ToBool(System.String,System.Boolean)
+  id: ToBool(System.String,System.Boolean)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ToBool(string, bool)
+  nameWithType: StringUtil.ToBool(string, bool)
+  fullName: Vintagestory.API.Util.StringUtil.ToBool(string, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool ToBool(this string text, bool defaultValue = false)
+    parameters:
+    - id: text
+      type: System.String
+    - id: defaultValue
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function ToBool(text As String, defaultValue As Boolean = False) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.ToBool*
+  nameWithType.vb: StringUtil.ToBool(String, Boolean)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToBool(String, Boolean)
+  name.vb: ToBool(String, Boolean)
+- uid: Vintagestory.API.Util.StringUtil.RemoveFileEnding(System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.RemoveFileEnding(System.String)
+  id: RemoveFileEnding(System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: RemoveFileEnding(string)
+  nameWithType: StringUtil.RemoveFileEnding(string)
+  fullName: Vintagestory.API.Util.StringUtil.RemoveFileEnding(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static string RemoveFileEnding(this string text)
+    parameters:
+    - id: text
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function RemoveFileEnding(text As String) As String
+  overload: Vintagestory.API.Util.StringUtil.RemoveFileEnding*
+  nameWithType.vb: StringUtil.RemoveFileEnding(String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.RemoveFileEnding(String)
+  name.vb: RemoveFileEnding(String)
+- uid: Vintagestory.API.Util.StringUtil.ToInt(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Util.StringUtil.ToInt(System.String,System.Int32)
+  id: ToInt(System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ToInt(string, int)
+  nameWithType: StringUtil.ToInt(string, int)
+  fullName: Vintagestory.API.Util.StringUtil.ToInt(string, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static int ToInt(this string text, int defaultValue = 0)
+    parameters:
+    - id: text
+      type: System.String
+    - id: defaultValue
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function ToInt(text As String, defaultValue As Integer = 0) As Integer
+  overload: Vintagestory.API.Util.StringUtil.ToInt*
+  nameWithType.vb: StringUtil.ToInt(String, Integer)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToInt(String, Integer)
+  name.vb: ToInt(String, Integer)
+- uid: Vintagestory.API.Util.StringUtil.ToLong(System.String,System.Int64)
+  commentId: M:Vintagestory.API.Util.StringUtil.ToLong(System.String,System.Int64)
+  id: ToLong(System.String,System.Int64)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ToLong(string, long)
+  nameWithType: StringUtil.ToLong(string, long)
+  fullName: Vintagestory.API.Util.StringUtil.ToLong(string, long)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static long ToLong(this string text, long defaultValue = 0)
+    parameters:
+    - id: text
+      type: System.String
+    - id: defaultValue
+      type: System.Int64
+    return:
+      type: System.Int64
+    content.vb: Public Shared Function ToLong(text As String, defaultValue As Long = 0) As Long
+  overload: Vintagestory.API.Util.StringUtil.ToLong*
+  nameWithType.vb: StringUtil.ToLong(String, Long)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToLong(String, Long)
+  name.vb: ToLong(String, Long)
+- uid: Vintagestory.API.Util.StringUtil.ToFloat(System.String,System.Single)
+  commentId: M:Vintagestory.API.Util.StringUtil.ToFloat(System.String,System.Single)
+  id: ToFloat(System.String,System.Single)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ToFloat(string, float)
+  nameWithType: StringUtil.ToFloat(string, float)
+  fullName: Vintagestory.API.Util.StringUtil.ToFloat(string, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static float ToFloat(this string text, float defaultValue = 0)
+    parameters:
+    - id: text
+      type: System.String
+    - id: defaultValue
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Shared Function ToFloat(text As String, defaultValue As Single = 0) As Single
+  overload: Vintagestory.API.Util.StringUtil.ToFloat*
+  nameWithType.vb: StringUtil.ToFloat(String, Single)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToFloat(String, Single)
+  name.vb: ToFloat(String, Single)
+- uid: Vintagestory.API.Util.StringUtil.ToDouble(System.String,System.Double)
+  commentId: M:Vintagestory.API.Util.StringUtil.ToDouble(System.String,System.Double)
+  id: ToDouble(System.String,System.Double)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ToDouble(string, double)
+  nameWithType: StringUtil.ToDouble(string, double)
+  fullName: Vintagestory.API.Util.StringUtil.ToDouble(string, double)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static double ToDouble(this string text, double defaultValue = 0)
+    parameters:
+    - id: text
+      type: System.String
+    - id: defaultValue
+      type: System.Double
+    return:
+      type: System.Double
+    content.vb: Public Shared Function ToDouble(text As String, defaultValue As Double = 0) As Double
+  overload: Vintagestory.API.Util.StringUtil.ToDouble*
+  nameWithType.vb: StringUtil.ToDouble(String, Double)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToDouble(String, Double)
+  name.vb: ToDouble(String, Double)
+- uid: Vintagestory.API.Util.StringUtil.ToDoubleOrNull(System.String,System.Nullable{System.Double})
+  commentId: M:Vintagestory.API.Util.StringUtil.ToDoubleOrNull(System.String,System.Nullable{System.Double})
+  id: ToDoubleOrNull(System.String,System.Nullable{System.Double})
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ToDoubleOrNull(string, double?)
+  nameWithType: StringUtil.ToDoubleOrNull(string, double?)
+  fullName: Vintagestory.API.Util.StringUtil.ToDoubleOrNull(string, double?)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static double? ToDoubleOrNull(this string text, double? defaultValue = 0)
+    parameters:
+    - id: text
+      type: System.String
+    - id: defaultValue
+      type: System.Nullable{System.Double}
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public Shared Function ToDoubleOrNull(text As String, defaultValue As Double? = 0) As Double?
+  overload: Vintagestory.API.Util.StringUtil.ToDoubleOrNull*
+  nameWithType.vb: StringUtil.ToDoubleOrNull(String, Double?)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToDoubleOrNull(String, Double?)
+  name.vb: ToDoubleOrNull(String, Double?)
+- uid: Vintagestory.API.Util.StringUtil.ToFloatOrNull(System.String,System.Nullable{System.Single})
+  commentId: M:Vintagestory.API.Util.StringUtil.ToFloatOrNull(System.String,System.Nullable{System.Single})
+  id: ToFloatOrNull(System.String,System.Nullable{System.Single})
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ToFloatOrNull(string, float?)
+  nameWithType: StringUtil.ToFloatOrNull(string, float?)
+  fullName: Vintagestory.API.Util.StringUtil.ToFloatOrNull(string, float?)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static float? ToFloatOrNull(this string text, float? defaultValue = 0)
+    parameters:
+    - id: text
+      type: System.String
+    - id: defaultValue
+      type: System.Nullable{System.Single}
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public Shared Function ToFloatOrNull(text As String, defaultValue As Single? = 0) As Single?
+  overload: Vintagestory.API.Util.StringUtil.ToFloatOrNull*
+  nameWithType.vb: StringUtil.ToFloatOrNull(String, Single?)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToFloatOrNull(String, Single?)
+  name.vb: ToFloatOrNull(String, Single?)
+- uid: Vintagestory.API.Util.StringUtil.CountChars(System.String,System.Char)
+  commentId: M:Vintagestory.API.Util.StringUtil.CountChars(System.String,System.Char)
+  id: CountChars(System.String,System.Char)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: CountChars(string, char)
+  nameWithType: StringUtil.CountChars(string, char)
+  fullName: Vintagestory.API.Util.StringUtil.CountChars(string, char)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static int CountChars(this string text, char c)
+    parameters:
+    - id: text
+      type: System.String
+    - id: c
+      type: System.Char
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function CountChars(text As String, c As Char) As Integer
+  overload: Vintagestory.API.Util.StringUtil.CountChars*
+  nameWithType.vb: StringUtil.CountChars(String, Char)
+  fullName.vb: Vintagestory.API.Util.StringUtil.CountChars(String, Char)
+  name.vb: CountChars(String, Char)
+- uid: Vintagestory.API.Util.StringUtil.ContainsFast(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.ContainsFast(System.String,System.String)
+  id: ContainsFast(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ContainsFast(string, string)
+  nameWithType: StringUtil.ContainsFast(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.ContainsFast(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool ContainsFast(this string value, string reference)
+    parameters:
+    - id: value
+      type: System.String
+    - id: reference
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function ContainsFast(value As String, reference As String) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.ContainsFast*
+  nameWithType.vb: StringUtil.ContainsFast(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ContainsFast(String, String)
+  name.vb: ContainsFast(String, String)
+- uid: Vintagestory.API.Util.StringUtil.ContainsFast(System.String,System.Char)
+  commentId: M:Vintagestory.API.Util.StringUtil.ContainsFast(System.String,System.Char)
+  id: ContainsFast(System.String,System.Char)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: ContainsFast(string, char)
+  nameWithType: StringUtil.ContainsFast(string, char)
+  fullName: Vintagestory.API.Util.StringUtil.ContainsFast(string, char)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool ContainsFast(this string value, char reference)
+    parameters:
+    - id: value
+      type: System.String
+    - id: reference
+      type: System.Char
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function ContainsFast(value As String, reference As Char) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.ContainsFast*
+  nameWithType.vb: StringUtil.ContainsFast(String, Char)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ContainsFast(String, Char)
+  name.vb: ContainsFast(String, Char)
+- uid: Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String)
+  id: StartsWithFast(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: StartsWithFast(string, string)
+  nameWithType: StringUtil.StartsWithFast(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.StartsWithFast(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool StartsWithFast(this string value, string reference)
+    parameters:
+    - id: value
+      type: System.String
+    - id: reference
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function StartsWithFast(value As String, reference As String) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.StartsWithFast*
+  nameWithType.vb: StringUtil.StartsWithFast(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.StartsWithFast(String, String)
+  name.vb: StartsWithFast(String, String)
+- uid: Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String,System.Int32)
+  commentId: M:Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String,System.Int32)
+  id: StartsWithFast(System.String,System.String,System.Int32)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: StartsWithFast(string, string, int)
+  nameWithType: StringUtil.StartsWithFast(string, string, int)
+  fullName: Vintagestory.API.Util.StringUtil.StartsWithFast(string, string, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool StartsWithFast(this string value, string reference, int offset)
+    parameters:
+    - id: value
+      type: System.String
+    - id: reference
+      type: System.String
+    - id: offset
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function StartsWithFast(value As String, reference As String, offset As Integer) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.StartsWithFast*
+  nameWithType.vb: StringUtil.StartsWithFast(String, String, Integer)
+  fullName.vb: Vintagestory.API.Util.StringUtil.StartsWithFast(String, String, Integer)
+  name.vb: StartsWithFast(String, String, Integer)
+- uid: Vintagestory.API.Util.StringUtil.EqualsFast(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.EqualsFast(System.String,System.String)
+  id: EqualsFast(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: EqualsFast(string, string)
+  nameWithType: StringUtil.EqualsFast(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.EqualsFast(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool EqualsFast(this string value, string reference)
+    parameters:
+    - id: value
+      type: System.String
+    - id: reference
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function EqualsFast(value As String, reference As String) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.EqualsFast*
+  nameWithType.vb: StringUtil.EqualsFast(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.EqualsFast(String, String)
+  name.vb: EqualsFast(String, String)
+- uid: Vintagestory.API.Util.StringUtil.FastStartsWith(System.String,System.String,System.Int32)
+  commentId: M:Vintagestory.API.Util.StringUtil.FastStartsWith(System.String,System.String,System.Int32)
+  id: FastStartsWith(System.String,System.String,System.Int32)
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: FastStartsWith(string, string, int)
+  nameWithType: StringUtil.FastStartsWith(string, string, int)
+  fullName: Vintagestory.API.Util.StringUtil.FastStartsWith(string, string, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool FastStartsWith(string value, string reference, int len)
+    parameters:
+    - id: value
+      type: System.String
+    - id: reference
+      type: System.String
+    - id: len
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function FastStartsWith(value As String, reference As String, len As Integer) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.FastStartsWith*
+  nameWithType.vb: StringUtil.FastStartsWith(String, String, Integer)
+  fullName.vb: Vintagestory.API.Util.StringUtil.FastStartsWith(String, String, Integer)
+  name.vb: FastStartsWith(String, String, Integer)
+- uid: Vintagestory.API.Util.StringUtil.RemoveDiacritics(System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.RemoveDiacritics(System.String)
+  id: RemoveDiacritics(System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: RemoveDiacritics(string)
+  nameWithType: StringUtil.RemoveDiacritics(string)
+  fullName: Vintagestory.API.Util.StringUtil.RemoveDiacritics(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static string RemoveDiacritics(this string stIn)
+    parameters:
+    - id: stIn
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function RemoveDiacritics(stIn As String) As String
+  overload: Vintagestory.API.Util.StringUtil.RemoveDiacritics*
+  nameWithType.vb: StringUtil.RemoveDiacritics(String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.RemoveDiacritics(String)
+  name.vb: RemoveDiacritics(String)
+references:
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_GetNonRandomizedHashCode_System_String_
+  name: GetNonRandomizedHashCode
+  nameWithType: StringUtil.GetNonRandomizedHashCode
+  fullName: Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Util.StringUtil.IndexOfOrdinal*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.IndexOfOrdinal
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_IndexOfOrdinal_System_String_System_String_
+  name: IndexOfOrdinal
+  nameWithType: StringUtil.IndexOfOrdinal
+  fullName: Vintagestory.API.Util.StringUtil.IndexOfOrdinal
+- uid: Vintagestory.API.Util.StringUtil.StartsWithOrdinal*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.StartsWithOrdinal
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_StartsWithOrdinal_System_String_System_String_
+  name: StartsWithOrdinal
+  nameWithType: StringUtil.StartsWithOrdinal
+  fullName: Vintagestory.API.Util.StringUtil.StartsWithOrdinal
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Util.StringUtil.EndsWithOrdinal*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.EndsWithOrdinal
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_EndsWithOrdinal_System_String_System_String_
+  name: EndsWithOrdinal
+  nameWithType: StringUtil.EndsWithOrdinal
+  fullName: Vintagestory.API.Util.StringUtil.EndsWithOrdinal
+- uid: Vintagestory.API.Util.StringUtil.CompareOrdinal*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.CompareOrdinal
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_CompareOrdinal_System_String_System_String_
+  name: CompareOrdinal
+  nameWithType: StringUtil.CompareOrdinal
+  fullName: Vintagestory.API.Util.StringUtil.CompareOrdinal
+- uid: Vintagestory.API.Util.StringUtil.UcFirst*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.UcFirst
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_UcFirst_System_String_
+  name: UcFirst
+  nameWithType: StringUtil.UcFirst
+  fullName: Vintagestory.API.Util.StringUtil.UcFirst
+- uid: Vintagestory.API.Util.StringUtil.ToBool*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToBool
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToBool_System_String_System_Boolean_
+  name: ToBool
+  nameWithType: StringUtil.ToBool
+  fullName: Vintagestory.API.Util.StringUtil.ToBool
+- uid: Vintagestory.API.Util.StringUtil.RemoveFileEnding*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.RemoveFileEnding
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_RemoveFileEnding_System_String_
+  name: RemoveFileEnding
+  nameWithType: StringUtil.RemoveFileEnding
+  fullName: Vintagestory.API.Util.StringUtil.RemoveFileEnding
+- uid: Vintagestory.API.Util.StringUtil.ToInt*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToInt
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToInt_System_String_System_Int32_
+  name: ToInt
+  nameWithType: StringUtil.ToInt
+  fullName: Vintagestory.API.Util.StringUtil.ToInt
+- uid: Vintagestory.API.Util.StringUtil.ToLong*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToLong
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToLong_System_String_System_Int64_
+  name: ToLong
+  nameWithType: StringUtil.ToLong
+  fullName: Vintagestory.API.Util.StringUtil.ToLong
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Vintagestory.API.Util.StringUtil.ToFloat*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToFloat
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToFloat_System_String_System_Single_
+  name: ToFloat
+  nameWithType: StringUtil.ToFloat
+  fullName: Vintagestory.API.Util.StringUtil.ToFloat
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Util.StringUtil.ToDouble*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToDouble
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToDouble_System_String_System_Double_
+  name: ToDouble
+  nameWithType: StringUtil.ToDouble
+  fullName: Vintagestory.API.Util.StringUtil.ToDouble
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Util.StringUtil.ToDoubleOrNull*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToDoubleOrNull
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToDoubleOrNull_System_String_System_Nullable_System_Double__
+  name: ToDoubleOrNull
+  nameWithType: StringUtil.ToDoubleOrNull
+  fullName: Vintagestory.API.Util.StringUtil.ToDoubleOrNull
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Util.StringUtil.ToFloatOrNull*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToFloatOrNull
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToFloatOrNull_System_String_System_Nullable_System_Single__
+  name: ToFloatOrNull
+  nameWithType: StringUtil.ToFloatOrNull
+  fullName: Vintagestory.API.Util.StringUtil.ToFloatOrNull
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: Vintagestory.API.Util.StringUtil.CountChars*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.CountChars
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_CountChars_System_String_System_Char_
+  name: CountChars
+  nameWithType: StringUtil.CountChars
+  fullName: Vintagestory.API.Util.StringUtil.CountChars
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: Vintagestory.API.Util.StringUtil.ContainsFast*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ContainsFast
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ContainsFast_System_String_System_String_
+  name: ContainsFast
+  nameWithType: StringUtil.ContainsFast
+  fullName: Vintagestory.API.Util.StringUtil.ContainsFast
+- uid: Vintagestory.API.Util.StringUtil.StartsWithFast*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.StartsWithFast
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_StartsWithFast_System_String_System_String_
+  name: StartsWithFast
+  nameWithType: StringUtil.StartsWithFast
+  fullName: Vintagestory.API.Util.StringUtil.StartsWithFast
+- uid: Vintagestory.API.Util.StringUtil.EqualsFast*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.EqualsFast
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_EqualsFast_System_String_System_String_
+  name: EqualsFast
+  nameWithType: StringUtil.EqualsFast
+  fullName: Vintagestory.API.Util.StringUtil.EqualsFast
+- uid: Vintagestory.API.Util.StringUtil.FastStartsWith*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.FastStartsWith
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_FastStartsWith_System_String_System_String_System_Int32_
+  name: FastStartsWith
+  nameWithType: StringUtil.FastStartsWith
+  fullName: Vintagestory.API.Util.StringUtil.FastStartsWith
+- uid: Vintagestory.API.Util.StringUtil.RemoveDiacritics*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.RemoveDiacritics
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_RemoveDiacritics_System_String_
+  name: RemoveDiacritics
+  nameWithType: StringUtil.RemoveDiacritics
+  fullName: Vintagestory.API.Util.StringUtil.RemoveDiacritics

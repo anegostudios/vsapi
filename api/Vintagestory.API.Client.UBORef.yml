@@ -1,0 +1,776 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.UBORef
+  commentId: T:Vintagestory.API.Client.UBORef
+  id: UBORef
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.UBORef.Bind
+  - Vintagestory.API.Client.UBORef.Dispose
+  - Vintagestory.API.Client.UBORef.Disposed
+  - Vintagestory.API.Client.UBORef.Handle
+  - Vintagestory.API.Client.UBORef.Size
+  - Vintagestory.API.Client.UBORef.Unbind
+  - Vintagestory.API.Client.UBORef.Update(System.Object,System.Int32,System.Int32)
+  - Vintagestory.API.Client.UBORef.Update``1(``0)
+  - Vintagestory.API.Client.UBORef.Update``1(``0,System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: UBORef
+  nameWithType: UBORef
+  fullName: Vintagestory.API.Client.UBORef
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public abstract class UBORef : IDisposable'
+    content.vb: Public MustInherit Class UBORef Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.UBORef.Handle
+  commentId: F:Vintagestory.API.Client.UBORef.Handle
+  id: Handle
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Handle
+  nameWithType: UBORef.Handle
+  fullName: Vintagestory.API.Client.UBORef.Handle
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public int Handle
+    return:
+      type: System.Int32
+    content.vb: Public Handle As Integer
+- uid: Vintagestory.API.Client.UBORef.Disposed
+  commentId: P:Vintagestory.API.Client.UBORef.Disposed
+  id: Disposed
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Disposed
+  nameWithType: UBORef.Disposed
+  fullName: Vintagestory.API.Client.UBORef.Disposed
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Am I disposed?
+  example: []
+  syntax:
+    content: public bool Disposed { get; protected set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Disposed As Boolean
+  overload: Vintagestory.API.Client.UBORef.Disposed*
+- uid: Vintagestory.API.Client.UBORef.Size
+  commentId: P:Vintagestory.API.Client.UBORef.Size
+  id: Size
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: UBORef.Size
+  fullName: Vintagestory.API.Client.UBORef.Size
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Size in Bytes
+  example: []
+  syntax:
+    content: public int Size { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Size As Integer
+  overload: Vintagestory.API.Client.UBORef.Size*
+- uid: Vintagestory.API.Client.UBORef.Bind
+  commentId: M:Vintagestory.API.Client.UBORef.Bind
+  id: Bind
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Bind()
+  nameWithType: UBORef.Bind()
+  fullName: Vintagestory.API.Client.UBORef.Bind()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public abstract void Bind()
+    content.vb: Public MustOverride Sub Bind()
+  overload: Vintagestory.API.Client.UBORef.Bind*
+- uid: Vintagestory.API.Client.UBORef.Unbind
+  commentId: M:Vintagestory.API.Client.UBORef.Unbind
+  id: Unbind
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Unbind()
+  nameWithType: UBORef.Unbind()
+  fullName: Vintagestory.API.Client.UBORef.Unbind()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public abstract void Unbind()
+    content.vb: Public MustOverride Sub Unbind()
+  overload: Vintagestory.API.Client.UBORef.Unbind*
+- uid: Vintagestory.API.Client.UBORef.Dispose
+  commentId: M:Vintagestory.API.Client.UBORef.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: UBORef.Dispose()
+  fullName: Vintagestory.API.Client.UBORef.Dispose()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Frees up any gpu allocated memory. Equivalent to calling api.Render.DeleteMesh()
+  example: []
+  syntax:
+    content: public virtual void Dispose()
+    content.vb: Public Overridable Sub Dispose()
+  overload: Vintagestory.API.Client.UBORef.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Vintagestory.API.Client.UBORef.Update``1(``0)
+  commentId: M:Vintagestory.API.Client.UBORef.Update``1(``0)
+  id: Update``1(``0)
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Update<T>(T)
+  nameWithType: UBORef.Update<T>(T)
+  fullName: Vintagestory.API.Client.UBORef.Update<T>(T)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public abstract void Update<T>(T data) where T : struct'
+    parameters:
+    - id: data
+      type: '{T}'
+    typeParameters:
+    - id: T
+    content.vb: Public MustOverride Sub Update(Of T As Structure)(data As T)
+  overload: Vintagestory.API.Client.UBORef.Update*
+  nameWithType.vb: UBORef.Update(Of T)(T)
+  fullName.vb: Vintagestory.API.Client.UBORef.Update(Of T)(T)
+  name.vb: Update(Of T)(T)
+- uid: Vintagestory.API.Client.UBORef.Update``1(``0,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.UBORef.Update``1(``0,System.Int32,System.Int32)
+  id: Update``1(``0,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Update<T>(T, int, int)
+  nameWithType: UBORef.Update<T>(T, int, int)
+  fullName: Vintagestory.API.Client.UBORef.Update<T>(T, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public abstract void Update<T>(T data, int offset, int size) where T : struct'
+    parameters:
+    - id: data
+      type: '{T}'
+    - id: offset
+      type: System.Int32
+    - id: size
+      type: System.Int32
+    typeParameters:
+    - id: T
+    content.vb: Public MustOverride Sub Update(Of T As Structure)(data As T, offset As Integer, size As Integer)
+  overload: Vintagestory.API.Client.UBORef.Update*
+  nameWithType.vb: UBORef.Update(Of T)(T, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.UBORef.Update(Of T)(T, Integer, Integer)
+  name.vb: Update(Of T)(T, Integer, Integer)
+- uid: Vintagestory.API.Client.UBORef.Update(System.Object,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.UBORef.Update(System.Object,System.Int32,System.Int32)
+  id: Update(System.Object,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.UBORef
+  langs:
+  - csharp
+  - vb
+  name: Update(object, int, int)
+  nameWithType: UBORef.Update(object, int, int)
+  fullName: Vintagestory.API.Client.UBORef.Update(object, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public abstract void Update(object data, int offset, int size)
+    parameters:
+    - id: data
+      type: System.Object
+    - id: offset
+      type: System.Int32
+    - id: size
+      type: System.Int32
+    content.vb: Public MustOverride Sub Update(data As Object, offset As Integer, size As Integer)
+  overload: Vintagestory.API.Client.UBORef.Update*
+  nameWithType.vb: UBORef.Update(Object, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.UBORef.Update(Object, Integer, Integer)
+  name.vb: Update(Object, Integer, Integer)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.UBORef.Disposed*
+  commentId: Overload:Vintagestory.API.Client.UBORef.Disposed
+  href: Vintagestory.API.Client.UBORef.html#Vintagestory_API_Client_UBORef_Disposed
+  name: Disposed
+  nameWithType: UBORef.Disposed
+  fullName: Vintagestory.API.Client.UBORef.Disposed
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.UBORef.Size*
+  commentId: Overload:Vintagestory.API.Client.UBORef.Size
+  href: Vintagestory.API.Client.UBORef.html#Vintagestory_API_Client_UBORef_Size
+  name: Size
+  nameWithType: UBORef.Size
+  fullName: Vintagestory.API.Client.UBORef.Size
+- uid: Vintagestory.API.Client.UBORef.Bind*
+  commentId: Overload:Vintagestory.API.Client.UBORef.Bind
+  href: Vintagestory.API.Client.UBORef.html#Vintagestory_API_Client_UBORef_Bind
+  name: Bind
+  nameWithType: UBORef.Bind
+  fullName: Vintagestory.API.Client.UBORef.Bind
+- uid: Vintagestory.API.Client.UBORef.Unbind*
+  commentId: Overload:Vintagestory.API.Client.UBORef.Unbind
+  href: Vintagestory.API.Client.UBORef.html#Vintagestory_API_Client_UBORef_Unbind
+  name: Unbind
+  nameWithType: UBORef.Unbind
+  fullName: Vintagestory.API.Client.UBORef.Unbind
+- uid: Vintagestory.API.Client.UBORef.Dispose*
+  commentId: Overload:Vintagestory.API.Client.UBORef.Dispose
+  href: Vintagestory.API.Client.UBORef.html#Vintagestory_API_Client_UBORef_Dispose
+  name: Dispose
+  nameWithType: UBORef.Dispose
+  fullName: Vintagestory.API.Client.UBORef.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.UBORef.Update*
+  commentId: Overload:Vintagestory.API.Client.UBORef.Update
+  href: Vintagestory.API.Client.UBORef.html#Vintagestory_API_Client_UBORef_Update__1___0_
+  name: Update
+  nameWithType: UBORef.Update
+  fullName: Vintagestory.API.Client.UBORef.Update
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

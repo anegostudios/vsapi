@@ -1,0 +1,462 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumWindBitMode
+  commentId: T:Vintagestory.API.Common.EnumWindBitMode
+  id: EnumWindBitMode
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumWindBitMode.Bend
+  - Vintagestory.API.Common.EnumWindBitMode.ExtraWeakWind
+  - Vintagestory.API.Common.EnumWindBitMode.Fruit
+  - Vintagestory.API.Common.EnumWindBitMode.Leaves
+  - Vintagestory.API.Common.EnumWindBitMode.NoWind
+  - Vintagestory.API.Common.EnumWindBitMode.NormalWind
+  - Vintagestory.API.Common.EnumWindBitMode.TallBend
+  - Vintagestory.API.Common.EnumWindBitMode.Water
+  - Vintagestory.API.Common.EnumWindBitMode.WaterPlant
+  - Vintagestory.API.Common.EnumWindBitMode.WeakWind
+  - Vintagestory.API.Common.EnumWindBitMode.WeakWindInverseBend
+  - Vintagestory.API.Common.EnumWindBitMode.WeakWindNoBend
+  langs:
+  - csharp
+  - vb
+  name: EnumWindBitMode
+  nameWithType: EnumWindBitMode
+  fullName: Vintagestory.API.Common.EnumWindBitMode
+  type: Enum
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public enum EnumWindBitMode
+    content.vb: Public Enum EnumWindBitMode
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.EnumWindBitMode.NoWind
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.NoWind
+  id: NoWind
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: NoWind
+  nameWithType: EnumWindBitMode.NoWind
+  fullName: Vintagestory.API.Common.EnumWindBitMode.NoWind
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Not affected by wind
+  example: []
+  syntax:
+    content: NoWind = 0
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.WeakWind
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.WeakWind
+  id: WeakWind
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: WeakWind
+  nameWithType: EnumWindBitMode.WeakWind
+  fullName: Vintagestory.API.Common.EnumWindBitMode.WeakWind
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Slightly affected by wind. Wiggle + Height bend based on ground distance.
+  example: []
+  syntax:
+    content: WeakWind = 1
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.NormalWind
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.NormalWind
+  id: NormalWind
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: NormalWind
+  nameWithType: EnumWindBitMode.NormalWind
+  fullName: Vintagestory.API.Common.EnumWindBitMode.NormalWind
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Normally affected by wind. Wiggle + Height bend based on ground distance.
+  example: []
+  syntax:
+    content: NormalWind = 2
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.Leaves
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.Leaves
+  id: Leaves
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: Leaves
+  nameWithType: EnumWindBitMode.Leaves
+  fullName: Vintagestory.API.Common.EnumWindBitMode.Leaves
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as normal wind, but with some special behavior for leaves. Wiggle + Height bend based on ground distance.
+  example: []
+  syntax:
+    content: Leaves = 3
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.Bend
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.Bend
+  id: Bend
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: Bend
+  nameWithType: EnumWindBitMode.Bend
+  fullName: Vintagestory.API.Common.EnumWindBitMode.Bend
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as normal wind, but no wiggle. Weak height bend based on ground distance.
+  example: []
+  syntax:
+    content: Bend = 4
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.TallBend
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.TallBend
+  id: TallBend
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: TallBend
+  nameWithType: EnumWindBitMode.TallBend
+  fullName: Vintagestory.API.Common.EnumWindBitMode.TallBend
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Bend behavior for tall plants
+  example: []
+  syntax:
+    content: TallBend = 5
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.Water
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.Water
+  id: Water
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: Water
+  nameWithType: EnumWindBitMode.Water
+  fullName: Vintagestory.API.Common.EnumWindBitMode.Water
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Vertical wiggle
+  example: []
+  syntax:
+    content: Water = 6
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.ExtraWeakWind
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.ExtraWeakWind
+  id: ExtraWeakWind
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: ExtraWeakWind
+  nameWithType: EnumWindBitMode.ExtraWeakWind
+  fullName: Vintagestory.API.Common.EnumWindBitMode.ExtraWeakWind
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: ExtraWeakWind = 7
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.Fruit
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.Fruit
+  id: Fruit
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: Fruit
+  nameWithType: EnumWindBitMode.Fruit
+  fullName: Vintagestory.API.Common.EnumWindBitMode.Fruit
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Fruit = 8
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.WeakWindNoBend
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.WeakWindNoBend
+  id: WeakWindNoBend
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: WeakWindNoBend
+  nameWithType: EnumWindBitMode.WeakWindNoBend
+  fullName: Vintagestory.API.Common.EnumWindBitMode.WeakWindNoBend
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: WeakWindNoBend = 9
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.WeakWindInverseBend
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.WeakWindInverseBend
+  id: WeakWindInverseBend
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: WeakWindInverseBend
+  nameWithType: EnumWindBitMode.WeakWindInverseBend
+  fullName: Vintagestory.API.Common.EnumWindBitMode.WeakWindInverseBend
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: WeakWindInverseBend = 10
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+- uid: Vintagestory.API.Common.EnumWindBitMode.WaterPlant
+  commentId: F:Vintagestory.API.Common.EnumWindBitMode.WaterPlant
+  id: WaterPlant
+  parent: Vintagestory.API.Common.EnumWindBitMode
+  langs:
+  - csharp
+  - vb
+  name: WaterPlant
+  nameWithType: EnumWindBitMode.WaterPlant
+  fullName: Vintagestory.API.Common.EnumWindBitMode.WaterPlant
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: WaterPlant = 11
+    return:
+      type: Vintagestory.API.Common.EnumWindBitMode
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.EnumWindBitMode
+  commentId: T:Vintagestory.API.Common.EnumWindBitMode
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumWindBitMode.html
+  name: EnumWindBitMode
+  nameWithType: EnumWindBitMode
+  fullName: Vintagestory.API.Common.EnumWindBitMode

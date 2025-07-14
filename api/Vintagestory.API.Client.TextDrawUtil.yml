@@ -1,0 +1,1241 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.TextDrawUtil
+  commentId: T:Vintagestory.API.Client.TextDrawUtil
+  id: TextDrawUtil
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,Vintagestory.API.Client.TextFlowPath[],Vintagestory.API.Client.EnumTextOrientation,Vintagestory.API.Client.EnumLinebreakBehavior)
+  - Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  - Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  - Vintagestory.API.Client.TextDrawUtil.DrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],Vintagestory.API.Client.EnumTextOrientation)
+  - Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  - Vintagestory.API.Client.TextDrawUtil.DrawTextLine(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Boolean)
+  - Vintagestory.API.Client.TextDrawUtil.GetLineHeight(Vintagestory.API.Client.CairoFont)
+  - Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  - Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  - Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  - Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  - Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context,System.String,System.Double,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  - Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Boolean)
+  - Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  - Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: TextDrawUtil
+  nameWithType: TextDrawUtil
+  fullName: Vintagestory.API.Client.TextDrawUtil
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public class TextDrawUtil
+    content.vb: Public Class TextDrawUtil
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context,System.String,System.Double,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context,System.String,System.Double,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  id: Lineize(Cairo.Context,System.String,System.Double,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: Lineize(Context, string, double, double, EnumLinebreakBehavior, bool)
+  nameWithType: TextDrawUtil.Lineize(Context, string, double, double, EnumLinebreakBehavior, bool)
+  fullName: Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context, string, double, double, Vintagestory.API.Client.EnumLinebreakBehavior, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = 1, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default, bool keepLinebreakChar = false)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+    - id: text
+      type: System.String
+    - id: boxwidth
+      type: System.Double
+    - id: lineHeightMultiplier
+      type: System.Double
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+    - id: keepLinebreakChar
+      type: System.Boolean
+    return:
+      type: Vintagestory.API.Client.TextLine[]
+    content.vb: Public Function Lineize(ctx As Context, text As String, boxwidth As Double, lineHeightMultiplier As Double = 1, linebreak As EnumLinebreakBehavior = EnumLinebreakBehavior.Default, keepLinebreakChar As Boolean = False) As TextLine()
+  overload: Vintagestory.API.Client.TextDrawUtil.Lineize*
+  nameWithType.vb: TextDrawUtil.Lineize(Context, String, Double, Double, EnumLinebreakBehavior, Boolean)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context, String, Double, Double, Vintagestory.API.Client.EnumLinebreakBehavior, Boolean)
+  name.vb: Lineize(Context, String, Double, Double, EnumLinebreakBehavior, Boolean)
+- uid: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  id: GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: GetQuantityTextLines(CairoFont, string, double, EnumLinebreakBehavior)
+  nameWithType: TextDrawUtil.GetQuantityTextLines(CairoFont, string, double, EnumLinebreakBehavior)
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont, string, double, Vintagestory.API.Client.EnumLinebreakBehavior)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public int GetQuantityTextLines(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
+    parameters:
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+    - id: text
+      type: System.String
+    - id: boxWidth
+      type: System.Double
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+    return:
+      type: System.Int32
+    content.vb: Public Function GetQuantityTextLines(font As CairoFont, text As String, boxWidth As Double, linebreak As EnumLinebreakBehavior = EnumLinebreakBehavior.Default) As Integer
+  overload: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines*
+  nameWithType.vb: TextDrawUtil.GetQuantityTextLines(CairoFont, String, Double, EnumLinebreakBehavior)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont, String, Double, Vintagestory.API.Client.EnumLinebreakBehavior)
+  name.vb: GetQuantityTextLines(CairoFont, String, Double, EnumLinebreakBehavior)
+- uid: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  id: GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: GetMultilineTextHeight(CairoFont, string, double, EnumLinebreakBehavior)
+  nameWithType: TextDrawUtil.GetMultilineTextHeight(CairoFont, string, double, EnumLinebreakBehavior)
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont, string, double, Vintagestory.API.Client.EnumLinebreakBehavior)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double GetMultilineTextHeight(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
+    parameters:
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+    - id: text
+      type: System.String
+    - id: boxWidth
+      type: System.Double
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+    return:
+      type: System.Double
+    content.vb: Public Function GetMultilineTextHeight(font As CairoFont, text As String, boxWidth As Double, linebreak As EnumLinebreakBehavior = EnumLinebreakBehavior.Default) As Double
+  overload: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight*
+  nameWithType.vb: TextDrawUtil.GetMultilineTextHeight(CairoFont, String, Double, EnumLinebreakBehavior)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont, String, Double, Vintagestory.API.Client.EnumLinebreakBehavior)
+  name.vb: GetMultilineTextHeight(CairoFont, String, Double, EnumLinebreakBehavior)
+- uid: Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  id: Lineize(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior,System.Boolean)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: Lineize(CairoFont, string, double, EnumLinebreakBehavior, bool)
+  nameWithType: TextDrawUtil.Lineize(CairoFont, string, double, EnumLinebreakBehavior, bool)
+  fullName: Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont, string, double, Vintagestory.API.Client.EnumLinebreakBehavior, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default, bool keepLinebreakChar = false)
+    parameters:
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+    - id: fulltext
+      type: System.String
+    - id: boxWidth
+      type: System.Double
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+    - id: keepLinebreakChar
+      type: System.Boolean
+    return:
+      type: Vintagestory.API.Client.TextLine[]
+    content.vb: Public Function Lineize(font As CairoFont, fulltext As String, boxWidth As Double, linebreak As EnumLinebreakBehavior = EnumLinebreakBehavior.Default, keepLinebreakChar As Boolean = False) As TextLine()
+  overload: Vintagestory.API.Client.TextDrawUtil.Lineize*
+  nameWithType.vb: TextDrawUtil.Lineize(CairoFont, String, Double, EnumLinebreakBehavior, Boolean)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont, String, Double, Vintagestory.API.Client.EnumLinebreakBehavior, Boolean)
+  name.vb: Lineize(CairoFont, String, Double, EnumLinebreakBehavior, Boolean)
+- uid: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  id: AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: AutobreakAndDrawMultilineText(Context, CairoFont, string, double, EnumTextOrientation)
+  nameWithType: TextDrawUtil.AutobreakAndDrawMultilineText(Context, CairoFont, string, double, EnumTextOrientation)
+  fullName: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context, Vintagestory.API.Client.CairoFont, string, double, Vintagestory.API.Client.EnumTextOrientation)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Use Matrix transformation to move the draw position
+  example: []
+  syntax:
+    content: public void AutobreakAndDrawMultilineText(Context ctx, CairoFont font, string text, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+      description: The context of the text.
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text.
+    - id: text
+      type: System.String
+      description: The text itself.
+    - id: boxWidth
+      type: System.Double
+      description: The width of the box containing the text.
+    - id: orientation
+      type: Vintagestory.API.Client.EnumTextOrientation
+      description: The orientation of the text.
+    content.vb: Public Sub AutobreakAndDrawMultilineText(ctx As Context, font As CairoFont, text As String, boxWidth As Double, orientation As EnumTextOrientation = EnumTextOrientation.Left)
+  overload: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText*
+  nameWithType.vb: TextDrawUtil.AutobreakAndDrawMultilineText(Context, CairoFont, String, Double, EnumTextOrientation)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context, Vintagestory.API.Client.CairoFont, String, Double, Vintagestory.API.Client.EnumTextOrientation)
+  name.vb: AutobreakAndDrawMultilineText(Context, CairoFont, String, Double, EnumTextOrientation)
+- uid: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  id: AutobreakAndDrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: AutobreakAndDrawMultilineTextAt(Context, CairoFont, string, double, double, double, EnumTextOrientation)
+  nameWithType: TextDrawUtil.AutobreakAndDrawMultilineTextAt(Context, CairoFont, string, double, double, double, EnumTextOrientation)
+  fullName: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt(Cairo.Context, Vintagestory.API.Client.CairoFont, string, double, double, double, Vintagestory.API.Client.EnumTextOrientation)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Draws the text with matrix transformations.
+  example: []
+  syntax:
+    content: public double AutobreakAndDrawMultilineTextAt(Context ctx, CairoFont font, string text, double posX, double posY, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+      description: The context of the text.
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text.
+    - id: text
+      type: System.String
+      description: The text itself.
+    - id: posX
+      type: System.Double
+      description: The X position of the text.
+    - id: posY
+      type: System.Double
+      description: The Y position of the text.
+    - id: boxWidth
+      type: System.Double
+      description: The width of the box containing the text.
+    - id: orientation
+      type: Vintagestory.API.Client.EnumTextOrientation
+      description: The orientation of the text.
+    return:
+      type: System.Double
+      description: The new height of the text.
+    content.vb: Public Function AutobreakAndDrawMultilineTextAt(ctx As Context, font As CairoFont, text As String, posX As Double, posY As Double, boxWidth As Double, orientation As EnumTextOrientation = EnumTextOrientation.Left) As Double
+  overload: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt*
+  nameWithType.vb: TextDrawUtil.AutobreakAndDrawMultilineTextAt(Context, CairoFont, String, Double, Double, Double, EnumTextOrientation)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt(Cairo.Context, Vintagestory.API.Client.CairoFont, String, Double, Double, Double, Vintagestory.API.Client.EnumTextOrientation)
+  name.vb: AutobreakAndDrawMultilineTextAt(Context, CairoFont, String, Double, Double, Double, EnumTextOrientation)
+- uid: Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  id: DrawMultilineTextAt(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: DrawMultilineTextAt(Context, CairoFont, TextLine[], double, double, double, EnumTextOrientation)
+  nameWithType: TextDrawUtil.DrawMultilineTextAt(Context, CairoFont, TextLine[], double, double, double, EnumTextOrientation)
+  fullName: Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt(Cairo.Context, Vintagestory.API.Client.CairoFont, Vintagestory.API.Client.TextLine[], double, double, double, Vintagestory.API.Client.EnumTextOrientation)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Draws the text with pre-set breaks.
+  example: []
+  syntax:
+    content: public void DrawMultilineTextAt(Context ctx, CairoFont font, TextLine[] lines, double posX, double posY, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+      description: The context of the text.
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text.
+    - id: lines
+      type: Vintagestory.API.Client.TextLine[]
+      description: The lines of text.
+    - id: posX
+      type: System.Double
+      description: The X position of the text.
+    - id: posY
+      type: System.Double
+      description: The Y position of the text.
+    - id: boxWidth
+      type: System.Double
+      description: The width of the box containing the text.
+    - id: orientation
+      type: Vintagestory.API.Client.EnumTextOrientation
+      description: The orientation of the text.
+    content.vb: Public Sub DrawMultilineTextAt(ctx As Context, font As CairoFont, lines As TextLine(), posX As Double, posY As Double, boxWidth As Double, orientation As EnumTextOrientation = EnumTextOrientation.Left)
+  overload: Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt*
+  nameWithType.vb: TextDrawUtil.DrawMultilineTextAt(Context, CairoFont, TextLine(), Double, Double, Double, EnumTextOrientation)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt(Cairo.Context, Vintagestory.API.Client.CairoFont, Vintagestory.API.Client.TextLine(), Double, Double, Double, Vintagestory.API.Client.EnumTextOrientation)
+  name.vb: DrawMultilineTextAt(Context, CairoFont, TextLine(), Double, Double, Double, EnumTextOrientation)
+- uid: Vintagestory.API.Client.TextDrawUtil.GetLineHeight(Vintagestory.API.Client.CairoFont)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.GetLineHeight(Vintagestory.API.Client.CairoFont)
+  id: GetLineHeight(Vintagestory.API.Client.CairoFont)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: GetLineHeight(CairoFont)
+  nameWithType: TextDrawUtil.GetLineHeight(CairoFont)
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetLineHeight(Vintagestory.API.Client.CairoFont)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the height of the font to calculate the height of the line.
+  example: []
+  syntax:
+    content: public double GetLineHeight(CairoFont font)
+    parameters:
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font to calculate from.
+    return:
+      type: System.Double
+      description: The height of the line.
+    content.vb: Public Function GetLineHeight(font As CairoFont) As Double
+  overload: Vintagestory.API.Client.TextDrawUtil.GetLineHeight*
+- uid: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  id: GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: GetQuantityTextLines(CairoFont, string, EnumLinebreakBehavior, TextFlowPath[], double)
+  nameWithType: TextDrawUtil.GetQuantityTextLines(CairoFont, string, EnumLinebreakBehavior, TextFlowPath[], double)
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont, string, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath[], double)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the number of lines of text.
+  example: []
+  syntax:
+    content: public int GetQuantityTextLines(CairoFont font, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double lineY = 0)
+    parameters:
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text.
+    - id: text
+      type: System.String
+      description: The text itself.
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+      description: ''
+    - id: flowPath
+      type: Vintagestory.API.Client.TextFlowPath[]
+      description: The path for the text.
+    - id: lineY
+      type: System.Double
+      description: The height of the line
+    return:
+      type: System.Int32
+      description: The number of lines.
+    content.vb: Public Function GetQuantityTextLines(font As CairoFont, text As String, linebreak As EnumLinebreakBehavior, flowPath As TextFlowPath(), lineY As Double = 0) As Integer
+  overload: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines*
+  nameWithType.vb: TextDrawUtil.GetQuantityTextLines(CairoFont, String, EnumLinebreakBehavior, TextFlowPath(), Double)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont, String, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath(), Double)
+  name.vb: GetQuantityTextLines(CairoFont, String, EnumLinebreakBehavior, TextFlowPath(), Double)
+- uid: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  id: GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: GetMultilineTextHeight(CairoFont, string, EnumLinebreakBehavior, TextFlowPath[], double)
+  nameWithType: TextDrawUtil.GetMultilineTextHeight(CairoFont, string, EnumLinebreakBehavior, TextFlowPath[], double)
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont, string, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath[], double)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Get the final height of the text.
+  example: []
+  syntax:
+    content: public double GetMultilineTextHeight(CairoFont font, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double lineY = 0)
+    parameters:
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text.
+    - id: text
+      type: System.String
+      description: The text itself.
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+      description: ''
+    - id: flowPath
+      type: Vintagestory.API.Client.TextFlowPath[]
+      description: The path for the text.
+    - id: lineY
+      type: System.Double
+      description: The height of the line
+    return:
+      type: System.Double
+      description: The final height of the text.
+    content.vb: Public Function GetMultilineTextHeight(font As CairoFont, text As String, linebreak As EnumLinebreakBehavior, flowPath As TextFlowPath(), lineY As Double = 0) As Double
+  overload: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight*
+  nameWithType.vb: TextDrawUtil.GetMultilineTextHeight(CairoFont, String, EnumLinebreakBehavior, TextFlowPath(), Double)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont, String, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath(), Double)
+  name.vb: GetMultilineTextHeight(CairoFont, String, EnumLinebreakBehavior, TextFlowPath(), Double)
+- uid: Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Boolean)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Boolean)
+  id: Lineize(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Boolean)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: Lineize(CairoFont, string, EnumLinebreakBehavior, TextFlowPath[], double, double, bool)
+  nameWithType: TextDrawUtil.Lineize(CairoFont, string, EnumLinebreakBehavior, TextFlowPath[], double, double, bool)
+  fullName: Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont, string, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath[], double, double, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Turns the supplied text into line of text constrained by supplied flow path and starting at supplied start coordinates
+  example: []
+  syntax:
+    content: public TextLine[] Lineize(CairoFont font, string fulltext, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, bool keepLinebreakChar = false)
+    parameters:
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text.
+    - id: fulltext
+      type: System.String
+      description: The text of the lines.
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+      description: ''
+    - id: flowPath
+      type: Vintagestory.API.Client.TextFlowPath[]
+      description: The flow direction of text.
+    - id: startOffsetX
+      type: System.Double
+      description: The offset start position for X
+    - id: startY
+      type: System.Double
+      description: The offset start position for Y
+    - id: keepLinebreakChar
+      type: System.Boolean
+      description: ''
+    return:
+      type: Vintagestory.API.Client.TextLine[]
+      description: The text broken up into lines.
+    content.vb: Public Function Lineize(font As CairoFont, fulltext As String, linebreak As EnumLinebreakBehavior, flowPath As TextFlowPath(), startOffsetX As Double = 0, startY As Double = 0, keepLinebreakChar As Boolean = False) As TextLine()
+  overload: Vintagestory.API.Client.TextDrawUtil.Lineize*
+  nameWithType.vb: TextDrawUtil.Lineize(CairoFont, String, EnumLinebreakBehavior, TextFlowPath(), Double, Double, Boolean)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont, String, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath(), Double, Double, Boolean)
+  name.vb: Lineize(CairoFont, String, EnumLinebreakBehavior, TextFlowPath(), Double, Double, Boolean)
+- uid: Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Boolean)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Boolean)
+  id: Lineize(Cairo.Context,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Boolean)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: Lineize(Context, string, EnumLinebreakBehavior, TextFlowPath[], double, double, double, bool)
+  nameWithType: TextDrawUtil.Lineize(Context, string, EnumLinebreakBehavior, TextFlowPath[], double, double, double, bool)
+  fullName: Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context, string, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath[], double, double, double, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Turns the supplied text into line of text constrained by supplied flow path and starting at supplied start coordinates
+  example: []
+  syntax:
+    content: public TextLine[] Lineize(Context ctx, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, double lineHeightMultiplier = 1, bool keepLinebreakChar = false)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+      description: Contexts of the GUI.
+    - id: text
+      type: System.String
+      description: The text to be split
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+      description: ''
+    - id: flowPath
+      type: Vintagestory.API.Client.TextFlowPath[]
+      description: Sets the general flow of text.
+    - id: startOffsetX
+      type: System.Double
+      description: The offset start position for X
+    - id: startY
+      type: System.Double
+      description: The offset start position for Y
+    - id: lineHeightMultiplier
+      type: System.Double
+      description: ''
+    - id: keepLinebreakChar
+      type: System.Boolean
+      description: ''
+    return:
+      type: Vintagestory.API.Client.TextLine[]
+      description: The text broken up into lines.
+    content.vb: Public Function Lineize(ctx As Context, text As String, linebreak As EnumLinebreakBehavior, flowPath As TextFlowPath(), startOffsetX As Double = 0, startY As Double = 0, lineHeightMultiplier As Double = 1, keepLinebreakChar As Boolean = False) As TextLine()
+  overload: Vintagestory.API.Client.TextDrawUtil.Lineize*
+  nameWithType.vb: TextDrawUtil.Lineize(Context, String, EnumLinebreakBehavior, TextFlowPath(), Double, Double, Double, Boolean)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.Lineize(Cairo.Context, String, Vintagestory.API.Client.EnumLinebreakBehavior, Vintagestory.API.Client.TextFlowPath(), Double, Double, Double, Boolean)
+  name.vb: Lineize(Context, String, EnumLinebreakBehavior, TextFlowPath(), Double, Double, Double, Boolean)
+- uid: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,Vintagestory.API.Client.TextFlowPath[],Vintagestory.API.Client.EnumTextOrientation,Vintagestory.API.Client.EnumLinebreakBehavior)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,Vintagestory.API.Client.TextFlowPath[],Vintagestory.API.Client.EnumTextOrientation,Vintagestory.API.Client.EnumLinebreakBehavior)
+  id: AutobreakAndDrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,Vintagestory.API.Client.TextFlowPath[],Vintagestory.API.Client.EnumTextOrientation,Vintagestory.API.Client.EnumLinebreakBehavior)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: AutobreakAndDrawMultilineText(Context, CairoFont, string, double, double, TextFlowPath[], EnumTextOrientation, EnumLinebreakBehavior)
+  nameWithType: TextDrawUtil.AutobreakAndDrawMultilineText(Context, CairoFont, string, double, double, TextFlowPath[], EnumTextOrientation, EnumLinebreakBehavior)
+  fullName: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context, Vintagestory.API.Client.CairoFont, string, double, double, Vintagestory.API.Client.TextFlowPath[], Vintagestory.API.Client.EnumTextOrientation, Vintagestory.API.Client.EnumLinebreakBehavior)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double AutobreakAndDrawMultilineText(Context ctx, CairoFont font, string text, double lineX, double lineY, TextFlowPath[] flowPath, EnumTextOrientation orientation = EnumTextOrientation.Left, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+    - id: text
+      type: System.String
+    - id: lineX
+      type: System.Double
+    - id: lineY
+      type: System.Double
+    - id: flowPath
+      type: Vintagestory.API.Client.TextFlowPath[]
+    - id: orientation
+      type: Vintagestory.API.Client.EnumTextOrientation
+    - id: linebreak
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+    return:
+      type: System.Double
+    content.vb: Public Function AutobreakAndDrawMultilineText(ctx As Context, font As CairoFont, text As String, lineX As Double, lineY As Double, flowPath As TextFlowPath(), orientation As EnumTextOrientation = EnumTextOrientation.Left, linebreak As EnumLinebreakBehavior = EnumLinebreakBehavior.AfterWord) As Double
+  overload: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText*
+  nameWithType.vb: TextDrawUtil.AutobreakAndDrawMultilineText(Context, CairoFont, String, Double, Double, TextFlowPath(), EnumTextOrientation, EnumLinebreakBehavior)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Cairo.Context, Vintagestory.API.Client.CairoFont, String, Double, Double, Vintagestory.API.Client.TextFlowPath(), Vintagestory.API.Client.EnumTextOrientation, Vintagestory.API.Client.EnumLinebreakBehavior)
+  name.vb: AutobreakAndDrawMultilineText(Context, CairoFont, String, Double, Double, TextFlowPath(), EnumTextOrientation, EnumLinebreakBehavior)
+- uid: Vintagestory.API.Client.TextDrawUtil.DrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],Vintagestory.API.Client.EnumTextOrientation)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.DrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],Vintagestory.API.Client.EnumTextOrientation)
+  id: DrawMultilineText(Cairo.Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],Vintagestory.API.Client.EnumTextOrientation)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: DrawMultilineText(Context, CairoFont, TextLine[], EnumTextOrientation)
+  nameWithType: TextDrawUtil.DrawMultilineText(Context, CairoFont, TextLine[], EnumTextOrientation)
+  fullName: Vintagestory.API.Client.TextDrawUtil.DrawMultilineText(Cairo.Context, Vintagestory.API.Client.CairoFont, Vintagestory.API.Client.TextLine[], Vintagestory.API.Client.EnumTextOrientation)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: lineX is set to 0 after the second line, lineY is advanced by line height for each line
+  example: []
+  syntax:
+    content: public void DrawMultilineText(Context ctx, CairoFont font, TextLine[] lines, EnumTextOrientation orientation = EnumTextOrientation.Left)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+      description: The context of the text.
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text
+    - id: lines
+      type: Vintagestory.API.Client.TextLine[]
+      description: The preformatted lines of the text.
+    - id: orientation
+      type: Vintagestory.API.Client.EnumTextOrientation
+      description: 'The orientation of text (Default: Left)'
+    content.vb: Public Sub DrawMultilineText(ctx As Context, font As CairoFont, lines As TextLine(), orientation As EnumTextOrientation = EnumTextOrientation.Left)
+  overload: Vintagestory.API.Client.TextDrawUtil.DrawMultilineText*
+  nameWithType.vb: TextDrawUtil.DrawMultilineText(Context, CairoFont, TextLine(), EnumTextOrientation)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.DrawMultilineText(Cairo.Context, Vintagestory.API.Client.CairoFont, Vintagestory.API.Client.TextLine(), Vintagestory.API.Client.EnumTextOrientation)
+  name.vb: DrawMultilineText(Context, CairoFont, TextLine(), EnumTextOrientation)
+- uid: Vintagestory.API.Client.TextDrawUtil.DrawTextLine(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Boolean)
+  commentId: M:Vintagestory.API.Client.TextDrawUtil.DrawTextLine(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Boolean)
+  id: DrawTextLine(Cairo.Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Boolean)
+  parent: Vintagestory.API.Client.TextDrawUtil
+  langs:
+  - csharp
+  - vb
+  name: DrawTextLine(Context, CairoFont, string, double, double, bool)
+  nameWithType: TextDrawUtil.DrawTextLine(Context, CairoFont, string, double, double, bool)
+  fullName: Vintagestory.API.Client.TextDrawUtil.DrawTextLine(Cairo.Context, Vintagestory.API.Client.CairoFont, string, double, double, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Draws a line of text on the screen.
+  example: []
+  syntax:
+    content: public void DrawTextLine(Context ctx, CairoFont font, string text, double offsetX = 0, double offsetY = 0, bool textPathMode = false)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+      description: The context of the text.
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+      description: The font of the text.
+    - id: text
+      type: System.String
+      description: The text to draw.
+    - id: offsetX
+      type: System.Double
+      description: 'The X offset for the text start position. (Default: 0)'
+    - id: offsetY
+      type: System.Double
+      description: 'The Y offset for the text start position. (Default: 0)'
+    - id: textPathMode
+      type: System.Boolean
+      description: Whether or not to use TextPathMode.
+    content.vb: Public Sub DrawTextLine(ctx As Context, font As CairoFont, text As String, offsetX As Double = 0, offsetY As Double = 0, textPathMode As Boolean = False)
+  overload: Vintagestory.API.Client.TextDrawUtil.DrawTextLine*
+  nameWithType.vb: TextDrawUtil.DrawTextLine(Context, CairoFont, String, Double, Double, Boolean)
+  fullName.vb: Vintagestory.API.Client.TextDrawUtil.DrawTextLine(Cairo.Context, Vintagestory.API.Client.CairoFont, String, Double, Double, Boolean)
+  name.vb: DrawTextLine(Context, CairoFont, String, Double, Double, Boolean)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.TextDrawUtil.Lineize*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.Lineize
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_Lineize_Cairo_Context_System_String_System_Double_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_System_Boolean_
+  name: Lineize
+  nameWithType: TextDrawUtil.Lineize
+  fullName: Vintagestory.API.Client.TextDrawUtil.Lineize
+- uid: Cairo.Context
+  commentId: T:Cairo.Context
+  parent: Cairo
+  name: Context
+  nameWithType: Context
+  fullName: Cairo.Context
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Client.EnumLinebreakBehavior
+  commentId: T:Vintagestory.API.Client.EnumLinebreakBehavior
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumLinebreakBehavior.html
+  name: EnumLinebreakBehavior
+  nameWithType: EnumLinebreakBehavior
+  fullName: Vintagestory.API.Client.EnumLinebreakBehavior
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.TextLine[]
+  isExternal: true
+  href: Vintagestory.API.Client.TextLine.html
+  name: TextLine[]
+  nameWithType: TextLine[]
+  fullName: Vintagestory.API.Client.TextLine[]
+  nameWithType.vb: TextLine()
+  fullName.vb: Vintagestory.API.Client.TextLine()
+  name.vb: TextLine()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.TextLine
+    name: TextLine
+    href: Vintagestory.API.Client.TextLine.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Client.TextLine
+    name: TextLine
+    href: Vintagestory.API.Client.TextLine.html
+  - name: (
+  - name: )
+- uid: Cairo
+  commentId: N:Cairo
+  name: Cairo
+  nameWithType: Cairo
+  fullName: Cairo
+- uid: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_
+  name: GetQuantityTextLines
+  nameWithType: TextDrawUtil.GetQuantityTextLines
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines
+- uid: Vintagestory.API.Client.CairoFont
+  commentId: T:Vintagestory.API.Client.CairoFont
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CairoFont.html
+  name: CairoFont
+  nameWithType: CairoFont
+  fullName: Vintagestory.API.Client.CairoFont
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_
+  name: GetMultilineTextHeight
+  nameWithType: TextDrawUtil.GetMultilineTextHeight
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight
+- uid: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_Cairo_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumTextOrientation_
+  name: AutobreakAndDrawMultilineText
+  nameWithType: TextDrawUtil.AutobreakAndDrawMultilineText
+  fullName: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText
+- uid: Vintagestory.API.Client.EnumTextOrientation
+  commentId: T:Vintagestory.API.Client.EnumTextOrientation
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumTextOrientation.html
+  name: EnumTextOrientation
+  nameWithType: EnumTextOrientation
+  fullName: Vintagestory.API.Client.EnumTextOrientation
+- uid: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineTextAt_Cairo_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_
+  name: AutobreakAndDrawMultilineTextAt
+  nameWithType: TextDrawUtil.AutobreakAndDrawMultilineTextAt
+  fullName: Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt
+- uid: Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_DrawMultilineTextAt_Cairo_Context_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_TextLine___System_Double_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_
+  name: DrawMultilineTextAt
+  nameWithType: TextDrawUtil.DrawMultilineTextAt
+  fullName: Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt
+- uid: Vintagestory.API.Client.TextDrawUtil.GetLineHeight*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.GetLineHeight
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_GetLineHeight_Vintagestory_API_Client_CairoFont_
+  name: GetLineHeight
+  nameWithType: TextDrawUtil.GetLineHeight
+  fullName: Vintagestory.API.Client.TextDrawUtil.GetLineHeight
+- uid: Vintagestory.API.Client.TextFlowPath[]
+  isExternal: true
+  href: Vintagestory.API.Client.TextFlowPath.html
+  name: TextFlowPath[]
+  nameWithType: TextFlowPath[]
+  fullName: Vintagestory.API.Client.TextFlowPath[]
+  nameWithType.vb: TextFlowPath()
+  fullName.vb: Vintagestory.API.Client.TextFlowPath()
+  name.vb: TextFlowPath()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.TextFlowPath
+    name: TextFlowPath
+    href: Vintagestory.API.Client.TextFlowPath.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Client.TextFlowPath
+    name: TextFlowPath
+    href: Vintagestory.API.Client.TextFlowPath.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.TextDrawUtil.DrawMultilineText*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.DrawMultilineText
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_DrawMultilineText_Cairo_Context_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_TextLine___Vintagestory_API_Client_EnumTextOrientation_
+  name: DrawMultilineText
+  nameWithType: TextDrawUtil.DrawMultilineText
+  fullName: Vintagestory.API.Client.TextDrawUtil.DrawMultilineText
+- uid: Vintagestory.API.Client.TextDrawUtil.DrawTextLine*
+  commentId: Overload:Vintagestory.API.Client.TextDrawUtil.DrawTextLine
+  href: Vintagestory.API.Client.TextDrawUtil.html#Vintagestory_API_Client_TextDrawUtil_DrawTextLine_Cairo_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_System_Boolean_
+  name: DrawTextLine
+  nameWithType: TextDrawUtil.DrawTextLine
+  fullName: Vintagestory.API.Client.TextDrawUtil.DrawTextLine

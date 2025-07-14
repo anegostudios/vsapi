@@ -1,0 +1,1208 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.CollectibleArgParser
+  commentId: T:Vintagestory.API.Common.CollectibleArgParser
+  id: CollectibleArgParser
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.CollectibleArgParser.#ctor(System.String,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.EnumItemClass,System.Boolean)
+  - Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation(System.String)
+  - Vintagestory.API.Common.CollectibleArgParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  - Vintagestory.API.Common.CollectibleArgParser.GetValue
+  - Vintagestory.API.Common.CollectibleArgParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  - Vintagestory.API.Common.CollectibleArgParser.SetValue(System.Object)
+  - Vintagestory.API.Common.CollectibleArgParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  langs:
+  - csharp
+  - vb
+  name: CollectibleArgParser
+  nameWithType: CollectibleArgParser
+  fullName: Vintagestory.API.Common.CollectibleArgParser
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public class CollectibleArgParser : ArgumentParserBase, ICommandArgumentParser'
+    content.vb: Public Class CollectibleArgParser Inherits ArgumentParserBase Implements ICommandArgumentParser
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.ArgumentParserBase
+  implements:
+  - Vintagestory.API.Common.ICommandArgumentParser
+  inheritedMembers:
+  - Vintagestory.API.Common.ArgumentParserBase.lastErrorMessage
+  - Vintagestory.API.Common.ArgumentParserBase.isMandatoryArg
+  - Vintagestory.API.Common.ArgumentParserBase.argCount
+  - Vintagestory.API.Common.ArgumentParserBase.argName
+  - Vintagestory.API.Common.ArgumentParserBase.LastErrorMessage
+  - Vintagestory.API.Common.ArgumentParserBase.ArgumentName
+  - Vintagestory.API.Common.ArgumentParserBase.IsMandatoryArg
+  - Vintagestory.API.Common.ArgumentParserBase.IsMissing
+  - Vintagestory.API.Common.ArgumentParserBase.ArgCount
+  - Vintagestory.API.Common.ArgumentParserBase.GetSyntax
+  - Vintagestory.API.Common.ArgumentParserBase.GetSyntaxUnformatted
+  - Vintagestory.API.Common.ArgumentParserBase.GetLastError
+  - Vintagestory.API.Common.ArgumentParserBase.parseSubArgs(System.String)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.CollectibleArgParser.#ctor(System.String,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.EnumItemClass,System.Boolean)
+  commentId: M:Vintagestory.API.Common.CollectibleArgParser.#ctor(System.String,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.EnumItemClass,System.Boolean)
+  id: '#ctor(System.String,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.EnumItemClass,System.Boolean)'
+  parent: Vintagestory.API.Common.CollectibleArgParser
+  langs:
+  - csharp
+  - vb
+  name: CollectibleArgParser(string, ICoreAPI, EnumItemClass, bool)
+  nameWithType: CollectibleArgParser.CollectibleArgParser(string, ICoreAPI, EnumItemClass, bool)
+  fullName: Vintagestory.API.Common.CollectibleArgParser.CollectibleArgParser(string, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.EnumItemClass, bool)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public CollectibleArgParser(string argName, ICoreAPI api, EnumItemClass itemclass, bool isMandatoryArg)
+    parameters:
+    - id: argName
+      type: System.String
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    - id: itemclass
+      type: Vintagestory.API.Common.EnumItemClass
+    - id: isMandatoryArg
+      type: System.Boolean
+    content.vb: Public Sub New(argName As String, api As ICoreAPI, itemclass As EnumItemClass, isMandatoryArg As Boolean)
+  overload: Vintagestory.API.Common.CollectibleArgParser.#ctor*
+  nameWithType.vb: CollectibleArgParser.New(String, ICoreAPI, EnumItemClass, Boolean)
+  fullName.vb: Vintagestory.API.Common.CollectibleArgParser.New(String, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.EnumItemClass, Boolean)
+  name.vb: New(String, ICoreAPI, EnumItemClass, Boolean)
+- uid: Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation(System.String)
+  commentId: M:Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation(System.String)
+  id: GetSyntaxExplanation(System.String)
+  parent: Vintagestory.API.Common.CollectibleArgParser
+  langs:
+  - csharp
+  - vb
+  name: GetSyntaxExplanation(string)
+  nameWithType: CollectibleArgParser.GetSyntaxExplanation(string)
+  fullName: Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override string GetSyntaxExplanation(string indent)
+    parameters:
+    - id: indent
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Overrides Function GetSyntaxExplanation(indent As String) As String
+  overridden: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxExplanation(System.String)
+  overload: Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation*
+  nameWithType.vb: CollectibleArgParser.GetSyntaxExplanation(String)
+  fullName.vb: Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation(String)
+  name.vb: GetSyntaxExplanation(String)
+- uid: Vintagestory.API.Common.CollectibleArgParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  commentId: M:Vintagestory.API.Common.CollectibleArgParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  id: GetValidRange(Vintagestory.API.Common.CmdArgs)
+  parent: Vintagestory.API.Common.CollectibleArgParser
+  langs:
+  - csharp
+  - vb
+  name: GetValidRange(CmdArgs)
+  nameWithType: CollectibleArgParser.GetValidRange(CmdArgs)
+  fullName: Vintagestory.API.Common.CollectibleArgParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override string[] GetValidRange(CmdArgs args)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Common.CmdArgs
+    return:
+      type: System.String[]
+    content.vb: Public Overrides Function GetValidRange(args As CmdArgs) As String()
+  overridden: Vintagestory.API.Common.ArgumentParserBase.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  overload: Vintagestory.API.Common.CollectibleArgParser.GetValidRange*
+- uid: Vintagestory.API.Common.CollectibleArgParser.GetValue
+  commentId: M:Vintagestory.API.Common.CollectibleArgParser.GetValue
+  id: GetValue
+  parent: Vintagestory.API.Common.CollectibleArgParser
+  langs:
+  - csharp
+  - vb
+  name: GetValue()
+  nameWithType: CollectibleArgParser.GetValue()
+  fullName: Vintagestory.API.Common.CollectibleArgParser.GetValue()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override object GetValue()
+    return:
+      type: System.Object
+    content.vb: Public Overrides Function GetValue() As Object
+  overridden: Vintagestory.API.Common.ArgumentParserBase.GetValue
+  overload: Vintagestory.API.Common.CollectibleArgParser.GetValue*
+- uid: Vintagestory.API.Common.CollectibleArgParser.SetValue(System.Object)
+  commentId: M:Vintagestory.API.Common.CollectibleArgParser.SetValue(System.Object)
+  id: SetValue(System.Object)
+  parent: Vintagestory.API.Common.CollectibleArgParser
+  langs:
+  - csharp
+  - vb
+  name: SetValue(object)
+  nameWithType: CollectibleArgParser.SetValue(object)
+  fullName: Vintagestory.API.Common.CollectibleArgParser.SetValue(object)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used by the async system
+  example: []
+  syntax:
+    content: public override void SetValue(object data)
+    parameters:
+    - id: data
+      type: System.Object
+      description: ''
+    content.vb: Public Overrides Sub SetValue(data As Object)
+  overridden: Vintagestory.API.Common.ArgumentParserBase.SetValue(System.Object)
+  overload: Vintagestory.API.Common.CollectibleArgParser.SetValue*
+  nameWithType.vb: CollectibleArgParser.SetValue(Object)
+  fullName.vb: Vintagestory.API.Common.CollectibleArgParser.SetValue(Object)
+  name.vb: SetValue(Object)
+- uid: Vintagestory.API.Common.CollectibleArgParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  commentId: M:Vintagestory.API.Common.CollectibleArgParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  id: PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  parent: Vintagestory.API.Common.CollectibleArgParser
+  langs:
+  - csharp
+  - vb
+  name: PreProcess(TextCommandCallingArgs)
+  nameWithType: CollectibleArgParser.PreProcess(TextCommandCallingArgs)
+  fullName: Vintagestory.API.Common.CollectibleArgParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override void PreProcess(TextCommandCallingArgs args)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Common.TextCommandCallingArgs
+    content.vb: Public Overrides Sub PreProcess(args As TextCommandCallingArgs)
+  overridden: Vintagestory.API.Common.ArgumentParserBase.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  overload: Vintagestory.API.Common.CollectibleArgParser.PreProcess*
+- uid: Vintagestory.API.Common.CollectibleArgParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  commentId: M:Vintagestory.API.Common.CollectibleArgParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  id: TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  parent: Vintagestory.API.Common.CollectibleArgParser
+  langs:
+  - csharp
+  - vb
+  name: TryProcess(TextCommandCallingArgs, Action<AsyncParseResults>)
+  nameWithType: CollectibleArgParser.TryProcess(TextCommandCallingArgs, Action<AsyncParseResults>)
+  fullName: Vintagestory.API.Common.CollectibleArgParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs, System.Action<Vintagestory.API.Common.AsyncParseResults>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Parse the args.
+  example: []
+  syntax:
+    content: public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Common.TextCommandCallingArgs
+      description: ''
+    - id: onReady
+      type: System.Action{Vintagestory.API.Common.AsyncParseResults}
+      description: Only needs to be called when returning Deferred as parseresult
+    return:
+      type: Vintagestory.API.Common.EnumParseResult
+      description: ''
+    content.vb: Public Overrides Function TryProcess(args As TextCommandCallingArgs, onReady As Action(Of AsyncParseResults) = Nothing) As EnumParseResult
+  overridden: Vintagestory.API.Common.ArgumentParserBase.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  overload: Vintagestory.API.Common.CollectibleArgParser.TryProcess*
+  nameWithType.vb: CollectibleArgParser.TryProcess(TextCommandCallingArgs, Action(Of AsyncParseResults))
+  fullName.vb: Vintagestory.API.Common.CollectibleArgParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs, System.Action(Of Vintagestory.API.Common.AsyncParseResults))
+  name.vb: TryProcess(TextCommandCallingArgs, Action(Of AsyncParseResults))
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.ArgumentParserBase
+  commentId: T:Vintagestory.API.Common.ArgumentParserBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ArgumentParserBase.html
+  name: ArgumentParserBase
+  nameWithType: ArgumentParserBase
+  fullName: Vintagestory.API.Common.ArgumentParserBase
+- uid: Vintagestory.API.Common.ICommandArgumentParser
+  commentId: T:Vintagestory.API.Common.ICommandArgumentParser
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICommandArgumentParser.html
+  name: ICommandArgumentParser
+  nameWithType: ICommandArgumentParser
+  fullName: Vintagestory.API.Common.ICommandArgumentParser
+- uid: Vintagestory.API.Common.ArgumentParserBase.lastErrorMessage
+  commentId: F:Vintagestory.API.Common.ArgumentParserBase.lastErrorMessage
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_lastErrorMessage
+  name: lastErrorMessage
+  nameWithType: ArgumentParserBase.lastErrorMessage
+  fullName: Vintagestory.API.Common.ArgumentParserBase.lastErrorMessage
+- uid: Vintagestory.API.Common.ArgumentParserBase.isMandatoryArg
+  commentId: F:Vintagestory.API.Common.ArgumentParserBase.isMandatoryArg
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_isMandatoryArg
+  name: isMandatoryArg
+  nameWithType: ArgumentParserBase.isMandatoryArg
+  fullName: Vintagestory.API.Common.ArgumentParserBase.isMandatoryArg
+- uid: Vintagestory.API.Common.ArgumentParserBase.argCount
+  commentId: F:Vintagestory.API.Common.ArgumentParserBase.argCount
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_argCount
+  name: argCount
+  nameWithType: ArgumentParserBase.argCount
+  fullName: Vintagestory.API.Common.ArgumentParserBase.argCount
+- uid: Vintagestory.API.Common.ArgumentParserBase.argName
+  commentId: F:Vintagestory.API.Common.ArgumentParserBase.argName
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_argName
+  name: argName
+  nameWithType: ArgumentParserBase.argName
+  fullName: Vintagestory.API.Common.ArgumentParserBase.argName
+- uid: Vintagestory.API.Common.ArgumentParserBase.LastErrorMessage
+  commentId: P:Vintagestory.API.Common.ArgumentParserBase.LastErrorMessage
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_LastErrorMessage
+  name: LastErrorMessage
+  nameWithType: ArgumentParserBase.LastErrorMessage
+  fullName: Vintagestory.API.Common.ArgumentParserBase.LastErrorMessage
+- uid: Vintagestory.API.Common.ArgumentParserBase.ArgumentName
+  commentId: P:Vintagestory.API.Common.ArgumentParserBase.ArgumentName
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_ArgumentName
+  name: ArgumentName
+  nameWithType: ArgumentParserBase.ArgumentName
+  fullName: Vintagestory.API.Common.ArgumentParserBase.ArgumentName
+- uid: Vintagestory.API.Common.ArgumentParserBase.IsMandatoryArg
+  commentId: P:Vintagestory.API.Common.ArgumentParserBase.IsMandatoryArg
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_IsMandatoryArg
+  name: IsMandatoryArg
+  nameWithType: ArgumentParserBase.IsMandatoryArg
+  fullName: Vintagestory.API.Common.ArgumentParserBase.IsMandatoryArg
+- uid: Vintagestory.API.Common.ArgumentParserBase.IsMissing
+  commentId: P:Vintagestory.API.Common.ArgumentParserBase.IsMissing
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_IsMissing
+  name: IsMissing
+  nameWithType: ArgumentParserBase.IsMissing
+  fullName: Vintagestory.API.Common.ArgumentParserBase.IsMissing
+- uid: Vintagestory.API.Common.ArgumentParserBase.ArgCount
+  commentId: P:Vintagestory.API.Common.ArgumentParserBase.ArgCount
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_ArgCount
+  name: ArgCount
+  nameWithType: ArgumentParserBase.ArgCount
+  fullName: Vintagestory.API.Common.ArgumentParserBase.ArgCount
+- uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntax
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.GetSyntax
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntax
+  name: GetSyntax()
+  nameWithType: ArgumentParserBase.GetSyntax()
+  fullName: Vintagestory.API.Common.ArgumentParserBase.GetSyntax()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntax
+    name: GetSyntax
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntax
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntax
+    name: GetSyntax
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntax
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxUnformatted
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.GetSyntaxUnformatted
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxUnformatted
+  name: GetSyntaxUnformatted()
+  nameWithType: ArgumentParserBase.GetSyntaxUnformatted()
+  fullName: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxUnformatted()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxUnformatted
+    name: GetSyntaxUnformatted
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxUnformatted
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxUnformatted
+    name: GetSyntaxUnformatted
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxUnformatted
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ArgumentParserBase.GetLastError
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.GetLastError
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetLastError
+  name: GetLastError()
+  nameWithType: ArgumentParserBase.GetLastError()
+  fullName: Vintagestory.API.Common.ArgumentParserBase.GetLastError()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetLastError
+    name: GetLastError
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetLastError
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetLastError
+    name: GetLastError
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetLastError
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ArgumentParserBase.parseSubArgs(System.String)
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.parseSubArgs(System.String)
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  isExternal: true
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_parseSubArgs_System_String_
+  name: parseSubArgs(string)
+  nameWithType: ArgumentParserBase.parseSubArgs(string)
+  fullName: Vintagestory.API.Common.ArgumentParserBase.parseSubArgs(string)
+  nameWithType.vb: ArgumentParserBase.parseSubArgs(String)
+  fullName.vb: Vintagestory.API.Common.ArgumentParserBase.parseSubArgs(String)
+  name.vb: parseSubArgs(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.parseSubArgs(System.String)
+    name: parseSubArgs
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_parseSubArgs_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.parseSubArgs(System.String)
+    name: parseSubArgs
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_parseSubArgs_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.CollectibleArgParser.#ctor*
+  commentId: Overload:Vintagestory.API.Common.CollectibleArgParser.#ctor
+  href: Vintagestory.API.Common.CollectibleArgParser.html#Vintagestory_API_Common_CollectibleArgParser__ctor_System_String_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_EnumItemClass_System_Boolean_
+  name: CollectibleArgParser
+  nameWithType: CollectibleArgParser.CollectibleArgParser
+  fullName: Vintagestory.API.Common.CollectibleArgParser.CollectibleArgParser
+  nameWithType.vb: CollectibleArgParser.New
+  fullName.vb: Vintagestory.API.Common.CollectibleArgParser.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.EnumItemClass
+  commentId: T:Vintagestory.API.Common.EnumItemClass
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumItemClass.html
+  name: EnumItemClass
+  nameWithType: EnumItemClass
+  fullName: Vintagestory.API.Common.EnumItemClass
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxExplanation(System.String)
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.GetSyntaxExplanation(System.String)
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  isExternal: true
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxExplanation_System_String_
+  name: GetSyntaxExplanation(string)
+  nameWithType: ArgumentParserBase.GetSyntaxExplanation(string)
+  fullName: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxExplanation(string)
+  nameWithType.vb: ArgumentParserBase.GetSyntaxExplanation(String)
+  fullName.vb: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxExplanation(String)
+  name.vb: GetSyntaxExplanation(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxExplanation(System.String)
+    name: GetSyntaxExplanation
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxExplanation_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetSyntaxExplanation(System.String)
+    name: GetSyntaxExplanation
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxExplanation_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation*
+  commentId: Overload:Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation
+  href: Vintagestory.API.Common.CollectibleArgParser.html#Vintagestory_API_Common_CollectibleArgParser_GetSyntaxExplanation_System_String_
+  name: GetSyntaxExplanation
+  nameWithType: CollectibleArgParser.GetSyntaxExplanation
+  fullName: Vintagestory.API.Common.CollectibleArgParser.GetSyntaxExplanation
+- uid: Vintagestory.API.Common.ArgumentParserBase.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetValidRange_Vintagestory_API_Common_CmdArgs_
+  name: GetValidRange(CmdArgs)
+  nameWithType: ArgumentParserBase.GetValidRange(CmdArgs)
+  fullName: Vintagestory.API.Common.ArgumentParserBase.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetValidRange(Vintagestory.API.Common.CmdArgs)
+    name: GetValidRange
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetValidRange_Vintagestory_API_Common_CmdArgs_
+  - name: (
+  - uid: Vintagestory.API.Common.CmdArgs
+    name: CmdArgs
+    href: Vintagestory.API.Common.CmdArgs.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetValidRange(Vintagestory.API.Common.CmdArgs)
+    name: GetValidRange
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetValidRange_Vintagestory_API_Common_CmdArgs_
+  - name: (
+  - uid: Vintagestory.API.Common.CmdArgs
+    name: CmdArgs
+    href: Vintagestory.API.Common.CmdArgs.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleArgParser.GetValidRange*
+  commentId: Overload:Vintagestory.API.Common.CollectibleArgParser.GetValidRange
+  href: Vintagestory.API.Common.CollectibleArgParser.html#Vintagestory_API_Common_CollectibleArgParser_GetValidRange_Vintagestory_API_Common_CmdArgs_
+  name: GetValidRange
+  nameWithType: CollectibleArgParser.GetValidRange
+  fullName: Vintagestory.API.Common.CollectibleArgParser.GetValidRange
+- uid: Vintagestory.API.Common.CmdArgs
+  commentId: T:Vintagestory.API.Common.CmdArgs
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CmdArgs.html
+  name: CmdArgs
+  nameWithType: CmdArgs
+  fullName: Vintagestory.API.Common.CmdArgs
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ArgumentParserBase.GetValue
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.GetValue
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetValue
+  name: GetValue()
+  nameWithType: ArgumentParserBase.GetValue()
+  fullName: Vintagestory.API.Common.ArgumentParserBase.GetValue()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetValue
+    name: GetValue
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.GetValue
+    name: GetValue
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetValue
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleArgParser.GetValue*
+  commentId: Overload:Vintagestory.API.Common.CollectibleArgParser.GetValue
+  href: Vintagestory.API.Common.CollectibleArgParser.html#Vintagestory_API_Common_CollectibleArgParser_GetValue
+  name: GetValue
+  nameWithType: CollectibleArgParser.GetValue
+  fullName: Vintagestory.API.Common.CollectibleArgParser.GetValue
+- uid: Vintagestory.API.Common.ArgumentParserBase.SetValue(System.Object)
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.SetValue(System.Object)
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  isExternal: true
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_SetValue_System_Object_
+  name: SetValue(object)
+  nameWithType: ArgumentParserBase.SetValue(object)
+  fullName: Vintagestory.API.Common.ArgumentParserBase.SetValue(object)
+  nameWithType.vb: ArgumentParserBase.SetValue(Object)
+  fullName.vb: Vintagestory.API.Common.ArgumentParserBase.SetValue(Object)
+  name.vb: SetValue(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.SetValue(System.Object)
+    name: SetValue
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.SetValue(System.Object)
+    name: SetValue
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_SetValue_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleArgParser.SetValue*
+  commentId: Overload:Vintagestory.API.Common.CollectibleArgParser.SetValue
+  href: Vintagestory.API.Common.CollectibleArgParser.html#Vintagestory_API_Common_CollectibleArgParser_SetValue_System_Object_
+  name: SetValue
+  nameWithType: CollectibleArgParser.SetValue
+  fullName: Vintagestory.API.Common.CollectibleArgParser.SetValue
+- uid: Vintagestory.API.Common.ArgumentParserBase.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_PreProcess_Vintagestory_API_Common_TextCommandCallingArgs_
+  name: PreProcess(TextCommandCallingArgs)
+  nameWithType: ArgumentParserBase.PreProcess(TextCommandCallingArgs)
+  fullName: Vintagestory.API.Common.ArgumentParserBase.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+    name: PreProcess
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_PreProcess_Vintagestory_API_Common_TextCommandCallingArgs_
+  - name: (
+  - uid: Vintagestory.API.Common.TextCommandCallingArgs
+    name: TextCommandCallingArgs
+    href: Vintagestory.API.Common.TextCommandCallingArgs.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+    name: PreProcess
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_PreProcess_Vintagestory_API_Common_TextCommandCallingArgs_
+  - name: (
+  - uid: Vintagestory.API.Common.TextCommandCallingArgs
+    name: TextCommandCallingArgs
+    href: Vintagestory.API.Common.TextCommandCallingArgs.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleArgParser.PreProcess*
+  commentId: Overload:Vintagestory.API.Common.CollectibleArgParser.PreProcess
+  href: Vintagestory.API.Common.CollectibleArgParser.html#Vintagestory_API_Common_CollectibleArgParser_PreProcess_Vintagestory_API_Common_TextCommandCallingArgs_
+  name: PreProcess
+  nameWithType: CollectibleArgParser.PreProcess
+  fullName: Vintagestory.API.Common.CollectibleArgParser.PreProcess
+- uid: Vintagestory.API.Common.TextCommandCallingArgs
+  commentId: T:Vintagestory.API.Common.TextCommandCallingArgs
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.TextCommandCallingArgs.html
+  name: TextCommandCallingArgs
+  nameWithType: TextCommandCallingArgs
+  fullName: Vintagestory.API.Common.TextCommandCallingArgs
+- uid: Vintagestory.API.Common.ArgumentParserBase.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  commentId: M:Vintagestory.API.Common.ArgumentParserBase.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  parent: Vintagestory.API.Common.ArgumentParserBase
+  isExternal: true
+  href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_TryProcess_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_AsyncParseResults__
+  name: TryProcess(TextCommandCallingArgs, Action<AsyncParseResults>)
+  nameWithType: ArgumentParserBase.TryProcess(TextCommandCallingArgs, Action<AsyncParseResults>)
+  fullName: Vintagestory.API.Common.ArgumentParserBase.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs, System.Action<Vintagestory.API.Common.AsyncParseResults>)
+  nameWithType.vb: ArgumentParserBase.TryProcess(TextCommandCallingArgs, Action(Of AsyncParseResults))
+  fullName.vb: Vintagestory.API.Common.ArgumentParserBase.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs, System.Action(Of Vintagestory.API.Common.AsyncParseResults))
+  name.vb: TryProcess(TextCommandCallingArgs, Action(Of AsyncParseResults))
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+    name: TryProcess
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_TryProcess_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_AsyncParseResults__
+  - name: (
+  - uid: Vintagestory.API.Common.TextCommandCallingArgs
+    name: TextCommandCallingArgs
+    href: Vintagestory.API.Common.TextCommandCallingArgs.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Common.AsyncParseResults
+    name: AsyncParseResults
+    href: Vintagestory.API.Common.AsyncParseResults.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ArgumentParserBase.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+    name: TryProcess
+    href: Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_TryProcess_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_AsyncParseResults__
+  - name: (
+  - uid: Vintagestory.API.Common.TextCommandCallingArgs
+    name: TextCommandCallingArgs
+    href: Vintagestory.API.Common.TextCommandCallingArgs.html
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.AsyncParseResults
+    name: AsyncParseResults
+    href: Vintagestory.API.Common.AsyncParseResults.html
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleArgParser.TryProcess*
+  commentId: Overload:Vintagestory.API.Common.CollectibleArgParser.TryProcess
+  href: Vintagestory.API.Common.CollectibleArgParser.html#Vintagestory_API_Common_CollectibleArgParser_TryProcess_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_AsyncParseResults__
+  name: TryProcess
+  nameWithType: CollectibleArgParser.TryProcess
+  fullName: Vintagestory.API.Common.CollectibleArgParser.TryProcess
+- uid: System.Action{Vintagestory.API.Common.AsyncParseResults}
+  commentId: T:System.Action{Vintagestory.API.Common.AsyncParseResults}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<AsyncParseResults>
+  nameWithType: Action<AsyncParseResults>
+  fullName: System.Action<Vintagestory.API.Common.AsyncParseResults>
+  nameWithType.vb: Action(Of AsyncParseResults)
+  fullName.vb: System.Action(Of Vintagestory.API.Common.AsyncParseResults)
+  name.vb: Action(Of AsyncParseResults)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Common.AsyncParseResults
+    name: AsyncParseResults
+    href: Vintagestory.API.Common.AsyncParseResults.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.AsyncParseResults
+    name: AsyncParseResults
+    href: Vintagestory.API.Common.AsyncParseResults.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumParseResult
+  commentId: T:Vintagestory.API.Common.EnumParseResult
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumParseResult.html
+  name: EnumParseResult
+  nameWithType: EnumParseResult
+  fullName: Vintagestory.API.Common.EnumParseResult
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

@@ -1,0 +1,951 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.MathTools.Rectanglei
+  commentId: T:Vintagestory.API.MathTools.Rectanglei
+  id: Rectanglei
+  parent: Vintagestory.API.MathTools
+  children:
+  - Vintagestory.API.MathTools.Rectanglei.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.Rectanglei.Bottom
+  - Vintagestory.API.MathTools.Rectanglei.Clone
+  - Vintagestory.API.MathTools.Rectanglei.Contains(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.Rectanglei.Contains(Vintagestory.API.MathTools.Vec2i)
+  - Vintagestory.API.MathTools.Rectanglei.GrowBy(System.Int32)
+  - Vintagestory.API.MathTools.Rectanglei.Intersects(Vintagestory.API.MathTools.Rectanglei)
+  - Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(Vintagestory.API.MathTools.Rectanglei)
+  - Vintagestory.API.MathTools.Rectanglei.PointInside(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.Rectanglei.PointInside(Vintagestory.API.MathTools.Vec2i)
+  - Vintagestory.API.MathTools.Rectanglei.X1
+  - Vintagestory.API.MathTools.Rectanglei.X2
+  - Vintagestory.API.MathTools.Rectanglei.Y1
+  - Vintagestory.API.MathTools.Rectanglei.Y2
+  langs:
+  - csharp
+  - vb
+  name: Rectanglei
+  nameWithType: Rectanglei
+  fullName: Vintagestory.API.MathTools.Rectanglei
+  type: Struct
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public struct Rectanglei
+    content.vb: Public Structure Rectanglei
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.MathTools.Rectanglei.X1
+  commentId: P:Vintagestory.API.MathTools.Rectanglei.X1
+  id: X1
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: X1
+  nameWithType: Rectanglei.X1
+  fullName: Vintagestory.API.MathTools.Rectanglei.X1
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Same as X
+  example: []
+  syntax:
+    content: public int X1 { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property X1 As Integer
+  overload: Vintagestory.API.MathTools.Rectanglei.X1*
+- uid: Vintagestory.API.MathTools.Rectanglei.Y1
+  commentId: P:Vintagestory.API.MathTools.Rectanglei.Y1
+  id: Y1
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Y1
+  nameWithType: Rectanglei.Y1
+  fullName: Vintagestory.API.MathTools.Rectanglei.Y1
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Same as Y
+  example: []
+  syntax:
+    content: public int Y1 { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Y1 As Integer
+  overload: Vintagestory.API.MathTools.Rectanglei.Y1*
+- uid: Vintagestory.API.MathTools.Rectanglei.X2
+  commentId: P:Vintagestory.API.MathTools.Rectanglei.X2
+  id: X2
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: X2
+  nameWithType: Rectanglei.X2
+  fullName: Vintagestory.API.MathTools.Rectanglei.X2
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Same as X + Width
+  example: []
+  syntax:
+    content: public int X2 { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property X2 As Integer
+  overload: Vintagestory.API.MathTools.Rectanglei.X2*
+- uid: Vintagestory.API.MathTools.Rectanglei.Y2
+  commentId: P:Vintagestory.API.MathTools.Rectanglei.Y2
+  id: Y2
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Y2
+  nameWithType: Rectanglei.Y2
+  fullName: Vintagestory.API.MathTools.Rectanglei.Y2
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Same as Y + Height
+  example: []
+  syntax:
+    content: public int Y2 { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Y2 As Integer
+  overload: Vintagestory.API.MathTools.Rectanglei.Y2*
+- uid: Vintagestory.API.MathTools.Rectanglei.Bottom
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.Bottom
+  id: Bottom
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Bottom()
+  nameWithType: Rectanglei.Bottom()
+  fullName: Vintagestory.API.MathTools.Rectanglei.Bottom()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public int Bottom()
+    return:
+      type: System.Int32
+    content.vb: Public Function Bottom() As Integer
+  overload: Vintagestory.API.MathTools.Rectanglei.Bottom*
+- uid: Vintagestory.API.MathTools.Rectanglei.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32)'
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Rectanglei(int, int, int, int)
+  nameWithType: Rectanglei.Rectanglei(int, int, int, int)
+  fullName: Vintagestory.API.MathTools.Rectanglei.Rectanglei(int, int, int, int)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public Rectanglei(int X, int Y, int width, int height)
+    parameters:
+    - id: X
+      type: System.Int32
+    - id: Y
+      type: System.Int32
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    content.vb: Public Sub New(X As Integer, Y As Integer, width As Integer, height As Integer)
+  overload: Vintagestory.API.MathTools.Rectanglei.#ctor*
+  nameWithType.vb: Rectanglei.New(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.Rectanglei.New(Integer, Integer, Integer, Integer)
+  name.vb: New(Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.MathTools.Rectanglei.GrowBy(System.Int32)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.GrowBy(System.Int32)
+  id: GrowBy(System.Int32)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: GrowBy(int)
+  nameWithType: Rectanglei.GrowBy(int)
+  fullName: Vintagestory.API.MathTools.Rectanglei.GrowBy(int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public Rectanglei GrowBy(int size)
+    parameters:
+    - id: size
+      type: System.Int32
+    return:
+      type: Vintagestory.API.MathTools.Rectanglei
+    content.vb: Public Function GrowBy(size As Integer) As Rectanglei
+  overload: Vintagestory.API.MathTools.Rectanglei.GrowBy*
+  nameWithType.vb: Rectanglei.GrowBy(Integer)
+  fullName.vb: Vintagestory.API.MathTools.Rectanglei.GrowBy(Integer)
+  name.vb: GrowBy(Integer)
+- uid: Vintagestory.API.MathTools.Rectanglei.Clone
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.Clone
+  id: Clone
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: Rectanglei.Clone()
+  fullName: Vintagestory.API.MathTools.Rectanglei.Clone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: >-
+      [Obsolete("Rectanglei is a struct and there is no point cloning a struct")]
+
+      public Rectanglei Clone()
+    return:
+      type: Vintagestory.API.MathTools.Rectanglei
+    content.vb: >-
+      <Obsolete("Rectanglei is a struct and there is no point cloning a struct")>
+
+      Public Function Clone() As Rectanglei
+  overload: Vintagestory.API.MathTools.Rectanglei.Clone*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Rectanglei is a struct and there is no point cloning a struct
+- uid: Vintagestory.API.MathTools.Rectanglei.PointInside(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.PointInside(System.Int32,System.Int32)
+  id: PointInside(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: PointInside(int, int)
+  nameWithType: Rectanglei.PointInside(int, int)
+  fullName: Vintagestory.API.MathTools.Rectanglei.PointInside(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public bool PointInside(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function PointInside(x As Integer, y As Integer) As Boolean
+  overload: Vintagestory.API.MathTools.Rectanglei.PointInside*
+  nameWithType.vb: Rectanglei.PointInside(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.Rectanglei.PointInside(Integer, Integer)
+  name.vb: PointInside(Integer, Integer)
+- uid: Vintagestory.API.MathTools.Rectanglei.PointInside(Vintagestory.API.MathTools.Vec2i)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.PointInside(Vintagestory.API.MathTools.Vec2i)
+  id: PointInside(Vintagestory.API.MathTools.Vec2i)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: PointInside(Vec2i)
+  nameWithType: Rectanglei.PointInside(Vec2i)
+  fullName: Vintagestory.API.MathTools.Rectanglei.PointInside(Vintagestory.API.MathTools.Vec2i)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public bool PointInside(Vec2i pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec2i
+    return:
+      type: System.Boolean
+    content.vb: Public Function PointInside(pos As Vec2i) As Boolean
+  overload: Vintagestory.API.MathTools.Rectanglei.PointInside*
+- uid: Vintagestory.API.MathTools.Rectanglei.Intersects(Vintagestory.API.MathTools.Rectanglei)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.Intersects(Vintagestory.API.MathTools.Rectanglei)
+  id: Intersects(Vintagestory.API.MathTools.Rectanglei)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Intersects(Rectanglei)
+  nameWithType: Rectanglei.Intersects(Rectanglei)
+  fullName: Vintagestory.API.MathTools.Rectanglei.Intersects(Vintagestory.API.MathTools.Rectanglei)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: If the given cuboid intersects with this cubiod
+  example: []
+  syntax:
+    content: public bool Intersects(Rectanglei with)
+    parameters:
+    - id: with
+      type: Vintagestory.API.MathTools.Rectanglei
+    return:
+      type: System.Boolean
+    content.vb: Public Function Intersects([with] As Rectanglei) As Boolean
+  overload: Vintagestory.API.MathTools.Rectanglei.Intersects*
+- uid: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(Vintagestory.API.MathTools.Rectanglei)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(Vintagestory.API.MathTools.Rectanglei)
+  id: IntersectsOrTouches(Vintagestory.API.MathTools.Rectanglei)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: IntersectsOrTouches(Rectanglei)
+  nameWithType: Rectanglei.IntersectsOrTouches(Rectanglei)
+  fullName: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(Vintagestory.API.MathTools.Rectanglei)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: If the given cuboid intersects  with or is adjacent to this cubiod
+  example: []
+  syntax:
+    content: public bool IntersectsOrTouches(Rectanglei with)
+    parameters:
+    - id: with
+      type: Vintagestory.API.MathTools.Rectanglei
+    return:
+      type: System.Boolean
+    content.vb: Public Function IntersectsOrTouches([with] As Rectanglei) As Boolean
+  overload: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches*
+- uid: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: IntersectsOrTouches(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: IntersectsOrTouches(int, int, int, int)
+  nameWithType: Rectanglei.IntersectsOrTouches(int, int, int, int)
+  fullName: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(int, int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public bool IntersectsOrTouches(int withX1, int withY1, int withX2, int withY2)
+    parameters:
+    - id: withX1
+      type: System.Int32
+    - id: withY1
+      type: System.Int32
+    - id: withX2
+      type: System.Int32
+    - id: withY2
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function IntersectsOrTouches(withX1 As Integer, withY1 As Integer, withX2 As Integer, withY2 As Integer) As Boolean
+  overload: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches*
+  nameWithType.vb: Rectanglei.IntersectsOrTouches(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches(Integer, Integer, Integer, Integer)
+  name.vb: IntersectsOrTouches(Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.MathTools.Rectanglei.Contains(Vintagestory.API.MathTools.Vec2i)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.Contains(Vintagestory.API.MathTools.Vec2i)
+  id: Contains(Vintagestory.API.MathTools.Vec2i)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Contains(Vec2i)
+  nameWithType: Rectanglei.Contains(Vec2i)
+  fullName: Vintagestory.API.MathTools.Rectanglei.Contains(Vintagestory.API.MathTools.Vec2i)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Returns if the given point is inside the cuboid
+  example: []
+  syntax:
+    content: public bool Contains(Vec2i pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec2i
+    return:
+      type: System.Boolean
+    content.vb: Public Function Contains(pos As Vec2i) As Boolean
+  overload: Vintagestory.API.MathTools.Rectanglei.Contains*
+- uid: Vintagestory.API.MathTools.Rectanglei.Contains(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.Rectanglei.Contains(System.Int32,System.Int32)
+  id: Contains(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.Rectanglei
+  langs:
+  - csharp
+  - vb
+  name: Contains(int, int)
+  nameWithType: Rectanglei.Contains(int, int)
+  fullName: Vintagestory.API.MathTools.Rectanglei.Contains(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Returns if the given point is inside the cuboid
+  example: []
+  syntax:
+    content: public bool Contains(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function Contains(x As Integer, y As Integer) As Boolean
+  overload: Vintagestory.API.MathTools.Rectanglei.Contains*
+  nameWithType.vb: Rectanglei.Contains(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.Rectanglei.Contains(Integer, Integer)
+  name.vb: Contains(Integer, Integer)
+references:
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.MathTools.Rectanglei.X1*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.X1
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_X1
+  name: X1
+  nameWithType: Rectanglei.X1
+  fullName: Vintagestory.API.MathTools.Rectanglei.X1
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.MathTools.Rectanglei.Y1*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.Y1
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_Y1
+  name: Y1
+  nameWithType: Rectanglei.Y1
+  fullName: Vintagestory.API.MathTools.Rectanglei.Y1
+- uid: Vintagestory.API.MathTools.Rectanglei.X2*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.X2
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_X2
+  name: X2
+  nameWithType: Rectanglei.X2
+  fullName: Vintagestory.API.MathTools.Rectanglei.X2
+- uid: Vintagestory.API.MathTools.Rectanglei.Y2*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.Y2
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_Y2
+  name: Y2
+  nameWithType: Rectanglei.Y2
+  fullName: Vintagestory.API.MathTools.Rectanglei.Y2
+- uid: Vintagestory.API.MathTools.Rectanglei.Bottom*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.Bottom
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_Bottom
+  name: Bottom
+  nameWithType: Rectanglei.Bottom
+  fullName: Vintagestory.API.MathTools.Rectanglei.Bottom
+- uid: Vintagestory.API.MathTools.Rectanglei.#ctor*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.#ctor
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei__ctor_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: Rectanglei
+  nameWithType: Rectanglei.Rectanglei
+  fullName: Vintagestory.API.MathTools.Rectanglei.Rectanglei
+  nameWithType.vb: Rectanglei.New
+  fullName.vb: Vintagestory.API.MathTools.Rectanglei.New
+  name.vb: New
+- uid: Vintagestory.API.MathTools.Rectanglei.GrowBy*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.GrowBy
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_GrowBy_System_Int32_
+  name: GrowBy
+  nameWithType: Rectanglei.GrowBy
+  fullName: Vintagestory.API.MathTools.Rectanglei.GrowBy
+- uid: Vintagestory.API.MathTools.Rectanglei
+  commentId: T:Vintagestory.API.MathTools.Rectanglei
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Rectanglei.html
+  name: Rectanglei
+  nameWithType: Rectanglei
+  fullName: Vintagestory.API.MathTools.Rectanglei
+- uid: Vintagestory.API.MathTools.Rectanglei.Clone*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.Clone
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_Clone
+  name: Clone
+  nameWithType: Rectanglei.Clone
+  fullName: Vintagestory.API.MathTools.Rectanglei.Clone
+- uid: Vintagestory.API.MathTools.Rectanglei.PointInside*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.PointInside
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_PointInside_System_Int32_System_Int32_
+  name: PointInside
+  nameWithType: Rectanglei.PointInside
+  fullName: Vintagestory.API.MathTools.Rectanglei.PointInside
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.MathTools.Vec2i
+  commentId: T:Vintagestory.API.MathTools.Vec2i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec2i.html
+  name: Vec2i
+  nameWithType: Vec2i
+  fullName: Vintagestory.API.MathTools.Vec2i
+- uid: Vintagestory.API.MathTools.Rectanglei.Intersects*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.Intersects
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_Intersects_Vintagestory_API_MathTools_Rectanglei_
+  name: Intersects
+  nameWithType: Rectanglei.Intersects
+  fullName: Vintagestory.API.MathTools.Rectanglei.Intersects
+- uid: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_IntersectsOrTouches_Vintagestory_API_MathTools_Rectanglei_
+  name: IntersectsOrTouches
+  nameWithType: Rectanglei.IntersectsOrTouches
+  fullName: Vintagestory.API.MathTools.Rectanglei.IntersectsOrTouches
+- uid: Vintagestory.API.MathTools.Rectanglei.Contains*
+  commentId: Overload:Vintagestory.API.MathTools.Rectanglei.Contains
+  href: Vintagestory.API.MathTools.Rectanglei.html#Vintagestory_API_MathTools_Rectanglei_Contains_Vintagestory_API_MathTools_Vec2i_
+  name: Contains
+  nameWithType: Rectanglei.Contains
+  fullName: Vintagestory.API.MathTools.Rectanglei.Contains

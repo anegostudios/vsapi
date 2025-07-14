@@ -1,0 +1,1340 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IMapRegion
+  commentId: T:Vintagestory.API.Common.IMapRegion
+  id: IMapRegion
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IMapRegion.AddGeneratedStructure(Vintagestory.API.Common.GeneratedStructure)
+  - Vintagestory.API.Common.IMapRegion.BeachMap
+  - Vintagestory.API.Common.IMapRegion.BlockPatchMaps
+  - Vintagestory.API.Common.IMapRegion.ClimateMap
+  - Vintagestory.API.Common.IMapRegion.DirtyForSaving
+  - Vintagestory.API.Common.IMapRegion.FlowerMap
+  - Vintagestory.API.Common.IMapRegion.ForestMap
+  - Vintagestory.API.Common.IMapRegion.GeneratedStructures
+  - Vintagestory.API.Common.IMapRegion.GeologicProvinceMap
+  - Vintagestory.API.Common.IMapRegion.GetModdata(System.String)
+  - Vintagestory.API.Common.IMapRegion.GetModdata``1(System.String)
+  - Vintagestory.API.Common.IMapRegion.LandformMap
+  - Vintagestory.API.Common.IMapRegion.ModData
+  - Vintagestory.API.Common.IMapRegion.ModMaps
+  - Vintagestory.API.Common.IMapRegion.OceanMap
+  - Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom
+  - Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop
+  - Vintagestory.API.Common.IMapRegion.OreMaps
+  - Vintagestory.API.Common.IMapRegion.RemoveModdata(System.String)
+  - Vintagestory.API.Common.IMapRegion.RockStrata
+  - Vintagestory.API.Common.IMapRegion.SetModdata(System.String,System.Byte[])
+  - Vintagestory.API.Common.IMapRegion.SetModdata``1(System.String,``0)
+  - Vintagestory.API.Common.IMapRegion.ShrubMap
+  - Vintagestory.API.Common.IMapRegion.UpheavelMap
+  langs:
+  - csharp
+  - vb
+  name: IMapRegion
+  nameWithType: IMapRegion
+  fullName: Vintagestory.API.Common.IMapRegion
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: 2D Map data for a 16x16 area of chunk columns. Holds a few maps for the chunk generation.
+  example: []
+  syntax:
+    content: public interface IMapRegion
+    content.vb: Public Interface IMapRegion
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.IMapRegion.BlockPatchMaps
+  commentId: P:Vintagestory.API.Common.IMapRegion.BlockPatchMaps
+  id: BlockPatchMaps
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: BlockPatchMaps
+  nameWithType: IMapRegion.BlockPatchMaps
+  fullName: Vintagestory.API.Common.IMapRegion.BlockPatchMaps
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Density maps for block patches
+  example: []
+  syntax:
+    content: Dictionary<string, IntDataMap2D> BlockPatchMaps { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.IntDataMap2D}
+    content.vb: Property BlockPatchMaps As Dictionary(Of String, IntDataMap2D)
+  overload: Vintagestory.API.Common.IMapRegion.BlockPatchMaps*
+- uid: Vintagestory.API.Common.IMapRegion.FlowerMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.FlowerMap
+  id: FlowerMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: FlowerMap
+  nameWithType: IMapRegion.FlowerMap
+  fullName: Vintagestory.API.Common.IMapRegion.FlowerMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Currently unuseds
+  example: []
+  syntax:
+    content: IntDataMap2D FlowerMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property FlowerMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.FlowerMap*
+- uid: Vintagestory.API.Common.IMapRegion.ShrubMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.ShrubMap
+  id: ShrubMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: ShrubMap
+  nameWithType: IMapRegion.ShrubMap
+  fullName: Vintagestory.API.Common.IMapRegion.ShrubMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds a shrub density map
+  example: []
+  syntax:
+    content: IntDataMap2D ShrubMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property ShrubMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.ShrubMap*
+- uid: Vintagestory.API.Common.IMapRegion.ForestMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.ForestMap
+  id: ForestMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: ForestMap
+  nameWithType: IMapRegion.ForestMap
+  fullName: Vintagestory.API.Common.IMapRegion.ForestMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds a forest density map
+  example: []
+  syntax:
+    content: IntDataMap2D ForestMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property ForestMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.ForestMap*
+- uid: Vintagestory.API.Common.IMapRegion.BeachMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.BeachMap
+  id: BeachMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: BeachMap
+  nameWithType: IMapRegion.BeachMap
+  fullName: Vintagestory.API.Common.IMapRegion.BeachMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds a beach strength map
+  example: []
+  syntax:
+    content: IntDataMap2D BeachMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property BeachMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.BeachMap*
+- uid: Vintagestory.API.Common.IMapRegion.OceanMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.OceanMap
+  id: OceanMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: OceanMap
+  nameWithType: IMapRegion.OceanMap
+  fullName: Vintagestory.API.Common.IMapRegion.OceanMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IntDataMap2D OceanMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property OceanMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.OceanMap*
+- uid: Vintagestory.API.Common.IMapRegion.UpheavelMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.UpheavelMap
+  id: UpheavelMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: UpheavelMap
+  nameWithType: IMapRegion.UpheavelMap
+  fullName: Vintagestory.API.Common.IMapRegion.UpheavelMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IntDataMap2D UpheavelMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property UpheavelMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.UpheavelMap*
+- uid: Vintagestory.API.Common.IMapRegion.LandformMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.LandformMap
+  id: LandformMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: LandformMap
+  nameWithType: IMapRegion.LandformMap
+  fullName: Vintagestory.API.Common.IMapRegion.LandformMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds the landform indices
+  example: []
+  syntax:
+    content: IntDataMap2D LandformMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property LandformMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.LandformMap*
+- uid: Vintagestory.API.Common.IMapRegion.ClimateMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.ClimateMap
+  id: ClimateMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: ClimateMap
+  nameWithType: IMapRegion.ClimateMap
+  fullName: Vintagestory.API.Common.IMapRegion.ClimateMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Holds temperature and rain fall.<br />
+
+    16-23 bits = Red = temperature<br />
+
+    8-15 bits = Green = rain<br />
+
+    0-7 bits = Blue = unused
+  example: []
+  syntax:
+    content: IntDataMap2D ClimateMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property ClimateMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.ClimateMap*
+- uid: Vintagestory.API.Common.IMapRegion.GeologicProvinceMap
+  commentId: P:Vintagestory.API.Common.IMapRegion.GeologicProvinceMap
+  id: GeologicProvinceMap
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: GeologicProvinceMap
+  nameWithType: IMapRegion.GeologicProvinceMap
+  fullName: Vintagestory.API.Common.IMapRegion.GeologicProvinceMap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds the geologic province indices
+  example: []
+  syntax:
+    content: IntDataMap2D GeologicProvinceMap { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: Property GeologicProvinceMap As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.GeologicProvinceMap*
+- uid: Vintagestory.API.Common.IMapRegion.RockStrata
+  commentId: P:Vintagestory.API.Common.IMapRegion.RockStrata
+  id: RockStrata
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: RockStrata
+  nameWithType: IMapRegion.RockStrata
+  fullName: Vintagestory.API.Common.IMapRegion.RockStrata
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds the rock strata noise maps
+  example: []
+  syntax:
+    content: IntDataMap2D[] RockStrata { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D[]
+    content.vb: Property RockStrata As IntDataMap2D()
+  overload: Vintagestory.API.Common.IMapRegion.RockStrata*
+- uid: Vintagestory.API.Common.IMapRegion.ModData
+  commentId: P:Vintagestory.API.Common.IMapRegion.ModData
+  id: ModData
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: ModData
+  nameWithType: IMapRegion.ModData
+  fullName: Vintagestory.API.Common.IMapRegion.ModData
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds the raw mod data.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use Get/Set/RemoveModData instead")]
+
+      Dictionary<string, byte[]> ModData { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Byte[]}
+    content.vb: >-
+      <Obsolete("Use Get/Set/RemoveModData instead")>
+
+      ReadOnly Property ModData As Dictionary(Of String, Byte())
+  overload: Vintagestory.API.Common.IMapRegion.ModData*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use Get/Set/RemoveModData instead
+- uid: Vintagestory.API.Common.IMapRegion.ModMaps
+  commentId: P:Vintagestory.API.Common.IMapRegion.ModMaps
+  id: ModMaps
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: ModMaps
+  nameWithType: IMapRegion.ModMaps
+  fullName: Vintagestory.API.Common.IMapRegion.ModMaps
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds the mod mappings.
+  example: []
+  syntax:
+    content: Dictionary<string, IntDataMap2D> ModMaps { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.IntDataMap2D}
+    content.vb: ReadOnly Property ModMaps As Dictionary(Of String, IntDataMap2D)
+  overload: Vintagestory.API.Common.IMapRegion.ModMaps*
+- uid: Vintagestory.API.Common.IMapRegion.OreMaps
+  commentId: P:Vintagestory.API.Common.IMapRegion.OreMaps
+  id: OreMaps
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: OreMaps
+  nameWithType: IMapRegion.OreMaps
+  fullName: Vintagestory.API.Common.IMapRegion.OreMaps
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the ore map for the given item.
+  example: []
+  syntax:
+    content: Dictionary<string, IntDataMap2D> OreMaps { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.IntDataMap2D}
+    content.vb: ReadOnly Property OreMaps As Dictionary(Of String, IntDataMap2D)
+  overload: Vintagestory.API.Common.IMapRegion.OreMaps*
+- uid: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop
+  commentId: P:Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop
+  id: OreMapVerticalDistortTop
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: OreMapVerticalDistortTop
+  nameWithType: IMapRegion.OreMapVerticalDistortTop
+  fullName: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IntDataMap2D OreMapVerticalDistortTop { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: ReadOnly Property OreMapVerticalDistortTop As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop*
+- uid: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom
+  commentId: P:Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom
+  id: OreMapVerticalDistortBottom
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: OreMapVerticalDistortBottom
+  nameWithType: IMapRegion.OreMapVerticalDistortBottom
+  fullName: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IntDataMap2D OreMapVerticalDistortBottom { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IntDataMap2D
+    content.vb: ReadOnly Property OreMapVerticalDistortBottom As IntDataMap2D
+  overload: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom*
+- uid: Vintagestory.API.Common.IMapRegion.GeneratedStructures
+  commentId: P:Vintagestory.API.Common.IMapRegion.GeneratedStructures
+  id: GeneratedStructures
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: GeneratedStructures
+  nameWithType: IMapRegion.GeneratedStructures
+  fullName: Vintagestory.API.Common.IMapRegion.GeneratedStructures
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of structures that were generated in this region
+  example: []
+  syntax:
+    content: List<GeneratedStructure> GeneratedStructures { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.GeneratedStructure}
+    content.vb: ReadOnly Property GeneratedStructures As List(Of GeneratedStructure)
+  overload: Vintagestory.API.Common.IMapRegion.GeneratedStructures*
+- uid: Vintagestory.API.Common.IMapRegion.DirtyForSaving
+  commentId: P:Vintagestory.API.Common.IMapRegion.DirtyForSaving
+  id: DirtyForSaving
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: DirtyForSaving
+  nameWithType: IMapRegion.DirtyForSaving
+  fullName: Vintagestory.API.Common.IMapRegion.DirtyForSaving
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool DirtyForSaving { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property DirtyForSaving As Boolean
+  overload: Vintagestory.API.Common.IMapRegion.DirtyForSaving*
+- uid: Vintagestory.API.Common.IMapRegion.SetModdata(System.String,System.Byte[])
+  commentId: M:Vintagestory.API.Common.IMapRegion.SetModdata(System.String,System.Byte[])
+  id: SetModdata(System.String,System.Byte[])
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: SetModdata(string, byte[])
+  nameWithType: IMapRegion.SetModdata(string, byte[])
+  fullName: Vintagestory.API.Common.IMapRegion.SetModdata(string, byte[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Allows setting of arbitrary, permanently stored moddata of this map region.
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: void SetModdata(string key, byte[] data)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: Use SerializerUtil to encode your data to bytes
+    content.vb: Sub SetModdata(key As String, data As Byte())
+  overload: Vintagestory.API.Common.IMapRegion.SetModdata*
+  nameWithType.vb: IMapRegion.SetModdata(String, Byte())
+  fullName.vb: Vintagestory.API.Common.IMapRegion.SetModdata(String, Byte())
+  name.vb: SetModdata(String, Byte())
+- uid: Vintagestory.API.Common.IMapRegion.RemoveModdata(System.String)
+  commentId: M:Vintagestory.API.Common.IMapRegion.RemoveModdata(System.String)
+  id: RemoveModdata(System.String)
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: RemoveModdata(string)
+  nameWithType: IMapRegion.RemoveModdata(string)
+  fullName: Vintagestory.API.Common.IMapRegion.RemoveModdata(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Removes the permanently stored data. 
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: void RemoveModdata(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    content.vb: Sub RemoveModdata(key As String)
+  overload: Vintagestory.API.Common.IMapRegion.RemoveModdata*
+  nameWithType.vb: IMapRegion.RemoveModdata(String)
+  fullName.vb: Vintagestory.API.Common.IMapRegion.RemoveModdata(String)
+  name.vb: RemoveModdata(String)
+- uid: Vintagestory.API.Common.IMapRegion.GetModdata(System.String)
+  commentId: M:Vintagestory.API.Common.IMapRegion.GetModdata(System.String)
+  id: GetModdata(System.String)
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: GetModdata(string)
+  nameWithType: IMapRegion.GetModdata(string)
+  fullName: Vintagestory.API.Common.IMapRegion.GetModdata(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Retrieve arbitrary, permanently stored mod data
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: byte[] GetModdata(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Byte[]
+      description: ''
+    content.vb: Function GetModdata(key As String) As Byte()
+  overload: Vintagestory.API.Common.IMapRegion.GetModdata*
+  nameWithType.vb: IMapRegion.GetModdata(String)
+  fullName.vb: Vintagestory.API.Common.IMapRegion.GetModdata(String)
+  name.vb: GetModdata(String)
+- uid: Vintagestory.API.Common.IMapRegion.SetModdata``1(System.String,``0)
+  commentId: M:Vintagestory.API.Common.IMapRegion.SetModdata``1(System.String,``0)
+  id: SetModdata``1(System.String,``0)
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: SetModdata<T>(string, T)
+  nameWithType: IMapRegion.SetModdata<T>(string, T)
+  fullName: Vintagestory.API.Common.IMapRegion.SetModdata<T>(string, T)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Allows setting of arbitrary, permanantly stored moddata of this map region.
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: void SetModdata<T>(string key, T data)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: data
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub SetModdata(Of T)(key As String, data As T)
+  overload: Vintagestory.API.Common.IMapRegion.SetModdata*
+  nameWithType.vb: IMapRegion.SetModdata(Of T)(String, T)
+  fullName.vb: Vintagestory.API.Common.IMapRegion.SetModdata(Of T)(String, T)
+  name.vb: SetModdata(Of T)(String, T)
+- uid: Vintagestory.API.Common.IMapRegion.GetModdata``1(System.String)
+  commentId: M:Vintagestory.API.Common.IMapRegion.GetModdata``1(System.String)
+  id: GetModdata``1(System.String)
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: GetModdata<T>(string)
+  nameWithType: IMapRegion.GetModdata<T>(string)
+  fullName: Vintagestory.API.Common.IMapRegion.GetModdata<T>(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Retrieve arbitrary, permantly stored mod data
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: T GetModdata<T>(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Function GetModdata(Of T)(key As String) As T
+  overload: Vintagestory.API.Common.IMapRegion.GetModdata*
+  nameWithType.vb: IMapRegion.GetModdata(Of T)(String)
+  fullName.vb: Vintagestory.API.Common.IMapRegion.GetModdata(Of T)(String)
+  name.vb: GetModdata(Of T)(String)
+- uid: Vintagestory.API.Common.IMapRegion.AddGeneratedStructure(Vintagestory.API.Common.GeneratedStructure)
+  commentId: M:Vintagestory.API.Common.IMapRegion.AddGeneratedStructure(Vintagestory.API.Common.GeneratedStructure)
+  id: AddGeneratedStructure(Vintagestory.API.Common.GeneratedStructure)
+  parent: Vintagestory.API.Common.IMapRegion
+  langs:
+  - csharp
+  - vb
+  name: AddGeneratedStructure(GeneratedStructure)
+  nameWithType: IMapRegion.AddGeneratedStructure(GeneratedStructure)
+  fullName: Vintagestory.API.Common.IMapRegion.AddGeneratedStructure(Vintagestory.API.Common.GeneratedStructure)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A thread-safe way to add a new GeneratedStructure, also marks DirtyForSaving = true
+  example: []
+  syntax:
+    content: void AddGeneratedStructure(GeneratedStructure generatedStructure)
+    parameters:
+    - id: generatedStructure
+      type: Vintagestory.API.Common.GeneratedStructure
+    content.vb: Sub AddGeneratedStructure(generatedStructure As GeneratedStructure)
+  overload: Vintagestory.API.Common.IMapRegion.AddGeneratedStructure*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.IMapRegion.BlockPatchMaps*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.BlockPatchMaps
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_BlockPatchMaps
+  name: BlockPatchMaps
+  nameWithType: IMapRegion.BlockPatchMaps
+  fullName: Vintagestory.API.Common.IMapRegion.BlockPatchMaps
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.IntDataMap2D}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.IntDataMap2D}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, IntDataMap2D>
+  nameWithType: Dictionary<string, IntDataMap2D>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Datastructures.IntDataMap2D>
+  nameWithType.vb: Dictionary(Of String, IntDataMap2D)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Datastructures.IntDataMap2D)
+  name.vb: Dictionary(Of String, IntDataMap2D)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IntDataMap2D
+    name: IntDataMap2D
+    href: Vintagestory.API.Datastructures.IntDataMap2D.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IntDataMap2D
+    name: IntDataMap2D
+    href: Vintagestory.API.Datastructures.IntDataMap2D.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.IMapRegion.FlowerMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.FlowerMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_FlowerMap
+  name: FlowerMap
+  nameWithType: IMapRegion.FlowerMap
+  fullName: Vintagestory.API.Common.IMapRegion.FlowerMap
+- uid: Vintagestory.API.Datastructures.IntDataMap2D
+  commentId: T:Vintagestory.API.Datastructures.IntDataMap2D
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.IntDataMap2D.html
+  name: IntDataMap2D
+  nameWithType: IntDataMap2D
+  fullName: Vintagestory.API.Datastructures.IntDataMap2D
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.IMapRegion.ShrubMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.ShrubMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_ShrubMap
+  name: ShrubMap
+  nameWithType: IMapRegion.ShrubMap
+  fullName: Vintagestory.API.Common.IMapRegion.ShrubMap
+- uid: Vintagestory.API.Common.IMapRegion.ForestMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.ForestMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_ForestMap
+  name: ForestMap
+  nameWithType: IMapRegion.ForestMap
+  fullName: Vintagestory.API.Common.IMapRegion.ForestMap
+- uid: Vintagestory.API.Common.IMapRegion.BeachMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.BeachMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_BeachMap
+  name: BeachMap
+  nameWithType: IMapRegion.BeachMap
+  fullName: Vintagestory.API.Common.IMapRegion.BeachMap
+- uid: Vintagestory.API.Common.IMapRegion.OceanMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.OceanMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_OceanMap
+  name: OceanMap
+  nameWithType: IMapRegion.OceanMap
+  fullName: Vintagestory.API.Common.IMapRegion.OceanMap
+- uid: Vintagestory.API.Common.IMapRegion.UpheavelMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.UpheavelMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_UpheavelMap
+  name: UpheavelMap
+  nameWithType: IMapRegion.UpheavelMap
+  fullName: Vintagestory.API.Common.IMapRegion.UpheavelMap
+- uid: Vintagestory.API.Common.IMapRegion.LandformMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.LandformMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_LandformMap
+  name: LandformMap
+  nameWithType: IMapRegion.LandformMap
+  fullName: Vintagestory.API.Common.IMapRegion.LandformMap
+- uid: Vintagestory.API.Common.IMapRegion.ClimateMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.ClimateMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_ClimateMap
+  name: ClimateMap
+  nameWithType: IMapRegion.ClimateMap
+  fullName: Vintagestory.API.Common.IMapRegion.ClimateMap
+- uid: Vintagestory.API.Common.IMapRegion.GeologicProvinceMap*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.GeologicProvinceMap
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_GeologicProvinceMap
+  name: GeologicProvinceMap
+  nameWithType: IMapRegion.GeologicProvinceMap
+  fullName: Vintagestory.API.Common.IMapRegion.GeologicProvinceMap
+- uid: Vintagestory.API.Common.IMapRegion.RockStrata*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.RockStrata
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_RockStrata
+  name: RockStrata
+  nameWithType: IMapRegion.RockStrata
+  fullName: Vintagestory.API.Common.IMapRegion.RockStrata
+- uid: Vintagestory.API.Datastructures.IntDataMap2D[]
+  isExternal: true
+  href: Vintagestory.API.Datastructures.IntDataMap2D.html
+  name: IntDataMap2D[]
+  nameWithType: IntDataMap2D[]
+  fullName: Vintagestory.API.Datastructures.IntDataMap2D[]
+  nameWithType.vb: IntDataMap2D()
+  fullName.vb: Vintagestory.API.Datastructures.IntDataMap2D()
+  name.vb: IntDataMap2D()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IntDataMap2D
+    name: IntDataMap2D
+    href: Vintagestory.API.Datastructures.IntDataMap2D.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IntDataMap2D
+    name: IntDataMap2D
+    href: Vintagestory.API.Datastructures.IntDataMap2D.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IMapRegion.ModData*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.ModData
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_ModData
+  name: ModData
+  nameWithType: IMapRegion.ModData
+  fullName: Vintagestory.API.Common.IMapRegion.ModData
+- uid: System.Collections.Generic.Dictionary{System.String,System.Byte[]}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Byte[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, byte[]>
+  nameWithType: Dictionary<string, byte[]>
+  fullName: System.Collections.Generic.Dictionary<string, byte[]>
+  nameWithType.vb: Dictionary(Of String, Byte())
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Byte())
+  name.vb: Dictionary(Of String, Byte())
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.IMapRegion.ModMaps*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.ModMaps
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_ModMaps
+  name: ModMaps
+  nameWithType: IMapRegion.ModMaps
+  fullName: Vintagestory.API.Common.IMapRegion.ModMaps
+- uid: Vintagestory.API.Common.IMapRegion.OreMaps*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.OreMaps
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_OreMaps
+  name: OreMaps
+  nameWithType: IMapRegion.OreMaps
+  fullName: Vintagestory.API.Common.IMapRegion.OreMaps
+- uid: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_OreMapVerticalDistortTop
+  name: OreMapVerticalDistortTop
+  nameWithType: IMapRegion.OreMapVerticalDistortTop
+  fullName: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortTop
+- uid: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_OreMapVerticalDistortBottom
+  name: OreMapVerticalDistortBottom
+  nameWithType: IMapRegion.OreMapVerticalDistortBottom
+  fullName: Vintagestory.API.Common.IMapRegion.OreMapVerticalDistortBottom
+- uid: Vintagestory.API.Common.IMapRegion.GeneratedStructures*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.GeneratedStructures
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_GeneratedStructures
+  name: GeneratedStructures
+  nameWithType: IMapRegion.GeneratedStructures
+  fullName: Vintagestory.API.Common.IMapRegion.GeneratedStructures
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.GeneratedStructure}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.GeneratedStructure}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<GeneratedStructure>
+  nameWithType: List<GeneratedStructure>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.GeneratedStructure>
+  nameWithType.vb: List(Of GeneratedStructure)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.GeneratedStructure)
+  name.vb: List(Of GeneratedStructure)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.GeneratedStructure
+    name: GeneratedStructure
+    href: Vintagestory.API.Common.GeneratedStructure.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.GeneratedStructure
+    name: GeneratedStructure
+    href: Vintagestory.API.Common.GeneratedStructure.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.IMapRegion.DirtyForSaving*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.DirtyForSaving
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_DirtyForSaving
+  name: DirtyForSaving
+  nameWithType: IMapRegion.DirtyForSaving
+  fullName: Vintagestory.API.Common.IMapRegion.DirtyForSaving
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IMapRegion.SetModdata*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.SetModdata
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_SetModdata_System_String_System_Byte___
+  name: SetModdata
+  nameWithType: IMapRegion.SetModdata
+  fullName: Vintagestory.API.Common.IMapRegion.SetModdata
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IMapRegion.RemoveModdata*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.RemoveModdata
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_RemoveModdata_System_String_
+  name: RemoveModdata
+  nameWithType: IMapRegion.RemoveModdata
+  fullName: Vintagestory.API.Common.IMapRegion.RemoveModdata
+- uid: Vintagestory.API.Common.IMapRegion.GetModdata*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.GetModdata
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_GetModdata_System_String_
+  name: GetModdata
+  nameWithType: IMapRegion.GetModdata
+  fullName: Vintagestory.API.Common.IMapRegion.GetModdata
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Vintagestory.API.Common.IMapRegion.AddGeneratedStructure*
+  commentId: Overload:Vintagestory.API.Common.IMapRegion.AddGeneratedStructure
+  href: Vintagestory.API.Common.IMapRegion.html#Vintagestory_API_Common_IMapRegion_AddGeneratedStructure_Vintagestory_API_Common_GeneratedStructure_
+  name: AddGeneratedStructure
+  nameWithType: IMapRegion.AddGeneratedStructure
+  fullName: Vintagestory.API.Common.IMapRegion.AddGeneratedStructure
+- uid: Vintagestory.API.Common.GeneratedStructure
+  commentId: T:Vintagestory.API.Common.GeneratedStructure
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.GeneratedStructure.html
+  name: GeneratedStructure
+  nameWithType: GeneratedStructure
+  fullName: Vintagestory.API.Common.GeneratedStructure

@@ -1,0 +1,537 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.IChunkProvider
+  commentId: T:Vintagestory.API.Server.IChunkProvider
+  id: IChunkProvider
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(Vintagestory.API.Common.Entities.EntityPos)
+  - Vintagestory.API.Server.IChunkProvider.GetChunk(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast(System.Int32,System.Int32,System.Int32,System.Boolean)
+  - Vintagestory.API.Server.IChunkProvider.Logger
+  langs:
+  - csharp
+  - vb
+  name: IChunkProvider
+  nameWithType: IChunkProvider
+  fullName: Vintagestory.API.Server.IChunkProvider
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public interface IChunkProvider
+    content.vb: Public Interface IChunkProvider
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Server.IChunkProvider.Logger
+  commentId: P:Vintagestory.API.Server.IChunkProvider.Logger
+  id: Logger
+  parent: Vintagestory.API.Server.IChunkProvider
+  langs:
+  - csharp
+  - vb
+  name: Logger
+  nameWithType: IChunkProvider.Logger
+  fullName: Vintagestory.API.Server.IChunkProvider.Logger
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: ILogger Logger { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.ILogger
+    content.vb: ReadOnly Property Logger As ILogger
+  overload: Vintagestory.API.Server.IChunkProvider.Logger*
+- uid: Vintagestory.API.Server.IChunkProvider.GetChunk(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IChunkProvider.GetChunk(System.Int32,System.Int32,System.Int32)
+  id: GetChunk(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IChunkProvider
+  langs:
+  - csharp
+  - vb
+  name: GetChunk(int, int, int)
+  nameWithType: IChunkProvider.GetChunk(int, int, int)
+  fullName: Vintagestory.API.Server.IChunkProvider.GetChunk(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: IWorldChunk GetChunk(int chunkX, int chunkY, int chunkZ)
+    parameters:
+    - id: chunkX
+      type: System.Int32
+    - id: chunkY
+      type: System.Int32
+    - id: chunkZ
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.IWorldChunk
+    content.vb: Function GetChunk(chunkX As Integer, chunkY As Integer, chunkZ As Integer) As IWorldChunk
+  overload: Vintagestory.API.Server.IChunkProvider.GetChunk*
+  nameWithType.vb: IChunkProvider.GetChunk(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IChunkProvider.GetChunk(Integer, Integer, Integer)
+  name.vb: GetChunk(Integer, Integer, Integer)
+- uid: Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast(System.Int32,System.Int32,System.Int32,System.Boolean)
+  commentId: M:Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast(System.Int32,System.Int32,System.Int32,System.Boolean)
+  id: GetUnpackedChunkFast(System.Int32,System.Int32,System.Int32,System.Boolean)
+  parent: Vintagestory.API.Server.IChunkProvider
+  langs:
+  - csharp
+  - vb
+  name: GetUnpackedChunkFast(int, int, int, bool)
+  nameWithType: IChunkProvider.GetUnpackedChunkFast(int, int, int, bool)
+  fullName: Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast(int, int, int, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Like GetChunk() but includes a cache of the last chunk fetched - use this in a loop where getting the chunk for neighbouring blockPos, so most will be in the same chunk
+
+    This always unpacks the chunk, unless it is null.
+
+    Implementing code must ensure the chunk is unpacked before returning it, unless returning the cached chunk and notRecentlyAccessed is false (i.e. if the cache chunk was recently accessed then it's safe to assume it was already unpacked)
+  example: []
+  syntax:
+    content: IWorldChunk GetUnpackedChunkFast(int chunkX, int chunkY, int chunkZ, bool notRecentlyAccessed = false)
+    parameters:
+    - id: chunkX
+      type: System.Int32
+      description: ''
+    - id: chunkY
+      type: System.Int32
+      description: ''
+    - id: chunkZ
+      type: System.Int32
+      description: ''
+    - id: notRecentlyAccessed
+      type: System.Boolean
+      description: ''
+    return:
+      type: Vintagestory.API.Common.IWorldChunk
+      description: ''
+    content.vb: Function GetUnpackedChunkFast(chunkX As Integer, chunkY As Integer, chunkZ As Integer, notRecentlyAccessed As Boolean = False) As IWorldChunk
+  overload: Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast*
+  nameWithType.vb: IChunkProvider.GetUnpackedChunkFast(Integer, Integer, Integer, Boolean)
+  fullName.vb: Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast(Integer, Integer, Integer, Boolean)
+  name.vb: GetUnpackedChunkFast(Integer, Integer, Integer, Boolean)
+- uid: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(System.Int32,System.Int32,System.Int32)
+  id: ChunkIndex3D(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IChunkProvider
+  langs:
+  - csharp
+  - vb
+  name: ChunkIndex3D(int, int, int)
+  nameWithType: IChunkProvider.ChunkIndex3D(int, int, int)
+  fullName: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Index for a chunk coordinate - NOT DIMENSION AWARE
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use dimension aware overloads instead")]
+
+      long ChunkIndex3D(int chunkX, int chunkY, int chunkZ)
+    parameters:
+    - id: chunkX
+      type: System.Int32
+      description: ''
+    - id: chunkY
+      type: System.Int32
+      description: ''
+    - id: chunkZ
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Int64
+      description: ''
+    content.vb: >-
+      <Obsolete("Use dimension aware overloads instead")>
+
+      Function ChunkIndex3D(chunkX As Integer, chunkY As Integer, chunkZ As Integer) As Long
+  overload: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use dimension aware overloads instead
+  nameWithType.vb: IChunkProvider.ChunkIndex3D(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(Integer, Integer, Integer)
+  name.vb: ChunkIndex3D(Integer, Integer, Integer)
+- uid: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(Vintagestory.API.Common.Entities.EntityPos)
+  commentId: M:Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(Vintagestory.API.Common.Entities.EntityPos)
+  id: ChunkIndex3D(Vintagestory.API.Common.Entities.EntityPos)
+  parent: Vintagestory.API.Server.IChunkProvider
+  langs:
+  - csharp
+  - vb
+  name: ChunkIndex3D(EntityPos)
+  nameWithType: IChunkProvider.ChunkIndex3D(EntityPos)
+  fullName: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D(Vintagestory.API.Common.Entities.EntityPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: long ChunkIndex3D(EntityPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    return:
+      type: System.Int64
+    content.vb: Function ChunkIndex3D(pos As EntityPos) As Long
+  overload: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D*
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Server.IChunkProvider.Logger*
+  commentId: Overload:Vintagestory.API.Server.IChunkProvider.Logger
+  href: Vintagestory.API.Server.IChunkProvider.html#Vintagestory_API_Server_IChunkProvider_Logger
+  name: Logger
+  nameWithType: IChunkProvider.Logger
+  fullName: Vintagestory.API.Server.IChunkProvider.Logger
+- uid: Vintagestory.API.Common.ILogger
+  commentId: T:Vintagestory.API.Common.ILogger
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Vintagestory.API.Common.ILogger
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Server.IChunkProvider.GetChunk*
+  commentId: Overload:Vintagestory.API.Server.IChunkProvider.GetChunk
+  href: Vintagestory.API.Server.IChunkProvider.html#Vintagestory_API_Server_IChunkProvider_GetChunk_System_Int32_System_Int32_System_Int32_
+  name: GetChunk
+  nameWithType: IChunkProvider.GetChunk
+  fullName: Vintagestory.API.Server.IChunkProvider.GetChunk
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.IWorldChunk
+  commentId: T:Vintagestory.API.Common.IWorldChunk
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldChunk.html
+  name: IWorldChunk
+  nameWithType: IWorldChunk
+  fullName: Vintagestory.API.Common.IWorldChunk
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast*
+  commentId: Overload:Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast
+  href: Vintagestory.API.Server.IChunkProvider.html#Vintagestory_API_Server_IChunkProvider_GetUnpackedChunkFast_System_Int32_System_Int32_System_Int32_System_Boolean_
+  name: GetUnpackedChunkFast
+  nameWithType: IChunkProvider.GetUnpackedChunkFast
+  fullName: Vintagestory.API.Server.IChunkProvider.GetUnpackedChunkFast
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D*
+  commentId: Overload:Vintagestory.API.Server.IChunkProvider.ChunkIndex3D
+  href: Vintagestory.API.Server.IChunkProvider.html#Vintagestory_API_Server_IChunkProvider_ChunkIndex3D_System_Int32_System_Int32_System_Int32_
+  name: ChunkIndex3D
+  nameWithType: IChunkProvider.ChunkIndex3D
+  fullName: Vintagestory.API.Server.IChunkProvider.ChunkIndex3D
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Vintagestory.API.Common.Entities.EntityPos
+  commentId: T:Vintagestory.API.Common.Entities.EntityPos
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityPos.html
+  name: EntityPos
+  nameWithType: EntityPos
+  fullName: Vintagestory.API.Common.Entities.EntityPos
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html

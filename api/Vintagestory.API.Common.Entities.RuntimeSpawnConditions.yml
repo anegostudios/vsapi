@@ -1,0 +1,1054 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  commentId: T:Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  id: RuntimeSpawnConditions
+  parent: Vintagestory.API.Common.Entities
+  children:
+  - Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Chance
+  - Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone
+  - Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity
+  - Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup
+  - Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MinDistanceToPlayer
+  - Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling
+  langs:
+  - csharp
+  - vb
+  name: RuntimeSpawnConditions
+  nameWithType: RuntimeSpawnConditions
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: A set of spawn conditions for chunks that have already been generated. Most properties are got from <xref href="Vintagestory.API.Common.Entities.BaseSpawnConditions" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public class RuntimeSpawnConditions : BaseSpawnConditions'
+    content.vb: Public Class RuntimeSpawnConditions Inherits BaseSpawnConditions
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions
+  inheritedMembers:
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.Group
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.MinLightLevel
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.MaxLightLevel
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.LightLevelType
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.HerdSize
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.Companions
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.ClimateValueMode
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesResolved
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesBeginsWith
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesExact
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockFirstLetters
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)
+  - Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinTemp
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxTemp
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinRain
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxRain
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForest
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxForest
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinShrubs
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxShrubs
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinY
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxY
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForestOrShrubs
+  - Vintagestory.API.Common.Entities.ClimateSpawnCondition.SetFrom(Vintagestory.API.Common.Entities.ClimateSpawnCondition)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Chance
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Chance
+  id: Chance
+  parent: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  langs:
+  - csharp
+  - vb
+  name: Chance
+  nameWithType: RuntimeSpawnConditions.Chance
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Chance
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The chance, usually between 0 (0% chance) and 1 (100% chance), for the entity to spawn during the spawning round.
+  example: []
+  syntax:
+    content: public double Chance
+    return:
+      type: System.Double
+    content.vb: Public Chance As Double
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity
+  id: MaxQuantity
+  parent: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  langs:
+  - csharp
+  - vb
+  name: MaxQuantity
+  nameWithType: RuntimeSpawnConditions.MaxQuantity
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>20</jsondefault>-->
+
+    The max number of this entity that can ever exist in the world for a single player.
+
+    With more than one player, the max number is actually (this)x(current player count)x(<xref href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling" data-throw-if-not-resolved="false"></xref>).
+
+    Consider using <xref href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup" data-throw-if-not-resolved="false"></xref> to allow a max quantity based from many entities.
+  example: []
+  syntax:
+    content: public int MaxQuantity
+    return:
+      type: System.Int32
+    content.vb: Public MaxQuantity As Integer
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup
+  id: MaxQuantityByGroup
+  parent: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  langs:
+  - csharp
+  - vb
+  name: MaxQuantityByGroup
+  nameWithType: RuntimeSpawnConditions.MaxQuantityByGroup
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    The max quantity of objects to spawn based on a wildcard group of entities.<br />
+
+    For example, using <xref href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity" data-throw-if-not-resolved="false"></xref> will allow a max of 20 pig-wild-male instances.
+
+    Using this with a group of "pig-*" will allow a max of 20 pig entities, regardless if male, female, or piglet.
+  example: []
+  syntax:
+    content: public QuantityByGroup MaxQuantityByGroup
+    return:
+      type: Vintagestory.API.Common.Entities.QuantityByGroup
+    content.vb: Public MaxQuantityByGroup As QuantityByGroup
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling
+  id: SpawnCapPlayerScaling
+  parent: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  langs:
+  - csharp
+  - vb
+  name: SpawnCapPlayerScaling
+  nameWithType: RuntimeSpawnConditions.SpawnCapPlayerScaling
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The maximum number of this entity that can exist in the world is <xref href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity" data-throw-if-not-resolved="false"></xref> x (current player count) x (this).
+  example: []
+  syntax:
+    content: public float SpawnCapPlayerScaling
+    return:
+      type: System.Single
+    content.vb: Public SpawnCapPlayerScaling As Single
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MinDistanceToPlayer
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MinDistanceToPlayer
+  id: MinDistanceToPlayer
+  parent: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  langs:
+  - csharp
+  - vb
+  name: MinDistanceToPlayer
+  nameWithType: RuntimeSpawnConditions.MinDistanceToPlayer
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MinDistanceToPlayer
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>18</jsondefault>-->
+
+    The minimum distance from the player that an object will spawn.
+  example: []
+  syntax:
+    content: public int MinDistanceToPlayer
+    return:
+      type: System.Int32
+    content.vb: Public MinDistanceToPlayer As Integer
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone
+  commentId: M:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: RuntimeSpawnConditions.Clone()
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Creates a deep copy of this set of spawn conditions.
+  example: []
+  syntax:
+    content: public RuntimeSpawnConditions Clone()
+    return:
+      type: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+      description: ''
+    content.vb: Public Function Clone() As RuntimeSpawnConditions
+  overload: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone*
+references:
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  commentId: T:Vintagestory.API.Common.Entities.BaseSpawnConditions
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html
+  name: BaseSpawnConditions
+  nameWithType: BaseSpawnConditions
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  commentId: T:Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html
+  name: ClimateSpawnCondition
+  nameWithType: ClimateSpawnCondition
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.Group
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.Group
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_Group
+  name: Group
+  nameWithType: BaseSpawnConditions.Group
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.Group
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.MinLightLevel
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.MinLightLevel
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_MinLightLevel
+  name: MinLightLevel
+  nameWithType: BaseSpawnConditions.MinLightLevel
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.MinLightLevel
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.MaxLightLevel
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.MaxLightLevel
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_MaxLightLevel
+  name: MaxLightLevel
+  nameWithType: BaseSpawnConditions.MaxLightLevel
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.MaxLightLevel
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.LightLevelType
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.LightLevelType
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_LightLevelType
+  name: LightLevelType
+  nameWithType: BaseSpawnConditions.LightLevelType
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.LightLevelType
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.HerdSize
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.HerdSize
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_HerdSize
+  name: HerdSize
+  nameWithType: BaseSpawnConditions.HerdSize
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.HerdSize
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize
+  commentId: P:Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_GroupSize
+  name: GroupSize
+  nameWithType: BaseSpawnConditions.GroupSize
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.Companions
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.Companions
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_Companions
+  name: Companions
+  nameWithType: BaseSpawnConditions.Companions
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.Companions
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodes
+  name: InsideBlockCodes
+  nameWithType: BaseSpawnConditions.InsideBlockCodes
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_RequireSolidGround
+  name: RequireSolidGround
+  nameWithType: BaseSpawnConditions.RequireSolidGround
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_TryOnlySurface
+  name: TryOnlySurface
+  nameWithType: BaseSpawnConditions.TryOnlySurface
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.ClimateValueMode
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.ClimateValueMode
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_ClimateValueMode
+  name: ClimateValueMode
+  nameWithType: BaseSpawnConditions.ClimateValueMode
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.ClimateValueMode
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesResolved
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesResolved
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesResolved
+  name: InsideBlockCodesResolved
+  nameWithType: BaseSpawnConditions.InsideBlockCodesResolved
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesResolved
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesBeginsWith
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesBeginsWith
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesBeginsWith
+  name: InsideBlockCodesBeginsWith
+  nameWithType: BaseSpawnConditions.InsideBlockCodesBeginsWith
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesBeginsWith
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesExact
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesExact
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesExact
+  name: InsideBlockCodesExact
+  nameWithType: BaseSpawnConditions.InsideBlockCodesExact
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesExact
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockFirstLetters
+  commentId: F:Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockFirstLetters
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockFirstLetters
+  name: InsideBlockFirstLetters
+  nameWithType: BaseSpawnConditions.InsideBlockFirstLetters
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockFirstLetters
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)
+  commentId: M:Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_Vintagestory_API_Common_Block_
+  name: CanSpawnInside(Block)
+  nameWithType: BaseSpawnConditions.CanSpawnInside(Block)
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)
+    name: CanSpawnInside
+    href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_Vintagestory_API_Common_Block_
+  - name: (
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)
+    name: CanSpawnInside
+    href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_Vintagestory_API_Common_Block_
+  - name: (
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})
+  commentId: M:Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})
+  parent: Vintagestory.API.Common.Entities.BaseSpawnConditions
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_Server_IServerWorldAccessor_System_String_System_Collections_Generic_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____
+  name: Initialise(IServerWorldAccessor, string, Dictionary<AssetLocation, Block[]>)
+  nameWithType: BaseSpawnConditions.Initialise(IServerWorldAccessor, string, Dictionary<AssetLocation, Block[]>)
+  fullName: Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor, string, System.Collections.Generic.Dictionary<Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.Block[]>)
+  nameWithType.vb: BaseSpawnConditions.Initialise(IServerWorldAccessor, String, Dictionary(Of AssetLocation, Block()))
+  fullName.vb: Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor, String, System.Collections.Generic.Dictionary(Of Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.Block()))
+  name.vb: Initialise(IServerWorldAccessor, String, Dictionary(Of AssetLocation, Block()))
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})
+    name: Initialise
+    href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_Server_IServerWorldAccessor_System_String_System_Collections_Generic_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____
+  - name: (
+  - uid: Vintagestory.API.Server.IServerWorldAccessor
+    name: IServerWorldAccessor
+    href: Vintagestory.API.Server.IServerWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: '['
+  - name: ']'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})
+    name: Initialise
+    href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_Server_IServerWorldAccessor_System_String_System_Collections_Generic_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____
+  - name: (
+  - uid: Vintagestory.API.Server.IServerWorldAccessor
+    name: IServerWorldAccessor
+    href: Vintagestory.API.Server.IServerWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: (
+  - name: )
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinTemp
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinTemp
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinTemp
+  name: MinTemp
+  nameWithType: ClimateSpawnCondition.MinTemp
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinTemp
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxTemp
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxTemp
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MaxTemp
+  name: MaxTemp
+  nameWithType: ClimateSpawnCondition.MaxTemp
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxTemp
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinRain
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinRain
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinRain
+  name: MinRain
+  nameWithType: ClimateSpawnCondition.MinRain
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinRain
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxRain
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxRain
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MaxRain
+  name: MaxRain
+  nameWithType: ClimateSpawnCondition.MaxRain
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxRain
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForest
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForest
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinForest
+  name: MinForest
+  nameWithType: ClimateSpawnCondition.MinForest
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForest
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxForest
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxForest
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MaxForest
+  name: MaxForest
+  nameWithType: ClimateSpawnCondition.MaxForest
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxForest
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinShrubs
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinShrubs
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinShrubs
+  name: MinShrubs
+  nameWithType: ClimateSpawnCondition.MinShrubs
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinShrubs
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxShrubs
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxShrubs
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MaxShrubs
+  name: MaxShrubs
+  nameWithType: ClimateSpawnCondition.MaxShrubs
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxShrubs
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinY
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinY
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinY
+  name: MinY
+  nameWithType: ClimateSpawnCondition.MinY
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinY
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxY
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxY
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MaxY
+  name: MaxY
+  nameWithType: ClimateSpawnCondition.MaxY
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxY
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForestOrShrubs
+  commentId: F:Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForestOrShrubs
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinForestOrShrubs
+  name: MinForestOrShrubs
+  nameWithType: ClimateSpawnCondition.MinForestOrShrubs
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.MinForestOrShrubs
+- uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.SetFrom(Vintagestory.API.Common.Entities.ClimateSpawnCondition)
+  commentId: M:Vintagestory.API.Common.Entities.ClimateSpawnCondition.SetFrom(Vintagestory.API.Common.Entities.ClimateSpawnCondition)
+  parent: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+  href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_SetFrom_Vintagestory_API_Common_Entities_ClimateSpawnCondition_
+  name: SetFrom(ClimateSpawnCondition)
+  nameWithType: ClimateSpawnCondition.SetFrom(ClimateSpawnCondition)
+  fullName: Vintagestory.API.Common.Entities.ClimateSpawnCondition.SetFrom(Vintagestory.API.Common.Entities.ClimateSpawnCondition)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.SetFrom(Vintagestory.API.Common.Entities.ClimateSpawnCondition)
+    name: SetFrom
+    href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_SetFrom_Vintagestory_API_Common_Entities_ClimateSpawnCondition_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+    name: ClimateSpawnCondition
+    href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition.SetFrom(Vintagestory.API.Common.Entities.ClimateSpawnCondition)
+    name: SetFrom
+    href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_SetFrom_Vintagestory_API_Common_Entities_ClimateSpawnCondition_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition
+    name: ClimateSpawnCondition
+    href: Vintagestory.API.Common.Entities.ClimateSpawnCondition.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling
+  href: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html#Vintagestory_API_Common_Entities_RuntimeSpawnConditions_SpawnCapPlayerScaling
+  name: SpawnCapPlayerScaling
+  nameWithType: RuntimeSpawnConditions.SpawnCapPlayerScaling
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.SpawnCapPlayerScaling
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup
+  href: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html#Vintagestory_API_Common_Entities_RuntimeSpawnConditions_MaxQuantityByGroup
+  name: MaxQuantityByGroup
+  nameWithType: RuntimeSpawnConditions.MaxQuantityByGroup
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantityByGroup
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity
+  commentId: F:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity
+  href: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html#Vintagestory_API_Common_Entities_RuntimeSpawnConditions_MaxQuantity
+  name: MaxQuantity
+  nameWithType: RuntimeSpawnConditions.MaxQuantity
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.MaxQuantity
+- uid: Vintagestory.API.Common.Entities.QuantityByGroup
+  commentId: T:Vintagestory.API.Common.Entities.QuantityByGroup
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.QuantityByGroup.html
+  name: QuantityByGroup
+  nameWithType: QuantityByGroup
+  fullName: Vintagestory.API.Common.Entities.QuantityByGroup
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone*
+  commentId: Overload:Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone
+  href: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html#Vintagestory_API_Common_Entities_RuntimeSpawnConditions_Clone
+  name: Clone
+  nameWithType: RuntimeSpawnConditions.Clone
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.Clone
+- uid: Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  commentId: T:Vintagestory.API.Common.Entities.RuntimeSpawnConditions
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html
+  name: RuntimeSpawnConditions
+  nameWithType: RuntimeSpawnConditions
+  fullName: Vintagestory.API.Common.Entities.RuntimeSpawnConditions

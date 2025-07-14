@@ -1,0 +1,551 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil
+  commentId: T:Vintagestory.API.Common.IInventoryNetworkUtil
+  id: IInventoryNetworkUtil
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IInventoryNetworkUtil.Api
+  - Vintagestory.API.Common.IInventoryNetworkUtil.DidClose(Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen(Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket(System.Int32,Vintagestory.API.Common.ItemStackMoveOperation)
+  - Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket(Vintagestory.API.Common.IInventory,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  - Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates
+  langs:
+  - csharp
+  - vb
+  name: IInventoryNetworkUtil
+  nameWithType: IInventoryNetworkUtil
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface IInventoryNetworkUtil
+    content.vb: Public Interface IInventoryNetworkUtil
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.Api
+  commentId: P:Vintagestory.API.Common.IInventoryNetworkUtil.Api
+  id: Api
+  parent: Vintagestory.API.Common.IInventoryNetworkUtil
+  langs:
+  - csharp
+  - vb
+  name: Api
+  nameWithType: IInventoryNetworkUtil.Api
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.Api
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The core API
+  example: []
+  syntax:
+    content: ICoreAPI Api { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.ICoreAPI
+    content.vb: Property Api As ICoreAPI
+  overload: Vintagestory.API.Common.IInventoryNetworkUtil.Api*
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket(System.Int32,Vintagestory.API.Common.ItemStackMoveOperation)
+  commentId: M:Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket(System.Int32,Vintagestory.API.Common.ItemStackMoveOperation)
+  id: GetActivateSlotPacket(System.Int32,Vintagestory.API.Common.ItemStackMoveOperation)
+  parent: Vintagestory.API.Common.IInventoryNetworkUtil
+  langs:
+  - csharp
+  - vb
+  name: GetActivateSlotPacket(int, ItemStackMoveOperation)
+  nameWithType: IInventoryNetworkUtil.GetActivateSlotPacket(int, ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket(int, Vintagestory.API.Common.ItemStackMoveOperation)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the active slot packet.
+  example: []
+  syntax:
+    content: object GetActivateSlotPacket(int slotId, ItemStackMoveOperation op)
+    parameters:
+    - id: slotId
+      type: System.Int32
+      description: The slot ID
+    - id: op
+      type: Vintagestory.API.Common.ItemStackMoveOperation
+      description: The operation of the slot.
+    return:
+      type: System.Object
+    content.vb: Function GetActivateSlotPacket(slotId As Integer, op As ItemStackMoveOperation) As Object
+  overload: Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket*
+  nameWithType.vb: IInventoryNetworkUtil.GetActivateSlotPacket(Integer, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket(Integer, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: GetActivateSlotPacket(Integer, ItemStackMoveOperation)
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket(Vintagestory.API.Common.IInventory,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket(Vintagestory.API.Common.IInventory,System.Int32,System.Int32)
+  id: GetFlipSlotsPacket(Vintagestory.API.Common.IInventory,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IInventoryNetworkUtil
+  langs:
+  - csharp
+  - vb
+  name: GetFlipSlotsPacket(IInventory, int, int)
+  nameWithType: IInventoryNetworkUtil.GetFlipSlotsPacket(IInventory, int, int)
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket(Vintagestory.API.Common.IInventory, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Flips the items between the source slot and target slot.
+  example: []
+  syntax:
+    content: object GetFlipSlotsPacket(IInventory sourceInv, int sourceSlotId, int targetSlotId)
+    parameters:
+    - id: sourceInv
+      type: Vintagestory.API.Common.IInventory
+      description: The inventory.
+    - id: sourceSlotId
+      type: System.Int32
+      description: The source slot ID
+    - id: targetSlotId
+      type: System.Int32
+      description: The target slot ID
+    return:
+      type: System.Object
+    content.vb: Function GetFlipSlotsPacket(sourceInv As IInventory, sourceSlotId As Integer, targetSlotId As Integer) As Object
+  overload: Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket*
+  nameWithType.vb: IInventoryNetworkUtil.GetFlipSlotsPacket(IInventory, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket(Vintagestory.API.Common.IInventory, Integer, Integer)
+  name.vb: GetFlipSlotsPacket(IInventory, Integer, Integer)
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  id: HandleClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  parent: Vintagestory.API.Common.IInventoryNetworkUtil
+  langs:
+  - csharp
+  - vb
+  name: HandleClientPacket(IPlayer, int, byte[])
+  nameWithType: IInventoryNetworkUtil.HandleClientPacket(IPlayer, int, byte[])
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket(Vintagestory.API.Common.IPlayer, int, byte[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Handles the client packet.
+  example: []
+  syntax:
+    content: void HandleClientPacket(IPlayer byPlayer, int packetId, byte[] data)
+    parameters:
+    - id: byPlayer
+      type: Vintagestory.API.Common.IPlayer
+      description: The player the packet came from
+    - id: packetId
+      type: System.Int32
+      description: the ID of the packet.
+    - id: data
+      type: System.Byte[]
+      description: the contents of the packet.
+    content.vb: Sub HandleClientPacket(byPlayer As IPlayer, packetId As Integer, data As Byte())
+  overload: Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket*
+  nameWithType.vb: IInventoryNetworkUtil.HandleClientPacket(IPlayer, Integer, Byte())
+  fullName.vb: Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket(Vintagestory.API.Common.IPlayer, Integer, Byte())
+  name.vb: HandleClientPacket(IPlayer, Integer, Byte())
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen(Vintagestory.API.Common.IPlayer)
+  id: DidOpen(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.IInventoryNetworkUtil
+  langs:
+  - csharp
+  - vb
+  name: DidOpen(IPlayer)
+  nameWithType: IInventoryNetworkUtil.DidOpen(IPlayer)
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen(Vintagestory.API.Common.IPlayer)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Opens a target inventory, passing it to the player.
+  example: []
+  syntax:
+    content: object DidOpen(IPlayer player)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    return:
+      type: System.Object
+      description: ''
+    content.vb: Function DidOpen(player As IPlayer) As Object
+  overload: Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen*
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.DidClose(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.IInventoryNetworkUtil.DidClose(Vintagestory.API.Common.IPlayer)
+  id: DidClose(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.IInventoryNetworkUtil
+  langs:
+  - csharp
+  - vb
+  name: DidClose(IPlayer)
+  nameWithType: IInventoryNetworkUtil.DidClose(IPlayer)
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.DidClose(Vintagestory.API.Common.IPlayer)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Closes the target inventory attached to a player.
+  example: []
+  syntax:
+    content: object DidClose(IPlayer player)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    return:
+      type: System.Object
+      description: ''
+    content.vb: Function DidClose(player As IPlayer) As Object
+  overload: Vintagestory.API.Common.IInventoryNetworkUtil.DidClose*
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates
+  commentId: P:Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates
+  id: PauseInventoryUpdates
+  parent: Vintagestory.API.Common.IInventoryNetworkUtil
+  langs:
+  - csharp
+  - vb
+  name: PauseInventoryUpdates
+  nameWithType: IInventoryNetworkUtil.PauseInventoryUpdates
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool PauseInventoryUpdates { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property PauseInventoryUpdates As Boolean
+  overload: Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.Api*
+  commentId: Overload:Vintagestory.API.Common.IInventoryNetworkUtil.Api
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html#Vintagestory_API_Common_IInventoryNetworkUtil_Api
+  name: Api
+  nameWithType: IInventoryNetworkUtil.Api
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.Api
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket*
+  commentId: Overload:Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html#Vintagestory_API_Common_IInventoryNetworkUtil_GetActivateSlotPacket_System_Int32_Vintagestory_API_Common_ItemStackMoveOperation_
+  name: GetActivateSlotPacket
+  nameWithType: IInventoryNetworkUtil.GetActivateSlotPacket
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.GetActivateSlotPacket
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.ItemStackMoveOperation
+  commentId: T:Vintagestory.API.Common.ItemStackMoveOperation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  name: ItemStackMoveOperation
+  nameWithType: ItemStackMoveOperation
+  fullName: Vintagestory.API.Common.ItemStackMoveOperation
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket*
+  commentId: Overload:Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html#Vintagestory_API_Common_IInventoryNetworkUtil_GetFlipSlotsPacket_Vintagestory_API_Common_IInventory_System_Int32_System_Int32_
+  name: GetFlipSlotsPacket
+  nameWithType: IInventoryNetworkUtil.GetFlipSlotsPacket
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.GetFlipSlotsPacket
+- uid: Vintagestory.API.Common.IInventory
+  commentId: T:Vintagestory.API.Common.IInventory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IInventory.html
+  name: IInventory
+  nameWithType: IInventory
+  fullName: Vintagestory.API.Common.IInventory
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket*
+  commentId: Overload:Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html#Vintagestory_API_Common_IInventoryNetworkUtil_HandleClientPacket_Vintagestory_API_Common_IPlayer_System_Int32_System_Byte___
+  name: HandleClientPacket
+  nameWithType: IInventoryNetworkUtil.HandleClientPacket
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.HandleClientPacket
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen*
+  commentId: Overload:Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html#Vintagestory_API_Common_IInventoryNetworkUtil_DidOpen_Vintagestory_API_Common_IPlayer_
+  name: DidOpen
+  nameWithType: IInventoryNetworkUtil.DidOpen
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.DidOpen
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.DidClose*
+  commentId: Overload:Vintagestory.API.Common.IInventoryNetworkUtil.DidClose
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html#Vintagestory_API_Common_IInventoryNetworkUtil_DidClose_Vintagestory_API_Common_IPlayer_
+  name: DidClose
+  nameWithType: IInventoryNetworkUtil.DidClose
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.DidClose
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates*
+  commentId: Overload:Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html#Vintagestory_API_Common_IInventoryNetworkUtil_PauseInventoryUpdates
+  name: PauseInventoryUpdates
+  nameWithType: IInventoryNetworkUtil.PauseInventoryUpdates
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil.PauseInventoryUpdates
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

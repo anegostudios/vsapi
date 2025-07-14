@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class BlockBehaviorLadder | VintageStory Json Docs ">
       
-      <meta name="description" content="Used to control ladder behavior, including horizontal orientation, placement, collection. Note that this does not control how entities react to ladders (see &amp;quot;climbable&amp;quot; in blocktype). Requires use of the &#39;horizontalorientation&#39; variants. Uses the code &amp;quot;Ladder&amp;quot;.">
+      <meta name="description" content="Used to control ladder behavior, including horizontal orientation, placement, collection. Note that this does not control how entities react to ladders (see &amp;quot;climbable&amp;quot; in blocktype). Requires use of the &#39;horizontalorientation&#39; variants. Uses the code &amp;quot;Ladder&amp;quot;. Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Class BlockBehaviorLadder
 
   <div class="markdown summary"><p>Used to control ladder behavior, including horizontal orientation, placement, collection. Note that this does not control how entities react to ladders (see &quot;climbable&quot; in blocktype).
 Requires use of the 'horizontalorientation' variants.
-Uses the code &quot;Ladder&quot;.</p>
+Uses the code &quot;Ladder&quot;. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///BlockBehavior/BehaviorLadder.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -127,16 +127,17 @@ public class BlockBehaviorLadder : BlockBehavior</code></pre>
 
 
   <h2 id="Vintagestory_GameContent_BlockBehaviorLadder_examples">Examples</h2>
-  <pre><code class="lang-csharp">"behaviors": [
-	{
-		"name": "Ladder",
-		"properties": {
-			"isFlexibleByType": {
-				"ladder-rope-*": true
-			}
-		}
-	}
-]</code></pre>
+  <pre><code>     &lt;pre&gt;&lt;code class=&quot;lang-csharp&quot;&gt;&quot;behaviors&quot;: [
+     	{
+     		&quot;name&quot;: &quot;Ladder&quot;,
+     		&quot;properties&quot;: {
+     			&quot;isFlexibleByType&quot;: {
+     				&quot;ladder-rope-*&quot;: true
+     			}
+     		}
+     	}
+     ]&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 <pre><code class="lang-csharp">"variantgroups": [
 	{
 		"code": "side",

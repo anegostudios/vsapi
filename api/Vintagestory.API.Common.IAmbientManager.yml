@@ -1,0 +1,790 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IAmbientManager
+  commentId: T:Vintagestory.API.Common.IAmbientManager
+  id: IAmbientManager
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IAmbientManager.Base
+  - Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor
+  - Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness
+  - Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity
+  - Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity
+  - Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset
+  - Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader
+  - Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness
+  - Vintagestory.API.Common.IAmbientManager.BlendedFogColor
+  - Vintagestory.API.Common.IAmbientManager.BlendedFogDensity
+  - Vintagestory.API.Common.IAmbientManager.BlendedFogMin
+  - Vintagestory.API.Common.IAmbientManager.CurrentModifiers
+  - Vintagestory.API.Common.IAmbientManager.UpdateAmbient(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: IAmbientManager
+  nameWithType: IAmbientManager
+  fullName: Vintagestory.API.Common.IAmbientManager
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    This is the system that manages the worlds ambient settings, such as fog color/density and clouds.
+
+    The ambient manager basically blends ambientmodifiers on top of each other to generate the final ambient values.
+
+    Blending is in order how the modifiers are held in CurrentModifiers in the likes of
+
+    float weight = modifier.FogMin.Weight;
+
+    BlendedFogMin = w * modifier.FogMin.Value + (1 - w) * BlendedFogMin;
+  example: []
+  syntax:
+    content: public interface IAmbientManager
+    content.vb: Public Interface IAmbientManager
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.IAmbientManager.Base
+  commentId: P:Vintagestory.API.Common.IAmbientManager.Base
+  id: Base
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: Base
+  nameWithType: IAmbientManager.Base
+  fullName: Vintagestory.API.Common.IAmbientManager.Base
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The base value or background ambient to overlay everything onto
+  example: []
+  syntax:
+    content: AmbientModifier Base { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.AmbientModifier
+    content.vb: ReadOnly Property Base As AmbientModifier
+  overload: Vintagestory.API.Common.IAmbientManager.Base*
+- uid: Vintagestory.API.Common.IAmbientManager.CurrentModifiers
+  commentId: P:Vintagestory.API.Common.IAmbientManager.CurrentModifiers
+  id: CurrentModifiers
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: CurrentModifiers
+  nameWithType: IAmbientManager.CurrentModifiers
+  fullName: Vintagestory.API.Common.IAmbientManager.CurrentModifiers
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The list of modifiers that result in the blended values
+  example: []
+  syntax:
+    content: OrderedDictionary<string, AmbientModifier> CurrentModifiers { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Common.AmbientModifier}
+    content.vb: ReadOnly Property CurrentModifiers As OrderedDictionary(Of String, AmbientModifier)
+  overload: Vintagestory.API.Common.IAmbientManager.CurrentModifiers*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogColor
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedFogColor
+  id: BlendedFogColor
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedFogColor
+  nameWithType: IAmbientManager.BlendedFogColor
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogColor
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended fog color, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: Vec4f BlendedFogColor { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: ReadOnly Property BlendedFogColor As Vec4f
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedFogColor*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor
+  id: BlendedAmbientColor
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedAmbientColor
+  nameWithType: IAmbientManager.BlendedAmbientColor
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended ambient color, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: Vec3f BlendedAmbientColor { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: ReadOnly Property BlendedAmbientColor As Vec3f
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogDensity
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedFogDensity
+  id: BlendedFogDensity
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedFogDensity
+  nameWithType: IAmbientManager.BlendedFogDensity
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogDensity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended fog density, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: float BlendedFogDensity { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property BlendedFogDensity As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedFogDensity*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness
+  id: BlendedFogBrightness
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedFogBrightness
+  nameWithType: IAmbientManager.BlendedFogBrightness
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: float BlendedFogBrightness { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property BlendedFogBrightness As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity
+  id: BlendedFlatFogDensity
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedFlatFogDensity
+  nameWithType: IAmbientManager.BlendedFlatFogDensity
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended flat fog density, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: float BlendedFlatFogDensity { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property BlendedFlatFogDensity As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset
+  id: BlendedFlatFogYOffset
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedFlatFogYOffset
+  nameWithType: IAmbientManager.BlendedFlatFogYOffset
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended flat fog y-offset, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: float BlendedFlatFogYOffset { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property BlendedFlatFogYOffset As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader
+  id: BlendedFlatFogYPosForShader
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedFlatFogYPosForShader
+  nameWithType: IAmbientManager.BlendedFlatFogYPosForShader
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: BlendedFlatFogYPos + SeaLevel - MainCamera.TargetPosition.Y
+  example: []
+  syntax:
+    content: float BlendedFlatFogYPosForShader { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property BlendedFlatFogYPosForShader As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogMin
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedFogMin
+  id: BlendedFogMin
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedFogMin
+  nameWithType: IAmbientManager.BlendedFogMin
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogMin
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended fog min, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: float BlendedFogMin { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property BlendedFogMin As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedFogMin*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness
+  id: BlendedCloudBrightness
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedCloudBrightness
+  nameWithType: IAmbientManager.BlendedCloudBrightness
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended cloud brightness, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: float BlendedCloudBrightness { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property BlendedCloudBrightness As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity
+  id: BlendedCloudDensity
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedCloudDensity
+  nameWithType: IAmbientManager.BlendedCloudDensity
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The blended cloud density, calculated every frame from the list of modifiers
+  example: []
+  syntax:
+    content: float BlendedCloudDensity { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property BlendedCloudDensity As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity*
+- uid: Vintagestory.API.Common.IAmbientManager.UpdateAmbient(System.Single)
+  commentId: M:Vintagestory.API.Common.IAmbientManager.UpdateAmbient(System.Single)
+  id: UpdateAmbient(System.Single)
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: UpdateAmbient(float)
+  nameWithType: IAmbientManager.UpdateAmbient(float)
+  fullName: Vintagestory.API.Common.IAmbientManager.UpdateAmbient(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The update loop for this manager. Runs every frame.
+  example: []
+  syntax:
+    content: void UpdateAmbient(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: the Delta or change in Time
+    content.vb: Sub UpdateAmbient(dt As Single)
+  overload: Vintagestory.API.Common.IAmbientManager.UpdateAmbient*
+  nameWithType.vb: IAmbientManager.UpdateAmbient(Single)
+  fullName.vb: Vintagestory.API.Common.IAmbientManager.UpdateAmbient(Single)
+  name.vb: UpdateAmbient(Single)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.IAmbientManager.Base*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.Base
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_Base
+  name: Base
+  nameWithType: IAmbientManager.Base
+  fullName: Vintagestory.API.Common.IAmbientManager.Base
+- uid: Vintagestory.API.Common.AmbientModifier
+  commentId: T:Vintagestory.API.Common.AmbientModifier
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AmbientModifier.html
+  name: AmbientModifier
+  nameWithType: AmbientModifier
+  fullName: Vintagestory.API.Common.AmbientModifier
+- uid: Vintagestory.API.Common.IAmbientManager.CurrentModifiers*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.CurrentModifiers
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_CurrentModifiers
+  name: CurrentModifiers
+  nameWithType: IAmbientManager.CurrentModifiers
+  fullName: Vintagestory.API.Common.IAmbientManager.CurrentModifiers
+- uid: Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Common.AmbientModifier}
+  commentId: T:Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Common.AmbientModifier}
+  parent: Vintagestory.API.Datastructures
+  definition: Vintagestory.API.Datastructures.OrderedDictionary`2
+  href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  name: OrderedDictionary<string, AmbientModifier>
+  nameWithType: OrderedDictionary<string, AmbientModifier>
+  fullName: Vintagestory.API.Datastructures.OrderedDictionary<string, Vintagestory.API.Common.AmbientModifier>
+  nameWithType.vb: OrderedDictionary(Of String, AmbientModifier)
+  fullName.vb: Vintagestory.API.Datastructures.OrderedDictionary(Of String, Vintagestory.API.Common.AmbientModifier)
+  name.vb: OrderedDictionary(Of String, AmbientModifier)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AmbientModifier
+    name: AmbientModifier
+    href: Vintagestory.API.Common.AmbientModifier.html
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AmbientModifier
+    name: AmbientModifier
+    href: Vintagestory.API.Common.AmbientModifier.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+  commentId: T:Vintagestory.API.Datastructures.OrderedDictionary`2
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  name: OrderedDictionary<TKey, TValue>
+  nameWithType: OrderedDictionary<TKey, TValue>
+  fullName: Vintagestory.API.Datastructures.OrderedDictionary<TKey, TValue>
+  nameWithType.vb: OrderedDictionary(Of TKey, TValue)
+  fullName.vb: Vintagestory.API.Datastructures.OrderedDictionary(Of TKey, TValue)
+  name.vb: OrderedDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogColor*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedFogColor
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedFogColor
+  name: BlendedFogColor
+  nameWithType: IAmbientManager.BlendedFogColor
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogColor
+- uid: Vintagestory.API.MathTools.Vec4f
+  commentId: T:Vintagestory.API.MathTools.Vec4f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec4f.html
+  name: Vec4f
+  nameWithType: Vec4f
+  fullName: Vintagestory.API.MathTools.Vec4f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedAmbientColor
+  name: BlendedAmbientColor
+  nameWithType: IAmbientManager.BlendedAmbientColor
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedAmbientColor
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogDensity*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedFogDensity
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedFogDensity
+  name: BlendedFogDensity
+  nameWithType: IAmbientManager.BlendedFogDensity
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogDensity
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedFogBrightness
+  name: BlendedFogBrightness
+  nameWithType: IAmbientManager.BlendedFogBrightness
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogBrightness
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedFlatFogDensity
+  name: BlendedFlatFogDensity
+  nameWithType: IAmbientManager.BlendedFlatFogDensity
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogDensity
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedFlatFogYOffset
+  name: BlendedFlatFogYOffset
+  nameWithType: IAmbientManager.BlendedFlatFogYOffset
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYOffset
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedFlatFogYPosForShader
+  name: BlendedFlatFogYPosForShader
+  nameWithType: IAmbientManager.BlendedFlatFogYPosForShader
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFlatFogYPosForShader
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedFogMin*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedFogMin
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedFogMin
+  name: BlendedFogMin
+  nameWithType: IAmbientManager.BlendedFogMin
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedFogMin
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedCloudBrightness
+  name: BlendedCloudBrightness
+  nameWithType: IAmbientManager.BlendedCloudBrightness
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedCloudBrightness
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedCloudDensity
+  name: BlendedCloudDensity
+  nameWithType: IAmbientManager.BlendedCloudDensity
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity
+- uid: Vintagestory.API.Common.IAmbientManager.UpdateAmbient*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.UpdateAmbient
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_UpdateAmbient_System_Single_
+  name: UpdateAmbient
+  nameWithType: IAmbientManager.UpdateAmbient
+  fullName: Vintagestory.API.Common.IAmbientManager.UpdateAmbient

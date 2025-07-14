@@ -1,0 +1,603 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil
+  commentId: T:Vintagestory.API.Datastructures.TreeAttributeUtil
+  id: TreeAttributeUtil
+  parent: Vintagestory.API.Datastructures
+  children:
+  - Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  - Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  - Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  - Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  langs:
+  - csharp
+  - vb
+  name: TreeAttributeUtil
+  nameWithType: TreeAttributeUtil
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static class TreeAttributeUtil
+    content.vb: Public Module TreeAttributeUtil
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  id: GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  langs:
+  - csharp
+  - vb
+  name: GetVec3i(ITreeAttribute, string, Vec3i)
+  nameWithType: TreeAttributeUtil.GetVec3i(ITreeAttribute, string, Vec3i)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static Vec3i GetVec3i(this ITreeAttribute tree, string code, Vec3i defaultValue = null)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    - id: code
+      type: System.String
+    - id: defaultValue
+      type: Vintagestory.API.MathTools.Vec3i
+    return:
+      type: Vintagestory.API.MathTools.Vec3i
+    content.vb: Public Shared Function GetVec3i(tree As ITreeAttribute, code As String, defaultValue As Vec3i = Nothing) As Vec3i
+  overload: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i*
+  nameWithType.vb: TreeAttributeUtil.GetVec3i(ITreeAttribute, String, Vec3i)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i)
+  name.vb: GetVec3i(ITreeAttribute, String, Vec3i)
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  id: GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  langs:
+  - csharp
+  - vb
+  name: GetBlockPos(ITreeAttribute, string, BlockPos)
+  nameWithType: TreeAttributeUtil.GetBlockPos(ITreeAttribute, string, BlockPos)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static BlockPos GetBlockPos(this ITreeAttribute tree, string code, BlockPos defaultValue = null)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    - id: code
+      type: System.String
+    - id: defaultValue
+      type: Vintagestory.API.MathTools.BlockPos
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public Shared Function GetBlockPos(tree As ITreeAttribute, code As String, defaultValue As BlockPos = Nothing) As BlockPos
+  overload: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos*
+  nameWithType.vb: TreeAttributeUtil.GetBlockPos(ITreeAttribute, String, BlockPos)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.BlockPos)
+  name.vb: GetBlockPos(ITreeAttribute, String, BlockPos)
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  id: SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  langs:
+  - csharp
+  - vb
+  name: SetVec3i(ITreeAttribute, string, Vec3i)
+  nameWithType: TreeAttributeUtil.SetVec3i(ITreeAttribute, string, Vec3i)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static void SetVec3i(this ITreeAttribute tree, string code, Vec3i value)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    - id: code
+      type: System.String
+    - id: value
+      type: Vintagestory.API.MathTools.Vec3i
+    content.vb: Public Shared Sub SetVec3i(tree As ITreeAttribute, code As String, value As Vec3i)
+  overload: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i*
+  nameWithType.vb: TreeAttributeUtil.SetVec3i(ITreeAttribute, String, Vec3i)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i)
+  name.vb: SetVec3i(ITreeAttribute, String, Vec3i)
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  id: SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  langs:
+  - csharp
+  - vb
+  name: SetBlockPos(ITreeAttribute, string, BlockPos)
+  nameWithType: TreeAttributeUtil.SetBlockPos(ITreeAttribute, string, BlockPos)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static void SetBlockPos(this ITreeAttribute tree, string code, BlockPos value)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    - id: code
+      type: System.String
+    - id: value
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public Shared Sub SetBlockPos(tree As ITreeAttribute, code As String, value As BlockPos)
+  overload: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos*
+  nameWithType.vb: TreeAttributeUtil.SetBlockPos(ITreeAttribute, String, BlockPos)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.BlockPos)
+  name.vb: SetBlockPos(ITreeAttribute, String, BlockPos)
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  id: GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  isExtensionMethod: true
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  langs:
+  - csharp
+  - vb
+  name: GetVec3is(ITreeAttribute, string, Vec3i[])
+  nameWithType: TreeAttributeUtil.GetVec3is(ITreeAttribute, string, Vec3i[])
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static Vec3i[] GetVec3is(this ITreeAttribute tree, string code, Vec3i[] defaultValue = null)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    - id: code
+      type: System.String
+    - id: defaultValue
+      type: Vintagestory.API.MathTools.Vec3i[]
+    return:
+      type: Vintagestory.API.MathTools.Vec3i[]
+    content.vb: Public Shared Function GetVec3is(tree As ITreeAttribute, code As String, defaultValue As Vec3i() = Nothing) As Vec3i()
+  overload: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is*
+  nameWithType.vb: TreeAttributeUtil.GetVec3is(ITreeAttribute, String, Vec3i())
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i())
+  name.vb: GetVec3is(ITreeAttribute, String, Vec3i())
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  id: SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  isExtensionMethod: true
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  langs:
+  - csharp
+  - vb
+  name: SetVec3is(ITreeAttribute, string, Vec3i[])
+  nameWithType: TreeAttributeUtil.SetVec3is(ITreeAttribute, string, Vec3i[])
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static void SetVec3is(this ITreeAttribute tree, string code, Vec3i[] value)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    - id: code
+      type: System.String
+    - id: value
+      type: Vintagestory.API.MathTools.Vec3i[]
+    content.vb: Public Shared Sub SetVec3is(tree As ITreeAttribute, code As String, value As Vec3i())
+  overload: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is*
+  nameWithType.vb: TreeAttributeUtil.SetVec3is(ITreeAttribute, String, Vec3i())
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i())
+  name.vb: SetVec3is(ITreeAttribute, String, Vec3i())
+references:
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i*
+  commentId: Overload:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  name: GetVec3i
+  nameWithType: TreeAttributeUtil.GetVec3i
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.MathTools.Vec3i
+  commentId: T:Vintagestory.API.MathTools.Vec3i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3i.html
+  name: Vec3i
+  nameWithType: Vec3i
+  fullName: Vintagestory.API.MathTools.Vec3i
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos*
+  commentId: Overload:Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  name: GetBlockPos
+  nameWithType: TreeAttributeUtil.GetBlockPos
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i*
+  commentId: Overload:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  name: SetVec3i
+  nameWithType: TreeAttributeUtil.SetVec3i
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos*
+  commentId: Overload:Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  name: SetBlockPos
+  nameWithType: TreeAttributeUtil.SetBlockPos
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is*
+  commentId: Overload:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  name: GetVec3is
+  nameWithType: TreeAttributeUtil.GetVec3is
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is
+- uid: Vintagestory.API.MathTools.Vec3i[]
+  isExternal: true
+  href: Vintagestory.API.MathTools.Vec3i.html
+  name: Vec3i[]
+  nameWithType: Vec3i[]
+  fullName: Vintagestory.API.MathTools.Vec3i[]
+  nameWithType.vb: Vec3i()
+  fullName.vb: Vintagestory.API.MathTools.Vec3i()
+  name.vb: Vec3i()
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is*
+  commentId: Overload:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  name: SetVec3is
+  nameWithType: TreeAttributeUtil.SetVec3is
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is

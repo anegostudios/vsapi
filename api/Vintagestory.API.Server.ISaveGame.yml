@@ -1,0 +1,921 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.ISaveGame
+  commentId: T:Vintagestory.API.Server.ISaveGame
+  id: ISaveGame
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.ISaveGame.CreatedGameVersion
+  - Vintagestory.API.Server.ISaveGame.EntitySpawning
+  - Vintagestory.API.Server.ISaveGame.GetData(System.String)
+  - Vintagestory.API.Server.ISaveGame.GetData``1(System.String,``0)
+  - Vintagestory.API.Server.ISaveGame.IsNew
+  - Vintagestory.API.Server.ISaveGame.LandClaims
+  - Vintagestory.API.Server.ISaveGame.LastSavedGameVersion
+  - Vintagestory.API.Server.ISaveGame.PlayStyle
+  - Vintagestory.API.Server.ISaveGame.SavegameIdentifier
+  - Vintagestory.API.Server.ISaveGame.Seed
+  - Vintagestory.API.Server.ISaveGame.StoreData(System.String,System.Byte[])
+  - Vintagestory.API.Server.ISaveGame.StoreData``1(System.String,``0)
+  - Vintagestory.API.Server.ISaveGame.TotalGameSeconds
+  - Vintagestory.API.Server.ISaveGame.WorldConfiguration
+  - Vintagestory.API.Server.ISaveGame.WorldName
+  - Vintagestory.API.Server.ISaveGame.WorldType
+  langs:
+  - csharp
+  - vb
+  name: ISaveGame
+  nameWithType: ISaveGame
+  fullName: Vintagestory.API.Server.ISaveGame
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public interface ISaveGame
+    content.vb: Public Interface ISaveGame
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Server.ISaveGame.IsNew
+  commentId: P:Vintagestory.API.Server.ISaveGame.IsNew
+  id: IsNew
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: IsNew
+  nameWithType: ISaveGame.IsNew
+  fullName: Vintagestory.API.Server.ISaveGame.IsNew
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: True if this is a newly created world
+  example: []
+  syntax:
+    content: bool IsNew { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsNew As Boolean
+  overload: Vintagestory.API.Server.ISaveGame.IsNew*
+- uid: Vintagestory.API.Server.ISaveGame.CreatedGameVersion
+  commentId: P:Vintagestory.API.Server.ISaveGame.CreatedGameVersion
+  id: CreatedGameVersion
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: CreatedGameVersion
+  nameWithType: ISaveGame.CreatedGameVersion
+  fullName: Vintagestory.API.Server.ISaveGame.CreatedGameVersion
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The game version under which this savegame was created
+  example: []
+  syntax:
+    content: string CreatedGameVersion { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property CreatedGameVersion As String
+  overload: Vintagestory.API.Server.ISaveGame.CreatedGameVersion*
+- uid: Vintagestory.API.Server.ISaveGame.LastSavedGameVersion
+  commentId: P:Vintagestory.API.Server.ISaveGame.LastSavedGameVersion
+  id: LastSavedGameVersion
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: LastSavedGameVersion
+  nameWithType: ISaveGame.LastSavedGameVersion
+  fullName: Vintagestory.API.Server.ISaveGame.LastSavedGameVersion
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The game version under which this savegame was last saved
+  example: []
+  syntax:
+    content: string LastSavedGameVersion { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property LastSavedGameVersion As String
+  overload: Vintagestory.API.Server.ISaveGame.LastSavedGameVersion*
+- uid: Vintagestory.API.Server.ISaveGame.Seed
+  commentId: P:Vintagestory.API.Server.ISaveGame.Seed
+  id: Seed
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: Seed
+  nameWithType: ISaveGame.Seed
+  fullName: Vintagestory.API.Server.ISaveGame.Seed
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: int Seed { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property Seed As Integer
+  overload: Vintagestory.API.Server.ISaveGame.Seed*
+- uid: Vintagestory.API.Server.ISaveGame.SavegameIdentifier
+  commentId: P:Vintagestory.API.Server.ISaveGame.SavegameIdentifier
+  id: SavegameIdentifier
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: SavegameIdentifier
+  nameWithType: ISaveGame.SavegameIdentifier
+  fullName: Vintagestory.API.Server.ISaveGame.SavegameIdentifier
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: A globally unique identifier for this savegame
+  example: []
+  syntax:
+    content: string SavegameIdentifier { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property SavegameIdentifier As String
+  overload: Vintagestory.API.Server.ISaveGame.SavegameIdentifier*
+- uid: Vintagestory.API.Server.ISaveGame.TotalGameSeconds
+  commentId: P:Vintagestory.API.Server.ISaveGame.TotalGameSeconds
+  id: TotalGameSeconds
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: TotalGameSeconds
+  nameWithType: ISaveGame.TotalGameSeconds
+  fullName: Vintagestory.API.Server.ISaveGame.TotalGameSeconds
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: long TotalGameSeconds { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Property TotalGameSeconds As Long
+  overload: Vintagestory.API.Server.ISaveGame.TotalGameSeconds*
+- uid: Vintagestory.API.Server.ISaveGame.WorldName
+  commentId: P:Vintagestory.API.Server.ISaveGame.WorldName
+  id: WorldName
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: WorldName
+  nameWithType: ISaveGame.WorldName
+  fullName: Vintagestory.API.Server.ISaveGame.WorldName
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: string WorldName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property WorldName As String
+  overload: Vintagestory.API.Server.ISaveGame.WorldName*
+- uid: Vintagestory.API.Server.ISaveGame.PlayStyle
+  commentId: P:Vintagestory.API.Server.ISaveGame.PlayStyle
+  id: PlayStyle
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: PlayStyle
+  nameWithType: ISaveGame.PlayStyle
+  fullName: Vintagestory.API.Server.ISaveGame.PlayStyle
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: string PlayStyle { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property PlayStyle As String
+  overload: Vintagestory.API.Server.ISaveGame.PlayStyle*
+- uid: Vintagestory.API.Server.ISaveGame.WorldType
+  commentId: P:Vintagestory.API.Server.ISaveGame.WorldType
+  id: WorldType
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: WorldType
+  nameWithType: ISaveGame.WorldType
+  fullName: Vintagestory.API.Server.ISaveGame.WorldType
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: string WorldType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property WorldType As String
+  overload: Vintagestory.API.Server.ISaveGame.WorldType*
+- uid: Vintagestory.API.Server.ISaveGame.EntitySpawning
+  commentId: P:Vintagestory.API.Server.ISaveGame.EntitySpawning
+  id: EntitySpawning
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: EntitySpawning
+  nameWithType: ISaveGame.EntitySpawning
+  fullName: Vintagestory.API.Server.ISaveGame.EntitySpawning
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: bool EntitySpawning { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property EntitySpawning As Boolean
+  overload: Vintagestory.API.Server.ISaveGame.EntitySpawning*
+- uid: Vintagestory.API.Server.ISaveGame.LandClaims
+  commentId: P:Vintagestory.API.Server.ISaveGame.LandClaims
+  id: LandClaims
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: LandClaims
+  nameWithType: ISaveGame.LandClaims
+  fullName: Vintagestory.API.Server.ISaveGame.LandClaims
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: List<LandClaim> LandClaims { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.LandClaim}
+    content.vb: Property LandClaims As List(Of LandClaim)
+  overload: Vintagestory.API.Server.ISaveGame.LandClaims*
+- uid: Vintagestory.API.Server.ISaveGame.WorldConfiguration
+  commentId: P:Vintagestory.API.Server.ISaveGame.WorldConfiguration
+  id: WorldConfiguration
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: WorldConfiguration
+  nameWithType: ISaveGame.WorldConfiguration
+  fullName: Vintagestory.API.Server.ISaveGame.WorldConfiguration
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: ITreeAttribute WorldConfiguration { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    content.vb: ReadOnly Property WorldConfiguration As ITreeAttribute
+  overload: Vintagestory.API.Server.ISaveGame.WorldConfiguration*
+- uid: Vintagestory.API.Server.ISaveGame.GetData(System.String)
+  commentId: M:Vintagestory.API.Server.ISaveGame.GetData(System.String)
+  id: GetData(System.String)
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: GetData(string)
+  nameWithType: ISaveGame.GetData(string)
+  fullName: Vintagestory.API.Server.ISaveGame.GetData(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Gets a previously saved object from the savegame. Returns null if no such data under this key was previously set.
+  example: []
+  syntax:
+    content: byte[] GetData(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key to look for
+    return:
+      type: System.Byte[]
+      description: ''
+    content.vb: Function GetData(key As String) As Byte()
+  overload: Vintagestory.API.Server.ISaveGame.GetData*
+  nameWithType.vb: ISaveGame.GetData(String)
+  fullName.vb: Vintagestory.API.Server.ISaveGame.GetData(String)
+  name.vb: GetData(String)
+- uid: Vintagestory.API.Server.ISaveGame.StoreData(System.String,System.Byte[])
+  commentId: M:Vintagestory.API.Server.ISaveGame.StoreData(System.String,System.Byte[])
+  id: StoreData(System.String,System.Byte[])
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: StoreData(string, byte[])
+  nameWithType: ISaveGame.StoreData(string, byte[])
+  fullName: Vintagestory.API.Server.ISaveGame.StoreData(string, byte[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Store the given data persistently to the savegame. Size limit is around 1 gigabyte for *all* data stored along with the savegame datastructure. If you need more space, you have to store it somewhere else.
+  example: []
+  syntax:
+    content: void StoreData(string key, byte[] data)
+    parameters:
+    - id: key
+      type: System.String
+      description: Key value
+    - id: data
+      type: System.Byte[]
+      description: Data to save
+    content.vb: Sub StoreData(key As String, data As Byte())
+  overload: Vintagestory.API.Server.ISaveGame.StoreData*
+  nameWithType.vb: ISaveGame.StoreData(String, Byte())
+  fullName.vb: Vintagestory.API.Server.ISaveGame.StoreData(String, Byte())
+  name.vb: StoreData(String, Byte())
+- uid: Vintagestory.API.Server.ISaveGame.GetData``1(System.String,``0)
+  commentId: M:Vintagestory.API.Server.ISaveGame.GetData``1(System.String,``0)
+  id: GetData``1(System.String,``0)
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: GetData<T>(string, T)
+  nameWithType: ISaveGame.GetData<T>(string, T)
+  fullName: Vintagestory.API.Server.ISaveGame.GetData<T>(string, T)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Gets a previously saved object from the savegame. Returns null if no such data under this key was previously set.
+  example: []
+  syntax:
+    content: T GetData<T>(string key, T defaultValue = default)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Function GetData(Of T)(key As String, defaultValue As T = Nothing) As T
+  overload: Vintagestory.API.Server.ISaveGame.GetData*
+  nameWithType.vb: ISaveGame.GetData(Of T)(String, T)
+  fullName.vb: Vintagestory.API.Server.ISaveGame.GetData(Of T)(String, T)
+  name.vb: GetData(Of T)(String, T)
+- uid: Vintagestory.API.Server.ISaveGame.StoreData``1(System.String,``0)
+  commentId: M:Vintagestory.API.Server.ISaveGame.StoreData``1(System.String,``0)
+  id: StoreData``1(System.String,``0)
+  parent: Vintagestory.API.Server.ISaveGame
+  langs:
+  - csharp
+  - vb
+  name: StoreData<T>(string, T)
+  nameWithType: ISaveGame.StoreData<T>(string, T)
+  fullName: Vintagestory.API.Server.ISaveGame.StoreData<T>(string, T)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Store the given data persistently to the savegame. Size limit is around 1 gigabyte for *all* data stored along with the savegame datastructure. If you need more space, you have to store it somewhere else.
+  example: []
+  syntax:
+    content: void StoreData<T>(string key, T data)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: data
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub StoreData(Of T)(key As String, data As T)
+  overload: Vintagestory.API.Server.ISaveGame.StoreData*
+  nameWithType.vb: ISaveGame.StoreData(Of T)(String, T)
+  fullName.vb: Vintagestory.API.Server.ISaveGame.StoreData(Of T)(String, T)
+  name.vb: StoreData(Of T)(String, T)
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Server.ISaveGame.IsNew*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.IsNew
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_IsNew
+  name: IsNew
+  nameWithType: ISaveGame.IsNew
+  fullName: Vintagestory.API.Server.ISaveGame.IsNew
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Server.ISaveGame.CreatedGameVersion*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.CreatedGameVersion
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_CreatedGameVersion
+  name: CreatedGameVersion
+  nameWithType: ISaveGame.CreatedGameVersion
+  fullName: Vintagestory.API.Server.ISaveGame.CreatedGameVersion
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Server.ISaveGame.LastSavedGameVersion*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.LastSavedGameVersion
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_LastSavedGameVersion
+  name: LastSavedGameVersion
+  nameWithType: ISaveGame.LastSavedGameVersion
+  fullName: Vintagestory.API.Server.ISaveGame.LastSavedGameVersion
+- uid: Vintagestory.API.Server.ISaveGame.Seed*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.Seed
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_Seed
+  name: Seed
+  nameWithType: ISaveGame.Seed
+  fullName: Vintagestory.API.Server.ISaveGame.Seed
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Server.ISaveGame.SavegameIdentifier*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.SavegameIdentifier
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_SavegameIdentifier
+  name: SavegameIdentifier
+  nameWithType: ISaveGame.SavegameIdentifier
+  fullName: Vintagestory.API.Server.ISaveGame.SavegameIdentifier
+- uid: Vintagestory.API.Server.ISaveGame.TotalGameSeconds*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.TotalGameSeconds
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_TotalGameSeconds
+  name: TotalGameSeconds
+  nameWithType: ISaveGame.TotalGameSeconds
+  fullName: Vintagestory.API.Server.ISaveGame.TotalGameSeconds
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Vintagestory.API.Server.ISaveGame.WorldName*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.WorldName
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_WorldName
+  name: WorldName
+  nameWithType: ISaveGame.WorldName
+  fullName: Vintagestory.API.Server.ISaveGame.WorldName
+- uid: Vintagestory.API.Server.ISaveGame.PlayStyle*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.PlayStyle
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_PlayStyle
+  name: PlayStyle
+  nameWithType: ISaveGame.PlayStyle
+  fullName: Vintagestory.API.Server.ISaveGame.PlayStyle
+- uid: Vintagestory.API.Server.ISaveGame.WorldType*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.WorldType
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_WorldType
+  name: WorldType
+  nameWithType: ISaveGame.WorldType
+  fullName: Vintagestory.API.Server.ISaveGame.WorldType
+- uid: Vintagestory.API.Server.ISaveGame.EntitySpawning*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.EntitySpawning
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_EntitySpawning
+  name: EntitySpawning
+  nameWithType: ISaveGame.EntitySpawning
+  fullName: Vintagestory.API.Server.ISaveGame.EntitySpawning
+- uid: Vintagestory.API.Server.ISaveGame.LandClaims*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.LandClaims
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_LandClaims
+  name: LandClaims
+  nameWithType: ISaveGame.LandClaims
+  fullName: Vintagestory.API.Server.ISaveGame.LandClaims
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.LandClaim}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.LandClaim}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<LandClaim>
+  nameWithType: List<LandClaim>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.LandClaim>
+  nameWithType.vb: List(Of LandClaim)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.LandClaim)
+  name.vb: List(Of LandClaim)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.LandClaim
+    name: LandClaim
+    href: Vintagestory.API.Common.LandClaim.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.LandClaim
+    name: LandClaim
+    href: Vintagestory.API.Common.LandClaim.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Server.ISaveGame.WorldConfiguration*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.WorldConfiguration
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_WorldConfiguration
+  name: WorldConfiguration
+  nameWithType: ISaveGame.WorldConfiguration
+  fullName: Vintagestory.API.Server.ISaveGame.WorldConfiguration
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Server.ISaveGame.GetData*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.GetData
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_GetData_System_String_
+  name: GetData
+  nameWithType: ISaveGame.GetData
+  fullName: Vintagestory.API.Server.ISaveGame.GetData
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Server.ISaveGame.StoreData*
+  commentId: Overload:Vintagestory.API.Server.ISaveGame.StoreData
+  href: Vintagestory.API.Server.ISaveGame.html#Vintagestory_API_Server_ISaveGame_StoreData_System_String_System_Byte___
+  name: StoreData
+  nameWithType: ISaveGame.StoreData
+  fullName: Vintagestory.API.Server.ISaveGame.StoreData
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

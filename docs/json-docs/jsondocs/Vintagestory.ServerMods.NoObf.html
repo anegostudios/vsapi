@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -96,75 +96,75 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.html">BlockCropPropertiesType</a></dt>
-      <dd><p>Used for crop blocks that grow over time.</p>
+      <dd><p>Used for crop blocks that grow over time. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/BlockCropPropertiesType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html">BlockType</a></dt>
       <dd><p>Defines an in-game block using a json file. BlockTypes use all properties from <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a>, but also contain some unique properties.
-Any json file placed in your &quot;assets/blocktypes&quot; folder will be loaded as a blocktype in the game.</p>
+Any json file placed in your &quot;assets/blocktypes&quot; folder will be loaded as a blocktype in the game. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/BlockType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ClientEntityConfig.html">ClientEntityConfig</a></dt>
-      <dd><p>Specific configuration settings for entities on the client-side.</p>
+      <dd><p>Specific configuration settings for entities on the client-side. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/EntityType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleBehaviorType.html">CollectibleBehaviorType</a></dt>
-      <dd><p>A type of behavior to attach to a <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a> object.</p>
+      <dd><p>A type of behavior to attach to a <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a> object. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/CollectibleBehaviorType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a></dt>
       <dd><p>A type of in-game collectible object. Extends from <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a>.
 This is mainly used to control items (and block's items) when they are in the inventory.
-<a class="xref" href="Vintagestory.ServerMods.NoObf.ItemType.html">ItemType</a>s get most of their data from here, <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html">BlockType</a>s use this as well as their own specific data.</p>
+<a class="xref" href="Vintagestory.ServerMods.NoObf.ItemType.html">ItemType</a>s get most of their data from here, <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html">BlockType</a>s use this as well as their own specific data. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/CollectibleType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.CropBehaviorType.html">CropBehaviorType</a></dt>
-      <dd><p>Allows further complex behavior for crop blocks.</p>
+      <dd><p>Allows further complex behavior for crop blocks. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/CropBehaviorType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.EntityType.html">EntityType</a></dt>
       <dd><p>An entity type.
-Any json files inside of assets/entities will be loaded in as this type.</p>
+Any json files inside of assets/entities will be loaded in as this type. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/EntityType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ItemType.html">ItemType</a></dt>
       <dd><p>Defines an in-game item using a json file. Note that all json properties for items come from the base <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a> classes.
-Any json file inside the &quot;assets/itemtypes&quot; folder will be loaded as an itemtype in the game.</p>
+Any json file inside the &quot;assets/itemtypes&quot; folder will be loaded as an itemtype in the game. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/ItemType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.JsonPatch.html">JsonPatch</a></dt>
       <dd><p>Defines a patch for a json asset. This allows modifying json files through mods without directly editing them.
 To help with creating patches, it is highly recommended to learn how to use the in-built modmaker program.
-See <a href="https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker">https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker</a> for more info.</p>
+See <a href="https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker">https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker</a> for more info. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/JsonPatchLoader.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.PatchCondition.html">PatchCondition</a></dt>
-      <dd><p>A condition for a json patch. Conditions are based on the currently loaded worldconfig.</p>
+      <dd><p>A condition for a json patch. Conditions are based on the currently loaded worldconfig. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/JsonPatchLoader.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.PatchModDependence.html">PatchModDependence</a></dt>
-      <dd><p>A mod-dependence for a json patch. If your patch depends on another mod, you need to use this.</p>
+      <dd><p>A mod-dependence for a json patch. If your patch depends on another mod, you need to use this. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/JsonPatchLoader.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a></dt>
       <dd><p>The very base class for an in-game object. Extended by blocktypes, itemtypes, and entitytypes.
-Controls the object's code, variant types, allowed/disallowed variants, world interactions, and a class for extra functionality.</p>
+Controls the object's code, variant types, allowed/disallowed variants, world interactions, and a class for extra functionality. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/RegistryObjectType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.ServerEntityConfig.html">ServerEntityConfig</a></dt>
-      <dd><p>Specific configuration settings for entities on the server-side.</p>
+      <dd><p>Specific configuration settings for entities on the server-side. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/EntityType.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <h3 id="enums">
@@ -173,7 +173,7 @@ Enums
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.EnumJsonPatchOp.html">EnumJsonPatchOp</a></dt>
       <dd><p>A set of operations that define what a patch will do.
-See <a href="https://datatracker.ietf.org/doc/html/rfc6902#section-4.1">https://datatracker.ietf.org/doc/html/rfc6902#section-4.1</a> for more information on each operation type.</p>
+See <a href="https://datatracker.ietf.org/doc/html/rfc6902#section-4.1">https://datatracker.ietf.org/doc/html/rfc6902#section-4.1</a> for more information on each operation type. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/JsonPatchLoader.cs>Open in GitHub</a></p>
 </dd>
     </dl>
 

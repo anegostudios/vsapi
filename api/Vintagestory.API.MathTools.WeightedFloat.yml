@@ -1,0 +1,910 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.MathTools.WeightedFloat
+  commentId: T:Vintagestory.API.MathTools.WeightedFloat
+  id: WeightedFloat
+  parent: Vintagestory.API.MathTools
+  children:
+  - Vintagestory.API.MathTools.WeightedFloat.#ctor
+  - Vintagestory.API.MathTools.WeightedFloat.#ctor(System.Single,System.Single)
+  - Vintagestory.API.MathTools.WeightedFloat.Clone
+  - Vintagestory.API.MathTools.WeightedFloat.FromBytes(System.IO.BinaryReader)
+  - Vintagestory.API.MathTools.WeightedFloat.New(System.Single,System.Single)
+  - Vintagestory.API.MathTools.WeightedFloat.SetLerped(Vintagestory.API.MathTools.WeightedFloat,Vintagestory.API.MathTools.WeightedFloat,System.Single)
+  - Vintagestory.API.MathTools.WeightedFloat.ToBytes(System.IO.BinaryWriter)
+  langs:
+  - csharp
+  - vb
+  name: WeightedFloat
+  nameWithType: WeightedFloat
+  fullName: Vintagestory.API.MathTools.WeightedFloat
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: 'public class WeightedFloat : WeightedValue<float>'
+    content.vb: Public Class WeightedFloat Inherits WeightedValue(Of Single)
+  inheritance:
+  - System.Object
+  - Vintagestory.API.MathTools.WeightedValue{System.Single}
+  inheritedMembers:
+  - Vintagestory.API.MathTools.WeightedValue{System.Single}.Value
+  - Vintagestory.API.MathTools.WeightedValue{System.Single}.Weight
+  - Vintagestory.API.MathTools.WeightedValue{System.Single}.Set(System.Single,System.Single)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.MathTools.WeightedFloat.#ctor
+  commentId: M:Vintagestory.API.MathTools.WeightedFloat.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.MathTools.WeightedFloat
+  langs:
+  - csharp
+  - vb
+  name: WeightedFloat()
+  nameWithType: WeightedFloat.WeightedFloat()
+  fullName: Vintagestory.API.MathTools.WeightedFloat.WeightedFloat()
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public WeightedFloat()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.MathTools.WeightedFloat.#ctor*
+  nameWithType.vb: WeightedFloat.New()
+  fullName.vb: Vintagestory.API.MathTools.WeightedFloat.New()
+  name.vb: New()
+- uid: Vintagestory.API.MathTools.WeightedFloat.#ctor(System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.WeightedFloat.#ctor(System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single)'
+  parent: Vintagestory.API.MathTools.WeightedFloat
+  langs:
+  - csharp
+  - vb
+  name: WeightedFloat(float, float)
+  nameWithType: WeightedFloat.WeightedFloat(float, float)
+  fullName: Vintagestory.API.MathTools.WeightedFloat.WeightedFloat(float, float)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public WeightedFloat(float value, float weight)
+    parameters:
+    - id: value
+      type: System.Single
+    - id: weight
+      type: System.Single
+    content.vb: Public Sub New(value As Single, weight As Single)
+  overload: Vintagestory.API.MathTools.WeightedFloat.#ctor*
+  nameWithType.vb: WeightedFloat.New(Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.WeightedFloat.New(Single, Single)
+  name.vb: New(Single, Single)
+- uid: Vintagestory.API.MathTools.WeightedFloat.New(System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.WeightedFloat.New(System.Single,System.Single)
+  id: New(System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.WeightedFloat
+  langs:
+  - csharp
+  - vb
+  name: New(float, float)
+  nameWithType: WeightedFloat.New(float, float)
+  fullName: Vintagestory.API.MathTools.WeightedFloat.New(float, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static WeightedFloat New(float value, float weight)
+    parameters:
+    - id: value
+      type: System.Single
+    - id: weight
+      type: System.Single
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public Shared Function [New](value As Single, weight As Single) As WeightedFloat
+  overload: Vintagestory.API.MathTools.WeightedFloat.New*
+  nameWithType.vb: WeightedFloat.New(Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.WeightedFloat.New(Single, Single)
+  name.vb: New(Single, Single)
+- uid: Vintagestory.API.MathTools.WeightedFloat.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.MathTools.WeightedFloat.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.MathTools.WeightedFloat
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: WeightedFloat.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.MathTools.WeightedFloat.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public void ToBytes(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+    content.vb: Public Sub ToBytes(writer As BinaryWriter)
+  overload: Vintagestory.API.MathTools.WeightedFloat.ToBytes*
+- uid: Vintagestory.API.MathTools.WeightedFloat.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.MathTools.WeightedFloat.FromBytes(System.IO.BinaryReader)
+  id: FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.MathTools.WeightedFloat
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader)
+  nameWithType: WeightedFloat.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.MathTools.WeightedFloat.FromBytes(System.IO.BinaryReader)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public void FromBytes(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+    content.vb: Public Sub FromBytes(reader As BinaryReader)
+  overload: Vintagestory.API.MathTools.WeightedFloat.FromBytes*
+- uid: Vintagestory.API.MathTools.WeightedFloat.Clone
+  commentId: M:Vintagestory.API.MathTools.WeightedFloat.Clone
+  id: Clone
+  parent: Vintagestory.API.MathTools.WeightedFloat
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: WeightedFloat.Clone()
+  fullName: Vintagestory.API.MathTools.WeightedFloat.Clone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public WeightedFloat Clone()
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public Function Clone() As WeightedFloat
+  overload: Vintagestory.API.MathTools.WeightedFloat.Clone*
+- uid: Vintagestory.API.MathTools.WeightedFloat.SetLerped(Vintagestory.API.MathTools.WeightedFloat,Vintagestory.API.MathTools.WeightedFloat,System.Single)
+  commentId: M:Vintagestory.API.MathTools.WeightedFloat.SetLerped(Vintagestory.API.MathTools.WeightedFloat,Vintagestory.API.MathTools.WeightedFloat,System.Single)
+  id: SetLerped(Vintagestory.API.MathTools.WeightedFloat,Vintagestory.API.MathTools.WeightedFloat,System.Single)
+  parent: Vintagestory.API.MathTools.WeightedFloat
+  langs:
+  - csharp
+  - vb
+  name: SetLerped(WeightedFloat, WeightedFloat, float)
+  nameWithType: WeightedFloat.SetLerped(WeightedFloat, WeightedFloat, float)
+  fullName: Vintagestory.API.MathTools.WeightedFloat.SetLerped(Vintagestory.API.MathTools.WeightedFloat, Vintagestory.API.MathTools.WeightedFloat, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public void SetLerped(WeightedFloat left, WeightedFloat right, float w)
+    parameters:
+    - id: left
+      type: Vintagestory.API.MathTools.WeightedFloat
+    - id: right
+      type: Vintagestory.API.MathTools.WeightedFloat
+    - id: w
+      type: System.Single
+    content.vb: Public Sub SetLerped(left As WeightedFloat, right As WeightedFloat, w As Single)
+  overload: Vintagestory.API.MathTools.WeightedFloat.SetLerped*
+  nameWithType.vb: WeightedFloat.SetLerped(WeightedFloat, WeightedFloat, Single)
+  fullName.vb: Vintagestory.API.MathTools.WeightedFloat.SetLerped(Vintagestory.API.MathTools.WeightedFloat, Vintagestory.API.MathTools.WeightedFloat, Single)
+  name.vb: SetLerped(WeightedFloat, WeightedFloat, Single)
+references:
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.MathTools.WeightedValue{System.Single}
+  commentId: T:Vintagestory.API.MathTools.WeightedValue{System.Single}
+  parent: Vintagestory.API.MathTools
+  definition: Vintagestory.API.MathTools.WeightedValue`1
+  href: Vintagestory.API.MathTools.WeightedValue-1.html
+  name: WeightedValue<float>
+  nameWithType: WeightedValue<float>
+  fullName: Vintagestory.API.MathTools.WeightedValue<float>
+  nameWithType.vb: WeightedValue(Of Single)
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of Single)
+  name.vb: WeightedValue(Of Single)
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.WeightedValue`1
+    name: WeightedValue
+    href: Vintagestory.API.MathTools.WeightedValue-1.html
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.WeightedValue`1
+    name: WeightedValue
+    href: Vintagestory.API.MathTools.WeightedValue-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.MathTools.WeightedValue{System.Single}.Value
+  commentId: F:Vintagestory.API.MathTools.WeightedValue{System.Single}.Value
+  parent: Vintagestory.API.MathTools.WeightedValue{System.Single}
+  definition: Vintagestory.API.MathTools.WeightedValue`1.Value
+  href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Value
+  name: Value
+  nameWithType: WeightedValue<float>.Value
+  fullName: Vintagestory.API.MathTools.WeightedValue<float>.Value
+  nameWithType.vb: WeightedValue(Of Single).Value
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of Single).Value
+- uid: Vintagestory.API.MathTools.WeightedValue{System.Single}.Weight
+  commentId: F:Vintagestory.API.MathTools.WeightedValue{System.Single}.Weight
+  parent: Vintagestory.API.MathTools.WeightedValue{System.Single}
+  definition: Vintagestory.API.MathTools.WeightedValue`1.Weight
+  href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Weight
+  name: Weight
+  nameWithType: WeightedValue<float>.Weight
+  fullName: Vintagestory.API.MathTools.WeightedValue<float>.Weight
+  nameWithType.vb: WeightedValue(Of Single).Weight
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of Single).Weight
+- uid: Vintagestory.API.MathTools.WeightedValue{System.Single}.Set(System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.WeightedValue{System.Single}.Set(System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.WeightedValue{System.Single}
+  definition: Vintagestory.API.MathTools.WeightedValue`1.Set(`0,System.Single)
+  href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Set__0_System_Single_
+  name: Set(float, float)
+  nameWithType: WeightedValue<float>.Set(float, float)
+  fullName: Vintagestory.API.MathTools.WeightedValue<float>.Set(float, float)
+  nameWithType.vb: WeightedValue(Of Single).Set(Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of Single).Set(Single, Single)
+  name.vb: Set(Single, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.WeightedValue{System.Single}.Set(System.Single,System.Single)
+    name: Set
+    href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Set__0_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.WeightedValue{System.Single}.Set(System.Single,System.Single)
+    name: Set
+    href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Set__0_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.MathTools.WeightedValue`1
+  commentId: T:Vintagestory.API.MathTools.WeightedValue`1
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.WeightedValue-1.html
+  name: WeightedValue<T>
+  nameWithType: WeightedValue<T>
+  fullName: Vintagestory.API.MathTools.WeightedValue<T>
+  nameWithType.vb: WeightedValue(Of T)
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of T)
+  name.vb: WeightedValue(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.WeightedValue`1
+    name: WeightedValue
+    href: Vintagestory.API.MathTools.WeightedValue-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.WeightedValue`1
+    name: WeightedValue
+    href: Vintagestory.API.MathTools.WeightedValue-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.MathTools.WeightedValue`1.Value
+  commentId: F:Vintagestory.API.MathTools.WeightedValue`1.Value
+  href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Value
+  name: Value
+  nameWithType: WeightedValue<T>.Value
+  fullName: Vintagestory.API.MathTools.WeightedValue<T>.Value
+  nameWithType.vb: WeightedValue(Of T).Value
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of T).Value
+- uid: Vintagestory.API.MathTools.WeightedValue`1.Weight
+  commentId: F:Vintagestory.API.MathTools.WeightedValue`1.Weight
+  href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Weight
+  name: Weight
+  nameWithType: WeightedValue<T>.Weight
+  fullName: Vintagestory.API.MathTools.WeightedValue<T>.Weight
+  nameWithType.vb: WeightedValue(Of T).Weight
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of T).Weight
+- uid: Vintagestory.API.MathTools.WeightedValue`1.Set(`0,System.Single)
+  commentId: M:Vintagestory.API.MathTools.WeightedValue`1.Set(`0,System.Single)
+  isExternal: true
+  href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Set__0_System_Single_
+  name: Set(T, float)
+  nameWithType: WeightedValue<T>.Set(T, float)
+  fullName: Vintagestory.API.MathTools.WeightedValue<T>.Set(T, float)
+  nameWithType.vb: WeightedValue(Of T).Set(T, Single)
+  fullName.vb: Vintagestory.API.MathTools.WeightedValue(Of T).Set(T, Single)
+  name.vb: Set(T, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.WeightedValue`1.Set(`0,System.Single)
+    name: Set
+    href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Set__0_System_Single_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.WeightedValue`1.Set(`0,System.Single)
+    name: Set
+    href: Vintagestory.API.MathTools.WeightedValue-1.html#Vintagestory_API_MathTools_WeightedValue_1_Set__0_System_Single_
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.MathTools.WeightedFloat.#ctor*
+  commentId: Overload:Vintagestory.API.MathTools.WeightedFloat.#ctor
+  href: Vintagestory.API.MathTools.WeightedFloat.html#Vintagestory_API_MathTools_WeightedFloat__ctor
+  name: WeightedFloat
+  nameWithType: WeightedFloat.WeightedFloat
+  fullName: Vintagestory.API.MathTools.WeightedFloat.WeightedFloat
+  nameWithType.vb: WeightedFloat.New
+  fullName.vb: Vintagestory.API.MathTools.WeightedFloat.New
+  name.vb: New
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.MathTools.WeightedFloat.New*
+  commentId: Overload:Vintagestory.API.MathTools.WeightedFloat.New
+  href: Vintagestory.API.MathTools.WeightedFloat.html#Vintagestory_API_MathTools_WeightedFloat_New_System_Single_System_Single_
+  name: New
+  nameWithType: WeightedFloat.New
+  fullName: Vintagestory.API.MathTools.WeightedFloat.New
+- uid: Vintagestory.API.MathTools.WeightedFloat
+  commentId: T:Vintagestory.API.MathTools.WeightedFloat
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.WeightedFloat.html
+  name: WeightedFloat
+  nameWithType: WeightedFloat
+  fullName: Vintagestory.API.MathTools.WeightedFloat
+- uid: Vintagestory.API.MathTools.WeightedFloat.ToBytes*
+  commentId: Overload:Vintagestory.API.MathTools.WeightedFloat.ToBytes
+  href: Vintagestory.API.MathTools.WeightedFloat.html#Vintagestory_API_MathTools_WeightedFloat_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: WeightedFloat.ToBytes
+  fullName: Vintagestory.API.MathTools.WeightedFloat.ToBytes
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.MathTools.WeightedFloat.FromBytes*
+  commentId: Overload:Vintagestory.API.MathTools.WeightedFloat.FromBytes
+  href: Vintagestory.API.MathTools.WeightedFloat.html#Vintagestory_API_MathTools_WeightedFloat_FromBytes_System_IO_BinaryReader_
+  name: FromBytes
+  nameWithType: WeightedFloat.FromBytes
+  fullName: Vintagestory.API.MathTools.WeightedFloat.FromBytes
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: Vintagestory.API.MathTools.WeightedFloat.Clone*
+  commentId: Overload:Vintagestory.API.MathTools.WeightedFloat.Clone
+  href: Vintagestory.API.MathTools.WeightedFloat.html#Vintagestory_API_MathTools_WeightedFloat_Clone
+  name: Clone
+  nameWithType: WeightedFloat.Clone
+  fullName: Vintagestory.API.MathTools.WeightedFloat.Clone
+- uid: Vintagestory.API.MathTools.WeightedFloat.SetLerped*
+  commentId: Overload:Vintagestory.API.MathTools.WeightedFloat.SetLerped
+  href: Vintagestory.API.MathTools.WeightedFloat.html#Vintagestory_API_MathTools_WeightedFloat_SetLerped_Vintagestory_API_MathTools_WeightedFloat_Vintagestory_API_MathTools_WeightedFloat_System_Single_
+  name: SetLerped
+  nameWithType: WeightedFloat.SetLerped
+  fullName: Vintagestory.API.MathTools.WeightedFloat.SetLerped

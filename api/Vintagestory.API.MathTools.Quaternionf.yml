@@ -1,0 +1,1555 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.MathTools.Quaternionf
+  commentId: T:Vintagestory.API.MathTools.Quaternionf
+  id: Quaternionf
+  parent: Vintagestory.API.MathTools
+  children:
+  - Vintagestory.API.MathTools.Quaternionf.Add(System.Single[],System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.CalculateW(System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.CloneIt(System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Conjugate(System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Copy(System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Create
+  - Vintagestory.API.MathTools.Quaternionf.Dot(System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.FromMat3(System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.FromValues(System.Single,System.Single,System.Single,System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.Identity_(System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Invert(System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Len(System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Length_(System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Lerp(System.Single[],System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.Mul(System.Single[],System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Multiply(System.Single[],System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Normalize(System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.RotateX(System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.RotateY(System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.RotateZ(System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.RotationTo(System.Single[],System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.Scale(System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.Set(System.Single[],System.Single,System.Single,System.Single,System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.SetAxes(System.Single[],System.Single[],System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.SetAxisAngle(System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.Slerp(System.Single[],System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Quaternionf.SqrLen(System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.SquaredLength(System.Single[])
+  - Vintagestory.API.MathTools.Quaternionf.ToEulerAngles(System.Single[])
+  langs:
+  - csharp
+  - vb
+  name: Quaternionf
+  nameWithType: Quaternionf
+  fullName: Vintagestory.API.MathTools.Quaternionf
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public class Quaternionf
+    content.vb: Public Class Quaternionf
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.MathTools.Quaternionf.Create
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Create
+  id: Create
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Create()
+  nameWithType: Quaternionf.Create()
+  fullName: Vintagestory.API.MathTools.Quaternionf.Create()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Create()
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Create() As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Create*
+- uid: Vintagestory.API.MathTools.Quaternionf.RotationTo(System.Single[],System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.RotationTo(System.Single[],System.Single[],System.Single[])
+  id: RotationTo(System.Single[],System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: RotationTo(float[], float[], float[])
+  nameWithType: Quaternionf.RotationTo(float[], float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotationTo(float[], float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] RotationTo(float[] output, float[] a, float[] b)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function RotationTo(output As Single(), a As Single(), b As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.RotationTo*
+  nameWithType.vb: Quaternionf.RotationTo(Single(), Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.RotationTo(Single(), Single(), Single())
+  name.vb: RotationTo(Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.SetAxes(System.Single[],System.Single[],System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.SetAxes(System.Single[],System.Single[],System.Single[],System.Single[])
+  id: SetAxes(System.Single[],System.Single[],System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: SetAxes(float[], float[], float[], float[])
+  nameWithType: Quaternionf.SetAxes(float[], float[], float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.SetAxes(float[], float[], float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] SetAxes(float[] output, float[] view, float[] right, float[] up)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: view
+      type: System.Single[]
+    - id: right
+      type: System.Single[]
+    - id: up
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function SetAxes(output As Single(), view As Single(), right As Single(), up As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.SetAxes*
+  nameWithType.vb: Quaternionf.SetAxes(Single(), Single(), Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.SetAxes(Single(), Single(), Single(), Single())
+  name.vb: SetAxes(Single(), Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.CloneIt(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.CloneIt(System.Single[])
+  id: CloneIt(System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: CloneIt(float[])
+  nameWithType: Quaternionf.CloneIt(float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.CloneIt(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] CloneIt(float[] a)
+    parameters:
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function CloneIt(a As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.CloneIt*
+  nameWithType.vb: Quaternionf.CloneIt(Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.CloneIt(Single())
+  name.vb: CloneIt(Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.FromValues(System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.FromValues(System.Single,System.Single,System.Single,System.Single)
+  id: FromValues(System.Single,System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: FromValues(float, float, float, float)
+  nameWithType: Quaternionf.FromValues(float, float, float, float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.FromValues(float, float, float, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] FromValues(float x, float y, float z, float w)
+    parameters:
+    - id: x
+      type: System.Single
+    - id: y
+      type: System.Single
+    - id: z
+      type: System.Single
+    - id: w
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function FromValues(x As Single, y As Single, z As Single, w As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.FromValues*
+  nameWithType.vb: Quaternionf.FromValues(Single, Single, Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.FromValues(Single, Single, Single, Single)
+  name.vb: FromValues(Single, Single, Single, Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.Copy(System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Copy(System.Single[],System.Single[])
+  id: Copy(System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Copy(float[], float[])
+  nameWithType: Quaternionf.Copy(float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Copy(float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Copy(float[] output, float[] a)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Copy(output As Single(), a As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Copy*
+  nameWithType.vb: Quaternionf.Copy(Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Copy(Single(), Single())
+  name.vb: Copy(Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Set(System.Single[],System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Set(System.Single[],System.Single,System.Single,System.Single,System.Single)
+  id: Set(System.Single[],System.Single,System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Set(float[], float, float, float, float)
+  nameWithType: Quaternionf.Set(float[], float, float, float, float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.Set(float[], float, float, float, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Set(float[] output, float x, float y, float z, float w)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: x
+      type: System.Single
+    - id: y
+      type: System.Single
+    - id: z
+      type: System.Single
+    - id: w
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function [Set](output As Single(), x As Single, y As Single, z As Single, w As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Set*
+  nameWithType.vb: Quaternionf.Set(Single(), Single, Single, Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Set(Single(), Single, Single, Single, Single)
+  name.vb: Set(Single(), Single, Single, Single, Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.Identity_(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Identity_(System.Single[])
+  id: Identity_(System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Identity_(float[])
+  nameWithType: Quaternionf.Identity_(float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Identity_(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Identity_(float[] output)
+    parameters:
+    - id: output
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Identity_(output As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Identity_*
+  nameWithType.vb: Quaternionf.Identity_(Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Identity_(Single())
+  name.vb: Identity_(Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.SetAxisAngle(System.Single[],System.Single[],System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.SetAxisAngle(System.Single[],System.Single[],System.Single)
+  id: SetAxisAngle(System.Single[],System.Single[],System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: SetAxisAngle(float[], float[], float)
+  nameWithType: Quaternionf.SetAxisAngle(float[], float[], float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.SetAxisAngle(float[], float[], float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] SetAxisAngle(float[] output, float[] axis, float rad)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: axis
+      type: System.Single[]
+    - id: rad
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function SetAxisAngle(output As Single(), axis As Single(), rad As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.SetAxisAngle*
+  nameWithType.vb: Quaternionf.SetAxisAngle(Single(), Single(), Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.SetAxisAngle(Single(), Single(), Single)
+  name.vb: SetAxisAngle(Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.Add(System.Single[],System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Add(System.Single[],System.Single[],System.Single[])
+  id: Add(System.Single[],System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Add(float[], float[], float[])
+  nameWithType: Quaternionf.Add(float[], float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Add(float[], float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Add(float[] output, float[] a, float[] b)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Add(output As Single(), a As Single(), b As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Add*
+  nameWithType.vb: Quaternionf.Add(Single(), Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Add(Single(), Single(), Single())
+  name.vb: Add(Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Multiply(System.Single[],System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Multiply(System.Single[],System.Single[],System.Single[])
+  id: Multiply(System.Single[],System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Multiply(float[], float[], float[])
+  nameWithType: Quaternionf.Multiply(float[], float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Multiply(float[], float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Multiply(float[] output, float[] a, float[] b)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Multiply(output As Single(), a As Single(), b As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Multiply*
+  nameWithType.vb: Quaternionf.Multiply(Single(), Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Multiply(Single(), Single(), Single())
+  name.vb: Multiply(Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Mul(System.Single[],System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Mul(System.Single[],System.Single[],System.Single[])
+  id: Mul(System.Single[],System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Mul(float[], float[], float[])
+  nameWithType: Quaternionf.Mul(float[], float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Mul(float[], float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Mul(float[] output, float[] a, float[] b)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Mul(output As Single(), a As Single(), b As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Mul*
+  nameWithType.vb: Quaternionf.Mul(Single(), Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Mul(Single(), Single(), Single())
+  name.vb: Mul(Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Scale(System.Single[],System.Single[],System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Scale(System.Single[],System.Single[],System.Single)
+  id: Scale(System.Single[],System.Single[],System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Scale(float[], float[], float)
+  nameWithType: Quaternionf.Scale(float[], float[], float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.Scale(float[], float[], float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Scale(float[] output, float[] a, float b)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Scale(output As Single(), a As Single(), b As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Scale*
+  nameWithType.vb: Quaternionf.Scale(Single(), Single(), Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Scale(Single(), Single(), Single)
+  name.vb: Scale(Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.RotateX(System.Single[],System.Single[],System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.RotateX(System.Single[],System.Single[],System.Single)
+  id: RotateX(System.Single[],System.Single[],System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: RotateX(float[], float[], float)
+  nameWithType: Quaternionf.RotateX(float[], float[], float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotateX(float[], float[], float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] RotateX(float[] output, float[] a, float rad)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: rad
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function RotateX(output As Single(), a As Single(), rad As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.RotateX*
+  nameWithType.vb: Quaternionf.RotateX(Single(), Single(), Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.RotateX(Single(), Single(), Single)
+  name.vb: RotateX(Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.RotateY(System.Single[],System.Single[],System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.RotateY(System.Single[],System.Single[],System.Single)
+  id: RotateY(System.Single[],System.Single[],System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: RotateY(float[], float[], float)
+  nameWithType: Quaternionf.RotateY(float[], float[], float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotateY(float[], float[], float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] RotateY(float[] output, float[] a, float rad)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: rad
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function RotateY(output As Single(), a As Single(), rad As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.RotateY*
+  nameWithType.vb: Quaternionf.RotateY(Single(), Single(), Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.RotateY(Single(), Single(), Single)
+  name.vb: RotateY(Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.RotateZ(System.Single[],System.Single[],System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.RotateZ(System.Single[],System.Single[],System.Single)
+  id: RotateZ(System.Single[],System.Single[],System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: RotateZ(float[], float[], float)
+  nameWithType: Quaternionf.RotateZ(float[], float[], float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotateZ(float[], float[], float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] RotateZ(float[] output, float[] a, float rad)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: rad
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function RotateZ(output As Single(), a As Single(), rad As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.RotateZ*
+  nameWithType.vb: Quaternionf.RotateZ(Single(), Single(), Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.RotateZ(Single(), Single(), Single)
+  name.vb: RotateZ(Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.CalculateW(System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.CalculateW(System.Single[],System.Single[])
+  id: CalculateW(System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: CalculateW(float[], float[])
+  nameWithType: Quaternionf.CalculateW(float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.CalculateW(float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] CalculateW(float[] output, float[] a)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function CalculateW(output As Single(), a As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.CalculateW*
+  nameWithType.vb: Quaternionf.CalculateW(Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.CalculateW(Single(), Single())
+  name.vb: CalculateW(Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Dot(System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Dot(System.Single[],System.Single[])
+  id: Dot(System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Dot(float[], float[])
+  nameWithType: Quaternionf.Dot(float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Dot(float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float Dot(float[] a, float[] b)
+    parameters:
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single[]
+    return:
+      type: System.Single
+    content.vb: Public Shared Function Dot(a As Single(), b As Single()) As Single
+  overload: Vintagestory.API.MathTools.Quaternionf.Dot*
+  nameWithType.vb: Quaternionf.Dot(Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Dot(Single(), Single())
+  name.vb: Dot(Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.ToEulerAngles(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.ToEulerAngles(System.Single[])
+  id: ToEulerAngles(System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: ToEulerAngles(float[])
+  nameWithType: Quaternionf.ToEulerAngles(float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.ToEulerAngles(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static float[] ToEulerAngles(float[] quat)
+    parameters:
+    - id: quat
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function ToEulerAngles(quat As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.ToEulerAngles*
+  nameWithType.vb: Quaternionf.ToEulerAngles(Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.ToEulerAngles(Single())
+  name.vb: ToEulerAngles(Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Lerp(System.Single[],System.Single[],System.Single[],System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Lerp(System.Single[],System.Single[],System.Single[],System.Single)
+  id: Lerp(System.Single[],System.Single[],System.Single[],System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Lerp(float[], float[], float[], float)
+  nameWithType: Quaternionf.Lerp(float[], float[], float[], float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.Lerp(float[], float[], float[], float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Lerp(float[] output, float[] a, float[] b, float t)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single[]
+    - id: t
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Lerp(output As Single(), a As Single(), b As Single(), t As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Lerp*
+  nameWithType.vb: Quaternionf.Lerp(Single(), Single(), Single(), Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Lerp(Single(), Single(), Single(), Single)
+  name.vb: Lerp(Single(), Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.Slerp(System.Single[],System.Single[],System.Single[],System.Single)
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Slerp(System.Single[],System.Single[],System.Single[],System.Single)
+  id: Slerp(System.Single[],System.Single[],System.Single[],System.Single)
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Slerp(float[], float[], float[], float)
+  nameWithType: Quaternionf.Slerp(float[], float[], float[], float)
+  fullName: Vintagestory.API.MathTools.Quaternionf.Slerp(float[], float[], float[], float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Slerp(float[] output, float[] a, float[] b, float t)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    - id: b
+      type: System.Single[]
+    - id: t
+      type: System.Single
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Slerp(output As Single(), a As Single(), b As Single(), t As Single) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Slerp*
+  nameWithType.vb: Quaternionf.Slerp(Single(), Single(), Single(), Single)
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Slerp(Single(), Single(), Single(), Single)
+  name.vb: Slerp(Single(), Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Quaternionf.Invert(System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Invert(System.Single[],System.Single[])
+  id: Invert(System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Invert(float[], float[])
+  nameWithType: Quaternionf.Invert(float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Invert(float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public float[] Invert(float[] output, float[] a)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Function Invert(output As Single(), a As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Invert*
+  nameWithType.vb: Quaternionf.Invert(Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Invert(Single(), Single())
+  name.vb: Invert(Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Conjugate(System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Conjugate(System.Single[],System.Single[])
+  id: Conjugate(System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Conjugate(float[], float[])
+  nameWithType: Quaternionf.Conjugate(float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Conjugate(float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public float[] Conjugate(float[] output, float[] a)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Function Conjugate(output As Single(), a As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Conjugate*
+  nameWithType.vb: Quaternionf.Conjugate(Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Conjugate(Single(), Single())
+  name.vb: Conjugate(Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Length_(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Length_(System.Single[])
+  id: Length_(System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Length_(float[])
+  nameWithType: Quaternionf.Length_(float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Length_(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float Length_(float[] a)
+    parameters:
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single
+    content.vb: Public Shared Function Length_(a As Single()) As Single
+  overload: Vintagestory.API.MathTools.Quaternionf.Length_*
+  nameWithType.vb: Quaternionf.Length_(Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Length_(Single())
+  name.vb: Length_(Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Len(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Len(System.Single[])
+  id: Len(System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Len(float[])
+  nameWithType: Quaternionf.Len(float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Len(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float Len(float[] a)
+    parameters:
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single
+    content.vb: Public Shared Function Len(a As Single()) As Single
+  overload: Vintagestory.API.MathTools.Quaternionf.Len*
+  nameWithType.vb: Quaternionf.Len(Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Len(Single())
+  name.vb: Len(Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.SquaredLength(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.SquaredLength(System.Single[])
+  id: SquaredLength(System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: SquaredLength(float[])
+  nameWithType: Quaternionf.SquaredLength(float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.SquaredLength(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float SquaredLength(float[] a)
+    parameters:
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single
+    content.vb: Public Shared Function SquaredLength(a As Single()) As Single
+  overload: Vintagestory.API.MathTools.Quaternionf.SquaredLength*
+  nameWithType.vb: Quaternionf.SquaredLength(Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.SquaredLength(Single())
+  name.vb: SquaredLength(Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.SqrLen(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.SqrLen(System.Single[])
+  id: SqrLen(System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: SqrLen(float[])
+  nameWithType: Quaternionf.SqrLen(float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.SqrLen(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float SqrLen(float[] a)
+    parameters:
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single
+    content.vb: Public Shared Function SqrLen(a As Single()) As Single
+  overload: Vintagestory.API.MathTools.Quaternionf.SqrLen*
+  nameWithType.vb: Quaternionf.SqrLen(Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.SqrLen(Single())
+  name.vb: SqrLen(Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.Normalize(System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.Normalize(System.Single[],System.Single[])
+  id: Normalize(System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: Normalize(float[], float[])
+  nameWithType: Quaternionf.Normalize(float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.Normalize(float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] Normalize(float[] output, float[] a)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: a
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function Normalize(output As Single(), a As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.Normalize*
+  nameWithType.vb: Quaternionf.Normalize(Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.Normalize(Single(), Single())
+  name.vb: Normalize(Single(), Single())
+- uid: Vintagestory.API.MathTools.Quaternionf.FromMat3(System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Quaternionf.FromMat3(System.Single[],System.Single[])
+  id: FromMat3(System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Quaternionf
+  langs:
+  - csharp
+  - vb
+  name: FromMat3(float[], float[])
+  nameWithType: Quaternionf.FromMat3(float[], float[])
+  fullName: Vintagestory.API.MathTools.Quaternionf.FromMat3(float[], float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  example: []
+  syntax:
+    content: public static float[] FromMat3(float[] output, float[] m)
+    parameters:
+    - id: output
+      type: System.Single[]
+    - id: m
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: Public Shared Function FromMat3(output As Single(), m As Single()) As Single()
+  overload: Vintagestory.API.MathTools.Quaternionf.FromMat3*
+  nameWithType.vb: Quaternionf.FromMat3(Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Quaternionf.FromMat3(Single(), Single())
+  name.vb: FromMat3(Single(), Single())
+references:
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.MathTools.Quaternionf.Create*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Create
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Create
+  name: Create
+  nameWithType: Quaternionf.Create
+  fullName: Vintagestory.API.MathTools.Quaternionf.Create
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: Vintagestory.API.MathTools.Quaternionf.RotationTo*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.RotationTo
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_RotationTo_System_Single___System_Single___System_Single___
+  name: RotationTo
+  nameWithType: Quaternionf.RotationTo
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotationTo
+- uid: Vintagestory.API.MathTools.Quaternionf.SetAxes*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.SetAxes
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_SetAxes_System_Single___System_Single___System_Single___System_Single___
+  name: SetAxes
+  nameWithType: Quaternionf.SetAxes
+  fullName: Vintagestory.API.MathTools.Quaternionf.SetAxes
+- uid: Vintagestory.API.MathTools.Quaternionf.CloneIt*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.CloneIt
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_CloneIt_System_Single___
+  name: CloneIt
+  nameWithType: Quaternionf.CloneIt
+  fullName: Vintagestory.API.MathTools.Quaternionf.CloneIt
+- uid: Vintagestory.API.MathTools.Quaternionf.FromValues*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.FromValues
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_FromValues_System_Single_System_Single_System_Single_System_Single_
+  name: FromValues
+  nameWithType: Quaternionf.FromValues
+  fullName: Vintagestory.API.MathTools.Quaternionf.FromValues
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.MathTools.Quaternionf.Copy*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Copy
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Copy_System_Single___System_Single___
+  name: Copy
+  nameWithType: Quaternionf.Copy
+  fullName: Vintagestory.API.MathTools.Quaternionf.Copy
+- uid: Vintagestory.API.MathTools.Quaternionf.Set*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Set
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Set_System_Single___System_Single_System_Single_System_Single_System_Single_
+  name: Set
+  nameWithType: Quaternionf.Set
+  fullName: Vintagestory.API.MathTools.Quaternionf.Set
+- uid: Vintagestory.API.MathTools.Quaternionf.Identity_*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Identity_
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Identity__System_Single___
+  name: Identity_
+  nameWithType: Quaternionf.Identity_
+  fullName: Vintagestory.API.MathTools.Quaternionf.Identity_
+- uid: Vintagestory.API.MathTools.Quaternionf.SetAxisAngle*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.SetAxisAngle
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_SetAxisAngle_System_Single___System_Single___System_Single_
+  name: SetAxisAngle
+  nameWithType: Quaternionf.SetAxisAngle
+  fullName: Vintagestory.API.MathTools.Quaternionf.SetAxisAngle
+- uid: Vintagestory.API.MathTools.Quaternionf.Add*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Add
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Add_System_Single___System_Single___System_Single___
+  name: Add
+  nameWithType: Quaternionf.Add
+  fullName: Vintagestory.API.MathTools.Quaternionf.Add
+- uid: Vintagestory.API.MathTools.Quaternionf.Multiply*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Multiply
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Multiply_System_Single___System_Single___System_Single___
+  name: Multiply
+  nameWithType: Quaternionf.Multiply
+  fullName: Vintagestory.API.MathTools.Quaternionf.Multiply
+- uid: Vintagestory.API.MathTools.Quaternionf.Mul*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Mul
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Mul_System_Single___System_Single___System_Single___
+  name: Mul
+  nameWithType: Quaternionf.Mul
+  fullName: Vintagestory.API.MathTools.Quaternionf.Mul
+- uid: Vintagestory.API.MathTools.Quaternionf.Scale*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Scale
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Scale_System_Single___System_Single___System_Single_
+  name: Scale
+  nameWithType: Quaternionf.Scale
+  fullName: Vintagestory.API.MathTools.Quaternionf.Scale
+- uid: Vintagestory.API.MathTools.Quaternionf.RotateX*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.RotateX
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_RotateX_System_Single___System_Single___System_Single_
+  name: RotateX
+  nameWithType: Quaternionf.RotateX
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotateX
+- uid: Vintagestory.API.MathTools.Quaternionf.RotateY*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.RotateY
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_RotateY_System_Single___System_Single___System_Single_
+  name: RotateY
+  nameWithType: Quaternionf.RotateY
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotateY
+- uid: Vintagestory.API.MathTools.Quaternionf.RotateZ*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.RotateZ
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_RotateZ_System_Single___System_Single___System_Single_
+  name: RotateZ
+  nameWithType: Quaternionf.RotateZ
+  fullName: Vintagestory.API.MathTools.Quaternionf.RotateZ
+- uid: Vintagestory.API.MathTools.Quaternionf.CalculateW*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.CalculateW
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_CalculateW_System_Single___System_Single___
+  name: CalculateW
+  nameWithType: Quaternionf.CalculateW
+  fullName: Vintagestory.API.MathTools.Quaternionf.CalculateW
+- uid: Vintagestory.API.MathTools.Quaternionf.Dot*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Dot
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Dot_System_Single___System_Single___
+  name: Dot
+  nameWithType: Quaternionf.Dot
+  fullName: Vintagestory.API.MathTools.Quaternionf.Dot
+- uid: Vintagestory.API.MathTools.Quaternionf.ToEulerAngles*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.ToEulerAngles
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_ToEulerAngles_System_Single___
+  name: ToEulerAngles
+  nameWithType: Quaternionf.ToEulerAngles
+  fullName: Vintagestory.API.MathTools.Quaternionf.ToEulerAngles
+- uid: Vintagestory.API.MathTools.Quaternionf.Lerp*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Lerp
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Lerp_System_Single___System_Single___System_Single___System_Single_
+  name: Lerp
+  nameWithType: Quaternionf.Lerp
+  fullName: Vintagestory.API.MathTools.Quaternionf.Lerp
+- uid: Vintagestory.API.MathTools.Quaternionf.Slerp*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Slerp
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Slerp_System_Single___System_Single___System_Single___System_Single_
+  name: Slerp
+  nameWithType: Quaternionf.Slerp
+  fullName: Vintagestory.API.MathTools.Quaternionf.Slerp
+- uid: Vintagestory.API.MathTools.Quaternionf.Invert*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Invert
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Invert_System_Single___System_Single___
+  name: Invert
+  nameWithType: Quaternionf.Invert
+  fullName: Vintagestory.API.MathTools.Quaternionf.Invert
+- uid: Vintagestory.API.MathTools.Quaternionf.Conjugate*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Conjugate
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Conjugate_System_Single___System_Single___
+  name: Conjugate
+  nameWithType: Quaternionf.Conjugate
+  fullName: Vintagestory.API.MathTools.Quaternionf.Conjugate
+- uid: Vintagestory.API.MathTools.Quaternionf.Length_*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Length_
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Length__System_Single___
+  name: Length_
+  nameWithType: Quaternionf.Length_
+  fullName: Vintagestory.API.MathTools.Quaternionf.Length_
+- uid: Vintagestory.API.MathTools.Quaternionf.Len*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Len
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Len_System_Single___
+  name: Len
+  nameWithType: Quaternionf.Len
+  fullName: Vintagestory.API.MathTools.Quaternionf.Len
+- uid: Vintagestory.API.MathTools.Quaternionf.SquaredLength*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.SquaredLength
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_SquaredLength_System_Single___
+  name: SquaredLength
+  nameWithType: Quaternionf.SquaredLength
+  fullName: Vintagestory.API.MathTools.Quaternionf.SquaredLength
+- uid: Vintagestory.API.MathTools.Quaternionf.SqrLen*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.SqrLen
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_SqrLen_System_Single___
+  name: SqrLen
+  nameWithType: Quaternionf.SqrLen
+  fullName: Vintagestory.API.MathTools.Quaternionf.SqrLen
+- uid: Vintagestory.API.MathTools.Quaternionf.Normalize*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.Normalize
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_Normalize_System_Single___System_Single___
+  name: Normalize
+  nameWithType: Quaternionf.Normalize
+  fullName: Vintagestory.API.MathTools.Quaternionf.Normalize
+- uid: Vintagestory.API.MathTools.Quaternionf.FromMat3*
+  commentId: Overload:Vintagestory.API.MathTools.Quaternionf.FromMat3
+  href: Vintagestory.API.MathTools.Quaternionf.html#Vintagestory_API_MathTools_Quaternionf_FromMat3_System_Single___System_Single___
+  name: FromMat3
+  nameWithType: Quaternionf.FromMat3
+  fullName: Vintagestory.API.MathTools.Quaternionf.FromMat3

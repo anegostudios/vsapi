@@ -1,0 +1,1606 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IClassRegistryAPI
+  commentId: T:Vintagestory.API.Common.IClassRegistryAPI
+  id: IClassRegistryAPI
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateBlock(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior(Vintagestory.API.Common.Block,System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior(Vintagestory.API.Common.BlockEntity,System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior(Vintagestory.API.Common.CollectibleObject,System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior(Vintagestory.API.Common.Block,System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(Vintagestory.API.Common.Entities.EntityProperties)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior(Vintagestory.API.Common.Entities.Entity,System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil(Vintagestory.API.Common.InventoryBase,Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateItem(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute})
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.Type)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName(System.Type)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass(System.Type)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName(System.Type)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName(System.Type)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetItemClass(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  - Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping
+  - Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider(System.String,System.Type)
+  langs:
+  - csharp
+  - vb
+  name: IClassRegistryAPI
+  nameWithType: IClassRegistryAPI
+  fullName: Vintagestory.API.Common.IClassRegistryAPI
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Interface for creating instances
+  example: []
+  syntax:
+    content: public interface IClassRegistryAPI
+    content.vb: Public Interface IClassRegistryAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
+  commentId: P:Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
+  id: BlockClassToTypeMapping
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: BlockClassToTypeMapping
+  nameWithType: IClassRegistryAPI.BlockClassToTypeMapping
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Dictionary<string, Type> BlockClassToTypeMapping { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Type}
+    content.vb: ReadOnly Property BlockClassToTypeMapping As Dictionary(Of String, Type)
+  overload: Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping
+  commentId: P:Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping
+  id: ItemClassToTypeMapping
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: ItemClassToTypeMapping
+  nameWithType: IClassRegistryAPI.ItemClassToTypeMapping
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Dictionary<string, Type> ItemClassToTypeMapping { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Type}
+    content.vb: ReadOnly Property ItemClassToTypeMapping As Dictionary(Of String, Type)
+  overload: Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName(System.Type)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName(System.Type)
+  id: GetBlockBehaviorClassName(System.Type)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetBlockBehaviorClassName(Type)
+  nameWithType: IClassRegistryAPI.GetBlockBehaviorClassName(Type)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName(System.Type)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string GetBlockBehaviorClassName(Type blockBehaviorType)
+    parameters:
+    - id: blockBehaviorType
+      type: System.Type
+    return:
+      type: System.String
+    content.vb: Function GetBlockBehaviorClassName(blockBehaviorType As Type) As String
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName(System.Type)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName(System.Type)
+  id: GetCollectibleBehaviorClassName(System.Type)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetCollectibleBehaviorClassName(Type)
+  nameWithType: IClassRegistryAPI.GetCollectibleBehaviorClassName(Type)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName(System.Type)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string GetCollectibleBehaviorClassName(Type blockBehaviorType)
+    parameters:
+    - id: blockBehaviorType
+      type: System.Type
+    return:
+      type: System.String
+    content.vb: Function GetCollectibleBehaviorClassName(blockBehaviorType As Type) As String
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlock(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateBlock(System.String)
+  id: CreateBlock(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateBlock(string)
+  nameWithType: IClassRegistryAPI.CreateBlock(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlock(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a block instance from given block class
+  example: []
+  syntax:
+    content: Block CreateBlock(string blockclass)
+    parameters:
+    - id: blockclass
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Block
+      description: ''
+    content.vb: Function CreateBlock(blockclass As String) As Block
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateBlock*
+  nameWithType.vb: IClassRegistryAPI.CreateBlock(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateBlock(String)
+  name.vb: CreateBlock(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass(System.String)
+  id: GetBlockClass(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetBlockClass(string)
+  nameWithType: IClassRegistryAPI.GetBlockClass(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the type of the registered block class or null otherwise
+  example: []
+  syntax:
+    content: Type GetBlockClass(string blockclass)
+    parameters:
+    - id: blockclass
+      type: System.String
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Function GetBlockClass(blockclass As String) As Type
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass*
+  nameWithType.vb: IClassRegistryAPI.GetBlockClass(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass(String)
+  name.vb: GetBlockClass(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity(System.String)
+  id: CreateBlockEntity(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateBlockEntity(string)
+  nameWithType: IClassRegistryAPI.CreateBlockEntity(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a block entity instance from given block entity class
+  example: []
+  syntax:
+    content: BlockEntity CreateBlockEntity(string blockEntityClass)
+    parameters:
+    - id: blockEntityClass
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.BlockEntity
+      description: ''
+    content.vb: Function CreateBlockEntity(blockEntityClass As String) As BlockEntity
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity*
+  nameWithType.vb: IClassRegistryAPI.CreateBlockEntity(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity(String)
+  name.vb: CreateBlockEntity(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(System.String)
+  id: CreateEntity(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateEntity(string)
+  nameWithType: IClassRegistryAPI.CreateEntity(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a entity instance from given entity class
+  example: []
+  syntax:
+    content: Entity CreateEntity(string entityClass)
+    parameters:
+    - id: entityClass
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Entities.Entity
+      description: ''
+    content.vb: Function CreateEntity(entityClass As String) As Entity
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity*
+  nameWithType.vb: IClassRegistryAPI.CreateEntity(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(String)
+  name.vb: CreateEntity(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(Vintagestory.API.Common.Entities.EntityProperties)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(Vintagestory.API.Common.Entities.EntityProperties)
+  id: CreateEntity(Vintagestory.API.Common.Entities.EntityProperties)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateEntity(EntityProperties)
+  nameWithType: IClassRegistryAPI.CreateEntity(EntityProperties)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity(Vintagestory.API.Common.Entities.EntityProperties)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a entity instance from given entity type
+  example: []
+  syntax:
+    content: Entity CreateEntity(EntityProperties entityType)
+    parameters:
+    - id: entityType
+      type: Vintagestory.API.Common.Entities.EntityProperties
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Entities.Entity
+      description: ''
+    content.vb: Function CreateEntity(entityType As EntityProperties) As Entity
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  id: GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetMountable(TreeAttribute)
+  nameWithType: IClassRegistryAPI.GetMountable(TreeAttribute)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates an instance of a mountable that has been registered with api.RegisterMountable
+  example: []
+  syntax:
+    content: IMountableSeat GetMountable(TreeAttribute tree)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.TreeAttribute
+      description: ''
+    return:
+      type: Vintagestory.API.Common.IMountableSeat
+      description: ''
+    content.vb: Function GetMountable(tree As TreeAttribute) As IMountableSeat
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetMountable*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior(Vintagestory.API.Common.Block,System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior(Vintagestory.API.Common.Block,System.String)
+  id: CreateBlockBehavior(Vintagestory.API.Common.Block,System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateBlockBehavior(Block, string)
+  nameWithType: IClassRegistryAPI.CreateBlockBehavior(Block, string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior(Vintagestory.API.Common.Block, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a block behavior instance from given behavior code
+  example: []
+  syntax:
+    content: BlockBehavior CreateBlockBehavior(Block forBlock, string code)
+    parameters:
+    - id: forBlock
+      type: Vintagestory.API.Common.Block
+      description: ''
+    - id: code
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.BlockBehavior
+      description: ''
+    content.vb: Function CreateBlockBehavior(forBlock As Block, code As String) As BlockBehavior
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior*
+  nameWithType.vb: IClassRegistryAPI.CreateBlockBehavior(Block, String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior(Vintagestory.API.Common.Block, String)
+  name.vb: CreateBlockBehavior(Block, String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior(Vintagestory.API.Common.CollectibleObject,System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior(Vintagestory.API.Common.CollectibleObject,System.String)
+  id: CreateCollectibleBehavior(Vintagestory.API.Common.CollectibleObject,System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateCollectibleBehavior(CollectibleObject, string)
+  nameWithType: IClassRegistryAPI.CreateCollectibleBehavior(CollectibleObject, string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior(Vintagestory.API.Common.CollectibleObject, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a collectible behavior instance from given behavior code
+  example: []
+  syntax:
+    content: CollectibleBehavior CreateCollectibleBehavior(CollectibleObject forCollectible, string code)
+    parameters:
+    - id: forCollectible
+      type: Vintagestory.API.Common.CollectibleObject
+      description: ''
+    - id: code
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.CollectibleBehavior
+      description: ''
+    content.vb: Function CreateCollectibleBehavior(forCollectible As CollectibleObject, code As String) As CollectibleBehavior
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior*
+  nameWithType.vb: IClassRegistryAPI.CreateCollectibleBehavior(CollectibleObject, String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior(Vintagestory.API.Common.CollectibleObject, String)
+  name.vb: CreateCollectibleBehavior(CollectibleObject, String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass(System.String)
+  id: GetBlockEntityBehaviorClass(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetBlockEntityBehaviorClass(string)
+  nameWithType: IClassRegistryAPI.GetBlockEntityBehaviorClass(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the block entity behavior type if such is registered under supplied name
+  example: []
+  syntax:
+    content: Type GetBlockEntityBehaviorClass(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Function GetBlockEntityBehaviorClass(name As String) As Type
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass*
+  nameWithType.vb: IClassRegistryAPI.GetBlockEntityBehaviorClass(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass(String)
+  name.vb: GetBlockEntityBehaviorClass(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior(Vintagestory.API.Common.BlockEntity,System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior(Vintagestory.API.Common.BlockEntity,System.String)
+  id: CreateBlockEntityBehavior(Vintagestory.API.Common.BlockEntity,System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateBlockEntityBehavior(BlockEntity, string)
+  nameWithType: IClassRegistryAPI.CreateBlockEntityBehavior(BlockEntity, string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior(Vintagestory.API.Common.BlockEntity, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a block entity behavior instance for given block entity
+  example: []
+  syntax:
+    content: BlockEntityBehavior CreateBlockEntityBehavior(BlockEntity blockEntity, string name)
+    parameters:
+    - id: blockEntity
+      type: Vintagestory.API.Common.BlockEntity
+      description: ''
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.BlockEntityBehavior
+      description: ''
+    content.vb: Function CreateBlockEntityBehavior(blockEntity As BlockEntity, name As String) As BlockEntityBehavior
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior*
+  nameWithType.vb: IClassRegistryAPI.CreateBlockEntityBehavior(BlockEntity, String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior(Vintagestory.API.Common.BlockEntity, String)
+  name.vb: CreateBlockEntityBehavior(BlockEntity, String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass(System.String)
+  id: GetBlockBehaviorClass(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetBlockBehaviorClass(string)
+  nameWithType: IClassRegistryAPI.GetBlockBehaviorClass(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the block behavior type registered for given name or null
+  example: []
+  syntax:
+    content: Type GetBlockBehaviorClass(string code)
+    parameters:
+    - id: code
+      type: System.String
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Function GetBlockBehaviorClass(code As String) As Type
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass*
+  nameWithType.vb: IClassRegistryAPI.GetBlockBehaviorClass(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass(String)
+  name.vb: GetBlockBehaviorClass(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass(System.String)
+  id: GetCollectibleBehaviorClass(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetCollectibleBehaviorClass(string)
+  nameWithType: IClassRegistryAPI.GetCollectibleBehaviorClass(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the collectible behavior type registered for given name or null
+  example: []
+  syntax:
+    content: Type GetCollectibleBehaviorClass(string code)
+    parameters:
+    - id: code
+      type: System.String
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Function GetCollectibleBehaviorClass(code As String) As Type
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass*
+  nameWithType.vb: IClassRegistryAPI.GetCollectibleBehaviorClass(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass(String)
+  name.vb: GetCollectibleBehaviorClass(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior(Vintagestory.API.Common.Entities.Entity,System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior(Vintagestory.API.Common.Entities.Entity,System.String)
+  id: CreateEntityBehavior(Vintagestory.API.Common.Entities.Entity,System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateEntityBehavior(Entity, string)
+  nameWithType: IClassRegistryAPI.CreateEntityBehavior(Entity, string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior(Vintagestory.API.Common.Entities.Entity, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a block behavior instance from given block class
+  example: []
+  syntax:
+    content: EntityBehavior CreateEntityBehavior(Entity forEntity, string entityBehaviorName)
+    parameters:
+    - id: forEntity
+      type: Vintagestory.API.Common.Entities.Entity
+      description: ''
+    - id: entityBehaviorName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Entities.EntityBehavior
+      description: ''
+    content.vb: Function CreateEntityBehavior(forEntity As Entity, entityBehaviorName As String) As EntityBehavior
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior*
+  nameWithType.vb: IClassRegistryAPI.CreateEntityBehavior(Entity, String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior(Vintagestory.API.Common.Entities.Entity, String)
+  name.vb: CreateEntityBehavior(Entity, String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass(System.String)
+  id: GetEntityBehaviorClass(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetEntityBehaviorClass(string)
+  nameWithType: IClassRegistryAPI.GetEntityBehaviorClass(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Type GetEntityBehaviorClass(string entityBehaviorName)
+    parameters:
+    - id: entityBehaviorName
+      type: System.String
+    return:
+      type: System.Type
+    content.vb: Function GetEntityBehaviorClass(entityBehaviorName As String) As Type
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass*
+  nameWithType.vb: IClassRegistryAPI.GetEntityBehaviorClass(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass(String)
+  name.vb: GetEntityBehaviorClass(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil(Vintagestory.API.Common.InventoryBase,Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil(Vintagestory.API.Common.InventoryBase,Vintagestory.API.Common.ICoreAPI)
+  id: CreateInvNetworkUtil(Vintagestory.API.Common.InventoryBase,Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateInvNetworkUtil(InventoryBase, ICoreAPI)
+  nameWithType: IClassRegistryAPI.CreateInvNetworkUtil(InventoryBase, ICoreAPI)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil(Vintagestory.API.Common.InventoryBase, Vintagestory.API.Common.ICoreAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IInventoryNetworkUtil CreateInvNetworkUtil(InventoryBase inv, ICoreAPI api)
+    parameters:
+    - id: inv
+      type: Vintagestory.API.Common.InventoryBase
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    return:
+      type: Vintagestory.API.Common.IInventoryNetworkUtil
+    content.vb: Function CreateInvNetworkUtil(inv As InventoryBase, api As ICoreAPI) As IInventoryNetworkUtil
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateItem(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateItem(System.String)
+  id: CreateItem(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateItem(string)
+  nameWithType: IClassRegistryAPI.CreateItem(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateItem(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates an item instance from given item class
+  example: []
+  syntax:
+    content: Item CreateItem(string itemclass)
+    parameters:
+    - id: itemclass
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Item
+      description: ''
+    content.vb: Function CreateItem(itemclass As String) As Item
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateItem*
+  nameWithType.vb: IClassRegistryAPI.CreateItem(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateItem(String)
+  name.vb: CreateItem(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetItemClass(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetItemClass(System.String)
+  id: GetItemClass(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetItemClass(string)
+  nameWithType: IClassRegistryAPI.GetItemClass(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetItemClass(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the registered item type or null if not registered
+  example: []
+  syntax:
+    content: Type GetItemClass(string itemClass)
+    parameters:
+    - id: itemClass
+      type: System.String
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Function GetItemClass(itemClass As String) As Type
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetItemClass*
+  nameWithType.vb: IClassRegistryAPI.GetItemClass(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.GetItemClass(String)
+  name.vb: GetItemClass(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute})
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute})
+  id: CreateJsonTreeAttributeFromDict(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute})
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateJsonTreeAttributeFromDict(Dictionary<string, JsonTreeAttribute>)
+  nameWithType: IClassRegistryAPI.CreateJsonTreeAttributeFromDict(Dictionary<string, JsonTreeAttribute>)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict(System.Collections.Generic.Dictionary<string, Vintagestory.API.Datastructures.JsonTreeAttribute>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a json serializable version of an ITreeAttribute
+  example: []
+  syntax:
+    content: JsonTreeAttribute CreateJsonTreeAttributeFromDict(Dictionary<string, JsonTreeAttribute> attributes)
+    parameters:
+    - id: attributes
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute}
+      description: ''
+    return:
+      type: Vintagestory.API.Datastructures.JsonTreeAttribute
+      description: ''
+    content.vb: Function CreateJsonTreeAttributeFromDict(attributes As Dictionary(Of String, JsonTreeAttribute)) As JsonTreeAttribute
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict*
+  nameWithType.vb: IClassRegistryAPI.CreateJsonTreeAttributeFromDict(Dictionary(Of String, JsonTreeAttribute))
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict(System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Datastructures.JsonTreeAttribute))
+  name.vb: CreateJsonTreeAttributeFromDict(Dictionary(Of String, JsonTreeAttribute))
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity(System.String)
+  id: GetBlockEntity(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetBlockEntity(string)
+  nameWithType: IClassRegistryAPI.GetBlockEntity(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the type for given BlockEntity class name as register in the ClassRegistry
+  example: []
+  syntax:
+    content: Type GetBlockEntity(string bockEntityClass)
+    parameters:
+    - id: bockEntityClass
+      type: System.String
+      description: ''
+    return:
+      type: System.Type
+      description: ''
+    content.vb: Function GetBlockEntity(bockEntityClass As String) As Type
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity*
+  nameWithType.vb: IClassRegistryAPI.GetBlockEntity(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity(String)
+  name.vb: GetBlockEntity(String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass(System.Type)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass(System.Type)
+  id: GetBlockEntityClass(System.Type)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetBlockEntityClass(Type)
+  nameWithType: IClassRegistryAPI.GetBlockEntityClass(Type)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass(System.Type)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the block entity class code if give Type is a registered block entity class
+  example: []
+  syntax:
+    content: string GetBlockEntityClass(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetBlockEntityClass(type As Type) As String
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName(System.Type)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName(System.Type)
+  id: GetEntityClassName(System.Type)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: GetEntityClassName(Type)
+  nameWithType: IClassRegistryAPI.GetEntityClassName(Type)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName(System.Type)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the entity class code if give Type is a registered entity class
+  example: []
+  syntax:
+    content: string GetEntityClassName(Type entityType)
+    parameters:
+    - id: entityType
+      type: System.Type
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetEntityClassName(entityType As Type) As String
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior(Vintagestory.API.Common.Block,System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior(Vintagestory.API.Common.Block,System.String)
+  id: CreateCropBehavior(Vintagestory.API.Common.Block,System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateCropBehavior(Block, string)
+  nameWithType: IClassRegistryAPI.CreateCropBehavior(Block, string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior(Vintagestory.API.Common.Block, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a crop behavior instance from given block class
+  example: []
+  syntax:
+    content: CropBehavior CreateCropBehavior(Block forBlock, string cropBehaviorName)
+    parameters:
+    - id: forBlock
+      type: Vintagestory.API.Common.Block
+      description: ''
+    - id: cropBehaviorName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.CropBehavior
+      description: ''
+    content.vb: Function CreateCropBehavior(forBlock As Block, cropBehaviorName As String) As CropBehavior
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior*
+  nameWithType.vb: IClassRegistryAPI.CreateCropBehavior(Block, String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior(Vintagestory.API.Common.Block, String)
+  name.vb: CreateCropBehavior(Block, String)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider(System.String,System.Type)
+  id: RegisterParticlePropertyProvider(System.String,System.Type)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterParticlePropertyProvider(string, Type)
+  nameWithType: IClassRegistryAPI.RegisterParticlePropertyProvider(string, Type)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider(string, System.Type)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void RegisterParticlePropertyProvider(string className, Type ParticleProvider)
+    parameters:
+    - id: className
+      type: System.String
+    - id: ParticleProvider
+      type: System.Type
+    content.vb: Sub RegisterParticlePropertyProvider(className As String, ParticleProvider As Type)
+  overload: Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider*
+  nameWithType.vb: IClassRegistryAPI.RegisterParticlePropertyProvider(String, Type)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider(String, System.Type)
+  name.vb: RegisterParticlePropertyProvider(String, Type)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.Type)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.Type)
+  id: CreateParticlePropertyProvider(System.Type)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateParticlePropertyProvider(Type)
+  nameWithType: IClassRegistryAPI.CreateParticlePropertyProvider(Type)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.Type)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IParticlePropertiesProvider CreateParticlePropertyProvider(Type entityType)
+    parameters:
+    - id: entityType
+      type: System.Type
+    return:
+      type: Vintagestory.API.Common.IParticlePropertiesProvider
+    content.vb: Function CreateParticlePropertyProvider(entityType As Type) As IParticlePropertiesProvider
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider*
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.String)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.String)
+  id: CreateParticlePropertyProvider(System.String)
+  parent: Vintagestory.API.Common.IClassRegistryAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateParticlePropertyProvider(string)
+  nameWithType: IClassRegistryAPI.CreateParticlePropertyProvider(string)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IParticlePropertiesProvider CreateParticlePropertyProvider(string className)
+    parameters:
+    - id: className
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.IParticlePropertiesProvider
+    content.vb: Function CreateParticlePropertyProvider(className As String) As IParticlePropertiesProvider
+  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider*
+  nameWithType.vb: IClassRegistryAPI.CreateParticlePropertyProvider(String)
+  fullName.vb: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(String)
+  name.vb: CreateParticlePropertyProvider(String)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_BlockClassToTypeMapping
+  name: BlockClassToTypeMapping
+  nameWithType: IClassRegistryAPI.BlockClassToTypeMapping
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
+- uid: System.Collections.Generic.Dictionary{System.String,System.Type}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Type}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, Type>
+  nameWithType: Dictionary<string, Type>
+  fullName: System.Collections.Generic.Dictionary<string, System.Type>
+  nameWithType.vb: Dictionary(Of String, Type)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, System.Type)
+  name.vb: Dictionary(Of String, Type)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_ItemClassToTypeMapping
+  name: ItemClassToTypeMapping
+  nameWithType: IClassRegistryAPI.ItemClassToTypeMapping
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetBlockBehaviorClassName_System_Type_
+  name: GetBlockBehaviorClassName
+  nameWithType: IClassRegistryAPI.GetBlockBehaviorClassName
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClassName
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetCollectibleBehaviorClassName_System_Type_
+  name: GetCollectibleBehaviorClassName
+  nameWithType: IClassRegistryAPI.GetCollectibleBehaviorClassName
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClassName
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlock*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateBlock
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateBlock_System_String_
+  name: CreateBlock
+  nameWithType: IClassRegistryAPI.CreateBlock
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlock
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetBlockClass_System_String_
+  name: GetBlockClass
+  nameWithType: IClassRegistryAPI.GetBlockClass
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockClass
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateBlockEntity_System_String_
+  name: CreateBlockEntity
+  nameWithType: IClassRegistryAPI.CreateBlockEntity
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntity
+- uid: Vintagestory.API.Common.BlockEntity
+  commentId: T:Vintagestory.API.Common.BlockEntity
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockEntity.html
+  name: BlockEntity
+  nameWithType: BlockEntity
+  fullName: Vintagestory.API.Common.BlockEntity
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateEntity
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateEntity_System_String_
+  name: CreateEntity
+  nameWithType: IClassRegistryAPI.CreateEntity
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity
+- uid: Vintagestory.API.Common.Entities.Entity
+  commentId: T:Vintagestory.API.Common.Entities.Entity
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: Vintagestory.API.Common.Entities.EntityProperties
+  commentId: T:Vintagestory.API.Common.Entities.EntityProperties
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityProperties.html
+  name: EntityProperties
+  nameWithType: EntityProperties
+  fullName: Vintagestory.API.Common.Entities.EntityProperties
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetMountable*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetMountable
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetMountable_Vintagestory_API_Datastructures_TreeAttribute_
+  name: GetMountable
+  nameWithType: IClassRegistryAPI.GetMountable
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetMountable
+- uid: Vintagestory.API.Datastructures.TreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.TreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.TreeAttribute.html
+  name: TreeAttribute
+  nameWithType: TreeAttribute
+  fullName: Vintagestory.API.Datastructures.TreeAttribute
+- uid: Vintagestory.API.Common.IMountableSeat
+  commentId: T:Vintagestory.API.Common.IMountableSeat
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IMountableSeat.html
+  name: IMountableSeat
+  nameWithType: IMountableSeat
+  fullName: Vintagestory.API.Common.IMountableSeat
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateBlockBehavior_Vintagestory_API_Common_Block_System_String_
+  name: CreateBlockBehavior
+  nameWithType: IClassRegistryAPI.CreateBlockBehavior
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior
+- uid: Vintagestory.API.Common.BlockBehavior
+  commentId: T:Vintagestory.API.Common.BlockBehavior
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockBehavior.html
+  name: BlockBehavior
+  nameWithType: BlockBehavior
+  fullName: Vintagestory.API.Common.BlockBehavior
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateCollectibleBehavior_Vintagestory_API_Common_CollectibleObject_System_String_
+  name: CreateCollectibleBehavior
+  nameWithType: IClassRegistryAPI.CreateCollectibleBehavior
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateCollectibleBehavior
+- uid: Vintagestory.API.Common.CollectibleObject
+  commentId: T:Vintagestory.API.Common.CollectibleObject
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CollectibleObject.html
+  name: CollectibleObject
+  nameWithType: CollectibleObject
+  fullName: Vintagestory.API.Common.CollectibleObject
+- uid: Vintagestory.API.Common.CollectibleBehavior
+  commentId: T:Vintagestory.API.Common.CollectibleBehavior
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CollectibleBehavior.html
+  name: CollectibleBehavior
+  nameWithType: CollectibleBehavior
+  fullName: Vintagestory.API.Common.CollectibleBehavior
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetBlockEntityBehaviorClass_System_String_
+  name: GetBlockEntityBehaviorClass
+  nameWithType: IClassRegistryAPI.GetBlockEntityBehaviorClass
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityBehaviorClass
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateBlockEntityBehavior_Vintagestory_API_Common_BlockEntity_System_String_
+  name: CreateBlockEntityBehavior
+  nameWithType: IClassRegistryAPI.CreateBlockEntityBehavior
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockEntityBehavior
+- uid: Vintagestory.API.Common.BlockEntityBehavior
+  commentId: T:Vintagestory.API.Common.BlockEntityBehavior
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockEntityBehavior.html
+  name: BlockEntityBehavior
+  nameWithType: BlockEntityBehavior
+  fullName: Vintagestory.API.Common.BlockEntityBehavior
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetBlockBehaviorClass_System_String_
+  name: GetBlockBehaviorClass
+  nameWithType: IClassRegistryAPI.GetBlockBehaviorClass
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetCollectibleBehaviorClass_System_String_
+  name: GetCollectibleBehaviorClass
+  nameWithType: IClassRegistryAPI.GetCollectibleBehaviorClass
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetCollectibleBehaviorClass
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateEntityBehavior_Vintagestory_API_Common_Entities_Entity_System_String_
+  name: CreateEntityBehavior
+  nameWithType: IClassRegistryAPI.CreateEntityBehavior
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateEntityBehavior
+- uid: Vintagestory.API.Common.Entities.EntityBehavior
+  commentId: T:Vintagestory.API.Common.Entities.EntityBehavior
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html
+  name: EntityBehavior
+  nameWithType: EntityBehavior
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetEntityBehaviorClass_System_String_
+  name: GetEntityBehaviorClass
+  nameWithType: IClassRegistryAPI.GetEntityBehaviorClass
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateInvNetworkUtil_Vintagestory_API_Common_InventoryBase_Vintagestory_API_Common_ICoreAPI_
+  name: CreateInvNetworkUtil
+  nameWithType: IClassRegistryAPI.CreateInvNetworkUtil
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil
+- uid: Vintagestory.API.Common.InventoryBase
+  commentId: T:Vintagestory.API.Common.InventoryBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.InventoryBase.html
+  name: InventoryBase
+  nameWithType: InventoryBase
+  fullName: Vintagestory.API.Common.InventoryBase
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.IInventoryNetworkUtil
+  commentId: T:Vintagestory.API.Common.IInventoryNetworkUtil
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IInventoryNetworkUtil.html
+  name: IInventoryNetworkUtil
+  nameWithType: IInventoryNetworkUtil
+  fullName: Vintagestory.API.Common.IInventoryNetworkUtil
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateItem*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateItem
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateItem_System_String_
+  name: CreateItem
+  nameWithType: IClassRegistryAPI.CreateItem
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateItem
+- uid: Vintagestory.API.Common.Item
+  commentId: T:Vintagestory.API.Common.Item
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Item.html
+  name: Item
+  nameWithType: Item
+  fullName: Vintagestory.API.Common.Item
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetItemClass*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetItemClass
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetItemClass_System_String_
+  name: GetItemClass
+  nameWithType: IClassRegistryAPI.GetItemClass
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetItemClass
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateJsonTreeAttributeFromDict_System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Datastructures_JsonTreeAttribute__
+  name: CreateJsonTreeAttributeFromDict
+  nameWithType: IClassRegistryAPI.CreateJsonTreeAttributeFromDict
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, JsonTreeAttribute>
+  nameWithType: Dictionary<string, JsonTreeAttribute>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Datastructures.JsonTreeAttribute>
+  nameWithType.vb: Dictionary(Of String, JsonTreeAttribute)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Datastructures.JsonTreeAttribute)
+  name.vb: Dictionary(Of String, JsonTreeAttribute)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonTreeAttribute
+    name: JsonTreeAttribute
+    href: Vintagestory.API.Datastructures.JsonTreeAttribute.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonTreeAttribute
+    name: JsonTreeAttribute
+    href: Vintagestory.API.Datastructures.JsonTreeAttribute.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.JsonTreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.JsonTreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.JsonTreeAttribute.html
+  name: JsonTreeAttribute
+  nameWithType: JsonTreeAttribute
+  fullName: Vintagestory.API.Datastructures.JsonTreeAttribute
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetBlockEntity_System_String_
+  name: GetBlockEntity
+  nameWithType: IClassRegistryAPI.GetBlockEntity
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntity
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetBlockEntityClass_System_Type_
+  name: GetBlockEntityClass
+  nameWithType: IClassRegistryAPI.GetBlockEntityClass
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetBlockEntityClass
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetEntityClassName_System_Type_
+  name: GetEntityClassName
+  nameWithType: IClassRegistryAPI.GetEntityClassName
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateCropBehavior_Vintagestory_API_Common_Block_System_String_
+  name: CreateCropBehavior
+  nameWithType: IClassRegistryAPI.CreateCropBehavior
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateCropBehavior
+- uid: Vintagestory.API.Common.CropBehavior
+  commentId: T:Vintagestory.API.Common.CropBehavior
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CropBehavior.html
+  name: CropBehavior
+  nameWithType: CropBehavior
+  fullName: Vintagestory.API.Common.CropBehavior
+- uid: Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_RegisterParticlePropertyProvider_System_String_System_Type_
+  name: RegisterParticlePropertyProvider
+  nameWithType: IClassRegistryAPI.RegisterParticlePropertyProvider
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider
+- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateParticlePropertyProvider_System_Type_
+  name: CreateParticlePropertyProvider
+  nameWithType: IClassRegistryAPI.CreateParticlePropertyProvider
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider
+  commentId: T:Vintagestory.API.Common.IParticlePropertiesProvider
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html
+  name: IParticlePropertiesProvider
+  nameWithType: IParticlePropertiesProvider
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider

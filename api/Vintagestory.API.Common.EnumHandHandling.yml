@@ -1,0 +1,330 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumHandHandling
+  commentId: T:Vintagestory.API.Common.EnumHandHandling
+  id: EnumHandHandling
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumHandHandling.Handled
+  - Vintagestory.API.Common.EnumHandHandling.NotHandled
+  - Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  - Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  - Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  langs:
+  - csharp
+  - vb
+  name: EnumHandHandling
+  nameWithType: EnumHandHandling
+  fullName: Vintagestory.API.Common.EnumHandHandling
+  type: Enum
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: How the engine should handle attacking with an item in hands
+  example: []
+  syntax:
+    content: public enum EnumHandHandling
+    content.vb: Public Enum EnumHandHandling
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.EnumHandHandling.NotHandled
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.NotHandled
+  id: NotHandled
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: NotHandled
+  nameWithType: EnumHandHandling.NotHandled
+  fullName: Vintagestory.API.Common.EnumHandHandling.NotHandled
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Uses the engine default behavior which is to play an attack animation and do block breaking/damage entities if in range. Will not call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: NotHandled = 0
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.Handled
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.Handled
+  id: Handled
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: Handled
+  nameWithType: EnumHandHandling.Handled
+  fullName: Vintagestory.API.Common.EnumHandHandling.Handled
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Uses the engine default behavior which is to play an attack or build animation and do block breaking/damage entities if in range,
+
+    but also notify the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: Handled = 1
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  id: PreventDefaultAnimation
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventDefaultAnimation
+  nameWithType: EnumHandHandling.PreventDefaultAnimation
+  fullName: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do not play any default first person attack animation, but do block breaking/damage entities if in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: PreventDefaultAnimation = 2
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  id: PreventDefaultAction
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventDefaultAction
+  nameWithType: EnumHandHandling.PreventDefaultAction
+  fullName: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do play first person attack animation, don't break blocks/damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: PreventDefaultAction = 3
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  id: PreventDefault
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventDefault
+  nameWithType: EnumHandHandling.PreventDefault
+  fullName: Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do not play any first person attack animation, don't break blocks in range or damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: PreventDefault = 4
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.EnumHandHandling
+  commentId: T:Vintagestory.API.Common.EnumHandHandling
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandHandling.html
+  name: EnumHandHandling
+  nameWithType: EnumHandHandling
+  fullName: Vintagestory.API.Common.EnumHandHandling

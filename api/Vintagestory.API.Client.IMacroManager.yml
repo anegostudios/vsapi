@@ -1,0 +1,557 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IMacroManager
+  commentId: T:Vintagestory.API.Client.IMacroManager
+  id: IMacroManager
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IMacroManager.DeleteMacro(System.Int32)
+  - Vintagestory.API.Client.IMacroManager.LoadMacros
+  - Vintagestory.API.Client.IMacroManager.MacrosByIndex
+  - Vintagestory.API.Client.IMacroManager.RunMacro(System.Int32,Vintagestory.API.Client.IClientWorldAccessor)
+  - Vintagestory.API.Client.IMacroManager.SaveMacro(System.Int32)
+  - Vintagestory.API.Client.IMacroManager.SetMacro(System.Int32,Vintagestory.API.Client.IMacroBase)
+  langs:
+  - csharp
+  - vb
+  name: IMacroManager
+  nameWithType: IMacroManager
+  fullName: Vintagestory.API.Client.IMacroManager
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public interface IMacroManager
+    content.vb: Public Interface IMacroManager
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.IMacroManager.DeleteMacro(System.Int32)
+  commentId: M:Vintagestory.API.Client.IMacroManager.DeleteMacro(System.Int32)
+  id: DeleteMacro(System.Int32)
+  parent: Vintagestory.API.Client.IMacroManager
+  langs:
+  - csharp
+  - vb
+  name: DeleteMacro(int)
+  nameWithType: IMacroManager.DeleteMacro(int)
+  fullName: Vintagestory.API.Client.IMacroManager.DeleteMacro(int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void DeleteMacro(int macroIndex)
+    parameters:
+    - id: macroIndex
+      type: System.Int32
+    content.vb: Sub DeleteMacro(macroIndex As Integer)
+  overload: Vintagestory.API.Client.IMacroManager.DeleteMacro*
+  nameWithType.vb: IMacroManager.DeleteMacro(Integer)
+  fullName.vb: Vintagestory.API.Client.IMacroManager.DeleteMacro(Integer)
+  name.vb: DeleteMacro(Integer)
+- uid: Vintagestory.API.Client.IMacroManager.LoadMacros
+  commentId: M:Vintagestory.API.Client.IMacroManager.LoadMacros
+  id: LoadMacros
+  parent: Vintagestory.API.Client.IMacroManager
+  langs:
+  - csharp
+  - vb
+  name: LoadMacros()
+  nameWithType: IMacroManager.LoadMacros()
+  fullName: Vintagestory.API.Client.IMacroManager.LoadMacros()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void LoadMacros()
+    content.vb: Sub LoadMacros()
+  overload: Vintagestory.API.Client.IMacroManager.LoadMacros*
+- uid: Vintagestory.API.Client.IMacroManager.RunMacro(System.Int32,Vintagestory.API.Client.IClientWorldAccessor)
+  commentId: M:Vintagestory.API.Client.IMacroManager.RunMacro(System.Int32,Vintagestory.API.Client.IClientWorldAccessor)
+  id: RunMacro(System.Int32,Vintagestory.API.Client.IClientWorldAccessor)
+  parent: Vintagestory.API.Client.IMacroManager
+  langs:
+  - csharp
+  - vb
+  name: RunMacro(int, IClientWorldAccessor)
+  nameWithType: IMacroManager.RunMacro(int, IClientWorldAccessor)
+  fullName: Vintagestory.API.Client.IMacroManager.RunMacro(int, Vintagestory.API.Client.IClientWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: bool RunMacro(int macroIndex, IClientWorldAccessor world)
+    parameters:
+    - id: macroIndex
+      type: System.Int32
+    - id: world
+      type: Vintagestory.API.Client.IClientWorldAccessor
+    return:
+      type: System.Boolean
+    content.vb: Function RunMacro(macroIndex As Integer, world As IClientWorldAccessor) As Boolean
+  overload: Vintagestory.API.Client.IMacroManager.RunMacro*
+  nameWithType.vb: IMacroManager.RunMacro(Integer, IClientWorldAccessor)
+  fullName.vb: Vintagestory.API.Client.IMacroManager.RunMacro(Integer, Vintagestory.API.Client.IClientWorldAccessor)
+  name.vb: RunMacro(Integer, IClientWorldAccessor)
+- uid: Vintagestory.API.Client.IMacroManager.SaveMacro(System.Int32)
+  commentId: M:Vintagestory.API.Client.IMacroManager.SaveMacro(System.Int32)
+  id: SaveMacro(System.Int32)
+  parent: Vintagestory.API.Client.IMacroManager
+  langs:
+  - csharp
+  - vb
+  name: SaveMacro(int)
+  nameWithType: IMacroManager.SaveMacro(int)
+  fullName: Vintagestory.API.Client.IMacroManager.SaveMacro(int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: bool SaveMacro(int macroIndex)
+    parameters:
+    - id: macroIndex
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Function SaveMacro(macroIndex As Integer) As Boolean
+  overload: Vintagestory.API.Client.IMacroManager.SaveMacro*
+  nameWithType.vb: IMacroManager.SaveMacro(Integer)
+  fullName.vb: Vintagestory.API.Client.IMacroManager.SaveMacro(Integer)
+  name.vb: SaveMacro(Integer)
+- uid: Vintagestory.API.Client.IMacroManager.SetMacro(System.Int32,Vintagestory.API.Client.IMacroBase)
+  commentId: M:Vintagestory.API.Client.IMacroManager.SetMacro(System.Int32,Vintagestory.API.Client.IMacroBase)
+  id: SetMacro(System.Int32,Vintagestory.API.Client.IMacroBase)
+  parent: Vintagestory.API.Client.IMacroManager
+  langs:
+  - csharp
+  - vb
+  name: SetMacro(int, IMacroBase)
+  nameWithType: IMacroManager.SetMacro(int, IMacroBase)
+  fullName: Vintagestory.API.Client.IMacroManager.SetMacro(int, Vintagestory.API.Client.IMacroBase)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void SetMacro(int macroIndex, IMacroBase macro)
+    parameters:
+    - id: macroIndex
+      type: System.Int32
+    - id: macro
+      type: Vintagestory.API.Client.IMacroBase
+    content.vb: Sub SetMacro(macroIndex As Integer, macro As IMacroBase)
+  overload: Vintagestory.API.Client.IMacroManager.SetMacro*
+  nameWithType.vb: IMacroManager.SetMacro(Integer, IMacroBase)
+  fullName.vb: Vintagestory.API.Client.IMacroManager.SetMacro(Integer, Vintagestory.API.Client.IMacroBase)
+  name.vb: SetMacro(Integer, IMacroBase)
+- uid: Vintagestory.API.Client.IMacroManager.MacrosByIndex
+  commentId: P:Vintagestory.API.Client.IMacroManager.MacrosByIndex
+  id: MacrosByIndex
+  parent: Vintagestory.API.Client.IMacroManager
+  langs:
+  - csharp
+  - vb
+  name: MacrosByIndex
+  nameWithType: IMacroManager.MacrosByIndex
+  fullName: Vintagestory.API.Client.IMacroManager.MacrosByIndex
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: SortedDictionary<int, IMacroBase> MacrosByIndex { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.SortedDictionary{System.Int32,Vintagestory.API.Client.IMacroBase}
+    content.vb: Property MacrosByIndex As SortedDictionary(Of Integer, IMacroBase)
+  overload: Vintagestory.API.Client.IMacroManager.MacrosByIndex*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.IMacroManager.DeleteMacro*
+  commentId: Overload:Vintagestory.API.Client.IMacroManager.DeleteMacro
+  href: Vintagestory.API.Client.IMacroManager.html#Vintagestory_API_Client_IMacroManager_DeleteMacro_System_Int32_
+  name: DeleteMacro
+  nameWithType: IMacroManager.DeleteMacro
+  fullName: Vintagestory.API.Client.IMacroManager.DeleteMacro
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IMacroManager.LoadMacros*
+  commentId: Overload:Vintagestory.API.Client.IMacroManager.LoadMacros
+  href: Vintagestory.API.Client.IMacroManager.html#Vintagestory_API_Client_IMacroManager_LoadMacros
+  name: LoadMacros
+  nameWithType: IMacroManager.LoadMacros
+  fullName: Vintagestory.API.Client.IMacroManager.LoadMacros
+- uid: Vintagestory.API.Client.IMacroManager.RunMacro*
+  commentId: Overload:Vintagestory.API.Client.IMacroManager.RunMacro
+  href: Vintagestory.API.Client.IMacroManager.html#Vintagestory_API_Client_IMacroManager_RunMacro_System_Int32_Vintagestory_API_Client_IClientWorldAccessor_
+  name: RunMacro
+  nameWithType: IMacroManager.RunMacro
+  fullName: Vintagestory.API.Client.IMacroManager.RunMacro
+- uid: Vintagestory.API.Client.IClientWorldAccessor
+  commentId: T:Vintagestory.API.Client.IClientWorldAccessor
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IClientWorldAccessor.html
+  name: IClientWorldAccessor
+  nameWithType: IClientWorldAccessor
+  fullName: Vintagestory.API.Client.IClientWorldAccessor
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.IMacroManager.SaveMacro*
+  commentId: Overload:Vintagestory.API.Client.IMacroManager.SaveMacro
+  href: Vintagestory.API.Client.IMacroManager.html#Vintagestory_API_Client_IMacroManager_SaveMacro_System_Int32_
+  name: SaveMacro
+  nameWithType: IMacroManager.SaveMacro
+  fullName: Vintagestory.API.Client.IMacroManager.SaveMacro
+- uid: Vintagestory.API.Client.IMacroManager.SetMacro*
+  commentId: Overload:Vintagestory.API.Client.IMacroManager.SetMacro
+  href: Vintagestory.API.Client.IMacroManager.html#Vintagestory_API_Client_IMacroManager_SetMacro_System_Int32_Vintagestory_API_Client_IMacroBase_
+  name: SetMacro
+  nameWithType: IMacroManager.SetMacro
+  fullName: Vintagestory.API.Client.IMacroManager.SetMacro
+- uid: Vintagestory.API.Client.IMacroBase
+  commentId: T:Vintagestory.API.Client.IMacroBase
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IMacroBase.html
+  name: IMacroBase
+  nameWithType: IMacroBase
+  fullName: Vintagestory.API.Client.IMacroBase
+- uid: Vintagestory.API.Client.IMacroManager.MacrosByIndex*
+  commentId: Overload:Vintagestory.API.Client.IMacroManager.MacrosByIndex
+  href: Vintagestory.API.Client.IMacroManager.html#Vintagestory_API_Client_IMacroManager_MacrosByIndex
+  name: MacrosByIndex
+  nameWithType: IMacroManager.MacrosByIndex
+  fullName: Vintagestory.API.Client.IMacroManager.MacrosByIndex
+- uid: System.Collections.Generic.SortedDictionary{System.Int32,Vintagestory.API.Client.IMacroBase}
+  commentId: T:System.Collections.Generic.SortedDictionary{System.Int32,Vintagestory.API.Client.IMacroBase}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.SortedDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2
+  name: SortedDictionary<int, IMacroBase>
+  nameWithType: SortedDictionary<int, IMacroBase>
+  fullName: System.Collections.Generic.SortedDictionary<int, Vintagestory.API.Client.IMacroBase>
+  nameWithType.vb: SortedDictionary(Of Integer, IMacroBase)
+  fullName.vb: System.Collections.Generic.SortedDictionary(Of Integer, Vintagestory.API.Client.IMacroBase)
+  name.vb: SortedDictionary(Of Integer, IMacroBase)
+  spec.csharp:
+  - uid: System.Collections.Generic.SortedDictionary`2
+    name: SortedDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.IMacroBase
+    name: IMacroBase
+    href: Vintagestory.API.Client.IMacroBase.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.SortedDictionary`2
+    name: SortedDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.IMacroBase
+    name: IMacroBase
+    href: Vintagestory.API.Client.IMacroBase.html
+  - name: )
+- uid: System.Collections.Generic.SortedDictionary`2
+  commentId: T:System.Collections.Generic.SortedDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2
+  name: SortedDictionary<TKey, TValue>
+  nameWithType: SortedDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.SortedDictionary<TKey, TValue>
+  nameWithType.vb: SortedDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.SortedDictionary(Of TKey, TValue)
+  name.vb: SortedDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.SortedDictionary`2
+    name: SortedDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.SortedDictionary`2
+    name: SortedDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.sorteddictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

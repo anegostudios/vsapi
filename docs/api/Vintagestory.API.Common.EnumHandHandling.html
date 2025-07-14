@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum EnumHandHandling | VintageStory API ">
       
-      <meta name="description" content="How the engine should handle attacking with an item in hands">
+      <meta name="description" content="How the engine should handle attacking with an item in hands Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumHandHandling
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>How the engine should handle attacking with an item in hands</p>
+  <div class="markdown summary"><p>How the engine should handle attacking with an item in hands <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/Player/EnumHandHandling.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -128,20 +128,25 @@ Enum EnumHandHandling
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_Common_EnumHandHandling_Handled"><code>Handled = 1</code></dt>
-    <dd><p>Uses the engine default behavior which is to play an attack or build animation and do block breaking/damage entities if in range,
+  
+  <dd><p>Uses the engine default behavior which is to play an attack or build animation and do block breaking/damage entities if in range,
 but also notify the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumHandHandling_NotHandled"><code>NotHandled = 0</code></dt>
-    <dd><p>Uses the engine default behavior which is to play an attack animation and do block breaking/damage entities if in range. Will not call the *Step and *Stop methods.</p>
+  
+  <dd><p>Uses the engine default behavior which is to play an attack animation and do block breaking/damage entities if in range. Will not call the *Step and *Stop methods.</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumHandHandling_PreventDefault"><code>PreventDefault = 4</code></dt>
-    <dd><p>Do not play any first person attack animation, don't break blocks in range or damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.</p>
+  
+  <dd><p>Do not play any first person attack animation, don't break blocks in range or damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumHandHandling_PreventDefaultAction"><code>PreventDefaultAction = 3</code></dt>
-    <dd><p>Do play first person attack animation, don't break blocks/damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.</p>
+  
+  <dd><p>Do play first person attack animation, don't break blocks/damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumHandHandling_PreventDefaultAnimation"><code>PreventDefaultAnimation = 2</code></dt>
-    <dd><p>Do not play any default first person attack animation, but do block breaking/damage entities if in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.</p>
+  
+  <dd><p>Do not play any default first person attack animation, but do block breaking/damage entities if in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.</p>
 </dd>
   </dl>
 

@@ -1,0 +1,706 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ClientChatCommand
+  commentId: T:Vintagestory.API.Common.ClientChatCommand
+  id: ClientChatCommand
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ClientChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+  - Vintagestory.API.Common.ClientChatCommand.handler
+  langs:
+  - csharp
+  - vb
+  name: ClientChatCommand
+  nameWithType: ClientChatCommand
+  fullName: Vintagestory.API.Common.ClientChatCommand
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A handle for creating client commands.
+  example: []
+  syntax:
+    content: 'public class ClientChatCommand : ChatCommand'
+    content.vb: Public Class ClientChatCommand Inherits ChatCommand
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.ChatCommand
+  inheritedMembers:
+  - Vintagestory.API.Common.ChatCommand.Command
+  - Vintagestory.API.Common.ChatCommand.Syntax
+  - Vintagestory.API.Common.ChatCommand.Description
+  - Vintagestory.API.Common.ChatCommand.RequiredPrivilege
+  - Vintagestory.API.Common.ChatCommand.GetDescription
+  - Vintagestory.API.Common.ChatCommand.GetSyntax
+  - Vintagestory.API.Common.ChatCommand.GetHelpMessage
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.ClientChatCommand.handler
+  commentId: F:Vintagestory.API.Common.ClientChatCommand.handler
+  id: handler
+  parent: Vintagestory.API.Common.ClientChatCommand
+  langs:
+  - csharp
+  - vb
+  name: handler
+  nameWithType: ClientChatCommand.handler
+  fullName: Vintagestory.API.Common.ClientChatCommand.handler
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public ClientChatCommandDelegate handler
+    return:
+      type: Vintagestory.API.Common.ClientChatCommandDelegate
+    content.vb: Public handler As ClientChatCommandDelegate
+- uid: Vintagestory.API.Common.ClientChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+  commentId: M:Vintagestory.API.Common.ClientChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+  id: CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+  parent: Vintagestory.API.Common.ClientChatCommand
+  langs:
+  - csharp
+  - vb
+  name: CallHandler(IPlayer, int, CmdArgs)
+  nameWithType: ClientChatCommand.CallHandler(IPlayer, int, CmdArgs)
+  fullName: Vintagestory.API.Common.ClientChatCommand.CallHandler(Vintagestory.API.Common.IPlayer, int, Vintagestory.API.Common.CmdArgs)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The call handler for the command.
+  example: []
+  syntax:
+    content: public override void CallHandler(IPlayer player, int groupId, CmdArgs args)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: The player calling the command.
+    - id: groupId
+      type: System.Int32
+      description: The groupID of the player.
+    - id: args
+      type: Vintagestory.API.Common.CmdArgs
+      description: The arguments of the command.
+    content.vb: Public Overrides Sub CallHandler(player As IPlayer, groupId As Integer, args As CmdArgs)
+  overridden: Vintagestory.API.Common.ChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+  overload: Vintagestory.API.Common.ClientChatCommand.CallHandler*
+  nameWithType.vb: ClientChatCommand.CallHandler(IPlayer, Integer, CmdArgs)
+  fullName.vb: Vintagestory.API.Common.ClientChatCommand.CallHandler(Vintagestory.API.Common.IPlayer, Integer, Vintagestory.API.Common.CmdArgs)
+  name.vb: CallHandler(IPlayer, Integer, CmdArgs)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.ChatCommand
+  commentId: T:Vintagestory.API.Common.ChatCommand
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ChatCommand.html
+  name: ChatCommand
+  nameWithType: ChatCommand
+  fullName: Vintagestory.API.Common.ChatCommand
+- uid: Vintagestory.API.Common.ChatCommand.Command
+  commentId: F:Vintagestory.API.Common.ChatCommand.Command
+  parent: Vintagestory.API.Common.ChatCommand
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_Command
+  name: Command
+  nameWithType: ChatCommand.Command
+  fullName: Vintagestory.API.Common.ChatCommand.Command
+- uid: Vintagestory.API.Common.ChatCommand.Syntax
+  commentId: F:Vintagestory.API.Common.ChatCommand.Syntax
+  parent: Vintagestory.API.Common.ChatCommand
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_Syntax
+  name: Syntax
+  nameWithType: ChatCommand.Syntax
+  fullName: Vintagestory.API.Common.ChatCommand.Syntax
+- uid: Vintagestory.API.Common.ChatCommand.Description
+  commentId: F:Vintagestory.API.Common.ChatCommand.Description
+  parent: Vintagestory.API.Common.ChatCommand
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_Description
+  name: Description
+  nameWithType: ChatCommand.Description
+  fullName: Vintagestory.API.Common.ChatCommand.Description
+- uid: Vintagestory.API.Common.ChatCommand.RequiredPrivilege
+  commentId: F:Vintagestory.API.Common.ChatCommand.RequiredPrivilege
+  parent: Vintagestory.API.Common.ChatCommand
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_RequiredPrivilege
+  name: RequiredPrivilege
+  nameWithType: ChatCommand.RequiredPrivilege
+  fullName: Vintagestory.API.Common.ChatCommand.RequiredPrivilege
+- uid: Vintagestory.API.Common.ChatCommand.GetDescription
+  commentId: M:Vintagestory.API.Common.ChatCommand.GetDescription
+  parent: Vintagestory.API.Common.ChatCommand
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetDescription
+  name: GetDescription()
+  nameWithType: ChatCommand.GetDescription()
+  fullName: Vintagestory.API.Common.ChatCommand.GetDescription()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ChatCommand.GetDescription
+    name: GetDescription
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetDescription
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ChatCommand.GetDescription
+    name: GetDescription
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetDescription
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ChatCommand.GetSyntax
+  commentId: M:Vintagestory.API.Common.ChatCommand.GetSyntax
+  parent: Vintagestory.API.Common.ChatCommand
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetSyntax
+  name: GetSyntax()
+  nameWithType: ChatCommand.GetSyntax()
+  fullName: Vintagestory.API.Common.ChatCommand.GetSyntax()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ChatCommand.GetSyntax
+    name: GetSyntax
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetSyntax
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ChatCommand.GetSyntax
+    name: GetSyntax
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetSyntax
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ChatCommand.GetHelpMessage
+  commentId: M:Vintagestory.API.Common.ChatCommand.GetHelpMessage
+  parent: Vintagestory.API.Common.ChatCommand
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetHelpMessage
+  name: GetHelpMessage()
+  nameWithType: ChatCommand.GetHelpMessage()
+  fullName: Vintagestory.API.Common.ChatCommand.GetHelpMessage()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ChatCommand.GetHelpMessage
+    name: GetHelpMessage
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetHelpMessage
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ChatCommand.GetHelpMessage
+    name: GetHelpMessage
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_GetHelpMessage
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.ClientChatCommandDelegate
+  commentId: T:Vintagestory.API.Common.ClientChatCommandDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ClientChatCommandDelegate.html
+  name: ClientChatCommandDelegate
+  nameWithType: ClientChatCommandDelegate
+  fullName: Vintagestory.API.Common.ClientChatCommandDelegate
+- uid: Vintagestory.API.Common.ChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+  commentId: M:Vintagestory.API.Common.ChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+  parent: Vintagestory.API.Common.ChatCommand
+  isExternal: true
+  href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_CallHandler_Vintagestory_API_Common_IPlayer_System_Int32_Vintagestory_API_Common_CmdArgs_
+  name: CallHandler(IPlayer, int, CmdArgs)
+  nameWithType: ChatCommand.CallHandler(IPlayer, int, CmdArgs)
+  fullName: Vintagestory.API.Common.ChatCommand.CallHandler(Vintagestory.API.Common.IPlayer, int, Vintagestory.API.Common.CmdArgs)
+  nameWithType.vb: ChatCommand.CallHandler(IPlayer, Integer, CmdArgs)
+  fullName.vb: Vintagestory.API.Common.ChatCommand.CallHandler(Vintagestory.API.Common.IPlayer, Integer, Vintagestory.API.Common.CmdArgs)
+  name.vb: CallHandler(IPlayer, Integer, CmdArgs)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+    name: CallHandler
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_CallHandler_Vintagestory_API_Common_IPlayer_System_Int32_Vintagestory_API_Common_CmdArgs_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.CmdArgs
+    name: CmdArgs
+    href: Vintagestory.API.Common.CmdArgs.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ChatCommand.CallHandler(Vintagestory.API.Common.IPlayer,System.Int32,Vintagestory.API.Common.CmdArgs)
+    name: CallHandler
+    href: Vintagestory.API.Common.ChatCommand.html#Vintagestory_API_Common_ChatCommand_CallHandler_Vintagestory_API_Common_IPlayer_System_Int32_Vintagestory_API_Common_CmdArgs_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.CmdArgs
+    name: CmdArgs
+    href: Vintagestory.API.Common.CmdArgs.html
+  - name: )
+- uid: Vintagestory.API.Common.ClientChatCommand.CallHandler*
+  commentId: Overload:Vintagestory.API.Common.ClientChatCommand.CallHandler
+  href: Vintagestory.API.Common.ClientChatCommand.html#Vintagestory_API_Common_ClientChatCommand_CallHandler_Vintagestory_API_Common_IPlayer_System_Int32_Vintagestory_API_Common_CmdArgs_
+  name: CallHandler
+  nameWithType: ClientChatCommand.CallHandler
+  fullName: Vintagestory.API.Common.ClientChatCommand.CallHandler
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.CmdArgs
+  commentId: T:Vintagestory.API.Common.CmdArgs
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CmdArgs.html
+  name: CmdArgs
+  nameWithType: CmdArgs
+  fullName: Vintagestory.API.Common.CmdArgs

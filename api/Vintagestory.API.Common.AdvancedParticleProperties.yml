@@ -1,0 +1,2835 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.AdvancedParticleProperties
+  commentId: T:Vintagestory.API.Common.AdvancedParticleProperties
+  id: AdvancedParticleProperties
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.AdvancedParticleProperties.Async
+  - Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle
+  - Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve
+  - Vintagestory.API.Common.AdvancedParticleProperties.Bounciness
+  - Vintagestory.API.Common.AdvancedParticleProperties.Clone
+  - Vintagestory.API.Common.AdvancedParticleProperties.Color
+  - Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock
+  - Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles
+  - Vintagestory.API.Common.AdvancedParticleProperties.DieInAir
+  - Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid
+  - Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap
+  - Vintagestory.API.Common.AdvancedParticleProperties.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  - Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect
+  - Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve
+  - Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor
+  - Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.AdvancedParticleProperties.LifeLength
+  - Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  - Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve
+  - Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity
+  - Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight
+  - Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel
+  - Vintagestory.API.Common.AdvancedParticleProperties.Pos
+  - Vintagestory.API.Common.AdvancedParticleProperties.PosOffset
+  - Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  - Vintagestory.API.Common.AdvancedParticleProperties.Quantity
+  - Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange
+  - Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve
+  - Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  - Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  - Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled
+  - Vintagestory.API.Common.AdvancedParticleProperties.Size
+  - Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve
+  - Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid
+  - Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision
+  - Vintagestory.API.Common.AdvancedParticleProperties.ToBytes(System.IO.BinaryWriter)
+  - Vintagestory.API.Common.AdvancedParticleProperties.Velocity
+  - Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve
+  - Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags
+  - Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes
+  - Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos
+  - Vintagestory.API.Common.AdvancedParticleProperties.basePos
+  - Vintagestory.API.Common.AdvancedParticleProperties.baseVelocity
+  - Vintagestory.API.Common.AdvancedParticleProperties.block
+  - Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  langs:
+  - csharp
+  - vb
+  name: AdvancedParticleProperties
+  nameWithType: AdvancedParticleProperties
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used to add a set of particle properties to a collectible.
+  example: []
+  syntax:
+    content: >-
+      [JsonObject(MemberSerialization.OptIn)]
+
+      public class AdvancedParticleProperties : IParticlePropertiesProvider
+    content.vb: >-
+      <JsonObject(MemberSerialization.OptIn)>
+
+      Public Class AdvancedParticleProperties Implements IParticlePropertiesProvider
+  inheritance:
+  - System.Object
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  attributes:
+  - type: Newtonsoft.Json.JsonObjectAttribute
+    ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
+    arguments:
+    - type: Newtonsoft.Json.MemberSerialization
+      value: 1
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Async
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.Async
+  id: Async
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Async
+  nameWithType: AdvancedParticleProperties.Async
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Async
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If true, will be be spawned in the async particle system, which does not affect main game performance, recommended for large quantities of particles, slightly less optimal for particles that spawn very often
+  example: []
+  syntax:
+    content: public bool Async { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Async As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Async*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Async
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange
+  id: RandomVelocityChange
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: RandomVelocityChange
+  nameWithType: AdvancedParticleProperties.RandomVelocityChange
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Allows each particle to randomly change its velocity over time.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool RandomVelocityChange { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property RandomVelocityChange As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap
+  id: DieOnRainHeightmap
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: DieOnRainHeightmap
+  nameWithType: AdvancedParticleProperties.DieOnRainHeightmap
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    If true, particle dies if it falls below the rain height at its given location
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool DieOnRainHeightmap { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property DieOnRainHeightmap As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  id: SecondaryParticles
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: SecondaryParticles
+  nameWithType: AdvancedParticleProperties.SecondaryParticles
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    More particles that spawn from this particle over time. See <xref href="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval" data-throw-if-not-resolved="false"></xref> to control rate.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public AdvancedParticleProperties[] SecondaryParticles { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.AdvancedParticleProperties[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property SecondaryParticles As AdvancedParticleProperties()
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles
+  id: DeathParticles
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: DeathParticles
+  nameWithType: AdvancedParticleProperties.DeathParticles
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    More particles that spawn when this particle dies.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public AdvancedParticleProperties[] DeathParticles { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.AdvancedParticleProperties[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property DeathParticles As AdvancedParticleProperties()
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  id: SecondarySpawnInterval
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: SecondarySpawnInterval
+  nameWithType: AdvancedParticleProperties.SecondarySpawnInterval
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The inverval that the <xref href="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles" data-throw-if-not-resolved="false"></xref> spawn.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat SecondarySpawnInterval { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.NatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property SecondarySpawnInterval As NatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Bounciness
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.Bounciness
+  id: Bounciness
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Bounciness
+  nameWithType: AdvancedParticleProperties.Bounciness
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Bounciness
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float Bounciness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property Bounciness As Single
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Bounciness*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DieInAir
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.DieInAir
+  id: DieInAir
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: DieInAir
+  nameWithType: AdvancedParticleProperties.DieInAir
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DieInAir
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle dies in air.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool DieInAir { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property DieInAir As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.DieInAir*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid
+  id: DieInLiquid
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: DieInLiquid
+  nameWithType: AdvancedParticleProperties.DieInLiquid
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle dies in water.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool DieInLiquid { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property DieInLiquid As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid
+  id: SwimOnLiquid
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: SwimOnLiquid
+  nameWithType: AdvancedParticleProperties.SwimOnLiquid
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle floats on liquids.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool SwimOnLiquid { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property SwimOnLiquid As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor
+  commentId: F:Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor
+  id: HsvaColor
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: HsvaColor
+  nameWithType: AdvancedParticleProperties.HsvaColor
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
+
+    The Hue/Saturation/Value/Alpha for the color of the particle.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat[] HsvaColor
+    return:
+      type: Vintagestory.API.MathTools.NatFloat[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public HsvaColor As NatFloat()
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock
+  id: ColorByBlock
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: ColorByBlock
+  nameWithType: AdvancedParticleProperties.ColorByBlock
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not to color the particle by the block it's on.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool ColorByBlock { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property ColorByBlock As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve
+  id: OpacityEvolve
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: OpacityEvolve
+  nameWithType: AdvancedParticleProperties.OpacityEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming opacity value.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public EvolvingNatFloat OpacityEvolve { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property OpacityEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve
+  id: RedEvolve
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: RedEvolve
+  nameWithType: AdvancedParticleProperties.RedEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming Red value.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public EvolvingNatFloat RedEvolve { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property RedEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve
+  id: GreenEvolve
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: GreenEvolve
+  nameWithType: AdvancedParticleProperties.GreenEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming Green value.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public EvolvingNatFloat GreenEvolve { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property GreenEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve
+  id: BlueEvolve
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: BlueEvolve
+  nameWithType: AdvancedParticleProperties.BlueEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming Blue value.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public EvolvingNatFloat BlueEvolve { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property BlueEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect
+  id: GravityEffect
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: GravityEffect
+  nameWithType: AdvancedParticleProperties.GravityEffect
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The gravity effect on the particle.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat GravityEffect { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.NatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property GravityEffect As NatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.LifeLength
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.LifeLength
+  id: LifeLength
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: LifeLength
+  nameWithType: AdvancedParticleProperties.LifeLength
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.LifeLength
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The life length, in seconds, of the particle.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat LifeLength { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.NatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property LifeLength As NatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.LifeLength*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.PosOffset
+  commentId: F:Vintagestory.API.Common.AdvancedParticleProperties.PosOffset
+  id: PosOffset
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: PosOffset
+  nameWithType: AdvancedParticleProperties.PosOffset
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.PosOffset
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0, 0, 0</jsondefault>-->
+
+    Offset from the blocks hitboxes top middle position
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat[] PosOffset
+    return:
+      type: Vintagestory.API.MathTools.NatFloat[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public PosOffset As NatFloat()
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Quantity
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.Quantity
+  id: Quantity
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Quantity
+  nameWithType: AdvancedParticleProperties.Quantity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Quantity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The quantity of the particles given.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat Quantity { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.NatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property Quantity As NatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Quantity*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Size
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.Size
+  id: Size
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: AdvancedParticleProperties.Size
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Size
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The size of the particles given.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat Size { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.NatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property Size As NatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Size*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve
+  id: SizeEvolve
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: SizeEvolve
+  nameWithType: AdvancedParticleProperties.SizeEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    A transforming Size value.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public EvolvingNatFloat SizeEvolve { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property SizeEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Velocity
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.Velocity
+  id: Velocity
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Velocity
+  nameWithType: AdvancedParticleProperties.Velocity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Velocity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
+
+    The velocity of the particles.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public NatFloat[] Velocity { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.NatFloat[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property Velocity As NatFloat()
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Velocity*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve
+  id: VelocityEvolve
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: VelocityEvolve
+  nameWithType: AdvancedParticleProperties.VelocityEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A dynamic velocity value.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public EvolvingNatFloat[] VelocityEvolve { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property VelocityEvolve As EvolvingNatFloat()
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel
+  id: ParticleModel
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: ParticleModel
+  nameWithType: AdvancedParticleProperties.ParticleModel
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Cube</jsondefault>-->
+
+    Sets the base model for the particle.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public EnumParticleModel ParticleModel { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumParticleModel
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property ParticleModel As EnumParticleModel
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags
+  id: VertexFlags
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: VertexFlags
+  nameWithType: AdvancedParticleProperties.VertexFlags
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The level of glow in the particle.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public int VertexFlags { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property VertexFlags As Integer
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled
+  id: SelfPropelled
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: SelfPropelled
+  nameWithType: AdvancedParticleProperties.SelfPropelled
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle is self propelled.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool SelfPropelled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property SelfPropelled As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision
+  id: TerrainCollision
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: TerrainCollision
+  nameWithType: AdvancedParticleProperties.TerrainCollision
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
+
+    Whether or not the particle collides with the terrain.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool TerrainCollision { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property TerrainCollision As Boolean
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes
+  id: WindAffectednes
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: WindAffectednes
+  nameWithType: AdvancedParticleProperties.WindAffectednes
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much the particles are affected by wind.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float WindAffectednes { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property WindAffectednes As Single
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.basePos
+  commentId: F:Vintagestory.API.Common.AdvancedParticleProperties.basePos
+  id: basePos
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: basePos
+  nameWithType: AdvancedParticleProperties.basePos
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.basePos
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The base position for the particles.
+  example: []
+  syntax:
+    content: public Vec3d basePos
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public basePos As Vec3d
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.baseVelocity
+  commentId: F:Vintagestory.API.Common.AdvancedParticleProperties.baseVelocity
+  id: baseVelocity
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: baseVelocity
+  nameWithType: AdvancedParticleProperties.baseVelocity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.baseVelocity
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Vec3f baseVelocity
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public baseVelocity As Vec3f
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.block
+  commentId: F:Vintagestory.API.Common.AdvancedParticleProperties.block
+  id: block
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: block
+  nameWithType: AdvancedParticleProperties.block
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.block
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The base block for the particle.
+  example: []
+  syntax:
+    content: public Block block
+    return:
+      type: Vintagestory.API.Common.Block
+    content.vb: Public block As Block
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)
+  id: Init(Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Init(ICoreAPI)
+  nameWithType: AdvancedParticleProperties.Init(ICoreAPI)
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Initializes the particle.
+  example: []
+  syntax:
+    content: public void Init(ICoreAPI api)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+      description: The core API.
+    content.vb: Public Sub Init(api As ICoreAPI)
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Init*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Color
+  commentId: F:Vintagestory.API.Common.AdvancedParticleProperties.Color
+  id: Color
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: AdvancedParticleProperties.Color
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Color
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: When HsvaColor is null, this is used
+  example: []
+  syntax:
+    content: public int Color
+    return:
+      type: System.Int32
+    content.vb: Public Color As Integer
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  id: LightEmission
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: LightEmission
+  nameWithType: AdvancedParticleProperties.LightEmission
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If this particle emits light, this is its RGBA. Does not actually brighten the scene around it, but prevents incorrect lighting of particles when everything else around it is dark
+  example: []
+  syntax:
+    content: public int LightEmission { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property LightEmission As Integer
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  id: GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: GetRgbaColor(ICoreClientAPI)
+  nameWithType: AdvancedParticleProperties.GetRgbaColor(ICoreClientAPI)
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Converts the color to RGBA.
+  example: []
+  syntax:
+    content: public int GetRgbaColor(ICoreClientAPI capi)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: The Core Client API.
+    return:
+      type: System.Int32
+      description: The set RGBA color.
+    content.vb: Public Function GetRgbaColor(capi As ICoreClientAPI) As Integer
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Pos
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.Pos
+  id: Pos
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Pos
+  nameWithType: AdvancedParticleProperties.Pos
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Pos
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Position in the world where the particle should spawn
+  example: []
+  syntax:
+    content: public Vec3d Pos { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+      description: ''
+    content.vb: Public ReadOnly Property Pos As Vec3d
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Pos*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  id: GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: GetVelocity(Vec3d)
+  nameWithType: AdvancedParticleProperties.GetVelocity(Vec3d)
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the velocity of the particle.
+  example: []
+  syntax:
+    content: public Vec3f GetVelocity(Vec3d pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public Function GetVelocity(pos As Vec3d) As Vec3f
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity
+  id: ParentVelocity
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: ParentVelocity
+  nameWithType: AdvancedParticleProperties.ParentVelocity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public Vec3f ParentVelocity { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public Property ParentVelocity As Vec3f
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos
+  id: WindAffectednesAtPos
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: WindAffectednesAtPos
+  nameWithType: AdvancedParticleProperties.WindAffectednesAtPos
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float WindAffectednesAtPos { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property WindAffectednesAtPos As Single
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos*
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight
+  id: ParentVelocityWeight
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: ParentVelocityWeight
+  nameWithType: AdvancedParticleProperties.ParentVelocityWeight
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public float ParentVelocityWeight { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property ParentVelocityWeight As Single
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocityWeight
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: AdvancedParticleProperties.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: For sending over the network
+  example: []
+  syntax:
+    content: public void ToBytes(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ''
+    content.vb: Public Sub ToBytes(writer As BinaryWriter)
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.ToBytes*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  id: FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: AdvancedParticleProperties.FromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: For reading from the network
+  example: []
+  syntax:
+    content: public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ''
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    content.vb: Public Sub FromBytes(reader As BinaryReader, resolver As IWorldAccessor)
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.FromBytes*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  id: createFromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: createFromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: AdvancedParticleProperties.createFromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static AdvancedParticleProperties createFromBytes(BinaryReader reader, IWorldAccessor resolver)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+    return:
+      type: Vintagestory.API.Common.AdvancedParticleProperties
+    content.vb: Public Shared Function createFromBytes(reader As BinaryReader, resolver As IWorldAccessor) As AdvancedParticleProperties
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes*
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Clone
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: AdvancedParticleProperties.Clone()
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Clone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AdvancedParticleProperties Clone()
+    return:
+      type: Vintagestory.API.Common.AdvancedParticleProperties
+    content.vb: Public Function Clone() As AdvancedParticleProperties
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.Clone*
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle
+  id: BeginParticle
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: BeginParticle()
+  nameWithType: AdvancedParticleProperties.BeginParticle()
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Begins the advanced particle.
+  example: []
+  syntax:
+    content: public void BeginParticle()
+    content.vb: Public Sub BeginParticle()
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  id: PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: PrepareForSecondarySpawn(ParticleBase)
+  nameWithType: AdvancedParticleProperties.PrepareForSecondarySpawn(ParticleBase)
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: prepares the particle for secondary spawning.
+  example: []
+  syntax:
+    content: public void PrepareForSecondarySpawn(ParticleBase particleInstance)
+    parameters:
+    - id: particleInstance
+      type: Vintagestory.API.Common.ParticleBase
+      description: ''
+    content.vb: Public Sub PrepareForSecondarySpawn(particleInstance As ParticleBase)
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider
+  commentId: T:Vintagestory.API.Common.IParticlePropertiesProvider
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html
+  name: IParticlePropertiesProvider
+  nameWithType: IParticlePropertiesProvider
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Async*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Async
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Async
+  name: Async
+  nameWithType: AdvancedParticleProperties.Async
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Async
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Async
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Async
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Async
+  name: Async
+  nameWithType: IParticlePropertiesProvider.Async
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Async
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange
+  name: RandomVelocityChange
+  nameWithType: AdvancedParticleProperties.RandomVelocityChange
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_RandomVelocityChange
+  name: RandomVelocityChange
+  nameWithType: IParticlePropertiesProvider.RandomVelocityChange
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap
+  name: DieOnRainHeightmap
+  nameWithType: AdvancedParticleProperties.DieOnRainHeightmap
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_DieOnRainHeightmap
+  name: DieOnRainHeightmap
+  nameWithType: IParticlePropertiesProvider.DieOnRainHeightmap
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval
+  name: SecondarySpawnInterval
+  nameWithType: AdvancedParticleProperties.SecondarySpawnInterval
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles
+  name: SecondaryParticles
+  nameWithType: AdvancedParticleProperties.SecondaryParticles
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+- uid: Vintagestory.API.Common.AdvancedParticleProperties[]
+  isExternal: true
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html
+  name: AdvancedParticleProperties[]
+  nameWithType: AdvancedParticleProperties[]
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties[]
+  nameWithType.vb: AdvancedParticleProperties()
+  fullName.vb: Vintagestory.API.Common.AdvancedParticleProperties()
+  name.vb: AdvancedParticleProperties()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AdvancedParticleProperties
+    name: AdvancedParticleProperties
+    href: Vintagestory.API.Common.AdvancedParticleProperties.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.AdvancedParticleProperties
+    name: AdvancedParticleProperties
+    href: Vintagestory.API.Common.AdvancedParticleProperties.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles
+  name: DeathParticles
+  nameWithType: AdvancedParticleProperties.DeathParticles
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles
+  name: SecondaryParticles
+  nameWithType: AdvancedParticleProperties.SecondaryParticles
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval
+  name: SecondarySpawnInterval
+  nameWithType: AdvancedParticleProperties.SecondarySpawnInterval
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+- uid: Vintagestory.API.MathTools.NatFloat
+  commentId: T:Vintagestory.API.MathTools.NatFloat
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.NatFloat.html
+  name: NatFloat
+  nameWithType: NatFloat
+  fullName: Vintagestory.API.MathTools.NatFloat
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Bounciness*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Bounciness
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Bounciness
+  name: Bounciness
+  nameWithType: AdvancedParticleProperties.Bounciness
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Bounciness
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Bounciness
+  name: Bounciness
+  nameWithType: IParticlePropertiesProvider.Bounciness
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DieInAir*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.DieInAir
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_DieInAir
+  name: DieInAir
+  nameWithType: AdvancedParticleProperties.DieInAir
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DieInAir
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid
+  name: DieInLiquid
+  nameWithType: AdvancedParticleProperties.DieInLiquid
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid
+  name: SwimOnLiquid
+  nameWithType: AdvancedParticleProperties.SwimOnLiquid
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid
+- uid: Vintagestory.API.MathTools.NatFloat[]
+  isExternal: true
+  href: Vintagestory.API.MathTools.NatFloat.html
+  name: NatFloat[]
+  nameWithType: NatFloat[]
+  fullName: Vintagestory.API.MathTools.NatFloat[]
+  nameWithType.vb: NatFloat()
+  fullName.vb: Vintagestory.API.MathTools.NatFloat()
+  name.vb: NatFloat()
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.NatFloat
+    name: NatFloat
+    href: Vintagestory.API.MathTools.NatFloat.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.NatFloat
+    name: NatFloat
+    href: Vintagestory.API.MathTools.NatFloat.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock
+  name: ColorByBlock
+  nameWithType: AdvancedParticleProperties.ColorByBlock
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve
+  name: OpacityEvolve
+  nameWithType: AdvancedParticleProperties.OpacityEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_OpacityEvolve
+  name: OpacityEvolve
+  nameWithType: IParticlePropertiesProvider.OpacityEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+- uid: Vintagestory.API.MathTools.EvolvingNatFloat
+  commentId: T:Vintagestory.API.MathTools.EvolvingNatFloat
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  name: EvolvingNatFloat
+  nameWithType: EvolvingNatFloat
+  fullName: Vintagestory.API.MathTools.EvolvingNatFloat
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve
+  name: RedEvolve
+  nameWithType: AdvancedParticleProperties.RedEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_RedEvolve
+  name: RedEvolve
+  nameWithType: IParticlePropertiesProvider.RedEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve
+  name: GreenEvolve
+  nameWithType: AdvancedParticleProperties.GreenEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GreenEvolve
+  name: GreenEvolve
+  nameWithType: IParticlePropertiesProvider.GreenEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve
+  name: BlueEvolve
+  nameWithType: AdvancedParticleProperties.BlueEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BlueEvolve
+  name: BlueEvolve
+  nameWithType: IParticlePropertiesProvider.BlueEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect
+  name: GravityEffect
+  nameWithType: AdvancedParticleProperties.GravityEffect
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.LifeLength*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.LifeLength
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_LifeLength
+  name: LifeLength
+  nameWithType: AdvancedParticleProperties.LifeLength
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.LifeLength
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Quantity*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Quantity
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Quantity
+  name: Quantity
+  nameWithType: AdvancedParticleProperties.Quantity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Quantity
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Size*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Size
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Size
+  name: Size
+  nameWithType: AdvancedParticleProperties.Size
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Size
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve
+  name: SizeEvolve
+  nameWithType: AdvancedParticleProperties.SizeEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_SizeEvolve
+  name: SizeEvolve
+  nameWithType: IParticlePropertiesProvider.SizeEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Velocity*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Velocity
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Velocity
+  name: Velocity
+  nameWithType: AdvancedParticleProperties.Velocity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Velocity
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve
+  name: VelocityEvolve
+  nameWithType: AdvancedParticleProperties.VelocityEvolve
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_VelocityEvolve
+  name: VelocityEvolve
+  nameWithType: IParticlePropertiesProvider.VelocityEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+- uid: Vintagestory.API.MathTools.EvolvingNatFloat[]
+  isExternal: true
+  href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  name: EvolvingNatFloat[]
+  nameWithType: EvolvingNatFloat[]
+  fullName: Vintagestory.API.MathTools.EvolvingNatFloat[]
+  nameWithType.vb: EvolvingNatFloat()
+  fullName.vb: Vintagestory.API.MathTools.EvolvingNatFloat()
+  name.vb: EvolvingNatFloat()
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.EvolvingNatFloat
+    name: EvolvingNatFloat
+    href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.EvolvingNatFloat
+    name: EvolvingNatFloat
+    href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel
+  name: ParticleModel
+  nameWithType: AdvancedParticleProperties.ParticleModel
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel
+- uid: Vintagestory.API.Common.EnumParticleModel
+  commentId: T:Vintagestory.API.Common.EnumParticleModel
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumParticleModel.html
+  name: EnumParticleModel
+  nameWithType: EnumParticleModel
+  fullName: Vintagestory.API.Common.EnumParticleModel
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags
+  name: VertexFlags
+  nameWithType: AdvancedParticleProperties.VertexFlags
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_VertexFlags
+  name: VertexFlags
+  nameWithType: IParticlePropertiesProvider.VertexFlags
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled
+  name: SelfPropelled
+  nameWithType: AdvancedParticleProperties.SelfPropelled
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision
+  name: TerrainCollision
+  nameWithType: AdvancedParticleProperties.TerrainCollision
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes
+  name: WindAffectednes
+  nameWithType: AdvancedParticleProperties.WindAffectednes
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Init*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Init
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Init_Vintagestory_API_Common_ICoreAPI_
+  name: Init
+  nameWithType: AdvancedParticleProperties.Init
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Init
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Init_Vintagestory_API_Common_ICoreAPI_
+  name: Init(ICoreAPI)
+  nameWithType: IParticlePropertiesProvider.Init(ICoreAPI)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+    name: Init
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Init_Vintagestory_API_Common_ICoreAPI_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+    name: Init
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Init_Vintagestory_API_Common_ICoreAPI_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_LightEmission
+  name: LightEmission
+  nameWithType: AdvancedParticleProperties.LightEmission
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_LightEmission
+  name: LightEmission
+  nameWithType: IParticlePropertiesProvider.LightEmission
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  name: GetRgbaColor
+  nameWithType: AdvancedParticleProperties.GetRgbaColor
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  name: GetRgbaColor(ICoreClientAPI)
+  nameWithType: IParticlePropertiesProvider.GetRgbaColor(ICoreClientAPI)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+    name: GetRgbaColor
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+    name: GetRgbaColor
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: )
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Pos*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Pos
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Pos
+  name: Pos
+  nameWithType: AdvancedParticleProperties.Pos
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Pos
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Pos
+  name: Pos
+  nameWithType: IParticlePropertiesProvider.Pos
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  name: GetVelocity
+  nameWithType: AdvancedParticleProperties.GetVelocity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  name: GetVelocity(Vec3d)
+  nameWithType: IParticlePropertiesProvider.GetVelocity(Vec3d)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+    name: GetVelocity
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+    name: GetVelocity
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocity
+  name: ParentVelocity
+  nameWithType: AdvancedParticleProperties.ParentVelocity
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ParentVelocity
+  name: ParentVelocity
+  nameWithType: IParticlePropertiesProvider.ParentVelocity
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednesAtPos
+  name: WindAffectednesAtPos
+  nameWithType: AdvancedParticleProperties.WindAffectednesAtPos
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocityWeight
+  name: ParentVelocityWeight
+  nameWithType: AdvancedParticleProperties.ParentVelocityWeight
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocityWeight
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocityWeight
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ParentVelocityWeight
+  name: ParentVelocityWeight
+  nameWithType: IParticlePropertiesProvider.ParentVelocityWeight
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocityWeight
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.ToBytes
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: AdvancedParticleProperties.ToBytes
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.ToBytes
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  isExternal: true
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes(BinaryWriter)
+  nameWithType: IParticlePropertiesProvider.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.FromBytes
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: FromBytes
+  nameWithType: AdvancedParticleProperties.FromBytes
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.FromBytes
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  isExternal: true
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: FromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: IParticlePropertiesProvider.FromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+    name: FromBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+    name: FromBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_createFromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: createFromBytes
+  nameWithType: AdvancedParticleProperties.createFromBytes
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes
+- uid: Vintagestory.API.Common.AdvancedParticleProperties
+  commentId: T:Vintagestory.API.Common.AdvancedParticleProperties
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html
+  name: AdvancedParticleProperties
+  nameWithType: AdvancedParticleProperties
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.Clone*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Clone
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Clone
+  name: Clone
+  nameWithType: AdvancedParticleProperties.Clone
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.Clone
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_BeginParticle
+  name: BeginParticle
+  nameWithType: AdvancedParticleProperties.BeginParticle
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BeginParticle
+  name: BeginParticle()
+  nameWithType: IParticlePropertiesProvider.BeginParticle()
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+    name: BeginParticle
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BeginParticle
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+    name: BeginParticle
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BeginParticle
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  name: PrepareForSecondarySpawn
+  nameWithType: AdvancedParticleProperties.PrepareForSecondarySpawn
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  name: PrepareForSecondarySpawn(ParticleBase)
+  nameWithType: IParticlePropertiesProvider.PrepareForSecondarySpawn(ParticleBase)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+    name: PrepareForSecondarySpawn
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  - name: (
+  - uid: Vintagestory.API.Common.ParticleBase
+    name: ParticleBase
+    href: Vintagestory.API.Common.ParticleBase.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+    name: PrepareForSecondarySpawn
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  - name: (
+  - uid: Vintagestory.API.Common.ParticleBase
+    name: ParticleBase
+    href: Vintagestory.API.Common.ParticleBase.html
+  - name: )
+- uid: Vintagestory.API.Common.ParticleBase
+  commentId: T:Vintagestory.API.Common.ParticleBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ParticleBase.html
+  name: ParticleBase
+  nameWithType: ParticleBase
+  fullName: Vintagestory.API.Common.ParticleBase

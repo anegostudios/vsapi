@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class BlockBehaviorHorizontalAttachable | VintageStory Json Docs ">
       
-      <meta name="description" content="Forces a block to only allow placement on the side of another block. Requires use of the &amp;quot;horizontalorientation&amp;quot; variant group. Uses the code &amp;quot;HorizontalAttachable&amp;quot;.">
+      <meta name="description" content="Forces a block to only allow placement on the side of another block. Requires use of the &amp;quot;horizontalorientation&amp;quot; variant group. Uses the code &amp;quot;HorizontalAttachable&amp;quot;. Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class BlockBehaviorHorizontalAttachable
   </div>
 
   <div class="markdown summary"><p>Forces a block to only allow placement on the side of another block. Requires use of the &quot;horizontalorientation&quot; variant group.
-Uses the code &quot;HorizontalAttachable&quot;.</p>
+Uses the code &quot;HorizontalAttachable&quot;. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///BlockBehavior/BehaviorHorizontalAttachable.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -126,34 +126,35 @@ public class BlockBehaviorHorizontalAttachable : BlockBehavior</code></pre>
 
 
   <h2 id="Vintagestory_GameContent_BlockBehaviorHorizontalAttachable_examples">Examples</h2>
-  <pre><code class="lang-csharp">"behaviors": [
-	{
-		"name": "HorizontalAttachable",
-		"properties": {
-			"handleDrops": false,
-			"attachmentAreas": {
-				"north": {
-					"x1": 7,
-					"y1": 0,
-					"z1": 15,
-					"x2": 8,
-					"y2": 6,
-					"z2": 15,
-					"rotateY": 180
-				},
-				"east": {
-					...
-				},
-				"south": {
-					...
-				},
-				"west": {
-					...
-				}
-			}
-		}
-	}
-]</code></pre>
+  <pre><code>     &lt;pre&gt;&lt;code class=&quot;lang-csharp&quot;&gt;&quot;behaviors&quot;: [
+     	{
+     		&quot;name&quot;: &quot;HorizontalAttachable&quot;,
+     		&quot;properties&quot;: {
+     			&quot;handleDrops&quot;: false,
+     			&quot;attachmentAreas&quot;: {
+     				&quot;north&quot;: {
+     					&quot;x1&quot;: 7,
+     					&quot;y1&quot;: 0,
+     					&quot;z1&quot;: 15,
+     					&quot;x2&quot;: 8,
+     					&quot;y2&quot;: 6,
+     					&quot;z2&quot;: 15,
+     					&quot;rotateY&quot;: 180
+     				},
+     				&quot;east&quot;: {
+     					...
+     				},
+     				&quot;south&quot;: {
+     					...
+     				},
+     				&quot;west&quot;: {
+     					...
+     				}
+     			}
+     		}
+     	}
+     ]&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 <pre><code class="lang-csharp">"variantgroups": [
 	{
 		"code": "side",

@@ -1,0 +1,373 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.ITerrainMeshPool
+  commentId: T:Vintagestory.API.Client.ITerrainMeshPool
+  id: ITerrainMeshPool
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,System.Int32)
+  - Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,System.Single[],System.Int32)
+  - Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,Vintagestory.API.Client.ColorMapData,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: ITerrainMeshPool
+  nameWithType: ITerrainMeshPool
+  fullName: Vintagestory.API.Client.ITerrainMeshPool
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public interface ITerrainMeshPool
+    content.vb: Public Interface ITerrainMeshPool
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,System.Int32)
+  commentId: M:Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,System.Int32)
+  id: AddMeshData(Vintagestory.API.Client.MeshData,System.Int32)
+  parent: Vintagestory.API.Client.ITerrainMeshPool
+  langs:
+  - csharp
+  - vb
+  name: AddMeshData(MeshData, int)
+  nameWithType: ITerrainMeshPool.AddMeshData(MeshData, int)
+  fullName: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Requires xyz, uv, rgba, indices, flags and xyzFaces to be set
+  example: []
+  syntax:
+    content: void AddMeshData(MeshData data, int lodLevel = 1)
+    parameters:
+    - id: data
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    - id: lodLevel
+      type: System.Int32
+      description: ''
+    content.vb: Sub AddMeshData(data As MeshData, lodLevel As Integer = 1)
+  overload: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData*
+  nameWithType.vb: ITerrainMeshPool.AddMeshData(MeshData, Integer)
+  fullName.vb: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData, Integer)
+  name.vb: AddMeshData(MeshData, Integer)
+- uid: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,System.Single[],System.Int32)
+  commentId: M:Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,System.Single[],System.Int32)
+  id: AddMeshData(Vintagestory.API.Client.MeshData,System.Single[],System.Int32)
+  parent: Vintagestory.API.Client.ITerrainMeshPool
+  langs:
+  - csharp
+  - vb
+  name: AddMeshData(MeshData, float[], int)
+  nameWithType: ITerrainMeshPool.AddMeshData(MeshData, float[], int)
+  fullName: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData, float[], int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Add mesh data, but first transformed with tfMatrix
+  example: []
+  syntax:
+    content: void AddMeshData(MeshData data, float[] tfMatrix, int lodLevel = 1)
+    parameters:
+    - id: data
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    - id: tfMatrix
+      type: System.Single[]
+      description: ''
+    - id: lodLevel
+      type: System.Int32
+      description: ''
+    content.vb: Sub AddMeshData(data As MeshData, tfMatrix As Single(), lodLevel As Integer = 1)
+  overload: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData*
+  nameWithType.vb: ITerrainMeshPool.AddMeshData(MeshData, Single(), Integer)
+  fullName.vb: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData, Single(), Integer)
+  name.vb: AddMeshData(MeshData, Single(), Integer)
+- uid: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,Vintagestory.API.Client.ColorMapData,System.Int32)
+  commentId: M:Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData,Vintagestory.API.Client.ColorMapData,System.Int32)
+  id: AddMeshData(Vintagestory.API.Client.MeshData,Vintagestory.API.Client.ColorMapData,System.Int32)
+  parent: Vintagestory.API.Client.ITerrainMeshPool
+  langs:
+  - csharp
+  - vb
+  name: AddMeshData(MeshData, ColorMapData, int)
+  nameWithType: ITerrainMeshPool.AddMeshData(MeshData, ColorMapData, int)
+  fullName: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData, Vintagestory.API.Client.ColorMapData, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Requires xyz, uv, rgba, indices, flags and xyzFaces to be set
+  example: []
+  syntax:
+    content: void AddMeshData(MeshData data, ColorMapData colorMapData, int lodLevel = 1)
+    parameters:
+    - id: data
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    - id: colorMapData
+      type: Vintagestory.API.Client.ColorMapData
+      description: ''
+    - id: lodLevel
+      type: System.Int32
+      description: ''
+    content.vb: Sub AddMeshData(data As MeshData, colorMapData As ColorMapData, lodLevel As Integer = 1)
+  overload: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData*
+  nameWithType.vb: ITerrainMeshPool.AddMeshData(MeshData, ColorMapData, Integer)
+  fullName.vb: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData(Vintagestory.API.Client.MeshData, Vintagestory.API.Client.ColorMapData, Integer)
+  name.vb: AddMeshData(MeshData, ColorMapData, Integer)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData*
+  commentId: Overload:Vintagestory.API.Client.ITerrainMeshPool.AddMeshData
+  href: Vintagestory.API.Client.ITerrainMeshPool.html#Vintagestory_API_Client_ITerrainMeshPool_AddMeshData_Vintagestory_API_Client_MeshData_System_Int32_
+  name: AddMeshData
+  nameWithType: ITerrainMeshPool.AddMeshData
+  fullName: Vintagestory.API.Client.ITerrainMeshPool.AddMeshData
+- uid: Vintagestory.API.Client.MeshData
+  commentId: T:Vintagestory.API.Client.MeshData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshData.html
+  name: MeshData
+  nameWithType: MeshData
+  fullName: Vintagestory.API.Client.MeshData
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.ColorMapData
+  commentId: T:Vintagestory.API.Client.ColorMapData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ColorMapData.html
+  name: ColorMapData
+  nameWithType: ColorMapData
+  fullName: Vintagestory.API.Client.ColorMapData

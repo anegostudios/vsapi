@@ -1,0 +1,2301 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.AirBubbleParticles
+  commentId: T:Vintagestory.API.Common.AirBubbleParticles
+  id: AirBubbleParticles
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.AirBubbleParticles.AddVelocity
+  - Vintagestory.API.Common.AirBubbleParticles.Async
+  - Vintagestory.API.Common.AirBubbleParticles.BasePos
+  - Vintagestory.API.Common.AirBubbleParticles.BeginParticle
+  - Vintagestory.API.Common.AirBubbleParticles.BlueEvolve
+  - Vintagestory.API.Common.AirBubbleParticles.Bounciness
+  - Vintagestory.API.Common.AirBubbleParticles.DeathParticles
+  - Vintagestory.API.Common.AirBubbleParticles.DieInAir
+  - Vintagestory.API.Common.AirBubbleParticles.DieInLiquid
+  - Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap
+  - Vintagestory.API.Common.AirBubbleParticles.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  - Vintagestory.API.Common.AirBubbleParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.AirBubbleParticles.GravityEffect
+  - Vintagestory.API.Common.AirBubbleParticles.GreenEvolve
+  - Vintagestory.API.Common.AirBubbleParticles.Init(Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.AirBubbleParticles.LifeLength
+  - Vintagestory.API.Common.AirBubbleParticles.LightEmission
+  - Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve
+  - Vintagestory.API.Common.AirBubbleParticles.ParentVelocity
+  - Vintagestory.API.Common.AirBubbleParticles.ParticleModel
+  - Vintagestory.API.Common.AirBubbleParticles.Pos
+  - Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  - Vintagestory.API.Common.AirBubbleParticles.Quantity
+  - Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange
+  - Vintagestory.API.Common.AirBubbleParticles.Range
+  - Vintagestory.API.Common.AirBubbleParticles.RedEvolve
+  - Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles
+  - Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval
+  - Vintagestory.API.Common.AirBubbleParticles.SelfPropelled
+  - Vintagestory.API.Common.AirBubbleParticles.Size
+  - Vintagestory.API.Common.AirBubbleParticles.SizeEvolve
+  - Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid
+  - Vintagestory.API.Common.AirBubbleParticles.TerrainCollision
+  - Vintagestory.API.Common.AirBubbleParticles.ToBytes(System.IO.BinaryWriter)
+  - Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve
+  - Vintagestory.API.Common.AirBubbleParticles.VertexFlags
+  - Vintagestory.API.Common.AirBubbleParticles.horVelocityMul
+  - Vintagestory.API.Common.AirBubbleParticles.quantity
+  langs:
+  - csharp
+  - vb
+  name: AirBubbleParticles
+  nameWithType: AirBubbleParticles
+  fullName: Vintagestory.API.Common.AirBubbleParticles
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public class AirBubbleParticles : IParticlePropertiesProvider'
+    content.vb: Public Class AirBubbleParticles Implements IParticlePropertiesProvider
+  inheritance:
+  - System.Object
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.AirBubbleParticles.Async
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.Async
+  id: Async
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: Async
+  nameWithType: AirBubbleParticles.Async
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Async
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If true, will be be spawned in the async particle system, which does not affect main game performance, recommended for large quantities of particles, slightly less optimal for particles that spawn very often
+  example: []
+  syntax:
+    content: public bool Async { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Async As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.Async*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Async
+- uid: Vintagestory.API.Common.AirBubbleParticles.BasePos
+  commentId: F:Vintagestory.API.Common.AirBubbleParticles.BasePos
+  id: BasePos
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: BasePos
+  nameWithType: AirBubbleParticles.BasePos
+  fullName: Vintagestory.API.Common.AirBubbleParticles.BasePos
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The base position of the bubble particle.
+  example: []
+  syntax:
+    content: public Vec3d BasePos
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public BasePos As Vec3d
+- uid: Vintagestory.API.Common.AirBubbleParticles.AddVelocity
+  commentId: F:Vintagestory.API.Common.AirBubbleParticles.AddVelocity
+  id: AddVelocity
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: AddVelocity
+  nameWithType: AirBubbleParticles.AddVelocity
+  fullName: Vintagestory.API.Common.AirBubbleParticles.AddVelocity
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The velocity to add to the bubble particle.
+  example: []
+  syntax:
+    content: public Vec3f AddVelocity
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public AddVelocity As Vec3f
+- uid: Vintagestory.API.Common.AirBubbleParticles.Init(Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.AirBubbleParticles.Init(Vintagestory.API.Common.ICoreAPI)
+  id: Init(Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: Init(ICoreAPI)
+  nameWithType: AirBubbleParticles.Init(ICoreAPI)
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Init(Vintagestory.API.Common.ICoreAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Initializes the bubble particle.
+  example: []
+  syntax:
+    content: public void Init(ICoreAPI api)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+      description: The core API.
+    content.vb: Public Sub Init(api As ICoreAPI)
+  overload: Vintagestory.API.Common.AirBubbleParticles.Init*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+- uid: Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles
+  id: SecondaryParticles
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: SecondaryParticles
+  nameWithType: AirBubbleParticles.SecondaryParticles
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the secondary particles
+  example: []
+  syntax:
+    content: public IParticlePropertiesProvider[] SecondaryParticles { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IParticlePropertiesProvider[]
+      description: null, the bubble particles don't have secondary particles.
+    content.vb: Public ReadOnly Property SecondaryParticles As IParticlePropertiesProvider()
+  overload: Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.SecondaryParticles
+- uid: Vintagestory.API.Common.AirBubbleParticles.DeathParticles
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.DeathParticles
+  id: DeathParticles
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: DeathParticles
+  nameWithType: AirBubbleParticles.DeathParticles
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DeathParticles
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the death particles.
+  example: []
+  syntax:
+    content: public IParticlePropertiesProvider[] DeathParticles { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IParticlePropertiesProvider[]
+      description: There are no death particles for bubbles.
+    content.vb: Public ReadOnly Property DeathParticles As IParticlePropertiesProvider()
+  overload: Vintagestory.API.Common.AirBubbleParticles.DeathParticles*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.DeathParticles
+- uid: Vintagestory.API.Common.AirBubbleParticles.Bounciness
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.Bounciness
+  id: Bounciness
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: Bounciness
+  nameWithType: AirBubbleParticles.Bounciness
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Bounciness
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public float Bounciness { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Bounciness As Single
+  overload: Vintagestory.API.Common.AirBubbleParticles.Bounciness*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+- uid: Vintagestory.API.Common.AirBubbleParticles.DieInAir
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.DieInAir
+  id: DieInAir
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: DieInAir
+  nameWithType: AirBubbleParticles.DieInAir
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DieInAir
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Whether or not the bubbles die in air.
+  example: []
+  syntax:
+    content: public bool DieInAir { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: Yes they die in air.
+    content.vb: Public ReadOnly Property DieInAir As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.DieInAir*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.DieInAir
+- uid: Vintagestory.API.Common.AirBubbleParticles.DieInLiquid
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.DieInLiquid
+  id: DieInLiquid
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: DieInLiquid
+  nameWithType: AirBubbleParticles.DieInLiquid
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DieInLiquid
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Whether or not the bubbles die in liquid.
+  example: []
+  syntax:
+    content: public bool DieInLiquid { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: They don't.
+    content.vb: Public ReadOnly Property DieInLiquid As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.DieInLiquid*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.DieInLiquid
+- uid: Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid
+  id: SwimOnLiquid
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: SwimOnLiquid
+  nameWithType: AirBubbleParticles.SwimOnLiquid
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Whether or not the bubbles die in liquid.
+  example: []
+  syntax:
+    content: public bool SwimOnLiquid { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: They don't.
+    content.vb: Public Property SwimOnLiquid As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.SwimOnLiquid
+- uid: Vintagestory.API.Common.AirBubbleParticles.VertexFlags
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.VertexFlags
+  id: VertexFlags
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: VertexFlags
+  nameWithType: AirBubbleParticles.VertexFlags
+  fullName: Vintagestory.API.Common.AirBubbleParticles.VertexFlags
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the glow level of the bubbles.
+  example: []
+  syntax:
+    content: public int VertexFlags { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: No glow.
+    content.vb: Public ReadOnly Property VertexFlags As Integer
+  overload: Vintagestory.API.Common.AirBubbleParticles.VertexFlags*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+- uid: Vintagestory.API.Common.AirBubbleParticles.GravityEffect
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.GravityEffect
+  id: GravityEffect
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: GravityEffect
+  nameWithType: AirBubbleParticles.GravityEffect
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GravityEffect
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the gravity applied to the particle.
+  example: []
+  syntax:
+    content: public float GravityEffect { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: None.
+    content.vb: Public ReadOnly Property GravityEffect As Single
+  overload: Vintagestory.API.Common.AirBubbleParticles.GravityEffect*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.GravityEffect
+- uid: Vintagestory.API.Common.AirBubbleParticles.TerrainCollision
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.TerrainCollision
+  id: TerrainCollision
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: TerrainCollision
+  nameWithType: AirBubbleParticles.TerrainCollision
+  fullName: Vintagestory.API.Common.AirBubbleParticles.TerrainCollision
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Whether or not the bubble collides with the terrain.
+  example: []
+  syntax:
+    content: public bool TerrainCollision { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public ReadOnly Property TerrainCollision As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.TerrainCollision*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.TerrainCollision
+- uid: Vintagestory.API.Common.AirBubbleParticles.LifeLength
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.LifeLength
+  id: LifeLength
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: LifeLength
+  nameWithType: AirBubbleParticles.LifeLength
+  fullName: Vintagestory.API.Common.AirBubbleParticles.LifeLength
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the length of life for the particle.
+  example: []
+  syntax:
+    content: public float LifeLength { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: 0.25f
+    content.vb: Public Property LifeLength As Single
+  overload: Vintagestory.API.Common.AirBubbleParticles.LifeLength*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.LifeLength
+- uid: Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve
+  id: OpacityEvolve
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: OpacityEvolve
+  nameWithType: AirBubbleParticles.OpacityEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
+  example: []
+  syntax:
+    content: public EvolvingNatFloat OpacityEvolve { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+      description: ''
+    content.vb: Public ReadOnly Property OpacityEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.RedEvolve
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.RedEvolve
+  id: RedEvolve
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: RedEvolve
+  nameWithType: AirBubbleParticles.RedEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.RedEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
+  example: []
+  syntax:
+    content: public EvolvingNatFloat RedEvolve { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+      description: ''
+    content.vb: Public ReadOnly Property RedEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AirBubbleParticles.RedEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.GreenEvolve
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.GreenEvolve
+  id: GreenEvolve
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: GreenEvolve
+  nameWithType: AirBubbleParticles.GreenEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GreenEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
+  example: []
+  syntax:
+    content: public EvolvingNatFloat GreenEvolve { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+      description: ''
+    content.vb: Public ReadOnly Property GreenEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AirBubbleParticles.GreenEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.BlueEvolve
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.BlueEvolve
+  id: BlueEvolve
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: BlueEvolve
+  nameWithType: AirBubbleParticles.BlueEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.BlueEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
+  example: []
+  syntax:
+    content: public EvolvingNatFloat BlueEvolve { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+      description: ''
+    content.vb: Public ReadOnly Property BlueEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AirBubbleParticles.BlueEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange
+  id: RandomVelocityChange
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: RandomVelocityChange
+  nameWithType: AirBubbleParticles.RandomVelocityChange
+  fullName: Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public bool RandomVelocityChange { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RandomVelocityChange As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+- uid: Vintagestory.API.Common.AirBubbleParticles.Pos
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.Pos
+  id: Pos
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: Pos
+  nameWithType: AirBubbleParticles.Pos
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Pos
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Position in the world where the particle should spawn
+  example: []
+  syntax:
+    content: public Vec3d Pos { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+      description: ''
+    content.vb: Public ReadOnly Property Pos As Vec3d
+  overload: Vintagestory.API.Common.AirBubbleParticles.Pos*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+- uid: Vintagestory.API.Common.AirBubbleParticles.Range
+  commentId: F:Vintagestory.API.Common.AirBubbleParticles.Range
+  id: Range
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: Range
+  nameWithType: AirBubbleParticles.Range
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Range
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float Range
+    return:
+      type: System.Single
+    content.vb: Public Range As Single
+- uid: Vintagestory.API.Common.AirBubbleParticles.Quantity
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.Quantity
+  id: Quantity
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: Quantity
+  nameWithType: AirBubbleParticles.Quantity
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Quantity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: How many particles should spawn? For every particle spawned, all of belows methods are called once. E.g. if quantity is 10, GetPos(), GetVelocity(),... is called 10 times.
+  example: []
+  syntax:
+    content: public float Quantity { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public ReadOnly Property Quantity As Single
+  overload: Vintagestory.API.Common.AirBubbleParticles.Quantity*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Quantity
+- uid: Vintagestory.API.Common.AirBubbleParticles.quantity
+  commentId: F:Vintagestory.API.Common.AirBubbleParticles.quantity
+  id: quantity
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: quantity
+  nameWithType: AirBubbleParticles.quantity
+  fullName: Vintagestory.API.Common.AirBubbleParticles.quantity
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float quantity
+    return:
+      type: System.Single
+    content.vb: Public quantity As Single
+- uid: Vintagestory.API.Common.AirBubbleParticles.horVelocityMul
+  commentId: F:Vintagestory.API.Common.AirBubbleParticles.horVelocityMul
+  id: horVelocityMul
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: horVelocityMul
+  nameWithType: AirBubbleParticles.horVelocityMul
+  fullName: Vintagestory.API.Common.AirBubbleParticles.horVelocityMul
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float horVelocityMul
+    return:
+      type: System.Single
+    content.vb: Public horVelocityMul As Single
+- uid: Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  id: GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: GetRgbaColor(ICoreClientAPI)
+  nameWithType: AirBubbleParticles.GetRgbaColor(ICoreClientAPI)
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The particles Rgba Color
+  example: []
+  syntax:
+    content: public int GetRgbaColor(ICoreClientAPI capi)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Function GetRgbaColor(capi As ICoreClientAPI) As Integer
+  overload: Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+- uid: Vintagestory.API.Common.AirBubbleParticles.LightEmission
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.LightEmission
+  id: LightEmission
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: LightEmission
+  nameWithType: AirBubbleParticles.LightEmission
+  fullName: Vintagestory.API.Common.AirBubbleParticles.LightEmission
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If this particle emits light, this is its RGBA. Does not actually brighten the scene around it, but prevents incorrect lighting of particles when everything else around it is dark
+  example: []
+  syntax:
+    content: public int LightEmission { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property LightEmission As Integer
+  overload: Vintagestory.API.Common.AirBubbleParticles.LightEmission*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+- uid: Vintagestory.API.Common.AirBubbleParticles.Size
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.Size
+  id: Size
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: AirBubbleParticles.Size
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Size
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Size of the particle
+  example: []
+  syntax:
+    content: public float Size { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public ReadOnly Property Size As Single
+  overload: Vintagestory.API.Common.AirBubbleParticles.Size*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.Size
+- uid: Vintagestory.API.Common.AirBubbleParticles.SizeEvolve
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.SizeEvolve
+  id: SizeEvolve
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: SizeEvolve
+  nameWithType: AirBubbleParticles.SizeEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SizeEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Size change over time
+  example: []
+  syntax:
+    content: public EvolvingNatFloat SizeEvolve { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat
+      description: ''
+    content.vb: Public ReadOnly Property SizeEvolve As EvolvingNatFloat
+  overload: Vintagestory.API.Common.AirBubbleParticles.SizeEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.AirBubbleParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  id: GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: GetVelocity(Vec3d)
+  nameWithType: AirBubbleParticles.GetVelocity(Vec3d)
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: In what direction should the particle fly/fall
+  example: []
+  syntax:
+    content: public Vec3f GetVelocity(Vec3d pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+      description: ''
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+      description: ''
+    content.vb: Public Function GetVelocity(pos As Vec3d) As Vec3f
+  overload: Vintagestory.API.Common.AirBubbleParticles.GetVelocity*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+- uid: Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve
+  id: VelocityEvolve
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: VelocityEvolve
+  nameWithType: AirBubbleParticles.VelocityEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Velocity change over time (acts as a multiplier to the velocity)
+  example: []
+  syntax:
+    content: public EvolvingNatFloat[] VelocityEvolve { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.EvolvingNatFloat[]
+      description: ''
+    content.vb: Public ReadOnly Property VelocityEvolve As EvolvingNatFloat()
+  overload: Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.ParticleModel
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.ParticleModel
+  id: ParticleModel
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: ParticleModel
+  nameWithType: AirBubbleParticles.ParticleModel
+  fullName: Vintagestory.API.Common.AirBubbleParticles.ParticleModel
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The base model of the particle.
+  example: []
+  syntax:
+    content: public EnumParticleModel ParticleModel { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumParticleModel
+      description: It's a cube.
+    content.vb: Public ReadOnly Property ParticleModel As EnumParticleModel
+  overload: Vintagestory.API.Common.AirBubbleParticles.ParticleModel*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.ParticleModel
+- uid: Vintagestory.API.Common.AirBubbleParticles.SelfPropelled
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.SelfPropelled
+  id: SelfPropelled
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: SelfPropelled
+  nameWithType: AirBubbleParticles.SelfPropelled
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SelfPropelled
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: This particle is not self propelled.
+  example: []
+  syntax:
+    content: public bool SelfPropelled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public ReadOnly Property SelfPropelled As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.SelfPropelled*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.SelfPropelled
+- uid: Vintagestory.API.Common.AirBubbleParticles.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.AirBubbleParticles.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: AirBubbleParticles.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.AirBubbleParticles.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: This particle does not save to file.
+  example: []
+  syntax:
+    content: public void ToBytes(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ''
+    content.vb: Public Sub ToBytes(writer As BinaryWriter)
+  overload: Vintagestory.API.Common.AirBubbleParticles.ToBytes*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+- uid: Vintagestory.API.Common.AirBubbleParticles.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.AirBubbleParticles.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  id: FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: AirBubbleParticles.FromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.AirBubbleParticles.FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: This particle does not load from file.
+  example: []
+  syntax:
+    content: public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ''
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    content.vb: Public Sub FromBytes(reader As BinaryReader, resolver As IWorldAccessor)
+  overload: Vintagestory.API.Common.AirBubbleParticles.FromBytes*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+- uid: Vintagestory.API.Common.AirBubbleParticles.BeginParticle
+  commentId: M:Vintagestory.API.Common.AirBubbleParticles.BeginParticle
+  id: BeginParticle
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: BeginParticle()
+  nameWithType: AirBubbleParticles.BeginParticle()
+  fullName: Vintagestory.API.Common.AirBubbleParticles.BeginParticle()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called just before a new particle is being created. You can use this to produce e.g. alternating kinds of particles
+  example: []
+  syntax:
+    content: public void BeginParticle()
+    content.vb: Public Sub BeginParticle()
+  overload: Vintagestory.API.Common.AirBubbleParticles.BeginParticle*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+- uid: Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval
+  id: SecondarySpawnInterval
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: SecondarySpawnInterval
+  nameWithType: AirBubbleParticles.SecondarySpawnInterval
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Determines the interval of time that must elapse during it's parent particle's lifetime before this one will spawn.
+
+    This is only honored if this particle is defined as a secondary particle.
+  example: []
+  syntax:
+    content: public float SecondarySpawnInterval { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public ReadOnly Property SecondarySpawnInterval As Single
+  overload: Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.SecondarySpawnInterval
+- uid: Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap
+  id: DieOnRainHeightmap
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: DieOnRainHeightmap
+  nameWithType: AirBubbleParticles.DieOnRainHeightmap
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If true, particle dies if it falls below the rain height at its given location
+  example: []
+  syntax:
+    content: public bool DieOnRainHeightmap { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property DieOnRainHeightmap As Boolean
+  overload: Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+- uid: Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  commentId: M:Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  id: PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: PrepareForSecondarySpawn(ParticleBase)
+  nameWithType: AirBubbleParticles.PrepareForSecondarySpawn(ParticleBase)
+  fullName: Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Updates instance related state for secondary particles based on the given parent particle instance
+  example: []
+  syntax:
+    content: public void PrepareForSecondarySpawn(ParticleBase particleInstance)
+    parameters:
+    - id: particleInstance
+      type: Vintagestory.API.Common.ParticleBase
+      description: The parent IParticleInstance from which this secondary particle is being spawned
+    content.vb: Public Sub PrepareForSecondarySpawn(particleInstance As ParticleBase)
+  overload: Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+- uid: Vintagestory.API.Common.AirBubbleParticles.ParentVelocity
+  commentId: P:Vintagestory.API.Common.AirBubbleParticles.ParentVelocity
+  id: ParentVelocity
+  parent: Vintagestory.API.Common.AirBubbleParticles
+  langs:
+  - csharp
+  - vb
+  name: ParentVelocity
+  nameWithType: AirBubbleParticles.ParentVelocity
+  fullName: Vintagestory.API.Common.AirBubbleParticles.ParentVelocity
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public Vec3f ParentVelocity { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public ReadOnly Property ParentVelocity As Vec3f
+  overload: Vintagestory.API.Common.AirBubbleParticles.ParentVelocity*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider
+  commentId: T:Vintagestory.API.Common.IParticlePropertiesProvider
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html
+  name: IParticlePropertiesProvider
+  nameWithType: IParticlePropertiesProvider
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.AirBubbleParticles.Async*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.Async
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_Async
+  name: Async
+  nameWithType: AirBubbleParticles.Async
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Async
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Async
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Async
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Async
+  name: Async
+  nameWithType: IParticlePropertiesProvider.Async
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Async
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.Common.AirBubbleParticles.Init*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.Init
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_Init_Vintagestory_API_Common_ICoreAPI_
+  name: Init
+  nameWithType: AirBubbleParticles.Init
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Init
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Init_Vintagestory_API_Common_ICoreAPI_
+  name: Init(ICoreAPI)
+  nameWithType: IParticlePropertiesProvider.Init(ICoreAPI)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+    name: Init
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Init_Vintagestory_API_Common_ICoreAPI_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.Init(Vintagestory.API.Common.ICoreAPI)
+    name: Init
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Init_Vintagestory_API_Common_ICoreAPI_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_SecondaryParticles
+  name: SecondaryParticles
+  nameWithType: AirBubbleParticles.SecondaryParticles
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.SecondaryParticles
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.SecondaryParticles
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_SecondaryParticles
+  name: SecondaryParticles
+  nameWithType: IParticlePropertiesProvider.SecondaryParticles
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.SecondaryParticles
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider[]
+  isExternal: true
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html
+  name: IParticlePropertiesProvider[]
+  nameWithType: IParticlePropertiesProvider[]
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider[]
+  nameWithType.vb: IParticlePropertiesProvider()
+  fullName.vb: Vintagestory.API.Common.IParticlePropertiesProvider()
+  name.vb: IParticlePropertiesProvider()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider
+    name: IParticlePropertiesProvider
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider
+    name: IParticlePropertiesProvider
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AirBubbleParticles.DeathParticles*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.DeathParticles
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_DeathParticles
+  name: DeathParticles
+  nameWithType: AirBubbleParticles.DeathParticles
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DeathParticles
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.DeathParticles
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.DeathParticles
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_DeathParticles
+  name: DeathParticles
+  nameWithType: IParticlePropertiesProvider.DeathParticles
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.DeathParticles
+- uid: Vintagestory.API.Common.AirBubbleParticles.Bounciness*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.Bounciness
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_Bounciness
+  name: Bounciness
+  nameWithType: AirBubbleParticles.Bounciness
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Bounciness
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Bounciness
+  name: Bounciness
+  nameWithType: IParticlePropertiesProvider.Bounciness
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Bounciness
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.AirBubbleParticles.DieInAir*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.DieInAir
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_DieInAir
+  name: DieInAir
+  nameWithType: AirBubbleParticles.DieInAir
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DieInAir
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.DieInAir
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.DieInAir
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_DieInAir
+  name: DieInAir
+  nameWithType: IParticlePropertiesProvider.DieInAir
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.DieInAir
+- uid: Vintagestory.API.Common.AirBubbleParticles.DieInLiquid*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.DieInLiquid
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_DieInLiquid
+  name: DieInLiquid
+  nameWithType: AirBubbleParticles.DieInLiquid
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DieInLiquid
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.DieInLiquid
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.DieInLiquid
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_DieInLiquid
+  name: DieInLiquid
+  nameWithType: IParticlePropertiesProvider.DieInLiquid
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.DieInLiquid
+- uid: Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_SwimOnLiquid
+  name: SwimOnLiquid
+  nameWithType: AirBubbleParticles.SwimOnLiquid
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.SwimOnLiquid
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.SwimOnLiquid
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_SwimOnLiquid
+  name: SwimOnLiquid
+  nameWithType: IParticlePropertiesProvider.SwimOnLiquid
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.SwimOnLiquid
+- uid: Vintagestory.API.Common.AirBubbleParticles.VertexFlags*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.VertexFlags
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_VertexFlags
+  name: VertexFlags
+  nameWithType: AirBubbleParticles.VertexFlags
+  fullName: Vintagestory.API.Common.AirBubbleParticles.VertexFlags
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_VertexFlags
+  name: VertexFlags
+  nameWithType: IParticlePropertiesProvider.VertexFlags
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.VertexFlags
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.AirBubbleParticles.GravityEffect*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.GravityEffect
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_GravityEffect
+  name: GravityEffect
+  nameWithType: AirBubbleParticles.GravityEffect
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GravityEffect
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.GravityEffect
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.GravityEffect
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GravityEffect
+  name: GravityEffect
+  nameWithType: IParticlePropertiesProvider.GravityEffect
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.GravityEffect
+- uid: Vintagestory.API.Common.AirBubbleParticles.TerrainCollision*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.TerrainCollision
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_TerrainCollision
+  name: TerrainCollision
+  nameWithType: AirBubbleParticles.TerrainCollision
+  fullName: Vintagestory.API.Common.AirBubbleParticles.TerrainCollision
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.TerrainCollision
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.TerrainCollision
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_TerrainCollision
+  name: TerrainCollision
+  nameWithType: IParticlePropertiesProvider.TerrainCollision
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.TerrainCollision
+- uid: Vintagestory.API.Common.AirBubbleParticles.LifeLength*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.LifeLength
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_LifeLength
+  name: LifeLength
+  nameWithType: AirBubbleParticles.LifeLength
+  fullName: Vintagestory.API.Common.AirBubbleParticles.LifeLength
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.LifeLength
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.LifeLength
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_LifeLength
+  name: LifeLength
+  nameWithType: IParticlePropertiesProvider.LifeLength
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.LifeLength
+- uid: Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_OpacityEvolve
+  name: OpacityEvolve
+  nameWithType: AirBubbleParticles.OpacityEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_OpacityEvolve
+  name: OpacityEvolve
+  nameWithType: IParticlePropertiesProvider.OpacityEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.OpacityEvolve
+- uid: Vintagestory.API.MathTools.EvolvingNatFloat
+  commentId: T:Vintagestory.API.MathTools.EvolvingNatFloat
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  name: EvolvingNatFloat
+  nameWithType: EvolvingNatFloat
+  fullName: Vintagestory.API.MathTools.EvolvingNatFloat
+- uid: Vintagestory.API.Common.AirBubbleParticles.RedEvolve*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.RedEvolve
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_RedEvolve
+  name: RedEvolve
+  nameWithType: AirBubbleParticles.RedEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.RedEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_RedEvolve
+  name: RedEvolve
+  nameWithType: IParticlePropertiesProvider.RedEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.RedEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.GreenEvolve*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.GreenEvolve
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_GreenEvolve
+  name: GreenEvolve
+  nameWithType: AirBubbleParticles.GreenEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GreenEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GreenEvolve
+  name: GreenEvolve
+  nameWithType: IParticlePropertiesProvider.GreenEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.GreenEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.BlueEvolve*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.BlueEvolve
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_BlueEvolve
+  name: BlueEvolve
+  nameWithType: AirBubbleParticles.BlueEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.BlueEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BlueEvolve
+  name: BlueEvolve
+  nameWithType: IParticlePropertiesProvider.BlueEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.BlueEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_RandomVelocityChange
+  name: RandomVelocityChange
+  nameWithType: AirBubbleParticles.RandomVelocityChange
+  fullName: Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_RandomVelocityChange
+  name: RandomVelocityChange
+  nameWithType: IParticlePropertiesProvider.RandomVelocityChange
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.RandomVelocityChange
+- uid: Vintagestory.API.Common.AirBubbleParticles.Pos*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.Pos
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_Pos
+  name: Pos
+  nameWithType: AirBubbleParticles.Pos
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Pos
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Pos
+  name: Pos
+  nameWithType: IParticlePropertiesProvider.Pos
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Pos
+- uid: Vintagestory.API.Common.AirBubbleParticles.Quantity*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.Quantity
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_Quantity
+  name: Quantity
+  nameWithType: AirBubbleParticles.Quantity
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Quantity
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Quantity
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Quantity
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Quantity
+  name: Quantity
+  nameWithType: IParticlePropertiesProvider.Quantity
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Quantity
+- uid: Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  name: GetRgbaColor
+  nameWithType: AirBubbleParticles.GetRgbaColor
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  name: GetRgbaColor(ICoreClientAPI)
+  nameWithType: IParticlePropertiesProvider.GetRgbaColor(ICoreClientAPI)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+    name: GetRgbaColor
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
+    name: GetRgbaColor
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: )
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.AirBubbleParticles.LightEmission*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.LightEmission
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_LightEmission
+  name: LightEmission
+  nameWithType: AirBubbleParticles.LightEmission
+  fullName: Vintagestory.API.Common.AirBubbleParticles.LightEmission
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_LightEmission
+  name: LightEmission
+  nameWithType: IParticlePropertiesProvider.LightEmission
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+- uid: Vintagestory.API.Common.AirBubbleParticles.Size*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.Size
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_Size
+  name: Size
+  nameWithType: AirBubbleParticles.Size
+  fullName: Vintagestory.API.Common.AirBubbleParticles.Size
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.Size
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.Size
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_Size
+  name: Size
+  nameWithType: IParticlePropertiesProvider.Size
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.Size
+- uid: Vintagestory.API.Common.AirBubbleParticles.SizeEvolve*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.SizeEvolve
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_SizeEvolve
+  name: SizeEvolve
+  nameWithType: AirBubbleParticles.SizeEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SizeEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_SizeEvolve
+  name: SizeEvolve
+  nameWithType: IParticlePropertiesProvider.SizeEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.SizeEvolve
+- uid: Vintagestory.API.Common.AirBubbleParticles.GetVelocity*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.GetVelocity
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  name: GetVelocity
+  nameWithType: AirBubbleParticles.GetVelocity
+  fullName: Vintagestory.API.Common.AirBubbleParticles.GetVelocity
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  name: GetVelocity(Vec3d)
+  nameWithType: IParticlePropertiesProvider.GetVelocity(Vec3d)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+    name: GetVelocity
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.GetVelocity(Vintagestory.API.MathTools.Vec3d)
+    name: GetVelocity
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_GetVelocity_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+- uid: Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_VelocityEvolve
+  name: VelocityEvolve
+  nameWithType: AirBubbleParticles.VelocityEvolve
+  fullName: Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_VelocityEvolve
+  name: VelocityEvolve
+  nameWithType: IParticlePropertiesProvider.VelocityEvolve
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.VelocityEvolve
+- uid: Vintagestory.API.MathTools.EvolvingNatFloat[]
+  isExternal: true
+  href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  name: EvolvingNatFloat[]
+  nameWithType: EvolvingNatFloat[]
+  fullName: Vintagestory.API.MathTools.EvolvingNatFloat[]
+  nameWithType.vb: EvolvingNatFloat()
+  fullName.vb: Vintagestory.API.MathTools.EvolvingNatFloat()
+  name.vb: EvolvingNatFloat()
+  spec.csharp:
+  - uid: Vintagestory.API.MathTools.EvolvingNatFloat
+    name: EvolvingNatFloat
+    href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.MathTools.EvolvingNatFloat
+    name: EvolvingNatFloat
+    href: Vintagestory.API.MathTools.EvolvingNatFloat.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AirBubbleParticles.ParticleModel*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.ParticleModel
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_ParticleModel
+  name: ParticleModel
+  nameWithType: AirBubbleParticles.ParticleModel
+  fullName: Vintagestory.API.Common.AirBubbleParticles.ParticleModel
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.ParticleModel
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.ParticleModel
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ParticleModel
+  name: ParticleModel
+  nameWithType: IParticlePropertiesProvider.ParticleModel
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.ParticleModel
+- uid: Vintagestory.API.Common.EnumParticleModel
+  commentId: T:Vintagestory.API.Common.EnumParticleModel
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumParticleModel.html
+  name: EnumParticleModel
+  nameWithType: EnumParticleModel
+  fullName: Vintagestory.API.Common.EnumParticleModel
+- uid: Vintagestory.API.Common.AirBubbleParticles.SelfPropelled*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.SelfPropelled
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_SelfPropelled
+  name: SelfPropelled
+  nameWithType: AirBubbleParticles.SelfPropelled
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SelfPropelled
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.SelfPropelled
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.SelfPropelled
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_SelfPropelled
+  name: SelfPropelled
+  nameWithType: IParticlePropertiesProvider.SelfPropelled
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.SelfPropelled
+- uid: Vintagestory.API.Common.AirBubbleParticles.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.ToBytes
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: AirBubbleParticles.ToBytes
+  fullName: Vintagestory.API.Common.AirBubbleParticles.ToBytes
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  isExternal: true
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes(BinaryWriter)
+  nameWithType: IParticlePropertiesProvider.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Common.AirBubbleParticles.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.FromBytes
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: FromBytes
+  nameWithType: AirBubbleParticles.FromBytes
+  fullName: Vintagestory.API.Common.AirBubbleParticles.FromBytes
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  isExternal: true
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: FromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: IParticlePropertiesProvider.FromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+    name: FromBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+    name: FromBytes
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Common.AirBubbleParticles.BeginParticle*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.BeginParticle
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_BeginParticle
+  name: BeginParticle
+  nameWithType: AirBubbleParticles.BeginParticle
+  fullName: Vintagestory.API.Common.AirBubbleParticles.BeginParticle
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BeginParticle
+  name: BeginParticle()
+  nameWithType: IParticlePropertiesProvider.BeginParticle()
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+    name: BeginParticle
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BeginParticle
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.BeginParticle
+    name: BeginParticle
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_BeginParticle
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_SecondarySpawnInterval
+  name: SecondarySpawnInterval
+  nameWithType: AirBubbleParticles.SecondarySpawnInterval
+  fullName: Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.SecondarySpawnInterval
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.SecondarySpawnInterval
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_SecondarySpawnInterval
+  name: SecondarySpawnInterval
+  nameWithType: IParticlePropertiesProvider.SecondarySpawnInterval
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.SecondarySpawnInterval
+- uid: Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_DieOnRainHeightmap
+  name: DieOnRainHeightmap
+  nameWithType: AirBubbleParticles.DieOnRainHeightmap
+  fullName: Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_DieOnRainHeightmap
+  name: DieOnRainHeightmap
+  nameWithType: IParticlePropertiesProvider.DieOnRainHeightmap
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+- uid: Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  name: PrepareForSecondarySpawn
+  nameWithType: AirBubbleParticles.PrepareForSecondarySpawn
+  fullName: Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  commentId: M:Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  name: PrepareForSecondarySpawn(ParticleBase)
+  nameWithType: IParticlePropertiesProvider.PrepareForSecondarySpawn(ParticleBase)
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+    name: PrepareForSecondarySpawn
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  - name: (
+  - uid: Vintagestory.API.Common.ParticleBase
+    name: ParticleBase
+    href: Vintagestory.API.Common.ParticleBase.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IParticlePropertiesProvider.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)
+    name: PrepareForSecondarySpawn
+    href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_
+  - name: (
+  - uid: Vintagestory.API.Common.ParticleBase
+    name: ParticleBase
+    href: Vintagestory.API.Common.ParticleBase.html
+  - name: )
+- uid: Vintagestory.API.Common.ParticleBase
+  commentId: T:Vintagestory.API.Common.ParticleBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ParticleBase.html
+  name: ParticleBase
+  nameWithType: ParticleBase
+  fullName: Vintagestory.API.Common.ParticleBase
+- uid: Vintagestory.API.Common.AirBubbleParticles.ParentVelocity*
+  commentId: Overload:Vintagestory.API.Common.AirBubbleParticles.ParentVelocity
+  href: Vintagestory.API.Common.AirBubbleParticles.html#Vintagestory_API_Common_AirBubbleParticles_ParentVelocity
+  name: ParentVelocity
+  nameWithType: AirBubbleParticles.ParentVelocity
+  fullName: Vintagestory.API.Common.AirBubbleParticles.ParentVelocity
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_ParentVelocity
+  name: ParentVelocity
+  nameWithType: IParticlePropertiesProvider.ParentVelocity
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.ParentVelocity

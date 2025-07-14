@@ -1,0 +1,508 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IMusicEngine
+  commentId: T:Vintagestory.API.Client.IMusicEngine
+  id: IMusicEngine
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IMusicEngine.CurrentTrack
+  - Vintagestory.API.Client.IMusicEngine.LastPlayedTrack
+  - Vintagestory.API.Client.IMusicEngine.LoadTrack(Vintagestory.API.Common.AssetLocation,System.Action{Vintagestory.API.Client.ILoadedSound},System.Single,System.Single)
+  - Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack
+  - Vintagestory.API.Client.IMusicEngine.StopTrack(Vintagestory.API.Client.IMusicTrack)
+  langs:
+  - csharp
+  - vb
+  name: IMusicEngine
+  nameWithType: IMusicEngine
+  fullName: Vintagestory.API.Client.IMusicEngine
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public interface IMusicEngine
+    content.vb: Public Interface IMusicEngine
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.IMusicEngine.LoadTrack(Vintagestory.API.Common.AssetLocation,System.Action{Vintagestory.API.Client.ILoadedSound},System.Single,System.Single)
+  commentId: M:Vintagestory.API.Client.IMusicEngine.LoadTrack(Vintagestory.API.Common.AssetLocation,System.Action{Vintagestory.API.Client.ILoadedSound},System.Single,System.Single)
+  id: LoadTrack(Vintagestory.API.Common.AssetLocation,System.Action{Vintagestory.API.Client.ILoadedSound},System.Single,System.Single)
+  parent: Vintagestory.API.Client.IMusicEngine
+  langs:
+  - csharp
+  - vb
+  name: LoadTrack(AssetLocation, Action<ILoadedSound>, float, float)
+  nameWithType: IMusicEngine.LoadTrack(AssetLocation, Action<ILoadedSound>, float, float)
+  fullName: Vintagestory.API.Client.IMusicEngine.LoadTrack(Vintagestory.API.Common.AssetLocation, System.Action<Vintagestory.API.Client.ILoadedSound>, float, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Loads the sound into memory and plays the track. Slow call. Encapsulate it into ThreadPool.QueueUserWorkItem() to not block the main thread
+  example: []
+  syntax:
+    content: void LoadTrack(AssetLocation location, Action<ILoadedSound> onLoaded, float volume = 1, float pitch = 1)
+    parameters:
+    - id: location
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    - id: onLoaded
+      type: System.Action{Vintagestory.API.Client.ILoadedSound}
+      description: ''
+    - id: volume
+      type: System.Single
+      description: ''
+    - id: pitch
+      type: System.Single
+      description: ''
+    content.vb: Sub LoadTrack(location As AssetLocation, onLoaded As Action(Of ILoadedSound), volume As Single = 1, pitch As Single = 1)
+  overload: Vintagestory.API.Client.IMusicEngine.LoadTrack*
+  nameWithType.vb: IMusicEngine.LoadTrack(AssetLocation, Action(Of ILoadedSound), Single, Single)
+  fullName.vb: Vintagestory.API.Client.IMusicEngine.LoadTrack(Vintagestory.API.Common.AssetLocation, System.Action(Of Vintagestory.API.Client.ILoadedSound), Single, Single)
+  name.vb: LoadTrack(AssetLocation, Action(Of ILoadedSound), Single, Single)
+- uid: Vintagestory.API.Client.IMusicEngine.CurrentTrack
+  commentId: P:Vintagestory.API.Client.IMusicEngine.CurrentTrack
+  id: CurrentTrack
+  parent: Vintagestory.API.Client.IMusicEngine
+  langs:
+  - csharp
+  - vb
+  name: CurrentTrack
+  nameWithType: IMusicEngine.CurrentTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.CurrentTrack
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The currently playing track
+  example: []
+  syntax:
+    content: IMusicTrack CurrentTrack { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.IMusicTrack
+    content.vb: ReadOnly Property CurrentTrack As IMusicTrack
+  overload: Vintagestory.API.Client.IMusicEngine.CurrentTrack*
+- uid: Vintagestory.API.Client.IMusicEngine.LastPlayedTrack
+  commentId: P:Vintagestory.API.Client.IMusicEngine.LastPlayedTrack
+  id: LastPlayedTrack
+  parent: Vintagestory.API.Client.IMusicEngine
+  langs:
+  - csharp
+  - vb
+  name: LastPlayedTrack
+  nameWithType: IMusicEngine.LastPlayedTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.LastPlayedTrack
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The track that played before
+  example: []
+  syntax:
+    content: IMusicTrack LastPlayedTrack { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.IMusicTrack
+    content.vb: ReadOnly Property LastPlayedTrack As IMusicTrack
+  overload: Vintagestory.API.Client.IMusicEngine.LastPlayedTrack*
+- uid: Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack
+  commentId: P:Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack
+  id: MillisecondsSinceLastTrack
+  parent: Vintagestory.API.Client.IMusicEngine
+  langs:
+  - csharp
+  - vb
+  name: MillisecondsSinceLastTrack
+  nameWithType: IMusicEngine.MillisecondsSinceLastTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The total passed milliseconds since game start at the point where the last track stopped playing
+  example: []
+  syntax:
+    content: long MillisecondsSinceLastTrack { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: ReadOnly Property MillisecondsSinceLastTrack As Long
+  overload: Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack*
+- uid: Vintagestory.API.Client.IMusicEngine.StopTrack(Vintagestory.API.Client.IMusicTrack)
+  commentId: M:Vintagestory.API.Client.IMusicEngine.StopTrack(Vintagestory.API.Client.IMusicTrack)
+  id: StopTrack(Vintagestory.API.Client.IMusicTrack)
+  parent: Vintagestory.API.Client.IMusicEngine
+  langs:
+  - csharp
+  - vb
+  name: StopTrack(IMusicTrack)
+  nameWithType: IMusicEngine.StopTrack(IMusicTrack)
+  fullName: Vintagestory.API.Client.IMusicEngine.StopTrack(Vintagestory.API.Client.IMusicTrack)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void StopTrack(IMusicTrack musicTrack)
+    parameters:
+    - id: musicTrack
+      type: Vintagestory.API.Client.IMusicTrack
+    content.vb: Sub StopTrack(musicTrack As IMusicTrack)
+  overload: Vintagestory.API.Client.IMusicEngine.StopTrack*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.IMusicEngine.LoadTrack*
+  commentId: Overload:Vintagestory.API.Client.IMusicEngine.LoadTrack
+  href: Vintagestory.API.Client.IMusicEngine.html#Vintagestory_API_Client_IMusicEngine_LoadTrack_Vintagestory_API_Common_AssetLocation_System_Action_Vintagestory_API_Client_ILoadedSound__System_Single_System_Single_
+  name: LoadTrack
+  nameWithType: IMusicEngine.LoadTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.LoadTrack
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: System.Action{Vintagestory.API.Client.ILoadedSound}
+  commentId: T:System.Action{Vintagestory.API.Client.ILoadedSound}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ILoadedSound>
+  nameWithType: Action<ILoadedSound>
+  fullName: System.Action<Vintagestory.API.Client.ILoadedSound>
+  nameWithType.vb: Action(Of ILoadedSound)
+  fullName.vb: System.Action(Of Vintagestory.API.Client.ILoadedSound)
+  name.vb: Action(Of ILoadedSound)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Client.ILoadedSound
+    name: ILoadedSound
+    href: Vintagestory.API.Client.ILoadedSound.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Client.ILoadedSound
+    name: ILoadedSound
+    href: Vintagestory.API.Client.ILoadedSound.html
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IMusicEngine.CurrentTrack*
+  commentId: Overload:Vintagestory.API.Client.IMusicEngine.CurrentTrack
+  href: Vintagestory.API.Client.IMusicEngine.html#Vintagestory_API_Client_IMusicEngine_CurrentTrack
+  name: CurrentTrack
+  nameWithType: IMusicEngine.CurrentTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.CurrentTrack
+- uid: Vintagestory.API.Client.IMusicTrack
+  commentId: T:Vintagestory.API.Client.IMusicTrack
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IMusicTrack.html
+  name: IMusicTrack
+  nameWithType: IMusicTrack
+  fullName: Vintagestory.API.Client.IMusicTrack
+- uid: Vintagestory.API.Client.IMusicEngine.LastPlayedTrack*
+  commentId: Overload:Vintagestory.API.Client.IMusicEngine.LastPlayedTrack
+  href: Vintagestory.API.Client.IMusicEngine.html#Vintagestory_API_Client_IMusicEngine_LastPlayedTrack
+  name: LastPlayedTrack
+  nameWithType: IMusicEngine.LastPlayedTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.LastPlayedTrack
+- uid: Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack*
+  commentId: Overload:Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack
+  href: Vintagestory.API.Client.IMusicEngine.html#Vintagestory_API_Client_IMusicEngine_MillisecondsSinceLastTrack
+  name: MillisecondsSinceLastTrack
+  nameWithType: IMusicEngine.MillisecondsSinceLastTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.MillisecondsSinceLastTrack
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Vintagestory.API.Client.IMusicEngine.StopTrack*
+  commentId: Overload:Vintagestory.API.Client.IMusicEngine.StopTrack
+  href: Vintagestory.API.Client.IMusicEngine.html#Vintagestory_API_Client_IMusicEngine_StopTrack_Vintagestory_API_Client_IMusicTrack_
+  name: StopTrack
+  nameWithType: IMusicEngine.StopTrack
+  fullName: Vintagestory.API.Client.IMusicEngine.StopTrack

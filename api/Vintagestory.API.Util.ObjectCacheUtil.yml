@@ -1,0 +1,530 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Util.ObjectCacheUtil
+  commentId: T:Vintagestory.API.Util.ObjectCacheUtil
+  id: ObjectCacheUtil
+  parent: Vintagestory.API.Util
+  children:
+  - Vintagestory.API.Util.ObjectCacheUtil.Delete(Vintagestory.API.Common.ICoreAPI,System.String)
+  - Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate``1(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Util.CreateCachableObjectDelegate{``0})
+  - Vintagestory.API.Util.ObjectCacheUtil.TryGet``1(Vintagestory.API.Common.ICoreAPI,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ObjectCacheUtil
+  nameWithType: ObjectCacheUtil
+  fullName: Vintagestory.API.Util.ObjectCacheUtil
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static class ObjectCacheUtil
+    content.vb: Public Module ObjectCacheUtil
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Util.ObjectCacheUtil.TryGet``1(Vintagestory.API.Common.ICoreAPI,System.String)
+  commentId: M:Vintagestory.API.Util.ObjectCacheUtil.TryGet``1(Vintagestory.API.Common.ICoreAPI,System.String)
+  id: TryGet``1(Vintagestory.API.Common.ICoreAPI,System.String)
+  parent: Vintagestory.API.Util.ObjectCacheUtil
+  langs:
+  - csharp
+  - vb
+  name: TryGet<T>(ICoreAPI, string)
+  nameWithType: ObjectCacheUtil.TryGet<T>(ICoreAPI, string)
+  fullName: Vintagestory.API.Util.ObjectCacheUtil.TryGet<T>(Vintagestory.API.Common.ICoreAPI, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static T TryGet<T>(ICoreAPI api, string key)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    - id: key
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function TryGet(Of T)(api As ICoreAPI, key As String) As T
+  overload: Vintagestory.API.Util.ObjectCacheUtil.TryGet*
+  nameWithType.vb: ObjectCacheUtil.TryGet(Of T)(ICoreAPI, String)
+  fullName.vb: Vintagestory.API.Util.ObjectCacheUtil.TryGet(Of T)(Vintagestory.API.Common.ICoreAPI, String)
+  name.vb: TryGet(Of T)(ICoreAPI, String)
+- uid: Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate``1(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Util.CreateCachableObjectDelegate{``0})
+  commentId: M:Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate``1(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Util.CreateCachableObjectDelegate{``0})
+  id: GetOrCreate``1(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Util.CreateCachableObjectDelegate{``0})
+  parent: Vintagestory.API.Util.ObjectCacheUtil
+  langs:
+  - csharp
+  - vb
+  name: GetOrCreate<T>(ICoreAPI, string, CreateCachableObjectDelegate<T>)
+  nameWithType: ObjectCacheUtil.GetOrCreate<T>(ICoreAPI, string, CreateCachableObjectDelegate<T>)
+  fullName: Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate<T>(Vintagestory.API.Common.ICoreAPI, string, Vintagestory.API.Util.CreateCachableObjectDelegate<T>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static T GetOrCreate<T>(ICoreAPI api, string key, CreateCachableObjectDelegate<T> onRequireCreate)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    - id: key
+      type: System.String
+    - id: onRequireCreate
+      type: Vintagestory.API.Util.CreateCachableObjectDelegate{{T}}
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Shared Function GetOrCreate(Of T)(api As ICoreAPI, key As String, onRequireCreate As CreateCachableObjectDelegate(Of T)) As T
+  overload: Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate*
+  nameWithType.vb: ObjectCacheUtil.GetOrCreate(Of T)(ICoreAPI, String, CreateCachableObjectDelegate(Of T))
+  fullName.vb: Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate(Of T)(Vintagestory.API.Common.ICoreAPI, String, Vintagestory.API.Util.CreateCachableObjectDelegate(Of T))
+  name.vb: GetOrCreate(Of T)(ICoreAPI, String, CreateCachableObjectDelegate(Of T))
+- uid: Vintagestory.API.Util.ObjectCacheUtil.Delete(Vintagestory.API.Common.ICoreAPI,System.String)
+  commentId: M:Vintagestory.API.Util.ObjectCacheUtil.Delete(Vintagestory.API.Common.ICoreAPI,System.String)
+  id: Delete(Vintagestory.API.Common.ICoreAPI,System.String)
+  parent: Vintagestory.API.Util.ObjectCacheUtil
+  langs:
+  - csharp
+  - vb
+  name: Delete(ICoreAPI, string)
+  nameWithType: ObjectCacheUtil.Delete(ICoreAPI, string)
+  fullName: Vintagestory.API.Util.ObjectCacheUtil.Delete(Vintagestory.API.Common.ICoreAPI, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static bool Delete(ICoreAPI api, string key)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    - id: key
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function Delete(api As ICoreAPI, key As String) As Boolean
+  overload: Vintagestory.API.Util.ObjectCacheUtil.Delete*
+  nameWithType.vb: ObjectCacheUtil.Delete(ICoreAPI, String)
+  fullName.vb: Vintagestory.API.Util.ObjectCacheUtil.Delete(Vintagestory.API.Common.ICoreAPI, String)
+  name.vb: Delete(ICoreAPI, String)
+references:
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectCacheUtil.TryGet*
+  commentId: Overload:Vintagestory.API.Util.ObjectCacheUtil.TryGet
+  href: Vintagestory.API.Util.ObjectCacheUtil.html#Vintagestory_API_Util_ObjectCacheUtil_TryGet__1_Vintagestory_API_Common_ICoreAPI_System_String_
+  name: TryGet
+  nameWithType: ObjectCacheUtil.TryGet
+  fullName: Vintagestory.API.Util.ObjectCacheUtil.TryGet
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate*
+  commentId: Overload:Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate
+  href: Vintagestory.API.Util.ObjectCacheUtil.html#Vintagestory_API_Util_ObjectCacheUtil_GetOrCreate__1_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Util_CreateCachableObjectDelegate___0__
+  name: GetOrCreate
+  nameWithType: ObjectCacheUtil.GetOrCreate
+  fullName: Vintagestory.API.Util.ObjectCacheUtil.GetOrCreate
+- uid: Vintagestory.API.Util.CreateCachableObjectDelegate{{T}}
+  commentId: T:Vintagestory.API.Util.CreateCachableObjectDelegate{``0}
+  parent: Vintagestory.API.Util
+  definition: Vintagestory.API.Util.CreateCachableObjectDelegate`1
+  href: Vintagestory.API.Util.CreateCachableObjectDelegate-1.html
+  name: CreateCachableObjectDelegate<T>
+  nameWithType: CreateCachableObjectDelegate<T>
+  fullName: Vintagestory.API.Util.CreateCachableObjectDelegate<T>
+  nameWithType.vb: CreateCachableObjectDelegate(Of T)
+  fullName.vb: Vintagestory.API.Util.CreateCachableObjectDelegate(Of T)
+  name.vb: CreateCachableObjectDelegate(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.CreateCachableObjectDelegate`1
+    name: CreateCachableObjectDelegate
+    href: Vintagestory.API.Util.CreateCachableObjectDelegate-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Util.CreateCachableObjectDelegate`1
+    name: CreateCachableObjectDelegate
+    href: Vintagestory.API.Util.CreateCachableObjectDelegate-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Util.CreateCachableObjectDelegate`1
+  commentId: T:Vintagestory.API.Util.CreateCachableObjectDelegate`1
+  href: Vintagestory.API.Util.CreateCachableObjectDelegate-1.html
+  name: CreateCachableObjectDelegate<T>
+  nameWithType: CreateCachableObjectDelegate<T>
+  fullName: Vintagestory.API.Util.CreateCachableObjectDelegate<T>
+  nameWithType.vb: CreateCachableObjectDelegate(Of T)
+  fullName.vb: Vintagestory.API.Util.CreateCachableObjectDelegate(Of T)
+  name.vb: CreateCachableObjectDelegate(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.CreateCachableObjectDelegate`1
+    name: CreateCachableObjectDelegate
+    href: Vintagestory.API.Util.CreateCachableObjectDelegate-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Util.CreateCachableObjectDelegate`1
+    name: CreateCachableObjectDelegate
+    href: Vintagestory.API.Util.CreateCachableObjectDelegate-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Util.ObjectCacheUtil.Delete*
+  commentId: Overload:Vintagestory.API.Util.ObjectCacheUtil.Delete
+  href: Vintagestory.API.Util.ObjectCacheUtil.html#Vintagestory_API_Util_ObjectCacheUtil_Delete_Vintagestory_API_Common_ICoreAPI_System_String_
+  name: Delete
+  nameWithType: ObjectCacheUtil.Delete
+  fullName: Vintagestory.API.Util.ObjectCacheUtil.Delete
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

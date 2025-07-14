@@ -1,0 +1,1156 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.IServerConfig
+  commentId: T:Vintagestory.API.Server.IServerConfig
+  id: IServerConfig
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.IServerConfig.AllowFallingBlocks
+  - Vintagestory.API.Server.IServerConfig.AllowFireSpread
+  - Vintagestory.API.Server.IServerConfig.AllowPvP
+  - Vintagestory.API.Server.IServerConfig.AntiAbuse
+  - Vintagestory.API.Server.IServerConfig.BlockTickChunkRange
+  - Vintagestory.API.Server.IServerConfig.BlockTickInterval
+  - Vintagestory.API.Server.IServerConfig.DefaultRoleCode
+  - Vintagestory.API.Server.IServerConfig.DefaultSpawn
+  - Vintagestory.API.Server.IServerConfig.HostedMode
+  - Vintagestory.API.Server.IServerConfig.HostedModeAllowMods
+  - Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  - Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  - Vintagestory.API.Server.IServerConfig.MaxChunkRadius
+  - Vintagestory.API.Server.IServerConfig.MaxClients
+  - Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks
+  - Vintagestory.API.Server.IServerConfig.Password
+  - Vintagestory.API.Server.IServerConfig.Port
+  - Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk
+  - Vintagestory.API.Server.IServerConfig.Roles
+  - Vintagestory.API.Server.IServerConfig.ServerName
+  - Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
+  - Vintagestory.API.Server.IServerConfig.TickTime
+  - Vintagestory.API.Server.IServerConfig.WelcomeMessage
+  - Vintagestory.API.Server.IServerConfig.WhitelistMode
+  langs:
+  - csharp
+  - vb
+  name: IServerConfig
+  nameWithType: IServerConfig
+  fullName: Vintagestory.API.Server.IServerConfig
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The servers configuration
+  example: []
+  syntax:
+    content: public interface IServerConfig
+    content.vb: Public Interface IServerConfig
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Server.IServerConfig.Port
+  commentId: P:Vintagestory.API.Server.IServerConfig.Port
+  id: Port
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: Port
+  nameWithType: IServerConfig.Port
+  fullName: Vintagestory.API.Server.IServerConfig.Port
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The current network port
+  example: []
+  syntax:
+    content: int Port { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Port As Integer
+  overload: Vintagestory.API.Server.IServerConfig.Port*
+- uid: Vintagestory.API.Server.IServerConfig.ServerName
+  commentId: P:Vintagestory.API.Server.IServerConfig.ServerName
+  id: ServerName
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: ServerName
+  nameWithType: IServerConfig.ServerName
+  fullName: Vintagestory.API.Server.IServerConfig.ServerName
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Name of the server, currently not used
+  example: []
+  syntax:
+    content: string ServerName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property ServerName As String
+  overload: Vintagestory.API.Server.IServerConfig.ServerName*
+- uid: Vintagestory.API.Server.IServerConfig.WelcomeMessage
+  commentId: P:Vintagestory.API.Server.IServerConfig.WelcomeMessage
+  id: WelcomeMessage
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: WelcomeMessage
+  nameWithType: IServerConfig.WelcomeMessage
+  fullName: Vintagestory.API.Server.IServerConfig.WelcomeMessage
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Displays when the user logs in.
+  example: []
+  syntax:
+    content: string WelcomeMessage { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property WelcomeMessage As String
+  overload: Vintagestory.API.Server.IServerConfig.WelcomeMessage*
+- uid: Vintagestory.API.Server.IServerConfig.MaxClients
+  commentId: P:Vintagestory.API.Server.IServerConfig.MaxClients
+  id: MaxClients
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxClients
+  nameWithType: IServerConfig.MaxClients
+  fullName: Vintagestory.API.Server.IServerConfig.MaxClients
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Max amount of concurrent players, any beyond will be denied to join
+  example: []
+  syntax:
+    content: int MaxClients { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property MaxClients As Integer
+  overload: Vintagestory.API.Server.IServerConfig.MaxClients*
+- uid: Vintagestory.API.Server.IServerConfig.Password
+  commentId: P:Vintagestory.API.Server.IServerConfig.Password
+  id: Password
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: Password
+  nameWithType: IServerConfig.Password
+  fullName: Vintagestory.API.Server.IServerConfig.Password
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Password the player has to supply to join
+  example: []
+  syntax:
+    content: string Password { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property Password As String
+  overload: Vintagestory.API.Server.IServerConfig.Password*
+- uid: Vintagestory.API.Server.IServerConfig.MaxChunkRadius
+  commentId: P:Vintagestory.API.Server.IServerConfig.MaxChunkRadius
+  id: MaxChunkRadius
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxChunkRadius
+  nameWithType: IServerConfig.MaxChunkRadius
+  fullName: Vintagestory.API.Server.IServerConfig.MaxChunkRadius
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: How many chunks in each direction should be loaded at most for each player (1 chunk = 32 blocks)
+  example: []
+  syntax:
+    content: int MaxChunkRadius { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property MaxChunkRadius As Integer
+  overload: Vintagestory.API.Server.IServerConfig.MaxChunkRadius*
+- uid: Vintagestory.API.Server.IServerConfig.TickTime
+  commentId: P:Vintagestory.API.Server.IServerConfig.TickTime
+  id: TickTime
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: TickTime
+  nameWithType: IServerConfig.TickTime
+  fullName: Vintagestory.API.Server.IServerConfig.TickTime
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Of often the server should tick in milliesconds
+  example: []
+  syntax:
+    content: float TickTime { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property TickTime As Single
+  overload: Vintagestory.API.Server.IServerConfig.TickTime*
+- uid: Vintagestory.API.Server.IServerConfig.BlockTickChunkRange
+  commentId: P:Vintagestory.API.Server.IServerConfig.BlockTickChunkRange
+  id: BlockTickChunkRange
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: BlockTickChunkRange
+  nameWithType: IServerConfig.BlockTickChunkRange
+  fullName: Vintagestory.API.Server.IServerConfig.BlockTickChunkRange
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Horizontal distance in chunks from each player to tick blocks randomly
+  example: []
+  syntax:
+    content: int BlockTickChunkRange { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property BlockTickChunkRange As Integer
+  overload: Vintagestory.API.Server.IServerConfig.BlockTickChunkRange*
+- uid: Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks
+  commentId: P:Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks
+  id: MaxMainThreadBlockTicks
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: MaxMainThreadBlockTicks
+  nameWithType: IServerConfig.MaxMainThreadBlockTicks
+  fullName: Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The maximum number of blocks to tick per server tick
+  example: []
+  syntax:
+    content: int MaxMainThreadBlockTicks { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property MaxMainThreadBlockTicks As Integer
+  overload: Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks*
+- uid: Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk
+  commentId: P:Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk
+  id: RandomBlockTicksPerChunk
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: RandomBlockTicksPerChunk
+  nameWithType: IServerConfig.RandomBlockTicksPerChunk
+  fullName: Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The number of blocks to sample for ticks each pass within a single chunk
+  example: []
+  syntax:
+    content: int RandomBlockTicksPerChunk { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property RandomBlockTicksPerChunk As Integer
+  overload: Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk*
+- uid: Vintagestory.API.Server.IServerConfig.BlockTickInterval
+  commentId: P:Vintagestory.API.Server.IServerConfig.BlockTickInterval
+  id: BlockTickInterval
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: BlockTickInterval
+  nameWithType: IServerConfig.BlockTickInterval
+  fullName: Vintagestory.API.Server.IServerConfig.BlockTickInterval
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The interval of time in ms between each execution of the random tick system
+  example: []
+  syntax:
+    content: int BlockTickInterval { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property BlockTickInterval As Integer
+  overload: Vintagestory.API.Server.IServerConfig.BlockTickInterval*
+- uid: Vintagestory.API.Server.IServerConfig.Roles
+  commentId: P:Vintagestory.API.Server.IServerConfig.Roles
+  id: Roles
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: Roles
+  nameWithType: IServerConfig.Roles
+  fullName: Vintagestory.API.Server.IServerConfig.Roles
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: List of player roles
+  example: []
+  syntax:
+    content: List<IPlayerRole> Roles { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.IPlayerRole}
+    content.vb: ReadOnly Property Roles As List(Of IPlayerRole)
+  overload: Vintagestory.API.Server.IServerConfig.Roles*
+- uid: Vintagestory.API.Server.IServerConfig.DefaultRoleCode
+  commentId: P:Vintagestory.API.Server.IServerConfig.DefaultRoleCode
+  id: DefaultRoleCode
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: DefaultRoleCode
+  nameWithType: IServerConfig.DefaultRoleCode
+  fullName: Vintagestory.API.Server.IServerConfig.DefaultRoleCode
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Default player role
+  example: []
+  syntax:
+    content: string DefaultRoleCode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property DefaultRoleCode As String
+  overload: Vintagestory.API.Server.IServerConfig.DefaultRoleCode*
+- uid: Vintagestory.API.Server.IServerConfig.AntiAbuse
+  commentId: P:Vintagestory.API.Server.IServerConfig.AntiAbuse
+  id: AntiAbuse
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: AntiAbuse
+  nameWithType: IServerConfig.AntiAbuse
+  fullName: Vintagestory.API.Server.IServerConfig.AntiAbuse
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: AntiAbuse protection level. Use not recommended, it is very buggy at the moment
+  example: []
+  syntax:
+    content: EnumProtectionLevel AntiAbuse { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.EnumProtectionLevel
+    content.vb: Property AntiAbuse As EnumProtectionLevel
+  overload: Vintagestory.API.Server.IServerConfig.AntiAbuse*
+- uid: Vintagestory.API.Server.IServerConfig.WhitelistMode
+  commentId: P:Vintagestory.API.Server.IServerConfig.WhitelistMode
+  id: WhitelistMode
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: WhitelistMode
+  nameWithType: IServerConfig.WhitelistMode
+  fullName: Vintagestory.API.Server.IServerConfig.WhitelistMode
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: If true, only whitelisted players can join
+  example: []
+  syntax:
+    content: EnumWhitelistMode WhitelistMode { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.EnumWhitelistMode
+    content.vb: Property WhitelistMode As EnumWhitelistMode
+  overload: Vintagestory.API.Server.IServerConfig.WhitelistMode*
+- uid: Vintagestory.API.Server.IServerConfig.DefaultSpawn
+  commentId: P:Vintagestory.API.Server.IServerConfig.DefaultSpawn
+  id: DefaultSpawn
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: DefaultSpawn
+  nameWithType: IServerConfig.DefaultSpawn
+  fullName: Vintagestory.API.Server.IServerConfig.DefaultSpawn
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Default spawn position for players
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("No longer used. Retrieve value from the savegame instead")]
+
+      PlayerSpawnPos DefaultSpawn { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.PlayerSpawnPos
+    content.vb: >-
+      <Obsolete("No longer used. Retrieve value from the savegame instead")>
+
+      Property DefaultSpawn As PlayerSpawnPos
+  overload: Vintagestory.API.Server.IServerConfig.DefaultSpawn*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: No longer used. Retrieve value from the savegame instead
+- uid: Vintagestory.API.Server.IServerConfig.AllowPvP
+  commentId: P:Vintagestory.API.Server.IServerConfig.AllowPvP
+  id: AllowPvP
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: AllowPvP
+  nameWithType: IServerConfig.AllowPvP
+  fullName: Vintagestory.API.Server.IServerConfig.AllowPvP
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Whether or not to allow Player versus Player
+  example: []
+  syntax:
+    content: bool AllowPvP { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property AllowPvP As Boolean
+  overload: Vintagestory.API.Server.IServerConfig.AllowPvP*
+- uid: Vintagestory.API.Server.IServerConfig.AllowFireSpread
+  commentId: P:Vintagestory.API.Server.IServerConfig.AllowFireSpread
+  id: AllowFireSpread
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: AllowFireSpread
+  nameWithType: IServerConfig.AllowFireSpread
+  fullName: Vintagestory.API.Server.IServerConfig.AllowFireSpread
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Whether or not fire should spread
+  example: []
+  syntax:
+    content: bool AllowFireSpread { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property AllowFireSpread As Boolean
+  overload: Vintagestory.API.Server.IServerConfig.AllowFireSpread*
+- uid: Vintagestory.API.Server.IServerConfig.AllowFallingBlocks
+  commentId: P:Vintagestory.API.Server.IServerConfig.AllowFallingBlocks
+  id: AllowFallingBlocks
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: AllowFallingBlocks
+  nameWithType: IServerConfig.AllowFallingBlocks
+  fullName: Vintagestory.API.Server.IServerConfig.AllowFallingBlocks
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Whether or not falling blocks should fall (e.g. sand and gravel) and floating single rock blocks should break
+  example: []
+  syntax:
+    content: bool AllowFallingBlocks { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property AllowFallingBlocks As Boolean
+  overload: Vintagestory.API.Server.IServerConfig.AllowFallingBlocks*
+- uid: Vintagestory.API.Server.IServerConfig.HostedMode
+  commentId: P:Vintagestory.API.Server.IServerConfig.HostedMode
+  id: HostedMode
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: HostedMode
+  nameWithType: IServerConfig.HostedMode
+  fullName: Vintagestory.API.Server.IServerConfig.HostedMode
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Used to disable certain features in HostedMode (wgen commands, ...)
+  example: []
+  syntax:
+    content: bool HostedMode { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property HostedMode As Boolean
+  overload: Vintagestory.API.Server.IServerConfig.HostedMode*
+- uid: Vintagestory.API.Server.IServerConfig.HostedModeAllowMods
+  commentId: P:Vintagestory.API.Server.IServerConfig.HostedModeAllowMods
+  id: HostedModeAllowMods
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: HostedModeAllowMods
+  nameWithType: IServerConfig.HostedModeAllowMods
+  fullName: Vintagestory.API.Server.IServerConfig.HostedModeAllowMods
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Used to enable/disable the /moddb commands in HostedMode only
+  example: []
+  syntax:
+    content: bool HostedModeAllowMods { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property HostedModeAllowMods As Boolean
+  overload: Vintagestory.API.Server.IServerConfig.HostedModeAllowMods*
+- uid: Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
+  commentId: P:Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
+  id: SpawnCapPlayerScaling
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: SpawnCapPlayerScaling
+  nameWithType: IServerConfig.SpawnCapPlayerScaling
+  fullName: Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: float SpawnCapPlayerScaling { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property SpawnCapPlayerScaling As Single
+  overload: Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling*
+- uid: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  commentId: P:Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  id: LogBlockBreakPlace
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: LogBlockBreakPlace
+  nameWithType: IServerConfig.LogBlockBreakPlace
+  fullName: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Whether or not to log breaking and placing of blocks to the server-build.log
+  example: []
+  syntax:
+    content: bool LogBlockBreakPlace { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property LogBlockBreakPlace As Boolean
+  overload: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace*
+- uid: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  commentId: P:Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  id: LogFileSplitAfterLine
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: LogFileSplitAfterLine
+  nameWithType: IServerConfig.LogFileSplitAfterLine
+  fullName: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: After how many line we should split the log file into a new one (server-build.log -&gt; server-build-2.log)
+  example: []
+  syntax:
+    content: uint LogFileSplitAfterLine { get; set; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Property LogFileSplitAfterLine As UInteger
+  overload: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine*
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Server.IServerConfig.Port*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.Port
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_Port
+  name: Port
+  nameWithType: IServerConfig.Port
+  fullName: Vintagestory.API.Server.IServerConfig.Port
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Server.IServerConfig.ServerName*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.ServerName
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_ServerName
+  name: ServerName
+  nameWithType: IServerConfig.ServerName
+  fullName: Vintagestory.API.Server.IServerConfig.ServerName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Server.IServerConfig.WelcomeMessage*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.WelcomeMessage
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_WelcomeMessage
+  name: WelcomeMessage
+  nameWithType: IServerConfig.WelcomeMessage
+  fullName: Vintagestory.API.Server.IServerConfig.WelcomeMessage
+- uid: Vintagestory.API.Server.IServerConfig.MaxClients*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.MaxClients
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_MaxClients
+  name: MaxClients
+  nameWithType: IServerConfig.MaxClients
+  fullName: Vintagestory.API.Server.IServerConfig.MaxClients
+- uid: Vintagestory.API.Server.IServerConfig.Password*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.Password
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_Password
+  name: Password
+  nameWithType: IServerConfig.Password
+  fullName: Vintagestory.API.Server.IServerConfig.Password
+- uid: Vintagestory.API.Server.IServerConfig.MaxChunkRadius*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.MaxChunkRadius
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_MaxChunkRadius
+  name: MaxChunkRadius
+  nameWithType: IServerConfig.MaxChunkRadius
+  fullName: Vintagestory.API.Server.IServerConfig.MaxChunkRadius
+- uid: Vintagestory.API.Server.IServerConfig.TickTime*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.TickTime
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_TickTime
+  name: TickTime
+  nameWithType: IServerConfig.TickTime
+  fullName: Vintagestory.API.Server.IServerConfig.TickTime
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Server.IServerConfig.BlockTickChunkRange*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.BlockTickChunkRange
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_BlockTickChunkRange
+  name: BlockTickChunkRange
+  nameWithType: IServerConfig.BlockTickChunkRange
+  fullName: Vintagestory.API.Server.IServerConfig.BlockTickChunkRange
+- uid: Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_MaxMainThreadBlockTicks
+  name: MaxMainThreadBlockTicks
+  nameWithType: IServerConfig.MaxMainThreadBlockTicks
+  fullName: Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks
+- uid: Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_RandomBlockTicksPerChunk
+  name: RandomBlockTicksPerChunk
+  nameWithType: IServerConfig.RandomBlockTicksPerChunk
+  fullName: Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk
+- uid: Vintagestory.API.Server.IServerConfig.BlockTickInterval*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.BlockTickInterval
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_BlockTickInterval
+  name: BlockTickInterval
+  nameWithType: IServerConfig.BlockTickInterval
+  fullName: Vintagestory.API.Server.IServerConfig.BlockTickInterval
+- uid: Vintagestory.API.Server.IServerConfig.Roles*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.Roles
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_Roles
+  name: Roles
+  nameWithType: IServerConfig.Roles
+  fullName: Vintagestory.API.Server.IServerConfig.Roles
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.IPlayerRole}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.IPlayerRole}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<IPlayerRole>
+  nameWithType: List<IPlayerRole>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.IPlayerRole>
+  nameWithType.vb: List(Of IPlayerRole)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.IPlayerRole)
+  name.vb: List(Of IPlayerRole)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.IPlayerRole
+    name: IPlayerRole
+    href: Vintagestory.API.Common.IPlayerRole.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.IPlayerRole
+    name: IPlayerRole
+    href: Vintagestory.API.Common.IPlayerRole.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Server.IServerConfig.DefaultRoleCode*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.DefaultRoleCode
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_DefaultRoleCode
+  name: DefaultRoleCode
+  nameWithType: IServerConfig.DefaultRoleCode
+  fullName: Vintagestory.API.Server.IServerConfig.DefaultRoleCode
+- uid: Vintagestory.API.Server.IServerConfig.AntiAbuse*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.AntiAbuse
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_AntiAbuse
+  name: AntiAbuse
+  nameWithType: IServerConfig.AntiAbuse
+  fullName: Vintagestory.API.Server.IServerConfig.AntiAbuse
+- uid: Vintagestory.API.Server.EnumProtectionLevel
+  commentId: T:Vintagestory.API.Server.EnumProtectionLevel
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumProtectionLevel.html
+  name: EnumProtectionLevel
+  nameWithType: EnumProtectionLevel
+  fullName: Vintagestory.API.Server.EnumProtectionLevel
+- uid: Vintagestory.API.Server.IServerConfig.WhitelistMode*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.WhitelistMode
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_WhitelistMode
+  name: WhitelistMode
+  nameWithType: IServerConfig.WhitelistMode
+  fullName: Vintagestory.API.Server.IServerConfig.WhitelistMode
+- uid: Vintagestory.API.Server.EnumWhitelistMode
+  commentId: T:Vintagestory.API.Server.EnumWhitelistMode
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumWhitelistMode.html
+  name: EnumWhitelistMode
+  nameWithType: EnumWhitelistMode
+  fullName: Vintagestory.API.Server.EnumWhitelistMode
+- uid: Vintagestory.API.Server.IServerConfig.DefaultSpawn*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.DefaultSpawn
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_DefaultSpawn
+  name: DefaultSpawn
+  nameWithType: IServerConfig.DefaultSpawn
+  fullName: Vintagestory.API.Server.IServerConfig.DefaultSpawn
+- uid: Vintagestory.API.Common.PlayerSpawnPos
+  commentId: T:Vintagestory.API.Common.PlayerSpawnPos
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayerSpawnPos.html
+  name: PlayerSpawnPos
+  nameWithType: PlayerSpawnPos
+  fullName: Vintagestory.API.Common.PlayerSpawnPos
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Server.IServerConfig.AllowPvP*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.AllowPvP
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_AllowPvP
+  name: AllowPvP
+  nameWithType: IServerConfig.AllowPvP
+  fullName: Vintagestory.API.Server.IServerConfig.AllowPvP
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Server.IServerConfig.AllowFireSpread*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.AllowFireSpread
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_AllowFireSpread
+  name: AllowFireSpread
+  nameWithType: IServerConfig.AllowFireSpread
+  fullName: Vintagestory.API.Server.IServerConfig.AllowFireSpread
+- uid: Vintagestory.API.Server.IServerConfig.AllowFallingBlocks*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.AllowFallingBlocks
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_AllowFallingBlocks
+  name: AllowFallingBlocks
+  nameWithType: IServerConfig.AllowFallingBlocks
+  fullName: Vintagestory.API.Server.IServerConfig.AllowFallingBlocks
+- uid: Vintagestory.API.Server.IServerConfig.HostedMode*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.HostedMode
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_HostedMode
+  name: HostedMode
+  nameWithType: IServerConfig.HostedMode
+  fullName: Vintagestory.API.Server.IServerConfig.HostedMode
+- uid: Vintagestory.API.Server.IServerConfig.HostedModeAllowMods*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.HostedModeAllowMods
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_HostedModeAllowMods
+  name: HostedModeAllowMods
+  nameWithType: IServerConfig.HostedModeAllowMods
+  fullName: Vintagestory.API.Server.IServerConfig.HostedModeAllowMods
+- uid: Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_SpawnCapPlayerScaling
+  name: SpawnCapPlayerScaling
+  nameWithType: IServerConfig.SpawnCapPlayerScaling
+  fullName: Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
+- uid: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_LogBlockBreakPlace
+  name: LogBlockBreakPlace
+  nameWithType: IServerConfig.LogBlockBreakPlace
+  fullName: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+- uid: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_LogFileSplitAfterLine
+  name: LogFileSplitAfterLine
+  nameWithType: IServerConfig.LogFileSplitAfterLine
+  fullName: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger

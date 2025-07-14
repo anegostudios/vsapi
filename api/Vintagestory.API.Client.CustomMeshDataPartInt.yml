@@ -1,0 +1,1379 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPartInt
+  id: CustomMeshDataPartInt
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.CustomMeshDataPartInt.#ctor
+  - Vintagestory.API.Client.CustomMeshDataPartInt.#ctor(System.Int32)
+  - Vintagestory.API.Client.CustomMeshDataPartInt.Clone
+  - Vintagestory.API.Client.CustomMeshDataPartInt.Conversion
+  - Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone
+  langs:
+  - csharp
+  - vb
+  name: CustomMeshDataPartInt
+  nameWithType: CustomMeshDataPartInt
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Holds arbitrary int data for meshes to be used in the shader
+  example: []
+  syntax:
+    content: 'public class CustomMeshDataPartInt : CustomMeshDataPart<int>'
+    content.vb: Public Class CustomMeshDataPartInt Inherits CustomMeshDataPart(Of Integer)
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  inheritedMembers:
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Values
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Count
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.BufferSize
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AllocationSize
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveSizes
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveStride
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveOffsets
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Instanced
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.StaticDraw
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.BaseOffset
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.GrowBuffer(System.Int32)
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32)
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add4(System.Int32)
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32[])
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetAllocationSize(System.Int32)
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AutoAllocationSize
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+  - Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.#ctor
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPartInt.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Client.CustomMeshDataPartInt
+  langs:
+  - csharp
+  - vb
+  name: CustomMeshDataPartInt()
+  nameWithType: CustomMeshDataPartInt.CustomMeshDataPartInt()
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.CustomMeshDataPartInt()
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Empty constructor.
+  example: []
+  syntax:
+    content: public CustomMeshDataPartInt()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Client.CustomMeshDataPartInt.#ctor*
+  nameWithType.vb: CustomMeshDataPartInt.New()
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPartInt.New()
+  name.vb: New()
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.#ctor(System.Int32)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPartInt.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: Vintagestory.API.Client.CustomMeshDataPartInt
+  langs:
+  - csharp
+  - vb
+  name: CustomMeshDataPartInt(int)
+  nameWithType: CustomMeshDataPartInt.CustomMeshDataPartInt(int)
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.CustomMeshDataPartInt(int)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Size initialization constructor.
+  example: []
+  syntax:
+    content: public CustomMeshDataPartInt(int size)
+    parameters:
+    - id: size
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub New(size As Integer)
+  overload: Vintagestory.API.Client.CustomMeshDataPartInt.#ctor*
+  nameWithType.vb: CustomMeshDataPartInt.New(Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPartInt.New(Integer)
+  name.vb: New(Integer)
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.Conversion
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPartInt.Conversion
+  id: Conversion
+  parent: Vintagestory.API.Client.CustomMeshDataPartInt
+  langs:
+  - csharp
+  - vb
+  name: Conversion
+  nameWithType: CustomMeshDataPartInt.Conversion
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.Conversion
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public DataConversion Conversion
+    return:
+      type: Vintagestory.API.Client.DataConversion
+    content.vb: Public Conversion As DataConversion
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.Clone
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPartInt.Clone
+  id: Clone
+  parent: Vintagestory.API.Client.CustomMeshDataPartInt
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: CustomMeshDataPartInt.Clone()
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.Clone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a clone of this collection of data parts.
+  example: []
+  syntax:
+    content: public CustomMeshDataPartInt Clone()
+    return:
+      type: Vintagestory.API.Client.CustomMeshDataPartInt
+      description: A clone of this collection of data parts.
+    content.vb: Public Function Clone() As CustomMeshDataPartInt
+  overload: Vintagestory.API.Client.CustomMeshDataPartInt.Clone*
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone
+  id: EmptyClone
+  parent: Vintagestory.API.Client.CustomMeshDataPartInt
+  langs:
+  - csharp
+  - vb
+  name: EmptyClone()
+  nameWithType: CustomMeshDataPartInt.EmptyClone()
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public CustomMeshDataPartInt EmptyClone()
+    return:
+      type: Vintagestory.API.Client.CustomMeshDataPartInt
+    content.vb: Public Function EmptyClone() As CustomMeshDataPartInt
+  overload: Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  parent: Vintagestory.API.Client
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  name: CustomMeshDataPart<int>
+  nameWithType: CustomMeshDataPart<int>
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>
+  nameWithType.vb: CustomMeshDataPart(Of Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer)
+  name.vb: CustomMeshDataPart(Of Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Values
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Values
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.Values
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Values
+  name: Values
+  nameWithType: CustomMeshDataPart<int>.Values
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.Values
+  nameWithType.vb: CustomMeshDataPart(Of Integer).Values
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).Values
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Count
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Count
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.Count
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Count
+  name: Count
+  nameWithType: CustomMeshDataPart<int>.Count
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.Count
+  nameWithType.vb: CustomMeshDataPart(Of Integer).Count
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).Count
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.BufferSize
+  commentId: P:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.BufferSize
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.BufferSize
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_BufferSize
+  name: BufferSize
+  nameWithType: CustomMeshDataPart<int>.BufferSize
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.BufferSize
+  nameWithType.vb: CustomMeshDataPart(Of Integer).BufferSize
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).BufferSize
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AllocationSize
+  commentId: P:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AllocationSize
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.AllocationSize
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AllocationSize
+  name: AllocationSize
+  nameWithType: CustomMeshDataPart<int>.AllocationSize
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.AllocationSize
+  nameWithType.vb: CustomMeshDataPart(Of Integer).AllocationSize
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).AllocationSize
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveSizes
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveSizes
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveSizes
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_InterleaveSizes
+  name: InterleaveSizes
+  nameWithType: CustomMeshDataPart<int>.InterleaveSizes
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.InterleaveSizes
+  nameWithType.vb: CustomMeshDataPart(Of Integer).InterleaveSizes
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).InterleaveSizes
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveStride
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveStride
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveStride
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_InterleaveStride
+  name: InterleaveStride
+  nameWithType: CustomMeshDataPart<int>.InterleaveStride
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.InterleaveStride
+  nameWithType.vb: CustomMeshDataPart(Of Integer).InterleaveStride
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).InterleaveStride
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveOffsets
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.InterleaveOffsets
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveOffsets
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_InterleaveOffsets
+  name: InterleaveOffsets
+  nameWithType: CustomMeshDataPart<int>.InterleaveOffsets
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.InterleaveOffsets
+  nameWithType.vb: CustomMeshDataPart(Of Integer).InterleaveOffsets
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).InterleaveOffsets
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Instanced
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Instanced
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.Instanced
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Instanced
+  name: Instanced
+  nameWithType: CustomMeshDataPart<int>.Instanced
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.Instanced
+  nameWithType.vb: CustomMeshDataPart(Of Integer).Instanced
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).Instanced
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.StaticDraw
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.StaticDraw
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.StaticDraw
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_StaticDraw
+  name: StaticDraw
+  nameWithType: CustomMeshDataPart<int>.StaticDraw
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.StaticDraw
+  nameWithType.vb: CustomMeshDataPart(Of Integer).StaticDraw
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).StaticDraw
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.BaseOffset
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.BaseOffset
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.BaseOffset
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_BaseOffset
+  name: BaseOffset
+  nameWithType: CustomMeshDataPart<int>.BaseOffset
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.BaseOffset
+  nameWithType.vb: CustomMeshDataPart(Of Integer).BaseOffset
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).BaseOffset
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.GrowBuffer(System.Int32)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.GrowBuffer(System.Int32)
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.GrowBuffer(System.Int32)
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_GrowBuffer_System_Int32_
+  name: GrowBuffer(int)
+  nameWithType: CustomMeshDataPart<int>.GrowBuffer(int)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.GrowBuffer(int)
+  nameWithType.vb: CustomMeshDataPart(Of Integer).GrowBuffer(Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).GrowBuffer(Integer)
+  name.vb: GrowBuffer(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.GrowBuffer(System.Int32)
+    name: GrowBuffer
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_GrowBuffer_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.GrowBuffer(System.Int32)
+    name: GrowBuffer
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_GrowBuffer_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32)
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0)
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0_
+  name: Add(int)
+  nameWithType: CustomMeshDataPart<int>.Add(int)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.Add(int)
+  nameWithType.vb: CustomMeshDataPart(Of Integer).Add(Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).Add(Integer)
+  name.vb: Add(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32)
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32)
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add4(System.Int32)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add4(System.Int32)
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.Add4(`0)
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add4__0_
+  name: Add4(int)
+  nameWithType: CustomMeshDataPart<int>.Add4(int)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.Add4(int)
+  nameWithType.vb: CustomMeshDataPart(Of Integer).Add4(Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).Add4(Integer)
+  name.vb: Add4(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add4(System.Int32)
+    name: Add4
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add4__0_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add4(System.Int32)
+    name: Add4
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add4__0_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32[])
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32[])
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0[])
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0___
+  name: Add(params int[])
+  nameWithType: CustomMeshDataPart<int>.Add(params int[])
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.Add(params int[])
+  nameWithType.vb: CustomMeshDataPart(Of Integer).Add(ParamArray Integer())
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).Add(ParamArray Integer())
+  name.vb: Add(ParamArray Integer())
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32[])
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0___
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.Add(System.Int32[])
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0___
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetAllocationSize(System.Int32)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetAllocationSize(System.Int32)
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.SetAllocationSize(System.Int32)
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetAllocationSize_System_Int32_
+  name: SetAllocationSize(int)
+  nameWithType: CustomMeshDataPart<int>.SetAllocationSize(int)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.SetAllocationSize(int)
+  nameWithType.vb: CustomMeshDataPart(Of Integer).SetAllocationSize(Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).SetAllocationSize(Integer)
+  name.vb: SetAllocationSize(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetAllocationSize(System.Int32)
+    name: SetAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetAllocationSize_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetAllocationSize(System.Int32)
+    name: SetAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetAllocationSize_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AutoAllocationSize
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AutoAllocationSize
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.AutoAllocationSize
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AutoAllocationSize
+  name: AutoAllocationSize()
+  nameWithType: CustomMeshDataPart<int>.AutoAllocationSize()
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.AutoAllocationSize()
+  nameWithType.vb: CustomMeshDataPart(Of Integer).AutoAllocationSize()
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).AutoAllocationSize()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AutoAllocationSize
+    name: AutoAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AutoAllocationSize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.AutoAllocationSize
+    name: AutoAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AutoAllocationSize
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{`0})
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetFrom_Vintagestory_API_Client_CustomMeshDataPart__0__
+  name: SetFrom(CustomMeshDataPart<int>)
+  nameWithType: CustomMeshDataPart<int>.SetFrom(CustomMeshDataPart<int>)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.SetFrom(Vintagestory.API.Client.CustomMeshDataPart<int>)
+  nameWithType.vb: CustomMeshDataPart(Of Integer).SetFrom(CustomMeshDataPart(Of Integer))
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).SetFrom(Vintagestory.API.Client.CustomMeshDataPart(Of Integer))
+  name.vb: SetFrom(CustomMeshDataPart(Of Integer))
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+    name: SetFrom
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetFrom_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+    name: SetFrom
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetFrom_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+  parent: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}
+  definition: Vintagestory.API.Client.CustomMeshDataPart`1.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{`0})
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_EmptyClone_Vintagestory_API_Client_CustomMeshDataPart__0__
+  name: EmptyClone(CustomMeshDataPart<int>)
+  nameWithType: CustomMeshDataPart<int>.EmptyClone(CustomMeshDataPart<int>)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<int>.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart<int>)
+  nameWithType.vb: CustomMeshDataPart(Of Integer).EmptyClone(CustomMeshDataPart(Of Integer))
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of Integer).EmptyClone(Vintagestory.API.Client.CustomMeshDataPart(Of Integer))
+  name.vb: EmptyClone(CustomMeshDataPart(Of Integer))
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+    name: EmptyClone
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_EmptyClone_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart{System.Int32}.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{System.Int32})
+    name: EmptyClone
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_EmptyClone_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPart`1
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  name: CustomMeshDataPart<T>
+  nameWithType: CustomMeshDataPart<T>
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>
+  nameWithType.vb: CustomMeshDataPart(Of T)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T)
+  name.vb: CustomMeshDataPart(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.Values
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.Values
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Values
+  name: Values
+  nameWithType: CustomMeshDataPart<T>.Values
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.Values
+  nameWithType.vb: CustomMeshDataPart(Of T).Values
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).Values
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.Count
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.Count
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Count
+  name: Count
+  nameWithType: CustomMeshDataPart<T>.Count
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.Count
+  nameWithType.vb: CustomMeshDataPart(Of T).Count
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).Count
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.BufferSize
+  commentId: P:Vintagestory.API.Client.CustomMeshDataPart`1.BufferSize
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_BufferSize
+  name: BufferSize
+  nameWithType: CustomMeshDataPart<T>.BufferSize
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.BufferSize
+  nameWithType.vb: CustomMeshDataPart(Of T).BufferSize
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).BufferSize
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.AllocationSize
+  commentId: P:Vintagestory.API.Client.CustomMeshDataPart`1.AllocationSize
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AllocationSize
+  name: AllocationSize
+  nameWithType: CustomMeshDataPart<T>.AllocationSize
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.AllocationSize
+  nameWithType.vb: CustomMeshDataPart(Of T).AllocationSize
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).AllocationSize
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveSizes
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveSizes
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_InterleaveSizes
+  name: InterleaveSizes
+  nameWithType: CustomMeshDataPart<T>.InterleaveSizes
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.InterleaveSizes
+  nameWithType.vb: CustomMeshDataPart(Of T).InterleaveSizes
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).InterleaveSizes
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveStride
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveStride
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_InterleaveStride
+  name: InterleaveStride
+  nameWithType: CustomMeshDataPart<T>.InterleaveStride
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.InterleaveStride
+  nameWithType.vb: CustomMeshDataPart(Of T).InterleaveStride
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).InterleaveStride
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveOffsets
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.InterleaveOffsets
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_InterleaveOffsets
+  name: InterleaveOffsets
+  nameWithType: CustomMeshDataPart<T>.InterleaveOffsets
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.InterleaveOffsets
+  nameWithType.vb: CustomMeshDataPart(Of T).InterleaveOffsets
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).InterleaveOffsets
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.Instanced
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.Instanced
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Instanced
+  name: Instanced
+  nameWithType: CustomMeshDataPart<T>.Instanced
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.Instanced
+  nameWithType.vb: CustomMeshDataPart(Of T).Instanced
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).Instanced
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.StaticDraw
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.StaticDraw
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_StaticDraw
+  name: StaticDraw
+  nameWithType: CustomMeshDataPart<T>.StaticDraw
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.StaticDraw
+  nameWithType.vb: CustomMeshDataPart(Of T).StaticDraw
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).StaticDraw
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.BaseOffset
+  commentId: F:Vintagestory.API.Client.CustomMeshDataPart`1.BaseOffset
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_BaseOffset
+  name: BaseOffset
+  nameWithType: CustomMeshDataPart<T>.BaseOffset
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.BaseOffset
+  nameWithType.vb: CustomMeshDataPart(Of T).BaseOffset
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).BaseOffset
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.GrowBuffer(System.Int32)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.GrowBuffer(System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_GrowBuffer_System_Int32_
+  name: GrowBuffer(int)
+  nameWithType: CustomMeshDataPart<T>.GrowBuffer(int)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.GrowBuffer(int)
+  nameWithType.vb: CustomMeshDataPart(Of T).GrowBuffer(Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).GrowBuffer(Integer)
+  name.vb: GrowBuffer(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.GrowBuffer(System.Int32)
+    name: GrowBuffer
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_GrowBuffer_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.GrowBuffer(System.Int32)
+    name: GrowBuffer
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_GrowBuffer_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0)
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0_
+  name: Add(T)
+  nameWithType: CustomMeshDataPart<T>.Add(T)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.Add(T)
+  nameWithType.vb: CustomMeshDataPart(Of T).Add(T)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).Add(T)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0)
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0)
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add4(`0)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.Add4(`0)
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add4__0_
+  name: Add4(T)
+  nameWithType: CustomMeshDataPart<T>.Add4(T)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.Add4(T)
+  nameWithType.vb: CustomMeshDataPart(Of T).Add4(T)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).Add4(T)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add4(`0)
+    name: Add4
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add4__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add4(`0)
+    name: Add4
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add4__0_
+  - name: (
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0[])
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0[])
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0___
+  name: Add(params T[])
+  nameWithType: CustomMeshDataPart<T>.Add(params T[])
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.Add(params T[])
+  nameWithType.vb: CustomMeshDataPart(Of T).Add(ParamArray T())
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).Add(ParamArray T())
+  name.vb: Add(ParamArray T())
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0[])
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0___
+  - name: (
+  - name: params
+  - name: " "
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.Add(`0[])
+    name: Add
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_Add__0___
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - name: T
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.SetAllocationSize(System.Int32)
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.SetAllocationSize(System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetAllocationSize_System_Int32_
+  name: SetAllocationSize(int)
+  nameWithType: CustomMeshDataPart<T>.SetAllocationSize(int)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.SetAllocationSize(int)
+  nameWithType.vb: CustomMeshDataPart(Of T).SetAllocationSize(Integer)
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).SetAllocationSize(Integer)
+  name.vb: SetAllocationSize(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.SetAllocationSize(System.Int32)
+    name: SetAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetAllocationSize_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.SetAllocationSize(System.Int32)
+    name: SetAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetAllocationSize_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.AutoAllocationSize
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.AutoAllocationSize
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AutoAllocationSize
+  name: AutoAllocationSize()
+  nameWithType: CustomMeshDataPart<T>.AutoAllocationSize()
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.AutoAllocationSize()
+  nameWithType.vb: CustomMeshDataPart(Of T).AutoAllocationSize()
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).AutoAllocationSize()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.AutoAllocationSize
+    name: AutoAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AutoAllocationSize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.AutoAllocationSize
+    name: AutoAllocationSize
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_AutoAllocationSize
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{`0})
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{`0})
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetFrom_Vintagestory_API_Client_CustomMeshDataPart__0__
+  name: SetFrom(CustomMeshDataPart<T>)
+  nameWithType: CustomMeshDataPart<T>.SetFrom(CustomMeshDataPart<T>)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.SetFrom(Vintagestory.API.Client.CustomMeshDataPart<T>)
+  nameWithType.vb: CustomMeshDataPart(Of T).SetFrom(CustomMeshDataPart(Of T))
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).SetFrom(Vintagestory.API.Client.CustomMeshDataPart(Of T))
+  name.vb: SetFrom(CustomMeshDataPart(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{`0})
+    name: SetFrom
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetFrom_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.SetFrom(Vintagestory.API.Client.CustomMeshDataPart{`0})
+    name: SetFrom
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_SetFrom_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.CustomMeshDataPart`1.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{`0})
+  commentId: M:Vintagestory.API.Client.CustomMeshDataPart`1.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{`0})
+  href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_EmptyClone_Vintagestory_API_Client_CustomMeshDataPart__0__
+  name: EmptyClone(CustomMeshDataPart<T>)
+  nameWithType: CustomMeshDataPart<T>.EmptyClone(CustomMeshDataPart<T>)
+  fullName: Vintagestory.API.Client.CustomMeshDataPart<T>.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart<T>)
+  nameWithType.vb: CustomMeshDataPart(Of T).EmptyClone(CustomMeshDataPart(Of T))
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPart(Of T).EmptyClone(Vintagestory.API.Client.CustomMeshDataPart(Of T))
+  name.vb: EmptyClone(CustomMeshDataPart(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{`0})
+    name: EmptyClone
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_EmptyClone_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1.EmptyClone(Vintagestory.API.Client.CustomMeshDataPart{`0})
+    name: EmptyClone
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html#Vintagestory_API_Client_CustomMeshDataPart_1_EmptyClone_Vintagestory_API_Client_CustomMeshDataPart__0__
+  - name: (
+  - uid: Vintagestory.API.Client.CustomMeshDataPart`1
+    name: CustomMeshDataPart
+    href: Vintagestory.API.Client.CustomMeshDataPart-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.#ctor*
+  commentId: Overload:Vintagestory.API.Client.CustomMeshDataPartInt.#ctor
+  href: Vintagestory.API.Client.CustomMeshDataPartInt.html#Vintagestory_API_Client_CustomMeshDataPartInt__ctor
+  name: CustomMeshDataPartInt
+  nameWithType: CustomMeshDataPartInt.CustomMeshDataPartInt
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.CustomMeshDataPartInt
+  nameWithType.vb: CustomMeshDataPartInt.New
+  fullName.vb: Vintagestory.API.Client.CustomMeshDataPartInt.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.DataConversion
+  commentId: T:Vintagestory.API.Client.DataConversion
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.DataConversion.html
+  name: DataConversion
+  nameWithType: DataConversion
+  fullName: Vintagestory.API.Client.DataConversion
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.Clone*
+  commentId: Overload:Vintagestory.API.Client.CustomMeshDataPartInt.Clone
+  href: Vintagestory.API.Client.CustomMeshDataPartInt.html#Vintagestory_API_Client_CustomMeshDataPartInt_Clone
+  name: Clone
+  nameWithType: CustomMeshDataPartInt.Clone
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.Clone
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPartInt
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CustomMeshDataPartInt.html
+  name: CustomMeshDataPartInt
+  nameWithType: CustomMeshDataPartInt
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone*
+  commentId: Overload:Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone
+  href: Vintagestory.API.Client.CustomMeshDataPartInt.html#Vintagestory_API_Client_CustomMeshDataPartInt_EmptyClone
+  name: EmptyClone
+  nameWithType: CustomMeshDataPartInt.EmptyClone
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt.EmptyClone

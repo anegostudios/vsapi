@@ -1,0 +1,3623 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.GuiElementSwitchOld
+  commentId: T:Vintagestory.API.Client.GuiElementSwitchOld
+  id: GuiElementSwitchOld
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.GuiElementSwitchOld.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds)
+  - Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  - Vintagestory.API.Client.GuiElementSwitchOld.On
+  - Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: GuiElementSwitchOld
+  nameWithType: GuiElementSwitchOld
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public class GuiElementSwitchOld : GuiElementTextBase, IDisposable'
+    content.vb: Public Class GuiElementSwitchOld Inherits GuiElementTextBase Implements IDisposable
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Client.GuiElement
+  - Vintagestory.API.Client.GuiElementControl
+  - Vintagestory.API.Client.GuiElementTextBase
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Vintagestory.API.Client.GuiElementTextBase.textUtil
+  - Vintagestory.API.Client.GuiElementTextBase.text
+  - Vintagestory.API.Client.GuiElementTextBase.Text
+  - Vintagestory.API.Client.GuiElementTextBase.textPathMode
+  - Vintagestory.API.Client.GuiElementTextBase.Font
+  - Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Cairo.Context,Cairo.ImageSurface)
+  - Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight
+  - Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Cairo.Context,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  - Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Cairo.Context,System.String,System.Double,System.Double,System.Boolean)
+  - Vintagestory.API.Client.GuiElementTextBase.GetText
+  - Vintagestory.API.Client.GuiElementControl.enabled
+  - Vintagestory.API.Client.GuiElementControl.Enabled
+  - Vintagestory.API.Client.GuiElement.dirtTextureName
+  - Vintagestory.API.Client.GuiElement.noisyMetalTextureName
+  - Vintagestory.API.Client.GuiElement.woodTextureName
+  - Vintagestory.API.Client.GuiElement.stoneTextureName
+  - Vintagestory.API.Client.GuiElement.waterTextureName
+  - Vintagestory.API.Client.GuiElement.paperTextureName
+  - Vintagestory.API.Client.GuiElement.Bounds
+  - Vintagestory.API.Client.GuiElement.TabIndex
+  - Vintagestory.API.Client.GuiElement.hasFocus
+  - Vintagestory.API.Client.GuiElement.InsideClipBounds
+  - Vintagestory.API.Client.GuiElement.api
+  - Vintagestory.API.Client.GuiElement.RenderAsPremultipliedAlpha
+  - Vintagestory.API.Client.GuiElement.HasFocus
+  - Vintagestory.API.Client.GuiElement.DrawOrder
+  - Vintagestory.API.Client.GuiElement.Focusable
+  - Vintagestory.API.Client.GuiElement.Scale
+  - Vintagestory.API.Client.GuiElement.OnFocusGained
+  - Vintagestory.API.Client.GuiElement.OnFocusLost
+  - Vintagestory.API.Client.GuiElement.PostRenderInteractiveElements(System.Single)
+  - Vintagestory.API.Client.GuiElement.RenderFocusOverlay(System.Single)
+  - Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,System.Int32@,System.Boolean)
+  - Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,Vintagestory.API.Client.LoadedTexture@,System.Boolean)
+  - Vintagestory.API.Client.GuiElement.scaled(System.Double)
+  - Vintagestory.API.Client.GuiElement.scaledi(System.Double)
+  - Vintagestory.API.Client.GuiElement.genContext(Cairo.ImageSurface)
+  - Vintagestory.API.Client.GuiElement.getPattern(SkiaSharp.SKBitmap)
+  - Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Common.BitmapExternal)
+  - Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap)
+  - Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal)
+  - Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap,System.Int32,System.Int32)
+  - Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal,System.Int32,System.Int32)
+  - Vintagestory.API.Client.GuiElement.BeforeCalcBounds
+  - Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Int32,System.Single)
+  - Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Int32)
+  - Vintagestory.API.Client.GuiElement.fillWithPattern(Vintagestory.API.Client.ICoreClientAPI,Cairo.Context,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Boolean,System.Int32,System.Single)
+  - Vintagestory.API.Client.GuiElement.DiscardPattern(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Client.GuiElement.Lamp(Cairo.Context,System.Double,System.Double,System.Single[])
+  - Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+  - Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double)
+  - Vintagestory.API.Client.GuiElement.DialogRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+  - Vintagestory.API.Client.GuiElement.ElementRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Double)
+  - Vintagestory.API.Client.GuiElement.RoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double)
+  - Vintagestory.API.Client.GuiElement.ShadePath(Cairo.Context,System.Double)
+  - Vintagestory.API.Client.GuiElement.EmbossRoundRectangleDialog(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean)
+  - Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean,System.Int32,System.Int32)
+  - Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Int32,System.Int32)
+  - Vintagestory.API.Client.GuiElement.EmbossRoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Single,System.Single,System.Boolean,System.Single)
+  - Vintagestory.API.Client.GuiElement.RenderBoundsDebug
+  - Vintagestory.API.Client.GuiElement.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiElement.OnMouseUpOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiElement.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiElement.OnMouseEnterSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.GuiElement.OnMouseLeaveSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.GuiElement.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiElement.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseWheelEventArgs)
+  - Vintagestory.API.Client.GuiElement.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  - Vintagestory.API.Client.GuiElement.OnKeyUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  - Vintagestory.API.Client.GuiElement.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  - Vintagestory.API.Client.GuiElement.IsPositionInside(System.Int32,System.Int32)
+  - Vintagestory.API.Client.GuiElement.MouseOverCursor
+  - Vintagestory.API.Client.GuiElement.OutlineColor
+  - Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+  - Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Single,Vintagestory.API.MathTools.Vec4f)
+  - Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,Vintagestory.API.Client.ElementBounds,System.Single,Vintagestory.API.MathTools.Vec4f)
+  - Vintagestory.API.Client.GuiElement.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.On
+  commentId: F:Vintagestory.API.Client.GuiElementSwitchOld.On
+  id: On
+  parent: Vintagestory.API.Client.GuiElementSwitchOld
+  langs:
+  - csharp
+  - vb
+  name: On
+  nameWithType: GuiElementSwitchOld.On
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.On
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public bool On
+    return:
+      type: System.Boolean
+    content.vb: Public [On] As Boolean
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds)
+  commentId: M:Vintagestory.API.Client.GuiElementSwitchOld.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds)
+  id: '#ctor(Vintagestory.API.Client.ICoreClientAPI,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds)'
+  parent: Vintagestory.API.Client.GuiElementSwitchOld
+  langs:
+  - csharp
+  - vb
+  name: GuiElementSwitchOld(ICoreClientAPI, Action<bool>, ElementBounds)
+  nameWithType: GuiElementSwitchOld.GuiElementSwitchOld(ICoreClientAPI, Action<bool>, ElementBounds)
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.GuiElementSwitchOld(Vintagestory.API.Client.ICoreClientAPI, System.Action<bool>, Vintagestory.API.Client.ElementBounds)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public GuiElementSwitchOld(ICoreClientAPI capi, Action<bool> OnToggled, ElementBounds bounds)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    - id: OnToggled
+      type: System.Action{System.Boolean}
+    - id: bounds
+      type: Vintagestory.API.Client.ElementBounds
+    content.vb: Public Sub New(capi As ICoreClientAPI, OnToggled As Action(Of Boolean), bounds As ElementBounds)
+  overload: Vintagestory.API.Client.GuiElementSwitchOld.#ctor*
+  nameWithType.vb: GuiElementSwitchOld.New(ICoreClientAPI, Action(Of Boolean), ElementBounds)
+  fullName.vb: Vintagestory.API.Client.GuiElementSwitchOld.New(Vintagestory.API.Client.ICoreClientAPI, System.Action(Of Boolean), Vintagestory.API.Client.ElementBounds)
+  name.vb: New(ICoreClientAPI, Action(Of Boolean), ElementBounds)
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  commentId: M:Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  id: ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  parent: Vintagestory.API.Client.GuiElementSwitchOld
+  langs:
+  - csharp
+  - vb
+  name: ComposeElements(Context, ImageSurface)
+  nameWithType: GuiElementSwitchOld.ComposeElements(Context, ImageSurface)
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements(Cairo.Context, Cairo.ImageSurface)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Composes the elements.
+  example: []
+  syntax:
+    content: public override void ComposeElements(Context ctxStatic, ImageSurface surface)
+    parameters:
+    - id: ctxStatic
+      type: Cairo.Context
+      description: The context of the components.
+    - id: surface
+      type: Cairo.ImageSurface
+      description: The surface of the GUI.
+    content.vb: Public Overrides Sub ComposeElements(ctxStatic As Context, surface As ImageSurface)
+  overridden: Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  overload: Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements*
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements(System.Single)
+  id: RenderInteractiveElements(System.Single)
+  parent: Vintagestory.API.Client.GuiElementSwitchOld
+  langs:
+  - csharp
+  - vb
+  name: RenderInteractiveElements(float)
+  nameWithType: GuiElementSwitchOld.RenderInteractiveElements(float)
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Renders the element as an interactive element.
+  example: []
+  syntax:
+    content: public override void RenderInteractiveElements(float deltaTime)
+    parameters:
+    - id: deltaTime
+      type: System.Single
+      description: The change in time.
+    content.vb: Public Overrides Sub RenderInteractiveElements(deltaTime As Single)
+  overridden: Vintagestory.API.Client.GuiElement.RenderInteractiveElements(System.Single)
+  overload: Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements*
+  nameWithType.vb: GuiElementSwitchOld.RenderInteractiveElements(Single)
+  fullName.vb: Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements(Single)
+  name.vb: RenderInteractiveElements(Single)
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  id: OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiElementSwitchOld
+  langs:
+  - csharp
+  - vb
+  name: OnMouseDownOnElement(ICoreClientAPI, MouseEvent)
+  nameWithType: GuiElementSwitchOld.OnMouseDownOnElement(ICoreClientAPI, MouseEvent)
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.MouseEvent)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The event fired when the mouse is pressed while on the element. Called after OnMouseDown and tells the engine that the event is handled.
+  example: []
+  syntax:
+    content: public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: The Client API
+    - id: args
+      type: Vintagestory.API.Client.MouseEvent
+      description: The mouse event args.
+    content.vb: Public Overrides Sub OnMouseDownOnElement(api As ICoreClientAPI, args As MouseEvent)
+  overridden: Vintagestory.API.Client.GuiElement.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  overload: Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.GuiElement
+  commentId: T:Vintagestory.API.Client.GuiElement
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiElement.html
+  name: GuiElement
+  nameWithType: GuiElement
+  fullName: Vintagestory.API.Client.GuiElement
+- uid: Vintagestory.API.Client.GuiElementControl
+  commentId: T:Vintagestory.API.Client.GuiElementControl
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiElementControl.html
+  name: GuiElementControl
+  nameWithType: GuiElementControl
+  fullName: Vintagestory.API.Client.GuiElementControl
+- uid: Vintagestory.API.Client.GuiElementTextBase
+  commentId: T:Vintagestory.API.Client.GuiElementTextBase
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiElementTextBase.html
+  name: GuiElementTextBase
+  nameWithType: GuiElementTextBase
+  fullName: Vintagestory.API.Client.GuiElementTextBase
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Vintagestory.API.Client.GuiElementTextBase.textUtil
+  commentId: F:Vintagestory.API.Client.GuiElementTextBase.textUtil
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_textUtil
+  name: textUtil
+  nameWithType: GuiElementTextBase.textUtil
+  fullName: Vintagestory.API.Client.GuiElementTextBase.textUtil
+- uid: Vintagestory.API.Client.GuiElementTextBase.text
+  commentId: F:Vintagestory.API.Client.GuiElementTextBase.text
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_text
+  name: text
+  nameWithType: GuiElementTextBase.text
+  fullName: Vintagestory.API.Client.GuiElementTextBase.text
+- uid: Vintagestory.API.Client.GuiElementTextBase.Text
+  commentId: P:Vintagestory.API.Client.GuiElementTextBase.Text
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_Text
+  name: Text
+  nameWithType: GuiElementTextBase.Text
+  fullName: Vintagestory.API.Client.GuiElementTextBase.Text
+- uid: Vintagestory.API.Client.GuiElementTextBase.textPathMode
+  commentId: F:Vintagestory.API.Client.GuiElementTextBase.textPathMode
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_textPathMode
+  name: textPathMode
+  nameWithType: GuiElementTextBase.textPathMode
+  fullName: Vintagestory.API.Client.GuiElementTextBase.textPathMode
+- uid: Vintagestory.API.Client.GuiElementTextBase.Font
+  commentId: F:Vintagestory.API.Client.GuiElementTextBase.Font
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_Font
+  name: Font
+  nameWithType: GuiElementTextBase.Font
+  fullName: Vintagestory.API.Client.GuiElementTextBase.Font
+- uid: Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Cairo.Context,Cairo.ImageSurface)
+  commentId: M:Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Cairo.Context,Cairo.ImageSurface)
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_Cairo_Context_Cairo_ImageSurface_
+  name: ComposeTextElements(Context, ImageSurface)
+  nameWithType: GuiElementTextBase.ComposeTextElements(Context, ImageSurface)
+  fullName: Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Cairo.Context, Cairo.ImageSurface)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Cairo.Context,Cairo.ImageSurface)
+    name: ComposeTextElements
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_Cairo_Context_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Cairo.Context,Cairo.ImageSurface)
+    name: ComposeTextElements
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_Cairo_Context_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight
+  commentId: M:Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetMultilineTextHeight
+  name: GetMultilineTextHeight()
+  nameWithType: GuiElementTextBase.GetMultilineTextHeight()
+  fullName: Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight
+    name: GetMultilineTextHeight
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetMultilineTextHeight
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight
+    name: GetMultilineTextHeight
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetMultilineTextHeight
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Cairo.Context,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  commentId: M:Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Cairo.Context,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_Cairo_Context_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_
+  name: DrawMultilineTextAt(Context, double, double, EnumTextOrientation)
+  nameWithType: GuiElementTextBase.DrawMultilineTextAt(Context, double, double, EnumTextOrientation)
+  fullName: Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Cairo.Context, double, double, Vintagestory.API.Client.EnumTextOrientation)
+  nameWithType.vb: GuiElementTextBase.DrawMultilineTextAt(Context, Double, Double, EnumTextOrientation)
+  fullName.vb: Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Cairo.Context, Double, Double, Vintagestory.API.Client.EnumTextOrientation)
+  name.vb: DrawMultilineTextAt(Context, Double, Double, EnumTextOrientation)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Cairo.Context,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+    name: DrawMultilineTextAt
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_Cairo_Context_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.EnumTextOrientation
+    name: EnumTextOrientation
+    href: Vintagestory.API.Client.EnumTextOrientation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Cairo.Context,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)
+    name: DrawMultilineTextAt
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_Cairo_Context_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.EnumTextOrientation
+    name: EnumTextOrientation
+    href: Vintagestory.API.Client.EnumTextOrientation.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Cairo.Context,System.String,System.Double,System.Double,System.Boolean)
+  commentId: M:Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Cairo.Context,System.String,System.Double,System.Double,System.Boolean)
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_Cairo_Context_System_String_System_Double_System_Double_System_Boolean_
+  name: DrawTextLineAt(Context, string, double, double, bool)
+  nameWithType: GuiElementTextBase.DrawTextLineAt(Context, string, double, double, bool)
+  fullName: Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Cairo.Context, string, double, double, bool)
+  nameWithType.vb: GuiElementTextBase.DrawTextLineAt(Context, String, Double, Double, Boolean)
+  fullName.vb: Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Cairo.Context, String, Double, Double, Boolean)
+  name.vb: DrawTextLineAt(Context, String, Double, Double, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Cairo.Context,System.String,System.Double,System.Double,System.Boolean)
+    name: DrawTextLineAt
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_Cairo_Context_System_String_System_Double_System_Double_System_Boolean_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Cairo.Context,System.String,System.Double,System.Double,System.Boolean)
+    name: DrawTextLineAt
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_Cairo_Context_System_String_System_Double_System_Double_System_Boolean_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementTextBase.GetText
+  commentId: M:Vintagestory.API.Client.GuiElementTextBase.GetText
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetText
+  name: GetText()
+  nameWithType: GuiElementTextBase.GetText()
+  fullName: Vintagestory.API.Client.GuiElementTextBase.GetText()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.GetText
+    name: GetText
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetText
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.GetText
+    name: GetText
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetText
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementControl.enabled
+  commentId: F:Vintagestory.API.Client.GuiElementControl.enabled
+  parent: Vintagestory.API.Client.GuiElementControl
+  href: Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_enabled
+  name: enabled
+  nameWithType: GuiElementControl.enabled
+  fullName: Vintagestory.API.Client.GuiElementControl.enabled
+- uid: Vintagestory.API.Client.GuiElementControl.Enabled
+  commentId: P:Vintagestory.API.Client.GuiElementControl.Enabled
+  parent: Vintagestory.API.Client.GuiElementControl
+  href: Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_Enabled
+  name: Enabled
+  nameWithType: GuiElementControl.Enabled
+  fullName: Vintagestory.API.Client.GuiElementControl.Enabled
+- uid: Vintagestory.API.Client.GuiElement.dirtTextureName
+  commentId: F:Vintagestory.API.Client.GuiElement.dirtTextureName
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_dirtTextureName
+  name: dirtTextureName
+  nameWithType: GuiElement.dirtTextureName
+  fullName: Vintagestory.API.Client.GuiElement.dirtTextureName
+- uid: Vintagestory.API.Client.GuiElement.noisyMetalTextureName
+  commentId: F:Vintagestory.API.Client.GuiElement.noisyMetalTextureName
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_noisyMetalTextureName
+  name: noisyMetalTextureName
+  nameWithType: GuiElement.noisyMetalTextureName
+  fullName: Vintagestory.API.Client.GuiElement.noisyMetalTextureName
+- uid: Vintagestory.API.Client.GuiElement.woodTextureName
+  commentId: F:Vintagestory.API.Client.GuiElement.woodTextureName
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_woodTextureName
+  name: woodTextureName
+  nameWithType: GuiElement.woodTextureName
+  fullName: Vintagestory.API.Client.GuiElement.woodTextureName
+- uid: Vintagestory.API.Client.GuiElement.stoneTextureName
+  commentId: F:Vintagestory.API.Client.GuiElement.stoneTextureName
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_stoneTextureName
+  name: stoneTextureName
+  nameWithType: GuiElement.stoneTextureName
+  fullName: Vintagestory.API.Client.GuiElement.stoneTextureName
+- uid: Vintagestory.API.Client.GuiElement.waterTextureName
+  commentId: F:Vintagestory.API.Client.GuiElement.waterTextureName
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_waterTextureName
+  name: waterTextureName
+  nameWithType: GuiElement.waterTextureName
+  fullName: Vintagestory.API.Client.GuiElement.waterTextureName
+- uid: Vintagestory.API.Client.GuiElement.paperTextureName
+  commentId: F:Vintagestory.API.Client.GuiElement.paperTextureName
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_paperTextureName
+  name: paperTextureName
+  nameWithType: GuiElement.paperTextureName
+  fullName: Vintagestory.API.Client.GuiElement.paperTextureName
+- uid: Vintagestory.API.Client.GuiElement.Bounds
+  commentId: F:Vintagestory.API.Client.GuiElement.Bounds
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Bounds
+  name: Bounds
+  nameWithType: GuiElement.Bounds
+  fullName: Vintagestory.API.Client.GuiElement.Bounds
+- uid: Vintagestory.API.Client.GuiElement.TabIndex
+  commentId: F:Vintagestory.API.Client.GuiElement.TabIndex
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_TabIndex
+  name: TabIndex
+  nameWithType: GuiElement.TabIndex
+  fullName: Vintagestory.API.Client.GuiElement.TabIndex
+- uid: Vintagestory.API.Client.GuiElement.hasFocus
+  commentId: F:Vintagestory.API.Client.GuiElement.hasFocus
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_hasFocus
+  name: hasFocus
+  nameWithType: GuiElement.hasFocus
+  fullName: Vintagestory.API.Client.GuiElement.hasFocus
+- uid: Vintagestory.API.Client.GuiElement.InsideClipBounds
+  commentId: P:Vintagestory.API.Client.GuiElement.InsideClipBounds
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_InsideClipBounds
+  name: InsideClipBounds
+  nameWithType: GuiElement.InsideClipBounds
+  fullName: Vintagestory.API.Client.GuiElement.InsideClipBounds
+- uid: Vintagestory.API.Client.GuiElement.api
+  commentId: F:Vintagestory.API.Client.GuiElement.api
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_api
+  name: api
+  nameWithType: GuiElement.api
+  fullName: Vintagestory.API.Client.GuiElement.api
+- uid: Vintagestory.API.Client.GuiElement.RenderAsPremultipliedAlpha
+  commentId: P:Vintagestory.API.Client.GuiElement.RenderAsPremultipliedAlpha
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderAsPremultipliedAlpha
+  name: RenderAsPremultipliedAlpha
+  nameWithType: GuiElement.RenderAsPremultipliedAlpha
+  fullName: Vintagestory.API.Client.GuiElement.RenderAsPremultipliedAlpha
+- uid: Vintagestory.API.Client.GuiElement.HasFocus
+  commentId: P:Vintagestory.API.Client.GuiElement.HasFocus
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_HasFocus
+  name: HasFocus
+  nameWithType: GuiElement.HasFocus
+  fullName: Vintagestory.API.Client.GuiElement.HasFocus
+- uid: Vintagestory.API.Client.GuiElement.DrawOrder
+  commentId: P:Vintagestory.API.Client.GuiElement.DrawOrder
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DrawOrder
+  name: DrawOrder
+  nameWithType: GuiElement.DrawOrder
+  fullName: Vintagestory.API.Client.GuiElement.DrawOrder
+- uid: Vintagestory.API.Client.GuiElement.Focusable
+  commentId: P:Vintagestory.API.Client.GuiElement.Focusable
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Focusable
+  name: Focusable
+  nameWithType: GuiElement.Focusable
+  fullName: Vintagestory.API.Client.GuiElement.Focusable
+- uid: Vintagestory.API.Client.GuiElement.Scale
+  commentId: P:Vintagestory.API.Client.GuiElement.Scale
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Scale
+  name: Scale
+  nameWithType: GuiElement.Scale
+  fullName: Vintagestory.API.Client.GuiElement.Scale
+- uid: Vintagestory.API.Client.GuiElement.OnFocusGained
+  commentId: M:Vintagestory.API.Client.GuiElement.OnFocusGained
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusGained
+  name: OnFocusGained()
+  nameWithType: GuiElement.OnFocusGained()
+  fullName: Vintagestory.API.Client.GuiElement.OnFocusGained()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnFocusGained
+    name: OnFocusGained
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusGained
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnFocusGained
+    name: OnFocusGained
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusGained
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnFocusLost
+  commentId: M:Vintagestory.API.Client.GuiElement.OnFocusLost
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusLost
+  name: OnFocusLost()
+  nameWithType: GuiElement.OnFocusLost()
+  fullName: Vintagestory.API.Client.GuiElement.OnFocusLost()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnFocusLost
+    name: OnFocusLost
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusLost
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnFocusLost
+    name: OnFocusLost
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusLost
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.PostRenderInteractiveElements(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiElement.PostRenderInteractiveElements(System.Single)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_PostRenderInteractiveElements_System_Single_
+  name: PostRenderInteractiveElements(float)
+  nameWithType: GuiElement.PostRenderInteractiveElements(float)
+  fullName: Vintagestory.API.Client.GuiElement.PostRenderInteractiveElements(float)
+  nameWithType.vb: GuiElement.PostRenderInteractiveElements(Single)
+  fullName.vb: Vintagestory.API.Client.GuiElement.PostRenderInteractiveElements(Single)
+  name.vb: PostRenderInteractiveElements(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.PostRenderInteractiveElements(System.Single)
+    name: PostRenderInteractiveElements
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_PostRenderInteractiveElements_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.PostRenderInteractiveElements(System.Single)
+    name: PostRenderInteractiveElements
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_PostRenderInteractiveElements_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.RenderFocusOverlay(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiElement.RenderFocusOverlay(System.Single)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderFocusOverlay_System_Single_
+  name: RenderFocusOverlay(float)
+  nameWithType: GuiElement.RenderFocusOverlay(float)
+  fullName: Vintagestory.API.Client.GuiElement.RenderFocusOverlay(float)
+  nameWithType.vb: GuiElement.RenderFocusOverlay(Single)
+  fullName.vb: Vintagestory.API.Client.GuiElement.RenderFocusOverlay(Single)
+  name.vb: RenderFocusOverlay(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.RenderFocusOverlay(System.Single)
+    name: RenderFocusOverlay
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderFocusOverlay_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.RenderFocusOverlay(System.Single)
+    name: RenderFocusOverlay
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderFocusOverlay_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,System.Int32@,System.Boolean)
+  commentId: M:Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,System.Int32@,System.Boolean)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_System_Int32__System_Boolean_
+  name: generateTexture(ImageSurface, ref int, bool)
+  nameWithType: GuiElement.generateTexture(ImageSurface, ref int, bool)
+  fullName: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface, ref int, bool)
+  nameWithType.vb: GuiElement.generateTexture(ImageSurface, Integer, Boolean)
+  fullName.vb: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface, Integer, Boolean)
+  name.vb: generateTexture(ImageSurface, Integer, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,System.Int32@,System.Boolean)
+    name: generateTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_System_Int32__System_Boolean_
+  - name: (
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,System.Int32@,System.Boolean)
+    name: generateTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_System_Int32__System_Boolean_
+  - name: (
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,Vintagestory.API.Client.LoadedTexture@,System.Boolean)
+  commentId: M:Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,Vintagestory.API.Client.LoadedTexture@,System.Boolean)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_Vintagestory_API_Client_LoadedTexture__System_Boolean_
+  name: generateTexture(ImageSurface, ref LoadedTexture, bool)
+  nameWithType: GuiElement.generateTexture(ImageSurface, ref LoadedTexture, bool)
+  fullName: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface, ref Vintagestory.API.Client.LoadedTexture, bool)
+  nameWithType.vb: GuiElement.generateTexture(ImageSurface, LoadedTexture, Boolean)
+  fullName.vb: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface, Vintagestory.API.Client.LoadedTexture, Boolean)
+  name.vb: generateTexture(ImageSurface, LoadedTexture, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,Vintagestory.API.Client.LoadedTexture@,System.Boolean)
+    name: generateTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_Vintagestory_API_Client_LoadedTexture__System_Boolean_
+  - name: (
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Client.LoadedTexture
+    name: LoadedTexture
+    href: Vintagestory.API.Client.LoadedTexture.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.generateTexture(Cairo.ImageSurface,Vintagestory.API.Client.LoadedTexture@,System.Boolean)
+    name: generateTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_Vintagestory_API_Client_LoadedTexture__System_Boolean_
+  - name: (
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.LoadedTexture
+    name: LoadedTexture
+    href: Vintagestory.API.Client.LoadedTexture.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.scaled(System.Double)
+  commentId: M:Vintagestory.API.Client.GuiElement.scaled(System.Double)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaled_System_Double_
+  name: scaled(double)
+  nameWithType: GuiElement.scaled(double)
+  fullName: Vintagestory.API.Client.GuiElement.scaled(double)
+  nameWithType.vb: GuiElement.scaled(Double)
+  fullName.vb: Vintagestory.API.Client.GuiElement.scaled(Double)
+  name.vb: scaled(Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.scaled(System.Double)
+    name: scaled
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaled_System_Double_
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.scaled(System.Double)
+    name: scaled
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaled_System_Double_
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.scaledi(System.Double)
+  commentId: M:Vintagestory.API.Client.GuiElement.scaledi(System.Double)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaledi_System_Double_
+  name: scaledi(double)
+  nameWithType: GuiElement.scaledi(double)
+  fullName: Vintagestory.API.Client.GuiElement.scaledi(double)
+  nameWithType.vb: GuiElement.scaledi(Double)
+  fullName.vb: Vintagestory.API.Client.GuiElement.scaledi(Double)
+  name.vb: scaledi(Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.scaledi(System.Double)
+    name: scaledi
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaledi_System_Double_
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.scaledi(System.Double)
+    name: scaledi
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaledi_System_Double_
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.genContext(Cairo.ImageSurface)
+  commentId: M:Vintagestory.API.Client.GuiElement.genContext(Cairo.ImageSurface)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_genContext_Cairo_ImageSurface_
+  name: genContext(ImageSurface)
+  nameWithType: GuiElement.genContext(ImageSurface)
+  fullName: Vintagestory.API.Client.GuiElement.genContext(Cairo.ImageSurface)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.genContext(Cairo.ImageSurface)
+    name: genContext
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_genContext_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.genContext(Cairo.ImageSurface)
+    name: genContext
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_genContext_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getPattern(SkiaSharp.SKBitmap)
+  commentId: M:Vintagestory.API.Client.GuiElement.getPattern(SkiaSharp.SKBitmap)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_SkiaSharp_SKBitmap_
+  name: getPattern(SKBitmap)
+  nameWithType: GuiElement.getPattern(SKBitmap)
+  fullName: Vintagestory.API.Client.GuiElement.getPattern(SkiaSharp.SKBitmap)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getPattern(SkiaSharp.SKBitmap)
+    name: getPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_SkiaSharp_SKBitmap_
+  - name: (
+  - uid: SkiaSharp.SKBitmap
+    name: SKBitmap
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getPattern(SkiaSharp.SKBitmap)
+    name: getPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_SkiaSharp_SKBitmap_
+  - name: (
+  - uid: SkiaSharp.SKBitmap
+    name: SKBitmap
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Common.BitmapExternal)
+  commentId: M:Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Common.BitmapExternal)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Common_BitmapExternal_
+  name: getPattern(BitmapExternal)
+  nameWithType: GuiElement.getPattern(BitmapExternal)
+  fullName: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Common.BitmapExternal)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Common.BitmapExternal)
+    name: getPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Common_BitmapExternal_
+  - name: (
+  - uid: Vintagestory.API.Common.BitmapExternal
+    name: BitmapExternal
+    href: Vintagestory.API.Common.BitmapExternal.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Common.BitmapExternal)
+    name: getPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Common_BitmapExternal_
+  - name: (
+  - uid: Vintagestory.API.Common.BitmapExternal
+    name: BitmapExternal
+    href: Vintagestory.API.Common.BitmapExternal.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap)
+  commentId: M:Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_
+  name: getImageSurfaceFromAsset(SKBitmap)
+  nameWithType: GuiElement.getImageSurfaceFromAsset(SKBitmap)
+  fullName: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_
+  - name: (
+  - uid: SkiaSharp.SKBitmap
+    name: SKBitmap
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_
+  - name: (
+  - uid: SkiaSharp.SKBitmap
+    name: SKBitmap
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal)
+  commentId: M:Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_
+  name: getImageSurfaceFromAsset(BitmapExternal)
+  nameWithType: GuiElement.getImageSurfaceFromAsset(BitmapExternal)
+  fullName: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_
+  - name: (
+  - uid: Vintagestory.API.Common.BitmapExternal
+    name: BitmapExternal
+    href: Vintagestory.API.Common.BitmapExternal.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_
+  - name: (
+  - uid: Vintagestory.API.Common.BitmapExternal
+    name: BitmapExternal
+    href: Vintagestory.API.Common.BitmapExternal.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_System_Int32_System_Int32_
+  name: getImageSurfaceFromAsset(SKBitmap, int, int)
+  nameWithType: GuiElement.getImageSurfaceFromAsset(SKBitmap, int, int)
+  fullName: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap, int, int)
+  nameWithType.vb: GuiElement.getImageSurfaceFromAsset(SKBitmap, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap, Integer, Integer)
+  name.vb: getImageSurfaceFromAsset(SKBitmap, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap,System.Int32,System.Int32)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_System_Int32_System_Int32_
+  - name: (
+  - uid: SkiaSharp.SKBitmap
+    name: SKBitmap
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(SkiaSharp.SKBitmap,System.Int32,System.Int32)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_System_Int32_System_Int32_
+  - name: (
+  - uid: SkiaSharp.SKBitmap
+    name: SKBitmap
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_System_Int32_System_Int32_
+  name: getImageSurfaceFromAsset(BitmapExternal, int, int)
+  nameWithType: GuiElement.getImageSurfaceFromAsset(BitmapExternal, int, int)
+  fullName: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal, int, int)
+  nameWithType.vb: GuiElement.getImageSurfaceFromAsset(BitmapExternal, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal, Integer, Integer)
+  name.vb: getImageSurfaceFromAsset(BitmapExternal, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal,System.Int32,System.Int32)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.BitmapExternal
+    name: BitmapExternal
+    href: Vintagestory.API.Common.BitmapExternal.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Common.BitmapExternal,System.Int32,System.Int32)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.BitmapExternal
+    name: BitmapExternal
+    href: Vintagestory.API.Common.BitmapExternal.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.BeforeCalcBounds
+  commentId: M:Vintagestory.API.Client.GuiElement.BeforeCalcBounds
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_BeforeCalcBounds
+  name: BeforeCalcBounds()
+  nameWithType: GuiElement.BeforeCalcBounds()
+  fullName: Vintagestory.API.Client.GuiElement.BeforeCalcBounds()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.BeforeCalcBounds
+    name: BeforeCalcBounds
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_BeforeCalcBounds
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.BeforeCalcBounds
+    name: BeforeCalcBounds
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_BeforeCalcBounds
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Int32,System.Single)
+  commentId: M:Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Int32,System.Single)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_System_Single_
+  name: getPattern(ICoreClientAPI, AssetLocation, bool, int, float)
+  nameWithType: GuiElement.getPattern(ICoreClientAPI, AssetLocation, bool, int, float)
+  fullName: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Common.AssetLocation, bool, int, float)
+  nameWithType.vb: GuiElement.getPattern(ICoreClientAPI, AssetLocation, Boolean, Integer, Single)
+  fullName.vb: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Common.AssetLocation, Boolean, Integer, Single)
+  name.vb: getPattern(ICoreClientAPI, AssetLocation, Boolean, Integer, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Int32,System.Single)
+    name: getPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getPattern(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Int32,System.Single)
+    name: getPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Int32)
+  commentId: M:Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Int32)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Int32_
+  name: getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, int)
+  nameWithType: GuiElement.getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, int)
+  fullName: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Common.AssetLocation, int)
+  nameWithType.vb: GuiElement.getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, Integer)
+  fullName.vb: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Common.AssetLocation, Integer)
+  name.vb: getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Int32)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.getImageSurfaceFromAsset(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.AssetLocation,System.Int32)
+    name: getImageSurfaceFromAsset
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.fillWithPattern(Vintagestory.API.Client.ICoreClientAPI,Cairo.Context,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Boolean,System.Int32,System.Single)
+  commentId: M:Vintagestory.API.Client.GuiElement.fillWithPattern(Vintagestory.API.Client.ICoreClientAPI,Cairo.Context,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Boolean,System.Int32,System.Single)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Cairo_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_System_Single_
+  name: fillWithPattern(ICoreClientAPI, Context, AssetLocation, bool, bool, int, float)
+  nameWithType: GuiElement.fillWithPattern(ICoreClientAPI, Context, AssetLocation, bool, bool, int, float)
+  fullName: Vintagestory.API.Client.GuiElement.fillWithPattern(Vintagestory.API.Client.ICoreClientAPI, Cairo.Context, Vintagestory.API.Common.AssetLocation, bool, bool, int, float)
+  nameWithType.vb: GuiElement.fillWithPattern(ICoreClientAPI, Context, AssetLocation, Boolean, Boolean, Integer, Single)
+  fullName.vb: Vintagestory.API.Client.GuiElement.fillWithPattern(Vintagestory.API.Client.ICoreClientAPI, Cairo.Context, Vintagestory.API.Common.AssetLocation, Boolean, Boolean, Integer, Single)
+  name.vb: fillWithPattern(ICoreClientAPI, Context, AssetLocation, Boolean, Boolean, Integer, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.fillWithPattern(Vintagestory.API.Client.ICoreClientAPI,Cairo.Context,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Boolean,System.Int32,System.Single)
+    name: fillWithPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Cairo_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.fillWithPattern(Vintagestory.API.Client.ICoreClientAPI,Cairo.Context,Vintagestory.API.Common.AssetLocation,System.Boolean,System.Boolean,System.Int32,System.Single)
+    name: fillWithPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Cairo_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.DiscardPattern(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Client.GuiElement.DiscardPattern(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DiscardPattern_Vintagestory_API_Common_AssetLocation_
+  name: DiscardPattern(AssetLocation)
+  nameWithType: GuiElement.DiscardPattern(AssetLocation)
+  fullName: Vintagestory.API.Client.GuiElement.DiscardPattern(Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.DiscardPattern(Vintagestory.API.Common.AssetLocation)
+    name: DiscardPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DiscardPattern_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.DiscardPattern(Vintagestory.API.Common.AssetLocation)
+    name: DiscardPattern
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DiscardPattern_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.Lamp(Cairo.Context,System.Double,System.Double,System.Single[])
+  commentId: M:Vintagestory.API.Client.GuiElement.Lamp(Cairo.Context,System.Double,System.Double,System.Single[])
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Lamp_Cairo_Context_System_Double_System_Double_System_Single___
+  name: Lamp(Context, double, double, float[])
+  nameWithType: GuiElement.Lamp(Context, double, double, float[])
+  fullName: Vintagestory.API.Client.GuiElement.Lamp(Cairo.Context, double, double, float[])
+  nameWithType.vb: GuiElement.Lamp(Context, Double, Double, Single())
+  fullName.vb: Vintagestory.API.Client.GuiElement.Lamp(Cairo.Context, Double, Double, Single())
+  name.vb: Lamp(Context, Double, Double, Single())
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.Lamp(Cairo.Context,System.Double,System.Double,System.Single[])
+    name: Lamp
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Lamp_Cairo_Context_System_Double_System_Double_System_Single___
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.Lamp(Cairo.Context,System.Double,System.Double,System.Single[])
+    name: Lamp
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Lamp_Cairo_Context_System_Double_System_Double_System_Single___
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+  commentId: M:Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_
+  name: Rectangle(Context, ElementBounds)
+  nameWithType: GuiElement.Rectangle(Context, ElementBounds)
+  fullName: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context, Vintagestory.API.Client.ElementBounds)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+    name: Rectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+    name: Rectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double)
+  commentId: M:Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_
+  name: Rectangle(Context, double, double, double, double)
+  nameWithType: GuiElement.Rectangle(Context, double, double, double, double)
+  fullName: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context, double, double, double, double)
+  nameWithType.vb: GuiElement.Rectangle(Context, Double, Double, Double, Double)
+  fullName.vb: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context, Double, Double, Double, Double)
+  name.vb: Rectangle(Context, Double, Double, Double, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double)
+    name: Rectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.Rectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double)
+    name: Rectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.DialogRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+  commentId: M:Vintagestory.API.Client.GuiElement.DialogRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DialogRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_
+  name: DialogRoundRectangle(Context, ElementBounds)
+  nameWithType: GuiElement.DialogRoundRectangle(Context, ElementBounds)
+  fullName: Vintagestory.API.Client.GuiElement.DialogRoundRectangle(Cairo.Context, Vintagestory.API.Client.ElementBounds)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.DialogRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+    name: DialogRoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DialogRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.DialogRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds)
+    name: DialogRoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DialogRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.ElementRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Double)
+  commentId: M:Vintagestory.API.Client.GuiElement.ElementRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Double)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ElementRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Double_
+  name: ElementRoundRectangle(Context, ElementBounds, bool, double)
+  nameWithType: GuiElement.ElementRoundRectangle(Context, ElementBounds, bool, double)
+  fullName: Vintagestory.API.Client.GuiElement.ElementRoundRectangle(Cairo.Context, Vintagestory.API.Client.ElementBounds, bool, double)
+  nameWithType.vb: GuiElement.ElementRoundRectangle(Context, ElementBounds, Boolean, Double)
+  fullName.vb: Vintagestory.API.Client.GuiElement.ElementRoundRectangle(Cairo.Context, Vintagestory.API.Client.ElementBounds, Boolean, Double)
+  name.vb: ElementRoundRectangle(Context, ElementBounds, Boolean, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.ElementRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Double)
+    name: ElementRoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ElementRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.ElementRoundRectangle(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Double)
+    name: ElementRoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ElementRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.RoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double)
+  commentId: M:Vintagestory.API.Client.GuiElement.RoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_
+  name: RoundRectangle(Context, double, double, double, double, double)
+  nameWithType: GuiElement.RoundRectangle(Context, double, double, double, double, double)
+  fullName: Vintagestory.API.Client.GuiElement.RoundRectangle(Cairo.Context, double, double, double, double, double)
+  nameWithType.vb: GuiElement.RoundRectangle(Context, Double, Double, Double, Double, Double)
+  fullName.vb: Vintagestory.API.Client.GuiElement.RoundRectangle(Cairo.Context, Double, Double, Double, Double, Double)
+  name.vb: RoundRectangle(Context, Double, Double, Double, Double, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.RoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double)
+    name: RoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.RoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double)
+    name: RoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.ShadePath(Cairo.Context,System.Double)
+  commentId: M:Vintagestory.API.Client.GuiElement.ShadePath(Cairo.Context,System.Double)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ShadePath_Cairo_Context_System_Double_
+  name: ShadePath(Context, double)
+  nameWithType: GuiElement.ShadePath(Context, double)
+  fullName: Vintagestory.API.Client.GuiElement.ShadePath(Cairo.Context, double)
+  nameWithType.vb: GuiElement.ShadePath(Context, Double)
+  fullName.vb: Vintagestory.API.Client.GuiElement.ShadePath(Cairo.Context, Double)
+  name.vb: ShadePath(Context, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.ShadePath(Cairo.Context,System.Double)
+    name: ShadePath
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ShadePath_Cairo_Context_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.ShadePath(Cairo.Context,System.Double)
+    name: ShadePath
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ShadePath_Cairo_Context_System_Double_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleDialog(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean)
+  commentId: M:Vintagestory.API.Client.GuiElement.EmbossRoundRectangleDialog(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleDialog_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_
+  name: EmbossRoundRectangleDialog(Context, double, double, double, double, bool)
+  nameWithType: GuiElement.EmbossRoundRectangleDialog(Context, double, double, double, double, bool)
+  fullName: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleDialog(Cairo.Context, double, double, double, double, bool)
+  nameWithType.vb: GuiElement.EmbossRoundRectangleDialog(Context, Double, Double, Double, Double, Boolean)
+  fullName.vb: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleDialog(Cairo.Context, Double, Double, Double, Double, Boolean)
+  name.vb: EmbossRoundRectangleDialog(Context, Double, Double, Double, Double, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleDialog(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean)
+    name: EmbossRoundRectangleDialog
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleDialog_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleDialog(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean)
+    name: EmbossRoundRectangleDialog
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleDialog_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_System_Int32_System_Int32_
+  name: EmbossRoundRectangleElement(Context, double, double, double, double, bool, int, int)
+  nameWithType: GuiElement.EmbossRoundRectangleElement(Context, double, double, double, double, bool, int, int)
+  fullName: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context, double, double, double, double, bool, int, int)
+  nameWithType.vb: GuiElement.EmbossRoundRectangleElement(Context, Double, Double, Double, Double, Boolean, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context, Double, Double, Double, Double, Boolean, Integer, Integer)
+  name.vb: EmbossRoundRectangleElement(Context, Double, Double, Double, Double, Boolean, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean,System.Int32,System.Int32)
+    name: EmbossRoundRectangleElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_System_Int32_System_Int32_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Boolean,System.Int32,System.Int32)
+    name: EmbossRoundRectangleElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_System_Int32_System_Int32_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Int32_System_Int32_
+  name: EmbossRoundRectangleElement(Context, ElementBounds, bool, int, int)
+  nameWithType: GuiElement.EmbossRoundRectangleElement(Context, ElementBounds, bool, int, int)
+  fullName: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context, Vintagestory.API.Client.ElementBounds, bool, int, int)
+  nameWithType.vb: GuiElement.EmbossRoundRectangleElement(Context, ElementBounds, Boolean, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context, Vintagestory.API.Client.ElementBounds, Boolean, Integer, Integer)
+  name.vb: EmbossRoundRectangleElement(Context, ElementBounds, Boolean, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Int32,System.Int32)
+    name: EmbossRoundRectangleElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Int32_System_Int32_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangleElement(Cairo.Context,Vintagestory.API.Client.ElementBounds,System.Boolean,System.Int32,System.Int32)
+    name: EmbossRoundRectangleElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Int32_System_Int32_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Single,System.Single,System.Boolean,System.Single)
+  commentId: M:Vintagestory.API.Client.GuiElement.EmbossRoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Single,System.Single,System.Boolean,System.Single)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Single_System_Single_System_Boolean_System_Single_
+  name: EmbossRoundRectangle(Context, double, double, double, double, double, int, float, float, bool, float)
+  nameWithType: GuiElement.EmbossRoundRectangle(Context, double, double, double, double, double, int, float, float, bool, float)
+  fullName: Vintagestory.API.Client.GuiElement.EmbossRoundRectangle(Cairo.Context, double, double, double, double, double, int, float, float, bool, float)
+  nameWithType.vb: GuiElement.EmbossRoundRectangle(Context, Double, Double, Double, Double, Double, Integer, Single, Single, Boolean, Single)
+  fullName.vb: Vintagestory.API.Client.GuiElement.EmbossRoundRectangle(Cairo.Context, Double, Double, Double, Double, Double, Integer, Single, Single, Boolean, Single)
+  name.vb: EmbossRoundRectangle(Context, Double, Double, Double, Double, Double, Integer, Single, Single, Boolean, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Single,System.Single,System.Boolean,System.Single)
+    name: EmbossRoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Single_System_Single_System_Boolean_System_Single_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.EmbossRoundRectangle(Cairo.Context,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Single,System.Single,System.Boolean,System.Single)
+    name: EmbossRoundRectangle
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Single_System_Single_System_Boolean_System_Single_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.RenderBoundsDebug
+  commentId: M:Vintagestory.API.Client.GuiElement.RenderBoundsDebug
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderBoundsDebug
+  name: RenderBoundsDebug()
+  nameWithType: GuiElement.RenderBoundsDebug()
+  fullName: Vintagestory.API.Client.GuiElement.RenderBoundsDebug()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.RenderBoundsDebug
+    name: RenderBoundsDebug
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderBoundsDebug
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.RenderBoundsDebug
+    name: RenderBoundsDebug
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderBoundsDebug
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseDown(ICoreClientAPI, MouseEvent)
+  nameWithType: GuiElement.OnMouseDown(ICoreClientAPI, MouseEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDown
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDown
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnMouseUpOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseUpOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUpOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseUpOnElement(ICoreClientAPI, MouseEvent)
+  nameWithType: GuiElement.OnMouseUpOnElement(ICoreClientAPI, MouseEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseUpOnElement(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseUpOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUpOnElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUpOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseUpOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUpOnElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUpOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseUp(ICoreClientAPI, MouseEvent)
+  nameWithType: GuiElement.OnMouseUp(ICoreClientAPI, MouseEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUp
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUp
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnMouseEnterSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseEnterSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseEnterSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_
+  name: OnMouseEnterSlot(ICoreClientAPI, ItemSlot)
+  nameWithType: GuiElement.OnMouseEnterSlot(ICoreClientAPI, ItemSlot)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseEnterSlot(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseEnterSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+    name: OnMouseEnterSlot
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseEnterSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseEnterSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+    name: OnMouseEnterSlot
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseEnterSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnMouseLeaveSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseLeaveSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseLeaveSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_
+  name: OnMouseLeaveSlot(ICoreClientAPI, ItemSlot)
+  nameWithType: GuiElement.OnMouseLeaveSlot(ICoreClientAPI, ItemSlot)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseLeaveSlot(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseLeaveSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+    name: OnMouseLeaveSlot
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseLeaveSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseLeaveSlot(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemSlot)
+    name: OnMouseLeaveSlot
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseLeaveSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseMove(ICoreClientAPI, MouseEvent)
+  nameWithType: GuiElement.OnMouseMove(ICoreClientAPI, MouseEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseMove
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseMove
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseWheelEventArgs)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseWheelEventArgs)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_
+  name: OnMouseWheel(ICoreClientAPI, MouseWheelEventArgs)
+  nameWithType: GuiElement.OnMouseWheel(ICoreClientAPI, MouseWheelEventArgs)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.MouseWheelEventArgs)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseWheelEventArgs)
+    name: OnMouseWheel
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseWheelEventArgs
+    name: MouseWheelEventArgs
+    href: Vintagestory.API.Client.MouseWheelEventArgs.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseWheelEventArgs)
+    name: OnMouseWheel
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseWheelEventArgs
+    name: MouseWheelEventArgs
+    href: Vintagestory.API.Client.MouseWheelEventArgs.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  name: OnKeyDown(ICoreClientAPI, KeyEvent)
+  nameWithType: GuiElement.OnKeyDown(ICoreClientAPI, KeyEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.KeyEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+    name: OnKeyDown
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+    name: OnKeyDown
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnKeyUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnKeyUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  name: OnKeyUp(ICoreClientAPI, KeyEvent)
+  nameWithType: GuiElement.OnKeyUp(ICoreClientAPI, KeyEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnKeyUp(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.KeyEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnKeyUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+    name: OnKeyUp
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnKeyUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+    name: OnKeyUp
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  name: OnKeyPress(ICoreClientAPI, KeyEvent)
+  nameWithType: GuiElement.OnKeyPress(ICoreClientAPI, KeyEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.KeyEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+    name: OnKeyPress
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
+    name: OnKeyPress
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.IsPositionInside(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.GuiElement.IsPositionInside(System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_IsPositionInside_System_Int32_System_Int32_
+  name: IsPositionInside(int, int)
+  nameWithType: GuiElement.IsPositionInside(int, int)
+  fullName: Vintagestory.API.Client.GuiElement.IsPositionInside(int, int)
+  nameWithType.vb: GuiElement.IsPositionInside(Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.GuiElement.IsPositionInside(Integer, Integer)
+  name.vb: IsPositionInside(Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.IsPositionInside(System.Int32,System.Int32)
+    name: IsPositionInside
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_IsPositionInside_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.IsPositionInside(System.Int32,System.Int32)
+    name: IsPositionInside
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_IsPositionInside_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.MouseOverCursor
+  commentId: P:Vintagestory.API.Client.GuiElement.MouseOverCursor
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_MouseOverCursor
+  name: MouseOverCursor
+  nameWithType: GuiElement.MouseOverCursor
+  fullName: Vintagestory.API.Client.GuiElement.MouseOverCursor
+- uid: Vintagestory.API.Client.GuiElement.OutlineColor
+  commentId: M:Vintagestory.API.Client.GuiElement.OutlineColor
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OutlineColor
+  name: OutlineColor()
+  nameWithType: GuiElement.OutlineColor()
+  fullName: Vintagestory.API.Client.GuiElement.OutlineColor()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OutlineColor
+    name: OutlineColor
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OutlineColor
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OutlineColor
+    name: OutlineColor
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OutlineColor
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+  commentId: M:Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Single_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec4f_
+  name: Render2DTexture(int, float, float, float, float, float, Vec4f)
+  nameWithType: GuiElement.Render2DTexture(int, float, float, float, float, float, Vec4f)
+  fullName: Vintagestory.API.Client.GuiElement.Render2DTexture(int, float, float, float, float, float, Vintagestory.API.MathTools.Vec4f)
+  nameWithType.vb: GuiElement.Render2DTexture(Integer, Single, Single, Single, Single, Single, Vec4f)
+  fullName.vb: Vintagestory.API.Client.GuiElement.Render2DTexture(Integer, Single, Single, Single, Single, Single, Vintagestory.API.MathTools.Vec4f)
+  name.vb: Render2DTexture(Integer, Single, Single, Single, Single, Single, Vec4f)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+    name: Render2DTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Single_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+    name: Render2DTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Single_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Single,Vintagestory.API.MathTools.Vec4f)
+  commentId: M:Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Single,Vintagestory.API.MathTools.Vec4f)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Single_Vintagestory_API_MathTools_Vec4f_
+  name: Render2DTexture(int, double, double, double, double, float, Vec4f)
+  nameWithType: GuiElement.Render2DTexture(int, double, double, double, double, float, Vec4f)
+  fullName: Vintagestory.API.Client.GuiElement.Render2DTexture(int, double, double, double, double, float, Vintagestory.API.MathTools.Vec4f)
+  nameWithType.vb: GuiElement.Render2DTexture(Integer, Double, Double, Double, Double, Single, Vec4f)
+  fullName.vb: Vintagestory.API.Client.GuiElement.Render2DTexture(Integer, Double, Double, Double, Double, Single, Vintagestory.API.MathTools.Vec4f)
+  name.vb: Render2DTexture(Integer, Double, Double, Double, Double, Single, Vec4f)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Single,Vintagestory.API.MathTools.Vec4f)
+    name: Render2DTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Single_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Single,Vintagestory.API.MathTools.Vec4f)
+    name: Render2DTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Single_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,Vintagestory.API.Client.ElementBounds,System.Single,Vintagestory.API.MathTools.Vec4f)
+  commentId: M:Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,Vintagestory.API.Client.ElementBounds,System.Single,Vintagestory.API.MathTools.Vec4f)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_Vintagestory_API_Client_ElementBounds_System_Single_Vintagestory_API_MathTools_Vec4f_
+  name: Render2DTexture(int, ElementBounds, float, Vec4f)
+  nameWithType: GuiElement.Render2DTexture(int, ElementBounds, float, Vec4f)
+  fullName: Vintagestory.API.Client.GuiElement.Render2DTexture(int, Vintagestory.API.Client.ElementBounds, float, Vintagestory.API.MathTools.Vec4f)
+  nameWithType.vb: GuiElement.Render2DTexture(Integer, ElementBounds, Single, Vec4f)
+  fullName.vb: Vintagestory.API.Client.GuiElement.Render2DTexture(Integer, Vintagestory.API.Client.ElementBounds, Single, Vintagestory.API.MathTools.Vec4f)
+  name.vb: Render2DTexture(Integer, ElementBounds, Single, Vec4f)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,Vintagestory.API.Client.ElementBounds,System.Single,Vintagestory.API.MathTools.Vec4f)
+    name: Render2DTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_Vintagestory_API_Client_ElementBounds_System_Single_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.Render2DTexture(System.Int32,Vintagestory.API.Client.ElementBounds,System.Single,Vintagestory.API.MathTools.Vec4f)
+    name: Render2DTexture
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_Vintagestory_API_Client_ElementBounds_System_Single_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElement.Dispose
+  commentId: M:Vintagestory.API.Client.GuiElement.Dispose
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Dispose
+  name: Dispose()
+  nameWithType: GuiElement.Dispose()
+  fullName: Vintagestory.API.Client.GuiElement.Dispose()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.Dispose
+    name: Dispose
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.Dispose
+    name: Dispose
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.#ctor*
+  commentId: Overload:Vintagestory.API.Client.GuiElementSwitchOld.#ctor
+  href: Vintagestory.API.Client.GuiElementSwitchOld.html#Vintagestory_API_Client_GuiElementSwitchOld__ctor_Vintagestory_API_Client_ICoreClientAPI_System_Action_System_Boolean__Vintagestory_API_Client_ElementBounds_
+  name: GuiElementSwitchOld
+  nameWithType: GuiElementSwitchOld.GuiElementSwitchOld
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.GuiElementSwitchOld
+  nameWithType.vb: GuiElementSwitchOld.New
+  fullName.vb: Vintagestory.API.Client.GuiElementSwitchOld.New
+  name.vb: New
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: System.Action{System.Boolean}
+  commentId: T:System.Action{System.Boolean}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<bool>
+  nameWithType: Action<bool>
+  fullName: System.Action<bool>
+  nameWithType.vb: Action(Of Boolean)
+  fullName.vb: System.Action(Of Boolean)
+  name.vb: Action(Of Boolean)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Client.ElementBounds
+  commentId: T:Vintagestory.API.Client.ElementBounds
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ElementBounds.html
+  name: ElementBounds
+  nameWithType: ElementBounds
+  fullName: Vintagestory.API.Client.ElementBounds
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  commentId: M:Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  parent: Vintagestory.API.Client.GuiElementTextBase
+  href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeElements_Cairo_Context_Cairo_ImageSurface_
+  name: ComposeElements(Context, ImageSurface)
+  nameWithType: GuiElementTextBase.ComposeElements(Context, ImageSurface)
+  fullName: Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Cairo.Context, Cairo.ImageSurface)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+    name: ComposeElements
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeElements_Cairo_Context_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+    name: ComposeElements
+    href: Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeElements_Cairo_Context_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements*
+  commentId: Overload:Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements
+  href: Vintagestory.API.Client.GuiElementSwitchOld.html#Vintagestory_API_Client_GuiElementSwitchOld_ComposeElements_Cairo_Context_Cairo_ImageSurface_
+  name: ComposeElements
+  nameWithType: GuiElementSwitchOld.ComposeElements
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.ComposeElements
+- uid: Cairo.Context
+  commentId: T:Cairo.Context
+  parent: Cairo
+  name: Context
+  nameWithType: Context
+  fullName: Cairo.Context
+- uid: Cairo.ImageSurface
+  commentId: T:Cairo.ImageSurface
+  parent: Cairo
+  name: ImageSurface
+  nameWithType: ImageSurface
+  fullName: Cairo.ImageSurface
+- uid: Cairo
+  commentId: N:Cairo
+  name: Cairo
+  nameWithType: Cairo
+  fullName: Cairo
+- uid: Vintagestory.API.Client.GuiElement.RenderInteractiveElements(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiElement.RenderInteractiveElements(System.Single)
+  parent: Vintagestory.API.Client.GuiElement
+  isExternal: true
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderInteractiveElements_System_Single_
+  name: RenderInteractiveElements(float)
+  nameWithType: GuiElement.RenderInteractiveElements(float)
+  fullName: Vintagestory.API.Client.GuiElement.RenderInteractiveElements(float)
+  nameWithType.vb: GuiElement.RenderInteractiveElements(Single)
+  fullName.vb: Vintagestory.API.Client.GuiElement.RenderInteractiveElements(Single)
+  name.vb: RenderInteractiveElements(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.RenderInteractiveElements(System.Single)
+    name: RenderInteractiveElements
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderInteractiveElements_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.RenderInteractiveElements(System.Single)
+    name: RenderInteractiveElements
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderInteractiveElements_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements*
+  commentId: Overload:Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements
+  href: Vintagestory.API.Client.GuiElementSwitchOld.html#Vintagestory_API_Client_GuiElementSwitchOld_RenderInteractiveElements_System_Single_
+  name: RenderInteractiveElements
+  nameWithType: GuiElementSwitchOld.RenderInteractiveElements
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.RenderInteractiveElements
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.GuiElement.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiElement.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiElement
+  href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDownOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseDownOnElement(ICoreClientAPI, MouseEvent)
+  nameWithType: GuiElement.OnMouseDownOnElement(ICoreClientAPI, MouseEvent)
+  fullName: Vintagestory.API.Client.GuiElement.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDownOnElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDownOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiElement.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDownOnElement
+    href: Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDownOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement*
+  commentId: Overload:Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement
+  href: Vintagestory.API.Client.GuiElementSwitchOld.html#Vintagestory_API_Client_GuiElementSwitchOld_OnMouseDownOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseDownOnElement
+  nameWithType: GuiElementSwitchOld.OnMouseDownOnElement
+  fullName: Vintagestory.API.Client.GuiElementSwitchOld.OnMouseDownOnElement
+- uid: Vintagestory.API.Client.MouseEvent
+  commentId: T:Vintagestory.API.Client.MouseEvent
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MouseEvent.html
+  name: MouseEvent
+  nameWithType: MouseEvent
+  fullName: Vintagestory.API.Client.MouseEvent

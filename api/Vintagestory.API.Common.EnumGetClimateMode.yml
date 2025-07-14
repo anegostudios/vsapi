@@ -1,0 +1,327 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumGetClimateMode
+  commentId: T:Vintagestory.API.Common.EnumGetClimateMode
+  id: EnumGetClimateMode
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDateValues
+  - Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureOnly
+  - Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureRainfallOnly
+  - Vintagestory.API.Common.EnumGetClimateMode.NowValues
+  - Vintagestory.API.Common.EnumGetClimateMode.WorldGenValues
+  langs:
+  - csharp
+  - vb
+  name: EnumGetClimateMode
+  nameWithType: EnumGetClimateMode
+  fullName: Vintagestory.API.Common.EnumGetClimateMode
+  type: Enum
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The type of climate values you wish to receive
+  example: []
+  syntax:
+    content: public enum EnumGetClimateMode
+    content.vb: Public Enum EnumGetClimateMode
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.EnumGetClimateMode.WorldGenValues
+  commentId: F:Vintagestory.API.Common.EnumGetClimateMode.WorldGenValues
+  id: WorldGenValues
+  parent: Vintagestory.API.Common.EnumGetClimateMode
+  langs:
+  - csharp
+  - vb
+  name: WorldGenValues
+  nameWithType: EnumGetClimateMode.WorldGenValues
+  fullName: Vintagestory.API.Common.EnumGetClimateMode.WorldGenValues
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The values generate during world generation, these are loosely considered as yearly averages
+  example: []
+  syntax:
+    content: WorldGenValues = 0
+    return:
+      type: Vintagestory.API.Common.EnumGetClimateMode
+- uid: Vintagestory.API.Common.EnumGetClimateMode.NowValues
+  commentId: F:Vintagestory.API.Common.EnumGetClimateMode.NowValues
+  id: NowValues
+  parent: Vintagestory.API.Common.EnumGetClimateMode
+  langs:
+  - csharp
+  - vb
+  name: NowValues
+  nameWithType: EnumGetClimateMode.NowValues
+  fullName: Vintagestory.API.Common.EnumGetClimateMode.NowValues
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The values at the current calendar time
+  example: []
+  syntax:
+    content: NowValues = 1
+    return:
+      type: Vintagestory.API.Common.EnumGetClimateMode
+- uid: Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDateValues
+  commentId: F:Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDateValues
+  id: ForSuppliedDateValues
+  parent: Vintagestory.API.Common.EnumGetClimateMode
+  langs:
+  - csharp
+  - vb
+  name: ForSuppliedDateValues
+  nameWithType: EnumGetClimateMode.ForSuppliedDateValues
+  fullName: Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDateValues
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The values at the supplied calendar time, supplied as additional arg
+  example: []
+  syntax:
+    content: ForSuppliedDateValues = 2
+    return:
+      type: Vintagestory.API.Common.EnumGetClimateMode
+- uid: Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureOnly
+  commentId: F:Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureOnly
+  id: ForSuppliedDate_TemperatureOnly
+  parent: Vintagestory.API.Common.EnumGetClimateMode
+  langs:
+  - csharp
+  - vb
+  name: ForSuppliedDate_TemperatureOnly
+  nameWithType: EnumGetClimateMode.ForSuppliedDate_TemperatureOnly
+  fullName: Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureOnly
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The values at the supplied calendar time, ignoring rainfall etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value
+  example: []
+  syntax:
+    content: ForSuppliedDate_TemperatureOnly = 3
+    return:
+      type: Vintagestory.API.Common.EnumGetClimateMode
+- uid: Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureRainfallOnly
+  commentId: F:Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureRainfallOnly
+  id: ForSuppliedDate_TemperatureRainfallOnly
+  parent: Vintagestory.API.Common.EnumGetClimateMode
+  langs:
+  - csharp
+  - vb
+  name: ForSuppliedDate_TemperatureRainfallOnly
+  nameWithType: EnumGetClimateMode.ForSuppliedDate_TemperatureRainfallOnly
+  fullName: Vintagestory.API.Common.EnumGetClimateMode.ForSuppliedDate_TemperatureRainfallOnly
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The values at the supplied calendar time, ignoring forest cover etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value and no rain
+  example: []
+  syntax:
+    content: ForSuppliedDate_TemperatureRainfallOnly = 4
+    return:
+      type: Vintagestory.API.Common.EnumGetClimateMode
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.EnumGetClimateMode
+  commentId: T:Vintagestory.API.Common.EnumGetClimateMode
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumGetClimateMode.html
+  name: EnumGetClimateMode
+  nameWithType: EnumGetClimateMode
+  fullName: Vintagestory.API.Common.EnumGetClimateMode

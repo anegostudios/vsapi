@@ -1,0 +1,2211 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  id: ItemStack
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ItemStack.#ctor
+  - Vintagestory.API.Common.ItemStack.#ctor(System.Byte[])
+  - Vintagestory.API.Common.ItemStack.#ctor(System.IO.BinaryReader)
+  - Vintagestory.API.Common.ItemStack.#ctor(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.ItemStack.#ctor(System.Int32,Vintagestory.API.Common.EnumItemClass,System.Int32,Vintagestory.API.Datastructures.TreeAttribute,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.Block,System.Int32)
+  - Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.CollectibleObject,System.Int32)
+  - Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.Item,System.Int32)
+  - Vintagestory.API.Common.ItemStack.Attributes
+  - Vintagestory.API.Common.ItemStack.Block
+  - Vintagestory.API.Common.ItemStack.Class
+  - Vintagestory.API.Common.ItemStack.Clone
+  - Vintagestory.API.Common.ItemStack.Collectible
+  - Vintagestory.API.Common.ItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  - Vintagestory.API.Common.ItemStack.FixMapping(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.ItemStack.FromBytes(System.IO.BinaryReader)
+  - Vintagestory.API.Common.ItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  - Vintagestory.API.Common.ItemStack.GetEmptyClone
+  - Vintagestory.API.Common.ItemStack.GetHashCode
+  - Vintagestory.API.Common.ItemStack.GetHashCode(System.String[])
+  - Vintagestory.API.Common.ItemStack.GetName
+  - Vintagestory.API.Common.ItemStack.Id
+  - Vintagestory.API.Common.ItemStack.Item
+  - Vintagestory.API.Common.ItemStack.ItemAttributes
+  - Vintagestory.API.Common.ItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  - Vintagestory.API.Common.ItemStack.ResolveBlockOrItem(Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.ItemStack.Satisfies(Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.ItemStack.SetFrom(Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.ItemStack.StackSize
+  - Vintagestory.API.Common.ItemStack.TempAttributes
+  - Vintagestory.API.Common.ItemStack.ToBytes
+  - Vintagestory.API.Common.ItemStack.ToBytes(System.IO.BinaryWriter)
+  - Vintagestory.API.Common.ItemStack.ToString
+  - Vintagestory.API.Common.ItemStack.block
+  - Vintagestory.API.Common.ItemStack.item
+  - Vintagestory.API.Common.ItemStack.stacksize
+  langs:
+  - csharp
+  - vb
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public class ItemStack : IItemStack'
+    content.vb: Public Class ItemStack Implements IItemStack
+  inheritance:
+  - System.Object
+  implements:
+  - Vintagestory.API.Common.IItemStack
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.ItemStack.Class
+  commentId: F:Vintagestory.API.Common.ItemStack.Class
+  id: Class
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Class
+  nameWithType: ItemStack.Class
+  fullName: Vintagestory.API.Common.ItemStack.Class
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Wether its a block Block or Item
+  example: []
+  syntax:
+    content: public EnumItemClass Class
+    return:
+      type: Vintagestory.API.Common.EnumItemClass
+    content.vb: Public [Class] As EnumItemClass
+- uid: Vintagestory.API.Common.ItemStack.Id
+  commentId: F:Vintagestory.API.Common.ItemStack.Id
+  id: Id
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ItemStack.Id
+  fullName: Vintagestory.API.Common.ItemStack.Id
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The id of the block or item
+  example: []
+  syntax:
+    content: public int Id
+    return:
+      type: System.Int32
+    content.vb: Public Id As Integer
+- uid: Vintagestory.API.Common.ItemStack.stacksize
+  commentId: F:Vintagestory.API.Common.ItemStack.stacksize
+  id: stacksize
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: stacksize
+  nameWithType: ItemStack.stacksize
+  fullName: Vintagestory.API.Common.ItemStack.stacksize
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected int stacksize
+    return:
+      type: System.Int32
+    content.vb: Protected stacksize As Integer
+- uid: Vintagestory.API.Common.ItemStack.item
+  commentId: F:Vintagestory.API.Common.ItemStack.item
+  id: item
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: item
+  nameWithType: ItemStack.item
+  fullName: Vintagestory.API.Common.ItemStack.item
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected Item item
+    return:
+      type: Vintagestory.API.Common.Item
+    content.vb: Protected item As Item
+- uid: Vintagestory.API.Common.ItemStack.block
+  commentId: F:Vintagestory.API.Common.ItemStack.block
+  id: block
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: block
+  nameWithType: ItemStack.block
+  fullName: Vintagestory.API.Common.ItemStack.block
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected Block block
+    return:
+      type: Vintagestory.API.Common.Block
+    content.vb: Protected block As Block
+- uid: Vintagestory.API.Common.ItemStack.Collectible
+  commentId: P:Vintagestory.API.Common.ItemStack.Collectible
+  id: Collectible
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Collectible
+  nameWithType: ItemStack.Collectible
+  fullName: Vintagestory.API.Common.ItemStack.Collectible
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The item/block base class this stack is holding
+  example: []
+  syntax:
+    content: public CollectibleObject Collectible { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.CollectibleObject
+    content.vb: Public ReadOnly Property Collectible As CollectibleObject
+  overload: Vintagestory.API.Common.ItemStack.Collectible*
+  implements:
+  - Vintagestory.API.Common.IItemStack.Collectible
+- uid: Vintagestory.API.Common.ItemStack.Item
+  commentId: P:Vintagestory.API.Common.ItemStack.Item
+  id: Item
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Item
+  nameWithType: ItemStack.Item
+  fullName: Vintagestory.API.Common.ItemStack.Item
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If this is a stack of items, this is the type of items it's holding, otherwise null
+  example: []
+  syntax:
+    content: public Item Item { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Item
+    content.vb: Public ReadOnly Property Item As Item
+  overload: Vintagestory.API.Common.ItemStack.Item*
+  implements:
+  - Vintagestory.API.Common.IItemStack.Item
+- uid: Vintagestory.API.Common.ItemStack.Block
+  commentId: P:Vintagestory.API.Common.ItemStack.Block
+  id: Block
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: ItemStack.Block
+  fullName: Vintagestory.API.Common.ItemStack.Block
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If this is a stack of blocks, this is the type of block it's holding, otherwise null
+  example: []
+  syntax:
+    content: public Block Block { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Block
+    content.vb: Public ReadOnly Property Block As Block
+  overload: Vintagestory.API.Common.ItemStack.Block*
+  implements:
+  - Vintagestory.API.Common.IItemStack.Block
+- uid: Vintagestory.API.Common.ItemStack.StackSize
+  commentId: P:Vintagestory.API.Common.ItemStack.StackSize
+  id: StackSize
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: StackSize
+  nameWithType: ItemStack.StackSize
+  fullName: Vintagestory.API.Common.ItemStack.StackSize
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The amount of items/blocks in this stack
+  example: []
+  syntax:
+    content: public int StackSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property StackSize As Integer
+  overload: Vintagestory.API.Common.ItemStack.StackSize*
+  implements:
+  - Vintagestory.API.Common.IItemStack.StackSize
+- uid: Vintagestory.API.Common.ItemStack.Attributes
+  commentId: P:Vintagestory.API.Common.ItemStack.Attributes
+  id: Attributes
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Attributes
+  nameWithType: ItemStack.Attributes
+  fullName: Vintagestory.API.Common.ItemStack.Attributes
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Attributes assigned to this particular itemstack which are saved and synchronized.
+  example: []
+  syntax:
+    content: public ITreeAttribute Attributes { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    content.vb: Public Property Attributes As ITreeAttribute
+  overload: Vintagestory.API.Common.ItemStack.Attributes*
+  implements:
+  - Vintagestory.API.Common.IItemStack.Attributes
+- uid: Vintagestory.API.Common.ItemStack.TempAttributes
+  commentId: P:Vintagestory.API.Common.ItemStack.TempAttributes
+  id: TempAttributes
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: TempAttributes
+  nameWithType: ItemStack.TempAttributes
+  fullName: Vintagestory.API.Common.ItemStack.TempAttributes
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Temporary Attributes assigned to this particular itemstack, not synchronized, not saved! Modifiable.
+  example: []
+  syntax:
+    content: public ITreeAttribute TempAttributes { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    content.vb: Public Property TempAttributes As ITreeAttribute
+  overload: Vintagestory.API.Common.ItemStack.TempAttributes*
+- uid: Vintagestory.API.Common.ItemStack.ItemAttributes
+  commentId: P:Vintagestory.API.Common.ItemStack.ItemAttributes
+  id: ItemAttributes
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemAttributes
+  nameWithType: ItemStack.ItemAttributes
+  fullName: Vintagestory.API.Common.ItemStack.ItemAttributes
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The Attributes assigned to the underlying block/item. Should not be modified, as it applies to globally.
+  example: []
+  syntax:
+    content: public JsonObject ItemAttributes { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject
+    content.vb: Public ReadOnly Property ItemAttributes As JsonObject
+  overload: Vintagestory.API.Common.ItemStack.ItemAttributes*
+- uid: Vintagestory.API.Common.ItemStack.#ctor
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack()
+  nameWithType: ItemStack.ItemStack()
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack()
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new empty itemstack
+  example: []
+  syntax:
+    content: public ItemStack()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New()
+  fullName.vb: Vintagestory.API.Common.ItemStack.New()
+  name.vb: New()
+- uid: Vintagestory.API.Common.ItemStack.#ctor(System.Int32,Vintagestory.API.Common.EnumItemClass,System.Int32,Vintagestory.API.Datastructures.TreeAttribute,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor(System.Int32,Vintagestory.API.Common.EnumItemClass,System.Int32,Vintagestory.API.Datastructures.TreeAttribute,Vintagestory.API.Common.IWorldAccessor)
+  id: '#ctor(System.Int32,Vintagestory.API.Common.EnumItemClass,System.Int32,Vintagestory.API.Datastructures.TreeAttribute,Vintagestory.API.Common.IWorldAccessor)'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack(int, EnumItemClass, int, TreeAttribute, IWorldAccessor)
+  nameWithType: ItemStack.ItemStack(int, EnumItemClass, int, TreeAttribute, IWorldAccessor)
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack(int, Vintagestory.API.Common.EnumItemClass, int, Vintagestory.API.Datastructures.TreeAttribute, Vintagestory.API.Common.IWorldAccessor)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new itemstack with given collectible id, itemclass, stacksize, attributes and a resolver to turn the collectibe + itemclass into an Item/Block
+  example: []
+  syntax:
+    content: public ItemStack(int id, EnumItemClass itemClass, int stacksize, TreeAttribute stackAttributes, IWorldAccessor resolver)
+    parameters:
+    - id: id
+      type: System.Int32
+      description: ''
+    - id: itemClass
+      type: Vintagestory.API.Common.EnumItemClass
+      description: ''
+    - id: stacksize
+      type: System.Int32
+      description: ''
+    - id: stackAttributes
+      type: Vintagestory.API.Datastructures.TreeAttribute
+      description: ''
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    content.vb: Public Sub New(id As Integer, itemClass As EnumItemClass, stacksize As Integer, stackAttributes As TreeAttribute, resolver As IWorldAccessor)
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New(Integer, EnumItemClass, Integer, TreeAttribute, IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.ItemStack.New(Integer, Vintagestory.API.Common.EnumItemClass, Integer, Vintagestory.API.Datastructures.TreeAttribute, Vintagestory.API.Common.IWorldAccessor)
+  name.vb: New(Integer, EnumItemClass, Integer, TreeAttribute, IWorldAccessor)
+- uid: Vintagestory.API.Common.ItemStack.#ctor(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor(System.IO.BinaryReader)
+  id: '#ctor(System.IO.BinaryReader)'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack(BinaryReader)
+  nameWithType: ItemStack.ItemStack(BinaryReader)
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack(System.IO.BinaryReader)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new itemstack from a byte serialized stream (without resolving the block/item)
+  example: []
+  syntax:
+    content: public ItemStack(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ''
+    content.vb: Public Sub New(reader As BinaryReader)
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New(BinaryReader)
+  fullName.vb: Vintagestory.API.Common.ItemStack.New(System.IO.BinaryReader)
+  name.vb: New(BinaryReader)
+- uid: Vintagestory.API.Common.ItemStack.#ctor(System.Byte[])
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor(System.Byte[])
+  id: '#ctor(System.Byte[])'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack(byte[])
+  nameWithType: ItemStack.ItemStack(byte[])
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack(byte[])
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new itemstack from a byte serialized array(without resolving the block/item)
+  example: []
+  syntax:
+    content: public ItemStack(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Public Sub New(data As Byte())
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New(Byte())
+  fullName.vb: Vintagestory.API.Common.ItemStack.New(Byte())
+  name.vb: New(Byte())
+- uid: Vintagestory.API.Common.ItemStack.#ctor(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  id: '#ctor(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack(BinaryReader, IWorldAccessor)
+  nameWithType: ItemStack.ItemStack(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new itemstack from a byte serialized stream (with resolving the block/item)
+  example: []
+  syntax:
+    content: public ItemStack(BinaryReader reader, IWorldAccessor resolver)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ''
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    content.vb: Public Sub New(reader As BinaryReader, resolver As IWorldAccessor)
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New(BinaryReader, IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.ItemStack.New(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  name.vb: New(BinaryReader, IWorldAccessor)
+- uid: Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.CollectibleObject,System.Int32)
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.CollectibleObject,System.Int32)
+  id: '#ctor(Vintagestory.API.Common.CollectibleObject,System.Int32)'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack(CollectibleObject, int)
+  nameWithType: ItemStack.ItemStack(CollectibleObject, int)
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack(Vintagestory.API.Common.CollectibleObject, int)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new itemstack from given block/item and given stack size
+  example: []
+  syntax:
+    content: public ItemStack(CollectibleObject collectible, int stacksize = 1)
+    parameters:
+    - id: collectible
+      type: Vintagestory.API.Common.CollectibleObject
+      description: ''
+    - id: stacksize
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub New(collectible As CollectibleObject, stacksize As Integer = 1)
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New(CollectibleObject, Integer)
+  fullName.vb: Vintagestory.API.Common.ItemStack.New(Vintagestory.API.Common.CollectibleObject, Integer)
+  name.vb: New(CollectibleObject, Integer)
+- uid: Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.Item,System.Int32)
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.Item,System.Int32)
+  id: '#ctor(Vintagestory.API.Common.Item,System.Int32)'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack(Item, int)
+  nameWithType: ItemStack.ItemStack(Item, int)
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack(Vintagestory.API.Common.Item, int)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new itemstack from given item and given stack size
+  example: []
+  syntax:
+    content: public ItemStack(Item item, int stacksize = 1)
+    parameters:
+    - id: item
+      type: Vintagestory.API.Common.Item
+      description: ''
+    - id: stacksize
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub New(item As Item, stacksize As Integer = 1)
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New(Item, Integer)
+  fullName.vb: Vintagestory.API.Common.ItemStack.New(Vintagestory.API.Common.Item, Integer)
+  name.vb: New(Item, Integer)
+- uid: Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.Block,System.Int32)
+  commentId: M:Vintagestory.API.Common.ItemStack.#ctor(Vintagestory.API.Common.Block,System.Int32)
+  id: '#ctor(Vintagestory.API.Common.Block,System.Int32)'
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ItemStack(Block, int)
+  nameWithType: ItemStack.ItemStack(Block, int)
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack(Vintagestory.API.Common.Block, int)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a new itemstack from given block and given stack size
+  example: []
+  syntax:
+    content: public ItemStack(Block block, int stacksize = 1)
+    parameters:
+    - id: block
+      type: Vintagestory.API.Common.Block
+      description: ''
+    - id: stacksize
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub New(block As Block, stacksize As Integer = 1)
+  overload: Vintagestory.API.Common.ItemStack.#ctor*
+  nameWithType.vb: ItemStack.New(Block, Integer)
+  fullName.vb: Vintagestory.API.Common.ItemStack.New(Vintagestory.API.Common.Block, Integer)
+  name.vb: New(Block, Integer)
+- uid: Vintagestory.API.Common.ItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  commentId: M:Vintagestory.API.Common.ItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  id: Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Equals(IWorldAccessor, ItemStack, params string[])
+  nameWithType: ItemStack.Equals(IWorldAccessor, ItemStack, params string[])
+  fullName: Vintagestory.API.Common.ItemStack.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, params string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns true if both stacks exactly match
+  example: []
+  syntax:
+    content: public bool Equals(IWorldAccessor worldForResolve, ItemStack sourceStack, params string[] ignoreAttributeSubTrees)
+    parameters:
+    - id: worldForResolve
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: sourceStack
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    - id: ignoreAttributeSubTrees
+      type: System.String[]
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Equals(worldForResolve As IWorldAccessor, sourceStack As ItemStack, ParamArray ignoreAttributeSubTrees As String()) As Boolean
+  overload: Vintagestory.API.Common.ItemStack.Equals*
+  implements:
+  - Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  nameWithType.vb: ItemStack.Equals(IWorldAccessor, ItemStack, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.ItemStack.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, ParamArray String())
+  name.vb: Equals(IWorldAccessor, ItemStack, ParamArray String())
+- uid: Vintagestory.API.Common.ItemStack.Satisfies(Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.ItemStack.Satisfies(Vintagestory.API.Common.ItemStack)
+  id: Satisfies(Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Satisfies(ItemStack)
+  nameWithType: ItemStack.Satisfies(ItemStack)
+  fullName: Vintagestory.API.Common.ItemStack.Satisfies(Vintagestory.API.Common.ItemStack)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns true if this item stack is a satisfactory replacement for given itemstack. It's basically an Equals() test, but ignores additional attributes of the sourceStack
+  example: []
+  syntax:
+    content: public bool Satisfies(ItemStack sourceStack)
+    parameters:
+    - id: sourceStack
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Satisfies(sourceStack As ItemStack) As Boolean
+  overload: Vintagestory.API.Common.ItemStack.Satisfies*
+- uid: Vintagestory.API.Common.ItemStack.SetFrom(Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.ItemStack.SetFrom(Vintagestory.API.Common.ItemStack)
+  id: SetFrom(Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: SetFrom(ItemStack)
+  nameWithType: ItemStack.SetFrom(ItemStack)
+  fullName: Vintagestory.API.Common.ItemStack.SetFrom(Vintagestory.API.Common.ItemStack)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Replace all the properties (id, class, attributes, stacksize, etc...) from this item stack by given stack
+  example: []
+  syntax:
+    content: public void SetFrom(ItemStack stack)
+    parameters:
+    - id: stack
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    content.vb: Public Sub SetFrom(stack As ItemStack)
+  overload: Vintagestory.API.Common.ItemStack.SetFrom*
+- uid: Vintagestory.API.Common.ItemStack.ToString
+  commentId: M:Vintagestory.API.Common.ItemStack.ToString
+  id: ToString
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: ItemStack.ToString()
+  fullName: Vintagestory.API.Common.ItemStack.ToString()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Turn the itemstack into a simple string representation
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Vintagestory.API.Common.ItemStack.ToString*
+- uid: Vintagestory.API.Common.ItemStack.ToBytes
+  commentId: M:Vintagestory.API.Common.ItemStack.ToBytes
+  id: ToBytes
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ToBytes()
+  nameWithType: ItemStack.ToBytes()
+  fullName: Vintagestory.API.Common.ItemStack.ToBytes()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Serializes the itemstack into a series of bytes, including its stack attributes
+  example: []
+  syntax:
+    content: public byte[] ToBytes()
+    return:
+      type: System.Byte[]
+      description: ''
+    content.vb: Public Function ToBytes() As Byte()
+  overload: Vintagestory.API.Common.ItemStack.ToBytes*
+- uid: Vintagestory.API.Common.ItemStack.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.ItemStack.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: ItemStack.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.ItemStack.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Serializes the itemstack into a series of bytes, including its stack attributes
+  example: []
+  syntax:
+    content: public void ToBytes(BinaryWriter stream)
+    parameters:
+    - id: stream
+      type: System.IO.BinaryWriter
+      description: ''
+    content.vb: Public Sub ToBytes(stream As BinaryWriter)
+  overload: Vintagestory.API.Common.ItemStack.ToBytes*
+  implements:
+  - Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+- uid: Vintagestory.API.Common.ItemStack.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Common.ItemStack.FromBytes(System.IO.BinaryReader)
+  id: FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader)
+  nameWithType: ItemStack.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.Common.ItemStack.FromBytes(System.IO.BinaryReader)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Reads all the itemstacks properties from a series of bytes, including its stack attributes
+  example: []
+  syntax:
+    content: public void FromBytes(BinaryReader stream)
+    parameters:
+    - id: stream
+      type: System.IO.BinaryReader
+      description: ''
+    content.vb: Public Sub FromBytes(stream As BinaryReader)
+  overload: Vintagestory.API.Common.ItemStack.FromBytes*
+  implements:
+  - Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+- uid: Vintagestory.API.Common.ItemStack.ResolveBlockOrItem(Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.ItemStack.ResolveBlockOrItem(Vintagestory.API.Common.IWorldAccessor)
+  id: ResolveBlockOrItem(Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: ResolveBlockOrItem(IWorldAccessor)
+  nameWithType: ItemStack.ResolveBlockOrItem(IWorldAccessor)
+  fullName: Vintagestory.API.Common.ItemStack.ResolveBlockOrItem(Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Sets the item/block based on the currently set itemclass + id
+  example: []
+  syntax:
+    content: public bool ResolveBlockOrItem(IWorldAccessor resolver)
+    parameters:
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function ResolveBlockOrItem(resolver As IWorldAccessor) As Boolean
+  overload: Vintagestory.API.Common.ItemStack.ResolveBlockOrItem*
+- uid: Vintagestory.API.Common.ItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.ItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  id: MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: MatchesSearchText(IWorldAccessor, string)
+  nameWithType: ItemStack.MatchesSearchText(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.ItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns true if searchText is found in the item/block name as supplied from GetName()
+  example: []
+  syntax:
+    content: public bool MatchesSearchText(IWorldAccessor world, string searchText)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: searchText
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function MatchesSearchText(world As IWorldAccessor, searchText As String) As Boolean
+  overload: Vintagestory.API.Common.ItemStack.MatchesSearchText*
+  implements:
+  - Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  nameWithType.vb: ItemStack.MatchesSearchText(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.ItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: MatchesSearchText(IWorldAccessor, String)
+- uid: Vintagestory.API.Common.ItemStack.GetName
+  commentId: M:Vintagestory.API.Common.ItemStack.GetName
+  id: GetName
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: GetName()
+  nameWithType: ItemStack.GetName()
+  fullName: Vintagestory.API.Common.ItemStack.GetName()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a human readable name of the item/block
+  example: []
+  syntax:
+    content: public string GetName()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function GetName() As String
+  overload: Vintagestory.API.Common.ItemStack.GetName*
+  implements:
+  - Vintagestory.API.Common.IItemStack.GetName
+- uid: Vintagestory.API.Common.ItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  commentId: M:Vintagestory.API.Common.ItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  id: GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: GetDescription(IWorldAccessor, ItemSlot, bool)
+  nameWithType: ItemStack.GetDescription(IWorldAccessor, ItemSlot, bool)
+  fullName: Vintagestory.API.Common.ItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a human readable description of the item/block
+  example: []
+  syntax:
+    content: public string GetDescription(IWorldAccessor world, ItemSlot inSlot, bool debug = false)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: debug
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function GetDescription(world As IWorldAccessor, inSlot As ItemSlot, debug As Boolean = False) As String
+  overload: Vintagestory.API.Common.ItemStack.GetDescription*
+  implements:
+  - Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  nameWithType.vb: ItemStack.GetDescription(IWorldAccessor, ItemSlot, Boolean)
+  fullName.vb: Vintagestory.API.Common.ItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, Boolean)
+  name.vb: GetDescription(IWorldAccessor, ItemSlot, Boolean)
+- uid: Vintagestory.API.Common.ItemStack.Clone
+  commentId: M:Vintagestory.API.Common.ItemStack.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: ItemStack.Clone()
+  fullName: Vintagestory.API.Common.ItemStack.Clone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a full copy of the item stack
+  example: []
+  syntax:
+    content: public ItemStack Clone()
+    return:
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    content.vb: Public Function Clone() As ItemStack
+  overload: Vintagestory.API.Common.ItemStack.Clone*
+  implements:
+  - Vintagestory.API.Common.IItemStack.Clone
+- uid: Vintagestory.API.Common.ItemStack.GetEmptyClone
+  commentId: M:Vintagestory.API.Common.ItemStack.GetEmptyClone
+  id: GetEmptyClone
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: GetEmptyClone()
+  nameWithType: ItemStack.GetEmptyClone()
+  fullName: Vintagestory.API.Common.ItemStack.GetEmptyClone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a full copy of the item stack, except for its stack size.
+  example: []
+  syntax:
+    content: public ItemStack GetEmptyClone()
+    return:
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    content.vb: Public Function GetEmptyClone() As ItemStack
+  overload: Vintagestory.API.Common.ItemStack.GetEmptyClone*
+- uid: Vintagestory.API.Common.ItemStack.FixMapping(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.ItemStack.FixMapping(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Vintagestory.API.Common.IWorldAccessor)
+  id: FixMapping(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: FixMapping(Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, IWorldAccessor)
+  nameWithType: ItemStack.FixMapping(Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, IWorldAccessor)
+  fullName: Vintagestory.API.Common.ItemStack.FixMapping(System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    This method should always be called when an itemstack got loaded from the savegame or when it got imported.
+
+    When this method return false, you should discard the itemstack because it could not get resolved and a warning will be logged.
+  example: []
+  syntax:
+    content: public bool FixMapping(Dictionary<int, AssetLocation> oldBlockMapping, Dictionary<int, AssetLocation> oldItemMapping, IWorldAccessor worldForNewMapping)
+    parameters:
+    - id: oldBlockMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: oldItemMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: worldForNewMapping
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    return:
+      type: System.Boolean
+    content.vb: Public Function FixMapping(oldBlockMapping As Dictionary(Of Integer, AssetLocation), oldItemMapping As Dictionary(Of Integer, AssetLocation), worldForNewMapping As IWorldAccessor) As Boolean
+  overload: Vintagestory.API.Common.ItemStack.FixMapping*
+  nameWithType.vb: ItemStack.FixMapping(Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.ItemStack.FixMapping(System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), Vintagestory.API.Common.IWorldAccessor)
+  name.vb: FixMapping(Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), IWorldAccessor)
+- uid: Vintagestory.API.Common.ItemStack.GetHashCode
+  commentId: M:Vintagestory.API.Common.ItemStack.GetHashCode
+  id: GetHashCode
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ItemStack.GetHashCode()
+  fullName: Vintagestory.API.Common.ItemStack.GetHashCode()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Serves as the default hash function.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A hash code for the current object.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.Object.GetHashCode
+  overload: Vintagestory.API.Common.ItemStack.GetHashCode*
+- uid: Vintagestory.API.Common.ItemStack.GetHashCode(System.String[])
+  commentId: M:Vintagestory.API.Common.ItemStack.GetHashCode(System.String[])
+  id: GetHashCode(System.String[])
+  parent: Vintagestory.API.Common.ItemStack
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode(string[])
+  nameWithType: ItemStack.GetHashCode(string[])
+  fullName: Vintagestory.API.Common.ItemStack.GetHashCode(string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public int GetHashCode(string[] ignoredAttributes)
+    parameters:
+    - id: ignoredAttributes
+      type: System.String[]
+    return:
+      type: System.Int32
+    content.vb: Public Function GetHashCode(ignoredAttributes As String()) As Integer
+  overload: Vintagestory.API.Common.ItemStack.GetHashCode*
+  nameWithType.vb: ItemStack.GetHashCode(String())
+  fullName.vb: Vintagestory.API.Common.ItemStack.GetHashCode(String())
+  name.vb: GetHashCode(String())
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.IItemStack
+  commentId: T:Vintagestory.API.Common.IItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IItemStack.html
+  name: IItemStack
+  nameWithType: IItemStack
+  fullName: Vintagestory.API.Common.IItemStack
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.EnumItemClass
+  commentId: T:Vintagestory.API.Common.EnumItemClass
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumItemClass.html
+  name: EnumItemClass
+  nameWithType: EnumItemClass
+  fullName: Vintagestory.API.Common.EnumItemClass
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.Item
+  commentId: T:Vintagestory.API.Common.Item
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Item.html
+  name: Item
+  nameWithType: Item
+  fullName: Vintagestory.API.Common.Item
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
+- uid: Vintagestory.API.Common.ItemStack.Collectible*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.Collectible
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_Collectible
+  name: Collectible
+  nameWithType: ItemStack.Collectible
+  fullName: Vintagestory.API.Common.ItemStack.Collectible
+- uid: Vintagestory.API.Common.IItemStack.Collectible
+  commentId: P:Vintagestory.API.Common.IItemStack.Collectible
+  parent: Vintagestory.API.Common.IItemStack
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Collectible
+  name: Collectible
+  nameWithType: IItemStack.Collectible
+  fullName: Vintagestory.API.Common.IItemStack.Collectible
+- uid: Vintagestory.API.Common.CollectibleObject
+  commentId: T:Vintagestory.API.Common.CollectibleObject
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CollectibleObject.html
+  name: CollectibleObject
+  nameWithType: CollectibleObject
+  fullName: Vintagestory.API.Common.CollectibleObject
+- uid: Vintagestory.API.Common.ItemStack.Item*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.Item
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_Item
+  name: Item
+  nameWithType: ItemStack.Item
+  fullName: Vintagestory.API.Common.ItemStack.Item
+- uid: Vintagestory.API.Common.IItemStack.Item
+  commentId: P:Vintagestory.API.Common.IItemStack.Item
+  parent: Vintagestory.API.Common.IItemStack
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Item
+  name: Item
+  nameWithType: IItemStack.Item
+  fullName: Vintagestory.API.Common.IItemStack.Item
+- uid: Vintagestory.API.Common.ItemStack.Block*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.Block
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_Block
+  name: Block
+  nameWithType: ItemStack.Block
+  fullName: Vintagestory.API.Common.ItemStack.Block
+- uid: Vintagestory.API.Common.IItemStack.Block
+  commentId: P:Vintagestory.API.Common.IItemStack.Block
+  parent: Vintagestory.API.Common.IItemStack
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Block
+  name: Block
+  nameWithType: IItemStack.Block
+  fullName: Vintagestory.API.Common.IItemStack.Block
+- uid: Vintagestory.API.Common.ItemStack.StackSize*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.StackSize
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_StackSize
+  name: StackSize
+  nameWithType: ItemStack.StackSize
+  fullName: Vintagestory.API.Common.ItemStack.StackSize
+- uid: Vintagestory.API.Common.IItemStack.StackSize
+  commentId: P:Vintagestory.API.Common.IItemStack.StackSize
+  parent: Vintagestory.API.Common.IItemStack
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_StackSize
+  name: StackSize
+  nameWithType: IItemStack.StackSize
+  fullName: Vintagestory.API.Common.IItemStack.StackSize
+- uid: Vintagestory.API.Common.ItemStack.Attributes*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.Attributes
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_Attributes
+  name: Attributes
+  nameWithType: ItemStack.Attributes
+  fullName: Vintagestory.API.Common.ItemStack.Attributes
+- uid: Vintagestory.API.Common.IItemStack.Attributes
+  commentId: P:Vintagestory.API.Common.IItemStack.Attributes
+  parent: Vintagestory.API.Common.IItemStack
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Attributes
+  name: Attributes
+  nameWithType: IItemStack.Attributes
+  fullName: Vintagestory.API.Common.IItemStack.Attributes
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.ItemStack.TempAttributes*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.TempAttributes
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_TempAttributes
+  name: TempAttributes
+  nameWithType: ItemStack.TempAttributes
+  fullName: Vintagestory.API.Common.ItemStack.TempAttributes
+- uid: Vintagestory.API.Common.ItemStack.ItemAttributes*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.ItemAttributes
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_ItemAttributes
+  name: ItemAttributes
+  nameWithType: ItemStack.ItemAttributes
+  fullName: Vintagestory.API.Common.ItemStack.ItemAttributes
+- uid: Vintagestory.API.Datastructures.JsonObject
+  commentId: T:Vintagestory.API.Datastructures.JsonObject
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.JsonObject.html
+  name: JsonObject
+  nameWithType: JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject
+- uid: Vintagestory.API.Common.ItemStack.#ctor*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.#ctor
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack__ctor
+  name: ItemStack
+  nameWithType: ItemStack.ItemStack
+  fullName: Vintagestory.API.Common.ItemStack.ItemStack
+  nameWithType.vb: ItemStack.New
+  fullName.vb: Vintagestory.API.Common.ItemStack.New
+  name.vb: New
+- uid: Vintagestory.API.Datastructures.TreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.TreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.TreeAttribute.html
+  name: TreeAttribute
+  nameWithType: TreeAttribute
+  fullName: Vintagestory.API.Datastructures.TreeAttribute
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack.Equals*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.Equals
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_String___
+  name: Equals
+  nameWithType: ItemStack.Equals
+  fullName: Vintagestory.API.Common.ItemStack.Equals
+- uid: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  commentId: M:Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  parent: Vintagestory.API.Common.IItemStack
+  isExternal: true
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_String___
+  name: Equals(IWorldAccessor, ItemStack, params string[])
+  nameWithType: IItemStack.Equals(IWorldAccessor, ItemStack, params string[])
+  fullName: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, params string[])
+  nameWithType.vb: IItemStack.Equals(IWorldAccessor, ItemStack, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, ParamArray String())
+  name.vb: Equals(IWorldAccessor, ItemStack, ParamArray String())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+    name: Equals
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+    name: Equals
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.ItemStack.Satisfies*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.Satisfies
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_Satisfies_Vintagestory_API_Common_ItemStack_
+  name: Satisfies
+  nameWithType: ItemStack.Satisfies
+  fullName: Vintagestory.API.Common.ItemStack.Satisfies
+- uid: Vintagestory.API.Common.ItemStack.SetFrom*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.SetFrom
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_SetFrom_Vintagestory_API_Common_ItemStack_
+  name: SetFrom
+  nameWithType: ItemStack.SetFrom
+  fullName: Vintagestory.API.Common.ItemStack.SetFrom
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack.ToString*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.ToString
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_ToString
+  name: ToString
+  nameWithType: ItemStack.ToString
+  fullName: Vintagestory.API.Common.ItemStack.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.ItemStack.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.ToBytes
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_ToBytes
+  name: ToBytes
+  nameWithType: ItemStack.ToBytes
+  fullName: Vintagestory.API.Common.ItemStack.ToBytes
+- uid: Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.IItemStack
+  isExternal: true
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes(BinaryWriter)
+  nameWithType: IItemStack.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: Vintagestory.API.Common.ItemStack.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.FromBytes
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_FromBytes_System_IO_BinaryReader_
+  name: FromBytes
+  nameWithType: ItemStack.FromBytes
+  fullName: Vintagestory.API.Common.ItemStack.FromBytes
+- uid: Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.Common.IItemStack
+  isExternal: true
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_FromBytes_System_IO_BinaryReader_
+  name: FromBytes(BinaryReader)
+  nameWithType: IItemStack.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+    name: FromBytes
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_FromBytes_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+    name: FromBytes
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_FromBytes_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack.ResolveBlockOrItem*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.ResolveBlockOrItem
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_ResolveBlockOrItem_Vintagestory_API_Common_IWorldAccessor_
+  name: ResolveBlockOrItem
+  nameWithType: ItemStack.ResolveBlockOrItem
+  fullName: Vintagestory.API.Common.ItemStack.ResolveBlockOrItem
+- uid: Vintagestory.API.Common.ItemStack.MatchesSearchText*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.MatchesSearchText
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_MatchesSearchText_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: MatchesSearchText
+  nameWithType: ItemStack.MatchesSearchText
+  fullName: Vintagestory.API.Common.ItemStack.MatchesSearchText
+- uid: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  parent: Vintagestory.API.Common.IItemStack
+  isExternal: true
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_MatchesSearchText_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: MatchesSearchText(IWorldAccessor, string)
+  nameWithType: IItemStack.MatchesSearchText(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor, string)
+  nameWithType.vb: IItemStack.MatchesSearchText(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: MatchesSearchText(IWorldAccessor, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+    name: MatchesSearchText
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_MatchesSearchText_Vintagestory_API_Common_IWorldAccessor_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+    name: MatchesSearchText
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_MatchesSearchText_Vintagestory_API_Common_IWorldAccessor_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack.GetName*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.GetName
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_GetName
+  name: GetName
+  nameWithType: ItemStack.GetName
+  fullName: Vintagestory.API.Common.ItemStack.GetName
+- uid: Vintagestory.API.Common.IItemStack.GetName
+  commentId: M:Vintagestory.API.Common.IItemStack.GetName
+  parent: Vintagestory.API.Common.IItemStack
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetName
+  name: GetName()
+  nameWithType: IItemStack.GetName()
+  fullName: Vintagestory.API.Common.IItemStack.GetName()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IItemStack.GetName
+    name: GetName
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IItemStack.GetName
+    name: GetName
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetName
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack.GetDescription*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.GetDescription
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_GetDescription_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  name: GetDescription
+  nameWithType: ItemStack.GetDescription
+  fullName: Vintagestory.API.Common.ItemStack.GetDescription
+- uid: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  commentId: M:Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  parent: Vintagestory.API.Common.IItemStack
+  isExternal: true
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetDescription_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  name: GetDescription(IWorldAccessor, ItemSlot, bool)
+  nameWithType: IItemStack.GetDescription(IWorldAccessor, ItemSlot, bool)
+  fullName: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, bool)
+  nameWithType.vb: IItemStack.GetDescription(IWorldAccessor, ItemSlot, Boolean)
+  fullName.vb: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, Boolean)
+  name.vb: GetDescription(IWorldAccessor, ItemSlot, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+    name: GetDescription
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetDescription_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+    name: GetDescription
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetDescription_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: Vintagestory.API.Common.ItemStack.Clone*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.Clone
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_Clone
+  name: Clone
+  nameWithType: ItemStack.Clone
+  fullName: Vintagestory.API.Common.ItemStack.Clone
+- uid: Vintagestory.API.Common.IItemStack.Clone
+  commentId: M:Vintagestory.API.Common.IItemStack.Clone
+  parent: Vintagestory.API.Common.IItemStack
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Clone
+  name: Clone()
+  nameWithType: IItemStack.Clone()
+  fullName: Vintagestory.API.Common.IItemStack.Clone()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IItemStack.Clone
+    name: Clone
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IItemStack.Clone
+    name: Clone
+    href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Clone
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack.GetEmptyClone*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.GetEmptyClone
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_GetEmptyClone
+  name: GetEmptyClone
+  nameWithType: ItemStack.GetEmptyClone
+  fullName: Vintagestory.API.Common.ItemStack.GetEmptyClone
+- uid: Vintagestory.API.Common.ItemStack.FixMapping*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.FixMapping
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_FixMapping_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Vintagestory_API_Common_IWorldAccessor_
+  name: FixMapping
+  nameWithType: ItemStack.FixMapping
+  fullName: Vintagestory.API.Common.ItemStack.FixMapping
+- uid: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<int, AssetLocation>
+  nameWithType: Dictionary<int, AssetLocation>
+  fullName: System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>
+  nameWithType.vb: Dictionary(Of Integer, AssetLocation)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation)
+  name.vb: Dictionary(Of Integer, AssetLocation)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemStack.GetHashCode*
+  commentId: Overload:Vintagestory.API.Common.ItemStack.GetHashCode
+  href: Vintagestory.API.Common.ItemStack.html#Vintagestory_API_Common_ItemStack_GetHashCode
+  name: GetHashCode
+  nameWithType: ItemStack.GetHashCode
+  fullName: Vintagestory.API.Common.ItemStack.GetHashCode

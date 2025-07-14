@@ -1,0 +1,1505 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.BitmapExternal
+  commentId: T:Vintagestory.API.Common.BitmapExternal
+  id: BitmapExternal
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.BitmapExternal.#ctor
+  - Vintagestory.API.Common.BitmapExternal.#ctor(System.Byte[],System.Int32,Vintagestory.API.Common.ILogger)
+  - Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.MemoryStream,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.Stream)
+  - Vintagestory.API.Common.BitmapExternal.#ctor(System.Int32,System.Int32)
+  - Vintagestory.API.Common.BitmapExternal.#ctor(System.String)
+  - Vintagestory.API.Common.BitmapExternal.Decode(System.ReadOnlySpan{System.Byte})
+  - Vintagestory.API.Common.BitmapExternal.Dispose
+  - Vintagestory.API.Common.BitmapExternal.GetPixel(System.Int32,System.Int32)
+  - Vintagestory.API.Common.BitmapExternal.GetPixelRel(System.Single,System.Single)
+  - Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed(System.Int32,System.Int32)
+  - Vintagestory.API.Common.BitmapExternal.Height
+  - Vintagestory.API.Common.BitmapExternal.MulAlpha(System.Int32)
+  - Vintagestory.API.Common.BitmapExternal.Pixels
+  - Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock
+  - Vintagestory.API.Common.BitmapExternal.Save(System.String)
+  - Vintagestory.API.Common.BitmapExternal.Width
+  - Vintagestory.API.Common.BitmapExternal.bmp
+  langs:
+  - csharp
+  - vb
+  name: BitmapExternal
+  nameWithType: BitmapExternal
+  fullName: Vintagestory.API.Common.BitmapExternal
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public class BitmapExternal : BitmapRef, IDisposable, IBitmap'
+    content.vb: Public Class BitmapExternal Inherits BitmapRef Implements IDisposable, IBitmap
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.BitmapRef
+  implements:
+  - System.IDisposable
+  - Vintagestory.API.Common.IBitmap
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.BitmapExternal.bmp
+  commentId: F:Vintagestory.API.Common.BitmapExternal.bmp
+  id: bmp
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: bmp
+  nameWithType: BitmapExternal.bmp
+  fullName: Vintagestory.API.Common.BitmapExternal.bmp
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public SKBitmap bmp
+    return:
+      type: SkiaSharp.SKBitmap
+    content.vb: Public bmp As SKBitmap
+- uid: Vintagestory.API.Common.BitmapExternal.Height
+  commentId: P:Vintagestory.API.Common.BitmapExternal.Height
+  id: Height
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: BitmapExternal.Height
+  fullName: Vintagestory.API.Common.BitmapExternal.Height
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override int Height { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property Height As Integer
+  overridden: Vintagestory.API.Common.BitmapRef.Height
+  overload: Vintagestory.API.Common.BitmapExternal.Height*
+- uid: Vintagestory.API.Common.BitmapExternal.Width
+  commentId: P:Vintagestory.API.Common.BitmapExternal.Width
+  id: Width
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: BitmapExternal.Width
+  fullName: Vintagestory.API.Common.BitmapExternal.Width
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override int Width { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property Width As Integer
+  overridden: Vintagestory.API.Common.BitmapRef.Width
+  overload: Vintagestory.API.Common.BitmapExternal.Width*
+- uid: Vintagestory.API.Common.BitmapExternal.Pixels
+  commentId: P:Vintagestory.API.Common.BitmapExternal.Pixels
+  id: Pixels
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: Pixels
+  nameWithType: BitmapExternal.Pixels
+  fullName: Vintagestory.API.Common.BitmapExternal.Pixels
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override int[] Pixels { get; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: Public Overrides ReadOnly Property Pixels As Integer()
+  overridden: Vintagestory.API.Common.BitmapRef.Pixels
+  overload: Vintagestory.API.Common.BitmapExternal.Pixels*
+- uid: Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock
+  commentId: P:Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock
+  id: PixelsPtrAndLock
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: PixelsPtrAndLock
+  nameWithType: BitmapExternal.PixelsPtrAndLock
+  fullName: Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public nint PixelsPtrAndLock { get; }
+    parameters: []
+    return:
+      type: System.IntPtr
+    content.vb: Public ReadOnly Property PixelsPtrAndLock As IntPtr
+  overload: Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock*
+- uid: Vintagestory.API.Common.BitmapExternal.#ctor
+  commentId: M:Vintagestory.API.Common.BitmapExternal.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: BitmapExternal()
+  nameWithType: BitmapExternal.BitmapExternal()
+  fullName: Vintagestory.API.Common.BitmapExternal.BitmapExternal()
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BitmapExternal()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Common.BitmapExternal.#ctor*
+  nameWithType.vb: BitmapExternal.New()
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.New()
+  name.vb: New()
+- uid: Vintagestory.API.Common.BitmapExternal.#ctor(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: BitmapExternal(int, int)
+  nameWithType: BitmapExternal.BitmapExternal(int, int)
+  fullName: Vintagestory.API.Common.BitmapExternal.BitmapExternal(int, int)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BitmapExternal(int width, int height)
+    parameters:
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    content.vb: Public Sub New(width As Integer, height As Integer)
+  overload: Vintagestory.API.Common.BitmapExternal.#ctor*
+  nameWithType.vb: BitmapExternal.New(Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.New(Integer, Integer)
+  name.vb: New(Integer, Integer)
+- uid: Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.MemoryStream,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.MemoryStream,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.AssetLocation)
+  id: '#ctor(System.IO.MemoryStream,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.AssetLocation)'
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: BitmapExternal(MemoryStream, ILogger, AssetLocation)
+  nameWithType: BitmapExternal.BitmapExternal(MemoryStream, ILogger, AssetLocation)
+  fullName: Vintagestory.API.Common.BitmapExternal.BitmapExternal(System.IO.MemoryStream, Vintagestory.API.Common.ILogger, Vintagestory.API.Common.AssetLocation)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BitmapExternal(MemoryStream ms, ILogger logger, AssetLocation loc = null)
+    parameters:
+    - id: ms
+      type: System.IO.MemoryStream
+    - id: logger
+      type: Vintagestory.API.Common.ILogger
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+    content.vb: Public Sub New(ms As MemoryStream, logger As ILogger, loc As AssetLocation = Nothing)
+  overload: Vintagestory.API.Common.BitmapExternal.#ctor*
+  nameWithType.vb: BitmapExternal.New(MemoryStream, ILogger, AssetLocation)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.New(System.IO.MemoryStream, Vintagestory.API.Common.ILogger, Vintagestory.API.Common.AssetLocation)
+  name.vb: New(MemoryStream, ILogger, AssetLocation)
+- uid: Vintagestory.API.Common.BitmapExternal.#ctor(System.String)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: BitmapExternal(string)
+  nameWithType: BitmapExternal.BitmapExternal(string)
+  fullName: Vintagestory.API.Common.BitmapExternal.BitmapExternal(string)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BitmapExternal(string filePath)
+    parameters:
+    - id: filePath
+      type: System.String
+    content.vb: Public Sub New(filePath As String)
+  overload: Vintagestory.API.Common.BitmapExternal.#ctor*
+  nameWithType.vb: BitmapExternal.New(String)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.New(String)
+  name.vb: New(String)
+- uid: Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.Stream)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.#ctor(System.IO.Stream)
+  id: '#ctor(System.IO.Stream)'
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: BitmapExternal(Stream)
+  nameWithType: BitmapExternal.BitmapExternal(Stream)
+  fullName: Vintagestory.API.Common.BitmapExternal.BitmapExternal(System.IO.Stream)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BitmapExternal(Stream stream)
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+    content.vb: Public Sub New(stream As Stream)
+  overload: Vintagestory.API.Common.BitmapExternal.#ctor*
+  nameWithType.vb: BitmapExternal.New(Stream)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.New(System.IO.Stream)
+  name.vb: New(Stream)
+- uid: Vintagestory.API.Common.BitmapExternal.#ctor(System.Byte[],System.Int32,Vintagestory.API.Common.ILogger)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.#ctor(System.Byte[],System.Int32,Vintagestory.API.Common.ILogger)
+  id: '#ctor(System.Byte[],System.Int32,Vintagestory.API.Common.ILogger)'
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: BitmapExternal(byte[], int, ILogger)
+  nameWithType: BitmapExternal.BitmapExternal(byte[], int, ILogger)
+  fullName: Vintagestory.API.Common.BitmapExternal.BitmapExternal(byte[], int, Vintagestory.API.Common.ILogger)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Create a BitmapExternal from a byte array
+  example: []
+  syntax:
+    content: public BitmapExternal(byte[] data, int dataLength, ILogger logger)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: ''
+    - id: dataLength
+      type: System.Int32
+      description: ''
+    - id: logger
+      type: Vintagestory.API.Common.ILogger
+      description: ''
+    content.vb: Public Sub New(data As Byte(), dataLength As Integer, logger As ILogger)
+  overload: Vintagestory.API.Common.BitmapExternal.#ctor*
+  nameWithType.vb: BitmapExternal.New(Byte(), Integer, ILogger)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.New(Byte(), Integer, Vintagestory.API.Common.ILogger)
+  name.vb: New(Byte(), Integer, ILogger)
+- uid: Vintagestory.API.Common.BitmapExternal.Decode(System.ReadOnlySpan{System.Byte})
+  commentId: M:Vintagestory.API.Common.BitmapExternal.Decode(System.ReadOnlySpan{System.Byte})
+  id: Decode(System.ReadOnlySpan{System.Byte})
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: Decode(ReadOnlySpan<byte>)
+  nameWithType: BitmapExternal.Decode(ReadOnlySpan<byte>)
+  fullName: Vintagestory.API.Common.BitmapExternal.Decode(System.ReadOnlySpan<byte>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static SKBitmap Decode(ReadOnlySpan<byte> buffer)
+    parameters:
+    - id: buffer
+      type: System.ReadOnlySpan{System.Byte}
+    return:
+      type: SkiaSharp.SKBitmap
+    content.vb: Public Shared Function Decode(buffer As ReadOnlySpan(Of Byte)) As SKBitmap
+  overload: Vintagestory.API.Common.BitmapExternal.Decode*
+  nameWithType.vb: BitmapExternal.Decode(ReadOnlySpan(Of Byte))
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.Decode(System.ReadOnlySpan(Of Byte))
+  name.vb: Decode(ReadOnlySpan(Of Byte))
+- uid: Vintagestory.API.Common.BitmapExternal.Dispose
+  commentId: M:Vintagestory.API.Common.BitmapExternal.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: BitmapExternal.Dispose()
+  fullName: Vintagestory.API.Common.BitmapExternal.Dispose()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public override void Dispose()
+    content.vb: Public Overrides Sub Dispose()
+  overridden: Vintagestory.API.Common.BitmapRef.Dispose
+  overload: Vintagestory.API.Common.BitmapExternal.Dispose*
+- uid: Vintagestory.API.Common.BitmapExternal.Save(System.String)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.Save(System.String)
+  id: Save(System.String)
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: Save(string)
+  nameWithType: BitmapExternal.Save(string)
+  fullName: Vintagestory.API.Common.BitmapExternal.Save(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override void Save(string filename)
+    parameters:
+    - id: filename
+      type: System.String
+    content.vb: Public Overrides Sub Save(filename As String)
+  overridden: Vintagestory.API.Common.BitmapRef.Save(System.String)
+  overload: Vintagestory.API.Common.BitmapExternal.Save*
+  nameWithType.vb: BitmapExternal.Save(String)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.Save(String)
+  name.vb: Save(String)
+- uid: Vintagestory.API.Common.BitmapExternal.GetPixel(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.GetPixel(System.Int32,System.Int32)
+  id: GetPixel(System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: GetPixel(int, int)
+  nameWithType: BitmapExternal.GetPixel(int, int)
+  fullName: Vintagestory.API.Common.BitmapExternal.GetPixel(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Retrives the ARGB value from given coordinate
+  example: []
+  syntax:
+    content: public override SKColor GetPixel(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: ''
+    - id: y
+      type: System.Int32
+      description: ''
+    return:
+      type: SkiaSharp.SKColor
+      description: ''
+    content.vb: Public Overrides Function GetPixel(x As Integer, y As Integer) As SKColor
+  overridden: Vintagestory.API.Common.BitmapRef.GetPixel(System.Int32,System.Int32)
+  overload: Vintagestory.API.Common.BitmapExternal.GetPixel*
+  nameWithType.vb: BitmapExternal.GetPixel(Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.GetPixel(Integer, Integer)
+  name.vb: GetPixel(Integer, Integer)
+- uid: Vintagestory.API.Common.BitmapExternal.GetPixelRel(System.Single,System.Single)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.GetPixelRel(System.Single,System.Single)
+  id: GetPixelRel(System.Single,System.Single)
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: GetPixelRel(float, float)
+  nameWithType: BitmapExternal.GetPixelRel(float, float)
+  fullName: Vintagestory.API.Common.BitmapExternal.GetPixelRel(float, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Retrives the ARGB value from given coordinate using normalized coordinates (0..1)
+  example: []
+  syntax:
+    content: public override SKColor GetPixelRel(float x, float y)
+    parameters:
+    - id: x
+      type: System.Single
+      description: ''
+    - id: y
+      type: System.Single
+      description: ''
+    return:
+      type: SkiaSharp.SKColor
+      description: ''
+    content.vb: Public Overrides Function GetPixelRel(x As Single, y As Single) As SKColor
+  overridden: Vintagestory.API.Common.BitmapRef.GetPixelRel(System.Single,System.Single)
+  overload: Vintagestory.API.Common.BitmapExternal.GetPixelRel*
+  nameWithType.vb: BitmapExternal.GetPixelRel(Single, Single)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.GetPixelRel(Single, Single)
+  name.vb: GetPixelRel(Single, Single)
+- uid: Vintagestory.API.Common.BitmapExternal.MulAlpha(System.Int32)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.MulAlpha(System.Int32)
+  id: MulAlpha(System.Int32)
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: MulAlpha(int)
+  nameWithType: BitmapExternal.MulAlpha(int)
+  fullName: Vintagestory.API.Common.BitmapExternal.MulAlpha(int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override void MulAlpha(int alpha = 255)
+    parameters:
+    - id: alpha
+      type: System.Int32
+    content.vb: Public Overrides Sub MulAlpha(alpha As Integer = 255)
+  overridden: Vintagestory.API.Common.BitmapRef.MulAlpha(System.Int32)
+  overload: Vintagestory.API.Common.BitmapExternal.MulAlpha*
+  nameWithType.vb: BitmapExternal.MulAlpha(Integer)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.MulAlpha(Integer)
+  name.vb: MulAlpha(Integer)
+- uid: Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed(System.Int32,System.Int32)
+  id: GetPixelsTransformed(System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BitmapExternal
+  langs:
+  - csharp
+  - vb
+  name: GetPixelsTransformed(int, int)
+  nameWithType: BitmapExternal.GetPixelsTransformed(int, int)
+  fullName: Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override int[] GetPixelsTransformed(int rot = 0, int mulAlpha = 255)
+    parameters:
+    - id: rot
+      type: System.Int32
+    - id: mulAlpha
+      type: System.Int32
+    return:
+      type: System.Int32[]
+    content.vb: Public Overrides Function GetPixelsTransformed(rot As Integer = 0, mulAlpha As Integer = 255) As Integer()
+  overridden: Vintagestory.API.Common.BitmapRef.GetPixelsTransformed(System.Int32,System.Int32)
+  overload: Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed*
+  nameWithType.vb: BitmapExternal.GetPixelsTransformed(Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed(Integer, Integer)
+  name.vb: GetPixelsTransformed(Integer, Integer)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.BitmapRef
+  commentId: T:Vintagestory.API.Common.BitmapRef
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BitmapRef.html
+  name: BitmapRef
+  nameWithType: BitmapRef
+  fullName: Vintagestory.API.Common.BitmapRef
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Vintagestory.API.Common.IBitmap
+  commentId: T:Vintagestory.API.Common.IBitmap
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IBitmap.html
+  name: IBitmap
+  nameWithType: IBitmap
+  fullName: Vintagestory.API.Common.IBitmap
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: SkiaSharp.SKBitmap
+  commentId: T:SkiaSharp.SKBitmap
+  parent: SkiaSharp
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/skiasharp.skbitmap
+  name: SKBitmap
+  nameWithType: SKBitmap
+  fullName: SkiaSharp.SKBitmap
+- uid: SkiaSharp
+  commentId: N:SkiaSharp
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/skiasharp
+  name: SkiaSharp
+  nameWithType: SkiaSharp
+  fullName: SkiaSharp
+- uid: Vintagestory.API.Common.BitmapRef.Height
+  commentId: P:Vintagestory.API.Common.BitmapRef.Height
+  parent: Vintagestory.API.Common.BitmapRef
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Height
+  name: Height
+  nameWithType: BitmapRef.Height
+  fullName: Vintagestory.API.Common.BitmapRef.Height
+- uid: Vintagestory.API.Common.BitmapExternal.Height*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.Height
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_Height
+  name: Height
+  nameWithType: BitmapExternal.Height
+  fullName: Vintagestory.API.Common.BitmapExternal.Height
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.BitmapRef.Width
+  commentId: P:Vintagestory.API.Common.BitmapRef.Width
+  parent: Vintagestory.API.Common.BitmapRef
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Width
+  name: Width
+  nameWithType: BitmapRef.Width
+  fullName: Vintagestory.API.Common.BitmapRef.Width
+- uid: Vintagestory.API.Common.BitmapExternal.Width*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.Width
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_Width
+  name: Width
+  nameWithType: BitmapExternal.Width
+  fullName: Vintagestory.API.Common.BitmapExternal.Width
+- uid: Vintagestory.API.Common.BitmapRef.Pixels
+  commentId: P:Vintagestory.API.Common.BitmapRef.Pixels
+  parent: Vintagestory.API.Common.BitmapRef
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Pixels
+  name: Pixels
+  nameWithType: BitmapRef.Pixels
+  fullName: Vintagestory.API.Common.BitmapRef.Pixels
+- uid: Vintagestory.API.Common.BitmapExternal.Pixels*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.Pixels
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_Pixels
+  name: Pixels
+  nameWithType: BitmapExternal.Pixels
+  fullName: Vintagestory.API.Common.BitmapExternal.Pixels
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_PixelsPtrAndLock
+  name: PixelsPtrAndLock
+  nameWithType: BitmapExternal.PixelsPtrAndLock
+  fullName: Vintagestory.API.Common.BitmapExternal.PixelsPtrAndLock
+- uid: System.IntPtr
+  commentId: T:System.IntPtr
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.intptr
+  name: nint
+  nameWithType: nint
+  fullName: nint
+  nameWithType.vb: IntPtr
+  fullName.vb: System.IntPtr
+  name.vb: IntPtr
+- uid: Vintagestory.API.Common.BitmapExternal.#ctor*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.#ctor
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal__ctor
+  name: BitmapExternal
+  nameWithType: BitmapExternal.BitmapExternal
+  fullName: Vintagestory.API.Common.BitmapExternal.BitmapExternal
+  nameWithType.vb: BitmapExternal.New
+  fullName.vb: Vintagestory.API.Common.BitmapExternal.New
+  name.vb: New
+- uid: System.IO.MemoryStream
+  commentId: T:System.IO.MemoryStream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+  name: MemoryStream
+  nameWithType: MemoryStream
+  fullName: System.IO.MemoryStream
+- uid: Vintagestory.API.Common.ILogger
+  commentId: T:Vintagestory.API.Common.ILogger
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Vintagestory.API.Common.ILogger
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.Decode*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.Decode
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_Decode_System_ReadOnlySpan_System_Byte__
+  name: Decode
+  nameWithType: BitmapExternal.Decode
+  fullName: Vintagestory.API.Common.BitmapExternal.Decode
+- uid: System.ReadOnlySpan{System.Byte}
+  commentId: T:System.ReadOnlySpan{System.Byte}
+  parent: System
+  definition: System.ReadOnlySpan`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<byte>
+  nameWithType: ReadOnlySpan<byte>
+  fullName: System.ReadOnlySpan<byte>
+  nameWithType.vb: ReadOnlySpan(Of Byte)
+  fullName.vb: System.ReadOnlySpan(Of Byte)
+  name.vb: ReadOnlySpan(Of Byte)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.ReadOnlySpan`1
+  commentId: T:System.ReadOnlySpan`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<T>
+  nameWithType: ReadOnlySpan<T>
+  fullName: System.ReadOnlySpan<T>
+  nameWithType.vb: ReadOnlySpan(Of T)
+  fullName.vb: System.ReadOnlySpan(Of T)
+  name.vb: ReadOnlySpan(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.BitmapRef.Dispose
+  commentId: M:Vintagestory.API.Common.BitmapRef.Dispose
+  parent: Vintagestory.API.Common.BitmapRef
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Dispose
+  name: Dispose()
+  nameWithType: BitmapRef.Dispose()
+  fullName: Vintagestory.API.Common.BitmapRef.Dispose()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.BitmapRef.Dispose
+    name: Dispose
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.BitmapRef.Dispose
+    name: Dispose
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Dispose
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.Dispose*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.Dispose
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_Dispose
+  name: Dispose
+  nameWithType: BitmapExternal.Dispose
+  fullName: Vintagestory.API.Common.BitmapExternal.Dispose
+- uid: Vintagestory.API.Common.BitmapRef.Save(System.String)
+  commentId: M:Vintagestory.API.Common.BitmapRef.Save(System.String)
+  parent: Vintagestory.API.Common.BitmapRef
+  isExternal: true
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Save_System_String_
+  name: Save(string)
+  nameWithType: BitmapRef.Save(string)
+  fullName: Vintagestory.API.Common.BitmapRef.Save(string)
+  nameWithType.vb: BitmapRef.Save(String)
+  fullName.vb: Vintagestory.API.Common.BitmapRef.Save(String)
+  name.vb: Save(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.BitmapRef.Save(System.String)
+    name: Save
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Save_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.BitmapRef.Save(System.String)
+    name: Save
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_Save_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.Save*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.Save
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_Save_System_String_
+  name: Save
+  nameWithType: BitmapExternal.Save
+  fullName: Vintagestory.API.Common.BitmapExternal.Save
+- uid: Vintagestory.API.Common.BitmapRef.GetPixel(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BitmapRef.GetPixel(System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BitmapRef
+  isExternal: true
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixel_System_Int32_System_Int32_
+  name: GetPixel(int, int)
+  nameWithType: BitmapRef.GetPixel(int, int)
+  fullName: Vintagestory.API.Common.BitmapRef.GetPixel(int, int)
+  nameWithType.vb: BitmapRef.GetPixel(Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BitmapRef.GetPixel(Integer, Integer)
+  name.vb: GetPixel(Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.BitmapRef.GetPixel(System.Int32,System.Int32)
+    name: GetPixel
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixel_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.BitmapRef.GetPixel(System.Int32,System.Int32)
+    name: GetPixel
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixel_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.GetPixel*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.GetPixel
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_GetPixel_System_Int32_System_Int32_
+  name: GetPixel
+  nameWithType: BitmapExternal.GetPixel
+  fullName: Vintagestory.API.Common.BitmapExternal.GetPixel
+- uid: SkiaSharp.SKColor
+  commentId: T:SkiaSharp.SKColor
+  parent: SkiaSharp
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/skiasharp.skcolor
+  name: SKColor
+  nameWithType: SKColor
+  fullName: SkiaSharp.SKColor
+- uid: Vintagestory.API.Common.BitmapRef.GetPixelRel(System.Single,System.Single)
+  commentId: M:Vintagestory.API.Common.BitmapRef.GetPixelRel(System.Single,System.Single)
+  parent: Vintagestory.API.Common.BitmapRef
+  isExternal: true
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixelRel_System_Single_System_Single_
+  name: GetPixelRel(float, float)
+  nameWithType: BitmapRef.GetPixelRel(float, float)
+  fullName: Vintagestory.API.Common.BitmapRef.GetPixelRel(float, float)
+  nameWithType.vb: BitmapRef.GetPixelRel(Single, Single)
+  fullName.vb: Vintagestory.API.Common.BitmapRef.GetPixelRel(Single, Single)
+  name.vb: GetPixelRel(Single, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.BitmapRef.GetPixelRel(System.Single,System.Single)
+    name: GetPixelRel
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixelRel_System_Single_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.BitmapRef.GetPixelRel(System.Single,System.Single)
+    name: GetPixelRel
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixelRel_System_Single_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.GetPixelRel*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.GetPixelRel
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_GetPixelRel_System_Single_System_Single_
+  name: GetPixelRel
+  nameWithType: BitmapExternal.GetPixelRel
+  fullName: Vintagestory.API.Common.BitmapExternal.GetPixelRel
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.BitmapRef.MulAlpha(System.Int32)
+  commentId: M:Vintagestory.API.Common.BitmapRef.MulAlpha(System.Int32)
+  parent: Vintagestory.API.Common.BitmapRef
+  isExternal: true
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_MulAlpha_System_Int32_
+  name: MulAlpha(int)
+  nameWithType: BitmapRef.MulAlpha(int)
+  fullName: Vintagestory.API.Common.BitmapRef.MulAlpha(int)
+  nameWithType.vb: BitmapRef.MulAlpha(Integer)
+  fullName.vb: Vintagestory.API.Common.BitmapRef.MulAlpha(Integer)
+  name.vb: MulAlpha(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.BitmapRef.MulAlpha(System.Int32)
+    name: MulAlpha
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_MulAlpha_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.BitmapRef.MulAlpha(System.Int32)
+    name: MulAlpha
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_MulAlpha_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.MulAlpha*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.MulAlpha
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_MulAlpha_System_Int32_
+  name: MulAlpha
+  nameWithType: BitmapExternal.MulAlpha
+  fullName: Vintagestory.API.Common.BitmapExternal.MulAlpha
+- uid: Vintagestory.API.Common.BitmapRef.GetPixelsTransformed(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BitmapRef.GetPixelsTransformed(System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BitmapRef
+  isExternal: true
+  href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixelsTransformed_System_Int32_System_Int32_
+  name: GetPixelsTransformed(int, int)
+  nameWithType: BitmapRef.GetPixelsTransformed(int, int)
+  fullName: Vintagestory.API.Common.BitmapRef.GetPixelsTransformed(int, int)
+  nameWithType.vb: BitmapRef.GetPixelsTransformed(Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BitmapRef.GetPixelsTransformed(Integer, Integer)
+  name.vb: GetPixelsTransformed(Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.BitmapRef.GetPixelsTransformed(System.Int32,System.Int32)
+    name: GetPixelsTransformed
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixelsTransformed_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.BitmapRef.GetPixelsTransformed(System.Int32,System.Int32)
+    name: GetPixelsTransformed
+    href: Vintagestory.API.Common.BitmapRef.html#Vintagestory_API_Common_BitmapRef_GetPixelsTransformed_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed*
+  commentId: Overload:Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed
+  href: Vintagestory.API.Common.BitmapExternal.html#Vintagestory_API_Common_BitmapExternal_GetPixelsTransformed_System_Int32_System_Int32_
+  name: GetPixelsTransformed
+  nameWithType: BitmapExternal.GetPixelsTransformed
+  fullName: Vintagestory.API.Common.BitmapExternal.GetPixelsTransformed

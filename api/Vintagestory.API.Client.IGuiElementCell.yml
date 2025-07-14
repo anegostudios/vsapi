@@ -1,0 +1,555 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IGuiElementCell
+  commentId: T:Vintagestory.API.Client.IGuiElementCell
+  id: IGuiElementCell
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IGuiElementCell.Bounds
+  - Vintagestory.API.Client.IGuiElementCell.InsideClipBounds
+  - Vintagestory.API.Client.IGuiElementCell.MouseOverCursor
+  - Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  - Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  - Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  - Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements(Vintagestory.API.Client.ICoreClientAPI,System.Single)
+  - Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight
+  langs:
+  - csharp
+  - vb
+  name: IGuiElementCell
+  nameWithType: IGuiElementCell
+  fullName: Vintagestory.API.Client.IGuiElementCell
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public interface IGuiElementCell : IDisposable'
+    content.vb: Public Interface IGuiElementCell Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.IGuiElementCell.InsideClipBounds
+  commentId: P:Vintagestory.API.Client.IGuiElementCell.InsideClipBounds
+  id: InsideClipBounds
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: InsideClipBounds
+  nameWithType: IGuiElementCell.InsideClipBounds
+  fullName: Vintagestory.API.Client.IGuiElementCell.InsideClipBounds
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: ElementBounds InsideClipBounds { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.ElementBounds
+    content.vb: Property InsideClipBounds As ElementBounds
+  overload: Vintagestory.API.Client.IGuiElementCell.InsideClipBounds*
+- uid: Vintagestory.API.Client.IGuiElementCell.Bounds
+  commentId: P:Vintagestory.API.Client.IGuiElementCell.Bounds
+  id: Bounds
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: Bounds
+  nameWithType: IGuiElementCell.Bounds
+  fullName: Vintagestory.API.Client.IGuiElementCell.Bounds
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The bounds of the cell.
+  example: []
+  syntax:
+    content: ElementBounds Bounds { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.ElementBounds
+    content.vb: ReadOnly Property Bounds As ElementBounds
+  overload: Vintagestory.API.Client.IGuiElementCell.Bounds*
+- uid: Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements(Vintagestory.API.Client.ICoreClientAPI,System.Single)
+  commentId: M:Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements(Vintagestory.API.Client.ICoreClientAPI,System.Single)
+  id: OnRenderInteractiveElements(Vintagestory.API.Client.ICoreClientAPI,System.Single)
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: OnRenderInteractiveElements(ICoreClientAPI, float)
+  nameWithType: IGuiElementCell.OnRenderInteractiveElements(ICoreClientAPI, float)
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements(Vintagestory.API.Client.ICoreClientAPI, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The event fired when the cell is rendered.
+  example: []
+  syntax:
+    content: void OnRenderInteractiveElements(ICoreClientAPI api, float deltaTime)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: The Client API
+    - id: deltaTime
+      type: System.Single
+      description: The change in time.
+    content.vb: Sub OnRenderInteractiveElements(api As ICoreClientAPI, deltaTime As Single)
+  overload: Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements*
+  nameWithType.vb: IGuiElementCell.OnRenderInteractiveElements(ICoreClientAPI, Single)
+  fullName.vb: Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements(Vintagestory.API.Client.ICoreClientAPI, Single)
+  name.vb: OnRenderInteractiveElements(ICoreClientAPI, Single)
+- uid: Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight
+  commentId: M:Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight
+  id: UpdateCellHeight
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: UpdateCellHeight()
+  nameWithType: IGuiElementCell.UpdateCellHeight()
+  fullName: Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Called when the cell is modified and needs to be updated.
+  example: []
+  syntax:
+    content: void UpdateCellHeight()
+    content.vb: Sub UpdateCellHeight()
+  overload: Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight*
+- uid: Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  commentId: M:Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  id: OnMouseUpOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: OnMouseUpOnElement(MouseEvent, int)
+  nameWithType: IGuiElementCell.OnMouseUpOnElement(MouseEvent, int)
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement(Vintagestory.API.Client.MouseEvent, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void OnMouseUpOnElement(MouseEvent args, int elementIndex)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Client.MouseEvent
+    - id: elementIndex
+      type: System.Int32
+    content.vb: Sub OnMouseUpOnElement(args As MouseEvent, elementIndex As Integer)
+  overload: Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement*
+  nameWithType.vb: IGuiElementCell.OnMouseUpOnElement(MouseEvent, Integer)
+  fullName.vb: Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement(Vintagestory.API.Client.MouseEvent, Integer)
+  name.vb: OnMouseUpOnElement(MouseEvent, Integer)
+- uid: Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  commentId: M:Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  id: OnMouseDownOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: OnMouseDownOnElement(MouseEvent, int)
+  nameWithType: IGuiElementCell.OnMouseDownOnElement(MouseEvent, int)
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement(Vintagestory.API.Client.MouseEvent, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void OnMouseDownOnElement(MouseEvent args, int elementIndex)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Client.MouseEvent
+    - id: elementIndex
+      type: System.Int32
+    content.vb: Sub OnMouseDownOnElement(args As MouseEvent, elementIndex As Integer)
+  overload: Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement*
+  nameWithType.vb: IGuiElementCell.OnMouseDownOnElement(MouseEvent, Integer)
+  fullName.vb: Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement(Vintagestory.API.Client.MouseEvent, Integer)
+  name.vb: OnMouseDownOnElement(MouseEvent, Integer)
+- uid: Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  commentId: M:Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  id: OnMouseMoveOnElement(Vintagestory.API.Client.MouseEvent,System.Int32)
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: OnMouseMoveOnElement(MouseEvent, int)
+  nameWithType: IGuiElementCell.OnMouseMoveOnElement(MouseEvent, int)
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement(Vintagestory.API.Client.MouseEvent, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void OnMouseMoveOnElement(MouseEvent args, int elementIndex)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Client.MouseEvent
+    - id: elementIndex
+      type: System.Int32
+    content.vb: Sub OnMouseMoveOnElement(args As MouseEvent, elementIndex As Integer)
+  overload: Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement*
+  nameWithType.vb: IGuiElementCell.OnMouseMoveOnElement(MouseEvent, Integer)
+  fullName.vb: Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement(Vintagestory.API.Client.MouseEvent, Integer)
+  name.vb: OnMouseMoveOnElement(MouseEvent, Integer)
+- uid: Vintagestory.API.Client.IGuiElementCell.MouseOverCursor
+  commentId: P:Vintagestory.API.Client.IGuiElementCell.MouseOverCursor
+  id: MouseOverCursor
+  parent: Vintagestory.API.Client.IGuiElementCell
+  langs:
+  - csharp
+  - vb
+  name: MouseOverCursor
+  nameWithType: IGuiElementCell.MouseOverCursor
+  fullName: Vintagestory.API.Client.IGuiElementCell.MouseOverCursor
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: string MouseOverCursor { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property MouseOverCursor As String
+  overload: Vintagestory.API.Client.IGuiElementCell.MouseOverCursor*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.IGuiElementCell.InsideClipBounds*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.InsideClipBounds
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_InsideClipBounds
+  name: InsideClipBounds
+  nameWithType: IGuiElementCell.InsideClipBounds
+  fullName: Vintagestory.API.Client.IGuiElementCell.InsideClipBounds
+- uid: Vintagestory.API.Client.ElementBounds
+  commentId: T:Vintagestory.API.Client.ElementBounds
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ElementBounds.html
+  name: ElementBounds
+  nameWithType: ElementBounds
+  fullName: Vintagestory.API.Client.ElementBounds
+- uid: Vintagestory.API.Client.IGuiElementCell.Bounds*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.Bounds
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_Bounds
+  name: Bounds
+  nameWithType: IGuiElementCell.Bounds
+  fullName: Vintagestory.API.Client.IGuiElementCell.Bounds
+- uid: Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_OnRenderInteractiveElements_Vintagestory_API_Client_ICoreClientAPI_System_Single_
+  name: OnRenderInteractiveElements
+  nameWithType: IGuiElementCell.OnRenderInteractiveElements
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnRenderInteractiveElements
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_UpdateCellHeight
+  name: UpdateCellHeight
+  nameWithType: IGuiElementCell.UpdateCellHeight
+  fullName: Vintagestory.API.Client.IGuiElementCell.UpdateCellHeight
+- uid: Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_OnMouseUpOnElement_Vintagestory_API_Client_MouseEvent_System_Int32_
+  name: OnMouseUpOnElement
+  nameWithType: IGuiElementCell.OnMouseUpOnElement
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnMouseUpOnElement
+- uid: Vintagestory.API.Client.MouseEvent
+  commentId: T:Vintagestory.API.Client.MouseEvent
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MouseEvent.html
+  name: MouseEvent
+  nameWithType: MouseEvent
+  fullName: Vintagestory.API.Client.MouseEvent
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_OnMouseDownOnElement_Vintagestory_API_Client_MouseEvent_System_Int32_
+  name: OnMouseDownOnElement
+  nameWithType: IGuiElementCell.OnMouseDownOnElement
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnMouseDownOnElement
+- uid: Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_OnMouseMoveOnElement_Vintagestory_API_Client_MouseEvent_System_Int32_
+  name: OnMouseMoveOnElement
+  nameWithType: IGuiElementCell.OnMouseMoveOnElement
+  fullName: Vintagestory.API.Client.IGuiElementCell.OnMouseMoveOnElement
+- uid: Vintagestory.API.Client.IGuiElementCell.MouseOverCursor*
+  commentId: Overload:Vintagestory.API.Client.IGuiElementCell.MouseOverCursor
+  href: Vintagestory.API.Client.IGuiElementCell.html#Vintagestory_API_Client_IGuiElementCell_MouseOverCursor
+  name: MouseOverCursor
+  nameWithType: IGuiElementCell.MouseOverCursor
+  fullName: Vintagestory.API.Client.IGuiElementCell.MouseOverCursor
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

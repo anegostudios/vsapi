@@ -1,0 +1,1285 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient
+  commentId: T:Vintagestory.API.Common.CraftingRecipeIngredient
+  id: CraftingRecipeIngredient
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.CraftingRecipeIngredient.AllowedVariants
+  - Vintagestory.API.Common.CraftingRecipeIngredient.Attributes
+  - Vintagestory.API.Common.CraftingRecipeIngredient.Clone
+  - Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo``1
+  - Vintagestory.API.Common.CraftingRecipeIngredient.Code
+  - Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder(System.String,System.String)
+  - Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.CraftingRecipeIngredient.IsTool
+  - Vintagestory.API.Common.CraftingRecipeIngredient.IsWildCard
+  - Vintagestory.API.Common.CraftingRecipeIngredient.Name
+  - Vintagestory.API.Common.CraftingRecipeIngredient.Quantity
+  - Vintagestory.API.Common.CraftingRecipeIngredient.RecipeAttributes
+  - Vintagestory.API.Common.CraftingRecipeIngredient.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  - Vintagestory.API.Common.CraftingRecipeIngredient.ResolvedItemstack
+  - Vintagestory.API.Common.CraftingRecipeIngredient.ReturnedStack
+  - Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient(Vintagestory.API.Common.ItemStack,System.Boolean)
+  - Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants
+  - Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes(System.IO.BinaryWriter)
+  - Vintagestory.API.Common.CraftingRecipeIngredient.ToString
+  - Vintagestory.API.Common.CraftingRecipeIngredient.ToolDurabilityCost
+  - Vintagestory.API.Common.CraftingRecipeIngredient.Type
+  langs:
+  - csharp
+  - vb
+  name: CraftingRecipeIngredient
+  nameWithType: CraftingRecipeIngredient
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A crafting recipe ingredient
+  example: []
+  syntax:
+    content: 'public class CraftingRecipeIngredient : IRecipeIngredient'
+    content.vb: Public Class CraftingRecipeIngredient Implements IRecipeIngredient
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Vintagestory.API.Common.GridRecipeIngredient
+  implements:
+  - Vintagestory.API.Common.IRecipeIngredient
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Type
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.Type
+  id: Type
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: CraftingRecipeIngredient.Type
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Type
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Item or Block
+  example: []
+  syntax:
+    content: public EnumItemClass Type
+    return:
+      type: Vintagestory.API.Common.EnumItemClass
+    content.vb: Public Type As EnumItemClass
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Code
+  commentId: P:Vintagestory.API.Common.CraftingRecipeIngredient.Code
+  id: Code
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: Code
+  nameWithType: CraftingRecipeIngredient.Code
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Code
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Code of the item or block
+  example: []
+  syntax:
+    content: public AssetLocation Code { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.AssetLocation
+    content.vb: Public Property Code As AssetLocation
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.Code*
+  implements:
+  - Vintagestory.API.Common.IRecipeIngredient.Code
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Name
+  commentId: P:Vintagestory.API.Common.CraftingRecipeIngredient.Name
+  id: Name
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: CraftingRecipeIngredient.Name
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Name
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Name of the class, used for filling placeholders in the output stack
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.Name*
+  implements:
+  - Vintagestory.API.Common.IRecipeIngredient.Name
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Quantity
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.Quantity
+  id: Quantity
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: Quantity
+  nameWithType: CraftingRecipeIngredient.Quantity
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Quantity
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: How much input items are required
+  example: []
+  syntax:
+    content: public int Quantity
+    return:
+      type: System.Int32
+    content.vb: Public Quantity As Integer
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Attributes
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.Attributes
+  id: Attributes
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: Attributes
+  nameWithType: CraftingRecipeIngredient.Attributes
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Attributes
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: What attributes this itemstack must have
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      [JsonConverter(typeof(JsonAttributesConverter))]
+
+      public JsonObject Attributes
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject
+    content.vb: >-
+      <JsonProperty>
+
+      <JsonConverter(GetType(JsonAttributesConverter))>
+
+      Public Attributes As JsonObject
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+  - type: Newtonsoft.Json.JsonConverterAttribute
+    ctor: Newtonsoft.Json.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: Vintagestory.API.Common.JsonAttributesConverter
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.RecipeAttributes
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.RecipeAttributes
+  id: RecipeAttributes
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: RecipeAttributes
+  nameWithType: CraftingRecipeIngredient.RecipeAttributes
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.RecipeAttributes
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Optional attribute data that you can attach any data to
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      [JsonConverter(typeof(JsonAttributesConverter))]
+
+      public JsonObject RecipeAttributes
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject
+    content.vb: >-
+      <JsonProperty>
+
+      <JsonConverter(GetType(JsonAttributesConverter))>
+
+      Public RecipeAttributes As JsonObject
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+  - type: Newtonsoft.Json.JsonConverterAttribute
+    ctor: Newtonsoft.Json.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: Vintagestory.API.Common.JsonAttributesConverter
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.IsTool
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.IsTool
+  id: IsTool
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: IsTool
+  nameWithType: CraftingRecipeIngredient.IsTool
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.IsTool
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Whether this crafting recipe ingredient should be regarded as a tool required to build this item.
+
+    If true, the recipe will not consume the item but reduce its durability.
+  example: []
+  syntax:
+    content: public bool IsTool
+    return:
+      type: System.Boolean
+    content.vb: Public IsTool As Boolean
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.ToolDurabilityCost
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.ToolDurabilityCost
+  id: ToolDurabilityCost
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: ToolDurabilityCost
+  nameWithType: CraftingRecipeIngredient.ToolDurabilityCost
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.ToolDurabilityCost
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If IsTool is set, this is the durability cost
+  example: []
+  syntax:
+    content: public int ToolDurabilityCost
+    return:
+      type: System.Int32
+    content.vb: Public ToolDurabilityCost As Integer
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.AllowedVariants
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.AllowedVariants
+  id: AllowedVariants
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: AllowedVariants
+  nameWithType: CraftingRecipeIngredient.AllowedVariants
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.AllowedVariants
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: When using a wildcard in the item/block code, setting this field will limit the allowed variants
+  example: []
+  syntax:
+    content: public string[] AllowedVariants
+    return:
+      type: System.String[]
+    content.vb: Public AllowedVariants As String()
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants
+  id: SkipVariants
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: SkipVariants
+  nameWithType: CraftingRecipeIngredient.SkipVariants
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: When using a wildcard in the item/block code, setting this field will skip these variants
+  example: []
+  syntax:
+    content: public string[] SkipVariants
+    return:
+      type: System.String[]
+    content.vb: Public SkipVariants As String()
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.ReturnedStack
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.ReturnedStack
+  id: ReturnedStack
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: ReturnedStack
+  nameWithType: CraftingRecipeIngredient.ReturnedStack
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.ReturnedStack
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If set, the crafting recipe will give back the consumed stack to be player upon crafting
+  example: []
+  syntax:
+    content: public JsonItemStack ReturnedStack
+    return:
+      type: Vintagestory.API.Common.JsonItemStack
+    content.vb: Public ReturnedStack As JsonItemStack
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.ResolvedItemstack
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.ResolvedItemstack
+  id: ResolvedItemstack
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: ResolvedItemstack
+  nameWithType: CraftingRecipeIngredient.ResolvedItemstack
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.ResolvedItemstack
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The itemstack made from Code, Quantity and Attributes, populated by the engine
+  example: []
+  syntax:
+    content: public ItemStack ResolvedItemstack
+    return:
+      type: Vintagestory.API.Common.ItemStack
+    content.vb: Public ResolvedItemstack As ItemStack
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.IsWildCard
+  commentId: F:Vintagestory.API.Common.CraftingRecipeIngredient.IsWildCard
+  id: IsWildCard
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: IsWildCard
+  nameWithType: CraftingRecipeIngredient.IsWildCard
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.IsWildCard
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Whether this recipe contains a wildcard, populated by the engine
+  example: []
+  syntax:
+    content: public bool IsWildCard
+    return:
+      type: System.Boolean
+    content.vb: Public IsWildCard As Boolean
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  id: Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: Resolve(IWorldAccessor, string)
+  nameWithType: CraftingRecipeIngredient.Resolve(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Resolve(Vintagestory.API.Common.IWorldAccessor, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Turns Type, Code and Attributes into an IItemStack
+  example: []
+  syntax:
+    content: public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging)
+    parameters:
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: sourceForErrorLogging
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+    content.vb: Public Function Resolve(resolver As IWorldAccessor, sourceForErrorLogging As String) As Boolean
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.Resolve*
+  nameWithType.vb: CraftingRecipeIngredient.Resolve(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.CraftingRecipeIngredient.Resolve(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: Resolve(IWorldAccessor, String)
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient(Vintagestory.API.Common.ItemStack,System.Boolean)
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient(Vintagestory.API.Common.ItemStack,System.Boolean)
+  id: SatisfiesAsIngredient(Vintagestory.API.Common.ItemStack,System.Boolean)
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: SatisfiesAsIngredient(ItemStack, bool)
+  nameWithType: CraftingRecipeIngredient.SatisfiesAsIngredient(ItemStack, bool)
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient(Vintagestory.API.Common.ItemStack, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Checks whether or not the input satisfies as an ingredient for the recipe.
+  example: []
+  syntax:
+    content: public bool SatisfiesAsIngredient(ItemStack inputStack, bool checkStacksize = true)
+    parameters:
+    - id: inputStack
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    - id: checkStacksize
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function SatisfiesAsIngredient(inputStack As ItemStack, checkStacksize As Boolean = True) As Boolean
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient*
+  nameWithType.vb: CraftingRecipeIngredient.SatisfiesAsIngredient(ItemStack, Boolean)
+  fullName.vb: Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient(Vintagestory.API.Common.ItemStack, Boolean)
+  name.vb: SatisfiesAsIngredient(ItemStack, Boolean)
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Clone
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: CraftingRecipeIngredient.Clone()
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Clone()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public CraftingRecipeIngredient Clone()
+    return:
+      type: Vintagestory.API.Common.CraftingRecipeIngredient
+    content.vb: Public Function Clone() As CraftingRecipeIngredient
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.Clone*
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo``1
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo``1
+  id: CloneTo``1
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: CloneTo<T>()
+  nameWithType: CraftingRecipeIngredient.CloneTo<T>()
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo<T>()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public T CloneTo<T>() where T : CraftingRecipeIngredient, new()'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function CloneTo(Of T As {CraftingRecipeIngredient, New})() As T
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo*
+  nameWithType.vb: CraftingRecipeIngredient.CloneTo(Of T)()
+  fullName.vb: Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo(Of T)()
+  name.vb: CloneTo(Of T)()
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.ToString
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.ToString
+  id: ToString
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: CraftingRecipeIngredient.ToString()
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.ToString()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.ToString*
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder(System.String,System.String)
+  id: FillPlaceHolder(System.String,System.String)
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: FillPlaceHolder(string, string)
+  nameWithType: CraftingRecipeIngredient.FillPlaceHolder(string, string)
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Fills in the placeholder ingredients for the crafting recipe.
+  example: []
+  syntax:
+    content: public void FillPlaceHolder(string key, string value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.String
+      description: ''
+    content.vb: Public Sub FillPlaceHolder(key As String, value As String)
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder*
+  nameWithType.vb: CraftingRecipeIngredient.FillPlaceHolder(String, String)
+  fullName.vb: Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder(String, String)
+  name.vb: FillPlaceHolder(String, String)
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: CraftingRecipeIngredient.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void ToBytes(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+    content.vb: Public Overridable Sub ToBytes(writer As BinaryWriter)
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes*
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  id: FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.CraftingRecipeIngredient
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: CraftingRecipeIngredient.FromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+    content.vb: Public Overridable Sub FromBytes(reader As BinaryReader, resolver As IWorldAccessor)
+  overload: Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.IRecipeIngredient
+  commentId: T:Vintagestory.API.Common.IRecipeIngredient
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IRecipeIngredient.html
+  name: IRecipeIngredient
+  nameWithType: IRecipeIngredient
+  fullName: Vintagestory.API.Common.IRecipeIngredient
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.EnumItemClass
+  commentId: T:Vintagestory.API.Common.EnumItemClass
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumItemClass.html
+  name: EnumItemClass
+  nameWithType: EnumItemClass
+  fullName: Vintagestory.API.Common.EnumItemClass
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Code*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.Code
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Code
+  name: Code
+  nameWithType: CraftingRecipeIngredient.Code
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Code
+- uid: Vintagestory.API.Common.IRecipeIngredient.Code
+  commentId: P:Vintagestory.API.Common.IRecipeIngredient.Code
+  parent: Vintagestory.API.Common.IRecipeIngredient
+  href: Vintagestory.API.Common.IRecipeIngredient.html#Vintagestory_API_Common_IRecipeIngredient_Code
+  name: Code
+  nameWithType: IRecipeIngredient.Code
+  fullName: Vintagestory.API.Common.IRecipeIngredient.Code
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Name*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.Name
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Name
+  name: Name
+  nameWithType: CraftingRecipeIngredient.Name
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Name
+- uid: Vintagestory.API.Common.IRecipeIngredient.Name
+  commentId: P:Vintagestory.API.Common.IRecipeIngredient.Name
+  parent: Vintagestory.API.Common.IRecipeIngredient
+  href: Vintagestory.API.Common.IRecipeIngredient.html#Vintagestory_API_Common_IRecipeIngredient_Name
+  name: Name
+  nameWithType: IRecipeIngredient.Name
+  fullName: Vintagestory.API.Common.IRecipeIngredient.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Datastructures.JsonObject
+  commentId: T:Vintagestory.API.Datastructures.JsonObject
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.JsonObject.html
+  name: JsonObject
+  nameWithType: JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.JsonItemStack
+  commentId: T:Vintagestory.API.Common.JsonItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.JsonItemStack.html
+  name: JsonItemStack
+  nameWithType: JsonItemStack
+  fullName: Vintagestory.API.Common.JsonItemStack
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Resolve*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.Resolve
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: Resolve
+  nameWithType: CraftingRecipeIngredient.Resolve
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Resolve
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_SatisfiesAsIngredient_Vintagestory_API_Common_ItemStack_System_Boolean_
+  name: SatisfiesAsIngredient
+  nameWithType: CraftingRecipeIngredient.SatisfiesAsIngredient
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.SatisfiesAsIngredient
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.Clone*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.Clone
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Clone
+  name: Clone
+  nameWithType: CraftingRecipeIngredient.Clone
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.Clone
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient
+  commentId: T:Vintagestory.API.Common.CraftingRecipeIngredient
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html
+  name: CraftingRecipeIngredient
+  nameWithType: CraftingRecipeIngredient
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_CloneTo__1
+  name: CloneTo
+  nameWithType: CraftingRecipeIngredient.CloneTo
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.CloneTo
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.ToString*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.ToString
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_ToString
+  name: ToString
+  nameWithType: CraftingRecipeIngredient.ToString
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.ToString
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_FillPlaceHolder_System_String_System_String_
+  name: FillPlaceHolder
+  nameWithType: CraftingRecipeIngredient.FillPlaceHolder
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.FillPlaceHolder
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: CraftingRecipeIngredient.ToBytes
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.ToBytes
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes
+  href: Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: FromBytes
+  nameWithType: CraftingRecipeIngredient.FromBytes
+  fullName: Vintagestory.API.Common.CraftingRecipeIngredient.FromBytes
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader

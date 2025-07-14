@@ -1,0 +1,2686 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.IServerEventAPI
+  commentId: T:Vintagestory.API.Server.IServerEventAPI
+  id: IServerEventAPI
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.IServerEventAPI.AfterActiveSlotChanged
+  - Vintagestory.API.Server.IServerEventAPI.AssetsFinalizers
+  - Vintagestory.API.Server.IServerEventAPI.BeforeActiveSlotChanged
+  - Vintagestory.API.Server.IServerEventAPI.BeginChunkColumnLoadChunkThread
+  - Vintagestory.API.Server.IServerEventAPI.BreakBlock
+  - Vintagestory.API.Server.IServerEventAPI.CanPlaceOrBreakBlock
+  - Vintagestory.API.Server.IServerEventAPI.CanUseBlock
+  - Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration(Vintagestory.API.Common.ChunkColumnGenerationDelegate,Vintagestory.API.Server.EnumWorldGenPass,System.String)
+  - Vintagestory.API.Server.IServerEventAPI.ChunkColumnLoaded
+  - Vintagestory.API.Server.IServerEventAPI.ChunkColumnUnloaded
+  - Vintagestory.API.Server.IServerEventAPI.DidBreakBlock
+  - Vintagestory.API.Server.IServerEventAPI.DidPlaceBlock
+  - Vintagestory.API.Server.IServerEventAPI.DidUseBlock
+  - Vintagestory.API.Server.IServerEventAPI.GameWorldSave
+  - Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers(System.String)
+  - Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor(Vintagestory.API.Common.WorldGenThreadDelegate)
+  - Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator(System.Action,System.String)
+  - Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration(Vintagestory.API.Common.MapChunkGeneratorDelegate,System.String)
+  - Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration(Vintagestory.API.Common.MapRegionGeneratorDelegate,System.String)
+  - Vintagestory.API.Server.IServerEventAPI.OnPlayerInteractEntity
+  - Vintagestory.API.Server.IServerEventAPI.OnTrySpawnEntity
+  - Vintagestory.API.Server.IServerEventAPI.PlayerChat
+  - Vintagestory.API.Server.IServerEventAPI.PlayerCreate
+  - Vintagestory.API.Server.IServerEventAPI.PlayerDeath
+  - Vintagestory.API.Server.IServerEventAPI.PlayerDisconnect
+  - Vintagestory.API.Server.IServerEventAPI.PlayerJoin
+  - Vintagestory.API.Server.IServerEventAPI.PlayerLeave
+  - Vintagestory.API.Server.IServerEventAPI.PlayerNowPlaying
+  - Vintagestory.API.Server.IServerEventAPI.PlayerRespawn
+  - Vintagestory.API.Server.IServerEventAPI.PlayerSwitchGameMode
+  - Vintagestory.API.Server.IServerEventAPI.SaveGameCreated
+  - Vintagestory.API.Server.IServerEventAPI.SaveGameLoaded
+  - Vintagestory.API.Server.IServerEventAPI.ServerResume
+  - Vintagestory.API.Server.IServerEventAPI.ServerRunPhase(Vintagestory.API.Server.EnumServerRunPhase,System.Action)
+  - Vintagestory.API.Server.IServerEventAPI.ServerSuspend
+  - Vintagestory.API.Server.IServerEventAPI.Timer(System.Action,System.Double)
+  - Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.EntityProperties@,Vintagestory.API.MathTools.Vec3d,System.Int64)
+  - Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
+  - Vintagestory.API.Server.IServerEventAPI.WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate,System.String,System.String)
+  - Vintagestory.API.Server.IServerEventAPI.WorldgenStartup
+  langs:
+  - csharp
+  - vb
+  name: IServerEventAPI
+  nameWithType: IServerEventAPI
+  fullName: Vintagestory.API.Server.IServerEventAPI
+  type: Interface
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Contains methods to hook into various server processes
+  example: []
+  syntax:
+    content: 'public interface IServerEventAPI : IEventAPI'
+    content.vb: Public Interface IServerEventAPI Inherits IEventAPI
+  inheritedMembers:
+  - Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
+  - Vintagestory.API.Common.IEventAPI.OnEntitySpawn
+  - Vintagestory.API.Common.IEventAPI.OnEntityLoaded
+  - Vintagestory.API.Common.IEventAPI.OnEntityDeath
+  - Vintagestory.API.Common.IEventAPI.OnEntityDespawn
+  - Vintagestory.API.Common.IEventAPI.ChunkDirty
+  - Vintagestory.API.Common.IEventAPI.MapRegionLoaded
+  - Vintagestory.API.Common.IEventAPI.MapRegionUnloaded
+  - Vintagestory.API.Common.IEventAPI.OnGetClimate
+  - Vintagestory.API.Common.IEventAPI.OnGetWindSpeed
+  - Vintagestory.API.Common.IEventAPI.MatchesGridRecipe
+  - Vintagestory.API.Common.IEventAPI.PushEvent(System.String,Vintagestory.API.Datastructures.IAttribute)
+  - Vintagestory.API.Common.IEventAPI.RegisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate,System.Double,System.String)
+  - Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+  - Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Action{System.Exception},System.Int32,System.Int32)
+  - Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32)
+  - Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32,System.Boolean)
+  - Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32)
+  - Vintagestory.API.Common.IEventAPI.UnregisterCallback(System.Int64)
+  - Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(System.Int64)
+  - Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action,System.String)
+  - Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
+  - Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers(System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers(System.String)
+  id: GetRegisteredWorldGenHandlers(System.String)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: GetRegisteredWorldGenHandlers(string)
+  nameWithType: IServerEventAPI.GetRegisteredWorldGenHandlers(string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Returns the list of currently registered map chunk generator handlers for given world type. Returns an array of handler lists. Each element in the array represents all the handlers for one worldgenpass (see EnumWorldGenPass)
+
+    When world type is null, all handlers are returned
+  example: []
+  syntax:
+    content: IWorldGenHandler GetRegisteredWorldGenHandlers(string worldType)
+    parameters:
+    - id: worldType
+      type: System.String
+      description: "\"standard\" for the vanilla world generator"
+    return:
+      type: Vintagestory.API.Server.IWorldGenHandler
+      description: ''
+    content.vb: Function GetRegisteredWorldGenHandlers(worldType As String) As IWorldGenHandler
+  overload: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers*
+  nameWithType.vb: IServerEventAPI.GetRegisteredWorldGenHandlers(String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers(String)
+  name.vb: GetRegisteredWorldGenHandlers(String)
+- uid: Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.EntityProperties@,Vintagestory.API.MathTools.Vec3d,System.Int64)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.EntityProperties@,Vintagestory.API.MathTools.Vec3d,System.Int64)
+  id: TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.EntityProperties@,Vintagestory.API.MathTools.Vec3d,System.Int64)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerTrySpawnEntity(IBlockAccessor, ref EntityProperties, Vec3d, long)
+  nameWithType: IServerEventAPI.TriggerTrySpawnEntity(IBlockAccessor, ref EntityProperties, Vec3d, long)
+  fullName: Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor, ref Vintagestory.API.Common.Entities.EntityProperties, Vintagestory.API.MathTools.Vec3d, long)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: bool TriggerTrySpawnEntity(IBlockAccessor blockAccessor, ref EntityProperties properties, Vec3d position, long herdId)
+    parameters:
+    - id: blockAccessor
+      type: Vintagestory.API.Common.IBlockAccessor
+    - id: properties
+      type: Vintagestory.API.Common.Entities.EntityProperties
+    - id: position
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: herdId
+      type: System.Int64
+    return:
+      type: System.Boolean
+    content.vb: Function TriggerTrySpawnEntity(blockAccessor As IBlockAccessor, properties As EntityProperties, position As Vec3d, herdId As Long) As Boolean
+  overload: Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity*
+  nameWithType.vb: IServerEventAPI.TriggerTrySpawnEntity(IBlockAccessor, EntityProperties, Vec3d, Long)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.Common.Entities.EntityProperties, Vintagestory.API.MathTools.Vec3d, Long)
+  name.vb: TriggerTrySpawnEntity(IBlockAccessor, EntityProperties, Vec3d, Long)
+- uid: Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor(Vintagestory.API.Common.WorldGenThreadDelegate)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor(Vintagestory.API.Common.WorldGenThreadDelegate)
+  id: GetWorldgenBlockAccessor(Vintagestory.API.Common.WorldGenThreadDelegate)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: GetWorldgenBlockAccessor(WorldGenThreadDelegate)
+  nameWithType: IServerEventAPI.GetWorldgenBlockAccessor(WorldGenThreadDelegate)
+  fullName: Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor(Vintagestory.API.Common.WorldGenThreadDelegate)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: If you require neighbour chunk data during world generation, you have to register to this event to receive access to the chunk generator thread. This method is only called once during server startup.
+  example: []
+  syntax:
+    content: void GetWorldgenBlockAccessor(WorldGenThreadDelegate handler)
+    parameters:
+    - id: handler
+      type: Vintagestory.API.Common.WorldGenThreadDelegate
+      description: ''
+    content.vb: Sub GetWorldgenBlockAccessor(handler As WorldGenThreadDelegate)
+  overload: Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor*
+- uid: Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator(System.Action,System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator(System.Action,System.String)
+  id: InitWorldGenerator(System.Action,System.String)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: InitWorldGenerator(Action, string)
+  nameWithType: IServerEventAPI.InitWorldGenerator(Action, string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator(System.Action, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Triggered before the first chunk, map chunk or map region is generated, given that the passed on world type has been selected. Called right after the save game has been loaded.
+  example: []
+  syntax:
+    content: void InitWorldGenerator(Action handler, string forWorldType)
+    parameters:
+    - id: handler
+      type: System.Action
+      description: ''
+    - id: forWorldType
+      type: System.String
+      description: ''
+    content.vb: Sub InitWorldGenerator(handler As Action, forWorldType As String)
+  overload: Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator*
+  nameWithType.vb: IServerEventAPI.InitWorldGenerator(Action, String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator(System.Action, String)
+  name.vb: InitWorldGenerator(Action, String)
+- uid: Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration(Vintagestory.API.Common.MapChunkGeneratorDelegate,System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration(Vintagestory.API.Common.MapChunkGeneratorDelegate,System.String)
+  id: MapChunkGeneration(Vintagestory.API.Common.MapChunkGeneratorDelegate,System.String)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: MapChunkGeneration(MapChunkGeneratorDelegate, string)
+  nameWithType: IServerEventAPI.MapChunkGeneration(MapChunkGeneratorDelegate, string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration(Vintagestory.API.Common.MapChunkGeneratorDelegate, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Event that is triggered whenever a new column of chunks is being generated. It is always called before the ChunkGenerator event
+  example: []
+  syntax:
+    content: void MapChunkGeneration(MapChunkGeneratorDelegate handler, string forWorldType)
+    parameters:
+    - id: handler
+      type: Vintagestory.API.Common.MapChunkGeneratorDelegate
+      description: ''
+    - id: forWorldType
+      type: System.String
+      description: For which world types to use this generator
+    content.vb: Sub MapChunkGeneration(handler As MapChunkGeneratorDelegate, forWorldType As String)
+  overload: Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration*
+  nameWithType.vb: IServerEventAPI.MapChunkGeneration(MapChunkGeneratorDelegate, String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration(Vintagestory.API.Common.MapChunkGeneratorDelegate, String)
+  name.vb: MapChunkGeneration(MapChunkGeneratorDelegate, String)
+- uid: Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration(Vintagestory.API.Common.MapRegionGeneratorDelegate,System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration(Vintagestory.API.Common.MapRegionGeneratorDelegate,System.String)
+  id: MapRegionGeneration(Vintagestory.API.Common.MapRegionGeneratorDelegate,System.String)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: MapRegionGeneration(MapRegionGeneratorDelegate, string)
+  nameWithType: IServerEventAPI.MapRegionGeneration(MapRegionGeneratorDelegate, string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration(Vintagestory.API.Common.MapRegionGeneratorDelegate, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Event that is triggered whenever a new 16x16 section of column of chunks is being generated. It is always called before the ChunkGenerator and before the MapChunkGeneration event
+  example: []
+  syntax:
+    content: void MapRegionGeneration(MapRegionGeneratorDelegate handler, string forWorldType)
+    parameters:
+    - id: handler
+      type: Vintagestory.API.Common.MapRegionGeneratorDelegate
+      description: ''
+    - id: forWorldType
+      type: System.String
+      description: For which world types to use this generator
+    content.vb: Sub MapRegionGeneration(handler As MapRegionGeneratorDelegate, forWorldType As String)
+  overload: Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration*
+  nameWithType.vb: IServerEventAPI.MapRegionGeneration(MapRegionGeneratorDelegate, String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration(Vintagestory.API.Common.MapRegionGeneratorDelegate, String)
+  name.vb: MapRegionGeneration(MapRegionGeneratorDelegate, String)
+- uid: Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration(Vintagestory.API.Common.ChunkColumnGenerationDelegate,Vintagestory.API.Server.EnumWorldGenPass,System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration(Vintagestory.API.Common.ChunkColumnGenerationDelegate,Vintagestory.API.Server.EnumWorldGenPass,System.String)
+  id: ChunkColumnGeneration(Vintagestory.API.Common.ChunkColumnGenerationDelegate,Vintagestory.API.Server.EnumWorldGenPass,System.String)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: ChunkColumnGeneration(ChunkColumnGenerationDelegate, EnumWorldGenPass, string)
+  nameWithType: IServerEventAPI.ChunkColumnGeneration(ChunkColumnGenerationDelegate, EnumWorldGenPass, string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration(Vintagestory.API.Common.ChunkColumnGenerationDelegate, Vintagestory.API.Server.EnumWorldGenPass, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Vintagestory uses this method to generate the basic terrain (base terrain + rock strata + caves) in full columns. Only called once in pass EnumWorldGenPass.TerrainNoise. Register to this event if you need acces to a whole chunk column during inital generation.
+  example: []
+  syntax:
+    content: void ChunkColumnGeneration(ChunkColumnGenerationDelegate handler, EnumWorldGenPass pass, string forWorldType)
+    parameters:
+    - id: handler
+      type: Vintagestory.API.Common.ChunkColumnGenerationDelegate
+      description: ''
+    - id: pass
+      type: Vintagestory.API.Server.EnumWorldGenPass
+      description: ''
+    - id: forWorldType
+      type: System.String
+      description: For which world types to use this generator
+    content.vb: Sub ChunkColumnGeneration(handler As ChunkColumnGenerationDelegate, pass As EnumWorldGenPass, forWorldType As String)
+  overload: Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration*
+  nameWithType.vb: IServerEventAPI.ChunkColumnGeneration(ChunkColumnGenerationDelegate, EnumWorldGenPass, String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration(Vintagestory.API.Common.ChunkColumnGenerationDelegate, Vintagestory.API.Server.EnumWorldGenPass, String)
+  name.vb: ChunkColumnGeneration(ChunkColumnGenerationDelegate, EnumWorldGenPass, String)
+- uid: Vintagestory.API.Server.IServerEventAPI.WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate,System.String,System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate,System.String,System.String)
+  id: WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate,System.String,System.String)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: WorldgenHook(WorldGenHookDelegate, string, string)
+  nameWithType: IServerEventAPI.WorldgenHook(WorldGenHookDelegate, string, string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate, string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a method to be called by certain special worldgen triggers, for example Resonance Archives entrance staircase
+  example: []
+  syntax:
+    content: void WorldgenHook(WorldGenHookDelegate handler, string forWorldType, string hook)
+    parameters:
+    - id: handler
+      type: Vintagestory.API.Common.WorldGenHookDelegate
+    - id: forWorldType
+      type: System.String
+    - id: hook
+      type: System.String
+    content.vb: Sub WorldgenHook(handler As WorldGenHookDelegate, forWorldType As String, hook As String)
+  overload: Vintagestory.API.Server.IServerEventAPI.WorldgenHook*
+  nameWithType.vb: IServerEventAPI.WorldgenHook(WorldGenHookDelegate, String, String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate, String, String)
+  name.vb: WorldgenHook(WorldGenHookDelegate, String, String)
+- uid: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
+  id: TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerWorldgenHook(string, IBlockAccessor, BlockPos, string)
+  nameWithType: IServerEventAPI.TriggerWorldgenHook(string, IBlockAccessor, BlockPos, string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(string, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Trigger the special worldgen hook, with the name "hook", if it exists
+  example: []
+  syntax:
+    content: void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, string param)
+    parameters:
+    - id: hook
+      type: System.String
+    - id: blockAccessor
+      type: Vintagestory.API.Common.IBlockAccessor
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: param
+      type: System.String
+    content.vb: Sub TriggerWorldgenHook(hook As String, blockAccessor As IBlockAccessor, pos As BlockPos, param As String)
+  overload: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook*
+  nameWithType.vb: IServerEventAPI.TriggerWorldgenHook(String, IBlockAccessor, BlockPos, String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(String, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, String)
+  name.vb: TriggerWorldgenHook(String, IBlockAccessor, BlockPos, String)
+- uid: Vintagestory.API.Server.IServerEventAPI.BeginChunkColumnLoadChunkThread
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.BeginChunkColumnLoadChunkThread
+  id: BeginChunkColumnLoadChunkThread
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: BeginChunkColumnLoadChunkThread
+  nameWithType: IServerEventAPI.BeginChunkColumnLoadChunkThread
+  fullName: Vintagestory.API.Server.IServerEventAPI.BeginChunkColumnLoadChunkThread
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when just loaded (or generated) a full chunkcolumn
+  example: []
+  syntax:
+    content: event ChunkColumnBeginLoadChunkThread BeginChunkColumnLoadChunkThread
+    return:
+      type: Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread
+    content.vb: Event BeginChunkColumnLoadChunkThread As ChunkColumnBeginLoadChunkThread
+- uid: Vintagestory.API.Server.IServerEventAPI.ChunkColumnLoaded
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.ChunkColumnLoaded
+  id: ChunkColumnLoaded
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: ChunkColumnLoaded
+  nameWithType: IServerEventAPI.ChunkColumnLoaded
+  fullName: Vintagestory.API.Server.IServerEventAPI.ChunkColumnLoaded
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called whenever the server loaded from disk or fully generated a chunkcolumn
+  example: []
+  syntax:
+    content: event ChunkColumnLoadedDelegate ChunkColumnLoaded
+    return:
+      type: Vintagestory.API.Common.ChunkColumnLoadedDelegate
+    content.vb: Event ChunkColumnLoaded As ChunkColumnLoadedDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.ChunkColumnUnloaded
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.ChunkColumnUnloaded
+  id: ChunkColumnUnloaded
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: ChunkColumnUnloaded
+  nameWithType: IServerEventAPI.ChunkColumnUnloaded
+  fullName: Vintagestory.API.Server.IServerEventAPI.ChunkColumnUnloaded
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called just before a chunk column is about to get unloaded. On shutdown this method is called for all loaded chunks, so this method can get called tens of thousands of times there, beware
+  example: []
+  syntax:
+    content: event ChunkColumnUnloadDelegate ChunkColumnUnloaded
+    return:
+      type: Vintagestory.API.Common.ChunkColumnUnloadDelegate
+    content.vb: Event ChunkColumnUnloaded As ChunkColumnUnloadDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.CanUseBlock
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.CanUseBlock
+  id: CanUseBlock
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: CanUseBlock
+  nameWithType: IServerEventAPI.CanUseBlock
+  fullName: Vintagestory.API.Server.IServerEventAPI.CanUseBlock
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a handler to be called every time a player uses a block. The methods return value determines if the player may place/break this block.
+  example: []
+  syntax:
+    content: event CanUseDelegate CanUseBlock
+    return:
+      type: Vintagestory.API.Common.CanUseDelegate
+    content.vb: Event CanUseBlock As CanUseDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.OnTrySpawnEntity
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.OnTrySpawnEntity
+  id: OnTrySpawnEntity
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: OnTrySpawnEntity
+  nameWithType: IServerEventAPI.OnTrySpawnEntity
+  fullName: Vintagestory.API.Server.IServerEventAPI.OnTrySpawnEntity
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when the server attempts to spawn given entity. Return false to deny spawning.
+  example: []
+  syntax:
+    content: event TrySpawnEntityDelegate OnTrySpawnEntity
+    return:
+      type: Vintagestory.API.Common.TrySpawnEntityDelegate
+    content.vb: Event OnTrySpawnEntity As TrySpawnEntityDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.OnPlayerInteractEntity
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.OnPlayerInteractEntity
+  id: OnPlayerInteractEntity
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: OnPlayerInteractEntity
+  nameWithType: IServerEventAPI.OnPlayerInteractEntity
+  fullName: Vintagestory.API.Server.IServerEventAPI.OnPlayerInteractEntity
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a player interacts with an entity
+  example: []
+  syntax:
+    content: event OnInteractDelegate OnPlayerInteractEntity
+    return:
+      type: Vintagestory.API.Common.OnInteractDelegate
+    content.vb: Event OnPlayerInteractEntity As OnInteractDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerCreate
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerCreate
+  id: PlayerCreate
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerCreate
+  nameWithType: IServerEventAPI.PlayerCreate
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerCreate
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a new player joins
+  example: []
+  syntax:
+    content: event PlayerDelegate PlayerCreate
+    return:
+      type: Vintagestory.API.Common.PlayerDelegate
+    content.vb: Event PlayerCreate As PlayerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerRespawn
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerRespawn
+  id: PlayerRespawn
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerRespawn
+  nameWithType: IServerEventAPI.PlayerRespawn
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerRespawn
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a player got respawned
+  example: []
+  syntax:
+    content: event PlayerDelegate PlayerRespawn
+    return:
+      type: Vintagestory.API.Common.PlayerDelegate
+    content.vb: Event PlayerRespawn As PlayerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerJoin
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerJoin
+  id: PlayerJoin
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerJoin
+  nameWithType: IServerEventAPI.PlayerJoin
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerJoin
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a player joins
+  example: []
+  syntax:
+    content: event PlayerDelegate PlayerJoin
+    return:
+      type: Vintagestory.API.Common.PlayerDelegate
+    content.vb: Event PlayerJoin As PlayerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerNowPlaying
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerNowPlaying
+  id: PlayerNowPlaying
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerNowPlaying
+  nameWithType: IServerEventAPI.PlayerNowPlaying
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerNowPlaying
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a player joins and his client is now fully loaded and ready to play
+  example: []
+  syntax:
+    content: event PlayerDelegate PlayerNowPlaying
+    return:
+      type: Vintagestory.API.Common.PlayerDelegate
+    content.vb: Event PlayerNowPlaying As PlayerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerLeave
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerLeave
+  id: PlayerLeave
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerLeave
+  nameWithType: IServerEventAPI.PlayerLeave
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerLeave
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a player intentionally leaves
+  example: []
+  syntax:
+    content: event PlayerDelegate PlayerLeave
+    return:
+      type: Vintagestory.API.Common.PlayerDelegate
+    content.vb: Event PlayerLeave As PlayerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerDisconnect
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerDisconnect
+  id: PlayerDisconnect
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerDisconnect
+  nameWithType: IServerEventAPI.PlayerDisconnect
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerDisconnect
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called whenever a player disconnects (timeout, leave, disconnect, kick, etc.).
+  example: []
+  syntax:
+    content: event PlayerDelegate PlayerDisconnect
+    return:
+      type: Vintagestory.API.Common.PlayerDelegate
+    content.vb: Event PlayerDisconnect As PlayerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerChat
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerChat
+  id: PlayerChat
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerChat
+  nameWithType: IServerEventAPI.PlayerChat
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerChat
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a player wrote a chat message
+  example: []
+  syntax:
+    content: event PlayerChatDelegate PlayerChat
+    return:
+      type: Vintagestory.API.Common.PlayerChatDelegate
+    content.vb: Event PlayerChat As PlayerChatDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerDeath
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerDeath
+  id: PlayerDeath
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerDeath
+  nameWithType: IServerEventAPI.PlayerDeath
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerDeath
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a player died
+  example: []
+  syntax:
+    content: event PlayerDeathDelegate PlayerDeath
+    return:
+      type: Vintagestory.API.Common.PlayerDeathDelegate
+    content.vb: Event PlayerDeath As PlayerDeathDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.PlayerSwitchGameMode
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.PlayerSwitchGameMode
+  id: PlayerSwitchGameMode
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerSwitchGameMode
+  nameWithType: IServerEventAPI.PlayerSwitchGameMode
+  fullName: Vintagestory.API.Server.IServerEventAPI.PlayerSwitchGameMode
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Whenever a player switched his game mode or has it switched for him
+  example: []
+  syntax:
+    content: event PlayerDelegate PlayerSwitchGameMode
+    return:
+      type: Vintagestory.API.Common.PlayerDelegate
+    content.vb: Event PlayerSwitchGameMode As PlayerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.BeforeActiveSlotChanged
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.BeforeActiveSlotChanged
+  id: BeforeActiveSlotChanged
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: BeforeActiveSlotChanged
+  nameWithType: IServerEventAPI.BeforeActiveSlotChanged
+  fullName: Vintagestory.API.Server.IServerEventAPI.BeforeActiveSlotChanged
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Fired before a player changes their active slot (such as selected hotbar slot).
+
+    Allows for the event to be cancelled depending on the return value.
+  example: []
+  syntax:
+    content: event Func<IServerPlayer, ActiveSlotChangeEventArgs, EnumHandling> BeforeActiveSlotChanged
+    return:
+      type: Vintagestory.API.Common.Func{Vintagestory.API.Server.IServerPlayer,Vintagestory.API.Common.ActiveSlotChangeEventArgs,Vintagestory.API.Common.EnumHandling}
+    content.vb: Event BeforeActiveSlotChanged As Func(Of IServerPlayer, ActiveSlotChangeEventArgs, EnumHandling)
+- uid: Vintagestory.API.Server.IServerEventAPI.AfterActiveSlotChanged
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.AfterActiveSlotChanged
+  id: AfterActiveSlotChanged
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: AfterActiveSlotChanged
+  nameWithType: IServerEventAPI.AfterActiveSlotChanged
+  fullName: Vintagestory.API.Server.IServerEventAPI.AfterActiveSlotChanged
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Fired after a player changes their active slot (such as selected hotbar slot).
+  example: []
+  syntax:
+    content: event Action<IServerPlayer, ActiveSlotChangeEventArgs> AfterActiveSlotChanged
+    return:
+      type: System.Action{Vintagestory.API.Server.IServerPlayer,Vintagestory.API.Common.ActiveSlotChangeEventArgs}
+    content.vb: Event AfterActiveSlotChanged As Action(Of IServerPlayer, ActiveSlotChangeEventArgs)
+- uid: Vintagestory.API.Server.IServerEventAPI.AssetsFinalizers
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.AssetsFinalizers
+  id: AssetsFinalizers
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: AssetsFinalizers
+  nameWithType: IServerEventAPI.AssetsFinalizers
+  fullName: Vintagestory.API.Server.IServerEventAPI.AssetsFinalizers
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Triggered after assets have been loaded and parsed and registered, but before they are declared to be ready - e.g. you can add more behaviors here, or make other code-based changes to properties read from JSONs
+
+    <br />Note: modsystems should register for this in a Start() method not StartServerSide(): the AssetsFinalizer event is fired before StartServerSide() is reached
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Override Method Modsystem.AssetsFinalize instead")]
+
+      event Action AssetsFinalizers
+    return:
+      type: System.Action
+    content.vb: >-
+      <Obsolete("Override Method Modsystem.AssetsFinalize instead")>
+
+      Event AssetsFinalizers As Action
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Override Method Modsystem.AssetsFinalize instead
+- uid: Vintagestory.API.Server.IServerEventAPI.SaveGameLoaded
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.SaveGameLoaded
+  id: SaveGameLoaded
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: SaveGameLoaded
+  nameWithType: IServerEventAPI.SaveGameLoaded
+  fullName: Vintagestory.API.Server.IServerEventAPI.SaveGameLoaded
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Triggered after the game world data has been loaded. At this point all blocks are loaded and the Map size is known.
+
+    <br /><br />In 1.17+ do NOT use this server event to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON).
+
+    Instead, code which needs to do that should be registered for event sapi.Event.AssetsFinalizers.  See VSSurvivalMod system BlockReinforcement.cs for an example.
+  example: []
+  syntax:
+    content: event Action SaveGameLoaded
+    return:
+      type: System.Action
+    content.vb: Event SaveGameLoaded As Action
+- uid: Vintagestory.API.Server.IServerEventAPI.SaveGameCreated
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.SaveGameCreated
+  id: SaveGameCreated
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: SaveGameCreated
+  nameWithType: IServerEventAPI.SaveGameCreated
+  fullName: Vintagestory.API.Server.IServerEventAPI.SaveGameCreated
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Triggered after a savegame has been created - i.e. when a new world was created
+  example: []
+  syntax:
+    content: event Action SaveGameCreated
+    return:
+      type: System.Action
+    content.vb: Event SaveGameCreated As Action
+- uid: Vintagestory.API.Server.IServerEventAPI.WorldgenStartup
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.WorldgenStartup
+  id: WorldgenStartup
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: WorldgenStartup
+  nameWithType: IServerEventAPI.WorldgenStartup
+  fullName: Vintagestory.API.Server.IServerEventAPI.WorldgenStartup
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Triggered when starting up worldgen during server startup (as the final stage of the WorldReady EnumServerRunPhase)
+  example: []
+  syntax:
+    content: event Action WorldgenStartup
+    return:
+      type: System.Action
+    content.vb: Event WorldgenStartup As Action
+- uid: Vintagestory.API.Server.IServerEventAPI.GameWorldSave
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.GameWorldSave
+  id: GameWorldSave
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: GameWorldSave
+  nameWithType: IServerEventAPI.GameWorldSave
+  fullName: Vintagestory.API.Server.IServerEventAPI.GameWorldSave
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Triggered before the game world data is being saved to disk
+  example: []
+  syntax:
+    content: event Action GameWorldSave
+    return:
+      type: System.Action
+    content.vb: Event GameWorldSave As Action
+- uid: Vintagestory.API.Server.IServerEventAPI.ServerSuspend
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.ServerSuspend
+  id: ServerSuspend
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: ServerSuspend
+  nameWithType: IServerEventAPI.ServerSuspend
+  fullName: Vintagestory.API.Server.IServerEventAPI.ServerSuspend
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when something wants to pause the server, e.g. the autosave system. This method will be called every 50ms until all delegates return Ready state. Timeout is 60 seconds.
+  example: []
+  syntax:
+    content: event SuspendServerDelegate ServerSuspend
+    return:
+      type: Vintagestory.API.Common.SuspendServerDelegate
+    content.vb: Event ServerSuspend As SuspendServerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.ServerResume
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.ServerResume
+  id: ServerResume
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: ServerResume
+  nameWithType: IServerEventAPI.ServerResume
+  fullName: Vintagestory.API.Server.IServerEventAPI.ServerResume
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when something wants to resume execution of the server, e.g. the autosave system
+  example: []
+  syntax:
+    content: event ResumeServerDelegate ServerResume
+    return:
+      type: Vintagestory.API.Common.ResumeServerDelegate
+    content.vb: Event ServerResume As ResumeServerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.ServerRunPhase(Vintagestory.API.Server.EnumServerRunPhase,System.Action)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.ServerRunPhase(Vintagestory.API.Server.EnumServerRunPhase,System.Action)
+  id: ServerRunPhase(Vintagestory.API.Server.EnumServerRunPhase,System.Action)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: ServerRunPhase(EnumServerRunPhase, Action)
+  nameWithType: IServerEventAPI.ServerRunPhase(EnumServerRunPhase, Action)
+  fullName: Vintagestory.API.Server.IServerEventAPI.ServerRunPhase(Vintagestory.API.Server.EnumServerRunPhase, System.Action)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Triggered whenever the server enters a new run phase. Since mods are only loaded during run phase "LoadGamePre" registering to any earlier event will get triggered.
+  example: []
+  syntax:
+    content: void ServerRunPhase(EnumServerRunPhase runPhase, Action handler)
+    parameters:
+    - id: runPhase
+      type: Vintagestory.API.Server.EnumServerRunPhase
+      description: ''
+    - id: handler
+      type: System.Action
+      description: ''
+    content.vb: Sub ServerRunPhase(runPhase As EnumServerRunPhase, handler As Action)
+  overload: Vintagestory.API.Server.IServerEventAPI.ServerRunPhase*
+- uid: Vintagestory.API.Server.IServerEventAPI.Timer(System.Action,System.Double)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.Timer(System.Action,System.Double)
+  id: Timer(System.Action,System.Double)
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: Timer(Action, double)
+  nameWithType: IServerEventAPI.Timer(Action, double)
+  fullName: Vintagestory.API.Server.IServerEventAPI.Timer(System.Action, double)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a method to be called every given interval
+  example: []
+  syntax:
+    content: void Timer(Action handler, double interval)
+    parameters:
+    - id: handler
+      type: System.Action
+      description: ''
+    - id: interval
+      type: System.Double
+      description: ''
+    content.vb: Sub Timer(handler As Action, interval As Double)
+  overload: Vintagestory.API.Server.IServerEventAPI.Timer*
+  nameWithType.vb: IServerEventAPI.Timer(Action, Double)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.Timer(System.Action, Double)
+  name.vb: Timer(Action, Double)
+- uid: Vintagestory.API.Server.IServerEventAPI.DidPlaceBlock
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.DidPlaceBlock
+  id: DidPlaceBlock
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: DidPlaceBlock
+  nameWithType: IServerEventAPI.DidPlaceBlock
+  fullName: Vintagestory.API.Server.IServerEventAPI.DidPlaceBlock
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a method to be called every time a player places a block
+  example: []
+  syntax:
+    content: event BlockPlacedDelegate DidPlaceBlock
+    return:
+      type: Vintagestory.API.Common.BlockPlacedDelegate
+    content.vb: Event DidPlaceBlock As BlockPlacedDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.CanPlaceOrBreakBlock
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.CanPlaceOrBreakBlock
+  id: CanPlaceOrBreakBlock
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: CanPlaceOrBreakBlock
+  nameWithType: IServerEventAPI.CanPlaceOrBreakBlock
+  fullName: Vintagestory.API.Server.IServerEventAPI.CanPlaceOrBreakBlock
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a handler to be called every time a player places a block. The methods return value determines if the player may place/break this block. When returning false the client will be notified and the action reverted
+  example: []
+  syntax:
+    content: event CanPlaceOrBreakDelegate CanPlaceOrBreakBlock
+    return:
+      type: Vintagestory.API.Common.CanPlaceOrBreakDelegate
+    content.vb: Event CanPlaceOrBreakBlock As CanPlaceOrBreakDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.BreakBlock
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.BreakBlock
+  id: BreakBlock
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: BreakBlock
+  nameWithType: IServerEventAPI.BreakBlock
+  fullName: Vintagestory.API.Server.IServerEventAPI.BreakBlock
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Called when a block should got broken now (that has been broken by a player). Set handling to PreventDefault to handle the block breaking yourself. Otherwise the engine will break the block (= either call heldItemstack.Collectible.OnBlockBrokenWith when player holds something in his hands or block.OnBlockBroken).
+  example: []
+  syntax:
+    content: event BlockBreakDelegate BreakBlock
+    return:
+      type: Vintagestory.API.Common.BlockBreakDelegate
+    content.vb: Event BreakBlock As BlockBreakDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.DidBreakBlock
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.DidBreakBlock
+  id: DidBreakBlock
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: DidBreakBlock
+  nameWithType: IServerEventAPI.DidBreakBlock
+  fullName: Vintagestory.API.Server.IServerEventAPI.DidBreakBlock
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a method to be called every time a player deletes a block. Called after the block was already broken
+  example: []
+  syntax:
+    content: event BlockBrokenDelegate DidBreakBlock
+    return:
+      type: Vintagestory.API.Common.BlockBrokenDelegate
+    content.vb: Event DidBreakBlock As BlockBrokenDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.DidUseBlock
+  commentId: E:Vintagestory.API.Server.IServerEventAPI.DidUseBlock
+  id: DidUseBlock
+  parent: Vintagestory.API.Server.IServerEventAPI
+  langs:
+  - csharp
+  - vb
+  name: DidUseBlock
+  nameWithType: IServerEventAPI.DidUseBlock
+  fullName: Vintagestory.API.Server.IServerEventAPI.DidUseBlock
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a method to be called every time a player uses a block
+  example: []
+  syntax:
+    content: event BlockUsedDelegate DidUseBlock
+    return:
+      type: Vintagestory.API.Common.BlockUsedDelegate
+    content.vb: Event DidUseBlock As BlockUsedDelegate
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
+  commentId: E:Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnTestBlockAccess
+  name: OnTestBlockAccess
+  nameWithType: IEventAPI.OnTestBlockAccess
+  fullName: Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
+- uid: Vintagestory.API.Common.IEventAPI.OnEntitySpawn
+  commentId: E:Vintagestory.API.Common.IEventAPI.OnEntitySpawn
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntitySpawn
+  name: OnEntitySpawn
+  nameWithType: IEventAPI.OnEntitySpawn
+  fullName: Vintagestory.API.Common.IEventAPI.OnEntitySpawn
+- uid: Vintagestory.API.Common.IEventAPI.OnEntityLoaded
+  commentId: E:Vintagestory.API.Common.IEventAPI.OnEntityLoaded
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntityLoaded
+  name: OnEntityLoaded
+  nameWithType: IEventAPI.OnEntityLoaded
+  fullName: Vintagestory.API.Common.IEventAPI.OnEntityLoaded
+- uid: Vintagestory.API.Common.IEventAPI.OnEntityDeath
+  commentId: E:Vintagestory.API.Common.IEventAPI.OnEntityDeath
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntityDeath
+  name: OnEntityDeath
+  nameWithType: IEventAPI.OnEntityDeath
+  fullName: Vintagestory.API.Common.IEventAPI.OnEntityDeath
+- uid: Vintagestory.API.Common.IEventAPI.OnEntityDespawn
+  commentId: E:Vintagestory.API.Common.IEventAPI.OnEntityDespawn
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntityDespawn
+  name: OnEntityDespawn
+  nameWithType: IEventAPI.OnEntityDespawn
+  fullName: Vintagestory.API.Common.IEventAPI.OnEntityDespawn
+- uid: Vintagestory.API.Common.IEventAPI.ChunkDirty
+  commentId: E:Vintagestory.API.Common.IEventAPI.ChunkDirty
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_ChunkDirty
+  name: ChunkDirty
+  nameWithType: IEventAPI.ChunkDirty
+  fullName: Vintagestory.API.Common.IEventAPI.ChunkDirty
+- uid: Vintagestory.API.Common.IEventAPI.MapRegionLoaded
+  commentId: E:Vintagestory.API.Common.IEventAPI.MapRegionLoaded
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MapRegionLoaded
+  name: MapRegionLoaded
+  nameWithType: IEventAPI.MapRegionLoaded
+  fullName: Vintagestory.API.Common.IEventAPI.MapRegionLoaded
+- uid: Vintagestory.API.Common.IEventAPI.MapRegionUnloaded
+  commentId: E:Vintagestory.API.Common.IEventAPI.MapRegionUnloaded
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MapRegionUnloaded
+  name: MapRegionUnloaded
+  nameWithType: IEventAPI.MapRegionUnloaded
+  fullName: Vintagestory.API.Common.IEventAPI.MapRegionUnloaded
+- uid: Vintagestory.API.Common.IEventAPI.OnGetClimate
+  commentId: E:Vintagestory.API.Common.IEventAPI.OnGetClimate
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnGetClimate
+  name: OnGetClimate
+  nameWithType: IEventAPI.OnGetClimate
+  fullName: Vintagestory.API.Common.IEventAPI.OnGetClimate
+- uid: Vintagestory.API.Common.IEventAPI.OnGetWindSpeed
+  commentId: E:Vintagestory.API.Common.IEventAPI.OnGetWindSpeed
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnGetWindSpeed
+  name: OnGetWindSpeed
+  nameWithType: IEventAPI.OnGetWindSpeed
+  fullName: Vintagestory.API.Common.IEventAPI.OnGetWindSpeed
+- uid: Vintagestory.API.Common.IEventAPI.MatchesGridRecipe
+  commentId: E:Vintagestory.API.Common.IEventAPI.MatchesGridRecipe
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MatchesGridRecipe
+  name: MatchesGridRecipe
+  nameWithType: IEventAPI.MatchesGridRecipe
+  fullName: Vintagestory.API.Common.IEventAPI.MatchesGridRecipe
+- uid: Vintagestory.API.Common.IEventAPI.PushEvent(System.String,Vintagestory.API.Datastructures.IAttribute)
+  commentId: M:Vintagestory.API.Common.IEventAPI.PushEvent(System.String,Vintagestory.API.Datastructures.IAttribute)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_PushEvent_System_String_Vintagestory_API_Datastructures_IAttribute_
+  name: PushEvent(string, IAttribute)
+  nameWithType: IEventAPI.PushEvent(string, IAttribute)
+  fullName: Vintagestory.API.Common.IEventAPI.PushEvent(string, Vintagestory.API.Datastructures.IAttribute)
+  nameWithType.vb: IEventAPI.PushEvent(String, IAttribute)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.PushEvent(String, Vintagestory.API.Datastructures.IAttribute)
+  name.vb: PushEvent(String, IAttribute)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.PushEvent(System.String,Vintagestory.API.Datastructures.IAttribute)
+    name: PushEvent
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_PushEvent_System_String_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.PushEvent(System.String,Vintagestory.API.Datastructures.IAttribute)
+    name: PushEvent
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_PushEvent_System_String_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.RegisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate,System.Double,System.String)
+  commentId: M:Vintagestory.API.Common.IEventAPI.RegisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate,System.Double,System.String)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_System_Double_System_String_
+  name: RegisterEventBusListener(EventBusListenerDelegate, double, string)
+  nameWithType: IEventAPI.RegisterEventBusListener(EventBusListenerDelegate, double, string)
+  fullName: Vintagestory.API.Common.IEventAPI.RegisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate, double, string)
+  nameWithType.vb: IEventAPI.RegisterEventBusListener(EventBusListenerDelegate, Double, String)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.RegisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate, Double, String)
+  name.vb: RegisterEventBusListener(EventBusListenerDelegate, Double, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate,System.Double,System.String)
+    name: RegisterEventBusListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_System_Double_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.EventBusListenerDelegate
+    name: EventBusListenerDelegate
+    href: Vintagestory.API.Common.EventBusListenerDelegate.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate,System.Double,System.String)
+    name: RegisterEventBusListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_System_Double_System_String_
+  - name: (
+  - uid: Vintagestory.API.Common.EventBusListenerDelegate
+    name: EventBusListenerDelegate
+    href: Vintagestory.API.Common.EventBusListenerDelegate.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Int32_System_Int32_
+  name: RegisterGameTickListener(Action<float>, int, int)
+  nameWithType: IEventAPI.RegisterGameTickListener(Action<float>, int, int)
+  fullName: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action<float>, int, int)
+  nameWithType.vb: IEventAPI.RegisterGameTickListener(Action(Of Single), Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action(Of Single), Integer, Integer)
+  name.vb: RegisterGameTickListener(Action(Of Single), Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+    name: RegisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Int32_System_Int32_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+    name: RegisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Int32_System_Int32_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Action{System.Exception},System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Action{System.Exception},System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Action_System_Exception__System_Int32_System_Int32_
+  name: RegisterGameTickListener(Action<float>, Action<Exception>, int, int)
+  nameWithType: IEventAPI.RegisterGameTickListener(Action<float>, Action<Exception>, int, int)
+  fullName: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action<float>, System.Action<System.Exception>, int, int)
+  nameWithType.vb: IEventAPI.RegisterGameTickListener(Action(Of Single), Action(Of Exception), Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action(Of Single), System.Action(Of System.Exception), Integer, Integer)
+  name.vb: RegisterGameTickListener(Action(Of Single), Action(Of Exception), Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Action{System.Exception},System.Int32,System.Int32)
+    name: RegisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Action_System_Exception__System_Int32_System_Int32_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Action{System.Exception},System.Int32,System.Int32)
+    name: RegisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Action_System_Exception__System_Int32_System_Int32_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float>, BlockPos, int, int)
+  nameWithType: IEventAPI.RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float>, BlockPos, int, int)
+  fullName: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action<Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.MathTools.BlockPos, float>, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: IEventAPI.RegisterGameTickListener(Action(Of IWorldAccessor, BlockPos, Single), BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action(Of Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.MathTools.BlockPos, Single), Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: RegisterGameTickListener(Action(Of IWorldAccessor, BlockPos, Single), BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: RegisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: <
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: RegisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32)
+  commentId: M:Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_
+  name: RegisterCallback(Action<float>, int)
+  nameWithType: IEventAPI.RegisterCallback(Action<float>, int)
+  fullName: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action<float>, int)
+  nameWithType.vb: IEventAPI.RegisterCallback(Action(Of Single), Integer)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action(Of Single), Integer)
+  name.vb: RegisterCallback(Action(Of Single), Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32)
+    name: RegisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32)
+    name: RegisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32,System.Boolean)
+  commentId: M:Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32,System.Boolean)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_System_Boolean_
+  name: RegisterCallback(Action<float>, int, bool)
+  nameWithType: IEventAPI.RegisterCallback(Action<float>, int, bool)
+  fullName: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action<float>, int, bool)
+  nameWithType.vb: IEventAPI.RegisterCallback(Action(Of Single), Integer, Boolean)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action(Of Single), Integer, Boolean)
+  name.vb: RegisterCallback(Action(Of Single), Integer, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32,System.Boolean)
+    name: RegisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32,System.Boolean)
+    name: RegisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_System_Boolean_
+  - name: (
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32)
+  commentId: M:Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_
+  name: RegisterCallback(Action<IWorldAccessor, BlockPos, float>, BlockPos, int)
+  nameWithType: IEventAPI.RegisterCallback(Action<IWorldAccessor, BlockPos, float>, BlockPos, int)
+  fullName: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action<Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.MathTools.BlockPos, float>, Vintagestory.API.MathTools.BlockPos, int)
+  nameWithType.vb: IEventAPI.RegisterCallback(Action(Of IWorldAccessor, BlockPos, Single), BlockPos, Integer)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action(Of Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.MathTools.BlockPos, Single), Vintagestory.API.MathTools.BlockPos, Integer)
+  name.vb: RegisterCallback(Action(Of IWorldAccessor, BlockPos, Single), BlockPos, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32)
+    name: RegisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_
+  - name: (
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: <
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32)
+    name: RegisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_
+  - name: (
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.UnregisterCallback(System.Int64)
+  commentId: M:Vintagestory.API.Common.IEventAPI.UnregisterCallback(System.Int64)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterCallback_System_Int64_
+  name: UnregisterCallback(long)
+  nameWithType: IEventAPI.UnregisterCallback(long)
+  fullName: Vintagestory.API.Common.IEventAPI.UnregisterCallback(long)
+  nameWithType.vb: IEventAPI.UnregisterCallback(Long)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.UnregisterCallback(Long)
+  name.vb: UnregisterCallback(Long)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.UnregisterCallback(System.Int64)
+    name: UnregisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterCallback_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.UnregisterCallback(System.Int64)
+    name: UnregisterCallback
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterCallback_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(System.Int64)
+  commentId: M:Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(System.Int64)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterGameTickListener_System_Int64_
+  name: UnregisterGameTickListener(long)
+  nameWithType: IEventAPI.UnregisterGameTickListener(long)
+  fullName: Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(long)
+  nameWithType.vb: IEventAPI.UnregisterGameTickListener(Long)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(Long)
+  name.vb: UnregisterGameTickListener(Long)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(System.Int64)
+    name: UnregisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterGameTickListener_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(System.Int64)
+    name: UnregisterGameTickListener
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterGameTickListener_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action,System.String)
+  commentId: M:Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action,System.String)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_EnqueueMainThreadTask_System_Action_System_String_
+  name: EnqueueMainThreadTask(Action, string)
+  nameWithType: IEventAPI.EnqueueMainThreadTask(Action, string)
+  fullName: Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action, string)
+  nameWithType.vb: IEventAPI.EnqueueMainThreadTask(Action, String)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action, String)
+  name.vb: EnqueueMainThreadTask(Action, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action,System.String)
+    name: EnqueueMainThreadTask
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_EnqueueMainThreadTask_System_Action_System_String_
+  - name: (
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action,System.String)
+    name: EnqueueMainThreadTask
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_EnqueueMainThreadTask_System_Action_System_String_
+  - name: (
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
+  commentId: M:Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerEntityDeath_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_DamageSource_
+  name: TriggerEntityDeath(Entity, DamageSource)
+  nameWithType: IEventAPI.TriggerEntityDeath(Entity, DamageSource)
+  fullName: Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.DamageSource)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
+    name: TriggerEntityDeath
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerEntityDeath_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_DamageSource_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.DamageSource
+    name: DamageSource
+    href: Vintagestory.API.Common.DamageSource.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
+    name: TriggerEntityDeath
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerEntityDeath_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_DamageSource_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.DamageSource
+    name: DamageSource
+    href: Vintagestory.API.Common.DamageSource.html
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
+  commentId: M:Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
+  parent: Vintagestory.API.Common.IEventAPI
+  isExternal: true
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot___System_Int32_
+  name: TriggerMatchesRecipe(IPlayer, GridRecipe, ItemSlot[], int)
+  nameWithType: IEventAPI.TriggerMatchesRecipe(IPlayer, GridRecipe, ItemSlot[], int)
+  fullName: Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.GridRecipe, Vintagestory.API.Common.ItemSlot[], int)
+  nameWithType.vb: IEventAPI.TriggerMatchesRecipe(IPlayer, GridRecipe, ItemSlot(), Integer)
+  fullName.vb: Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.GridRecipe, Vintagestory.API.Common.ItemSlot(), Integer)
+  name.vb: TriggerMatchesRecipe(IPlayer, GridRecipe, ItemSlot(), Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
+    name: TriggerMatchesRecipe
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot___System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.GridRecipe
+    name: GridRecipe
+    href: Vintagestory.API.Common.GridRecipe.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
+    name: TriggerMatchesRecipe
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot___System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.GridRecipe
+    name: GridRecipe
+    href: Vintagestory.API.Common.GridRecipe.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI
+  commentId: T:Vintagestory.API.Common.IEventAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IEventAPI.html
+  name: IEventAPI
+  nameWithType: IEventAPI
+  fullName: Vintagestory.API.Common.IEventAPI
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_GetRegisteredWorldGenHandlers_System_String_
+  name: GetRegisteredWorldGenHandlers
+  nameWithType: IServerEventAPI.GetRegisteredWorldGenHandlers
+  fullName: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Server.IWorldGenHandler
+  commentId: T:Vintagestory.API.Server.IWorldGenHandler
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IWorldGenHandler.html
+  name: IWorldGenHandler
+  nameWithType: IWorldGenHandler
+  fullName: Vintagestory.API.Server.IWorldGenHandler
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_TriggerTrySpawnEntity_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Entities_EntityProperties__Vintagestory_API_MathTools_Vec3d_System_Int64_
+  name: TriggerTrySpawnEntity
+  nameWithType: IServerEventAPI.TriggerTrySpawnEntity
+  fullName: Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity
+- uid: Vintagestory.API.Common.IBlockAccessor
+  commentId: T:Vintagestory.API.Common.IBlockAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IBlockAccessor.html
+  name: IBlockAccessor
+  nameWithType: IBlockAccessor
+  fullName: Vintagestory.API.Common.IBlockAccessor
+- uid: Vintagestory.API.Common.Entities.EntityProperties
+  commentId: T:Vintagestory.API.Common.Entities.EntityProperties
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityProperties.html
+  name: EntityProperties
+  nameWithType: EntityProperties
+  fullName: Vintagestory.API.Common.Entities.EntityProperties
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_GetWorldgenBlockAccessor_Vintagestory_API_Common_WorldGenThreadDelegate_
+  name: GetWorldgenBlockAccessor
+  nameWithType: IServerEventAPI.GetWorldgenBlockAccessor
+  fullName: Vintagestory.API.Server.IServerEventAPI.GetWorldgenBlockAccessor
+- uid: Vintagestory.API.Common.WorldGenThreadDelegate
+  commentId: T:Vintagestory.API.Common.WorldGenThreadDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.WorldGenThreadDelegate.html
+  name: WorldGenThreadDelegate
+  nameWithType: WorldGenThreadDelegate
+  fullName: Vintagestory.API.Common.WorldGenThreadDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_InitWorldGenerator_System_Action_System_String_
+  name: InitWorldGenerator
+  nameWithType: IServerEventAPI.InitWorldGenerator
+  fullName: Vintagestory.API.Server.IServerEventAPI.InitWorldGenerator
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_MapChunkGeneration_Vintagestory_API_Common_MapChunkGeneratorDelegate_System_String_
+  name: MapChunkGeneration
+  nameWithType: IServerEventAPI.MapChunkGeneration
+  fullName: Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration
+- uid: Vintagestory.API.Common.MapChunkGeneratorDelegate
+  commentId: T:Vintagestory.API.Common.MapChunkGeneratorDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.MapChunkGeneratorDelegate.html
+  name: MapChunkGeneratorDelegate
+  nameWithType: MapChunkGeneratorDelegate
+  fullName: Vintagestory.API.Common.MapChunkGeneratorDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_MapRegionGeneration_Vintagestory_API_Common_MapRegionGeneratorDelegate_System_String_
+  name: MapRegionGeneration
+  nameWithType: IServerEventAPI.MapRegionGeneration
+  fullName: Vintagestory.API.Server.IServerEventAPI.MapRegionGeneration
+- uid: Vintagestory.API.Common.MapRegionGeneratorDelegate
+  commentId: T:Vintagestory.API.Common.MapRegionGeneratorDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.MapRegionGeneratorDelegate.html
+  name: MapRegionGeneratorDelegate
+  nameWithType: MapRegionGeneratorDelegate
+  fullName: Vintagestory.API.Common.MapRegionGeneratorDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_ChunkColumnGeneration_Vintagestory_API_Common_ChunkColumnGenerationDelegate_Vintagestory_API_Server_EnumWorldGenPass_System_String_
+  name: ChunkColumnGeneration
+  nameWithType: IServerEventAPI.ChunkColumnGeneration
+  fullName: Vintagestory.API.Server.IServerEventAPI.ChunkColumnGeneration
+- uid: Vintagestory.API.Common.ChunkColumnGenerationDelegate
+  commentId: T:Vintagestory.API.Common.ChunkColumnGenerationDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ChunkColumnGenerationDelegate.html
+  name: ChunkColumnGenerationDelegate
+  nameWithType: ChunkColumnGenerationDelegate
+  fullName: Vintagestory.API.Common.ChunkColumnGenerationDelegate
+- uid: Vintagestory.API.Server.EnumWorldGenPass
+  commentId: T:Vintagestory.API.Server.EnumWorldGenPass
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumWorldGenPass.html
+  name: EnumWorldGenPass
+  nameWithType: EnumWorldGenPass
+  fullName: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server.IServerEventAPI.WorldgenHook*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.WorldgenHook
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_WorldgenHook_Vintagestory_API_Common_WorldGenHookDelegate_System_String_System_String_
+  name: WorldgenHook
+  nameWithType: IServerEventAPI.WorldgenHook
+  fullName: Vintagestory.API.Server.IServerEventAPI.WorldgenHook
+- uid: Vintagestory.API.Common.WorldGenHookDelegate
+  commentId: T:Vintagestory.API.Common.WorldGenHookDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.WorldGenHookDelegate.html
+  name: WorldGenHookDelegate
+  nameWithType: WorldGenHookDelegate
+  fullName: Vintagestory.API.Common.WorldGenHookDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_TriggerWorldgenHook_System_String_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_String_
+  name: TriggerWorldgenHook
+  nameWithType: IServerEventAPI.TriggerWorldgenHook
+  fullName: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread
+  commentId: T:Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread.html
+  name: ChunkColumnBeginLoadChunkThread
+  nameWithType: ChunkColumnBeginLoadChunkThread
+  fullName: Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread
+- uid: Vintagestory.API.Common.ChunkColumnLoadedDelegate
+  commentId: T:Vintagestory.API.Common.ChunkColumnLoadedDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ChunkColumnLoadedDelegate.html
+  name: ChunkColumnLoadedDelegate
+  nameWithType: ChunkColumnLoadedDelegate
+  fullName: Vintagestory.API.Common.ChunkColumnLoadedDelegate
+- uid: Vintagestory.API.Common.ChunkColumnUnloadDelegate
+  commentId: T:Vintagestory.API.Common.ChunkColumnUnloadDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ChunkColumnUnloadDelegate.html
+  name: ChunkColumnUnloadDelegate
+  nameWithType: ChunkColumnUnloadDelegate
+  fullName: Vintagestory.API.Common.ChunkColumnUnloadDelegate
+- uid: Vintagestory.API.Common.CanUseDelegate
+  commentId: T:Vintagestory.API.Common.CanUseDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CanUseDelegate.html
+  name: CanUseDelegate
+  nameWithType: CanUseDelegate
+  fullName: Vintagestory.API.Common.CanUseDelegate
+- uid: Vintagestory.API.Common.TrySpawnEntityDelegate
+  commentId: T:Vintagestory.API.Common.TrySpawnEntityDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.TrySpawnEntityDelegate.html
+  name: TrySpawnEntityDelegate
+  nameWithType: TrySpawnEntityDelegate
+  fullName: Vintagestory.API.Common.TrySpawnEntityDelegate
+- uid: Vintagestory.API.Common.OnInteractDelegate
+  commentId: T:Vintagestory.API.Common.OnInteractDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.OnInteractDelegate.html
+  name: OnInteractDelegate
+  nameWithType: OnInteractDelegate
+  fullName: Vintagestory.API.Common.OnInteractDelegate
+- uid: Vintagestory.API.Common.PlayerDelegate
+  commentId: T:Vintagestory.API.Common.PlayerDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayerDelegate.html
+  name: PlayerDelegate
+  nameWithType: PlayerDelegate
+  fullName: Vintagestory.API.Common.PlayerDelegate
+- uid: Vintagestory.API.Common.PlayerChatDelegate
+  commentId: T:Vintagestory.API.Common.PlayerChatDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayerChatDelegate.html
+  name: PlayerChatDelegate
+  nameWithType: PlayerChatDelegate
+  fullName: Vintagestory.API.Common.PlayerChatDelegate
+- uid: Vintagestory.API.Common.PlayerDeathDelegate
+  commentId: T:Vintagestory.API.Common.PlayerDeathDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayerDeathDelegate.html
+  name: PlayerDeathDelegate
+  nameWithType: PlayerDeathDelegate
+  fullName: Vintagestory.API.Common.PlayerDeathDelegate
+- uid: Vintagestory.API.Common.Func{Vintagestory.API.Server.IServerPlayer,Vintagestory.API.Common.ActiveSlotChangeEventArgs,Vintagestory.API.Common.EnumHandling}
+  commentId: T:Vintagestory.API.Common.Func{Vintagestory.API.Server.IServerPlayer,Vintagestory.API.Common.ActiveSlotChangeEventArgs,Vintagestory.API.Common.EnumHandling}
+  parent: Vintagestory.API.Common
+  definition: Vintagestory.API.Common.Func`3
+  href: Vintagestory.API.Common.Func-3.html
+  name: Func<IServerPlayer, ActiveSlotChangeEventArgs, EnumHandling>
+  nameWithType: Func<IServerPlayer, ActiveSlotChangeEventArgs, EnumHandling>
+  fullName: Vintagestory.API.Common.Func<Vintagestory.API.Server.IServerPlayer, Vintagestory.API.Common.ActiveSlotChangeEventArgs, Vintagestory.API.Common.EnumHandling>
+  nameWithType.vb: Func(Of IServerPlayer, ActiveSlotChangeEventArgs, EnumHandling)
+  fullName.vb: Vintagestory.API.Common.Func(Of Vintagestory.API.Server.IServerPlayer, Vintagestory.API.Common.ActiveSlotChangeEventArgs, Vintagestory.API.Common.EnumHandling)
+  name.vb: Func(Of IServerPlayer, ActiveSlotChangeEventArgs, EnumHandling)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Func`3
+    name: Func
+    href: Vintagestory.API.Common.Func-3.html
+  - name: <
+  - uid: Vintagestory.API.Server.IServerPlayer
+    name: IServerPlayer
+    href: Vintagestory.API.Server.IServerPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActiveSlotChangeEventArgs
+    name: ActiveSlotChangeEventArgs
+    href: Vintagestory.API.Common.ActiveSlotChangeEventArgs.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.Func`3
+    name: Func
+    href: Vintagestory.API.Common.Func-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Server.IServerPlayer
+    name: IServerPlayer
+    href: Vintagestory.API.Server.IServerPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActiveSlotChangeEventArgs
+    name: ActiveSlotChangeEventArgs
+    href: Vintagestory.API.Common.ActiveSlotChangeEventArgs.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+- uid: Vintagestory.API.Common.Func`3
+  commentId: T:Vintagestory.API.Common.Func`3
+  href: Vintagestory.API.Common.Func-3.html
+  name: Func<T1, T2, TResult>
+  nameWithType: Func<T1, T2, TResult>
+  fullName: Vintagestory.API.Common.Func<T1, T2, TResult>
+  nameWithType.vb: Func(Of T1, T2, TResult)
+  fullName.vb: Vintagestory.API.Common.Func(Of T1, T2, TResult)
+  name.vb: Func(Of T1, T2, TResult)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Func`3
+    name: Func
+    href: Vintagestory.API.Common.Func-3.html
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.Func`3
+    name: Func
+    href: Vintagestory.API.Common.Func-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Action{Vintagestory.API.Server.IServerPlayer,Vintagestory.API.Common.ActiveSlotChangeEventArgs}
+  commentId: T:System.Action{Vintagestory.API.Server.IServerPlayer,Vintagestory.API.Common.ActiveSlotChangeEventArgs}
+  parent: System
+  definition: System.Action`2
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<IServerPlayer, ActiveSlotChangeEventArgs>
+  nameWithType: Action<IServerPlayer, ActiveSlotChangeEventArgs>
+  fullName: System.Action<Vintagestory.API.Server.IServerPlayer, Vintagestory.API.Common.ActiveSlotChangeEventArgs>
+  nameWithType.vb: Action(Of IServerPlayer, ActiveSlotChangeEventArgs)
+  fullName.vb: System.Action(Of Vintagestory.API.Server.IServerPlayer, Vintagestory.API.Common.ActiveSlotChangeEventArgs)
+  name.vb: Action(Of IServerPlayer, ActiveSlotChangeEventArgs)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - uid: Vintagestory.API.Server.IServerPlayer
+    name: IServerPlayer
+    href: Vintagestory.API.Server.IServerPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActiveSlotChangeEventArgs
+    name: ActiveSlotChangeEventArgs
+    href: Vintagestory.API.Common.ActiveSlotChangeEventArgs.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Server.IServerPlayer
+    name: IServerPlayer
+    href: Vintagestory.API.Server.IServerPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActiveSlotChangeEventArgs
+    name: ActiveSlotChangeEventArgs
+    href: Vintagestory.API.Common.ActiveSlotChangeEventArgs.html
+  - name: )
+- uid: System.Action`2
+  commentId: T:System.Action`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<T1, T2>
+  nameWithType: Action<T1, T2>
+  fullName: System.Action<T1, T2>
+  nameWithType.vb: Action(Of T1, T2)
+  fullName.vb: System.Action(Of T1, T2)
+  name.vb: Action(Of T1, T2)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: Vintagestory.API.Common.SuspendServerDelegate
+  commentId: T:Vintagestory.API.Common.SuspendServerDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.SuspendServerDelegate.html
+  name: SuspendServerDelegate
+  nameWithType: SuspendServerDelegate
+  fullName: Vintagestory.API.Common.SuspendServerDelegate
+- uid: Vintagestory.API.Common.ResumeServerDelegate
+  commentId: T:Vintagestory.API.Common.ResumeServerDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ResumeServerDelegate.html
+  name: ResumeServerDelegate
+  nameWithType: ResumeServerDelegate
+  fullName: Vintagestory.API.Common.ResumeServerDelegate
+- uid: Vintagestory.API.Server.IServerEventAPI.ServerRunPhase*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.ServerRunPhase
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_ServerRunPhase_Vintagestory_API_Server_EnumServerRunPhase_System_Action_
+  name: ServerRunPhase
+  nameWithType: IServerEventAPI.ServerRunPhase
+  fullName: Vintagestory.API.Server.IServerEventAPI.ServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase
+  commentId: T:Vintagestory.API.Server.EnumServerRunPhase
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumServerRunPhase.html
+  name: EnumServerRunPhase
+  nameWithType: EnumServerRunPhase
+  fullName: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.IServerEventAPI.Timer*
+  commentId: Overload:Vintagestory.API.Server.IServerEventAPI.Timer
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_Timer_System_Action_System_Double_
+  name: Timer
+  nameWithType: IServerEventAPI.Timer
+  fullName: Vintagestory.API.Server.IServerEventAPI.Timer
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Common.BlockPlacedDelegate
+  commentId: T:Vintagestory.API.Common.BlockPlacedDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockPlacedDelegate.html
+  name: BlockPlacedDelegate
+  nameWithType: BlockPlacedDelegate
+  fullName: Vintagestory.API.Common.BlockPlacedDelegate
+- uid: Vintagestory.API.Common.CanPlaceOrBreakDelegate
+  commentId: T:Vintagestory.API.Common.CanPlaceOrBreakDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CanPlaceOrBreakDelegate.html
+  name: CanPlaceOrBreakDelegate
+  nameWithType: CanPlaceOrBreakDelegate
+  fullName: Vintagestory.API.Common.CanPlaceOrBreakDelegate
+- uid: Vintagestory.API.Common.BlockBreakDelegate
+  commentId: T:Vintagestory.API.Common.BlockBreakDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockBreakDelegate.html
+  name: BlockBreakDelegate
+  nameWithType: BlockBreakDelegate
+  fullName: Vintagestory.API.Common.BlockBreakDelegate
+- uid: Vintagestory.API.Common.BlockBrokenDelegate
+  commentId: T:Vintagestory.API.Common.BlockBrokenDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockBrokenDelegate.html
+  name: BlockBrokenDelegate
+  nameWithType: BlockBrokenDelegate
+  fullName: Vintagestory.API.Common.BlockBrokenDelegate
+- uid: Vintagestory.API.Common.BlockUsedDelegate
+  commentId: T:Vintagestory.API.Common.BlockUsedDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockUsedDelegate.html
+  name: BlockUsedDelegate
+  nameWithType: BlockUsedDelegate
+  fullName: Vintagestory.API.Common.BlockUsedDelegate

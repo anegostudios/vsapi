@@ -1,0 +1,406 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.EnumWorldGenPass
+  commentId: T:Vintagestory.API.Server.EnumWorldGenPass
+  id: EnumWorldGenPass
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.EnumWorldGenPass.Done
+  - Vintagestory.API.Server.EnumWorldGenPass.NeighbourSunLightFlood
+  - Vintagestory.API.Server.EnumWorldGenPass.None
+  - Vintagestory.API.Server.EnumWorldGenPass.PreDone
+  - Vintagestory.API.Server.EnumWorldGenPass.Terrain
+  - Vintagestory.API.Server.EnumWorldGenPass.TerrainFeatures
+  - Vintagestory.API.Server.EnumWorldGenPass.Vegetation
+  langs:
+  - csharp
+  - vb
+  name: EnumWorldGenPass
+  nameWithType: EnumWorldGenPass
+  fullName: Vintagestory.API.Server.EnumWorldGenPass
+  type: Enum
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The stages a chunk goes through when being created
+  example: []
+  syntax:
+    content: public enum EnumWorldGenPass
+    content.vb: Public Enum EnumWorldGenPass
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Server.EnumWorldGenPass.None
+  commentId: F:Vintagestory.API.Server.EnumWorldGenPass.None
+  id: None
+  parent: Vintagestory.API.Server.EnumWorldGenPass
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: EnumWorldGenPass.None
+  fullName: Vintagestory.API.Server.EnumWorldGenPass.None
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Nothing generated yet
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server.EnumWorldGenPass.Terrain
+  commentId: F:Vintagestory.API.Server.EnumWorldGenPass.Terrain
+  id: Terrain
+  parent: Vintagestory.API.Server.EnumWorldGenPass
+  langs:
+  - csharp
+  - vb
+  name: Terrain
+  nameWithType: EnumWorldGenPass.Terrain
+  fullName: Vintagestory.API.Server.EnumWorldGenPass.Terrain
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Does not require neighbour chunks to exist. Should generates 3d rock terrain mostly. Default generators by execute order:
+
+    0 = Basic 3D Terrain (granite+rock)
+
+    0.1 = Rock Strata
+
+    0.3 = Cave generator
+
+    0.4 = Block layers (soil, gravel, sand, ice, tall grass, etc.)
+  example: []
+  syntax:
+    content: Terrain = 1
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server.EnumWorldGenPass.TerrainFeatures
+  commentId: F:Vintagestory.API.Server.EnumWorldGenPass.TerrainFeatures
+  id: TerrainFeatures
+  parent: Vintagestory.API.Server.EnumWorldGenPass
+  langs:
+  - csharp
+  - vb
+  name: TerrainFeatures
+  nameWithType: EnumWorldGenPass.TerrainFeatures
+  fullName: Vintagestory.API.Server.EnumWorldGenPass.TerrainFeatures
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Requires neighbour chunks. Ravines, Lakes, Boulders.  Default generators by execute order:
+
+    0.1 = Hot springs
+
+    0.2 = Deposits (Ores, Peat, Clay, etc.)
+
+    0.3 = Worldgen Structures
+
+    0.4 = Above sealevel Lakes
+
+    0.5 = Worldgen Structures Post Pass
+  example: []
+  syntax:
+    content: TerrainFeatures = 2
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server.EnumWorldGenPass.Vegetation
+  commentId: F:Vintagestory.API.Server.EnumWorldGenPass.Vegetation
+  id: Vegetation
+  parent: Vintagestory.API.Server.EnumWorldGenPass
+  langs:
+  - csharp
+  - vb
+  name: Vegetation
+  nameWithType: EnumWorldGenPass.Vegetation
+  fullName: Vintagestory.API.Server.EnumWorldGenPass.Vegetation
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Requires neighbour chunks. Default generators by execute order:
+
+    0.2 = Story structures. Creates exclusion zones for the other vegetation passes
+
+    0.5 = Block Patches, Shrubs and Trees
+
+    0.9 = Rivulets (single block water sources)
+
+    0.95 = Sunlight flooding only inside current chunk
+  example: []
+  syntax:
+    content: Vegetation = 3
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server.EnumWorldGenPass.NeighbourSunLightFlood
+  commentId: F:Vintagestory.API.Server.EnumWorldGenPass.NeighbourSunLightFlood
+  id: NeighbourSunLightFlood
+  parent: Vintagestory.API.Server.EnumWorldGenPass
+  langs:
+  - csharp
+  - vb
+  name: NeighbourSunLightFlood
+  nameWithType: EnumWorldGenPass.NeighbourSunLightFlood
+  fullName: Vintagestory.API.Server.EnumWorldGenPass.NeighbourSunLightFlood
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Requires neighbour chunks. Does the lighting of the chunk.
+
+    0 = Snow layer
+
+    0.95 = Sunlight flooding into neighbouring chunks
+  example: []
+  syntax:
+    content: NeighbourSunLightFlood = 4
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server.EnumWorldGenPass.PreDone
+  commentId: F:Vintagestory.API.Server.EnumWorldGenPass.PreDone
+  id: PreDone
+  parent: Vintagestory.API.Server.EnumWorldGenPass
+  langs:
+  - csharp
+  - vb
+  name: PreDone
+  nameWithType: EnumWorldGenPass.PreDone
+  fullName: Vintagestory.API.Server.EnumWorldGenPass.PreDone
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Requires neighbour chunks. Nothing left to generate, but neighbour chunks might still generate stuff into this chunk
+
+    0.1 = Generate creatures
+  example: []
+  syntax:
+    content: PreDone = 5
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server.EnumWorldGenPass.Done
+  commentId: F:Vintagestory.API.Server.EnumWorldGenPass.Done
+  id: Done
+  parent: Vintagestory.API.Server.EnumWorldGenPass
+  langs:
+  - csharp
+  - vb
+  name: Done
+  nameWithType: EnumWorldGenPass.Done
+  fullName: Vintagestory.API.Server.EnumWorldGenPass.Done
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Chunk generation complete. This pass is not triggered as an event.
+  example: []
+  syntax:
+    content: Done = 6
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Server.EnumWorldGenPass
+  commentId: T:Vintagestory.API.Server.EnumWorldGenPass
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumWorldGenPass.html
+  name: EnumWorldGenPass
+  nameWithType: EnumWorldGenPass
+  fullName: Vintagestory.API.Server.EnumWorldGenPass

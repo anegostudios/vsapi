@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Enum EnumServerRunPhase | VintageStory API ">
       
-      <meta name="description" content="These are the stages the server goes through during launch">
+      <meta name="description" content="These are the stages the server goes through during launch Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumServerRunPhase
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>These are the stages the server goes through during launch</p>
+  <div class="markdown summary"><p>These are the stages the server goes through during launch <a href=https://github.com/anegostudios/vsapi/blob/master///Server/EnumServerRunPhase.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -128,50 +128,65 @@ Enum EnumServerRunPhase
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_AssetsFinalize"><code>AssetsFinalize = 4</code></dt>
-    <dd><p>Final touches for loaded assets. Mods receive AssetsFinalize() call</p>
+  
+  <dd><p>Final touches for loaded assets. Mods receive AssetsFinalize() call</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_AssetsReady"><code>AssetsReady = 3</code></dt>
-    <dd></dd>
+  
+  <dd></dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_Configuration"><code>Configuration = 2</code></dt>
-    <dd><p>Everything initialized, now loading config</p>
+  
+  <dd><p>Everything initialized, now loading config</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_Exit"><code>Exit = 10</code></dt>
-    <dd><p>Shutdown complete</p>
+  
+  <dd><p>Shutdown complete</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_GameReady"><code>GameReady = 6</code></dt>
-    <dd><p>All configs loaded, game world loaded by server. All blocks are loaded.</p>
+  
+  <dd><p>All configs loaded, game world loaded by server. All blocks are loaded.</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_Initialization"><code>Initialization = 1</code></dt>
-    <dd><p>Server only stuff initialized, Serversystems instantatied, now initializing ServerSystems then Mods. Serversystem receive events at this point.</p>
+  
+  <dd><p>Server only stuff initialized, Serversystems instantatied, now initializing ServerSystems then Mods. Serversystem receive events at this point.</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_LoadAssets"><code>[Obsolete(&quot;Use AssetsReady&quot;)]
 LoadAssets = 3</code></dt>
-    <dd><p>Mods will be compiled and started, AssetManager will init all origins and cache assets. Mods are initialized at this point (PreStart/Start method)</p>
+  
+  <dd><p>Mods will be compiled and started, AssetManager will init all origins and cache assets. Mods are initialized at this point (PreStart/Start method)</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_LoadGame"><code>[Obsolete(&quot;Use GameReady&quot;)]
 LoadGame = 6</code></dt>
-    <dd><p>All configs loaded, spawn chunks loaded, game world loaded by server. All blocks are loaded.</p>
+  
+  <dd><p>All configs loaded, spawn chunks loaded, game world loaded by server. All blocks are loaded.</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_LoadGamePre"><code>[Obsolete(&quot;Use ModsAndConfigReady&quot;)]
 LoadGamePre = 5</code></dt>
-    <dd><p>All configs loaded, game world loaded by server. Mods receive StartClient/ServerSide and events at this point.</p>
+  
+  <dd><p>All configs loaded, game world loaded by server. Mods receive StartClient/ServerSide and events at this point.</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_ModsAndConfigReady"><code>ModsAndConfigReady = 5</code></dt>
-    <dd></dd>
+  
+  <dd></dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_RunGame"><code>RunGame = 8</code></dt>
-    <dd><p>About to run first game world tick.</p>
+  
+  <dd><p>About to run first game world tick.</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_Shutdown"><code>Shutdown = 9</code></dt>
-    <dd><p>Shutdown has begun</p>
+  
+  <dd><p>Shutdown has begun</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_Standby"><code>Standby = -1</code></dt>
-    <dd><p>Server is listening to sockets but nothing has been launched yet</p>
+  
+  <dd><p>Server is listening to sockets but nothing has been launched yet</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_Start"><code>Start = 0</code></dt>
-    <dd><p>Before anything has been initialized (you cannot receive any events at this point)</p>
+  
+  <dd><p>Before anything has been initialized (you cannot receive any events at this point)</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumServerRunPhase_WorldReady"><code>WorldReady = 7</code></dt>
-    <dd><p>Notifies mods that the world is ready, after all other loading steps. Following this, worldgen will start and spawn chunks loaded (no separate RunPhase in 1.19)</p>
+  
+  <dd><p>Notifies mods that the world is ready, after all other loading steps. Following this, worldgen will start and spawn chunks loaded (no separate RunPhase in 1.19)</p>
 </dd>
   </dl>
 

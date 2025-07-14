@@ -1,0 +1,2192 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.BlockEntity
+  commentId: T:Vintagestory.API.Common.BlockEntity
+  id: BlockEntity
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.BlockEntity.#ctor
+  - Vintagestory.API.Common.BlockEntity.Api
+  - Vintagestory.API.Common.BlockEntity.Behaviors
+  - Vintagestory.API.Common.BlockEntity.Block
+  - Vintagestory.API.Common.BlockEntity.CallbackHandlers
+  - Vintagestory.API.Common.BlockEntity.CreateBehaviors(Vintagestory.API.Common.Block,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.BlockEntity.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.BlockEntity.GetBehavior``1
+  - Vintagestory.API.Common.BlockEntity.GetBlockInfo(Vintagestory.API.Common.IPlayer,System.Text.StringBuilder)
+  - Vintagestory.API.Common.BlockEntity.HistoryStateRestore
+  - Vintagestory.API.Common.BlockEntity.Initialize(Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.BlockEntity.MarkDirty(System.Boolean,Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.BlockEntity.OnBlockBroken(Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.BlockEntity.OnBlockPlaced(Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.BlockEntity.OnBlockRemoved
+  - Vintagestory.API.Common.BlockEntity.OnBlockUnloaded
+  - Vintagestory.API.Common.BlockEntity.OnExchanged(Vintagestory.API.Common.Block)
+  - Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
+  - Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
+  - Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,Vintagestory.API.Common.Block,System.Boolean)
+  - Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  - Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket(System.Int32,System.Byte[])
+  - Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
+  - Vintagestory.API.Common.BlockEntity.OnTesselation(Vintagestory.API.Client.ITerrainMeshPool,Vintagestory.API.Client.ITesselatorAPI)
+  - Vintagestory.API.Common.BlockEntity.Pos
+  - Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback(System.Action{System.Single},System.Int32)
+  - Vintagestory.API.Common.BlockEntity.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+  - Vintagestory.API.Common.BlockEntity.TickHandlers
+  - Vintagestory.API.Common.BlockEntity.TickingExceptionHandler(System.Exception)
+  - Vintagestory.API.Common.BlockEntity.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  - Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback(System.Int64)
+  - Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener(System.Int64)
+  langs:
+  - csharp
+  - vb
+  name: BlockEntity
+  nameWithType: BlockEntity
+  fullName: Vintagestory.API.Common.BlockEntity
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents
+  example: []
+  syntax:
+    content: public abstract class BlockEntity
+    content.vb: Public MustInherit Class BlockEntity
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.BlockEntity.TickHandlers
+  commentId: F:Vintagestory.API.Common.BlockEntity.TickHandlers
+  id: TickHandlers
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: TickHandlers
+  nameWithType: BlockEntity.TickHandlers
+  fullName: Vintagestory.API.Common.BlockEntity.TickHandlers
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected List<long> TickHandlers
+    return:
+      type: System.Collections.Generic.List{System.Int64}
+    content.vb: Protected TickHandlers As List(Of Long)
+- uid: Vintagestory.API.Common.BlockEntity.CallbackHandlers
+  commentId: F:Vintagestory.API.Common.BlockEntity.CallbackHandlers
+  id: CallbackHandlers
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: CallbackHandlers
+  nameWithType: BlockEntity.CallbackHandlers
+  fullName: Vintagestory.API.Common.BlockEntity.CallbackHandlers
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected List<long> CallbackHandlers
+    return:
+      type: System.Collections.Generic.List{System.Int64}
+    content.vb: Protected CallbackHandlers As List(Of Long)
+- uid: Vintagestory.API.Common.BlockEntity.Api
+  commentId: F:Vintagestory.API.Common.BlockEntity.Api
+  id: Api
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: Api
+  nameWithType: BlockEntity.Api
+  fullName: Vintagestory.API.Common.BlockEntity.Api
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The core API added to the block.  Accessable after initialization.
+  example: []
+  syntax:
+    content: public ICoreAPI Api
+    return:
+      type: Vintagestory.API.Common.ICoreAPI
+    content.vb: Public Api As ICoreAPI
+- uid: Vintagestory.API.Common.BlockEntity.Pos
+  commentId: F:Vintagestory.API.Common.BlockEntity.Pos
+  id: Pos
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: Pos
+  nameWithType: BlockEntity.Pos
+  fullName: Vintagestory.API.Common.BlockEntity.Pos
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Position of the block for this block entity
+  example: []
+  syntax:
+    content: public BlockPos Pos
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public Pos As BlockPos
+- uid: Vintagestory.API.Common.BlockEntity.Block
+  commentId: P:Vintagestory.API.Common.BlockEntity.Block
+  id: Block
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: BlockEntity.Block
+  fullName: Vintagestory.API.Common.BlockEntity.Block
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The block type at the position of the block entity. This poperty is updated by the engine if ExchangeBlock is called
+  example: []
+  syntax:
+    content: public Block Block { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Block
+    content.vb: Public Property Block As Block
+  overload: Vintagestory.API.Common.BlockEntity.Block*
+- uid: Vintagestory.API.Common.BlockEntity.Behaviors
+  commentId: F:Vintagestory.API.Common.BlockEntity.Behaviors
+  id: Behaviors
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: Behaviors
+  nameWithType: BlockEntity.Behaviors
+  fullName: Vintagestory.API.Common.BlockEntity.Behaviors
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of block entity behaviors associated with this block entity
+  example: []
+  syntax:
+    content: public List<BlockEntityBehavior> Behaviors
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.BlockEntityBehavior}
+    content.vb: Public Behaviors As List(Of BlockEntityBehavior)
+- uid: Vintagestory.API.Common.BlockEntity.#ctor
+  commentId: M:Vintagestory.API.Common.BlockEntity.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: BlockEntity()
+  nameWithType: BlockEntity.BlockEntity()
+  fullName: Vintagestory.API.Common.BlockEntity.BlockEntity()
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creats an empty instance. Use initialize to initialize it with the api.
+  example: []
+  syntax:
+    content: public BlockEntity()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Common.BlockEntity.#ctor*
+  nameWithType.vb: BlockEntity.New()
+  fullName.vb: Vintagestory.API.Common.BlockEntity.New()
+  name.vb: New()
+- uid: Vintagestory.API.Common.BlockEntity.GetBehavior``1
+  commentId: M:Vintagestory.API.Common.BlockEntity.GetBehavior``1
+  id: GetBehavior``1
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: GetBehavior<T>()
+  nameWithType: BlockEntity.GetBehavior<T>()
+  fullName: Vintagestory.API.Common.BlockEntity.GetBehavior<T>()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public T GetBehavior<T>() where T : class'
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function GetBehavior(Of T As Class)() As T
+  overload: Vintagestory.API.Common.BlockEntity.GetBehavior*
+  nameWithType.vb: BlockEntity.GetBehavior(Of T)()
+  fullName.vb: Vintagestory.API.Common.BlockEntity.GetBehavior(Of T)()
+  name.vb: GetBehavior(Of T)()
+- uid: Vintagestory.API.Common.BlockEntity.Initialize(Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.BlockEntity.Initialize(Vintagestory.API.Common.ICoreAPI)
+  id: Initialize(Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: Initialize(ICoreAPI)
+  nameWithType: BlockEntity.Initialize(ICoreAPI)
+  fullName: Vintagestory.API.Common.BlockEntity.Initialize(Vintagestory.API.Common.ICoreAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    This method is called right after the block entity was spawned or right after it was loaded from a newly loaded chunk. You do have access to the world and its blocks at this point.
+
+    However if this block entity already existed then FromTreeAttributes is called first!
+
+    You should still call the base method to sets the this.api field
+  example: []
+  syntax:
+    content: public virtual void Initialize(ICoreAPI api)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+      description: ''
+    content.vb: Public Overridable Sub Initialize(api As ICoreAPI)
+  overload: Vintagestory.API.Common.BlockEntity.Initialize*
+- uid: Vintagestory.API.Common.BlockEntity.CreateBehaviors(Vintagestory.API.Common.Block,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.BlockEntity.CreateBehaviors(Vintagestory.API.Common.Block,Vintagestory.API.Common.IWorldAccessor)
+  id: CreateBehaviors(Vintagestory.API.Common.Block,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: CreateBehaviors(Block, IWorldAccessor)
+  nameWithType: BlockEntity.CreateBehaviors(Block, IWorldAccessor)
+  fullName: Vintagestory.API.Common.BlockEntity.CreateBehaviors(Vintagestory.API.Common.Block, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void CreateBehaviors(Block block, IWorldAccessor worldForResolve)
+    parameters:
+    - id: block
+      type: Vintagestory.API.Common.Block
+    - id: worldForResolve
+      type: Vintagestory.API.Common.IWorldAccessor
+    content.vb: Public Overridable Sub CreateBehaviors(block As Block, worldForResolve As IWorldAccessor)
+  overload: Vintagestory.API.Common.BlockEntity.CreateBehaviors*
+- uid: Vintagestory.API.Common.BlockEntity.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BlockEntity.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+  id: RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: RegisterGameTickListener(Action<float>, int, int)
+  nameWithType: BlockEntity.RegisterGameTickListener(Action<float>, int, int)
+  fullName: Vintagestory.API.Common.BlockEntity.RegisterGameTickListener(System.Action<float>, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Registers a game tick listener that does the disposing for you when the Block is removed
+  example: []
+  syntax:
+    content: public virtual long RegisterGameTickListener(Action<float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
+    parameters:
+    - id: onGameTick
+      type: System.Action{System.Single}
+      description: ''
+    - id: millisecondInterval
+      type: System.Int32
+      description: ''
+    - id: initialDelayOffsetMs
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Int64
+      description: ''
+    content.vb: Public Overridable Function RegisterGameTickListener(onGameTick As Action(Of Single), millisecondInterval As Integer, initialDelayOffsetMs As Integer = 0) As Long
+  overload: Vintagestory.API.Common.BlockEntity.RegisterGameTickListener*
+  nameWithType.vb: BlockEntity.RegisterGameTickListener(Action(Of Single), Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.RegisterGameTickListener(System.Action(Of Single), Integer, Integer)
+  name.vb: RegisterGameTickListener(Action(Of Single), Integer, Integer)
+- uid: Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener(System.Int64)
+  commentId: M:Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener(System.Int64)
+  id: UnregisterGameTickListener(System.Int64)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: UnregisterGameTickListener(long)
+  nameWithType: BlockEntity.UnregisterGameTickListener(long)
+  fullName: Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener(long)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Removes a registered game tick listener from the game.
+  example: []
+  syntax:
+    content: public virtual void UnregisterGameTickListener(long listenerId)
+    parameters:
+    - id: listenerId
+      type: System.Int64
+      description: the ID of the listener to unregister.
+    content.vb: Public Overridable Sub UnregisterGameTickListener(listenerId As Long)
+  overload: Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener*
+  nameWithType.vb: BlockEntity.UnregisterGameTickListener(Long)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener(Long)
+  name.vb: UnregisterGameTickListener(Long)
+- uid: Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback(System.Action{System.Single},System.Int32)
+  commentId: M:Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback(System.Action{System.Single},System.Int32)
+  id: RegisterDelayedCallback(System.Action{System.Single},System.Int32)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: RegisterDelayedCallback(Action<float>, int)
+  nameWithType: BlockEntity.RegisterDelayedCallback(Action<float>, int)
+  fullName: Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback(System.Action<float>, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Registers a delayed callback that does the disposing for you when the Block is removed
+  example: []
+  syntax:
+    content: public virtual long RegisterDelayedCallback(Action<float> OnDelayedCallbackTick, int millisecondInterval)
+    parameters:
+    - id: OnDelayedCallbackTick
+      type: System.Action{System.Single}
+      description: ''
+    - id: millisecondInterval
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Int64
+      description: ''
+    content.vb: Public Overridable Function RegisterDelayedCallback(OnDelayedCallbackTick As Action(Of Single), millisecondInterval As Integer) As Long
+  overload: Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback*
+  nameWithType.vb: BlockEntity.RegisterDelayedCallback(Action(Of Single), Integer)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback(System.Action(Of Single), Integer)
+  name.vb: RegisterDelayedCallback(Action(Of Single), Integer)
+- uid: Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback(System.Int64)
+  commentId: M:Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback(System.Int64)
+  id: UnregisterDelayedCallback(System.Int64)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: UnregisterDelayedCallback(long)
+  nameWithType: BlockEntity.UnregisterDelayedCallback(long)
+  fullName: Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback(long)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Unregisters a callback.  This is usually done automatically.
+  example: []
+  syntax:
+    content: public virtual void UnregisterDelayedCallback(long listenerId)
+    parameters:
+    - id: listenerId
+      type: System.Int64
+      description: The ID of the callback listiner.
+    content.vb: Public Overridable Sub UnregisterDelayedCallback(listenerId As Long)
+  overload: Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback*
+  nameWithType.vb: BlockEntity.UnregisterDelayedCallback(Long)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback(Long)
+  name.vb: UnregisterDelayedCallback(Long)
+- uid: Vintagestory.API.Common.BlockEntity.TickingExceptionHandler(System.Exception)
+  commentId: M:Vintagestory.API.Common.BlockEntity.TickingExceptionHandler(System.Exception)
+  id: TickingExceptionHandler(System.Exception)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: TickingExceptionHandler(Exception)
+  nameWithType: BlockEntity.TickingExceptionHandler(Exception)
+  fullName: Vintagestory.API.Common.BlockEntity.TickingExceptionHandler(System.Exception)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void TickingExceptionHandler(Exception e)
+    parameters:
+    - id: e
+      type: System.Exception
+    content.vb: Public Overridable Sub TickingExceptionHandler(e As Exception)
+  overload: Vintagestory.API.Common.BlockEntity.TickingExceptionHandler*
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockRemoved
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnBlockRemoved
+  id: OnBlockRemoved
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnBlockRemoved()
+  nameWithType: BlockEntity.OnBlockRemoved()
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockRemoved()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when the block at this position was removed in some way. Removes the game tick listeners, so still call the base method
+  example: []
+  syntax:
+    content: public virtual void OnBlockRemoved()
+    content.vb: Public Overridable Sub OnBlockRemoved()
+  overload: Vintagestory.API.Common.BlockEntity.OnBlockRemoved*
+- uid: Vintagestory.API.Common.BlockEntity.OnExchanged(Vintagestory.API.Common.Block)
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnExchanged(Vintagestory.API.Common.Block)
+  id: OnExchanged(Vintagestory.API.Common.Block)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnExchanged(Block)
+  nameWithType: BlockEntity.OnExchanged(Block)
+  fullName: Vintagestory.API.Common.BlockEntity.OnExchanged(Vintagestory.API.Common.Block)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when blockAccessor.ExchangeBlock() is used to exchange this block. Make sure to call the base method when overriding.
+  example: []
+  syntax:
+    content: public virtual void OnExchanged(Block block)
+    parameters:
+    - id: block
+      type: Vintagestory.API.Common.Block
+      description: ''
+    content.vb: Public Overridable Sub OnExchanged(block As Block)
+  overload: Vintagestory.API.Common.BlockEntity.OnExchanged*
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockBroken(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnBlockBroken(Vintagestory.API.Common.IPlayer)
+  id: OnBlockBroken(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnBlockBroken(IPlayer)
+  nameWithType: BlockEntity.OnBlockBroken(IPlayer)
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockBroken(Vintagestory.API.Common.IPlayer)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Called when the block was broken in survival mode or through explosions and similar. Generally in situations where you probably want 
+
+    to drop the block entity contents, if it has any
+  example: []
+  syntax:
+    content: public virtual void OnBlockBroken(IPlayer byPlayer = null)
+    parameters:
+    - id: byPlayer
+      type: Vintagestory.API.Common.IPlayer
+    content.vb: Public Overridable Sub OnBlockBroken(byPlayer As IPlayer = Nothing)
+  overload: Vintagestory.API.Common.BlockEntity.OnBlockBroken*
+- uid: Vintagestory.API.Common.BlockEntity.HistoryStateRestore
+  commentId: M:Vintagestory.API.Common.BlockEntity.HistoryStateRestore
+  id: HistoryStateRestore
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: HistoryStateRestore()
+  nameWithType: BlockEntity.HistoryStateRestore()
+  fullName: Vintagestory.API.Common.BlockEntity.HistoryStateRestore()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called by the undo/redo system, after calling FromTreeAttributes
+  example: []
+  syntax:
+    content: public virtual void HistoryStateRestore()
+    content.vb: Public Overridable Sub HistoryStateRestore()
+  overload: Vintagestory.API.Common.BlockEntity.HistoryStateRestore*
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockUnloaded
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnBlockUnloaded
+  id: OnBlockUnloaded
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnBlockUnloaded()
+  nameWithType: BlockEntity.OnBlockUnloaded()
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockUnloaded()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when the chunk the block entity resides in was unloaded. Removes the game tick listeners, so still call the base method
+  example: []
+  syntax:
+    content: public virtual void OnBlockUnloaded()
+    content.vb: Public Overridable Sub OnBlockUnloaded()
+  overload: Vintagestory.API.Common.BlockEntity.OnBlockUnloaded*
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockPlaced(Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnBlockPlaced(Vintagestory.API.Common.ItemStack)
+  id: OnBlockPlaced(Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnBlockPlaced(ItemStack)
+  nameWithType: BlockEntity.OnBlockPlaced(ItemStack)
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockPlaced(Vintagestory.API.Common.ItemStack)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when the block entity just got placed, not called when it was previously placed and the chunk is loaded. Always called after Initialize()
+  example: []
+  syntax:
+    content: public virtual void OnBlockPlaced(ItemStack byItemStack = null)
+    parameters:
+    - id: byItemStack
+      type: Vintagestory.API.Common.ItemStack
+    content.vb: Public Overridable Sub OnBlockPlaced(byItemStack As ItemStack = Nothing)
+  overload: Vintagestory.API.Common.BlockEntity.OnBlockPlaced*
+- uid: Vintagestory.API.Common.BlockEntity.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  commentId: M:Vintagestory.API.Common.BlockEntity.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  id: ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: ToTreeAttributes(ITreeAttribute)
+  nameWithType: BlockEntity.ToTreeAttributes(ITreeAttribute)
+  fullName: Vintagestory.API.Common.BlockEntity.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when saving the world or when sending the block entity data to the client. When overriding, make sure to still call the base method.
+  example: []
+  syntax:
+    content: public virtual void ToTreeAttributes(ITreeAttribute tree)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+      description: ''
+    content.vb: Public Overridable Sub ToTreeAttributes(tree As ITreeAttribute)
+  overload: Vintagestory.API.Common.BlockEntity.ToTreeAttributes*
+- uid: Vintagestory.API.Common.BlockEntity.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.BlockEntity.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.IWorldAccessor)
+  id: FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: FromTreeAttributes(ITreeAttribute, IWorldAccessor)
+  nameWithType: BlockEntity.FromTreeAttributes(ITreeAttribute, IWorldAccessor)
+  fullName: Vintagestory.API.Common.BlockEntity.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Called when loading the world or when receiving block entity from the server. When overriding, make sure to still call the base method.
+
+    FromTreeAttributes is always called before Initialize() is called, so the this.api field is not yet set!
+  example: []
+  syntax:
+    content: public virtual void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+      description: ''
+    - id: worldAccessForResolve
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: Use this api if you need to resolve blocks/items. Not suggested for other purposes, as the residing chunk may not be loaded at this point
+    content.vb: Public Overridable Sub FromTreeAttributes(tree As ITreeAttribute, worldAccessForResolve As IWorldAccessor)
+  overload: Vintagestory.API.Common.BlockEntity.FromTreeAttributes*
+- uid: Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  id: OnReceivedClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnReceivedClientPacket(IPlayer, int, byte[])
+  nameWithType: BlockEntity.OnReceivedClientPacket(IPlayer, int, byte[])
+  fullName: Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer, int, byte[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called whenever a blockentity packet at the blocks position has been received from the client
+  example: []
+  syntax:
+    content: public virtual void OnReceivedClientPacket(IPlayer fromPlayer, int packetid, byte[] data)
+    parameters:
+    - id: fromPlayer
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    - id: packetid
+      type: System.Int32
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Public Overridable Sub OnReceivedClientPacket(fromPlayer As IPlayer, packetid As Integer, data As Byte())
+  overload: Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket*
+  nameWithType.vb: BlockEntity.OnReceivedClientPacket(IPlayer, Integer, Byte())
+  fullName.vb: Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer, Integer, Byte())
+  name.vb: OnReceivedClientPacket(IPlayer, Integer, Byte())
+- uid: Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket(System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket(System.Int32,System.Byte[])
+  id: OnReceivedServerPacket(System.Int32,System.Byte[])
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnReceivedServerPacket(int, byte[])
+  nameWithType: BlockEntity.OnReceivedServerPacket(int, byte[])
+  fullName: Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket(int, byte[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called whenever a blockentity packet at the blocks position has been received from the server
+  example: []
+  syntax:
+    content: public virtual void OnReceivedServerPacket(int packetid, byte[] data)
+    parameters:
+    - id: packetid
+      type: System.Int32
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Public Overridable Sub OnReceivedServerPacket(packetid As Integer, data As Byte())
+  overload: Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket*
+  nameWithType.vb: BlockEntity.OnReceivedServerPacket(Integer, Byte())
+  fullName.vb: Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket(Integer, Byte())
+  name.vb: OnReceivedServerPacket(Integer, Byte())
+- uid: Vintagestory.API.Common.BlockEntity.MarkDirty(System.Boolean,Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.BlockEntity.MarkDirty(System.Boolean,Vintagestory.API.Common.IPlayer)
+  id: MarkDirty(System.Boolean,Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: MarkDirty(bool, IPlayer)
+  nameWithType: BlockEntity.MarkDirty(bool, IPlayer)
+  fullName: Vintagestory.API.Common.BlockEntity.MarkDirty(bool, Vintagestory.API.Common.IPlayer)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    When called on Server: Will resync the block entity with all its TreeAttribute to the client, but will not resend or redraw the block unless specified.
+
+    When called on Client: Triggers a block changed event on the client, but will not redraw the block unless specified.
+  example: []
+  syntax:
+    content: public virtual void MarkDirty(bool redrawOnClient = false, IPlayer skipPlayer = null)
+    parameters:
+    - id: redrawOnClient
+      type: System.Boolean
+      description: When true, the block is also marked dirty and thus redrawn. When called serverside a dirty block packet is sent to the client for it to be redrawn
+    - id: skipPlayer
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    content.vb: Public Overridable Sub MarkDirty(redrawOnClient As Boolean = False, skipPlayer As IPlayer = Nothing)
+  overload: Vintagestory.API.Common.BlockEntity.MarkDirty*
+  nameWithType.vb: BlockEntity.MarkDirty(Boolean, IPlayer)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.MarkDirty(Boolean, Vintagestory.API.Common.IPlayer)
+  name.vb: MarkDirty(Boolean, IPlayer)
+- uid: Vintagestory.API.Common.BlockEntity.GetBlockInfo(Vintagestory.API.Common.IPlayer,System.Text.StringBuilder)
+  commentId: M:Vintagestory.API.Common.BlockEntity.GetBlockInfo(Vintagestory.API.Common.IPlayer,System.Text.StringBuilder)
+  id: GetBlockInfo(Vintagestory.API.Common.IPlayer,System.Text.StringBuilder)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: GetBlockInfo(IPlayer, StringBuilder)
+  nameWithType: BlockEntity.GetBlockInfo(IPlayer, StringBuilder)
+  fullName: Vintagestory.API.Common.BlockEntity.GetBlockInfo(Vintagestory.API.Common.IPlayer, System.Text.StringBuilder)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called by the block info HUD for displaying additional information
+  example: []
+  syntax:
+    content: public virtual void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
+    parameters:
+    - id: forPlayer
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    - id: dsc
+      type: System.Text.StringBuilder
+      description: ''
+    content.vb: Public Overridable Sub GetBlockInfo(forPlayer As IPlayer, dsc As StringBuilder)
+  overload: Vintagestory.API.Common.BlockEntity.GetBlockInfo*
+- uid: Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
+  id: OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnStoreCollectibleMappings(Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>)
+  nameWithType: BlockEntity.OnStoreCollectibleMappings(Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>)
+  fullName: Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called by the worldedit schematic exporter so that it can also export the mappings of items/blocks stored inside blockentities
+  example: []
+  syntax:
+    content: public virtual void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
+    parameters:
+    - id: blockIdMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: itemIdMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    content.vb: Public Overridable Sub OnStoreCollectibleMappings(blockIdMapping As Dictionary(Of Integer, AssetLocation), itemIdMapping As Dictionary(Of Integer, AssetLocation))
+  overload: Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings*
+  nameWithType.vb: BlockEntity.OnStoreCollectibleMappings(Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation))
+  fullName.vb: Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation))
+  name.vb: OnStoreCollectibleMappings(Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation))
+- uid: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
+  id: OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, int)
+  nameWithType: BlockEntity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, int)
+  fullName: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
+
+    Note: Some vanilla blocks resolve randomized contents in this method.
+
+    Hint: Use itemstack.FixMapping() to do the job for you.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use the variant with resolveImports parameter")]
+
+      public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
+    parameters:
+    - id: worldForNewMappings
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: oldBlockIdMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: oldItemIdMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: schematicSeed
+      type: System.Int32
+      description: If you need some sort of randomness consistency accross an imported schematic, you can use this value
+    content.vb: >-
+      <Obsolete("Use the variant with resolveImports parameter")>
+
+      Public Overridable Sub OnLoadCollectibleMappings(worldForNewMappings As IWorldAccessor, oldBlockIdMapping As Dictionary(Of Integer, AssetLocation), oldItemIdMapping As Dictionary(Of Integer, AssetLocation), schematicSeed As Integer)
+  overload: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use the variant with resolveImports parameter
+  nameWithType.vb: BlockEntity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), Integer)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), Integer)
+  name.vb: OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), Integer)
+- uid: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
+  id: OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, int, bool)
+  nameWithType: BlockEntity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, int, bool)
+  fullName: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, int, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
+
+    Note: Some vanilla blocks resolve randomized contents in this method.
+
+    Hint: Use itemstack.FixMapping() to do the job for you.
+  example: []
+  syntax:
+    content: public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed, bool resolveImports)
+    parameters:
+    - id: worldForNewMappings
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: oldBlockIdMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: oldItemIdMapping
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: schematicSeed
+      type: System.Int32
+      description: If you need some sort of randomness consistency accross an imported schematic, you can use this value
+    - id: resolveImports
+      type: System.Boolean
+      description: Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn
+    content.vb: Public Overridable Sub OnLoadCollectibleMappings(worldForNewMappings As IWorldAccessor, oldBlockIdMapping As Dictionary(Of Integer, AssetLocation), oldItemIdMapping As Dictionary(Of Integer, AssetLocation), schematicSeed As Integer, resolveImports As Boolean)
+  overload: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings*
+  nameWithType.vb: BlockEntity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), Integer, Boolean)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), Integer, Boolean)
+  name.vb: OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), Integer, Boolean)
+- uid: Vintagestory.API.Common.BlockEntity.OnTesselation(Vintagestory.API.Client.ITerrainMeshPool,Vintagestory.API.Client.ITesselatorAPI)
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnTesselation(Vintagestory.API.Client.ITerrainMeshPool,Vintagestory.API.Client.ITesselatorAPI)
+  id: OnTesselation(Vintagestory.API.Client.ITerrainMeshPool,Vintagestory.API.Client.ITesselatorAPI)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnTesselation(ITerrainMeshPool, ITesselatorAPI)
+  nameWithType: BlockEntity.OnTesselation(ITerrainMeshPool, ITesselatorAPI)
+  fullName: Vintagestory.API.Common.BlockEntity.OnTesselation(Vintagestory.API.Client.ITerrainMeshPool, Vintagestory.API.Client.ITesselatorAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Let's you add your own meshes to a chunk. Don't reuse the meshdata instance anywhere in your code. Return true to skip the default mesh.
+
+    WARNING!
+
+    The Tesselator runs in a seperate thread, so you have to make sure the fields and methods you access inside this method are thread safe.
+  example: []
+  syntax:
+    content: public virtual bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator)
+    parameters:
+    - id: mesher
+      type: Vintagestory.API.Client.ITerrainMeshPool
+      description: The chunk mesh, add your stuff here
+    - id: tessThreadTesselator
+      type: Vintagestory.API.Client.ITesselatorAPI
+      description: If you need to tesselate something, you should use this tesselator, since using the main thread tesselator can cause race conditions and crash the game
+    return:
+      type: System.Boolean
+      description: True to skip default mesh, false to also add the default mesh
+    content.vb: Public Overridable Function OnTesselation(mesher As ITerrainMeshPool, tessThreadTesselator As ITesselatorAPI) As Boolean
+  overload: Vintagestory.API.Common.BlockEntity.OnTesselation*
+- uid: Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,Vintagestory.API.Common.Block,System.Boolean)
+  commentId: M:Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,Vintagestory.API.Common.Block,System.Boolean)
+  id: OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,Vintagestory.API.Common.Block,System.Boolean)
+  parent: Vintagestory.API.Common.BlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OnPlacementBySchematic(ICoreServerAPI, IBlockAccessor, BlockPos, Dictionary<int, Dictionary<int, int>>, int, Block, bool)
+  nameWithType: BlockEntity.OnPlacementBySchematic(ICoreServerAPI, IBlockAccessor, BlockPos, Dictionary<int, Dictionary<int, int>>, int, Block, bool)
+  fullName: Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, System.Collections.Generic.Dictionary<int, System.Collections.Generic.Dictionary<int, int>>, int, Vintagestory.API.Common.Block, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when this block entity was placed by a schematic, either through world edit or by worldgen
+  example: []
+  syntax:
+    content: public virtual void OnPlacementBySchematic(ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos, Dictionary<int, Dictionary<int, int>> replaceBlocks, int centerrockblockid, Block layerBlock, bool resolveImports)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Server.ICoreServerAPI
+      description: ''
+    - id: blockAccessor
+      type: Vintagestory.API.Common.IBlockAccessor
+      description: ''
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: replaceBlocks
+      type: System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}}
+      description: ''
+    - id: centerrockblockid
+      type: System.Int32
+      description: ''
+    - id: layerBlock
+      type: Vintagestory.API.Common.Block
+      description: If block.CustomBlockLayerHandler is true and the block is below the surface, this value is set
+    - id: resolveImports
+      type: System.Boolean
+      description: Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn
+    content.vb: Public Overridable Sub OnPlacementBySchematic(api As ICoreServerAPI, blockAccessor As IBlockAccessor, pos As BlockPos, replaceBlocks As Dictionary(Of Integer, Dictionary(Of Integer, Integer)), centerrockblockid As Integer, layerBlock As Block, resolveImports As Boolean)
+  overload: Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic*
+  nameWithType.vb: BlockEntity.OnPlacementBySchematic(ICoreServerAPI, IBlockAccessor, BlockPos, Dictionary(Of Integer, Dictionary(Of Integer, Integer)), Integer, Block, Boolean)
+  fullName.vb: Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, System.Collections.Generic.Dictionary(Of Integer, System.Collections.Generic.Dictionary(Of Integer, Integer)), Integer, Vintagestory.API.Common.Block, Boolean)
+  name.vb: OnPlacementBySchematic(ICoreServerAPI, IBlockAccessor, BlockPos, Dictionary(Of Integer, Dictionary(Of Integer, Integer)), Integer, Block, Boolean)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Collections.Generic.List{System.Int64}
+  commentId: T:System.Collections.Generic.List{System.Int64}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<long>
+  nameWithType: List<long>
+  fullName: System.Collections.Generic.List<long>
+  nameWithType.vb: List(Of Long)
+  fullName.vb: System.Collections.Generic.List(Of Long)
+  name.vb: List(Of Long)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.BlockEntity.Block*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.Block
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_Block
+  name: Block
+  nameWithType: BlockEntity.Block
+  fullName: Vintagestory.API.Common.BlockEntity.Block
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.BlockEntityBehavior}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.BlockEntityBehavior}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<BlockEntityBehavior>
+  nameWithType: List<BlockEntityBehavior>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.BlockEntityBehavior>
+  nameWithType.vb: List(Of BlockEntityBehavior)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.BlockEntityBehavior)
+  name.vb: List(Of BlockEntityBehavior)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.BlockEntityBehavior
+    name: BlockEntityBehavior
+    href: Vintagestory.API.Common.BlockEntityBehavior.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.BlockEntityBehavior
+    name: BlockEntityBehavior
+    href: Vintagestory.API.Common.BlockEntityBehavior.html
+  - name: )
+- uid: Vintagestory.API.Common.BlockEntity.#ctor*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.#ctor
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity__ctor
+  name: BlockEntity
+  nameWithType: BlockEntity.BlockEntity
+  fullName: Vintagestory.API.Common.BlockEntity.BlockEntity
+  nameWithType.vb: BlockEntity.New
+  fullName.vb: Vintagestory.API.Common.BlockEntity.New
+  name.vb: New
+- uid: Vintagestory.API.Common.BlockEntity.GetBehavior*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.GetBehavior
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_GetBehavior__1
+  name: GetBehavior
+  nameWithType: BlockEntity.GetBehavior
+  fullName: Vintagestory.API.Common.BlockEntity.GetBehavior
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Vintagestory.API.Common.BlockEntity.Initialize*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.Initialize
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_Initialize_Vintagestory_API_Common_ICoreAPI_
+  name: Initialize
+  nameWithType: BlockEntity.Initialize
+  fullName: Vintagestory.API.Common.BlockEntity.Initialize
+- uid: Vintagestory.API.Common.BlockEntity.CreateBehaviors*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.CreateBehaviors
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_CreateBehaviors_Vintagestory_API_Common_Block_Vintagestory_API_Common_IWorldAccessor_
+  name: CreateBehaviors
+  nameWithType: BlockEntity.CreateBehaviors
+  fullName: Vintagestory.API.Common.BlockEntity.CreateBehaviors
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Common.BlockEntity.RegisterGameTickListener*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.RegisterGameTickListener
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_RegisterGameTickListener_System_Action_System_Single__System_Int32_System_Int32_
+  name: RegisterGameTickListener
+  nameWithType: BlockEntity.RegisterGameTickListener
+  fullName: Vintagestory.API.Common.BlockEntity.RegisterGameTickListener
+- uid: System.Action{System.Single}
+  commentId: T:System.Action{System.Single}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<float>
+  nameWithType: Action<float>
+  fullName: System.Action<float>
+  nameWithType.vb: Action(Of Single)
+  fullName.vb: System.Action(Of Single)
+  name.vb: Action(Of Single)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_UnregisterGameTickListener_System_Int64_
+  name: UnregisterGameTickListener
+  nameWithType: BlockEntity.UnregisterGameTickListener
+  fullName: Vintagestory.API.Common.BlockEntity.UnregisterGameTickListener
+- uid: Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_RegisterDelayedCallback_System_Action_System_Single__System_Int32_
+  name: RegisterDelayedCallback
+  nameWithType: BlockEntity.RegisterDelayedCallback
+  fullName: Vintagestory.API.Common.BlockEntity.RegisterDelayedCallback
+- uid: Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_UnregisterDelayedCallback_System_Int64_
+  name: UnregisterDelayedCallback
+  nameWithType: BlockEntity.UnregisterDelayedCallback
+  fullName: Vintagestory.API.Common.BlockEntity.UnregisterDelayedCallback
+- uid: Vintagestory.API.Common.BlockEntity.TickingExceptionHandler*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.TickingExceptionHandler
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_TickingExceptionHandler_System_Exception_
+  name: TickingExceptionHandler
+  nameWithType: BlockEntity.TickingExceptionHandler
+  fullName: Vintagestory.API.Common.BlockEntity.TickingExceptionHandler
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockRemoved*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnBlockRemoved
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnBlockRemoved
+  name: OnBlockRemoved
+  nameWithType: BlockEntity.OnBlockRemoved
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockRemoved
+- uid: Vintagestory.API.Common.BlockEntity.OnExchanged*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnExchanged
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnExchanged_Vintagestory_API_Common_Block_
+  name: OnExchanged
+  nameWithType: BlockEntity.OnExchanged
+  fullName: Vintagestory.API.Common.BlockEntity.OnExchanged
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockBroken*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnBlockBroken
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnBlockBroken_Vintagestory_API_Common_IPlayer_
+  name: OnBlockBroken
+  nameWithType: BlockEntity.OnBlockBroken
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockBroken
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.BlockEntity.HistoryStateRestore*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.HistoryStateRestore
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_HistoryStateRestore
+  name: HistoryStateRestore
+  nameWithType: BlockEntity.HistoryStateRestore
+  fullName: Vintagestory.API.Common.BlockEntity.HistoryStateRestore
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockUnloaded*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnBlockUnloaded
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnBlockUnloaded
+  name: OnBlockUnloaded
+  nameWithType: BlockEntity.OnBlockUnloaded
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockUnloaded
+- uid: Vintagestory.API.Common.BlockEntity.OnBlockPlaced*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnBlockPlaced
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnBlockPlaced_Vintagestory_API_Common_ItemStack_
+  name: OnBlockPlaced
+  nameWithType: BlockEntity.OnBlockPlaced
+  fullName: Vintagestory.API.Common.BlockEntity.OnBlockPlaced
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: Vintagestory.API.Common.BlockEntity.ToTreeAttributes*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.ToTreeAttributes
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  name: ToTreeAttributes
+  nameWithType: BlockEntity.ToTreeAttributes
+  fullName: Vintagestory.API.Common.BlockEntity.ToTreeAttributes
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.BlockEntity.FromTreeAttributes*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.FromTreeAttributes
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_IWorldAccessor_
+  name: FromTreeAttributes
+  nameWithType: BlockEntity.FromTreeAttributes
+  fullName: Vintagestory.API.Common.BlockEntity.FromTreeAttributes
+- uid: Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnReceivedClientPacket_Vintagestory_API_Common_IPlayer_System_Int32_System_Byte___
+  name: OnReceivedClientPacket
+  nameWithType: BlockEntity.OnReceivedClientPacket
+  fullName: Vintagestory.API.Common.BlockEntity.OnReceivedClientPacket
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnReceivedServerPacket_System_Int32_System_Byte___
+  name: OnReceivedServerPacket
+  nameWithType: BlockEntity.OnReceivedServerPacket
+  fullName: Vintagestory.API.Common.BlockEntity.OnReceivedServerPacket
+- uid: Vintagestory.API.Common.BlockEntity.MarkDirty*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.MarkDirty
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_MarkDirty_System_Boolean_Vintagestory_API_Common_IPlayer_
+  name: MarkDirty
+  nameWithType: BlockEntity.MarkDirty
+  fullName: Vintagestory.API.Common.BlockEntity.MarkDirty
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.BlockEntity.GetBlockInfo*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.GetBlockInfo
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_GetBlockInfo_Vintagestory_API_Common_IPlayer_System_Text_StringBuilder_
+  name: GetBlockInfo
+  nameWithType: BlockEntity.GetBlockInfo
+  fullName: Vintagestory.API.Common.BlockEntity.GetBlockInfo
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+- uid: Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__
+  name: OnStoreCollectibleMappings
+  nameWithType: BlockEntity.OnStoreCollectibleMappings
+  fullName: Vintagestory.API.Common.BlockEntity.OnStoreCollectibleMappings
+- uid: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<int, AssetLocation>
+  nameWithType: Dictionary<int, AssetLocation>
+  fullName: System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>
+  nameWithType.vb: Dictionary(Of Integer, AssetLocation)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation)
+  name.vb: Dictionary(Of Integer, AssetLocation)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_
+  name: OnLoadCollectibleMappings
+  nameWithType: BlockEntity.OnLoadCollectibleMappings
+  fullName: Vintagestory.API.Common.BlockEntity.OnLoadCollectibleMappings
+- uid: Vintagestory.API.Common.BlockEntity.OnTesselation*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnTesselation
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnTesselation_Vintagestory_API_Client_ITerrainMeshPool_Vintagestory_API_Client_ITesselatorAPI_
+  name: OnTesselation
+  nameWithType: BlockEntity.OnTesselation
+  fullName: Vintagestory.API.Common.BlockEntity.OnTesselation
+- uid: Vintagestory.API.Client.ITerrainMeshPool
+  commentId: T:Vintagestory.API.Client.ITerrainMeshPool
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ITerrainMeshPool.html
+  name: ITerrainMeshPool
+  nameWithType: ITerrainMeshPool
+  fullName: Vintagestory.API.Client.ITerrainMeshPool
+- uid: Vintagestory.API.Client.ITesselatorAPI
+  commentId: T:Vintagestory.API.Client.ITesselatorAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ITesselatorAPI.html
+  name: ITesselatorAPI
+  nameWithType: ITesselatorAPI
+  fullName: Vintagestory.API.Client.ITesselatorAPI
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic*
+  commentId: Overload:Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic
+  href: Vintagestory.API.Common.BlockEntity.html#Vintagestory_API_Common_BlockEntity_OnPlacementBySchematic_Vintagestory_API_Server_ICoreServerAPI_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Collections_Generic_Dictionary_System_Int32_System_Collections_Generic_Dictionary_System_Int32_System_Int32___System_Int32_Vintagestory_API_Common_Block_System_Boolean_
+  name: OnPlacementBySchematic
+  nameWithType: BlockEntity.OnPlacementBySchematic
+  fullName: Vintagestory.API.Common.BlockEntity.OnPlacementBySchematic
+- uid: Vintagestory.API.Server.ICoreServerAPI
+  commentId: T:Vintagestory.API.Server.ICoreServerAPI
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.ICoreServerAPI.html
+  name: ICoreServerAPI
+  nameWithType: ICoreServerAPI
+  fullName: Vintagestory.API.Server.ICoreServerAPI
+- uid: Vintagestory.API.Common.IBlockAccessor
+  commentId: T:Vintagestory.API.Common.IBlockAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IBlockAccessor.html
+  name: IBlockAccessor
+  nameWithType: IBlockAccessor
+  fullName: Vintagestory.API.Common.IBlockAccessor
+- uid: System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<int, Dictionary<int, int>>
+  nameWithType: Dictionary<int, Dictionary<int, int>>
+  fullName: System.Collections.Generic.Dictionary<int, System.Collections.Generic.Dictionary<int, int>>
+  nameWithType.vb: Dictionary(Of Integer, Dictionary(Of Integer, Integer))
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, System.Collections.Generic.Dictionary(Of Integer, Integer))
+  name.vb: Dictionary(Of Integer, Dictionary(Of Integer, Integer))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html

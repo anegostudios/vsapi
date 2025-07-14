@@ -1,0 +1,872 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.BakingProperties
+  commentId: T:Vintagestory.API.Common.BakingProperties
+  id: BakingProperties
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.BakingProperties.EndScaleY
+  - Vintagestory.API.Common.BakingProperties.InitialCode
+  - Vintagestory.API.Common.BakingProperties.LargeItem
+  - Vintagestory.API.Common.BakingProperties.LevelFrom
+  - Vintagestory.API.Common.BakingProperties.LevelTo
+  - Vintagestory.API.Common.BakingProperties.ReadFrom(Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.BakingProperties.ResultCode
+  - Vintagestory.API.Common.BakingProperties.StartScaleY
+  - Vintagestory.API.Common.BakingProperties.Temp
+  langs:
+  - csharp
+  - vb
+  name: BakingProperties
+  nameWithType: BakingProperties
+  fullName: Vintagestory.API.Common.BakingProperties
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Baking Properties are collectible attribute used for baking items in a clay oven.
+
+    You will need to add these attributes if using <xref href="Vintagestory.API.Common.EnumSmeltType.Bake" data-throw-if-not-resolved="false"></xref> inside <xref href="Vintagestory.API.Common.CombustibleProperties.SmeltingType" data-throw-if-not-resolved="false"></xref>.
+  example:
+  - >-
+    Example taken from bread. Note that the levelTo value in the baking stage is the same as the levelFrom in the next baking stage.
+
+    <pre><code class="lang-json">"attributesByType": {
+    	"*-partbaked": {
+    		"bakingProperties": {
+    			"temp": 160,
+    			"levelFrom": 0.25,
+    			"levelTo": 0.5,
+    			"startScaleY": 0.95,
+    			"endScaleY": 1.10,
+    			"resultCode": "bread-{type}-perfect",
+    			"initialCode": "dough-{type}"
+    		}
+    	},
+    	"*-perfect": {
+    		"bakingProperties": {
+    			"temp": 160,
+    			"levelFrom": 0.5,
+    			"levelTo": 0.75,
+    			"startScaleY": 1.10,
+    			"endScaleY": 1.13,
+    			"resultCode": "bread-{type}-charred",
+    			"initialCode": "bread-{type}-partbaked"
+    		}
+    	},
+    	"*-charred": {
+    		"bakingProperties": {
+    			"temp": 160,
+    			"levelFrom": 0.75,
+    			"levelTo": 1,
+    			"startScaleY": 1.13,
+    			"endScaleY": 1.10,
+    			"initialCode": "bread-{type}-perfect"
+    		}
+    	}
+    },</code></pre>
+  syntax:
+    content: public class BakingProperties
+    content.vb: Public Class BakingProperties
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.BakingProperties.Temp
+  commentId: F:Vintagestory.API.Common.BakingProperties.Temp
+  id: Temp
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: Temp
+  nameWithType: BakingProperties.Temp
+  fullName: Vintagestory.API.Common.BakingProperties.Temp
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>160</jsondefault>-->
+
+    The temperature required to bake the item.
+  example: []
+  syntax:
+    content: public float? Temp
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public Temp As Single?
+- uid: Vintagestory.API.Common.BakingProperties.LevelFrom
+  commentId: F:Vintagestory.API.Common.BakingProperties.LevelFrom
+  id: LevelFrom
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: LevelFrom
+  nameWithType: BakingProperties.LevelFrom
+  fullName: Vintagestory.API.Common.BakingProperties.LevelFrom
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The initial value, from 0 to 1, that determines how cooked the item is.
+
+    When cooking an object with numerous cooking stages, these stages can be stacked using these values. Simply set the second stage's <xref href="Vintagestory.API.Common.BakingProperties.LevelFrom" data-throw-if-not-resolved="false"></xref> to the first stages <xref href="Vintagestory.API.Common.BakingProperties.LevelTo" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public float LevelFrom
+    return:
+      type: System.Single
+    content.vb: Public LevelFrom As Single
+- uid: Vintagestory.API.Common.BakingProperties.LevelTo
+  commentId: F:Vintagestory.API.Common.BakingProperties.LevelTo
+  id: LevelTo
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: LevelTo
+  nameWithType: BakingProperties.LevelTo
+  fullName: Vintagestory.API.Common.BakingProperties.LevelTo
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The final value, from 0 to 1, that determines how cooked the item is.
+
+    When the cooking value reaches this value, the collectible will change into the next item.
+
+    When cooking an object with numerous cooking stages, these stages can be stacked using these values. Simply set the second stage's <xref href="Vintagestory.API.Common.BakingProperties.LevelFrom" data-throw-if-not-resolved="false"></xref> to the first stages <xref href="Vintagestory.API.Common.BakingProperties.LevelTo" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public float LevelTo
+    return:
+      type: System.Single
+    content.vb: Public LevelTo As Single
+- uid: Vintagestory.API.Common.BakingProperties.StartScaleY
+  commentId: F:Vintagestory.API.Common.BakingProperties.StartScaleY
+  id: StartScaleY
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: StartScaleY
+  nameWithType: BakingProperties.StartScaleY
+  fullName: Vintagestory.API.Common.BakingProperties.StartScaleY
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The Y scale of this collectible when it begins cooking. Value will be linearly interpolated between this and <xref href="Vintagestory.API.Common.BakingProperties.EndScaleY" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public float StartScaleY
+    return:
+      type: System.Single
+    content.vb: Public StartScaleY As Single
+- uid: Vintagestory.API.Common.BakingProperties.EndScaleY
+  commentId: F:Vintagestory.API.Common.BakingProperties.EndScaleY
+  id: EndScaleY
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: EndScaleY
+  nameWithType: BakingProperties.EndScaleY
+  fullName: Vintagestory.API.Common.BakingProperties.EndScaleY
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The Y scale of this collectible when it has finished cooking. Value will be linearly interpolated between <xref href="Vintagestory.API.Common.BakingProperties.StartScaleY" data-throw-if-not-resolved="false"></xref> and this.
+  example: []
+  syntax:
+    content: public float EndScaleY
+    return:
+      type: System.Single
+    content.vb: Public EndScaleY As Single
+- uid: Vintagestory.API.Common.BakingProperties.ResultCode
+  commentId: F:Vintagestory.API.Common.BakingProperties.ResultCode
+  id: ResultCode
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: ResultCode
+  nameWithType: BakingProperties.ResultCode
+  fullName: Vintagestory.API.Common.BakingProperties.ResultCode
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Required</jsonoptional>-->
+
+    The code of the resulting collectible when this item finishes its cooking stage.
+  example: []
+  syntax:
+    content: public string ResultCode
+    return:
+      type: System.String
+    content.vb: Public ResultCode As String
+- uid: Vintagestory.API.Common.BakingProperties.InitialCode
+  commentId: F:Vintagestory.API.Common.BakingProperties.InitialCode
+  id: InitialCode
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: InitialCode
+  nameWithType: BakingProperties.InitialCode
+  fullName: Vintagestory.API.Common.BakingProperties.InitialCode
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Required</jsonoptional>-->
+
+    The code of the initial collectible that is being baked.
+  example: []
+  syntax:
+    content: public string InitialCode
+    return:
+      type: System.String
+    content.vb: Public InitialCode As String
+- uid: Vintagestory.API.Common.BakingProperties.LargeItem
+  commentId: F:Vintagestory.API.Common.BakingProperties.LargeItem
+  id: LargeItem
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: LargeItem
+  nameWithType: BakingProperties.LargeItem
+  fullName: Vintagestory.API.Common.BakingProperties.LargeItem
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>false</jsondefault>-->
+
+    If true, only one instance of this collectible can be baked at a time. If false, 4 of this collectible can be baked at a time.
+  example: []
+  syntax:
+    content: public bool LargeItem
+    return:
+      type: System.Boolean
+    content.vb: Public LargeItem As Boolean
+- uid: Vintagestory.API.Common.BakingProperties.ReadFrom(Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.BakingProperties.ReadFrom(Vintagestory.API.Common.ItemStack)
+  id: ReadFrom(Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.BakingProperties
+  langs:
+  - csharp
+  - vb
+  name: ReadFrom(ItemStack)
+  nameWithType: BakingProperties.ReadFrom(ItemStack)
+  fullName: Vintagestory.API.Common.BakingProperties.ReadFrom(Vintagestory.API.Common.ItemStack)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static BakingProperties ReadFrom(ItemStack stack)
+    parameters:
+    - id: stack
+      type: Vintagestory.API.Common.ItemStack
+    return:
+      type: Vintagestory.API.Common.BakingProperties
+    content.vb: Public Shared Function ReadFrom(stack As ItemStack) As BakingProperties
+  overload: Vintagestory.API.Common.BakingProperties.ReadFrom*
+references:
+- uid: Vintagestory.API.Common.EnumSmeltType.Bake
+  commentId: F:Vintagestory.API.Common.EnumSmeltType.Bake
+  href: Vintagestory.API.Common.EnumSmeltType.html#Vintagestory_API_Common_EnumSmeltType_Bake
+  name: Bake
+  nameWithType: EnumSmeltType.Bake
+  fullName: Vintagestory.API.Common.EnumSmeltType.Bake
+- uid: Vintagestory.API.Common.CombustibleProperties.SmeltingType
+  commentId: F:Vintagestory.API.Common.CombustibleProperties.SmeltingType
+  href: Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltingType
+  name: SmeltingType
+  nameWithType: CombustibleProperties.SmeltingType
+  fullName: Vintagestory.API.Common.CombustibleProperties.SmeltingType
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.BakingProperties.LevelFrom
+  commentId: F:Vintagestory.API.Common.BakingProperties.LevelFrom
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_LevelFrom
+  name: LevelFrom
+  nameWithType: BakingProperties.LevelFrom
+  fullName: Vintagestory.API.Common.BakingProperties.LevelFrom
+- uid: Vintagestory.API.Common.BakingProperties.LevelTo
+  commentId: F:Vintagestory.API.Common.BakingProperties.LevelTo
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_LevelTo
+  name: LevelTo
+  nameWithType: BakingProperties.LevelTo
+  fullName: Vintagestory.API.Common.BakingProperties.LevelTo
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.BakingProperties.EndScaleY
+  commentId: F:Vintagestory.API.Common.BakingProperties.EndScaleY
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_EndScaleY
+  name: EndScaleY
+  nameWithType: BakingProperties.EndScaleY
+  fullName: Vintagestory.API.Common.BakingProperties.EndScaleY
+- uid: Vintagestory.API.Common.BakingProperties.StartScaleY
+  commentId: F:Vintagestory.API.Common.BakingProperties.StartScaleY
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_StartScaleY
+  name: StartScaleY
+  nameWithType: BakingProperties.StartScaleY
+  fullName: Vintagestory.API.Common.BakingProperties.StartScaleY
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.BakingProperties.ReadFrom*
+  commentId: Overload:Vintagestory.API.Common.BakingProperties.ReadFrom
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_ReadFrom_Vintagestory_API_Common_ItemStack_
+  name: ReadFrom
+  nameWithType: BakingProperties.ReadFrom
+  fullName: Vintagestory.API.Common.BakingProperties.ReadFrom
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: Vintagestory.API.Common.BakingProperties
+  commentId: T:Vintagestory.API.Common.BakingProperties
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BakingProperties.html
+  name: BakingProperties
+  nameWithType: BakingProperties
+  fullName: Vintagestory.API.Common.BakingProperties

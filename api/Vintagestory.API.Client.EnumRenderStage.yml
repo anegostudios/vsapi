@@ -1,0 +1,493 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.EnumRenderStage
+  commentId: T:Vintagestory.API.Client.EnumRenderStage
+  id: EnumRenderStage
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.EnumRenderStage.AfterBlit
+  - Vintagestory.API.Client.EnumRenderStage.AfterFinalComposition
+  - Vintagestory.API.Client.EnumRenderStage.AfterOIT
+  - Vintagestory.API.Client.EnumRenderStage.AfterPostProcessing
+  - Vintagestory.API.Client.EnumRenderStage.Before
+  - Vintagestory.API.Client.EnumRenderStage.Done
+  - Vintagestory.API.Client.EnumRenderStage.OIT
+  - Vintagestory.API.Client.EnumRenderStage.Opaque
+  - Vintagestory.API.Client.EnumRenderStage.Ortho
+  - Vintagestory.API.Client.EnumRenderStage.ShadowFar
+  - Vintagestory.API.Client.EnumRenderStage.ShadowFarDone
+  - Vintagestory.API.Client.EnumRenderStage.ShadowNear
+  - Vintagestory.API.Client.EnumRenderStage.ShadowNearDone
+  langs:
+  - csharp
+  - vb
+  name: EnumRenderStage
+  nameWithType: EnumRenderStage
+  fullName: Vintagestory.API.Client.EnumRenderStage
+  type: Enum
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public enum EnumRenderStage
+    content.vb: Public Enum EnumRenderStage
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.EnumRenderStage.Before
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.Before
+  id: Before
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: Before
+  nameWithType: EnumRenderStage.Before
+  fullName: Vintagestory.API.Client.EnumRenderStage.Before
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Before any rendering has begun, use for setting up stuff during render
+  example: []
+  syntax:
+    content: Before = 0
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.Opaque
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.Opaque
+  id: Opaque
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: Opaque
+  nameWithType: EnumRenderStage.Opaque
+  fullName: Vintagestory.API.Client.EnumRenderStage.Opaque
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Opaque/Alpha tested rendering
+  example: []
+  syntax:
+    content: Opaque = 1
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.OIT
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.OIT
+  id: OIT
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: OIT
+  nameWithType: EnumRenderStage.OIT
+  fullName: Vintagestory.API.Client.EnumRenderStage.OIT
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Order independent transparency
+  example: []
+  syntax:
+    content: OIT = 2
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.AfterOIT
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.AfterOIT
+  id: AfterOIT
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: AfterOIT
+  nameWithType: EnumRenderStage.AfterOIT
+  fullName: Vintagestory.API.Client.EnumRenderStage.AfterOIT
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: To render the held item over water. If done in the opaque pass it would not render water behind it.
+  example: []
+  syntax:
+    content: AfterOIT = 3
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.ShadowFar
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.ShadowFar
+  id: ShadowFar
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: ShadowFar
+  nameWithType: EnumRenderStage.ShadowFar
+  fullName: Vintagestory.API.Client.EnumRenderStage.ShadowFar
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Shadow map
+  example: []
+  syntax:
+    content: ShadowFar = 4
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.ShadowFarDone
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.ShadowFarDone
+  id: ShadowFarDone
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: ShadowFarDone
+  nameWithType: EnumRenderStage.ShadowFarDone
+  fullName: Vintagestory.API.Client.EnumRenderStage.ShadowFarDone
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Shadow map done
+  example: []
+  syntax:
+    content: ShadowFarDone = 5
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.ShadowNear
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.ShadowNear
+  id: ShadowNear
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: ShadowNear
+  nameWithType: EnumRenderStage.ShadowNear
+  fullName: Vintagestory.API.Client.EnumRenderStage.ShadowNear
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Shadow map
+  example: []
+  syntax:
+    content: ShadowNear = 6
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.ShadowNearDone
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.ShadowNearDone
+  id: ShadowNearDone
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: ShadowNearDone
+  nameWithType: EnumRenderStage.ShadowNearDone
+  fullName: Vintagestory.API.Client.EnumRenderStage.ShadowNearDone
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Shadow map done
+  example: []
+  syntax:
+    content: ShadowNearDone = 7
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.AfterPostProcessing
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.AfterPostProcessing
+  id: AfterPostProcessing
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: AfterPostProcessing
+  nameWithType: EnumRenderStage.AfterPostProcessing
+  fullName: Vintagestory.API.Client.EnumRenderStage.AfterPostProcessing
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: After all 3d geometry has rendered and post processing of the frame is complete
+  example: []
+  syntax:
+    content: AfterPostProcessing = 8
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.AfterBlit
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.AfterBlit
+  id: AfterBlit
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: AfterBlit
+  nameWithType: EnumRenderStage.AfterBlit
+  fullName: Vintagestory.API.Client.EnumRenderStage.AfterBlit
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Scene has been rendered onto the default frame buffer, but not yet rendered UIs
+  example: []
+  syntax:
+    content: AfterBlit = 9
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.Ortho
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.Ortho
+  id: Ortho
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: Ortho
+  nameWithType: EnumRenderStage.Ortho
+  fullName: Vintagestory.API.Client.EnumRenderStage.Ortho
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Ortho mode for rendering GUIs and everything 2D
+  example: []
+  syntax:
+    content: Ortho = 10
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.AfterFinalComposition
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.AfterFinalComposition
+  id: AfterFinalComposition
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: AfterFinalComposition
+  nameWithType: EnumRenderStage.AfterFinalComposition
+  fullName: Vintagestory.API.Client.EnumRenderStage.AfterFinalComposition
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The post processing passes are merged with all 3d geometry and the scene is color graded
+  example: []
+  syntax:
+    content: AfterFinalComposition = 11
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.EnumRenderStage.Done
+  commentId: F:Vintagestory.API.Client.EnumRenderStage.Done
+  id: Done
+  parent: Vintagestory.API.Client.EnumRenderStage
+  langs:
+  - csharp
+  - vb
+  name: Done
+  nameWithType: EnumRenderStage.Done
+  fullName: Vintagestory.API.Client.EnumRenderStage.Done
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Scene is blitted onto the default frame buffer, buffers not yet swapped though so can still render to default FB
+  example: []
+  syntax:
+    content: Done = 12
+    return:
+      type: Vintagestory.API.Client.EnumRenderStage
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.EnumRenderStage
+  commentId: T:Vintagestory.API.Client.EnumRenderStage
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumRenderStage.html
+  name: EnumRenderStage
+  nameWithType: EnumRenderStage
+  fullName: Vintagestory.API.Client.EnumRenderStage
