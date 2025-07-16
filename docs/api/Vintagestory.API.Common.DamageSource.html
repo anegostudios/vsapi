@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class DamageSource
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Combat/DamageSource.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Combat/DamageSource.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -196,6 +196,38 @@ Class DamageSource
 
 
 
+  <h3 id="Vintagestory_API_Common_DamageSource_DamageOverTimeType" data-uid="Vintagestory.API.Common.DamageSource.DamageOverTimeType">
+  DamageOverTimeType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If <a class="xref" href="Vintagestory.API.Common.DamageSource.html#Vintagestory_API_Common_DamageSource_Duration">Duration</a> greater than zero, this damage will be turned into damage overt time effect with this type.<br>
+This is used to look for specific types of DoT effects. For example it can be used to stop bleeding with bandages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DamageOverTimeType</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_DamageSource_DamageTier" data-uid="Vintagestory.API.Common.DamageSource.DamageTier">
   DamageTier
   
@@ -215,6 +247,38 @@ Class DamageSource
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_DamageSource_Duration" data-uid="Vintagestory.API.Common.DamageSource.Duration">
+  Duration
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If is greater than zero, damage will be turned into damage over time and will be fully applied over this time.<br>
+If <a class="xref" href="Vintagestory.API.Common.DamageSource.html#Vintagestory_API_Common_DamageSource_TicksPerDuration">TicksPerDuration</a> is set to 1, it will mean that damage will just be delayed by <a class="xref" href="Vintagestory.API.Common.DamageSource.html#Vintagestory_API_Common_DamageSource_Duration">Duration</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan Duration</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
     <dd></dd>
   </dl>
 
@@ -258,8 +322,8 @@ Class DamageSource
 
 
 
-  <h3 id="Vintagestory_API_Common_DamageSource_IngoreInvFrames" data-uid="Vintagestory.API.Common.DamageSource.IngoreInvFrames">
-  IngoreInvFrames
+  <h3 id="Vintagestory_API_Common_DamageSource_IgnoreInvFrames" data-uid="Vintagestory.API.Common.DamageSource.IgnoreInvFrames">
+  IgnoreInvFrames
   
   </h3>
 
@@ -267,7 +331,7 @@ Class DamageSource
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IngoreInvFrames</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IgnoreInvFrames</code></pre>
   </div>
 
 
@@ -443,6 +507,37 @@ Class DamageSource
 
 
 
+  <h3 id="Vintagestory_API_Common_DamageSource_TicksPerDuration" data-uid="Vintagestory.API.Common.DamageSource.TicksPerDuration">
+  TicksPerDuration
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If <a class="xref" href="Vintagestory.API.Common.DamageSource.html#Vintagestory_API_Common_DamageSource_Duration">Duration</a> greater than zero, total damage will be split into this many portions, each applied in <a class="xref" href="Vintagestory.API.Common.DamageSource.html#Vintagestory_API_Common_DamageSource_Duration">Duration</a>/<a class="xref" href="Vintagestory.API.Common.DamageSource.html#Vintagestory_API_Common_DamageSource_TicksPerDuration">TicksPerDuration</a> time after another.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TicksPerDuration</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_DamageSource_Type" data-uid="Vintagestory.API.Common.DamageSource.Type">
   Type
   
@@ -495,6 +590,41 @@ Class DamageSource
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_DamageSource_DamageOverTimeTypeEnum_" data-uid="Vintagestory.API.Common.DamageSource.DamageOverTimeTypeEnum*"></a>
+
+  <h3 id="Vintagestory_API_Common_DamageSource_DamageOverTimeTypeEnum" data-uid="Vintagestory.API.Common.DamageSource.DamageOverTimeTypeEnum">
+  DamageOverTimeTypeEnum
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumDamageOverTimeEffectType DamageOverTimeTypeEnum { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumDamageOverTimeEffectType.html">EnumDamageOverTimeEffectType</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

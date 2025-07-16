@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -177,11 +177,12 @@ namespace Vintagestory.API.Common
             {
                 ElementPose elem = cachedPoses[i];
 
-                if (elem.ForElement.AttachmentPoints != null)
+                var attachmentPoints = elem.ForElement.AttachmentPoints;
+                if (attachmentPoints != null)
                 {
-                    for (int j = 0; j < elem.ForElement.AttachmentPoints.Length; j++)
+                    for (int j = 0; j < attachmentPoints.Length; j++)
                     {
-                        AttachmentPoint apoint = elem.ForElement.AttachmentPoints[j];
+                        AttachmentPoint apoint = attachmentPoints[j];
                         AttachmentPointByCode[apoint.Code] = new AttachmentPointAndPose() {
                             AttachPoint = apoint,
                             CachedPose = elem
@@ -366,9 +367,11 @@ namespace Vintagestory.API.Common
 
             foreach (var val in AttachmentPointByCode)
             {
+                var cachedMatrix = val.Value.CachedPose.AnimModelMatrix;
+                var animMatrix = val.Value.AnimModelMatrix;
                 for (int i = 0; i < 16; i++)
                 {
-                    val.Value.AnimModelMatrix[i] = val.Value.CachedPose.AnimModelMatrix[i];
+                    animMatrix[i] = cachedMatrix[i];
                 }
             }
         }

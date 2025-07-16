@@ -46,6 +46,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public override int Id { get { return BlockId; } }
 
+        public BlockTagArray Tags = BlockTagArray.Empty;
+
         /// <summary>
         /// Returns EnumItemClass.Block
         /// </summary>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumGetClimateMode
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The type of climate values you wish to receive <a href=https://github.com/anegostudios/vsapi/blob/master///Common/API/IBlockAccessor.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>The type of climate values you wish to receive <a href="https://github.com/anegostudios/vsapi/blob/master///Common/API/IBlockAccessor.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -119,24 +119,19 @@ public enum EnumGetClimateMode</code></pre>
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_Common_EnumGetClimateMode_WorldGenValues"><code>WorldGenValues = 0</code></dt>
-  
-  <dd><p>The values generate during world generation, these are loosely considered as yearly averages</p>
+    <dd><p>The values generate during world generation, these are loosely considered as yearly averages</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumGetClimateMode_NowValues"><code>NowValues = 1</code></dt>
-  
-  <dd><p>The values at the current calendar time</p>
+    <dd><p>The values at the current calendar time</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumGetClimateMode_ForSuppliedDateValues"><code>ForSuppliedDateValues = 2</code></dt>
-  
-  <dd><p>The values at the supplied calendar time, supplied as additional arg</p>
+    <dd><p>The values at the supplied calendar time, supplied as additional arg</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumGetClimateMode_ForSuppliedDate_TemperatureOnly"><code>ForSuppliedDate_TemperatureOnly = 3</code></dt>
-  
-  <dd><p>The values at the supplied calendar time, ignoring rainfall etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value</p>
+    <dd><p>The values at the supplied calendar time, ignoring rainfall etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumGetClimateMode_ForSuppliedDate_TemperatureRainfallOnly"><code>ForSuppliedDate_TemperatureRainfallOnly = 4</code></dt>
-  
-  <dd><p>The values at the supplied calendar time, ignoring forest cover etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value and no rain</p>
+    <dd><p>The values at the supplied calendar time, ignoring forest cover etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value and no rain</p>
 </dd>
   </dl>
 

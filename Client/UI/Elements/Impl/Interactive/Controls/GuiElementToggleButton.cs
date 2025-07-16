@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using Vintagestory.API.Config;
 
@@ -93,7 +93,7 @@ namespace Vintagestory.API.Client
 
             // Pretty elaborate way of vertically centering the text. Le sigh.
             double textexYBearing = Font.GetTextExtents(GetText()).YBearing;
-            nonPressedYOffset = (-Font.GetFontExtents().Ascent - textexYBearing + (Bounds.InnerHeight + textexYBearing) / 2 - 2) / RuntimeEnv.GUIScale;
+            nonPressedYOffset = (-Font.GetFontExtents().Ascent - textexYBearing + (Bounds.InnerHeight + textexYBearing) / 2 - 2);
 
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + nonPressedYOffset, EnumTextOrientation.Center);
 
@@ -126,7 +126,7 @@ namespace Vintagestory.API.Client
 
             // Pretty elaborate way of vertically centering the text. Le sigh.
             double textexYBearing = Font.GetTextExtents(GetText()).YBearing;
-            pressedYOffset = (-Font.GetFontExtents().Ascent - textexYBearing + (Bounds.InnerHeight + textexYBearing) / 2) / RuntimeEnv.GUIScale;
+            pressedYOffset = (-Font.GetFontExtents().Ascent - textexYBearing + (Bounds.InnerHeight + textexYBearing) / 2);
 
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + pressedYOffset, EnumTextOrientation.Center);
 
@@ -151,7 +151,7 @@ namespace Vintagestory.API.Client
             double[] prevcolor = this.Font.Color;
             Font.Color = GuiStyle.ActiveButtonTextColor;
 
-            DrawMultilineTextAt(ctx, Bounds.absPaddingX, 0, EnumTextOrientation.Center);
+            DrawMultilineTextAt(ctx, Bounds.absPaddingX + pressedYOffset + scaled(4), 0, EnumTextOrientation.Center);
 
             if (icon != null && icon.Length > 0)
             {

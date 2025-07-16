@@ -226,6 +226,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         IModLoader ModLoader { get; }
 
+        /// <summary>
+        /// API for converting between registry object tags and tag ids, and for registering new tags
+        /// </summary>
+        ITagRegistry TagRegistry { get; }
+
 
         /// <summary>
         /// Registers a new entity config for given entity class

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Enum EnumModType
   </div>
 
   <div class="markdown summary"><p>Describes the type of a mod. Allows easy recognition and limiting of
-what any particular mod can do. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/API/ModInfo.cs>Open in GitHub</a></p>
+what any particular mod can do. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/API/ModInfo.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -129,17 +129,14 @@ what any particular mod can do. <a href=https://github.com/anegostudios/vsapi/bl
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_Common_EnumModType_Code"><code>Code = 2</code></dt>
-  
-  <dd><p>Can modify existing assets, add new content and make use of C#
+    <dd><p>Can modify existing assets, add new content and make use of C#
 source files (.cs) and pre-compiled assemblies (.dll).</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumModType_Content"><code>Content = 1</code></dt>
-  
-  <dd><p>Can modify any existing assets, or add new content, but no code.</p>
+    <dd><p>Can modify any existing assets, or add new content, but no code.</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumModType_Theme"><code>Theme = 0</code></dt>
-  
-  <dd><p>Makes only theme changes (texture, shape, sound, music) to existing
+    <dd><p>Makes only theme changes (texture, shape, sound, music) to existing
 game or mod assets / content without adding new content or code.</p>
 </dd>
   </dl>

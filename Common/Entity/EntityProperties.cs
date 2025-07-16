@@ -36,6 +36,11 @@ namespace Vintagestory.API.Common.Entities
         public string Class;
 
         /// <summary>
+        /// List of entity tags ids
+        /// </summary>
+        public EntityTagArray Tags = EntityTagArray.Empty;
+
+        /// <summary>
         /// Natural habitat of the entity. Decides whether to apply gravity or not
         /// </summary>
         public EnumHabitat Habitat = EnumHabitat.Land;
@@ -206,6 +211,7 @@ namespace Vintagestory.API.Common.Entities
             return new EntityProperties()
             {
                 Code = Code.Clone(),
+                Tags = Tags,
                 Class = Class,
                 Color = Color,
                 Habitat = Habitat,

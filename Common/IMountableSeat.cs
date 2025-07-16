@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -128,6 +128,11 @@ namespace Vintagestory.API.Common
         /// The entity which this mountable really is (for example raft, boat or elk) - may be null if the IMountable is a bed or other block
         /// </summary>
         Entity OnEntity { get; }
+
+        /// <summary>
+        /// The controls of the controlling seat (if any)
+        /// </summary>
+        EntityControls ControllingControls { get; }
     }
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -139,11 +139,11 @@ namespace Vintagestory.API.Common
                         entityForLogging.World.Logger.Debug(entityCode + " attempted to play an animation code which its shape does not have: \"" + missingAnimCode + "\"");
                     }
                 }
-                }
+            }
 
             var activeAnims = this.activeOrRunning;
             for (int i = activeAnims.Count - 1; i >= 0; i--)
-                {
+            {
                 RunningAnimation anim = activeAnims[i];
                 if (anim.Active && !activeAnimationsByAnimCode.ContainsKey(anim.Animation.Code))   // wasActive and now should not be active because it is no longer in activeAnimationsByCode
                 {

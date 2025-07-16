@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class Entity
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The basic class for all entities in the game <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/Entity.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>The basic class for all entities in the game <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/Entity.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -1676,6 +1676,40 @@ These behaviors may have their regular ticking (including ShouldExecute() etc) c
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_Tags" data-uid="Vintagestory.API.Common.Entities.Entity.Tags">
+  Tags
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>List of current entity tags. Synced after initialization. Synchronization can be triggered by calling 'MarkTagDirty()' method.
+<br>Dont set on client side, unless you setting it to the same value on server side at the same time.
+<br>If set only on server side, 'MarkTagDirty()' should be called to sync value with clients. This will trigger full entity synchronization, which can be performance heavy.
+<br>Tags are not saved into save file, and always loaded from entity type when entity is created. Indexes of tags are dynamically assigned on game start, and are not consistent between saves.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityTagArray Tags</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
     <dd></dd>
   </dl>
 
@@ -3440,7 +3474,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual EntityBehavior GetBehavior(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual EntityBehavior? GetBehavior(string name)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3477,7 +3511,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual T GetBehavior&lt;T&gt;() where T : EntityBehavior</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual T? GetBehavior&lt;T&gt;() where T : EntityBehavior</code></pre>
   </div>
 
 
@@ -4029,6 +4063,37 @@ position in relation to the target position of the schematic to be imported.</p>
 
 
 
+  <a id="Vintagestory_API_Common_Entities_Entity_IsFirstTick_" data-uid="Vintagestory.API.Common.Entities.Entity.IsFirstTick*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_IsFirstTick" data-uid="Vintagestory.API.Common.Entities.Entity.IsFirstTick">
+  IsFirstTick()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFirstTick()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_Entity_MarkShapeModified_" data-uid="Vintagestory.API.Common.Entities.Entity.MarkShapeModified*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_MarkShapeModified" data-uid="Vintagestory.API.Common.Entities.Entity.MarkShapeModified">
@@ -4041,6 +4106,33 @@ position in relation to the target position of the schematic to be imported.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void MarkShapeModified()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_MarkTagsDirty_" data-uid="Vintagestory.API.Common.Entities.Entity.MarkTagsDirty*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_MarkTagsDirty" data-uid="Vintagestory.API.Common.Entities.Entity.MarkTagsDirty">
+  MarkTagsDirty()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Triggers full entity synchronization, including entity tags. Should not be called too frequently.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MarkTagsDirty()</code></pre>
   </div>
 
 

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -321,7 +321,20 @@ namespace Vintagestory.API.Common
 
         public bool Matches(int currentActivities)
         {
-            return (TriggeredBy?.MatchExact == true) ? (currentActivities == withActivitiesMerged) : ((currentActivities & withActivitiesMerged) > 0);
+            bool result;
+            if (TriggeredBy?.MatchExact == true)
+            {
+                result = (currentActivities == withActivitiesMerged);
+            }
+            else
+            {   result = ((currentActivities & withActivitiesMerged) > 0);
+                if (result && (withActivitiesMerged & (int)EnumEntityActivity.Fly) != 0)
+                {
+                    // Doesn't make sense to match Fly when we are mounted
+                    if ((currentActivities & (int)EnumEntityActivity.Mounted) != 0) result = false;
+                }
+            }
+            return result;
         }
 
         /// <summary>

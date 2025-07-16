@@ -75,6 +75,7 @@ namespace Vintagestory.API.Common
 
 
     public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, ref string claimant, EnumWorldAccessResponse response);
+    public delegate EnumWorldAccessResponse TestBlockAccessClaimDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, ref string claimant, LandClaim claim, EnumWorldAccessResponse response);
 
     /// <summary>
     /// Events that are available on the server and the client
@@ -93,6 +94,7 @@ namespace Vintagestory.API.Common
         /// Triggered when block access is tested, allows you to override the engine response
         /// </summary>
         event TestBlockAccessDelegate OnTestBlockAccess;
+        event TestBlockAccessClaimDelegate OnTestBlockAccessClaim;
 
         /// <summary>
         /// Triggered when a new entity spawned
@@ -138,7 +140,7 @@ namespace Vintagestory.API.Common
         event OnGetWindSpeedDelegate OnGetWindSpeed;
 
         /// <summary>
-        /// Called when a player tries to gridcraft something 
+        /// Called when a player tries to gridcraft something
         /// </summary>
         event MatchGridRecipeDelegate MatchesGridRecipe;
 

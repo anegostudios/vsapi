@@ -1,7 +1,5 @@
 ﻿using System;
 
-#nullable disable
-
 namespace Vintagestory.API.Common
 {
     [Flags]
@@ -9,7 +7,7 @@ namespace Vintagestory.API.Common
     {
         None = 0,
         BuildOrBreak = 1,
-        Use = 2
+        Use = 2,
+        Traverse = 4
     }
-
 }

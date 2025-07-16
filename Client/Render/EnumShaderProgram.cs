@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Client
 {
@@ -118,6 +118,7 @@ namespace Vintagestory.API.Client
         Guigear = 38,
         Ssao = 39,
         Bilateralblur = 40,
-        Chunkliquiddepth=41
+        Chunkliquiddepth = 41,
+        Chunkshadowmap_NoSSBOs = 42
     }
 }

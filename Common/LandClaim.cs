@@ -32,7 +32,7 @@ namespace Vintagestory.API.Common
         OkGrantedGroup
     }
 
-    
+
     [ProtoContract]
     public class LandClaim
     {
@@ -67,6 +67,8 @@ namespace Vintagestory.API.Common
         public Dictionary<string, string> PermittedPlayerLastKnownPlayerName = new Dictionary<string, string>();
         [ProtoMember(11)]
         public bool AllowUseEveryone;
+        [ProtoMember(12)]
+        public bool AllowTraverseEveryone;
 
         public BlockPos Center
         {

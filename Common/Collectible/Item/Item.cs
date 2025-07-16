@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
+using Vintagestory.API.Datastructures;
 
 #nullable disable
 
@@ -16,6 +17,8 @@ namespace Vintagestory.API.Common
         /// The unique number of the item, dynamically assigned by the game
         /// </summary>
         public override int Id { get { return ItemId; } }
+
+        public ItemTagArray Tags = ItemTagArray.Empty;
 
         /// <summary>
         /// The type of the collectible object

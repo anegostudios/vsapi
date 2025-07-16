@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Class BlockBehaviorUnstableFalling
 
   <div class="markdown summary"><p>Spawns an EntityBlockFalling when the user places a block that has air underneath it or if a neighbor block is
 removed and causes air to be underneath it. Also has optional functionality to prevent a block being placed if it is unstable.
-Uses the code &quot;UnstableFalling&quot;. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///BlockBehavior/BehaviorUnstableFalling.cs>Open in GitHub</a></p>
+Uses the code &quot;UnstableFalling&quot;. <a href="https://github.com/anegostudios/vssurvivalmod/blob/master///BlockBehavior/BehaviorUnstableFalling.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -109,6 +109,7 @@ Uses the code &quot;UnstableFalling&quot;. <a href=https://github.com/anegostudi
 [AddDocumentationProperty(&quot;AttachmentAreas&quot;, &quot;A list of attachment areas per face that determine what blocks can be attached to.&quot;, &quot;System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.RotatableCube}&quot;, &quot;Optional&quot;, &quot;None&quot;, false)]
 [AddDocumentationProperty(&quot;AttachmentArea&quot;, &quot;A single attachment area that determine what blocks can be attached to. Used if AttachmentAreas is not supplied.&quot;, &quot;Vintagestory.API.Mathtools.Cuboidi&quot;, &quot;Optional&quot;, &quot;None&quot;, false)]
 [AddDocumentationProperty(&quot;AllowUnstablePlacement&quot;, &quot;Can this block be placed in an unstable position?&quot;, &quot;System.Boolean&quot;, &quot;Optional&quot;, &quot;False&quot;, true)]
+[AddDocumentationProperty(&quot;IgnorePlaceTest&quot;, &quot;(Obsolete) Please use the AllowUnstablePlacement attribute instead.&quot;, &quot;System.Boolean&quot;, &quot;Obsolete&quot;, &quot;&quot;, false)]
 public class BlockBehaviorUnstableFalling : BlockBehavior</code></pre>
   </div>
 
@@ -157,7 +158,7 @@ public class BlockBehaviorUnstableFalling : BlockBehavior</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">String[]</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String[]</a></dt>
     <dd></dd>
   </dl>
 
@@ -399,39 +400,6 @@ private AssetLocation fallSound</code></pre>
 
 
 
-  <h3 id="Vintagestory_GameContent_BlockBehaviorUnstableFalling_ignorePlaceTest" data-uid="Vintagestory.GameContent.BlockBehaviorUnstableFalling.ignorePlaceTest">
-  ignorePlaceTest (Optional) (Default: False)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>If true, then the block can be placed even in an position where it'll be unstable.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
-private bool ignorePlaceTest</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_GameContent_BlockBehaviorUnstableFalling_impactDamageMul" data-uid="Vintagestory.GameContent.BlockBehaviorUnstableFalling.impactDamageMul">
   impactDamageMul (Optional) (Default: 1)
   
@@ -453,6 +421,38 @@ private float impactDamageMul</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_BlockBehaviorUnstableFalling_IgnorePlaceTest" data-uid="Vintagestory.GameContent.BlockBehaviorUnstableFalling.IgnorePlaceTest">
+  IgnorePlaceTest (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>(Obsolete) Please use the AllowUnstablePlacement attribute instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs"></code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

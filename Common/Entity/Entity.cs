@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -11,6 +11,7 @@ using System.Text;
 
 #nullable disable
 using static Vintagestory.API.Common.EntityAgent;
+using System.Linq;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -136,6 +137,16 @@ namespace Vintagestory.API.Common.Entities
         /// <br/>Note 2: Straw Dummy we count as a Creature, because weapons can target it and bees can attack it. In contrast, Armor Stand we count as Inanimate, because nothing should ever attack or target it.
         /// </summary>
         public virtual bool IsCreature { get { return false; } }
+
+        /// <summary>
+        /// List of current entity tags. Synced after initialization. Synchronization can be triggered by calling 'MarkTagDirty()' method.
+        /// <br/>Dont set on client side, unless you setting it to the same value on server side at the same time.
+        /// <br/>If set only on server side, 'MarkTagDirty()' should be called to sync value with clients. This will trigger full entity synchronization, which can be performance heavy.
+        /// <br/>Tags are not saved into save file, and always loaded from entity type when entity is created. Indexes of tags are dynamically assigned on game start, and are not consistent between saves.
+        /// </summary>
+        public EntityTagArray Tags = EntityTagArray.Empty;
+
+        internal bool tagsDirty = false;
 
         public virtual bool CanStepPitch => Properties.Habitat != EnumHabitat.Air;
         public virtual bool CanSwivel => Properties.Habitat != EnumHabitat.Air && (Properties.Habitat != EnumHabitat.Land || !Swimming);
@@ -502,7 +513,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual double LadderFixDelta { get { return 0D; } }
 
         /// <summary>
-        /// The chance that this entity, walking or jumping on or falling onto a block, will trigger a block-update - so potentially unstable dirt or sand falling, avalanche etc. 
+        /// The chance that this entity, walking or jumping on or falling onto a block, will trigger a block-update - so potentially unstable dirt or sand falling, avalanche etc.
         /// </summary>
         public virtual float ImpactBlockUpdateChance { get; set; }   // (Here for performance reasons! radfast 6.2.25  This is read every tick for every entity on the ground, maybe even more than once if the entity is covering 2 or 4 blocks. See Block.OnEntityCollide().)
 
@@ -555,6 +566,7 @@ namespace Vintagestory.API.Common.Entities
             Properties = properties;
             Class = properties.Class;
             this.InChunkIndex3d = InChunkIndex3d;
+            Tags = properties.Tags;
 
             Stats.Initialize(api);
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
@@ -602,6 +614,16 @@ namespace Vintagestory.API.Common.Entities
                     }
                 });
             }
+
+            /*if (WatchedAttributes.HasAttribute("generation"))
+            {
+                int generation = WatchedAttributes.GetAsInt("generation");
+                if (generation >= 10)
+                {
+                    EntityTagArray domesticatedTag = Api.TagRegistry.EntityTagsToTagArray("domesticated");
+                    Tags |= domesticatedTag;
+                }
+            }*/
 
             if (Properties.CollisionBoxSize != null || properties.SelectionBoxSize != null)
             {
@@ -900,7 +922,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns>True if the entity actually received damage</returns>
         public virtual bool ReceiveDamage(DamageSource damageSource, float damage)
         {
-            if ((!Alive || IsActivityRunning("invulnerable") && !damageSource.IngoreInvFrames) && damageSource.Type != EnumDamageType.Heal) return false;
+            if ((!Alive || IsActivityRunning("invulnerable") && !damageSource.IgnoreInvFrames) && damageSource.Type != EnumDamageType.Heal) return false;
 
             if (ShouldReceiveDamage(damageSource, damage)) {
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)
@@ -927,11 +949,11 @@ namespace Vintagestory.API.Common.Entities
                     }
 
                     Vec3d dir = (SidedPos.XYZ - damageSource.GetSourcePosition()).Normalize();
-                    
+
                     if (verticalAttack)
                     {
                         dir.Y = 0.05f;
-                        dir.Normalize(); 
+                        dir.Normalize();
                     } else
                     {
                         dir.Y = 0.7f;
@@ -971,6 +993,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
 
+        int prevInvulnerableTime;
         /// <summary>
         /// Called every 1/75 second
         /// </summary>
@@ -986,9 +1009,10 @@ namespace Vintagestory.API.Common.Entities
             if (World.Side == EnumAppSide.Client)
             {
                 int val = RemainingActivityTime("invulnerable");
-                if (val >= 0)
+                if (prevInvulnerableTime != val)
                 {
                     RenderColor = ColorUtil.ColorOverlay(HurtColor, ColorUtil.WhiteArgb, 1f - val / 500f);
+                    prevInvulnerableTime = val;
                 }
 
                 alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
@@ -1717,7 +1741,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public virtual EntityBehavior GetBehavior(string name)
+        public virtual EntityBehavior? GetBehavior(string name)
         {
             var behaviors = SidedProperties.Behaviors;
             for (int i = 0; i < behaviors.Count; i++)
@@ -1731,7 +1755,7 @@ namespace Vintagestory.API.Common.Entities
         /// Returns the first behavior instance for given entity of given type. Returns null if it doesn't exist.
         /// </summary>
         /// <returns></returns>
-        public virtual T GetBehavior<T>() where T : EntityBehavior
+        public virtual T? GetBehavior<T>() where T : EntityBehavior
         {
             var behaviors = SidedProperties.Behaviors;
             for (int i = 0; i < behaviors.Count; i++)
@@ -1796,7 +1820,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual int RemainingActivityTime(string key)
         {
             ActivityTimers.TryGetValue(key, out long val);
-            return (int)(val - World.ElapsedMilliseconds);
+            return (int)Math.Max(0, (val - World.ElapsedMilliseconds));
         }
 
         /// <summary>
@@ -1947,11 +1971,17 @@ namespace Vintagestory.API.Common.Entities
 
             Stats.FromTreeAttributes(WatchedAttributes);
 
+            if (isSync)
+            {
+                Tags = EntityTagArray.FromBytes(reader);
+
+                var seatControls = SidedProperties != null ? GetInterface<IMountable>()?.ControllingControls : null;
+                int controlsSerialized = reader.ReadInt32();
+                seatControls?.FromInt(controlsSerialized);
+            }
 
             // Any new data loading added here should not be loaded if below version 1.8 or
             // you might get corrupt data from old binary animation data
-
-
         }
 
 
@@ -2022,6 +2052,14 @@ namespace Vintagestory.API.Common.Entities
                 AnimManager.ToAttributes(tree, forClient);
                 tree.ToBytes(writer);
             }
+
+            if (forClient)
+            {
+                Tags.ToBytes(writer);
+
+                var seatControls = SidedProperties != null ? GetInterface<IMountable>()?.ControllingControls : null;
+                writer.Write(seatControls == null ? 0 : seatControls.ToInt());
+            }
         }
 
         /// <summary>
@@ -2084,6 +2122,8 @@ namespace Vintagestory.API.Common.Entities
 
                 AnimManager.ActiveAnimationsByAnimCode.Clear();
                 AnimManager.StartAnimation("die");
+
+                WatchedAttributes.SetDouble("deathTotalHours", Api.World.Calendar.TotalHours);
 
                 if (reason == EnumDespawnReason.Death && damageSourceForDeath != null && World.Side == EnumAppSide.Server) {
                     WatchedAttributes.SetInt("deathReason", (int)damageSourceForDeath.Source);
@@ -2306,6 +2346,12 @@ namespace Vintagestory.API.Common.Entities
             {
                 infotext.AppendLine("<font color=\"#bbbbbb\">Id:" + EntityId + "</font>");
                 infotext.AppendLine("<font color=\"#bbbbbb\">Code: " + Code + "</font>");
+
+                IEnumerable<string> tags = Tags.ToArray().Select(Api.TagRegistry.EntityTagIdToTag).Order();
+                if (tags.Any())
+                {
+                    infotext.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
+                }
             }
 
             return infotext.ToString();
@@ -2383,6 +2429,16 @@ namespace Vintagestory.API.Common.Entities
             }
 
             return dist;
+        }
+
+        /// <summary>
+        /// Triggers full entity synchronization, including entity tags. Should not be called too frequently.
+        /// </summary>
+        public void MarkTagsDirty() => tagsDirty = true;
+
+        public bool IsFirstTick()
+        {
+            return PreviousServerPos.X == 0 && PreviousServerPos.Y == 0 && PreviousServerPos.Z == 0;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1600,7 +1600,17 @@ namespace Vintagestory.API.Common
 
                 if (healthChange != 0)
                 {
-                    byEntity.ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = healthChange > 0 ? EnumDamageType.Heal : EnumDamageType.Poison }, Math.Abs(healthChange));
+                    float durationSec = slot.Itemstack?.Collectible?.Attributes?["eatHealthEffectDurationSec"].AsFloat(0) ?? 0;
+                    int ticks = slot.Itemstack?.Collectible?.Attributes?["eatHealthEffectTicks"].AsInt(1) ?? 1;
+
+                    byEntity.ReceiveDamage(new DamageSource()
+                    {
+                        Source = EnumDamageSource.Internal,
+                        Type = healthChange > 0 ? EnumDamageType.Heal : EnumDamageType.Poison,
+                        Duration = TimeSpan.FromSeconds(durationSec),
+                        TicksPerDuration = ticks,
+                        DamageOverTimeTypeEnum = healthChange > 0 ? EnumDamageOverTimeEffectType.Unknown : EnumDamageOverTimeEffectType.Poison
+                    }, Math.Abs(healthChange));
                 }
 
                 slot.MarkDirty();

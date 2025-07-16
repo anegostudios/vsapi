@@ -1170,7 +1170,7 @@ namespace Vintagestory.API.Common
                         if (OriginalPos != null)
                         {
                             var prevOffset = entity.WatchedAttributes.GetBlockPos("importOffset", Zero);
-                            entity.WatchedAttributes.SetBlockPos("importOffset", startPos - OriginalPos);
+                            entity.WatchedAttributes.SetBlockPos("importOffset", startPos - OriginalPos + prevOffset);
                         }
                         if (worldForCollectibleResolve.GetEntityType(entity.Code) != null) // Can be null if its a no longer existent mob type
                         {

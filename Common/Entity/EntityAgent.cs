@@ -1,5 +1,9 @@
-﻿using System;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -64,9 +68,15 @@ namespace Vintagestory.API.Common
         /// </summary>
         public long HerdId
         {
-            get { return WatchedAttributes.GetLong("herdId"); }
-            set { WatchedAttributes.SetLong("herdId", value); }
+            get => herdId;
+            set
+            {
+                WatchedAttributes.SetLong("herdId", value);
+                herdId = value;
+            }
         }
+
+        protected long herdId = 0;
 
         protected EntityControls controls;
         protected EntityControls servercontrols;
@@ -139,7 +149,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-
+            herdId = WatchedAttributes.GetLong("herdId", 0);
         }
 
 
@@ -213,7 +223,7 @@ namespace Vintagestory.API.Common
             if (WatchedAttributes.HasAttribute("mountedOn"))
             {
                 var mountable = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
-                if (MountedOn != null && MountedOn.Entity?.EntityId != mountable.Entity?.EntityId)
+                if (MountedOn != null && mountable != null && MountedOn.Entity?.EntityId != mountable.Entity?.EntityId)
                 {
                     var seat = MountedOn.MountSupplier.GetSeatOfMountedEntity(this);
                     if (seat != null) seat.DoTeleportOnUnmount = false;
@@ -894,6 +904,22 @@ namespace Vintagestory.API.Common
             }
 
             return tolerate;
+        }
+
+        public override string GetInfoText()
+        {
+            StringBuilder infotext = new StringBuilder();
+
+            infotext.Append(base.GetInfoText());
+
+            var capi = Api as ICoreClientAPI;
+            if (capi != null && capi.Settings.Bool["extendedDebugInfo"])
+            {
+                infotext.AppendLine("<font color=\"#bbbbbb\">Herd id: " + HerdId + "</font>");
+                if (DebugAttributes.HasAttribute("AI Tasks")) infotext.AppendLine($"<font color=\"#bbbbbb\">AI tasks: {DebugAttributes.GetString("AI Tasks")}</font>");
+            }
+
+            return infotext.ToString();
         }
     }
 }

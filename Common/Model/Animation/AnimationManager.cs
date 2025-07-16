@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -260,11 +260,10 @@ namespace Vintagestory.API.Common
             HashSet<string> toKeep = new HashSet<string>();
             
             string active = "";
-            int mask = ~(1 << 31); // Because I fail to get the sign bit transmitted correctly over the network T_T
 
             for (int i = 0; i < activeAnimationsCount; i++)
             {
-                uint crc32 = (uint)(activeAnimations[i] & mask);
+                uint crc32 = (uint)(activeAnimations[i]);
 
                 if (entity.Properties.Client.AnimationsByCrc32.TryGetValue(crc32, out AnimationMetaData animmetadata))
                 {
@@ -279,7 +278,6 @@ namespace Vintagestory.API.Common
 
                 if (entity.Properties.Client.LoadedShapeForEntity.AnimationsByCrc32.TryGetValue(crc32, out Animation anim))
                 {
-
                     toKeep.Add(anim.Code);
 
                     if (ActiveAnimationsByAnimCode.ContainsKey(anim.Code)) continue;

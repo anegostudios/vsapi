@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumCombination
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Used to define how variant types interact with each other to create unique objects. <a href=https://github.com/anegostudios/vsapi/blob/master///Math/EnumCombination.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>Used to define how variant types interact with each other to create unique objects. <a href="https://github.com/anegostudios/vsapi/blob/master///Math/EnumCombination.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -129,16 +129,13 @@ public enum EnumCombination</code></pre>
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_MathTools_EnumCombination_Add"><code>Add = 0</code></dt>
-  
-  <dd><p>This variant type will ignore all other variant types. Each state is appended onto the object's code, without any other variant types.</p>
+    <dd><p>This variant type will ignore all other variant types. Each state is appended onto the object's code, without any other variant types.</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumCombination_Multiply"><code>Multiply = 1</code></dt>
-  
-  <dd><p>Default behavior - This variant's states will be enumerated with all other variant states that have this combination.</p>
+    <dd><p>Default behavior - This variant's states will be enumerated with all other variant states that have this combination.</p>
 </dd>
     <dt id="Vintagestory_API_MathTools_EnumCombination_SelectiveMultiply"><code>SelectiveMultiply = 2</code></dt>
-  
-  <dd><p>This variant's states will be enumerated only with the selected variant group. You must select another variant code using the 'onVariant' property.</p>
+    <dd><p>This variant's states will be enumerated only with the selected variant group. You must select another variant code using the 'onVariant' property.</p>
 </dd>
   </dl>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumAICreatureType
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Types of creatures used for pathfinding. Humanoids prefer taking paths. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/EnumAICreatureType.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>Types of creatures used for pathfinding. Humanoids prefer taking paths. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/EnumAICreatureType.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -119,24 +119,19 @@ public enum EnumAICreatureType</code></pre>
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_Common_EnumAICreatureType_Default"><code>Default = 0</code></dt>
-  
-  <dd><p>Dumbest version. Never enters boiling water and lava. Prefers not to be in water. Slightly prefers to walk on blocks that give a walk speed bonus.</p>
+    <dd><p>Dumbest version. Never enters boiling water and lava. Prefers not to be in water. Slightly prefers to walk on blocks that give a walk speed bonus.</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumAICreatureType_LandCreature"><code>LandCreature = 1</code></dt>
-  
-  <dd><p>Same as Default, Additionally never enters some types of blocks that are on fire (fire pits, coal piles and pit kilns)</p>
+    <dd><p>Same as Default, Additionally never enters some types of blocks that are on fire (fire pits, coal piles and pit kilns)</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumAICreatureType_Humanoid"><code>Humanoid = 2</code></dt>
-  
-  <dd><p>Same as LandCreature, additionally strongly prefers to walk on blocks that give a walk speed bonues, such as stone paths</p>
+    <dd><p>Same as LandCreature, additionally strongly prefers to walk on blocks that give a walk speed bonues, such as stone paths</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumAICreatureType_HeatProofCreature"><code>HeatProofCreature = 3</code></dt>
-  
-  <dd><p>Does not avoid fire or boiling water. Still Avoids Lava</p>
+    <dd><p>Does not avoid fire or boiling water. Still Avoids Lava</p>
 </dd>
     <dt id="Vintagestory_API_Common_EnumAICreatureType_SeaCreature"><code>SeaCreature = 4</code></dt>
-  
-  <dd><p>Does not avoid water in any way</p>
+    <dd><p>Does not avoid water in any way</p>
 </dd>
   </dl>
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -294,7 +294,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
             float swimlineSubmergedness = submergedLevel - (entity.SelectionBox.Y2 - (float)entity.SwimmingOffsetY);
             entity.Swimming = swimlineSubmergedness > 0;
 
-            if (!feetInLiquidBefore)
+            if (!feetInLiquidBefore && !(entity is EntityAgent ea && ea.MountedOn != null) && !entity.IsFirstTick())
             {
                 entity.OnCollideWithLiquid();
             }

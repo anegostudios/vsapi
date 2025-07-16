@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -963,7 +963,7 @@ namespace Vintagestory.API.Common
                 bool lookingIntoWind = Math.Abs(yawDiff) < 45 * GameMath.DEG2RAD;
                 bool isOutside = GlobalConstants.CurrentDistanceToRainfallClient < 6;
 
-                if (isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2 && Player.WorldData.CurrentGameMode != EnumGameMode.Creative && !hasEyeProtectiveGear())
+                if (Alive && isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2 && Player.WorldData.CurrentGameMode != EnumGameMode.Creative && !hasEyeProtectiveGear())
                 {
                     AnimManager.StartAnimation("protecteyes");
                 }
@@ -1222,7 +1222,7 @@ namespace Vintagestory.API.Common
         {
             base.Revive();
 
-            LastReviveTotalHours = Api.World.Calendar.TotalHours;
+            LastReviveTotalHours = Api.World.Calendar.TotalHours - 2; // No respawn glow
 
             (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, (int)EntityServerPacketId.Revive);
         }
@@ -1379,6 +1379,15 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public double RevivableIngameHoursLeft()
+        {
+            if (Alive) return -1;
+            double deathTotalHours = WatchedAttributes.GetDouble("deathTotalHours", -9999);
+            double hoursDead = Api.World.Calendar.TotalHours - deathTotalHours;
+            double playerRevivableHourAmount = Api.World.Config.GetDecimal("playerRevivableHourAmount", 0.5);
+            return playerRevivableHourAmount - hoursDead;
+        }
+
 
 
         public override bool TryStopHandAction(bool forceStop, EnumItemUseCancelReason cancelReason = EnumItemUseCancelReason.ReleasedMouse)
@@ -1524,6 +1533,8 @@ namespace Vintagestory.API.Common
         public override string GetInfoText()
         {
             StringBuilder sb = new StringBuilder();
+
+            sb.Append(base.GetInfoText());
 
             if (!Alive)
             {

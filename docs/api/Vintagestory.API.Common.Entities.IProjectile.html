@@ -1,0 +1,606 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IProjectile | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IProjectile | VintageStory API ">
+      
+      <meta name="description" content="Interface for universal approach to spawning projectile entities. Some of the properties may not be used by all projectiles. But they can still be set or read.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Common.Entities.IProjectile">
+
+
+
+  <h1 id="Vintagestory_API_Common_Entities_IProjectile" data-uid="Vintagestory.API.Common.Entities.IProjectile" class="text-break">
+Interface IProjectile  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a>.<a class="xref" href="Vintagestory.API.Common.Entities.html">Entities</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface for universal approach to spawning projectile entities.<br>
+Some of the properties may not be used by all projectiles. But they can still be set or read.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IProjectile</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_Damage_" data-uid="Vintagestory.API.Common.Entities.IProjectile.Damage*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_Damage" data-uid="Vintagestory.API.Common.Entities.IProjectile.Damage">
+  Damage
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Projectile damage when hitting an entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float Damage { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_DamageStackOnImpact_" data-uid="Vintagestory.API.Common.Entities.IProjectile.DamageStackOnImpact*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_DamageStackOnImpact" data-uid="Vintagestory.API.Common.Entities.IProjectile.DamageStackOnImpact">
+  DamageStackOnImpact
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>How much <a class="xref" href="Vintagestory.API.Common.Entities.IProjectile.html#Vintagestory_API_Common_Entities_IProjectile_ProjectileStack">ProjectileStack</a> should be damage on impact.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DamageStackOnImpact { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_DamageTier_" data-uid="Vintagestory.API.Common.Entities.IProjectile.DamageTier*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_DamageTier" data-uid="Vintagestory.API.Common.Entities.IProjectile.DamageTier">
+  DamageTier
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Projectile damage tier when hitting an entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int DamageTier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_DamageType_" data-uid="Vintagestory.API.Common.Entities.IProjectile.DamageType*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_DamageType" data-uid="Vintagestory.API.Common.Entities.IProjectile.DamageType">
+  DamageType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Projectile damage type when hitting an entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumDamageType DamageType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumDamageType.html">EnumDamageType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_DropOnImpactChance_" data-uid="Vintagestory.API.Common.Entities.IProjectile.DropOnImpactChance*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_DropOnImpactChance" data-uid="Vintagestory.API.Common.Entities.IProjectile.DropOnImpactChance">
+  DropOnImpactChance
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Chance for projectile to not be destroyed on impact.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float DropOnImpactChance { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_EntityHit_" data-uid="Vintagestory.API.Common.Entities.IProjectile.EntityHit*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_EntityHit" data-uid="Vintagestory.API.Common.Entities.IProjectile.EntityHit">
+  EntityHit
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Will return true if projectile hit at least one entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool EntityHit { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_FiredBy_" data-uid="Vintagestory.API.Common.Entities.IProjectile.FiredBy*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_FiredBy" data-uid="Vintagestory.API.Common.Entities.IProjectile.FiredBy">
+  FiredBy
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Entity that spawned the projectile</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Entity? FiredBy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_IgnoreInvFrames_" data-uid="Vintagestory.API.Common.Entities.IProjectile.IgnoreInvFrames*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_IgnoreInvFrames" data-uid="Vintagestory.API.Common.Entities.IProjectile.IgnoreInvFrames">
+  IgnoreInvFrames
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If damage source done by projectile will ignore invincibility frames.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IgnoreInvFrames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_NonCollectible_" data-uid="Vintagestory.API.Common.Entities.IProjectile.NonCollectible*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_NonCollectible" data-uid="Vintagestory.API.Common.Entities.IProjectile.NonCollectible">
+  NonCollectible
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If projectile can be collected when stuck.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool NonCollectible { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_ProjectileStack_" data-uid="Vintagestory.API.Common.Entities.IProjectile.ProjectileStack*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_ProjectileStack" data-uid="Vintagestory.API.Common.Entities.IProjectile.ProjectileStack">
+  ProjectileStack
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Projectile item, can be dropped on impact, or damaged, or destroyed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemStack? ProjectileStack { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_Stuck_" data-uid="Vintagestory.API.Common.Entities.IProjectile.Stuck*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_Stuck" data-uid="Vintagestory.API.Common.Entities.IProjectile.Stuck">
+  Stuck
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If projectile is stuck in terrain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Stuck { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_WeaponStack_" data-uid="Vintagestory.API.Common.Entities.IProjectile.WeaponStack*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_WeaponStack" data-uid="Vintagestory.API.Common.Entities.IProjectile.WeaponStack">
+  WeaponStack
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Weapon item stack used to shoot this projectile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemStack? WeaponStack { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_Weight_" data-uid="Vintagestory.API.Common.Entities.IProjectile.Weight*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_Weight" data-uid="Vintagestory.API.Common.Entities.IProjectile.Weight">
+  Weight
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Projectile wieght used for knockback calculations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float Weight { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_PreInitialize_" data-uid="Vintagestory.API.Common.Entities.IProjectile.PreInitialize*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_PreInitialize" data-uid="Vintagestory.API.Common.Entities.IProjectile.PreInitialize">
+  PreInitialize()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets initial rotation if needed. Should be called each time entity is spawned before it spawned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PreInitialize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

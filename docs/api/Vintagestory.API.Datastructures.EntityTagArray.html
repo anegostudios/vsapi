@@ -1,0 +1,1184 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Struct EntityTagArray | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct EntityTagArray | VintageStory API ">
+      
+      <meta name="description" content="List of entity tags meant to be used for fast comparisons. Restricts number of registered entity tags to 128">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Datastructures.EntityTagArray">
+
+
+
+  <h1 id="Vintagestory_API_Datastructures_EntityTagArray" data-uid="Vintagestory.API.Datastructures.EntityTagArray" class="text-break">
+Struct EntityTagArray  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Datastructures.html">Datastructures</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>List of entity tags meant to be used for fast comparisons. Restricts number of registered entity tags to 128</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly struct EntityTagArray</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray__ctor_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray__ctor" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor">
+  EntityTagArray()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityTagArray()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray__ctor_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray__ctor_System_Collections_Generic_IEnumerable_System_UInt16__" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor(System.Collections.Generic.IEnumerable{System.UInt16})">
+  EntityTagArray(IEnumerable&lt;ushort&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityTagArray(IEnumerable&lt;ushort&gt; tags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray__ctor_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray__ctor_System_UInt16_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor(System.UInt16)">
+  EntityTagArray(ushort)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityTagArray(ushort tag)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray__ctor_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray__ctor_System_UInt64_System_UInt64_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.#ctor(System.UInt64,System.UInt64)">
+  EntityTagArray(ulong, ulong)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityTagArray(ulong bitMask1, ulong bitMask2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bitMask1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+    <dt><code>bitMask2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_BitMask1" data-uid="Vintagestory.API.Datastructures.EntityTagArray.BitMask1">
+  BitMask1
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly ulong BitMask1</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_BitMask2" data-uid="Vintagestory.API.Datastructures.EntityTagArray.BitMask2">
+  BitMask2
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly ulong BitMask2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_Empty" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Empty">
+  Empty
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly EntityTagArray Empty</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_MasksNumber" data-uid="Vintagestory.API.Datastructures.EntityTagArray.MasksNumber">
+  MasksNumber
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const byte MasksNumber = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_Size" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Size">
+  Size
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Maximum amount of different tags supported by tag array. Limited by total amount of bits in bit masks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Size = 128</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_And_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.And*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_And_Vintagestory_API_Datastructures_EntityTagArray_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.And(Vintagestory.API.Datastructures.EntityTagArray,Vintagestory.API.Datastructures.EntityTagArray)">
+  And(EntityTagArray, EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EntityTagArray And(EntityTagArray first, EntityTagArray second)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_ContainsAll_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ContainsAll*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_ContainsAll_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ContainsAll(Vintagestory.API.Datastructures.EntityTagArray)">
+  ContainsAll(EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if this tag array contains all tags from <code class="paramref">other</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsAll(EntityTagArray other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_ContainsAllFromAtLeastOne_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ContainsAllFromAtLeastOne*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_ContainsAllFromAtLeastOne_Vintagestory_API_Datastructures_EntityTagArray___" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ContainsAllFromAtLeastOne(Vintagestory.API.Datastructures.EntityTagArray[])">
+  ContainsAllFromAtLeastOne(EntityTagArray[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if this tag array contains all tags from at least one element of <code class="paramref">tags</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsAllFromAtLeastOne(EntityTagArray[] tags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tags</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_Equals_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Equals*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_Equals_System_Object_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Equals(System.Object)">
+  Equals(object?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current instance.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_FromBytes_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_FromBytes_System_IO_BinaryReader_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.FromBytes(System.IO.BinaryReader)">
+  FromBytes(BinaryReader)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EntityTagArray FromBytes(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_GetHashCode_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.GetHashCode*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_GetHashCode" data-uid="Vintagestory.API.Datastructures.EntityTagArray.GetHashCode">
+  GetHashCode()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_Intersect_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Intersect*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_Intersect_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Intersect(Vintagestory.API.Datastructures.EntityTagArray)">
+  Intersect(EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if this tag array has at least one common tag with <code class="paramref">other</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Intersect(EntityTagArray other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_Intersect_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Intersect*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_Intersect_Vintagestory_API_Datastructures_EntityTagArray_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Intersect(Vintagestory.API.Datastructures.EntityTagArray,Vintagestory.API.Datastructures.EntityTagArray)">
+  Intersect(EntityTagArray, EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if two tag arrays have at least one common tag</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool Intersect(EntityTagArray first, EntityTagArray second)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_IntersectsWithEach_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.IntersectsWithEach*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_IntersectsWithEach_Vintagestory_API_Datastructures_EntityTagArray___" data-uid="Vintagestory.API.Datastructures.EntityTagArray.IntersectsWithEach(Vintagestory.API.Datastructures.EntityTagArray[])">
+  IntersectsWithEach(EntityTagArray[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if this tag array contains at least on tag from each element of <code class="paramref">tags</code></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IntersectsWithEach(EntityTagArray[] tags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tags</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_Not_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Not*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_Not_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Not(Vintagestory.API.Datastructures.EntityTagArray)">
+  Not(EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EntityTagArray Not(EntityTagArray value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_Or_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Or*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_Or_Vintagestory_API_Datastructures_EntityTagArray_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.Or(Vintagestory.API.Datastructures.EntityTagArray,Vintagestory.API.Datastructures.EntityTagArray)">
+  Or(EntityTagArray, EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EntityTagArray Or(EntityTagArray first, EntityTagArray second)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_ToArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToArray*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_ToArray" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToArray">
+  ToArray()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts tag array into list of tag ids sorted in ascending order</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;ushort&gt; ToArray()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
+    <dd><p>List of tag ids in ascending order</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_ToArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToArray*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_ToArray_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToArray(Vintagestory.API.Common.ICoreAPI)">
+  ToArray(ICoreAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts tag array into list of tags.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; ToArray(ICoreAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_ToBytes_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_ToString_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToString*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_ToString" data-uid="Vintagestory.API.Datastructures.EntityTagArray.ToString">
+  ToString()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the fully qualified type name of this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fully qualified type name.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_op_BitwiseAnd_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_BitwiseAnd*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_op_BitwiseAnd_Vintagestory_API_Datastructures_EntityTagArray_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_BitwiseAnd(Vintagestory.API.Datastructures.EntityTagArray,Vintagestory.API.Datastructures.EntityTagArray)">
+  operator &amp;(EntityTagArray, EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EntityTagArray operator &amp;(EntityTagArray first, EntityTagArray second)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_op_BitwiseOr_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_BitwiseOr*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_op_BitwiseOr_Vintagestory_API_Datastructures_EntityTagArray_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_BitwiseOr(Vintagestory.API.Datastructures.EntityTagArray,Vintagestory.API.Datastructures.EntityTagArray)">
+  operator |(EntityTagArray, EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EntityTagArray operator |(EntityTagArray first, EntityTagArray second)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_op_Equality_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_Equality*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_op_Equality_Vintagestory_API_Datastructures_EntityTagArray_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_Equality(Vintagestory.API.Datastructures.EntityTagArray,Vintagestory.API.Datastructures.EntityTagArray)">
+  operator ==(EntityTagArray, EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(EntityTagArray first, EntityTagArray second)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_op_Inequality_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_Inequality*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_op_Inequality_Vintagestory_API_Datastructures_EntityTagArray_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_Inequality(Vintagestory.API.Datastructures.EntityTagArray,Vintagestory.API.Datastructures.EntityTagArray)">
+  operator !=(EntityTagArray, EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(EntityTagArray first, EntityTagArray second)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_EntityTagArray_op_OnesComplement_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_OnesComplement*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_EntityTagArray_op_OnesComplement_Vintagestory_API_Datastructures_EntityTagArray_" data-uid="Vintagestory.API.Datastructures.EntityTagArray.op_OnesComplement(Vintagestory.API.Datastructures.EntityTagArray)">
+  operator ~(EntityTagArray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EntityTagArray operator ~(EntityTagArray value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

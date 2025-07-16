@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumChannelState
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The state of a network channel <a href=https://github.com/anegostudios/vsapi/blob/master///Client/API/IClientNetworkAPI.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>The state of a network channel <a href="https://github.com/anegostudios/vsapi/blob/master///Client/API/IClientNetworkAPI.cs">Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -128,20 +128,16 @@ Enum EnumChannelState
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_Client_EnumChannelState_Connected"><code>Connected = 2</code></dt>
-  
-  <dd><p>This channel has been registered client and server side. It is ready to send and receive messages</p>
+    <dd><p>This channel has been registered client and server side. It is ready to send and receive messages</p>
 </dd>
     <dt id="Vintagestory_API_Client_EnumChannelState_NotConnected"><code>NotConnected = 3</code></dt>
-  
-  <dd><p>This channel has been registered only client side. You cannot send data on this channel</p>
+    <dd><p>This channel has been registered only client side. You cannot send data on this channel</p>
 </dd>
     <dt id="Vintagestory_API_Client_EnumChannelState_NotFound"><code>NotFound = 0</code></dt>
-  
-  <dd><p>No such channel was registered</p>
+    <dd><p>No such channel was registered</p>
 </dd>
     <dt id="Vintagestory_API_Client_EnumChannelState_Registered"><code>Registered = 1</code></dt>
-  
-  <dd><p>This channel has been registered but he server did not send the server channel information yet</p>
+    <dd><p>This channel has been registered but he server did not send the server channel information yet</p>
 </dd>
   </dl>
 
