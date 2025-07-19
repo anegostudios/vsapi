@@ -203,7 +203,7 @@ namespace Vintagestory.API.Common
         /// <param name="renderinfo"></param>
         public virtual void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
         {
-            
+
         }
 
 
@@ -250,7 +250,7 @@ namespace Vintagestory.API.Common
 
         public virtual void GetHeldItemName(StringBuilder sb, ItemStack itemStack)
         {
-            
+
         }
 
         /// <summary>
@@ -306,9 +306,15 @@ namespace Vintagestory.API.Common
             return null;
         }
 
+        [Obsolete("Use OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling bhHandling) instead")]
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)
         {
-            
+        }
+
+        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling bhHandling)
+        {
+            // Keep this to avoid breaking existing mods that override this method
+            OnCreatedByCrafting(allInputslots, outputSlot, ref bhHandling);
         }
 
         /// <summary>
@@ -371,7 +377,7 @@ namespace Vintagestory.API.Common
 
         public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
         {
-            
+
         }
     }
 }

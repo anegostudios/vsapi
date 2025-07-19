@@ -169,8 +169,8 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Everytime the player moves by 8 blocks (or rather leaves the current 8-grid), a scan of all blocks 32x32x32 blocks around the player is initiated
         /// and this method is called. If the method returns true, the block is registered to a client side game ticking for spawning particles and such.
-        /// This method will be called everytime the player left his current 8-grid area. 
-        /// 
+        /// This method will be called everytime the player left his current 8-grid area.
+        ///
         /// The default behavior is to return true if block.ParticleProperties are set
         /// </summary>
         /// <param name="world"></param>
@@ -189,12 +189,12 @@ namespace Vintagestory.API.Common
         public virtual void OnAsyncClientParticleTick(IAsyncParticleManager manager, BlockPos pos, float windAffectednessAtPos, float secondsTicking)
         {
 
-        }   
+        }
 
         /// <summary>
         /// Always called when a block has been removed through whatever method, except during worldgen or via ExchangeBlock()
         /// For Worldgen you might be able to use TryPlaceBlockForWorldGen() to attach custom behaviors during placement/removal
-        /// 
+        ///
         /// The default behavior is to delete the block entity, if this block has any
         /// </summary>
         /// <param name="world"></param>
@@ -237,7 +237,7 @@ namespace Vintagestory.API.Common
             return "";
         }
 
-        
+
 
         public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, ref EnumHandling handling)
         {
@@ -329,7 +329,7 @@ namespace Vintagestory.API.Common
             handling = EnumHandling.PassThrough;
         }
 
-        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling handled)
+        public override void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
         }
@@ -354,7 +354,7 @@ namespace Vintagestory.API.Common
 
         public virtual void GetPlacedBlockName(StringBuilder sb, IWorldAccessor world, BlockPos pos)
         {
-            
+
         }
 
         [Obsolete("Use GetRetention() instead")]
