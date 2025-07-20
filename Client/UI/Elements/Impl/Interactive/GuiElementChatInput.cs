@@ -73,6 +73,7 @@ namespace Vintagestory.API.Client
 
             api.Render.GlScissor((int)(Bounds.renderX), (int)(api.Render.FrameHeight - Bounds.renderY - Bounds.InnerHeight), Bounds.OuterWidthInt + 1 - (int)rightSpacing, Bounds.OuterHeightInt + 1 - (int)bottomSpacing);
             api.Render.GlScissorFlag(true);
+            RenderTextSelection();
             api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, Bounds.renderX - renderLeftOffset, Bounds.renderY, textSize.X, textSize.Y);
             api.Render.GlScissorFlag(false);
             
