@@ -459,7 +459,8 @@ namespace Vintagestory.API.Client
 
             string line = lines[CaretPosLine];
             int caretPosInLine = CaretPosInLine;
-            int targetRank = Math.Max(GetCharRank(line[caretPosInLine - 1]), GetCharRank(line[caretPosInLine]));
+            int targetRank = caretPosInLine > 0 ? GetCharRank(line[caretPosInLine - 1]) : 0;
+            if (caretPosInLine < line.Length) targetRank = Math.Max(targetRank, GetCharRank(line[caretPosInLine]));
 
             int start = caretPosInLine;
             while(start > 0 && GetCharRank(line[start - 1]) == targetRank)
@@ -469,6 +470,7 @@ namespace Vintagestory.API.Client
             while(end < line.Length && GetCharRank(line[end]) == targetRank)
                 ++end;
 
+            if (start == caretPosInLine && end == caretPosInLine) return;
             selectedTextStart = CaretPosWithoutLineBreaks - (caretPosInLine - start);
             SetCaretPos(end, CaretPosLine);
         }
