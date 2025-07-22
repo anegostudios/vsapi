@@ -878,7 +878,8 @@ public abstract class CollectibleBehavior</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling bhHandling) instead&quot;)]
+public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -886,6 +887,43 @@ public abstract class CollectibleBehavior</code></pre>
     <dt><code>allInputslots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
     <dd></dd>
     <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>bhHandling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleBehavior_OnCreatedByCrafting_" data-uid="Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleBehavior_OnCreatedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.EnumHandling@)">
+  OnCreatedByCrafting(ItemSlot[], ItemSlot, GridRecipe, ref EnumHandling)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling bhHandling)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allInputslots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>byRecipe</code> <a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
     <dd></dd>
     <dt><code>bhHandling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
     <dd></dd>

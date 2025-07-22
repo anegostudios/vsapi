@@ -708,6 +708,11 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        public virtual bool InRangeOf(Vec3d position, float horRangeSq, float vertRange)
+        {
+            return SidedPos.InRangeOf(position, horRangeSq, vertRange);
+        }
+
         protected void updateColSelBoxes()
         {
             bool alive = WatchedAttributes.GetInt("entityDead", 0) == 0;

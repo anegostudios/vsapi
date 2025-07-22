@@ -642,8 +642,8 @@ Class CollisionTester
 
   <a id="Vintagestory_API_MathTools_CollisionTester_GetCollidingCollisionBox_" data-uid="Vintagestory.API.MathTools.CollisionTester.GetCollidingCollisionBox*"></a>
 
-  <h3 id="Vintagestory_API_MathTools_CollisionTester_GetCollidingCollisionBox_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_Cuboidf_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Cuboidd__System_Boolean_" data-uid="Vintagestory.API.MathTools.CollisionTester.GetCollidingCollisionBox(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Cuboidd@,System.Boolean)">
-  GetCollidingCollisionBox(IBlockAccessor, Cuboidf, Vec3d, ref Cuboidd, bool)
+  <h3 id="Vintagestory_API_MathTools_CollisionTester_GetCollidingCollisionBox_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_Cuboidf_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Cuboidd__System_Boolean_System_Int32_" data-uid="Vintagestory.API.MathTools.CollisionTester.GetCollidingCollisionBox(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Cuboidd@,System.Boolean,System.Int32)">
+  GetCollidingCollisionBox(IBlockAccessor, Cuboidf, Vec3d, ref Cuboidd, bool, int)
   
   </h3>
 
@@ -653,7 +653,7 @@ Class CollisionTester
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCuboid, bool alsoCheckTouch = true)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCuboid, bool alsoCheckTouch = true, int dimension = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -667,6 +667,8 @@ Class CollisionTester
     <dt><code>intoCuboid</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidd.html">Cuboidd</a></dt>
     <dd></dd>
     <dt><code>alsoCheckTouch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>dimension</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

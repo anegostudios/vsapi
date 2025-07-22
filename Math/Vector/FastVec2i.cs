@@ -29,13 +29,13 @@ namespace Vintagestory.API.MathTools
         public FastVec2i(Vec3d pos) : this((int)pos.X, (int)pos.Z)
         {
         }
-        
+
         public bool Equals(FastVec2i other)
         {
             return val == other.val;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is FastVec2i other)
             {

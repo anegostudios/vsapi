@@ -114,6 +114,8 @@ namespace Vintagestory.API.Client
                 totalWidth += spacing + tabWidths[i];
             }
 
+            ctx.Dispose();
+            surface.Dispose();
             surface = new ImageSurface(Format.Argb32, (int)totalWidth + 1, (int)Bounds.InnerHeight + 1);
             ctx = new Context(surface);
 
@@ -261,6 +263,8 @@ namespace Vintagestory.API.Client
 
             generateTexture(surface, ref arrowTextures[0]);
 
+            surface.Dispose();
+            ctx.Dispose();
             surface = new ImageSurface(Format.Argb32, (int)((Bounds.InnerHeight - 2) / 2), (int)Bounds.InnerHeight - 2);
             ctx = genContext(surface);
 
@@ -426,6 +430,11 @@ namespace Vintagestory.API.Client
             base.Dispose();
 
             baseTexture?.Dispose();
+            foreach (var texture in arrowTextures)
+            {
+                texture.Dispose();
+            }
+
             for (int i = 0; i < hoverTextures.Length; i++)
             {
                 hoverTextures[i].Dispose();

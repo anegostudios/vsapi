@@ -859,7 +859,7 @@ namespace Vintagestory.API.Common
             EnumHandling bhHandling = EnumHandling.PassThrough;
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    bh.OnCreatedByCrafting(allInputslots, outputSlot, ref bhHandling);
+                    bh.OnCreatedByCrafting(allInputslots, outputSlot, byRecipe, ref bhHandling);
                 },
                 () => {
 

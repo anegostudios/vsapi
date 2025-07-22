@@ -12,10 +12,6 @@ namespace Vintagestory.API.Datastructures
         private const int AttributeID = 8;
         private readonly FastMemoryStream ms;
 
-        public StreamedByteArrayAttribute()
-        {
-        }
-
         public StreamedByteArrayAttribute(FastMemoryStream ms)
         {
             this.ms = ms;
@@ -44,7 +40,7 @@ namespace Vintagestory.API.Datastructures
             return AttributeID;
         }
 
-        
+
         public void FromBytes(BinaryReader stream)
         {
             // Not implemented, because this is intended to be deserialized to a ByteArrayAttribute

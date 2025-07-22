@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -1085,11 +1085,11 @@ namespace Vintagestory.API.Common
                 world.PlaySoundAt(Sounds?.GetBreakSound(byPlayer), pos, 0, byPlayer);
             }
 
-            SpawnBlockBrokenParticles(pos);
+            SpawnBlockBrokenParticles(pos, byPlayer);
             world.BlockAccessor.SetBlock(0, pos);
         }
 
-        public void SpawnBlockBrokenParticles(BlockPos pos)
+        public void SpawnBlockBrokenParticles(BlockPos pos, IPlayer plr = null)
         {
             var blockBrokenProps = new BlockBrokenParticleProps() { blockdamage = new BlockDamage() { Facing = BlockFacing.UP } };
             blockBrokenProps.Init(api);
@@ -1098,7 +1098,6 @@ namespace Vintagestory.API.Common
 
             blockBrokenProps.boyant = MaterialDensity < 1000;
 
-            var plr = (api as ICoreClientAPI)?.World.Player;
 
             api.World.SpawnParticles(blockBrokenProps, plr);
 

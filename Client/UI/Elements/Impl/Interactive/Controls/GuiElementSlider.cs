@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -282,7 +282,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        
+
 
 
         void MakeAlarmValueTexture()
@@ -403,7 +403,7 @@ namespace Vintagestory.API.Client
             double value = minValue + (maxValue - minValue) * mouseDeltaX / sliderWidth;
 
             // Round to next step
-            int newValue = allowValues.OrderBy(item => Math.Abs(value - item)).First();
+            int newValue = allowValues.Count == 0 ? currentValue : allowValues.OrderBy(item => Math.Abs(value - item)).First();
 
             if (newValue == currentValue) return true;
             didChangeValue = true;
@@ -443,6 +443,7 @@ namespace Vintagestory.API.Client
         public void ClearSkipValues()
         {
             skipValues.Clear();
+            allowValues.Clear();
             for (int i = minValue; i <= maxValue; i += step) allowValues.Add(i);
         }
 
@@ -455,6 +456,7 @@ namespace Vintagestory.API.Client
         public void RemoveSkipValue(int skipValue)
         {
             skipValues.Remove(skipValue);
+            allowValues.Clear();
             for (int i = minValue; i <= maxValue; i += step) if (!skipValues.Contains(i)) allowValues.Add(i);
         }
 
@@ -474,6 +476,7 @@ namespace Vintagestory.API.Client
             this.step = step;
             this.unit = unit;
 
+            allowValues.Clear();
             for (int i = minValue; i <= maxValue; i += step) if (!skipValues.Contains(i)) allowValues.Add(i);
 
             ComposeHoverTextElement();
@@ -500,6 +503,7 @@ namespace Vintagestory.API.Client
 
             handleTexture.Dispose();
             hoverTextTexture.Dispose();
+            restingTextTexture.Dispose();
             sliderFillTexture.Dispose();
             alarmValueTexture.Dispose();
         }

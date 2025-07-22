@@ -329,7 +329,7 @@ namespace Vintagestory.API.Common
             handling = EnumHandling.PassThrough;
         }
 
-        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling handled)
+        public override void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
         }

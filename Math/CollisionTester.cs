@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -362,9 +362,9 @@ namespace Vintagestory.API.MathTools
         /// <param name="intoCuboid"></param>
         /// <param name="alsoCheckTouch"></param>
         /// <returns></returns>
-        public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCuboid, bool alsoCheckTouch = true)
+        public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCuboid, bool alsoCheckTouch = true, int dimension = 0)
         {
-            BlockPos blockPos = new();
+            BlockPos blockPos = new(dimension);
             Vec3d blockPosVec = new();
             Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
 
@@ -387,7 +387,7 @@ namespace Vintagestory.API.MathTools
                     for (int z = minZ; z <= maxZ; z++)
                     {
                         blockPos.Z = z;
-                        Block block = blockAccessor.GetBlock(x, y, z, BlockLayersAccess.MostSolid);
+                        Block block = blockAccessor.GetBlock(blockPos, BlockLayersAccess.MostSolid);
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
                         if (collisionBoxes == null) continue;

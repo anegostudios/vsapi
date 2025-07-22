@@ -1612,7 +1612,11 @@ the block entity existing in the world (yet). The modified tree will then be use
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.ITagRegistry.html">ITagRegistry</a></dt>
-      <dd></dd>
+      <dd><p>On server side: blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br>
+On client side: all tags are received from server along side blocks, times, and entities, an available in 'AssetsFinalize' stage.<br>
+Tags can be converted to tag array or tag id as soon as it is registered.<br>
+Tags can be registered only on server side no later than 'AssetsFinalize' stage.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.ITextureLocationDictionary.html">ITextureLocationDictionary</a></dt>

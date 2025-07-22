@@ -1,8 +1,14 @@
-﻿using Vintagestory.API.Datastructures;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common;
 
+/// <summary>
+/// On server side: blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br/>
+/// On client side: all tags are received from server along side blocks, times, and entities, an available in 'AssetsFinalize' stage.<br/>
+/// Tags can be converted to tag array or tag id as soon as it is registered.<br/>
+/// Tags can be registered only on server side no later than 'AssetsFinalize' stage.
+/// </summary>
 public interface ITagRegistry
 {
     /// <summary>
@@ -58,21 +64,24 @@ public interface ITagRegistry
 
 
     /// <summary>
-    /// Converts list of entity tags to tags array. Unknown tags are ignored.
+    /// Converts list of entity tags to tags array. Unknown tags are ignored.<br/>
+    /// Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br/>
     /// </summary>
     /// <param name="tags">List of entity tags</param>
     /// <returns>Tag array suitable for quick comparisons</returns>
     public EntityTagArray EntityTagsToTagArray(params string[] tags);
 
     /// <summary>
-    /// Converts list of item tags to tags array. Unknown tags are ignored.
+    /// Converts list of item tags to tags array. Unknown tags are ignored.<br/>
+    /// Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br/>
     /// </summary>
     /// <param name="tags">List of item tags</param>
     /// <returns>Tag array suitable for quick comparisons</returns>
     public ItemTagArray ItemTagsToTagArray(params string[] tags);
 
     /// <summary>
-    /// Converts list of block tags to tags array. Unknown tags are ignored.
+    /// Converts list of block tags to tags array. Unknown tags are ignored.<br/>
+    /// Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br/>
     /// </summary>
     /// <param name="tags">List of block tags</param>
     /// <returns>Tag array suitable for quick comparisons</returns>
@@ -81,21 +90,24 @@ public interface ITagRegistry
 
 
     /// <summary>
-    /// Returns tag id of the entity tag. If the tag is not registered, it will return 0.
+    /// Returns tag id of the entity tag. If the tag is not registered, it will return 0.<br/>
+    /// Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br/>
     /// </summary>
     /// <param name="tag">Entity tag</param>
     /// <returns>tag id</returns>
     ushort EntityTagToTagId(string tag);
 
     /// <summary>
-    /// Returns tag id of the item tag. If the tag is not registered, it will return 0.
+    /// Returns tag id of the item tag. If the tag is not registered, it will return 0.<br/>
+    /// Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br/>
     /// </summary>
     /// <param name="tag">Item tag</param>
     /// <returns>tag id</returns>
     ushort ItemTagToTagId(string tag);
 
     /// <summary>
-    /// Returns tag id of the block tag. If the tag is not registered, it will return 0.
+    /// Returns tag id of the block tag. If the tag is not registered, it will return 0.<br/>
+    /// Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br/>
     /// </summary>
     /// <param name="tag">Block tag</param>
     /// <returns>tag id</returns>

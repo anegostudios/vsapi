@@ -1,4 +1,5 @@
-﻿using System;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -20,7 +21,7 @@ public readonly struct EntityTagArray
     /// <summary>
     /// Maximum amount of different tags supported by tag array. Limited by total amount of bits in bit masks.
     /// </summary>
-    public const int Size = 128;
+    public const int Size = MasksNumber * 64;
 
     public EntityTagArray(IEnumerable<ushort> tags)
     {
@@ -141,6 +142,11 @@ public readonly struct EntityTagArray
     public bool Intersect(EntityTagArray other)
     {
         return Intersect(this, other);
+    }
+
+    public EntityTagArray Remove(EntityTagArray other)
+    {
+        return new(BitMask1 & ~other.BitMask1, BitMask2 & ~other.BitMask2);
     }
 
     public static EntityTagArray And(EntityTagArray first, EntityTagArray second)
@@ -353,7 +359,7 @@ public readonly struct BlockTagArray
     /// <summary>
     /// Maximum amount of different tags supported by tag array. Limited by total amount of bits in bit masks.
     /// </summary>
-    public const int Size = 256;
+    public const int Size = MasksNumber * 64;
 
     public BlockTagArray(IEnumerable<ushort> tags)
     {
@@ -623,6 +629,15 @@ public readonly struct BlockTagArray
     }
 
     private static string PrintBitMask(ulong bitMask) => $"{bitMask:X16}".Chunk(4).Select(chunk => new string(chunk)).Aggregate((first, second) => $"{first}.{second}");
+
+    public bool isPresentIn(ref BlockTagArray other)
+    {
+        if ((BitMask1 & other.BitMask1) != BitMask1) return false;
+        if ((BitMask2 & other.BitMask2) != BitMask2) return false;
+        if ((BitMask3 & other.BitMask3) != BitMask3) return false;
+        if ((BitMask4 & other.BitMask4) != BitMask4) return false;
+        return true;
+    }
 }
 
 /// <summary>
@@ -742,7 +757,7 @@ public readonly struct ItemTagArray
     /// <summary>
     /// Maximum amount of different tags supported by tag array. Limited by total amount of bits in bit masks.
     /// </summary>
-    public const int Size = 256;
+    public const int Size = MasksNumber * 64;
 
     public ItemTagArray(IEnumerable<ushort> tags)
     {
@@ -1001,6 +1016,15 @@ public readonly struct ItemTagArray
     }
 
     private static string PrintBitMask(ulong bitMask) => $"{bitMask:X16}".Chunk(4).Select(chunk => new string(chunk)).Aggregate((first, second) => $"{first}.{second}");
+
+    public bool isPresentIn(ref ItemTagArray other)
+    {
+        if ((BitMask1 & other.BitMask1) != BitMask1) return false;
+        if ((BitMask2 & other.BitMask2) != BitMask2) return false;
+        if ((BitMask3 & other.BitMask3) != BitMask3) return false;
+        if ((BitMask4 & other.BitMask4) != BitMask4) return false;
+        return true;
+    }
 }
 
 /// <summary>

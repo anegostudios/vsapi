@@ -34,6 +34,10 @@ namespace Vintagestory.API.Common
         /// Adds a new log entry with the specified log type and message.
         /// </summary>
         void Log(EnumLogType logType, string message);
+        /// <summary>
+        /// Logs an exception with the specified log type.
+        /// </summary>
+        void LogException(EnumLogType logType, Exception e);
 
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Chat"/> log entry with the specified format string and arguments.
@@ -193,6 +197,12 @@ namespace Vintagestory.API.Common
         public void Log(EnumLogType logType, string message)
             => Log(logType, message, _emptyArgs);
 
+        public void LogException(EnumLogType logType, Exception e)
+            => Log(logType, "Exception: {0}\n{1}{2}", 
+                e.Message, 
+                e.InnerException == null ? "" : " ---> " + e.InnerException + "\n   --- End of inner exception stack trace ---\n", 
+                CleanStackTrace(e.StackTrace));
+
         public void Chat(string format, params object[] args)
             => Log(EnumLogType.Chat, format, args);
         public void Chat(string message)
@@ -233,7 +243,7 @@ namespace Vintagestory.API.Common
         public void Warning(string message)
             => Log(EnumLogType.Warning, message, _emptyArgs);
         public void Warning(Exception e)
-            => Log(EnumLogType.Warning, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+            => LogException(EnumLogType.Warning, e);
 
         public void Error(string format, params object[] args)
         {
@@ -255,7 +265,7 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+                LogException(EnumLogType.Error, e);
             }
             catch (Exception ex) { Log(EnumLogType.Error, "The logger itself threw an exception"); Error(ex); }
         }
@@ -285,7 +295,7 @@ namespace Vintagestory.API.Common
         public void Fatal(string message)
             => Log(EnumLogType.Fatal, message, _emptyArgs);
         public void Fatal(Exception e)
-            => Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+            => LogException(EnumLogType.Error, e);
 
         public void Audit(string format, params object[] args)
             => Log(EnumLogType.Audit, format, args);
@@ -295,7 +305,7 @@ namespace Vintagestory.API.Common
         public void Worldgen(string format, params object[] args)
             => Log(EnumLogType.Worldgen, format, args);
         public void Worldgen(Exception e)
-            => Log(EnumLogType.Worldgen, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+            => LogException(EnumLogType.Worldgen, e);
         public void Worldgen(string message)
             => Log(EnumLogType.Worldgen, message, _emptyArgs);
     }

@@ -13,7 +13,7 @@ namespace Vintagestory.API.Common
         protected bool turnOpposite;
         protected bool rotateTpYawNow;
 
-        
+
         public PlayerHeadController(IAnimationManager animator, EntityPlayer entity, Shape entityShape) : base(animator, entity, entityShape)
         {
             this.entityPlayer = entity;
@@ -22,13 +22,15 @@ namespace Vintagestory.API.Common
         public override void OnFrame(float dt)
         {
             if (this.player == null) this.player = entityPlayer.Player;
-            
+
             var capi = entity.Api as ICoreClientAPI;
             bool isSelf = capi.World.Player.Entity.EntityId == entity.EntityId;
 
             if (!isSelf)
             {
                 base.OnFrame(dt);
+                if(entity.BodyYawServer == 0)
+                    entity.BodyYaw = entity.Pos.Yaw;
                 return;
             }
 
@@ -88,7 +90,7 @@ namespace Vintagestory.API.Common
                         entity.Pos.HeadYaw += (targetHeadYaw - entity.Pos.HeadYaw) * dt * 6;
                     }
                 }
-                
+
             }
             else
             {
@@ -101,7 +103,7 @@ namespace Vintagestory.API.Common
 
                     float threshold = 1.2f - (ismoving ? 1.19f : 0) + (attachedToClimbWall ? 3 : 0);
                     if (entity.Controls.Gliding) threshold = 0;
-                    
+
                     if (player.PlayerUID == capi.World.Player.PlayerUID && !capi.Settings.Bool["immersiveFpMode"] && cameraMode != EnumCameraMode.FirstPerson)
                     {
                         if (Math.Abs(yawDist) > threshold || rotateTpYawNow)
@@ -110,7 +112,7 @@ namespace Vintagestory.API.Common
                             entity.BodyYaw += GameMath.Clamp(yawDist, -dt * speed, dt * speed);
                             rotateTpYawNow = Math.Abs(yawDist) > 0.01f;
                         }
-                        
+
                     }
                     else
                     {
@@ -140,7 +142,7 @@ namespace Vintagestory.API.Common
 
         public float yawOffset = 0, pitchOffset = 0;
 
-        
+
 
         public EntityHeadController(IAnimationManager animator, EntityAgent entity, Shape entityShape)
         {
@@ -155,8 +157,8 @@ namespace Vintagestory.API.Common
             UpperFootRPose = animator.Animator.GetPosebyName("UpperFootR");
             UpperFootLPose = animator.Animator.GetPosebyName("UpperFootL");
         }
-        
-        
+
+
         /// <summary>
         /// The event fired when the game ticks.
         /// </summary>
@@ -179,7 +181,7 @@ namespace Vintagestory.API.Common
 
                 HeadPose.degOffY = degoffy * 0.45f;
                 HeadPose.degOffZ = degoffz * 0.35f;
-                 
+
                 NeckPose.degOffY = degoffy * 0.35f;
                 NeckPose.degOffZ = degoffz * 0.4f;
 
