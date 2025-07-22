@@ -114,6 +114,7 @@ namespace Vintagestory.API.Client
             );
 
             api.Render.GlScissorFlag(true);
+            RenderTextSelection();
             api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, Bounds.renderX - renderLeftOffset, Bounds.renderY, textSize.X, textSize.Y);
             api.Render.GlScissorFlag(false);
 
