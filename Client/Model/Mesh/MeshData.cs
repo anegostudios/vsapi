@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
@@ -1505,7 +1505,7 @@ namespace Vintagestory.API.Client
         {
             if (TextureIndicesCount >= TextureIndices.Length)
             {
-                Array.Resize(ref TextureIndices, TextureIndices.Length + 32);
+                Array.Resize(ref TextureIndices, TextureIndices.Length + 4);
             }
 
             TextureIndices[TextureIndicesCount++] = getTextureIndex(textureId);
@@ -2039,6 +2039,7 @@ namespace Vintagestory.API.Client
             if (CustomFloats != null) CustomFloats.Count = 0;
             if (CustomShorts != null) CustomShorts.Count = 0;
             if (CustomInts != null) CustomInts.Count = 0;
+            TextureIds = Array.Empty<int>();
             return this;
         }
 
