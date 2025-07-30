@@ -74,6 +74,7 @@ namespace Vintagestory.API.Client
                 api.Render.Render2DTexturePremultipliedAlpha(highlightTexture.TextureId, highlightBounds);
             }
 
+            RenderTextSelection();
             api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, Bounds);
 
             base.RenderInteractiveElements(deltaTime);
