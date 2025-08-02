@@ -587,7 +587,7 @@ namespace Vintagestory.API.Config
                         LoadEntries(entryCache, regexCache, wildcardCache, property.Value, domain, newKey);
                     }
                     break;
-                case JValue jsonValue when jsonValue.Type == JTokenType.String:
+                case JValue jsonValue when jsonValue.Type == JTokenType.String && key.Length > 0:
                     var value = jsonValue.ToString();
                     LoadEntry(entryCache, regexCache, wildcardCache, new(key, value), domain);
                     break;
