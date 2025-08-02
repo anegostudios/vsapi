@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
@@ -83,7 +83,7 @@ namespace Vintagestory.API.Config
                 try
                 {
                     var json = asset.ToText();
-                    LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json), asset.Location.Domain);
+                    LoadEntries(entryCache, regexCache, wildcardCache, JToken.Parse(json), asset.Location.Domain);
                 }
                 catch (Exception ex)
                 {
@@ -123,7 +123,7 @@ namespace Vintagestory.API.Config
                 try
                 {
                     var json = File.ReadAllText(file.FullName);
-                    LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
+                    LoadEntries(entryCache, regexCache, wildcardCache, JToken.Parse(json));
                 }
                 catch (Exception ex)
                 {
@@ -174,7 +174,7 @@ namespace Vintagestory.API.Config
                         try
                         {
                             var json = File.ReadAllText(file.FullName);
-                            LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
+                            LoadEntries(entryCache, regexCache, wildcardCache, JToken.Parse(json));
                         }
                         catch (Exception ex)
                         {
@@ -574,11 +574,25 @@ namespace Vintagestory.API.Config
                 .FirstOrDefault();
         }
 
-        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, Dictionary<string, string> entries, string domain = GlobalConstants.DefaultDomain)
+        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, string domain = GlobalConstants.DefaultDomain, string key = "")
         {
-            foreach (var entry in entries)
+            switch (json)
             {
-                LoadEntry(entryCache, regexCache, wildcardCache, entry, domain);
+                case JObject jsonObject:
+                    foreach (var property in jsonObject.Properties())
+                    {
+                        var newKey = key.Length == 0
+                            ? property.Name
+                            : $"{key}-{property.Name}";
+                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, domain, newKey);
+                    }
+                    break;
+                case JValue jsonValue when jsonValue.Type == JTokenType.String && key.Length > 0:
+                    var value = jsonValue.ToString();
+                    LoadEntry(entryCache, regexCache, wildcardCache, new(key, value), domain);
+                    break;
+                default:
+                    throw new InvalidOperationException($"Unexpected token: {json.Type}");
             }
         }
 
