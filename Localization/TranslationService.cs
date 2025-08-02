@@ -585,7 +585,7 @@ namespace Vintagestory.API.Config
                     }
                     break;
                 case JValue jsonValue when jsonValue.Type == JTokenType.String:
-                    var key = jsonValue.Path.Replace('.', '/');
+                    var key = jsonValue.Path.Replace('.', '-');
                     var value = jsonValue.ToString();
                     LoadEntry(entryCache, regexCache, wildcardCache, new(key, value), domain);
                     break;
