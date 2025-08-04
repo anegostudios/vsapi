@@ -550,6 +550,12 @@ namespace Vintagestory.API.Client
 
         private void OnKeyDownInternal(ICoreClientAPI api, KeyEvent args)
         {
+            if (args.AltPressed) // All shortcuts should work only if Alt is not pressed.
+            {
+                args.Handled = true; // Textfield should consume all Alt actions, otherwise we would start to move when typing with AltGr.
+                return;
+            }
+
             if ((args.CtrlPressed || args.CommandPressed) && OnControlAction(args))
             {
                 api.Gui.PlaySound("tick");
