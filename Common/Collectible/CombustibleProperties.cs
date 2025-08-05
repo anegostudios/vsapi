@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -282,6 +282,12 @@ namespace Vintagestory.API.Common
         /// If true, only one instance of this collectible can be baked at a time. If false, 4 of this collectible can be baked at a time.
         /// </summary>
         [DocumentAsJson] public bool LargeItem;
+
+        [DocumentAsJson] public float StartScaleX;
+        [DocumentAsJson] public float EndScaleX;
+        [DocumentAsJson] public float StartScaleZ;
+        [DocumentAsJson] public float EndScaleZ;
+        
 
         public static BakingProperties ReadFrom(ItemStack stack)
         {
