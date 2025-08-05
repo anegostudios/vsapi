@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -76,7 +76,7 @@ namespace Vintagestory.API.Common
                 foreach (var val in Behaviors)
                 {
                     val.Initialize(api, val.properties);
-                    api.World.FrameProfiler.Mark("initbebehavior-" + val.GetType());
+                    api.World.FrameProfiler.Mark("initbebehavior-", val.GetType());
                 }
             } else
             {

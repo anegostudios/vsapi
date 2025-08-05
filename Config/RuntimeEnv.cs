@@ -85,6 +85,13 @@ namespace Vintagestory.API.Config
                 EnvSearchPathName = "LD_LIBRARY_PATH";
                 var sessionType = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE");
                 var useWayland = Environment.GetEnvironmentVariable("OPENTK_4_USE_WAYLAND");
+                // try to use X11 windows (xwayland) even if we are on wayland since its performance is better and has less issues like scaling
+                if (sessionType == "wayland" && useWayland == null)
+                {
+                    Environment.SetEnvironmentVariable("OPENTK_4_USE_WAYLAND", "0");
+                    IsWaylandSession = false;
+                    return;
+                }
                 IsWaylandSession = sessionType == "wayland" && useWayland != "0";
                 return;
             }

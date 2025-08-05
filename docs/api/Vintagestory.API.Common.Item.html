@@ -442,9 +442,6 @@ Class Item
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetHeldItemName_Vintagestory_API_Common_ItemStack_">CollectibleObject.GetHeldItemName(ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetHeldItemInfo_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_System_Boolean_">CollectibleObject.GetHeldItemInfo(ItemSlot, StringBuilder, IWorldAccessor, bool)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetItemDescText">CollectibleObject.GetItemDescText()</a>
     </div>
     <div>
@@ -1025,6 +1022,44 @@ Class Item
     <pre><code class="lang-csharp hljs">public virtual void FreeRAMServer()</code></pre>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Item_GetHeldItemInfo_" data-uid="Vintagestory.API.Common.Item.GetHeldItemInfo*"></a>
+
+  <h3 id="Vintagestory_API_Common_Item_GetHeldItemInfo_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_System_Boolean_" data-uid="Vintagestory.API.Common.Item.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)">
+  GetHeldItemInfo(ItemSlot, StringBuilder, IWorldAccessor, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called by the inventory system when you hover over an item stack. This is the text that is getting displayed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>dsc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a></dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>withDebugInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

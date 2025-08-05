@@ -2315,6 +2315,15 @@ namespace Vintagestory.API.Common
                 dsc.Append(bh.GetHeldBlockInfo(world, inSlot));
             }
 
+            if (world.Api is ICoreClientAPI clientApi && clientApi.Settings.Bool["extendedDebugInfo"])
+            {
+                IEnumerable<string> tags = Tags.ToArray().Select(clientApi.TagRegistry.BlockTagIdToTag).Order();
+                if (tags.Any())
+                {
+                    dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
+                }
+            }
+
             base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
         }
 

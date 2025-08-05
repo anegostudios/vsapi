@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 
@@ -156,6 +157,20 @@ namespace Vintagestory.API.Common
             TpHandTransform = null;
             TpOffHandTransform = null;
             GroundTransform = null;
+        }
+
+        public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+        {
+            if (world.Api is ICoreClientAPI clientApi && clientApi.Settings.Bool["extendedDebugInfo"])
+            {
+                IEnumerable<string> tags = Tags.ToArray().Select(clientApi.TagRegistry.ItemTagIdToTag).Order();
+                if (tags.Any())
+                {
+                    dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
+                }
+            }
+
+            base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
         }
     }
 }

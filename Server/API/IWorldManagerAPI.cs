@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
@@ -78,6 +78,11 @@ namespace Vintagestory.API.Server
         /// The currently selected playstyle
         /// </summary>
         PlayStyle CurrentPlayStyle { get; }
+
+        /// <summary>
+        /// All landclaims
+        /// </summary>
+        List<LandClaim> LandClaims { get; }
 
         /// <summary>
         /// Allows setting a 32 float array that defines the brightness of each block light level. Has to be set before any players join or any chunks are generated.

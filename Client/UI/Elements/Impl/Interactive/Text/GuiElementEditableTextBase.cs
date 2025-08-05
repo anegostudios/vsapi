@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Cairo;
+using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -12,6 +13,7 @@ namespace Vintagestory.API.Client
     public abstract class GuiElementEditableTextBase : GuiElementTextBase
     {
         public delegate bool OnTryTextChangeDelegate(List<string> lines);
+        private const int DoubleClickMilliseconds = 400;
 
         internal float[] caretColor = new float[] { 1, 1, 1, 1 };
 
@@ -26,12 +28,15 @@ namespace Vintagestory.API.Client
         internal double rightSpacing;
         internal double bottomSpacing;
 
-       // internal int selectedTextStart;
-        //internal int selectedTextEnd;
+        private int? selectedTextStart;
+        private long lastClickTime;
+        private int lastClickCursor;
+        private bool handlingOnKeyEvent;
+        private bool mouseDown;
 
         internal LoadedTexture caretTexture;
         internal LoadedTexture textTexture;
-        //internal int selectionTextureId;
+        private int selectionTextureId;
 
         public Action<int, int> OnCaretPositionChanged;
         public Action<string> OnTextChanged;
@@ -139,6 +144,7 @@ namespace Vintagestory.API.Client
         {
             caretTexture = new LoadedTexture(capi);
             textTexture = new LoadedTexture(capi);
+            selectionTextureId = GenerateSelectionTexture(capi);
 
             lines = new List<string> { "" };
             linesStaging = new List<string> { "" };
@@ -147,13 +153,13 @@ namespace Vintagestory.API.Client
         public override void OnFocusGained()
         {
             base.OnFocusGained();
-            SetCaretPos(TextLengthWithoutLineBreaks);
             OnFocused?.Invoke();
         }
 
         public override void OnFocusLost()
         {
             base.OnFocusLost();
+            selectedTextStart = null;
             OnLostFocus?.Invoke();
         }
 
@@ -337,6 +343,7 @@ namespace Vintagestory.API.Client
         internal virtual void TextChanged()
         {
             OnTextChanged?.Invoke(string.Join("", lines));
+            if (!handlingOnKeyEvent) selectedTextStart = null;
             RecomposeText();
         }
 
@@ -418,6 +425,66 @@ namespace Vintagestory.API.Client
             }
         }
 
+        private void DeleteSelectedText(int caretPos, int caretPosOffset)
+        {
+            var textSelection = GetSelection(caretPos);
+            SetValue(GetText().Remove(textSelection.Start, textSelection.End - textSelection.Start), false);
+            selectedTextStart = null;
+            if (caretPos == textSelection.End) CaretPosWithoutLineBreaks = textSelection.Start + caretPosOffset;
+        }
+
+        private void DeleteSelectedTextAndFixCursor(int caretPos, int caretPosOffset)
+        {
+            if (caretPos < selectedTextStart)
+            {
+                selectedTextStart += caretPosOffset;
+                DeleteSelectedText(caretPos + caretPosOffset, caretPosOffset);
+            }
+            else DeleteSelectedText(caretPos, caretPosOffset);
+        }
+
+        static int GetCharRank(char c)
+        {
+            if (IsWordChar(c)) return 3;
+            if (!char.IsWhiteSpace(c)) return 2;
+            return 1;
+        }
+
+        private void SelectWordAtCursor()
+        {
+            string line = lines[CaretPosLine];
+            int caretPosInLine = CaretPosInLine;
+            int targetRank = caretPosInLine > 0 ? GetCharRank(line[caretPosInLine - 1]) : 0;
+            if (caretPosInLine < line.Length) targetRank = Math.Max(targetRank, GetCharRank(line[caretPosInLine]));
+
+            int start = caretPosInLine;
+            while(start > 0 && GetCharRank(line[start - 1]) == targetRank) --start;
+
+            int end = caretPosInLine;
+            while(end < line.Length && GetCharRank(line[end]) == targetRank) ++end;
+
+            if (start == caretPosInLine && end == caretPosInLine) return;
+            selectedTextStart = CaretPosWithoutLineBreaks - (caretPosInLine - start);
+            SetCaretPos(end, CaretPosLine);
+        }
+
+        struct TextSelection
+        {
+            internal int Start;
+            internal int End;
+
+            internal TextSelection(int start, int end)
+            {
+                Start = start;
+                End = end;
+            }
+        }
+
+        private TextSelection GetSelection(int caretPos)
+        {
+            return new(Math.Min(selectedTextStart.Value, caretPos), Math.Max(selectedTextStart.Value, caretPos));
+        }
+
 
         #region Mouse, Keyboard
 
@@ -425,24 +492,91 @@ namespace Vintagestory.API.Client
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             base.OnMouseDownOnElement(api, args);
+            if (args.Button != EnumMouseButton.Left) return;
 
+            bool shiftDown = new Func<bool>(() => api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft] || api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftRight])();
+            if (shiftDown && selectedTextStart == null) selectedTextStart = CaretPosWithoutLineBreaks;
             SetCaretPos(args.X - Bounds.absX, args.Y - Bounds.absY);
+
+            if (!shiftDown)
+            {
+                long now = api.ElapsedMilliseconds;
+                int caretPos = CaretPosWithoutLineBreaks;
+                bool isDoubleClick = lastClickCursor == caretPos && now - lastClickTime < DoubleClickMilliseconds;
+                lastClickTime = now;
+                lastClickCursor = caretPos;
+
+                if(isDoubleClick)
+                {
+                    SelectWordAtCursor();
+                    return;
+                }
+                else selectedTextStart = caretPos;
+            }
+            mouseDown = true;
+        }
+
+        public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
+        {
+            base.OnMouseMove(api, args);
+            if (mouseDown) SetCaretPos((double)args.X - Bounds.absX, (double)args.Y - Bounds.absY);
+        }
+
+        public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
+        {
+            base.OnMouseUp(api, args);
+            if (args.Button != EnumMouseButton.Left) return;
+
+            mouseDown = false;
+            if (selectedTextStart == CaretPosWithoutLineBreaks) selectedTextStart = null;
         }
 
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
             if (!HasFocus) return;
+
+            handlingOnKeyEvent = true;
+            OnKeyDownInternal(api, args);
+            handlingOnKeyEvent = false;
+        }
+
+        private void OnKeyDownInternal(ICoreClientAPI api, KeyEvent args)
+        {
+            if (args.AltPressed) // Ignore all inputs if alt is held down as we don't use alt for any of our shortcuts
+            {
+                args.Handled = true;
+                return;
+            }
+
+            if ((args.CtrlPressed || args.CommandPressed) && OnControlAction(args))
+            {
+                api.Gui.PlaySound("tick");
+                args.Handled = true;
+                return;
+            }
             
             bool handled = multilineMode || args.KeyCode != (int)GlKeys.Tab;
 
-            if (args.KeyCode == (int)GlKeys.BackSpace)
+            if (args.KeyCode is (int)GlKeys.BackSpace or (int)GlKeys.Delete)
             {
-                if (CaretPosWithoutLineBreaks > 0) OnKeyBackSpace();
+                if (args.CtrlPressed && OnDeleteWord(args.KeyCode == (int)GlKeys.BackSpace ? -1 : 1));
+                else if (selectedTextStart == null)
+                {
+                    if (args.KeyCode == (int)GlKeys.BackSpace) OnKeyBackSpace();
+                    else OnKeyDelete();
+                }
+                else
+                {
+                    DeleteSelectedText(CaretPosWithoutLineBreaks, 0);
+                    api.Gui.PlaySound("tick");
+                }
+                args.Handled = true;
+                return;
             }
 
-            if (args.KeyCode == (int)GlKeys.Delete)
+            if (args.ShiftPressed != selectedTextStart.HasValue && (args.KeyCode is (int)GlKeys.Up or (int)GlKeys.Down or (int)GlKeys.Left or (int)GlKeys.Right or (int)GlKeys.Home or (int)GlKeys.End))
             {
-                if (CaretPosWithoutLineBreaks < TextLengthWithoutLineBreaks) OnKeyDelete();
+                selectedTextStart = args.ShiftPressed ? CaretPosWithoutLineBreaks : null;
             }
 
             if (args.KeyCode == (int)GlKeys.End)
@@ -450,11 +584,12 @@ namespace Vintagestory.API.Client
                 if (args.CtrlPressed)
                 {
                     SetCaretPos(lines[lines.Count - 1].TrimEnd('\r', '\n').Length, lines.Count - 1);
-                } else
+                }
+                else
                 {
                     SetCaretPos(lines[CaretPosLine].TrimEnd('\r', '\n').Length, CaretPosLine);
                 }
-                    
+
                 api.Gui.PlaySound("tick");
             }
 
@@ -463,7 +598,8 @@ namespace Vintagestory.API.Client
                 if (args.CtrlPressed)
                 {
                     SetCaretPos(0);
-                } else
+                }
+                else
                 {
                     SetCaretPos(0, CaretPosLine);
                 }
@@ -481,23 +617,6 @@ namespace Vintagestory.API.Client
                 MoveCursor(1, args.CtrlPressed);
             }
 
-            if (args.KeyCode == (int)GlKeys.V && (args.CtrlPressed || args.CommandPressed))
-            {
-                string insert = api.Forms.GetClipboardText();
-                insert = insert.Replace("\uFEFF", ""); // UTF-8 bom, we don't need that one, like ever
-
-                string fulltext = string.Join("", lines);
-
-                int caretPos = CaretPosInLine;
-                for (int i = 0; i < CaretPosLine; i++)
-                {
-                    caretPos += lines[i].Length;
-                }
-
-                SetValue(fulltext.Substring(0, caretPos) + insert + fulltext.Substring(caretPos, fulltext.Length - caretPos));
-                api.Gui.PlaySound("tick");
-            }
-
             if (args.KeyCode == (int)GlKeys.Down && CaretPosLine < lines.Count - 1)
             {
                 SetCaretPos(CaretPosInLine, CaretPosLine + 1);
@@ -510,12 +629,15 @@ namespace Vintagestory.API.Client
                 api.Gui.PlaySound("tick");
             }
 
-            if (args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.KeypadEnter)
+            if (!mouseDown && selectedTextStart == CaretPosWithoutLineBreaks) selectedTextStart = null;
+
+            if (args.KeyCode is (int)GlKeys.Enter or (int)GlKeys.KeypadEnter)
             {
                 if (multilineMode)
                 {
                     OnKeyEnter();
-                } else
+                }
+                else
                 {
                     handled = false;
                 }
@@ -532,8 +654,65 @@ namespace Vintagestory.API.Client
             return string.Join("", lines);
         }
 
+        private bool OnControlAction(KeyEvent args)
+        {
+            string keyString = GlKeyNames.GetPrintableChar(args.KeyCode); // we want layout-independent keys
+            if (keyString == "a")
+            {
+                selectedTextStart = 0;
+                SetCaretPos(lines[^1].Length, lines.Count - 1);
+                return true;
+            }
+            if (keyString == "c") return OnCopyCut(CopyCutMode.Copy);
+            if (keyString == "x") return OnCopyCut(CopyCutMode.Cut);
+            if (keyString == "v") return OnPaste();
+            return false;
+        }
+
+        private enum CopyCutMode
+        {
+            Copy,
+            Cut
+        }
+        private bool OnCopyCut(CopyCutMode mode) {
+            if (selectedTextStart == null) return false;
+
+            string text = GetText();
+            int caretPos = CaretPosWithoutLineBreaks;
+            var textSelection = GetSelection(caretPos);
+            string subtext = text[textSelection.Start..textSelection.End];
+            if (subtext.Length != 0) api.Forms.SetClipboardText(subtext);
+            if (mode == CopyCutMode.Cut) DeleteSelectedText(caretPos, 0);
+            return true;
+        }
+
+        private bool OnPaste()
+        {
+            if (selectedTextStart != null) DeleteSelectedText(CaretPosWithoutLineBreaks, 0);
+
+            string insert = api.Forms.GetClipboardText();
+            insert = insert.Replace("\uFEFF", ""); // UTF-8 bom, we don't need that one, like ever
+
+            string fulltext = string.Join("", lines);
+            int caretPos = CaretPosWithoutLineBreaks;
+            SetValue(fulltext[..caretPos] + insert + fulltext[caretPos..], false);
+            CaretPosWithoutLineBreaks = caretPos + insert.Length;
+            return true;
+        }
+
+        private bool OnDeleteWord(int direction)
+        {
+            if (selectedTextStart != null) return false;
+
+            selectedTextStart = CaretPosWithoutLineBreaks;
+            MoveCursor(direction, true, true);
+            DeleteSelectedText(CaretPosWithoutLineBreaks, 0);
+            return true;
+        }
+
         private void OnKeyEnter()
         {
+            if (selectedTextStart != null) DeleteSelectedText(CaretPosWithoutLineBreaks, 0);
             if (lines.Count >= maxlines) return;
 
             string leftText = linesStaging[CaretPosLine].Substring(0, CaretPosInLine);
@@ -602,8 +781,11 @@ namespace Vintagestory.API.Client
             }
 
             var cpos = CaretPosWithoutLineBreaks;
+            handlingOnKeyEvent = true;
             LoadValue(linesStaging); // Ensures word wrapping
             CaretPosWithoutLineBreaks = cpos + 1;
+            if (selectedTextStart != null) DeleteSelectedTextAndFixCursor(cpos, 1);
+            handlingOnKeyEvent = false;
 
             args.Handled = true;
             api.Gui.PlaySound("tick");
@@ -629,12 +811,74 @@ namespace Vintagestory.API.Client
             }
         }
 
+        // Children are responsible for calling it because it should be behind text.
+        protected void RenderTextSelection()
+        {
+            if (selectedTextStart == null) return;
+
+            var textSelection = GetSelection(CaretPosWithoutLineBreaks);
+            var start = GetPosition(textSelection.Start);
+            var end = GetPosition(textSelection.End);
+
+            if (start.Y == end.Y) RenderSelectionLine(start.X, end.X, start.Y);
+            else
+            {
+                RenderSelectionLine(start.X, -1, start.Y);
+                for (int lineIndex = start.Y + 1; lineIndex < end.Y; ++lineIndex) RenderSelectionLine(0, -1, lineIndex);
+                RenderSelectionLine(0, end.X, end.Y);
+            }
+        }
+
+        void RenderSelectionLine(int fromX, int toX, int lineIndex)
+        {
+            double renderX = Bounds.renderX + leftPadding;
+            double renderY = Bounds.renderY + topPadding;
+            double height = Font.GetFontExtents().Height;
+
+            double x = renderX + (fromX == 0 ? 0 : Font.GetTextExtents(lines[lineIndex][..fromX]).XAdvance);
+            double y = renderY + height * lineIndex;
+            double width = Font.GetTextExtents(lines[lineIndex].Substring(fromX, (toX == -1 ? lines[lineIndex].Length : toX) - fromX)).XAdvance;
+            api.Render.Render2DTexturePremultipliedAlpha(selectionTextureId, x - renderLeftOffset, y, width, height);
+        }
+
+        struct SelectedTextPos
+        {
+            internal int X;
+            internal int Y;
+
+            internal SelectedTextPos (int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
+        }
+
+        SelectedTextPos GetPosition(int positionWithoutLineBreaks)
+        {
+            int linePos = 0;
+            foreach (string line in lines)
+            {
+                if (positionWithoutLineBreaks > line.Length)
+                {
+                    ++linePos;
+                    positionWithoutLineBreaks -= line.Length;
+                }
+                else break;
+            }
+            return new(positionWithoutLineBreaks, linePos);
+        }
+
         public override void Dispose()
         {
             base.Dispose();
 
             caretTexture.Dispose();
             textTexture.Dispose();
+            if (selectionTextureId != 0)
+            {
+                api.Gui.DeleteTexture(selectionTextureId);
+                selectionTextureId = 0;
+            }
         }
 
 
@@ -643,42 +887,43 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="dir">The direction to move the cursor.</param>
         /// <param name="wholeWord">Whether or not we skip entire words moving it.</param>
-        public void MoveCursor(int dir, bool wholeWord = false)
+        /// <param name="wholeWordWithWhitespace">Force the cursor to skip whitespace after a word.</param>
+        public void MoveCursor(int dir, bool wholeWord = false, bool wholeWordWithWhitespace = false)
         {
-            bool done = false;
             bool moved = 
                 ((CaretPosInLine > 0 || CaretPosLine > 0) && dir < 0) ||
                 ((CaretPosInLine < lines[CaretPosLine].Length || CaretPosLine < lines.Count-1) && dir > 0)
             ;
 
-            int newPos = CaretPosInLine;
-            int newLine = CaretPosLine;
+            if (wholeWord)
+            {
+                dir = dir < 0 ? -1 : 1;
+                string text = GetText();
+                int stop = dir < 0 ? -1 : text.Length;
+                int offset = dir < 0 ? -1 : 0;
+                int caretPos = CaretPosWithoutLineBreaks + offset;
+                bool startsWithWhitespace = caretPos != stop && char.IsWhiteSpace(text[caretPos]);
+                while (caretPos != stop && char.IsWhiteSpace(text[caretPos])) caretPos += dir;
 
-            while (!done) {
-                newPos += dir;
-
-                if (newPos < 0)
+                if (caretPos != stop && !IsWordChar(text[caretPos]))
                 {
-                    if (newLine <= 0) break;
-                    newLine--;
-                    newPos = lines[newLine].TrimEnd('\r', '\n').Length;
-                } 
-
-                if (newPos > lines[newLine].TrimEnd('\r', '\n').Length)
+                    while (caretPos != stop && !IsWordChar(text[caretPos]) && !char.IsWhiteSpace(text[caretPos])) caretPos += dir;
+                }
+                else
                 {
-                    if (newLine >= lines.Count - 1) break;
-                    newPos = 0;
-                    newLine++;
+                    while (caretPos != stop && IsWordChar(text[caretPos])) caretPos += dir;
                 }
 
-                done = !wholeWord || (newPos > 0 && lines[newLine][newPos - 1] == ' ');
-            }
+                if (!startsWithWhitespace && wholeWordWithWhitespace)
+                {
+                    while (caretPos != stop && char.IsWhiteSpace(text[caretPos])) caretPos += dir;
+                }
 
-            if (moved)
-            {
-                SetCaretPos(newPos, newLine);
-                api.Gui.PlaySound("tick");
+                CaretPosWithoutLineBreaks = caretPos - offset;
             }
+            else CaretPosWithoutLineBreaks += dir;
+
+            if (moved) api.Gui.PlaySound("tick");
         }
 
 
@@ -697,6 +942,19 @@ namespace Vintagestory.API.Client
         {
             var fontExt = Font.GetFontExtents();
             this.maxlines = (int)Math.Floor(maxheight / fontExt.Height);
+        }
+
+        private static int GenerateSelectionTexture(ICoreClientAPI api) {
+            using ImageSurface surface = new(Format.Argb32, 32, 32);
+            using Context context = new(surface);
+            context.SetSourceRGBA(0, 0.75, 1, 0.5);
+            context.Paint();
+            return api.Gui.LoadCairoTexture(surface, true);
+        }
+
+        private static bool IsWordChar(char c)
+        {
+            return c == '_' || char.IsLetterOrDigit(c);
         }
     }
 
