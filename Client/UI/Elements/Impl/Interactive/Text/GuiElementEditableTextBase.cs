@@ -576,6 +576,21 @@ namespace Vintagestory.API.Client
 
             if (args.ShiftPressed != selectedTextStart.HasValue && (args.KeyCode is (int)GlKeys.Up or (int)GlKeys.Down or (int)GlKeys.Left or (int)GlKeys.Right or (int)GlKeys.Home or (int)GlKeys.End))
             {
+                if (!args.CtrlPressed && selectedTextStart.HasValue) {
+                    int caretPos = CaretPosWithoutLineBreaks;
+                    if (selectedTextStart < caretPos && args.KeyCode is (int)GlKeys.Up or (int)GlKeys.Left or (int)GlKeys.Home ||
+                        selectedTextStart > caretPos && args.KeyCode is (int)GlKeys.Down or (int)GlKeys.Right or (int)GlKeys.End)
+                    {
+                        CaretPosWithoutLineBreaks = selectedTextStart.Value;
+                    }
+                    if (args.KeyCode is (int)GlKeys.Left or (int)GlKeys.Right)
+                    {
+                        selectedTextStart = null;
+                        args.Handled = true;
+                        api.Gui.PlaySound("tick");
+                        return;
+                    }
+                }
                 selectedTextStart = args.ShiftPressed ? CaretPosWithoutLineBreaks : null;
             }
 
