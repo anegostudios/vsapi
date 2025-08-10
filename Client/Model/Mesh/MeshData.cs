@@ -628,7 +628,8 @@ namespace Vintagestory.API.Client
                     double oy = matrix[4 * 0 + 1] * inVec[0] + matrix[4 * 1 + 1] * inVec[1] + matrix[4 * 2 + 1] * inVec[2];
                     double oz = matrix[4 * 0 + 2] * inVec[0] + matrix[4 * 1 + 2] * inVec[1] + matrix[4 * 2 + 2] * inVec[2];
 
-                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.PackNormal(ox, oy, oz));
+                    double len = Math.Sqrt(ox * ox + oy * oy + oz * oz);
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.PackNormal(ox / len, oy / len, oz / len));
                 }
             }
 
