@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
@@ -37,7 +37,8 @@ namespace Vintagestory.API.Server
         string PlayStyle { get; set; }
         string WorldType { get; set; }
         bool EntitySpawning { get; set; }
-        List<LandClaim> LandClaims { get; set; }
+        [System.Obsolete("Use sapi.WorldManager.LandClaims instead.  ISaveGame.LandClaims will be removed in 1.22")]
+        List<LandClaim> LandClaims { get; }
 
         ITreeAttribute WorldConfiguration { get; }
 

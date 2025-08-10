@@ -1,8 +1,5 @@
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -223,14 +220,19 @@ namespace Vintagestory.API.Common
             if (WatchedAttributes.HasAttribute("mountedOn"))
             {
                 var mountable = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
-                if (MountedOn != null && mountable != null && MountedOn.Entity?.EntityId != mountable.Entity?.EntityId)
+                var seat = MountedOn?.MountSupplier.GetSeatOfMountedEntity(this);
+                if (MountedOn != null && mountable != null &&
+                    (MountedOn.Entity?.EntityId != mountable.Entity?.EntityId || mountable.SeatId != seat?.SeatId))
                 {
-                    var seat = MountedOn.MountSupplier.GetSeatOfMountedEntity(this);
                     if (seat != null) seat.DoTeleportOnUnmount = false;
                     TryUnmount();
                     if (seat != null) seat.DoTeleportOnUnmount = true;
                 }
-                doMount(mountable);
+
+                if (MountedOn == null || (mountable != null && mountable.SeatId != seat?.SeatId))
+                {
+                    doMount(mountable);
+                }
             }
             else
             {
@@ -793,11 +795,6 @@ namespace Vintagestory.API.Common
             {
                 throw new Exception("EndOfStreamException thrown while reading entity, you might be able to recover your savegame through repair mode", e);
 
-            }
-
-            if (MountedOn != null && !WatchedAttributes.HasAttribute("mountedOn"))
-            {
-                TryUnmount();
             }
         }
 

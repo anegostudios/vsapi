@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -146,6 +146,20 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Use this method like .Mark where the string has a second component
+        /// (For performance, this avoids concatenating the strings unnecessarily, where the profiler is not enabled)
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="param"></param>
+        public void Mark(string code, object param)
+        {
+            if (!Enabled && !PrintSlowTicks) return;
+            if (code == null) throw new ArgumentNullException("marker name may not be null!");
+
+            MarkInternal(code + param);
+        }
+
+        /// <summary>
         /// Use this method to add a frame profiling marker, will set or add the time ellapsed since the previous mark to the frame profiling reults.
         /// </summary>
         /// <param name="code"></param>
@@ -154,6 +168,11 @@ namespace Vintagestory.API.Common
             if (!Enabled && !PrintSlowTicks) return;
             if (code == null) throw new ArgumentNullException("marker name may not be null!");
 
+            MarkInternal(code);
+        }
+
+        private void MarkInternal(string code)
+        {
             try
             {
                 var entry = currentEntry;
