@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
@@ -31,7 +31,8 @@ namespace Vintagestory.API.Common
 
     public class BlockBreakingParticleProps : CollectibleParticleProperties
     {
-        internal BlockDamage blockdamage;
+        public BlockDamage blockdamage;
+
         public bool boyant;
 
         EvolvingNatFloat sizeEvolve = new EvolvingNatFloat(EnumTransformFunction.LINEAR, -0.5f);

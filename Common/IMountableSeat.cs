@@ -117,6 +117,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         EntityPos Position { get; }
 
+        /// <summary>
+        /// StepPitch (pitching when stepping up or down a block) of this mountable - valid client-side only, taken from EntityShapeRenderer
+        /// </summary>
+        double StepPitch { get; }
+
+
         bool AnyMounted();
 
         /// <summary>

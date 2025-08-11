@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Datastructures;
@@ -76,6 +76,14 @@ namespace Vintagestory.API.Util
             if (val == null) return;
             int x = val.X;
             int y = val.Y;
+            if (x == 0 && y == 0)
+            {
+                // Don't write nothing at all if the Vec2i has value (0,0) as otherwise we might have no key for a Dictionary: so here we explicitly write the zero value of x
+                WriteTagLengthDelim(stream, field, 3);
+                WriteTagVarInt(stream, 1);
+                Write(stream, 0);
+                return;
+            }
             WriteTagLengthDelim(stream, field, 2 + GetSize(x) + GetSize(y));
             Write(stream, 1, x);
             Write(stream, 2, y);

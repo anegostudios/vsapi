@@ -192,6 +192,7 @@ namespace Vintagestory.API.Client
                 CaretPosLine = Math.Max(0, (int)lineY);
             }
 
+            CaretPosLine = Math.Clamp(CaretPosLine, 0, lines.Count - 1);
             string line = lines[CaretPosLine].TrimEnd('\r', '\n');
             CaretPosInLine = line.Length;
 
@@ -289,7 +290,7 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Sets given texts, leaves cursor position unchanged
+        /// Sets given texts, leaves cursor position unchanged unless it's now invalid
         /// </summary>
         /// <param name="newLines"></param>
         public virtual void LoadValue(List<string> newLines)
@@ -304,6 +305,9 @@ namespace Vintagestory.API.Client
 
             lines = new List<string>(newLines);
             linesStaging = new List<string>(lines);
+
+            CaretPosLine = Math.Clamp(CaretPosLine, 0, lines.Count - 1);
+            CaretPosInLine = Math.Clamp(CaretPosInLine, 0, lines[CaretPosLine].Length);
 
             //RecomposeText(); - wtf is this here for, its alread called in TextChanged()
             TextChanged();
@@ -576,6 +580,22 @@ namespace Vintagestory.API.Client
 
             if (args.ShiftPressed != selectedTextStart.HasValue && (args.KeyCode is (int)GlKeys.Up or (int)GlKeys.Down or (int)GlKeys.Left or (int)GlKeys.Right or (int)GlKeys.Home or (int)GlKeys.End))
             {
+                if (!args.CtrlPressed && selectedTextStart.HasValue)
+                {
+                    int caretPos = CaretPosWithoutLineBreaks;
+                    if (selectedTextStart < caretPos && args.KeyCode is (int)GlKeys.Up or (int)GlKeys.Left or (int)GlKeys.Home ||
+                        selectedTextStart > caretPos && args.KeyCode is (int)GlKeys.Down or (int)GlKeys.Right or (int)GlKeys.End)
+                    {
+                        CaretPosWithoutLineBreaks = selectedTextStart.Value;
+                    }
+                    if (args.KeyCode is (int)GlKeys.Left or (int)GlKeys.Right)
+                    {
+                        selectedTextStart = null;
+                        args.Handled = true;
+                        api.Gui.PlaySound("tick");
+                        return;
+                    }
+                }
                 selectedTextStart = args.ShiftPressed ? CaretPosWithoutLineBreaks : null;
             }
 

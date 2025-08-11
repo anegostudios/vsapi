@@ -16,7 +16,7 @@ namespace Vintagestory.API.Common
     {
         public static ThreadLocal<Random> randTL = new ThreadLocal<Random>(() => new Random());
         public static Random rand => randTL.Value;
-            
+
 
         public float MinQuantity;
         public float AddQuantity;
@@ -57,7 +57,15 @@ namespace Vintagestory.API.Common
 
         public bool SelfPropelled;
 
+        /// <summary>
+        /// The block which can be used to get a random color when particle spawns are send from the server to the client
+        /// </summary>
         public Block ColorByBlock;
+
+        /// <summary>
+        /// The item which can be used to get a random color when particle spawns are send from the server to the client
+        /// </summary>
+        public Item ColorByItem;
 
         /// <summary>
         /// The color map for climate color mapping. Leave null for no coloring by climate
@@ -135,6 +143,7 @@ namespace Vintagestory.API.Common
         public int GetRgbaColor(ICoreClientAPI capi)
         {
             if (ColorByBlock != null) return ColorByBlock.GetRandomColor(capi, new ItemStack(ColorByBlock));
+            if (ColorByItem != null) return ColorByItem.GetRandomColor(capi, new ItemStack(ColorByItem));
             if (SeasonColorMap != null || ClimateColorMap != null)
             {
                 return capi.World.ApplyColorMapOnRgba(ClimateColorMap, SeasonColorMap, Color, (int)MinPos.X, (int)MinPos.Y, (int)MinPos.Z);
@@ -142,9 +151,9 @@ namespace Vintagestory.API.Common
             return Color;
         }
 
-        
 
-        
+
+
         float IParticlePropertiesProvider.LifeLength => LifeLength + addLifeLength * (float)rand.NextDouble();
 
         public EnumParticleModel ParticleModel { get; set; }
@@ -202,6 +211,9 @@ namespace Vintagestory.API.Common
             writer.Write(ColorByBlock == null);
             if (ColorByBlock != null) writer.Write(ColorByBlock.BlockId);
 
+            writer.Write(ColorByItem == null);
+            if (ColorByItem != null) writer.Write(ColorByItem.ItemId);
+
             writer.Write(ClimateColorMap == null);
             if (ClimateColorMap != null) writer.Write(ClimateColorMap);
 
@@ -255,13 +267,18 @@ namespace Vintagestory.API.Common
             {
                 SizeEvolve = EvolvingNatFloat.CreateFromBytes(reader);
             }
-            
-            
+
+
             SelfPropelled = reader.ReadBoolean();
 
             if (!reader.ReadBoolean())
             {
                 ColorByBlock = resolver.Blocks[reader.ReadInt32()];
+            }
+
+            if (!reader.ReadBoolean())
+            {
+                ColorByItem = resolver.Items[reader.ReadInt32()];
             }
 
             if (!reader.ReadBoolean())
@@ -286,14 +303,14 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public IParticlePropertiesProvider[] SecondaryParticles { get; set; } = null; 
+        public IParticlePropertiesProvider[] SecondaryParticles { get; set; } = null;
         public IParticlePropertiesProvider[] DeathParticles { get; set; } = null;
         public float SecondarySpawnInterval => 0.0f;
 
         public bool DieOnRainHeightmap { get; set; }
         public bool WindAffected { get; set; }
 
-        
+
 
         public void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {
@@ -320,10 +337,10 @@ namespace Vintagestory.API.Common
                 }
 
             }
-            
+
             return cloned;
         }
 
-        
+
     }
 }
