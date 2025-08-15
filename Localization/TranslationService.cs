@@ -619,19 +619,17 @@ namespace Vintagestory.API.Config
         /// <c>item</c> prefixed to it, resulting in the full key
         /// <c>item-axe-steel</c>.
         /// </summary>
-        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, string domain = GlobalConstants.DefaultDomain)
+        private static void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, string domain = GlobalConstants.DefaultDomain)
         {
-            var key = new StringBuilder(domain)
-                .Append(AssetLocation.LocationSeparator);
-            LoadEntries(entryCache, regexCache, wildcardCache, json, key, isFirstPart: true);
+            LoadEntries(entryCache, regexCache, wildcardCache, json, new StringBuilder(256), domain);
         }
 
-        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, StringBuilder key, bool isFirstPart)
+        private static void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, StringBuilder key, string domain)
         {
             switch (json)
             {
                 case JObject jsonObject:
-                    if (!isFirstPart)
+                    if (key.Length > 0)
                     {
                         key.Append('-');
                     }
@@ -641,19 +639,20 @@ namespace Vintagestory.API.Config
                     {
                         key.Length = prefixLength;
                         key.Append(property.Name);
-                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, key, isFirstPart: false);
+                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, key, domain);
                     }
                     break;
-                case JValue jsonValue when jsonValue.Type == JTokenType.String && !isFirstPart:
-                    LoadEntry(entryCache, regexCache, wildcardCache, key.ToString(), jsonValue.ToString());
+                case JValue jsonValue when jsonValue.Type == JTokenType.String && key.Length > 0:
+                    LoadEntry(entryCache, regexCache, wildcardCache, key.ToString(), jsonValue.ToString(), domain);
                     break;
                 default:
                     throw new InvalidOperationException($"Unexpected token: {json.Type}");
             }
         }
 
-        private void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, string key, string value)
+        private static void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, string key, string value, string domain)
         {
+            key = KeyWithDomain(key, domain);
             switch (key.CountChars('*'))
             {
                 case 0:
