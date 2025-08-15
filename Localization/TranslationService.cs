@@ -574,44 +574,99 @@ namespace Vintagestory.API.Config
                 .FirstOrDefault();
         }
 
-        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, string domain = GlobalConstants.DefaultDomain, string key = "")
+        /// <summary>
+        /// Loads translation KVPs from a JSON tree. Supports nested objects by
+        /// recursively traversing through object values, until leaf string
+        /// properties are encountered.
+        ///
+        /// As the function recurses deeper, the traversed path is accumulated
+        /// and used as a prefix for the translation key.
+        ///
+        /// For "vanilla style", flat translation files this is trivial, as
+        /// each property within the root-level object corresponds to a single
+        /// translation KVP:
+        /// <code>
+        /// {
+        ///   "item-axe-copper": "Copper axe",
+        ///   "item-axe-iron": "Iron axe",
+        ///   "item-axe-steel": "Steel axe",
+        /// }
+        /// </code>
+        /// Alternatively, the parser supports constructing the keys from a
+        /// nested structure, where parts of the path are split into nested
+        /// objects, with arbitrary nesting:
+        /// <code>
+        /// {
+        ///   "item": {
+        ///     "axe-copper": "Copper axe",
+        ///     "axe-iron": "Iron axe",
+        ///     "axe": {
+        ///       "steel": "Steel axe"
+        ///     }
+        ///   }
+        /// }
+        /// </code>
+        /// The translation values in the examples above are functionally the
+        /// same. Both produce identical translation keys.
+        ///
+        /// For the latter, nested structure, the final keys are computed by
+        /// concatenating the parent keys as prefixes to the key, using a dash
+        /// (<c>-</c>) as a separator.
+        ///
+        /// For example, in the above sample, the <c>item</c> and its child
+        /// property <c>axe-copper</c> gets concatenated as <c>item-axe-copper
+        /// </c>. Likewise, the key <c>steel</c> has its parents <c>axe</c> and
+        /// <c>item</c> prefixed to it, resulting in the full key
+        /// <c>item-axe-steel</c>.
+        /// </summary>
+        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, string domain = GlobalConstants.DefaultDomain)
+        {
+            var key = new StringBuilder(domain)
+                .Append(AssetLocation.LocationSeparator);
+            LoadEntries(entryCache, regexCache, wildcardCache, json, key, isFirstPart: true);
+        }
+
+        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, StringBuilder key, bool isFirstPart)
         {
             switch (json)
             {
                 case JObject jsonObject:
+                    if (!isFirstPart)
+                    {
+                        key.Append('-');
+                    }
+
+                    var prefixLength = key.Length;
                     foreach (var property in jsonObject.Properties())
                     {
-                        var newKey = key.Length == 0
-                            ? property.Name
-                            : $"{key}-{property.Name}";
-                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, domain, newKey);
+                        key.Length = prefixLength;
+                        key.Append(property.Name);
+                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, key, isFirstPart: false);
                     }
                     break;
-                case JValue jsonValue when jsonValue.Type == JTokenType.String && key.Length > 0:
-                    var value = jsonValue.ToString();
-                    LoadEntry(entryCache, regexCache, wildcardCache, new(key, value), domain);
+                case JValue jsonValue when jsonValue.Type == JTokenType.String && !isFirstPart:
+                    LoadEntry(entryCache, regexCache, wildcardCache, key.ToString(), jsonValue.ToString());
                     break;
                 default:
                     throw new InvalidOperationException($"Unexpected token: {json.Type}");
             }
         }
 
-        private void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, KeyValuePair<string, string> entry, string domain = GlobalConstants.DefaultDomain)
+        private void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, string key, string value)
         {
-            var key = KeyWithDomain(entry.Key, domain);
             switch (key.CountChars('*'))
             {
                 case 0:
-                    entryCache[key] = entry.Value;
+                    entryCache[key] = value;
                     break;
                 case 1 when key.EndsWith('*'):
-                    wildcardCache[key.TrimEnd('*')] = entry.Value;
+                    wildcardCache[key.TrimEnd('*')] = value;
                     break;
                     // we can probably do better here, as we have our own wildcardsearch now
                 default:
                 {
                     var regex = new Regex("^" + key.Replace("*", "(.*)") + "$", RegexOptions.Compiled);
-                    regexCache[key] = new KeyValuePair<Regex, string>(regex, entry.Value);
+                    regexCache[key] = new KeyValuePair<Regex, string>(regex, value);
                     break;
                 }
             }
