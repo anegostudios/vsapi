@@ -621,15 +621,17 @@ namespace Vintagestory.API.Config
         /// </summary>
         private static void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, string domain = GlobalConstants.DefaultDomain)
         {
-            LoadEntries(entryCache, regexCache, wildcardCache, json, new StringBuilder(256), domain);
+            var key = new StringBuilder(domain, 256)
+                .Append(AssetLocation.LocationSeparator);
+            LoadEntries(entryCache, regexCache, wildcardCache, json, key, domain, isFirstPart: true);
         }
 
-        private static void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, StringBuilder key, string domain)
+        private static void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, StringBuilder key, string domain, bool isFirstPart)
         {
             switch (json)
             {
                 case JObject jsonObject:
-                    if (key.Length > 0)
+                    if (!isFirstPart)
                     {
                         key.Append('-');
                     }
@@ -639,20 +641,20 @@ namespace Vintagestory.API.Config
                     {
                         key.Length = prefixLength;
                         key.Append(property.Name);
-                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, key, domain);
+                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, key, domain, isFirstPart: false);
                     }
                     break;
-                case JValue jsonValue when jsonValue.Type == JTokenType.String && key.Length > 0:
-                    LoadEntry(entryCache, regexCache, wildcardCache, key.ToString(), jsonValue.ToString(), domain);
+                case JValue jsonValue when jsonValue.Type == JTokenType.String && !isFirstPart:
+                    LoadEntry(entryCache, regexCache, wildcardCache, key, jsonValue.ToString(), domain);
                     break;
                 default:
                     throw new InvalidOperationException($"Unexpected token: {json.Type}");
             }
         }
 
-        private static void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, string key, string value, string domain)
+        private static void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, StringBuilder keyBuilder, string value, string domain)
         {
-            key = KeyWithDomain(key, domain);
+            var key = EnsureSingleDomainPrefix(keyBuilder, domain);
             switch (key.CountChars('*'))
             {
                 case 0:
@@ -669,6 +671,19 @@ namespace Vintagestory.API.Config
                     break;
                 }
             }
+        }
+
+        private static string EnsureSingleDomainPrefix(StringBuilder keyBuilder, string domain = GlobalConstants.DefaultDomain)
+        {
+            var key = keyBuilder.ToString();
+            var defaultDomainEndIndex = domain.Length + 1;
+            if (key.IndexOf(AssetLocation.LocationSeparator, defaultDomainEndIndex) >= 0)
+            {
+                // Key contains a custom prefix, drop the default prefix
+                return key.Substring(defaultDomainEndIndex);
+            }
+
+            return key;
         }
 
         private static string KeyWithDomain(string key, string domain = GlobalConstants.DefaultDomain)
