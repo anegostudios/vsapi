@@ -824,7 +824,7 @@ namespace Vintagestory.API.Common
 
             if (fromIngredient.IsTool)
             {
-                stackInSlot.Itemstack.Collectible.DamageItem(byPlayer.Entity.World, byPlayer.Entity, stackInSlot, fromIngredient.ToolDurabilityCost);
+                if (fromIngredient.ToolDurabilityCost > 0) stackInSlot.Itemstack.Collectible.DamageItem(byPlayer.Entity.World, byPlayer.Entity, stackInSlot, fromIngredient.ToolDurabilityCost);
             }
             else
             {

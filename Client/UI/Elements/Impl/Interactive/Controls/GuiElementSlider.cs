@@ -367,8 +367,16 @@ namespace Vintagestory.API.Client
             if (!HasFocus) return;
 
             int dir = 0;
-            if (args.KeyCode == (int)GlKeys.Left && currentValue > minValue) dir = -1;
-            if (args.KeyCode == (int)GlKeys.Right && currentValue < maxValue) dir = 1;
+            if (args.KeyCode == (int)GlKeys.Left)
+            {
+                if (currentValue <= allowValues.First()) return;
+                dir = -1;
+            }
+            else if (args.KeyCode == (int)GlKeys.Right)
+            {
+                if (currentValue >= allowValues.Last()) return;
+                dir = 1;
+            }
 
             if (dir != 0)
             {

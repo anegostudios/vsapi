@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -46,6 +46,10 @@ namespace Vintagestory.API.Client
 
         public bool UsesColorMap; // bubble up var
         public int[] defaultTextureSize;
+        /// <summary>
+        /// For performance, used to limit what height gets rendered on transparent textures of plants such as tallgrass and flowers 
+        /// </summary>
+        public float drawnHeight = 1f;
 
         public TesselationMetaData Clone()
         {

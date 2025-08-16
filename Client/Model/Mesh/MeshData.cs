@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
@@ -1100,47 +1101,87 @@ namespace Vintagestory.API.Client
                 AddRenderPass(sourceRenderPassesAndExtra[i]);
             }
 
-            if (CustomInts != null && sourceMesh.CustomInts != null)
+            if (CustomInts != null)
             {
-                var sourceCustomIntsCount = sourceMesh.CustomInts.Count;
-                var sourceCustomIntsValues = sourceMesh.CustomInts.Values;
-                var CustomInts = this.CustomInts;
-                for (int i = 0; i < sourceCustomIntsCount; i++)
+                if (sourceMesh.CustomInts != null)
                 {
-                    CustomInts.Add(sourceCustomIntsValues[i]);
+                    var sourceCustomIntsCount = sourceMesh.CustomInts.Count;
+                    var sourceCustomIntsValues = sourceMesh.CustomInts.Values;
+                    var CustomInts = this.CustomInts;
+                    for (int i = 0; i < sourceCustomIntsCount; i++)
+                    {
+                        CustomInts.Add(sourceCustomIntsValues[i]);
+                    }
+                }
+                else  // We are adding meshData which has no CustomInts of its own (!!), but the array length still needs to match the vertices count
+                {
+                    if (CustomInts.Values.Length < VerticesCount)
+                    {
+                        Array.Resize(ref CustomInts.Values, VerticesCount);
+                    }
                 }
             }
 
-            if (CustomFloats != null && sourceMesh.CustomFloats != null)
+            if (CustomFloats != null)
             {
-                var sourceCustomFloatsCount = sourceMesh.CustomFloats.Count;
-                var sourceCustomFloatsValues = sourceMesh.CustomFloats.Values;
-                var CustomFloats = this.CustomFloats;
-                for (int i = 0; i < sourceCustomFloatsCount; i++)
+                if (sourceMesh.CustomFloats != null)
                 {
-                    CustomFloats.Add(sourceCustomFloatsValues[i]);
+                    var sourceCustomFloatsCount = sourceMesh.CustomFloats.Count;
+                    var sourceCustomFloatsValues = sourceMesh.CustomFloats.Values;
+                    var CustomFloats = this.CustomFloats;
+                    for (int i = 0; i < sourceCustomFloatsCount; i++)
+                    {
+                        CustomFloats.Add(sourceCustomFloatsValues[i]);
+                    }
+                }
+                else  // We are adding meshData which has no CustomFloats of its own (!!), but the array length still needs to match the vertices count
+                {     // An example is in BlockClutterBookshelfWithLore when merging the shelf mesh and the book mesh
+                    if (CustomFloats.Values.Length < VerticesCount)
+                    {
+                        Array.Resize(ref CustomFloats.Values, VerticesCount);
+                    }
                 }
             }
 
-            if (CustomShorts != null && sourceMesh.CustomShorts != null)
+            if (CustomShorts != null)
             {
-                var sourceCustomShortsCount = sourceMesh.CustomShorts.Count;
-                var sourceCustomShortsValues = sourceMesh.CustomShorts.Values;
-                var CustomShorts = this.CustomShorts;
-                for (int i = 0; i < sourceCustomShortsCount; i++)
+                if (sourceMesh.CustomShorts != null)
                 {
-                    CustomShorts.Add(sourceCustomShortsValues[i]);
+                    var sourceCustomShortsCount = sourceMesh.CustomShorts.Count;
+                    var sourceCustomShortsValues = sourceMesh.CustomShorts.Values;
+                    var CustomShorts = this.CustomShorts;
+                    for (int i = 0; i < sourceCustomShortsCount; i++)
+                    {
+                        CustomShorts.Add(sourceCustomShortsValues[i]);
+                    }
+                }
+                else  // We are adding meshData which has no CustomShorts of its own (!!), but the array length still needs to match the vertices count
+                {
+                    if (CustomShorts.Values.Length < VerticesCount)
+                    {
+                        Array.Resize(ref CustomShorts.Values, VerticesCount);
+                    }
                 }
             }
 
-            if (CustomBytes != null && sourceMesh.CustomBytes != null)
+            if (CustomBytes != null)
             {
-                var sourceCustomBytesCount = sourceMesh.CustomBytes.Count;
-                var sourceCustomBytesValues = sourceMesh.CustomBytes.Values;
-                var CustomBytes = this.CustomBytes;
-                for (int i = 0; i < sourceCustomBytesCount; i++)
+                if (sourceMesh.CustomBytes != null)
                 {
-                    CustomBytes.Add(sourceCustomBytesValues[i]);
+                    var sourceCustomBytesCount = sourceMesh.CustomBytes.Count;
+                    var sourceCustomBytesValues = sourceMesh.CustomBytes.Values;
+                    var CustomBytes = this.CustomBytes;
+                    for (int i = 0; i < sourceCustomBytesCount; i++)
+                    {
+                        CustomBytes.Add(sourceCustomBytesValues[i]);
+                    }
+                }
+                else  // We are adding meshData which has no CustomBytes of its own (!!), but the array length still needs to match the vertices count
+                {
+                    if (CustomBytes.Values.Length < VerticesCount)
+                    {
+                        Array.Resize(ref CustomBytes.Values, VerticesCount);
+                    }
                 }
             }
         }
@@ -2097,12 +2138,19 @@ namespace Vintagestory.API.Client
         public MeshData[] SplitByTextureId()
         {
             var meshes = new MeshData[TextureIds.Length];
-            for (int i = 0; i < meshes.Length; i++)
+            if (meshes.Length == 1)
             {
-                var mesh = meshes[i] = EmptyClone();
-                
-                mesh.AddMeshData(this, (faceindex) => TextureIndices[faceindex]==i);
-                mesh.CompactBuffers();
+                meshes[0] = this;
+            }
+            else
+            {
+                for (int i = 0; i < meshes.Length; i++)
+                {
+                    var mesh = meshes[i] = EmptyClone();
+
+                    mesh.AddMeshData(this, (faceindex) => TextureIndices[faceindex] == i);
+                    mesh.CompactBuffers();
+                }
             }
 
             return meshes;

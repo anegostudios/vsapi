@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.Common;
+using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -105,6 +105,8 @@ namespace Vintagestory.API.Client
         public float SunSpecularIntensity = 1;
 
         public float SunlightExtraBrightness = 0f;
+        public float SepiaLevel = 0f;
+        public float ExtraContrastLevel = 0f;
 
         public int PerceptionEffectId = 1;
         public float PerceptionEffectIntensity = 1;
