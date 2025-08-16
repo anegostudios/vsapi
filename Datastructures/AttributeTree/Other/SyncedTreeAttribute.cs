@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
 #nullable disable
@@ -20,7 +21,7 @@ namespace Vintagestory.API.Datastructures
         /// Whole tree will be resent
         /// </summary>
         bool allDirty;
-        
+
         /// <summary>
         /// Subtrees will be resent
         /// </summary>
@@ -93,7 +94,7 @@ namespace Vintagestory.API.Datastructures
 
             if (allDirty) return;
 
-            if (attributePathsDirty.Count >= 10)
+            if (attributePathsDirty.Count >= GlobalConstants.MaxDirtyAttributePaths)
             {
                 attributePathsDirty.Clear();
                 allDirty = true;
@@ -242,7 +243,7 @@ namespace Vintagestory.API.Datastructures
         public void PartialUpdate(string path, byte[] data)
         {
             IAttribute attr = GetAttributeByPath(path);
-            
+
             if (data == null)
             {
                 DeleteAttributeByPath(path);
