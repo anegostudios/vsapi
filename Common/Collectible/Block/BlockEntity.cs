@@ -39,6 +39,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public List<BlockEntityBehavior> Behaviors = new List<BlockEntityBehavior>();
 
+        public ItemStack stackForWorldgen;
 
         /// <summary>
         /// Creats an empty instance. Use initialize to initialize it with the api.
@@ -81,6 +82,12 @@ namespace Vintagestory.API.Common
             } else
             {
                 foreach (var val in Behaviors) val.Initialize(api, val.properties);
+            }
+
+            if (stackForWorldgen != null)
+            {
+                OnBlockPlaced(stackForWorldgen);
+                stackForWorldgen = null;
             }
         }
 

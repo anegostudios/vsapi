@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -80,7 +80,7 @@ namespace Vintagestory.API.Client
                 int vertexSize = Math.Max(modeldata.VerticesCount, defaultVertexPoolSize);
                 int indexSize = Math.Max(modeldata.IndicesCount, defaultIndexPoolSize);
 
-                if (vertexSize > defaultIndexPoolSize)
+                if (vertexSize > defaultVertexPoolSize)
                 {
                     capi.World.Logger.Warning("Chunk (or some other mesh source at origin: {0}) exceeds default geometric complexity maximum of {1} vertices and {2} indices. You must be loading some very complex objects (#v = {3}, #i = {4}). Adjusted Pool size accordingly.", modelOrigin, defaultVertexPoolSize, defaultIndexPoolSize, modeldata.VerticesCount, modeldata.IndicesCount);
                 }
@@ -96,11 +96,12 @@ namespace Vintagestory.API.Client
 
             if (location == null)
             {
-                capi.World.Logger.Fatal("Can't add modeldata (probably a tesselated chunk @{0}) to the model data pool list, it exceeds the size of a single empty pool of {1} vertices and {2} indices. You must be loading some very complex objects (#v = {3}, #i = {4}). Try increasing MaxVertexSize and MaxIndexSize. The whole chunk will be invisible.", modelOrigin, defaultVertexPoolSize, defaultIndexPoolSize, modeldata.VerticesCount, modeldata.IndicesCount);
+                capi.World.Logger.Fatal("Can't add modeldata (probably a tesselated chunk @{0}) to the model data pool list, blocks will likely be invisible. Potential reasons are the parts per pool were exceeded, or other code reasons, please report this. Default pool size is {1} vertices and {2} indices. Mesh size (#v = {3}, #i = {4}). Try increasing MaxVertexSize and MaxIndexSize.", modelOrigin, defaultVertexPoolSize, defaultIndexPoolSize, modeldata.VerticesCount, modeldata.IndicesCount);
             }
 
             return location;
         }
+
 
         /// <summary>
         /// Renders the chunk models to the GPU.  One of the most important methods in the entire game!

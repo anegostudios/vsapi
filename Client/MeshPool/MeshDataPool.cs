@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -210,7 +210,7 @@ namespace Vintagestory.API.Client
 
 
         ModelDataPoolLocation TryAppend(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere) {
-            if (modeldata.IndicesCount + indicesPosition >= IndicesPoolSize || modeldata.VerticesCount + verticesPosition >= VerticesPoolSize)
+            if (modeldata.IndicesCount + indicesPosition > IndicesPoolSize || modeldata.VerticesCount + verticesPosition > VerticesPoolSize)
             {
                 return null;
             }
