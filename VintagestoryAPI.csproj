@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <AssemblyName>VintagestoryAPI</AssemblyName>
         <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
@@ -24,12 +24,15 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
         <PackageReference Include="OpenTK.Windowing.GraphicsLibraryFramework" Version="4.9.4" />
         <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.9.4" />
-        <PackageReference Include="protobuf-net" Version="2.4.9" />
+        <PackageReference Include="protobuf-net" Version="2.4.7" />
         <PackageReference Include="SkiaSharp" Version="3.116.1" />
-        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.13" />
+        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="8.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Cairo\Cairo.csproj" />
+        <Reference Include="CairoSharp">
+            <HintPath>..\Lib\cairo-sharp.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
     </ItemGroup>
 </Project>

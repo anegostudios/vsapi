@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -255,15 +255,39 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The Y scale of this collectible when it begins cooking. Value will be linearly interpolated between this and <see cref="EndScaleX"/>.
+        /// </summary>
+        [DocumentAsJson] public float StartScaleX;
+        
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The Y scale of this collectible when it begins cooking. Value will be linearly interpolated between this and <see cref="EndScaleY"/>.
         /// </summary>
         [DocumentAsJson] public float StartScaleY;
 
         /// <summary>
         /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The Y scale of this collectible when it begins cooking. Value will be linearly interpolated between this and <see cref="EndScaleZ"/>.      
+        /// </summary>
+        [DocumentAsJson] public float StartScaleZ;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The Y scale of this collectible when it has finished cooking. Value will be linearly interpolated between <see cref="StartScaleX"/> and this.
+        /// </summary>
+        [DocumentAsJson] public float EndScaleX;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The Y scale of this collectible when it has finished cooking. Value will be linearly interpolated between <see cref="StartScaleY"/> and this.
         /// </summary>
         [DocumentAsJson] public float EndScaleY;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The Y scale of this collectible when it has finished cooking. Value will be linearly interpolated between <see cref="StartScaleZ"/> and this.
+        /// </summary>
+        [DocumentAsJson] public float EndScaleZ;
 
         /// <summary>
         /// <!--<jsonoptional>Required</jsonoptional>-->
