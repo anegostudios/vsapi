@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -252,24 +252,10 @@ namespace Vintagestory.API.Client
             }
         }
 
-        int DrawSlotBackgrounds(ItemSlot slot, double absSlotPadding, double absSlotWidth, double absSlotHeight)
+        public static int DrawSlotBackground(ICoreClientAPI api, double absSlotWidth, double absSlotHeight, double[] bgcolor, double[] fontcolor, Action<Context> extraDrawing)
         {
             ImageSurface slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
-            Context slotCtx = genContext(slotSurface);
-
-            double[] bgcolor;
-            double[] fontcolor;
-
-            if (slot.HexBackgroundColor != null)
-            {
-                bgcolor = ColorUtil.Hex2Doubles(slot.HexBackgroundColor);
-                fontcolor = [bgcolor[0] * 0.25, bgcolor[1] * 0.25, bgcolor[2] * 0.25, 1];
-            }
-            else
-            {
-                bgcolor = GuiStyle.DialogSlotBackColor;
-                fontcolor = GuiStyle.DialogSlotFrontColor;
-            }
+            Context slotCtx = GenContext(slotSurface);
 
             slotCtx.SetSourceRGBA(bgcolor);
             RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
@@ -287,22 +273,44 @@ namespace Vintagestory.API.Client
             slotCtx.LineWidth = scaled(4.5);
             slotCtx.Stroke();
 
-            if (slot.BackgroundIcon != null)
-            {
-                DrawIconHandler?.Invoke(
-                    slotCtx, slot.BackgroundIcon, 2 * (int)absSlotPadding, 2 * (int)absSlotPadding,
-                    (int)(absSlotWidth - 4 * absSlotPadding), (int)(absSlotHeight - 4 * absSlotPadding),
-                    [0, 0, 0, 0.2]
-                );
-            }
+            extraDrawing?.Invoke(slotCtx);
 
             int texId = 0;
-            generateTexture(slotSurface, ref texId, true);
+            GenerateTexture(api, slotSurface, ref texId, true);
 
             slotCtx.Dispose();
             slotSurface.Dispose();
 
             return texId;
+        }
+
+        int DrawSlotBackgrounds(ItemSlot slot, double absSlotPadding, double absSlotWidth, double absSlotHeight)
+        {
+            double[] bgcolor;
+            double[] fontcolor;
+
+            if (slot.HexBackgroundColor != null)
+            {
+                bgcolor = ColorUtil.Hex2Doubles(slot.HexBackgroundColor);
+                fontcolor = [bgcolor[0] * 0.25, bgcolor[1] * 0.25, bgcolor[2] * 0.25, 1];
+            }
+            else
+            {
+                bgcolor = GuiStyle.DialogSlotBackColor;
+                fontcolor = GuiStyle.DialogSlotFrontColor;
+            }
+
+            return DrawSlotBackground(api, absSlotWidth, absSlotHeight, bgcolor, fontcolor, (Context slotCtx) =>
+            {
+                if (slot.BackgroundIcon != null)
+                {
+                    DrawIconHandler?.Invoke(
+                        slotCtx, slot.BackgroundIcon, 2 * (int)absSlotPadding, 2 * (int)absSlotPadding,
+                        (int)(absSlotWidth - 4 * absSlotPadding), (int)(absSlotHeight - 4 * absSlotPadding),
+                        [0, 0, 0, 0.2]
+                    );
+                }
+            });
         }
 
 

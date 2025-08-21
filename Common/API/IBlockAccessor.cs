@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -471,7 +471,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Spawn block entity at this position. Does not place it's corresponding block, you have to this yourself.
+        /// Spawn block entity at this position. Does not place its corresponding block, you have to do this yourself.
         /// </summary>
         /// <param name="classname"></param>
         /// <param name="position"></param>
@@ -486,7 +486,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Permanently removes any block entity at this postion. Does not remove it's corresponding block, you have to do this yourself. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
+        /// Permanently removes any block entity at this postion. Does not remove its corresponding block, you have to do this yourself. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
         /// </summary>
         /// <param name="position"></param>
         void RemoveBlockEntity(BlockPos position);

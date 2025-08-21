@@ -86,7 +86,14 @@ namespace Vintagestory.API.Common
 
             if (stackForWorldgen != null)
             {
-                OnBlockPlaced(stackForWorldgen);
+                try
+                {
+                    OnBlockPlaced(stackForWorldgen);
+                }
+                catch (Exception e)   // Just in case modded BlockEntity are not expecting to be handled in this way
+                {
+                    api.Logger.Error(e);
+                }
                 stackForWorldgen = null;
             }
         }

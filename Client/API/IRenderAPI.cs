@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -95,7 +95,7 @@ namespace Vintagestory.API.Client
         int FrameHeight { get; }
 
         /// <summary>
-        /// The camera type.
+        /// The desired camera type. Be aware, the actual camera type can change at runtime if the player is against a wall and tries to look from inside the wall - use entityPlayer.CameraMode to get the actual mode
         /// </summary>
         EnumCameraMode CameraType { get; }
 

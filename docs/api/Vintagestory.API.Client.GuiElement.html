@@ -1172,6 +1172,86 @@ Class GuiElement
 
 
 
+  <a id="Vintagestory_API_Client_GuiElement_GenContext_" data-uid="Vintagestory.API.Client.GuiElement.GenContext*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElement_GenContext_Cairo_ImageSurface_" data-uid="Vintagestory.API.Client.GuiElement.GenContext(Cairo.ImageSurface)">
+  GenContext(ImageSurface)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Generates context based off the image surface.  (A static version of genContext(), identical behavior)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Context GenContext(ImageSurface surface)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>surface</code> <span class="xref">ImageSurface</span></dt>
+    <dd><p>The surface where the context is based.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Context</span></dt>
+    <dd><p>The context based off the provided surface.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElement_GenerateTexture_" data-uid="Vintagestory.API.Client.GuiElement.GenerateTexture*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElement_GenerateTexture_Vintagestory_API_Client_ICoreClientAPI_Cairo_ImageSurface_System_Int32__System_Boolean_" data-uid="Vintagestory.API.Client.GuiElement.GenerateTexture(Vintagestory.API.Client.ICoreClientAPI,Cairo.ImageSurface,System.Int32@,System.Boolean)">
+  GenerateTexture(ICoreClientAPI, ImageSurface, ref int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Generates a texture with an ID. (A static version of generateTexture())</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void GenerateTexture(ICoreClientAPI api, ImageSurface surface, ref int textureId, bool linearMag = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd></dd>
+    <dt><code>surface</code> <span class="xref">ImageSurface</span></dt>
+    <dd><p>The image surface supplied.</p>
+</dd>
+    <dt><code>textureId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The previous texture id.</p>
+</dd>
+    <dt><code>linearMag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether or not the texture will have linear magnification.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElement_IsPositionInside_" data-uid="Vintagestory.API.Client.GuiElement.IsPositionInside*"></a>
 
   <h3 id="Vintagestory_API_Client_GuiElement_IsPositionInside_System_Int32_System_Int32_" data-uid="Vintagestory.API.Client.GuiElement.IsPositionInside(System.Int32,System.Int32)">

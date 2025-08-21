@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Cairo;
 using SkiaSharp;
@@ -162,6 +162,17 @@ namespace Vintagestory.API.Client
         /// <param name="linearMag">Whether or not the texture will have linear magnification.</param>
         protected void generateTexture(ImageSurface surface, ref int textureId, bool linearMag = true)
         {
+            GenerateTexture(api, surface, ref textureId, linearMag);
+        }
+
+        /// <summary>
+        /// Generates a texture with an ID. (A static version of generateTexture())
+        /// </summary>
+        /// <param name="surface">The image surface supplied.</param>
+        /// <param name="textureId">The previous texture id.</param>
+        /// <param name="linearMag">Whether or not the texture will have linear magnification.</param>
+        public static void GenerateTexture(ICoreClientAPI api, ImageSurface surface, ref int textureId, bool linearMag = true)
+        {
             int prevTexId = textureId;
 
             textureId = api.Gui.LoadCairoTexture(surface, linearMag);
@@ -206,6 +217,16 @@ namespace Vintagestory.API.Client
         /// <param name="surface">The surface where the context is based.</param>
         /// <returns>The context based off the provided surface.</returns>
         protected Context genContext(ImageSurface surface)
+        {
+            return GenContext(surface);
+        }
+
+        /// <summary>
+        /// Generates context based off the image surface.  (A static version of genContext(), identical behavior)
+        /// </summary>
+        /// <param name="surface">The surface where the context is based.</param>
+        /// <returns>The context based off the provided surface.</returns>
+        public static Context GenContext(ImageSurface surface)
         {
             Context ctx = new Context(surface);
             ctx.SetSourceRGBA(0, 0, 0, 0);

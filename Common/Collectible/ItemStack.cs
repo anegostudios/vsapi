@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using Vintagestory.API.Datastructures;
@@ -136,12 +136,12 @@ namespace Vintagestory.API.Common
             this.stacksize = stacksize;
             this.stackAttributes = stackAttributes;
 
-            if (Class == EnumItemClass.Block)
+            if (itemClass == EnumItemClass.Block)
             {
-                block = resolver.GetBlock(this.Id);
+                block = resolver.GetBlock(id);
             } else
             {
-                item = resolver.GetItem(Id);
+                item = resolver.GetItem(id);
             }
         }
 

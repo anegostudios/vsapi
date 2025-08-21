@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using Vintagestory.API.MathTools;
 
@@ -192,15 +192,30 @@ namespace Vintagestory.API.Common
         public const int WindBitsMask = WindModeBitsMask | WindDataBitsMask;
 
 
-        // Bit 25
+        // Formerly bit 25; in 1.21 this is now bit 27
+        /// <summary>
+        /// Important: DO NOT USE THIS WITH THE &lt;&lt; OPERATOR: it's already shifted. It is a bit mask not a bit pos!
+        /// </summary>
         public const int LiquidIsLavaBitMask = 1 << 27;
-        // Bit 26
+        // Formerly bit 26; in 1.21 this is now bit 28
+        /// <summary>
+        /// Important: DO NOT USE THIS WITH THE &lt;&lt; OPERATOR: it's already shifted. It is a bit mask not a bit pos!
+        /// </summary>
         public const int LiquidWeakFoamBitMask = 1 << 28;
-        // Bit 27
+        // Formerly bit 27; in 1.21 this is now bit 29
+        /// <summary>
+        /// Important: DO NOT USE THIS WITH THE &lt;&lt; OPERATOR: it's already shifted. It is a bit mask not a bit pos!
+        /// </summary>
         public const int LiquidWeakWaveBitMask = 1 << 29;
-        // Bit 28
+        // Formerly bit 28; in 1.21 this is now bit 29
+        /// <summary>
+        /// Important: DO NOT USE THIS WITH THE &lt;&lt; OPERATOR: it's already shifted. It is a bit mask not a bit pos!
+        /// </summary>
         public const int LiquidFullAlphaBitMask = 1 << 30;
-        // Bit 29
+        // Formerly bit 29; in 1.21 this is now bit 31
+        /// <summary>
+        /// Important: DO NOT USE THIS WITH THE &lt;&lt; OPERATOR: it's already shifted. It is a bit mask not a bit pos!
+        /// </summary>
         public const int LiquidExposedToSkyBitMask = 1 << 31;
 
 

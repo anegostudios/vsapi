@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -282,17 +282,17 @@ public class GridRecipe : IByteSerializable
         return mappings;
     }
 
-    static protected bool IsAdvancedWildcard(string code)
+    static public bool IsAdvancedWildcard(string code)
     {
         return code.Contains('{') && code.Contains('}');
     }
 
-    static protected bool IsBasicWildcard(string code)
+    static public bool IsBasicWildcard(string code)
     {
         return code.Contains('*');
     }
 
-    static protected bool IsRegex(string code)
+    static public bool IsRegex(string code)
     {
         return code.StartsWith('@');
     }

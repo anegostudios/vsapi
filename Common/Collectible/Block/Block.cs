@@ -2317,7 +2317,7 @@ namespace Vintagestory.API.Common
 
             if (world.Api is ICoreClientAPI clientApi && clientApi.Settings.Bool["extendedDebugInfo"])
             {
-                IEnumerable<string> tags = Tags.ToArray().Select(clientApi.TagRegistry.BlockTagIdToTag).Order();
+                IEnumerable<string> tags = GetTags(inSlot.Itemstack).ToArray().Select(clientApi.TagRegistry.BlockTagIdToTag).Order();
                 if (tags.Any())
                 {
                     dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
@@ -2734,7 +2734,7 @@ namespace Vintagestory.API.Common
             return GetBehavior(CollectibleBehaviors, type, withInheritance) != null || GetBehavior(BlockBehaviors, type, withInheritance) != null;
         }
 
-
+        public virtual BlockTagArray GetTags(ItemStack stack) => Tags;
 
         internal void EnsureValidTextures(ILogger logger)
         {
