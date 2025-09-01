@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
 using Cairo;
+using System;
+using System.Collections.Generic;
+using Vintagestory.API.Config;
 
 #nullable disable
 
@@ -56,14 +57,13 @@ namespace Vintagestory.API.Client
         }
 
         void ComposeSlots(Context ctx, ImageSurface surface)
-        { 
+        {
             Bounds.CalcWorldBounds();
 
             double slotPadding = scaled(GuiElementItemSlotGrid.unscaledSlotPadding);
             double slotWidth = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
             double slotHeight = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
 
-            
             for (int row = 0; row < rows; row++)
             {
                 for (int col = 0; col < cols; col++)
@@ -98,6 +98,7 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
+
         public override void RenderInteractiveElements(float deltaTime)
         {
             double slotPadding = scaled(GuiElementItemSlotGrid.unscaledSlotPadding);
@@ -107,7 +108,7 @@ namespace Vintagestory.API.Client
             int dx = api.Input.MouseX - (int)Bounds.absX;
             int dy = api.Input.MouseY - (int)Bounds.absY;
 
-            
+            var scale = RuntimeEnv.GUIScale;
 
             for (int i = 0; i < rows*cols; i++)
             {
@@ -130,6 +131,11 @@ namespace Vintagestory.API.Client
 
                 if (skillItem == null) continue;
 
+                var sb = ElementBounds.Fixed((Bounds.renderX + posX + 1) / scale, (Bounds.renderY + posY + 1) / scale, GuiElementPassiveItemSlot.unscaledSlotSize-2, GuiElementPassiveItemSlot.unscaledSlotSize-2).WithParent(api.Gui.WindowBounds);
+                sb.CalcWorldBounds();
+
+                api.Render.PushScissor(sb, true);
+
                 if (skillItem.Texture != null)
                 {
                     if (skillItem.TexturePremultipliedAlpha)
@@ -143,6 +149,8 @@ namespace Vintagestory.API.Client
                 }
 
                 skillItem.RenderHandler?.Invoke(skillItem.Code, deltaTime, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1);
+
+                api.Render.PopScissor();
             }
         }
 

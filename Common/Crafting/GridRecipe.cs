@@ -352,6 +352,8 @@ public class GridRecipe : IByteSerializable
             {
                 if (block.IsMissing) continue; // BlockList already performs the null check for us, in its enumerator
 
+                if (!WildcardUtil.Match(ingredient.Code.Domain, block.Code.Domain)) continue;
+
                 MatchCollectibleCode(block.Code, regex, variants, codes);
             }
         }
@@ -360,6 +362,8 @@ public class GridRecipe : IByteSerializable
             foreach (Item item in world.Items)
             {
                 if (item?.Code == null || item.IsMissing) continue;
+
+                if (!WildcardUtil.Match(ingredient.Code.Domain, item.Code.Domain)) continue;
 
                 MatchCollectibleCode(item.Code, regex, variants, codes);
             }
@@ -407,7 +411,7 @@ public class GridRecipe : IByteSerializable
 
         result = result.Replace("@", "(\\w+)");
 
-        return result;
+        return "^" + result;
     }
 
     static protected string WildCardToRegex(string value) => Regex.Escape(value).Replace("\\?", ".").Replace("\\*", ".*");

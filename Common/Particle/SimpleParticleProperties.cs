@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading;
 using Vintagestory.API.Client;
@@ -222,6 +222,8 @@ namespace Vintagestory.API.Common
 
             writer.Write(Bounciness);
             writer.Write(Async);
+
+            writer.Write(LightEmission);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -293,6 +295,7 @@ namespace Vintagestory.API.Common
 
             Bounciness = reader.ReadSingle();
             Async = reader.ReadBoolean();
+            LightEmission = reader.ReadInt32();
         }
 
         public void BeginParticle() {
@@ -326,16 +329,15 @@ namespace Vintagestory.API.Common
 
             using (MemoryStream ms = new MemoryStream())
             {
-                using (BinaryWriter writer = new BinaryWriter(ms))
+                using (BinaryWriter writer = new BinaryWriter(ms, System.Text.Encoding.UTF8, true))
                 {
                     ToBytes(writer);
                 }
                 ms.Position = 0;
-                using (BinaryReader reader = new BinaryReader(ms))
+                using (BinaryReader reader = new BinaryReader(ms, System.Text.Encoding.UTF8))
                 {
                     cloned.FromBytes(reader, worldForResovle);
                 }
-
             }
 
             return cloned;

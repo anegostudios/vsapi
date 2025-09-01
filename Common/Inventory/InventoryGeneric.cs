@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -102,12 +102,12 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                if (slotId < 0 || slotId >= Count) throw new ArgumentOutOfRangeException(nameof(slotId));
+                if (slotId < 0 || slotId >= Count) throw new ArgumentOutOfRangeException(nameof(slotId), "Index was " + (slotId < 0 ? "negative: " : "too large: ") + slotId + "/" + Count + " for " + className + " at " + Pos);
                 return slots[slotId];
             }
             set
             {
-                if (slotId < 0 || slotId >= Count) throw new ArgumentOutOfRangeException(nameof(slotId));
+                if (slotId < 0 || slotId >= Count) throw new ArgumentOutOfRangeException(nameof(slotId), "Index was " + (slotId < 0 ? "negative: " : "too large: ") + slotId + "/" + Count + " for " + className + " at " + Pos);
                 slots[slotId] = value ?? throw new ArgumentNullException(nameof(value));
             }
         }

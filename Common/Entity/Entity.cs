@@ -1226,19 +1226,26 @@ namespace Vintagestory.API.Common.Entities
         {
             shapeFresh = true;
 
-            bool shapeIsCloned = false;
-            OnTesselation(ref entityShape, shapePathForLogging, ref shapeIsCloned);
-
-            if (shapeIsCloned)
+            try
             {
-                // Clear cached values. ClientAnimator regenerates these
-                if (entityShape.Animations != null)
+                bool shapeIsCloned = false;
+                OnTesselation(ref entityShape, shapePathForLogging, ref shapeIsCloned);
+
+                if (shapeIsCloned)
                 {
-                    foreach (var anim in entityShape.Animations)
+                    // Clear cached values. ClientAnimator regenerates these
+                    if (entityShape.Animations != null)
                     {
-                        anim.PrevNextKeyFrameByFrame = null;
+                        foreach (var anim in entityShape.Animations)
+                        {
+                            anim.PrevNextKeyFrameByFrame = null;
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                Api.Logger.Warning("Cannot tesselate shape " + shapePathForLogging + " for entity " + Code.ToShortString() + ", may be invisible");
             }
         }
 

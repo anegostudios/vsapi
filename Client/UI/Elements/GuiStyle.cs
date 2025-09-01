@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -263,5 +264,23 @@ namespace Vintagestory.API.Client
         }
 
 
+
+
+        public static SimpleParticleProperties LoreHintParticles = new SimpleParticleProperties()
+        {
+            MinPos = new Vec3d(0, 0, 0),
+            AddPos = new Vec3d(1, 0.5f, 1),
+            MinQuantity = 0.8f,
+            OpacityEvolve = EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -240),
+            ParticleModel = EnumParticleModel.Quad,
+            GravityEffect = 0,
+            LifeLength = 6,
+            MinSize = 0.125f,
+            MaxSize = 0.125f,
+            LightEmission = ColorUtil.ColorFromRgba(100, 100, 100, 255),
+            MinVelocity = new Vec3f(-0.125f / 8f, 0f / 4f, -0.125f / 8f),
+            AddVelocity = new Vec3f(0.25f / 8f, 0.25f / 4f, 0.25f / 8f),
+            Color = ColorUtil.ColorFromRgba(200, 250, 250, 255)
+        };
     }
 }
