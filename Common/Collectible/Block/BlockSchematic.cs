@@ -1178,7 +1178,10 @@ namespace Vintagestory.API.Common
                             if (blockAccessor is IWorldGenBlockAccessor accessor)
                             {
                                 accessor.AddEntity(entity);
-                                entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
+                                if (!entity.TryEarlyLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports))
+                                {
+                                    entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
+                                }
                             } else
                             {
                                 worldForCollectibleResolve.SpawnEntity(entity);

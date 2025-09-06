@@ -1243,9 +1243,9 @@ namespace Vintagestory.API.Common.Entities
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Api.Logger.Warning("Cannot tesselate shape " + shapePathForLogging + " for entity " + Code.ToShortString() + ", may be invisible");
+                Api.Logger.Warning(new Exception("Cannot tesselate shape " + shapePathForLogging + " for entity " + Code.ToShortString() + ", may be invisible", e));
             }
         }
 
@@ -2291,6 +2291,32 @@ namespace Vintagestory.API.Common.Entities
             {
                 val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, resolveImports);
             }
+        }
+
+        /// <summary>
+        /// Used only during worldgen when an entity is placed by a schematic. Overall purpose is like OnLoadCollectibleMappings() except that it is called prior to initialising the Entity
+        /// <br/>Should typically do nothing and return false
+        /// <br/>May optionally load the collectible mappings here (doing any necessary initialisation itself, e.g. initialising the Inventory) in which case return true. For example, this is useful for Armorstands
+        /// </summary>
+        /// <param name="worldForNewMappings"></param>
+        /// <param name="oldBlockIdMapping"></param>
+        /// <param name="oldItemIdMapping"></param>
+        /// <param name="schematicSeed"></param>
+        /// <param name="resolveImports"></param>
+        /// <returns>If returns true, the caller should skip calling OnLoadCollectibleMappings()</returns>
+        public virtual bool TryEarlyLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed, bool resolveImports)
+        {
+            bool result = false;
+            var props = worldForNewMappings.GetEntityType(Code);
+            var behaviors = props?.Server.BehaviorsWithEarlyLoadCollectibleMappings(this, worldForNewMappings);
+            if (behaviors != null)
+            {
+                foreach (var bh in behaviors)
+                {
+                    result |= bh.TryEarlyLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, resolveImports);
+                }
+            }
+            return result;
         }
 
         /// <summary>

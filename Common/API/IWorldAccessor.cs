@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -349,7 +349,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Find the nearest player to the given position
+        /// Find the nearest player to the given position. Thread safe.
         /// </summary>
         /// <param name = "x">x coordinate</param>
         /// <param name = "y">y coordinate</param>

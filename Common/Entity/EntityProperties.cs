@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -623,6 +623,35 @@ namespace Vintagestory.API.Common.Entities
                 SpawnConditions = SpawnConditions
             };
         }
-    }
 
+        /// <summary>
+        /// Returns a list of all entity behaviors that return true for ShouldEarlyLoadCollectibleMappings
+        /// <br/>Note, these behaviors are temporarily created in this list only, not attached to the entity, and should be discarded by the caller
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="world"></param>
+        /// <returns></returns>
+        public List<EntityBehavior> BehaviorsWithEarlyLoadCollectibleMappings(Entity entity, IWorldAccessor world)
+        {
+            if (BehaviorsAsJsonObj == null) return null;
+            var behaviors = new List<EntityBehavior>();
+
+            for (int i = 0; i < BehaviorsAsJsonObj.Length; i++)
+            {
+                JsonObject jobj = BehaviorsAsJsonObj[i];
+                string code = jobj["code"].AsString();
+
+                if (world.ClassRegistry.GetEntityBehaviorClass(code) != null)
+                {
+                    EntityBehavior behavior = world.ClassRegistry.CreateEntityBehavior(entity, code);
+                    if (behavior.ShouldEarlyLoadCollectibleMappings())
+                    {
+                        behavior.FromBytes(false);
+                        behaviors.Add(behavior);
+                    }
+                }
+            }
+            return behaviors;
+        }
+    }
 }

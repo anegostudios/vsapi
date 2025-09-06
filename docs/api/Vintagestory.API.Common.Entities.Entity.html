@@ -5616,6 +5616,54 @@ Packetid = 2 is used for BehaviorHarvestable</p>
 
 
 
+  <a id="Vintagestory_API_Common_Entities_Entity_TryEarlyLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.Entity.TryEarlyLoadCollectibleMappings*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_TryEarlyLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.Entities.Entity.TryEarlyLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)">
+  TryEarlyLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used only during worldgen when an entity is placed by a schematic. Overall purpose is like OnLoadCollectibleMappings() except that it is called prior to initialising the Entity
+<br>Should typically do nothing and return false
+<br>May optionally load the collectible mappings here (doing any necessary initialisation itself, e.g. initialising the Inventory) in which case return true. For example, this is useful for Armorstands</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryEarlyLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed, bool resolveImports)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>worldForNewMappings</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>oldBlockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>schematicSeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>resolveImports</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If returns true, the caller should skip calling OnLoadCollectibleMappings()</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_Entity_TryGiveItemStack_" data-uid="Vintagestory.API.Common.Entities.Entity.TryGiveItemStack*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_TryGiveItemStack_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.Entities.Entity.TryGiveItemStack(Vintagestory.API.Common.ItemStack)">

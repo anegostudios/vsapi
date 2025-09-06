@@ -20,7 +20,7 @@ namespace Vintagestory.API.Client
         internal bool hideCharacters;
         internal bool multilineMode;
         internal int maxlines = 99999;
-
+        internal int maxlength = -1;
 
         internal double caretX, caretY;
         internal double topPadding;
@@ -315,7 +315,8 @@ namespace Vintagestory.API.Client
 
         public List<string> Lineize(string text)
         {
-            if (text == null) text = "";
+            if (text == null || maxlength == 0) text = "";
+            if (maxlength > 0 && text.Length > maxlength) text = text.Substring(0, maxlength);
 
             List<string> lines = new List<string>();
 
@@ -781,6 +782,8 @@ namespace Vintagestory.API.Client
         public override void OnKeyPress(ICoreClientAPI api, KeyEvent args)
         {
             if (!HasFocus) return;
+            if (isLengthCapped()) return;
+
             string newline = lines[CaretPosLine].Substring(0, CaretPosInLine) + args.KeyChar + lines[CaretPosLine].Substring(CaretPosInLine, lines[CaretPosLine].Length - CaretPosInLine);
             double width = Bounds.InnerWidth - 2 * Bounds.absPaddingX - rightSpacing;
             linesStaging[CaretPosLine] = newline;
@@ -810,6 +813,14 @@ namespace Vintagestory.API.Client
             args.Handled = true;
             api.Gui.PlaySound("tick");
             OnKeyPressed?.Invoke();
+        }
+
+        private bool isLengthCapped()
+        {
+            if (maxlength < 0) return false;
+            int len = 0;
+            foreach (var line in lines) len += line.Length;
+            return len >= maxlength;
         }
 
         #endregion
@@ -955,6 +966,15 @@ namespace Vintagestory.API.Client
         public void SetMaxLines(int maxlines)
         {
             this.maxlines = maxlines;
+        }
+
+        /// <summary>
+        /// Limits the number of characters a user may enter (default: no limit). Use -1 to set no limit
+        /// </summary>
+        /// <param name="maxlength"></param>
+        public void SetMaxLength(int maxlength)
+        {
+            this.maxlength = maxlength;
         }
 
 

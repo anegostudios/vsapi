@@ -238,7 +238,11 @@ namespace Vintagestory.API.Common
                 if (arg.Length == 0) continue;
 
                 var keyval = arg.Split('=');
-                if (keyval.Length < 2) continue;
+                if (keyval.Length < 2) {
+                    lastErrorMessage = "Invalid syntax. Needs to be a key=value pair, only single value found";
+                    return null;
+                }
+
                 subargs[keyval[0].ToLowerInvariant().Trim()] = keyval[1].Trim();
             }
 
@@ -262,6 +266,7 @@ namespace Vintagestory.API.Common
         {
             var subargsstr = args.RawArgs.PopWord();
             var subargs = parseSubArgs(subargsstr);
+            if (subargs == null) return EnumParseResult.Bad;
 
             Vec3d sourcePos = args.Caller.Pos;
             Entity callingEntity = args.Caller.Entity;
@@ -328,6 +333,12 @@ namespace Vintagestory.API.Common
                     else entities = (api as ICoreClientAPI).World.LoadedEntities.Values;
 
                     Entity nearestEntity = null;
+
+                    if (range == null && type == null && alive == null && name == null && !subargsstr.Equals("[!]"))
+                    {
+                        lastErrorMessage = "No selector defined, use e[!] to select all entities";
+                        return EnumParseResult.Bad;
+                    }
 
                     foreach (Entity e in entities)
                     {
@@ -517,8 +528,8 @@ namespace Vintagestory.API.Common
                 indent + "  s[] for self\n" +
                 indent + "  l[] for the entity currently looked at\n" +
                 indent + "  p[] for all players\n" +
-                indent + "  e[] for all entities.\n" +
-                indent + "  Inside the square brackets, one or more filters can be added, to be more selective.  Filters include name, type, class, alive, range.  For example, <code>e[type=gazelle,range=3,alive=true]</code>.  The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n" +
+                indent + "  e[] with filters for entities, or e[!] for all entities.\n" +
+                indent + "  Inside the square brackets, one or more filters can be added, to be more selective. Filters include name, type, class, alive, range. Type can have wildcards. For example, <code>e[type=gazelle*,range=3,alive=true]</code>. The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n" +
                 indent + "  This argument may be omitted if the remainder of the command makes sense, in which case it will be interpreted as self.";
         }
 
@@ -562,6 +573,13 @@ namespace Vintagestory.API.Common
             }
             v = args.RawArgs.PopChar() ?? ' ';
 
+            if (maybeplayername.Equals("e[!]") && v == 'e')
+            {
+                args.RawArgs.PopWord();
+                if (api.Side == EnumAppSide.Server) this.entities = (api as ICoreServerAPI).World.LoadedEntities.Values.ToArray();
+                else this.entities = (api as ICoreClientAPI).World.LoadedEntities.Values.ToArray();
+                return EnumParseResult.Good;
+            }
 
             Dictionary<string, string> subargs;
             if (args.RawArgs.PeekChar() == '[')
@@ -574,6 +592,7 @@ namespace Vintagestory.API.Common
                 }
 
                 subargs = parseSubArgs(subargsstr);
+                if (subargs == null) return EnumParseResult.Bad;
             } else
             {
                 if (args.RawArgs.PeekChar() == ' ')
@@ -627,6 +646,12 @@ namespace Vintagestory.API.Common
             {
                 id = strid.ToLong();
                 subargs.Remove("id");
+            }
+
+            if (subargs.Count == 0)
+            {
+                lastErrorMessage = "No selector defined, use e[!] to select all entities";
+                return EnumParseResult.Bad;
             }
 
             Cuboidi box = null;
@@ -905,14 +930,14 @@ namespace Vintagestory.API.Common
         }
         public override string GetSyntaxExplanation(string indent)
         {
-            return indent + GetSyntax() + " is a world position.  A world position can be either 3 coordinates, or a target selector.\n" +
+            return indent + GetSyntax() + " is a world position. A world position can be either 3 coordinates, or a target selector.\n" +
                 indent + "&nbsp;&nbsp;3 coordinates are specified as in the following examples:\n" +
                 indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>100 150 -180</code> means 100 blocks East and 180 blocks North from the map center, with height 150 blocks\n" +
                 indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>~-5 ~0 ~4</code> means 5 blocks West and 4 blocks South from the caller's position\n" +
                 indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>=512100 =150 =511880</code> means the absolute x,y,z position specified (at default settings this is near the map center)\n\n" +
                 indent + "&nbsp;&nbsp;A target selector is either a player's name (meaning that player's current position), or one of: <code>s[]</code> for self, <code>l[]</code> for looked-at entity or block, <code>p[]</code> for players, <code>e[]</code> for entities.\n" +
-                indent + "One or more filters can be specified inside the brackets.  For p[] or e[], the target will be the nearest player or entity which passes all the filters.\n" +
-                indent + "Filters include name, type, class, alive, range.  For example, <code>e[type=gazelle,range=3,alive=true]</code>.  The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n";
+                indent + "One or more filters can be specified inside the brackets. For p[] or e[], the target will be the nearest player or entity which passes all the filters.\n" +
+                indent + "Filters include name, type, class, alive, range. Type can use wildcards. For example, <code>e[type=gazelle*,range=3,alive=true]</code>. The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n";
         }
 
         public override string[] GetValidRange(CmdArgs args)
@@ -1263,6 +1288,7 @@ namespace Vintagestory.API.Common
             if (subargsstr.Contains('['))
             {
                 subargs = parseSubArgs(subargsstr.Substring(1));
+                if (subargs == null) return EnumParseResult.Bad;
             } else
             {
                 subargs = new Dictionary<string, string>();
@@ -2121,6 +2147,8 @@ namespace Vintagestory.API.Common
             if (subargsstr.Length > 2)
             {
                 subargs = parseSubArgs(subargsstr);
+                if (subargs == null) return EnumParseResult.Bad;
+
                 if (!subargs.TryGetValue("code", out string code))
                 {
                     lastErrorMessage = "Requires [code=...] to be specified";

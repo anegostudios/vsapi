@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Client;
@@ -81,7 +80,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="damage">The amount of the damage.</param>
         public virtual void OnEntityReceiveDamage(DamageSource damageSource, ref float damage)
         {
-            
+
         }
 
         /// <summary>
@@ -110,7 +109,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="nutritionGainMultiplier"></param>
         public virtual void OnEntityReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10, float nutritionGainMultiplier = 1f)
         {
-            
+
         }
 
         /// <summary>
@@ -120,7 +119,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="handled">How this event is handled.</param>
         public virtual void OnReceivedServerPos(bool isTeleport, ref EnumHandling handled)
         {
-            
+
         }
 
         /// <summary>
@@ -145,7 +144,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="handling">How this event was handled.</param>
         public virtual void OnStateChanged(EnumEntityState beforeState, ref EnumHandling handling)
         {
-            
+
         }
 
         /// <summary>
@@ -155,7 +154,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="data"></param>
         public virtual void Notify(string key, object data)
         {
-            
+
         }
 
         /// <summary>
@@ -164,7 +163,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="infotext">The supplied stringbuilder information.</param>
         public virtual void GetInfoText(StringBuilder infotext)
         {
-            
+
         }
 
         /// <summary>
@@ -186,7 +185,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="handled">How this event is handled.</param>
         public virtual void OnInteract(EntityAgent byEntity, ItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode, ref EnumHandling handled)
         {
-            
+
         }
 
         /// <summary>
@@ -198,7 +197,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="handled">How this event is handled.</param>
         public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data, ref EnumHandling handled)
         {
-            
+
         }
 
         /// <summary>
@@ -233,17 +232,26 @@ namespace Vintagestory.API.Common.Entities
 
         public virtual void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
         {
-            
+
         }
 
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, bool resolveImports)
         {
-            
+
+        }
+
+        /// <summary>
+        /// For entities which need to load collectible mappings before Initialisation during worldgen (e.g. Armorstand)
+        /// <br/>Return true if the collectible mappings were loaded by this
+        /// </summary>
+        public virtual bool TryEarlyLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, bool resolveImports)
+        {
+            return false;
         }
 
         public virtual void ToBytes(bool forClient)
         {
-            
+
         }
 
         /// <summary>
@@ -252,7 +260,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="isSync"></param>
         public virtual void FromBytes(bool isSync)
         {
-            
+
         }
 
         /// <summary>
@@ -270,7 +278,7 @@ namespace Vintagestory.API.Common.Entities
 
         public virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned, ref string[] willDeleteElements)
         {
-            
+
         }
 
         public virtual ITexPositionSource GetTextureSource(ref EnumHandling handling)
@@ -286,12 +294,12 @@ namespace Vintagestory.API.Common.Entities
 
         public virtual void OnTesselated()
         {
-            
+
         }
 
         public virtual void UpdateColSelBoxes()
         {
-            
+
         }
 
         /// <summary>
@@ -316,6 +324,16 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="eOther"></param>
         public virtual bool ToleratesDamageFrom(Entity eOther, ref EnumHandling handling)
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true if this entity behavior needs to remap inventory items/blocks when placed as part of a schematic during world generation.
+        /// If true, EarlyLoadCollectibleMappings() will be called, during schematic placement, instead of OnLoadCollectibleMappings()
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool ShouldEarlyLoadCollectibleMappings()
         {
             return false;
         }

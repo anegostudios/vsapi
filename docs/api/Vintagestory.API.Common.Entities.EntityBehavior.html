@@ -1405,6 +1405,39 @@ Class EntityBehavior
 
 
 
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_ShouldEarlyLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.ShouldEarlyLoadCollectibleMappings*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_ShouldEarlyLoadCollectibleMappings" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.ShouldEarlyLoadCollectibleMappings">
+  ShouldEarlyLoadCollectibleMappings()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns true if this entity behavior needs to remap inventory items/blocks when placed as part of a schematic during world generation.
+If true, EarlyLoadCollectibleMappings() will be called, during schematic placement, instead of OnLoadCollectibleMappings()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldEarlyLoadCollectibleMappings()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_EntityBehavior_TestCommand_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.TestCommand*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_TestCommand_System_Object_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.TestCommand(System.Object)">
@@ -1490,6 +1523,50 @@ If false, then this entity will always retaliate (disregarding subsequent)</p>
     <dt><code>eOther</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
     <dd></dd>
     <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_TryEarlyLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.TryEarlyLoadCollectibleMappings*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_TryEarlyLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Boolean_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.TryEarlyLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Boolean)">
+  TryEarlyLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>For entities which need to load collectible mappings before Initialisation during worldgen (e.g. Armorstand)
+<br>Return true if the collectible mappings were loaded by this</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryEarlyLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, bool resolveImports)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>worldForNewMappings</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>oldBlockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>resolveImports</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
