@@ -609,6 +609,12 @@ namespace Vintagestory.API.Common
             Vec3d sourcePos = args.Caller.Pos;
             Entity callingEntity = args.Caller.Entity;
 
+            if (subargs.Count == 0 && v == 'e')
+            {
+                lastErrorMessage = "No selector defined, use e[!] to select all entities";
+                return EnumParseResult.Bad;
+            }
+
             float? range = null;
             if (subargs.TryGetValue("range", out string strrange))
             {
@@ -646,12 +652,6 @@ namespace Vintagestory.API.Common
             {
                 id = strid.ToLong();
                 subargs.Remove("id");
-            }
-
-            if (subargs.Count == 0)
-            {
-                lastErrorMessage = "No selector defined, use e[!] to select all entities";
-                return EnumParseResult.Bad;
             }
 
             Cuboidi box = null;

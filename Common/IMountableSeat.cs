@@ -82,6 +82,7 @@ namespace Vintagestory.API.Common
         public Vec3f MountRotation = new Vec3f();
         public float? BodyYawLimit;
         public float EyeHeight = 1.5f;
+        public float EyeOffsetX = 0f;
         public EnumMountAngleMode AngleMode = EnumMountAngleMode.FixateYaw;
 
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]

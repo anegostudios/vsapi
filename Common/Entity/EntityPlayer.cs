@@ -690,7 +690,7 @@ namespace Vintagestory.API.Common
 
             if (isSelf)
             {
-                alwaysRunIdle = (Api as ICoreClientAPI).Render.CameraType == EnumCameraMode.FirstPerson && !selfNowShadowPass;
+                alwaysRunIdle = (Api as ICoreClientAPI).Render.CameraType == EnumCameraMode.FirstPerson && !selfNowShadowPass && MountedOn==null;
             }
 
             climateCondAccum += dt;
