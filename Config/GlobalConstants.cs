@@ -100,7 +100,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static double SprintSpeedMultiplier = 2.0;
 
-        
+
         /// <summary>
         /// Multiplier applied to entity motion while on the ground or in air
         /// </summary>
@@ -120,7 +120,7 @@ namespace Vintagestory.API.Config
         /// Amount of gravity per tick applied to all entities affected by gravity
         /// </summary>
         public static float GravityPerSecond = 0.37f;
-        
+
         /// <summary>
         /// Range in blocks at where this entity is simulated on the server (MagicNum.cs sets this value)
         /// </summary>
@@ -156,6 +156,11 @@ namespace Vintagestory.API.Config
         /// Set by the weather simulation system to determine if snowed variants of blocks should melt. Used a static var to improve performance and reduce memory usage
         /// </summary>
         public static bool MeltingFreezingEnabled;
+
+        /// <summary>
+        /// Max number of dirty attribute paths before the server forces a full tree resync (MagicNum.cs should set this value)
+        /// </summary>
+        public static int MaxDirtyAttributePaths = 20;
 
         public static float GuiGearRotJitter = 0f;
 
