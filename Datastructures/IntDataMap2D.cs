@@ -156,6 +156,43 @@ namespace Vintagestory.API.Datastructures
             );
         }
 
+        /// <summary>
+        /// Takes global chunk coordinates, returns the values of the 4 corners in that region.
+        /// </summary>
+        public IntMapChunkData GetValues(int chunkX, int chunkZ)
+        {
+            if (Data.Length == 0) return new IntMapChunkData();
 
+            int rlX = chunkX % 16;
+            int rlZ = chunkZ % 16;
+
+            float factor = (float)InnerSize / 16;
+
+            IntMapChunkData mapData;
+
+            mapData.UpperLeft = GetUnpaddedInt((int)(rlX * factor), (int)(rlZ * factor));
+            mapData.UpperRight = GetUnpaddedInt((int)((rlX * factor) + factor), (int)(rlZ * factor));
+            mapData.BottomLeft = GetUnpaddedInt((int)(rlX * factor), (int)((rlZ * factor) + factor));
+            mapData.BottomRight = GetUnpaddedInt((int)((rlX * factor) + factor), (int)((rlZ * factor) + factor));
+
+            return mapData;
+        }
+
+        public struct IntMapChunkData
+        {
+            public int UpperLeft;
+            public int UpperRight;
+            public int BottomLeft;
+            public int BottomRight;
+
+            public readonly float LerpForChunk(int localChunkX, int localChunkZ)
+            {
+                const float chunkBlockDelta = 1f / 32;
+
+                float result = GameMath.BiLerp(UpperLeft, UpperRight, BottomLeft, BottomRight, localChunkX * chunkBlockDelta, localChunkZ * chunkBlockDelta);
+
+                return result;
+            }
+        }
     }
 }
