@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -167,6 +167,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="code">The code to stop the animation on</param>
         void StopAnimation(string code);
+
+        /// <summary>
+        /// Stops all currently playing animations
+        /// </summary>
+        void StopAllAnimations();
 
         /// <summary>
         /// Additional attributes applied to the animation

@@ -280,15 +280,14 @@ namespace Vintagestory.API.Common
 
         PlayerAnimationManager animManager;
         PlayerAnimationManager selfFpAnimManager;
-        bool IsSelf => PlayerUID == (Api as ICoreClientAPI)?.Settings.String["playeruid"];
+        bool IsSelf => PlayerUID != null && PlayerUID == (Api as ICoreClientAPI)?.Settings.String["playeruid"];
         public bool selfNowShadowPass;
 
         public override IAnimationManager AnimManager
         {
             get
             {
-                var capi = Api as ICoreClientAPI;
-                if (IsSelf && capi.Render.CameraType == EnumCameraMode.FirstPerson && !selfNowShadowPass)
+                if (Api is ICoreClientAPI capi && IsSelf && capi.Render.CameraType == EnumCameraMode.FirstPerson && !selfNowShadowPass)
                 {
                     return selfFpAnimManager;
                 }
@@ -1222,7 +1221,7 @@ namespace Vintagestory.API.Common
         {
             base.Revive();
 
-            LastReviveTotalHours = Api.World.Calendar.TotalHours - 2; // No respawn glow
+            LastReviveTotalHours = Api.World.Calendar.TotalHours;
 
             (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, (int)EntityServerPacketId.Revive);
         }
@@ -1371,7 +1370,7 @@ namespace Vintagestory.API.Common
 
                 if (damageSource.Source == EnumDamageSource.Entity)
                 {
-                    string creatureName = Lang.GetL(player.LanguageCode, "prefixandcreature-" + damageSource.GetCauseEntity().Code.Path.Replace("-", ""));
+                    string creatureName = damageSource.GetCauseEntity().GetPrefixAndCreatureName(player.LanguageCode);
                     msg = Lang.GetL(player.LanguageCode, heal ? "damagelog-heal-byentity" : "damagelog-damage-byentity", damage, creatureName);
                 }
 

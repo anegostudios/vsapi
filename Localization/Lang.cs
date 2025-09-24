@@ -30,7 +30,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Gets the language code that this currently used to translate values.
         /// </summary>
-        /// <value>A string, that contains he language code that this currently used to translate values.</value>
+        /// <value>A string, that contains the language code that this currently used to translate values.</value>
         public static string CurrentLocale { get; private set; }
         public static string DefaultLocale { get; set; } = "en";
 

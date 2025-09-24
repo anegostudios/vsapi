@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using Vintagestory.API.Datastructures;
@@ -170,9 +170,9 @@ namespace Vintagestory.API.Common
             if (IsWildCard)
             {
                 if (Type != inputStack.Class) return false;
+                if (checkStacksize && inputStack.StackSize < Quantity) return false;
                 if (!WildcardUtil.Match(Code, inputStack.Collectible.Code, AllowedVariants)) return false;
                 if (SkipVariants != null && WildcardUtil.Match(Code, inputStack.Collectible.Code, SkipVariants)) return false;
-                if (checkStacksize && inputStack.StackSize < Quantity) return false;
             }
             else
             {

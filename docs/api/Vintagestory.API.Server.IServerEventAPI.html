@@ -571,6 +571,39 @@ When world type is null, all handlers are returned</p>
 
 
 
+  <a id="Vintagestory_API_Server_IServerEventAPI_TriggerMountGaitReceived_" data-uid="Vintagestory.API.Server.IServerEventAPI.TriggerMountGaitReceived*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_TriggerMountGaitReceived_Vintagestory_API_Common_Entities_Entity_System_String_" data-uid="Vintagestory.API.Server.IServerEventAPI.TriggerMountGaitReceived(Vintagestory.API.Common.Entities.Entity,System.String)">
+  TriggerMountGaitReceived(Entity, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TriggerMountGaitReceived(Entity mountEntity, string gaitCode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mountEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>gaitCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_IServerEventAPI_TriggerTrySpawnEntity_" data-uid="Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity*"></a>
 
   <h3 id="Vintagestory_API_Server_IServerEventAPI_TriggerTrySpawnEntity_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Entities_EntityProperties__Vintagestory_API_MathTools_Vec3d_System_Int64_" data-uid="Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.EntityProperties@,Vintagestory.API.MathTools.Vec3d,System.Int64)">
@@ -1088,6 +1121,37 @@ Allows for the event to be cancelled depending on the return value.</p>
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_MountGaitReceived" data-uid="Vintagestory.API.Server.IServerEventAPI.MountGaitReceived">
+  MountGaitReceived
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a method to be called every time the server receives the gait from a client-authoritative mount entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event MountGaitReceivedDelegate MountGaitReceived</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.MountGaitReceivedDelegate.html">MountGaitReceivedDelegate</a></dt>
     <dd></dd>
   </dl>
 

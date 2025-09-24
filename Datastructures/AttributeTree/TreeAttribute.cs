@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -862,14 +862,14 @@ namespace Vintagestory.API.Datastructures
             foreach (var val in attributes)
             {
                 if (GlobalConstants.IgnoredStackAttributes.Contains(val.Key)) continue;
-                if (!otherTree.attributes.ContainsKey(val.Key)) return false;
+                if (!otherTree.attributes.TryGetValue(val.Key, out IAttribute otherAttribute)) return false;
 
                 if (val.Value is TreeAttribute)
                 {
-                    if (!(otherTree.attributes[val.Key] as TreeAttribute).IsSubSetOf(worldForResolve, val.Value)) return false;
+                    if (!(otherAttribute as TreeAttribute).IsSubSetOf(worldForResolve, val.Value)) return false;
                 } else
                 {
-                    if (!otherTree.attributes[val.Key].Equals(worldForResolve, val.Value)) return false;
+                    if (!otherAttribute.Equals(worldForResolve, val.Value)) return false;
                 }
             }
 

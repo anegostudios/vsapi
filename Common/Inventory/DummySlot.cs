@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Common
 {
@@ -17,6 +17,11 @@ namespace Vintagestory.API.Common
         }
 
         public DummySlot(ItemStack stack, InventoryBase inv) : base(inv)
+        {
+            this.itemstack = stack;
+        }
+
+        public void Set(ItemStack stack)
         {
             this.itemstack = stack;
         }

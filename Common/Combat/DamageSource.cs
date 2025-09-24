@@ -144,8 +144,7 @@ public class DamageSource
         double a = dy;
         float b = (float)Math.Sqrt(dx * dx + dz * dz);
         attackPitch = (float)Math.Atan2(a, b);
-        return true;
 
-        //bool verticalAttack = Math.Abs(attackPitch) > 65 * GameMath.DEG2RAD;
+        return true;
     }
 }

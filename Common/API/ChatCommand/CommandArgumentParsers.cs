@@ -529,7 +529,7 @@ namespace Vintagestory.API.Common
                 indent + "  l[] for the entity currently looked at\n" +
                 indent + "  p[] for all players\n" +
                 indent + "  e[] with filters for entities, or e[!] for all entities.\n" +
-                indent + "  Inside the square brackets, one or more filters can be added, to be more selective. Filters include name, type, class, alive, range. Type can have wildcards. For example, <code>e[type=gazelle*,range=3,alive=true]</code>. The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n" +
+                indent + "  Inside the square brackets, one or more filters can be added, to be more selective. Filters include name, type, class, tag, alive, range. Type can have wildcards. For example, <code>e[type=gazelle*,range=3,alive=true]</code>. The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n" +
                 indent + "  This argument may be omitted if the remainder of the command makes sense, in which case it will be interpreted as self.";
         }
 
@@ -635,6 +635,12 @@ namespace Vintagestory.API.Common
                 subargs.Remove("class");
             }
 
+            if (subargs.TryGetValue("tag", out string tagstr))
+            {
+                tagstr = tagstr.ToLowerInvariant();
+                subargs.Remove("tag");
+            }
+
             if (subargs.TryGetValue("name", out string name))
             {
                 subargs.Remove("name");
@@ -697,7 +703,7 @@ namespace Vintagestory.API.Common
                 case 'p':
                     foreach (var plr in api.World.AllOnlinePlayers)
                     {
-                        if (entityMatches(plr.Entity, sourcePos, type, classstr, range, box, name, alive, id))
+                        if (entityMatches(plr.Entity, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
                         {
                             foundEntities.Add(plr.Entity);
                         }
@@ -716,7 +722,7 @@ namespace Vintagestory.API.Common
 
                         foreach (Entity e in entities)
                         {
-                            if (entityMatches(e, sourcePos, type, classstr, range, box, name, alive, id))
+                            if (entityMatches(e, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
                             {
                                 foundEntities.Add(e);
                             }
@@ -729,7 +735,7 @@ namespace Vintagestory.API.Common
                         float r = (float)range;
                         entities = api.World.GetEntitiesAround(sourcePos, r, r, (e) =>
                         {
-                            return entityMatches(e, sourcePos, type, classstr, range, box, name, alive, id);
+                            return entityMatches(e, sourcePos, type, classstr, tagstr, range, box, name, alive, id);
                         });
 
                     }
@@ -751,7 +757,7 @@ namespace Vintagestory.API.Common
                     }
 
                     var lookedAtEntity = eplr.Player.CurrentEntitySelection.Entity;
-                    if (entityMatches(lookedAtEntity, sourcePos, type, classstr, range, box, name, alive, id))
+                    if (entityMatches(lookedAtEntity, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
                     {
                         this.entities = new Entity[] { lookedAtEntity };
                     }
@@ -763,7 +769,7 @@ namespace Vintagestory.API.Common
 
                 // Executing entity
                 case 's':
-                    if (entityMatches(callingEntity, sourcePos, type, classstr, range, box, name, alive, id))
+                    if (entityMatches(callingEntity, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
                     {
                         this.entities = new Entity[] { callingEntity };
                     }
@@ -779,7 +785,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        private bool entityMatches(Entity e, Vec3d sourcePos, AssetLocation type, string classstr, float? range, Cuboidi box, string name, bool? alive, long? id)
+        private bool entityMatches(Entity e, Vec3d sourcePos, AssetLocation type, string classstr, string tagstr, float? range, Cuboidi box, string name, bool? alive, long? id)
         {
             if (id != null && e.EntityId != id) return false;
             if (range != null && e.SidedPos.DistanceTo(sourcePos) > range) return false;
@@ -788,6 +794,7 @@ namespace Vintagestory.API.Common
             if (type != null && !WildcardUtil.Match(type, e.Code)) return false;
             if (alive != null && e.Alive != alive) return false;
             if (name != null && !WildcardUtil.Match(name, e.GetName())) return false;
+            if (tagstr != null && !e.HasTags(tagstr)) return false;
 
             return true;
         }

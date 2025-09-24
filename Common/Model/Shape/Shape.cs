@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -303,10 +303,12 @@ namespace Vintagestory.API.Common
                     TextureSizes[val.Key] = val.Value;
                 }
 
-                if (childShape.Textures.Count > 0 && childShape.TextureSizes.Count == 0)
+                // if (childShape.Textures.Count > 0 && childShape.TextureSizes.Count == 0) - always copy over "model wide" default size to texture specific size when not specified otherwise we take on weird texture sizes
                 {
                     foreach (var val in childShape.Textures)
                     {
+                        if (TextureSizes.ContainsKey(val.Key)) continue;
+                        
                         TextureSizes[val.Key] = new int[] { childShape.TextureWidth, childShape.TextureHeight };
                     }
                 }

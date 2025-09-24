@@ -241,7 +241,7 @@ namespace Vintagestory.API.Common
 
         }
 
-        AnimationMetaData curMountedAnim = null;
+        public AnimationMetaData curMountedAnim = null;
         protected virtual void doMount(IMountableSeat mountable)
         {
             this.MountedOn = mountable;
@@ -253,9 +253,12 @@ namespace Vintagestory.API.Common
                 return;
             }
 
+            mountable.Entity?.AnimManager?.StopAllAnimations();
+
             if (MountedOn?.SuggestedAnimation != null)
             {
                 curMountedAnim = MountedOn.SuggestedAnimation;
+                AnimManager?.StopAllAnimations();
                 AnimManager?.StartAnimation(curMountedAnim);
             }
 
@@ -431,6 +434,19 @@ namespace Vintagestory.API.Common
                     ignoreTeleportCall = false;
                     return;
                 }
+            }
+
+            // Add some villager logging for 1.21.2
+            if (Code.Path.StartsWith("villager") && Api is Server.ICoreServerAPI sapi)
+            {
+                string name = "-";
+                try
+                {
+                    name = WatchedAttributes.GetTreeAttribute("nametag")?.GetString("name") ?? "-";
+                }
+                catch (Exception) { }
+                Vec3d target = new Vec3d(x, y, z);
+                sapi.Logger.Log(EnumLogType.Worldgen, "In " + sapi.World.WorldName + ", villager " + name + " teleported to " + target.AsBlockPos);
             }
 
             base.TeleportToDouble(x, y, z, onTeleported);

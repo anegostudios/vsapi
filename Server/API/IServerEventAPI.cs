@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -245,5 +245,11 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name="player"></param>
         void PlayerChunkTransition(IServerPlayer player);
+
+        /// <summary>
+        /// Registers a method to be called every time the server receives the gait from a client-authoritative mount entity
+        /// </summary>
+        event MountGaitReceivedDelegate MountGaitReceived;
+        void TriggerMountGaitReceived(Entity mountEntity, string gaitCode);
     }
 }

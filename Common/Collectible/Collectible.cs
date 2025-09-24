@@ -2973,11 +2973,11 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool Satisfies(ItemStack thisStack, ItemStack otherStack)
         {
-            return
-                thisStack.Class == otherStack.Class &&
-                thisStack.Id == otherStack.Id &&
-                thisStack.Attributes.IsSubSetOf(api.World, otherStack.Attributes)
-            ;
+            if (thisStack.Class == otherStack.Class && thisStack.Id == otherStack.Id)
+            {
+                return thisStack.Attributes.IsSubSetOf(api.World, otherStack.Attributes);
+            }
+            return false;
         }
 
         /// <summary>

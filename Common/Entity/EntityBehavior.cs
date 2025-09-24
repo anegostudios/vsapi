@@ -244,7 +244,7 @@ namespace Vintagestory.API.Common.Entities
         /// For entities which need to load collectible mappings before Initialisation during worldgen (e.g. Armorstand)
         /// <br/>Return true if the collectible mappings were loaded by this
         /// </summary>
-        public virtual bool TryEarlyLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, bool resolveImports)
+        public virtual bool TryEarlyLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, bool resolveImports, EntityProperties entityProperties, JsonObject behaviorConfig)
         {
             return false;
         }

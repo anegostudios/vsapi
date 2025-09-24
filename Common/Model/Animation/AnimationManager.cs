@@ -164,6 +164,10 @@ namespace Vintagestory.API.Common
         /// <param name="animdata"></param>
         public virtual bool StartAnimation(AnimationMetaData animdata)
         {
+            if (animdata == null)
+            {
+                throw new Exception("Can't play null animdata");
+            }
             if (OnStartAnimation != null)
             {
                 EnumHandling handling = EnumHandling.PassThrough;
@@ -173,6 +177,10 @@ namespace Vintagestory.API.Common
                 {
                     started = dele(ref animdata, ref handling);
                     if (handling == EnumHandling.PreventSubsequent) return started;
+                    if (animdata == null)
+                    {
+                        throw new Exception($"A StartAnimationDelegate {dele.Method.DeclaringType?.FullName}.{dele.Method.Name} changed the animation data to null. If the intention was to cancel the animation, use EnumHandling.PreventSubsequent instead.");
+                    }
 
                     preventDefault = handling == EnumHandling.PreventDefault;
                 }
@@ -246,6 +254,19 @@ namespace Vintagestory.API.Common
             {
                 entity.UpdateDebugAttributes();
             }
+        }
+
+
+        public virtual void StopAllAnimations()
+        {
+            if (entity == null) return;
+
+            if (entity.World.Side == EnumAppSide.Server)
+            {
+                AnimationsDirty = true;
+            }
+
+            ActiveAnimationsByAnimCode.Clear();
         }
 
 

@@ -333,6 +333,49 @@ Interface IClientEventAPI
 
 
 
+  <a id="Vintagestory_API_Client_IClientEventAPI_RegisterRenderer_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterRenderer*"></a>
+
+  <h3 id="Vintagestory_API_Client_IClientEventAPI_RegisterRenderer_Vintagestory_API_Client_IRenderer_Vintagestory_API_Client_EnumRenderStage_System_String_System_Double_System_Double_System_Type_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterRenderer(Vintagestory.API.Client.IRenderer,Vintagestory.API.Client.EnumRenderStage,System.String,System.Double,System.Double,System.Type)">
+  RegisterRenderer(IRenderer, EnumRenderStage, string, double, double, Type)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a rendering handler to be called during every render frame
+<br>Additionally reserves a range of render orders which no other renderer should then use</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterRenderer(IRenderer renderer, EnumRenderStage renderStage, string profilingName, double reservedFirstOrder, double reservedLastOrder, Type firstType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>renderer</code> <a class="xref" href="Vintagestory.API.Client.IRenderer.html">IRenderer</a></dt>
+    <dd></dd>
+    <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
+    <dd></dd>
+    <dt><code>profilingName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>reservedFirstOrder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>reservedLastOrder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>firstType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_IClientEventAPI_UnregisterItemstackRenderer_" data-uid="Vintagestory.API.Client.IClientEventAPI.UnregisterItemstackRenderer*"></a>
 
   <h3 id="Vintagestory_API_Client_IClientEventAPI_UnregisterItemstackRenderer_Vintagestory_API_Common_CollectibleObject_Vintagestory_API_Client_EnumItemRenderTarget_" data-uid="Vintagestory.API.Client.IClientEventAPI.UnregisterItemstackRenderer(Vintagestory.API.Common.CollectibleObject,Vintagestory.API.Client.EnumItemRenderTarget)">

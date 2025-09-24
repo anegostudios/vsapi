@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
@@ -49,6 +49,11 @@ namespace Vintagestory.API.Server
         /// Dictionary of entity codes to remap, old codes (which may be present in save files or schematics) as keys
         /// </summary>
         Dictionary<string, string> RemappedEntities { get; }
+
+        /// <summary>
+        /// Gets the WorldName from the save game
+        /// </summary>
+        string WorldName { get; }
 
         bool IsFullyLoadedChunk(BlockPos pos);
     }

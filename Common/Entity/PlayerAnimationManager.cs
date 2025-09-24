@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -172,6 +172,11 @@ namespace Vintagestory.API.Common
         protected override void onReceivedServerAnimation(AnimationMetaData animmetadata)
         {
             StartAnimation(animmetadata);
+            if (plrEntity.MountedOn != null)
+            {
+                if (plrEntity.curMountedAnim != null && plrEntity.curMountedAnim.Code != animmetadata.Code) StopAnimation(plrEntity.curMountedAnim.Code);
+                plrEntity.curMountedAnim = animmetadata;
+            }
         }
 
         public override void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)

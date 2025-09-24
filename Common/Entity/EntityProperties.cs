@@ -631,10 +631,10 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="entity"></param>
         /// <param name="world"></param>
         /// <returns></returns>
-        public List<EntityBehavior> BehaviorsWithEarlyLoadCollectibleMappings(Entity entity, IWorldAccessor world)
+        public List<EntityBehaviorAndConfig> BehaviorsWithEarlyLoadCollectibleMappings(Entity entity, IWorldAccessor world)
         {
             if (BehaviorsAsJsonObj == null) return null;
-            var behaviors = new List<EntityBehavior>();
+            var behaviors = new List<EntityBehaviorAndConfig>();
 
             for (int i = 0; i < BehaviorsAsJsonObj.Length; i++)
             {
@@ -647,11 +647,23 @@ namespace Vintagestory.API.Common.Entities
                     if (behavior.ShouldEarlyLoadCollectibleMappings())
                     {
                         behavior.FromBytes(false);
-                        behaviors.Add(behavior);
+                        behaviors.Add(new EntityBehaviorAndConfig(behavior,jobj));
                     }
                 }
             }
             return behaviors;
         }
+    }
+
+    public class EntityBehaviorAndConfig
+    {
+        public EntityBehaviorAndConfig(EntityBehavior behavior, JsonObject behaviorConfig)
+        {
+            Behavior = behavior;
+            BehaviorConfig = behaviorConfig;
+        }
+
+        public EntityBehavior Behavior;
+        public JsonObject BehaviorConfig;
     }
 }

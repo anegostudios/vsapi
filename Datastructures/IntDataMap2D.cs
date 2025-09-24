@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+using ProtoBuf;
 using System;
 using Vintagestory.API.MathTools;
 
@@ -74,7 +74,7 @@ namespace Vintagestory.API.Datastructures
             int iz = (int)z;
             int index = (iz + TopLeftPadding) * Size + ix + TopLeftPadding;
 
-            if (index < 0 || index + Size + 1 >= Data.Length) throw new IndexOutOfRangeException("MapRegion data, index was " + (index + Size + 1) + " but length was " + Data.Length);
+            if (index < 0 || index + Size + 1 >= Data.Length) throw new IndexOutOfRangeException("MapRegion data, index was " + (index + Size + 1) + ", x was " + x + ", z was " + z);
             return GameMath.BiLerpRgbColor(x - ix, z - iz,
                 Data[index],
                 Data[index + 1],

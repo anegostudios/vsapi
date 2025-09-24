@@ -438,16 +438,6 @@ namespace Vintagestory.API.Client
             if (caretPos == textSelection.End) CaretPosWithoutLineBreaks = textSelection.Start + caretPosOffset;
         }
 
-        private void DeleteSelectedTextAndFixCursor(int caretPos, int caretPosOffset)
-        {
-            if (caretPos < selectedTextStart)
-            {
-                selectedTextStart += caretPosOffset;
-                DeleteSelectedText(caretPos + caretPosOffset, caretPosOffset);
-            }
-            else DeleteSelectedText(caretPos, caretPosOffset);
-        }
-
         static int GetCharRank(char c)
         {
             if (IsWordChar(c)) return 3;
@@ -784,6 +774,8 @@ namespace Vintagestory.API.Client
             if (!HasFocus) return;
             if (isLengthCapped()) return;
 
+            if (selectedTextStart != null) DeleteSelectedText(CaretPosWithoutLineBreaks, 0);
+
             string newline = lines[CaretPosLine].Substring(0, CaretPosInLine) + args.KeyChar + lines[CaretPosLine].Substring(CaretPosInLine, lines[CaretPosLine].Length - CaretPosInLine);
             double width = Bounds.InnerWidth - 2 * Bounds.absPaddingX - rightSpacing;
             linesStaging[CaretPosLine] = newline;
@@ -803,11 +795,9 @@ namespace Vintagestory.API.Client
                 }
             }
 
-            var cpos = CaretPosWithoutLineBreaks;
             handlingOnKeyEvent = true;
             LoadValue(linesStaging); // Ensures word wrapping
-            CaretPosWithoutLineBreaks = cpos + 1;
-            if (selectedTextStart != null) DeleteSelectedTextAndFixCursor(cpos, 1);
+            CaretPosWithoutLineBreaks++;
             handlingOnKeyEvent = false;
 
             args.Handled = true;

@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -180,8 +180,8 @@ namespace Vintagestory.API.Client
             float size = args.deltaPrecise > 0 ? 1 : -1;
             size *= Interval;
 
-            if (api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft]) size /= 10;
-            if (api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft]) size /= 100;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft]) size /= 10;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
 
             UpdateValue(size);
             args.SetHandled(true);
@@ -212,6 +212,7 @@ namespace Vintagestory.API.Client
         bool isValidText(string text)
         {
             if (text == string.Empty) return true; // Allow an empty box, we'll set it to 0 if left empty when it loses focus
+            if (text == "-") return true; // We want to allow typing the negative sign into an empty box, as well
             if (!IntMode && !double.TryParse(text, NumberStyles.Float, GlobalConstants.DefaultCultureInfo, out _)) return false;
             if (IntMode && !int.TryParse(text, NumberStyles.Integer, GlobalConstants.DefaultCultureInfo, out _)) return false;
 

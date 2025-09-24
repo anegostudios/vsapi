@@ -328,9 +328,9 @@ namespace Vintagestory.API.Common
             }
             else
             {   result = ((currentActivities & withActivitiesMerged) > 0);
-                if (result && (withActivitiesMerged & (int)EnumEntityActivity.Fly) != 0)
+                if (result && (withActivitiesMerged & ((int)EnumEntityActivity.Fly | (int)EnumEntityActivity.Fall)) != 0)
                 {
-                    // Doesn't make sense to match Fly when we are mounted
+                    // Doesn't make sense to match Fly or Fall ("land") animations when we are mounted
                     if ((currentActivities & (int)EnumEntityActivity.Mounted) != 0) result = false;
                 }
             }

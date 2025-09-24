@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -176,6 +176,11 @@ namespace Vintagestory.API.Common
         public void StopAnimation(string code)
         {
             
+        }
+
+        public void StopAllAnimations()
+        {
+
         }
 
         public void ToAttributes(ITreeAttribute tree, bool forClient)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -193,6 +193,18 @@ namespace Vintagestory.API.Client
         /// <param name="renderStage"></param>
         /// <param name="profilingName">If set, the frame profile will record the frame cost for this renderer</param>
         void RegisterRenderer(IRenderer renderer, EnumRenderStage renderStage, string profilingName = null);
+
+        /// <summary>
+        /// Registers a rendering handler to be called during every render frame
+        /// <br/>Additionally reserves a range of render orders which no other renderer should then use
+        /// </summary>
+        /// <param name="renderer"></param>
+        /// <param name="renderStage"></param>
+        /// <param name="profilingName"></param>
+        /// <param name="reservedFirstOrder"></param>
+        /// <param name="reservedLastOrder"></param>
+        /// <param name="firstType"></param>
+        void RegisterRenderer(IRenderer renderer, EnumRenderStage renderStage, string profilingName, double reservedFirstOrder, double reservedLastOrder, Type firstType);
 
         /// <summary>
         /// Removes a previously registered rendering handler.

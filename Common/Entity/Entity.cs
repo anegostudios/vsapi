@@ -152,6 +152,8 @@ namespace Vintagestory.API.Common.Entities
         public virtual bool CanSwivel => Properties.Habitat != EnumHabitat.Air && (Properties.Habitat != EnumHabitat.Land || !Swimming);
         public virtual bool CanSwivelNow => OnGround;
 
+        public virtual bool CanAttackInside => false;
+
         /// <summary>
         /// The vanilla physics systems will call this method if a physics behavior was assigned to it. The game client for example requires this to be called for the current player to properly render the player. Available on the game client and server.
         /// </summary>
@@ -2143,7 +2145,6 @@ namespace Vintagestory.API.Common.Entities
                     Entity byEntity = damageSourceForDeath.GetCauseEntity();
                     if (byEntity != null)
                     {
-                        WatchedAttributes.SetString("deathByEntityLangCode", "prefixandcreature-" + byEntity.Code.Path.Replace("-", ""));
                         WatchedAttributes.SetString("deathByEntity", byEntity.Code.ToString());
                     }
                     if (byEntity is EntityPlayer eplayer)
@@ -2308,12 +2309,21 @@ namespace Vintagestory.API.Common.Entities
         {
             bool result = false;
             var props = worldForNewMappings.GetEntityType(Code);
+            World = worldForNewMappings;
             var behaviors = props?.Server.BehaviorsWithEarlyLoadCollectibleMappings(this, worldForNewMappings);
             if (behaviors != null)
             {
-                foreach (var bh in behaviors)
+                foreach(var bh in behaviors)
                 {
-                    result |= bh.TryEarlyLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, resolveImports);
+                    try
+                    {
+                        result |= bh.Behavior.TryEarlyLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, resolveImports, props, bh.BehaviorConfig);
+                    }
+                    catch (Exception e)
+                    {
+                        worldForNewMappings.Logger.Error($"Error during TryEarlyLoadCollectibleMappings for {bh.Behavior.GetType()} on {Code} at {Pos.AsBlockPos}");
+                        worldForNewMappings.Logger.Error(e);
+                    }
                 }
             }
             return result;
@@ -2342,6 +2352,20 @@ namespace Vintagestory.API.Common.Entities
             }
 
             return Lang.GetMatching(Code.Domain + ":item-creature-" + Code.Path);
+        }
+
+        /// <summary>
+        /// Gets the translated prefix and creature name, e.g. "a goat"
+        /// </summary>
+        /// <returns></returns>
+        public virtual string GetPrefixAndCreatureName(string languageCode = null)
+        {
+            languageCode ??= Lang.CurrentLocale;
+            string translationKey = Code.Domain + AssetLocation.LocationSeparator + "prefixandcreature-" + Code.Path;
+            string oldFormatKey = Code.Domain + AssetLocation.LocationSeparator + "prefixandcreature-" + Code.Path.Replace("-", "");
+            return Lang.AvailableLanguages[languageCode].GetMatchingIfExists(translationKey)
+                ?? Lang.AvailableLanguages[languageCode].GetMatchingIfExists(oldFormatKey)
+                ?? Lang.GetL(languageCode, "generic-wildanimal");
         }
 
         /// <summary>
@@ -2446,6 +2470,12 @@ namespace Vintagestory.API.Common.Entities
                 return true;
             }
 
+            if (CanAttackInside && SelectionBox.Contains(ray.origin.X - SidedPos.X, ray.origin.Y - SidedPos.Y, ray.origin.Z - SidedPos.Z))
+            {
+                intersectionDistance = 0;
+                return true;
+            }
+
             intersectionDistance = 0;
             return false;
         }
@@ -2473,6 +2503,18 @@ namespace Vintagestory.API.Common.Entities
         /// Triggers full entity synchronization, including entity tags. Should not be called too frequently.
         /// </summary>
         public void MarkTagsDirty() => tagsDirty = true;
+
+        /// <summary>
+        /// Returns true if all named tags are present
+        /// </summary>
+        /// <param name="tagsToMatch"></param>
+        /// <returns></returns>
+        public virtual bool HasTags(params string[] tagsToMatch)
+        {
+            EntityTagArray needle = Api.TagRegistry.EntityTagsToTagArray(tagsToMatch);
+            return Tags.ContainsAll(needle);
+        }
+
 
         public bool IsFirstTick()
         {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -54,6 +54,13 @@ namespace Vintagestory.API.Common
 
 
     public delegate void EntityMountDelegate(EntityAgent mountingEntity, IMountableSeat mountedSeat);
+
+    /// <summary>
+    /// Triggered when a server receives a gait update from a client-authoritative mount
+    /// </summary>
+    /// <param name="mountEntity"></param>
+    /// <param name="gaitCode"></param>
+    public delegate void MountGaitReceivedDelegate(Entity mountEntity, string gaitCode);
 
     /// <summary>
     /// Triggered when the server loaded a map region from disk or generated a new one
