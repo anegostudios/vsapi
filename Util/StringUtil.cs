@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Globalization;
@@ -198,7 +198,7 @@ namespace Vintagestory.API.Util
         public static bool ContainsFast(this string value, string reference)
         {
             if (reference.Length > value.Length) return false;
-            
+
             int j = 0;
             for (int i = 0; i < value.Length; i++)
             {
@@ -264,7 +264,7 @@ namespace Vintagestory.API.Util
         }
 
         /// <summary>
-        /// A fast case-insensitive string comparison for "ordinal" culture i.e. plain ASCII comparison used for internal strings such as asset paths 
+        /// A fast case-insensitive string comparison for "ordinal" culture i.e. plain ASCII comparison used for internal strings such as asset paths
         /// </summary>
         /// <param name="value"></param>
         /// <param name="reference"></param>
@@ -332,5 +332,57 @@ namespace Vintagestory.API.Util
             return (sb.ToString().Normalize(NormalizationForm.FormC));
         }
 
+
+        /// <summary>
+        /// Remove username from paths printed in log files
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string SanitizePath(string path)
+        {
+            if (Environment.UserName == null || Environment.UserName.Length == 0) return path;
+
+            switch (RuntimeEnv.OS)
+            {
+                case OS.Windows:
+                {
+                    int j = path.IndexOf("\\Users\\");
+                    if (j >= 0)
+                    {
+                        int k = path.IndexOf("\\AppData\\Roaming\\");
+                        if (k > j)
+                        {
+                            path = "%appdata%" + path.Substring(k + 16);
+                        }
+                        else
+                        {
+                            path = path.Replace(Environment.UserName, "username");
+                        }
+
+                    }
+                    break;
+                }
+                case OS.Linux:
+                {
+                    int j = path.IndexOf("/home/");
+                    if (j >= 0)
+                    {
+                        path = path.Replace(Environment.UserName, "username");
+                    }
+                    break;
+                }
+                case OS.Mac:
+                {
+                    int j = path.IndexOf("/Users/");
+                    if (j >= 0)
+                    {
+                        path = path.Replace(Environment.UserName, "username");
+                    }
+                    break;
+                }
+            }
+
+            return path;
+        }
     }
 }

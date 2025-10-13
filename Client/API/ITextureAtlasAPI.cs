@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
@@ -178,7 +178,13 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="textureSubId"></param>
         void FreeTextureSpace(int textureSubId);
-        
+
+        /// <summary>
+        /// Deallocates a previously allocated texture space
+        /// </summary>
+        /// <param name="assetloc"></param>
+        void FreeTextureSpace(AssetLocationAndSource assetloc);
+
         /// <summary>
         /// Returns an rgba value picked randomly inside the given texture (defined by its sub-id)
         /// </summary>
@@ -235,5 +241,6 @@ namespace Vintagestory.API.Client
         /// <param name="targetY"></param>
         /// <param name="alphaTest"></param>
         void RenderTextureIntoAtlas(int intoAtlasTextureId, LoadedTexture fromTexture, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float targetX, float targetY, float alphaTest = 0.005f);
+        
     }
 }

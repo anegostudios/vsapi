@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
@@ -60,10 +60,11 @@ namespace Vintagestory.API.Client
         public SlideshowGridRecipeTextComponent(ICoreClientAPI capi, GridRecipe[] gridrecipes, double size, EnumFloat floatType, Action<ItemStack> onStackClicked = null, ItemStack[] allStacks = null) : base(capi)
         {
             size = GuiElement.scaled(size);
+            var innerMargin = GuiElement.scaled(3);
 
             this.onStackClicked = onStackClicked;
             this.Float = floatType;
-            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, 3 * (size + 3), 3 * (size + 3)) };
+            this.BoundsPerLine = [new(0, 0, 2 * (size + innerMargin) + size, 2 * (size + innerMargin) + size)];
             this.size = size;
 
             Random fixedRand = new Random(123);

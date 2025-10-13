@@ -351,9 +351,10 @@ namespace Vintagestory.API.Client
             if (!Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) return;
             args.SetHandled(true);
 
-            int dir = Math.Sign(args.deltaPrecise);
-            if (currentValue <= minValue && dir < 0 || currentValue >= maxValue && dir > 0) return;
-            currentValue = allowValues[allowValues.IndexOf(currentValue) + dir];
+            int curIndex = allowValues.IndexOf(currentValue);
+            int newIndex = curIndex == -1 ? 0 : curIndex + Math.Sign(args.deltaPrecise);
+            if (newIndex < 0 || newIndex >= allowValues.Count) return;
+            currentValue = allowValues[newIndex];
 
             ComposeHoverTextElement();
             ComposeRestingTextElement();

@@ -20,6 +20,7 @@ namespace Vintagestory.API.Client
         public bool AmbientSounds;
         public bool Vertex;
         public bool Inside;
+        public bool Smoothstep;
         public bool Structures;
     }
 

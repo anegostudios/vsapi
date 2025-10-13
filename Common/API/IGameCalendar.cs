@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -252,12 +252,12 @@ namespace Vintagestory.API.Common
         float HourOfDay { get; }
 
         /// <summary>
-        /// Total passed hours since the game has started
+        /// Total passed hours since the beginning of the first year (january 1st 0:00)
         /// </summary>
         double TotalHours { get; }
 
         /// <summary>
-        /// Total passed days since the game has started
+        /// Total passed days  since the beginning of the first year (january 1st 0:00)
         /// </summary>
         double TotalDays { get; }
 
