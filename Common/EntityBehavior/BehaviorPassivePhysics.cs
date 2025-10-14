@@ -236,12 +236,12 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
                 float submergedLevel = waterY - (float)pos.Y;
                 float swimLineSubmergedness = GameMath.Clamp(submergedLevel - (entity.SelectionBox.Y2 - (float)entity.SwimmingOffsetY), 0, 1);
 
-                double boyancyStrength = GameMath.Clamp(60 * boyancy * swimLineSubmergedness, -1.5f, 1.5f) - 1;
+                double boyancyStrength = GameMath.Clamp(60 * boyancy * swimLineSubmergedness, -0.5f, 1.5f) - 1;
 
-                double waterDrag = GameMath.Clamp((100 * Math.Abs(motion.Y * dtFactor)) - 0.02f, 1, 1.25f);
+                double waterDrag = GameMath.Clamp((10 * Math.Abs(motion.Length() * dtFactor)) - 0.02f, 1, 1.25f);
 
                 motion.Y += gravityStrength * boyancyStrength;
-                motion.Y /= waterDrag;
+                motion.Mul(1.0 / waterDrag);
             }
             else
             {
