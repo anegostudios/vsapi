@@ -370,6 +370,42 @@ When world type is null, all handlers are returned</p>
 
 
 
+  <a id="Vintagestory_API_Server_IServerEventAPI_IsTerrainHeightSmoothingPrevented_" data-uid="Vintagestory.API.Server.IServerEventAPI.IsTerrainHeightSmoothingPrevented*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_IsTerrainHeightSmoothingPrevented_System_Int32_System_Int32_Vintagestory_API_Datastructures_BoolRef_" data-uid="Vintagestory.API.Server.IServerEventAPI.IsTerrainHeightSmoothingPrevented(System.Int32,System.Int32,Vintagestory.API.Datastructures.BoolRef)">
+  IsTerrainHeightSmoothingPrevented(int, int, BoolRef)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tests whether any worldgen system wants to prevent terrain height smoothing at this location; the result will be true if any does</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void IsTerrainHeightSmoothingPrevented(int chunkX, int chunkZ, BoolRef result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>chunkX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>chunkZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>result</code> <a class="xref" href="Vintagestory.API.Datastructures.BoolRef.html">BoolRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_IServerEventAPI_MapChunkGeneration_" data-uid="Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration*"></a>
 
   <h3 id="Vintagestory_API_Server_IServerEventAPI_MapChunkGeneration_Vintagestory_API_Common_MapChunkGeneratorDelegate_System_String_" data-uid="Vintagestory.API.Server.IServerEventAPI.MapChunkGeneration(Vintagestory.API.Common.MapChunkGeneratorDelegate,System.String)">
@@ -458,6 +494,38 @@ When world type is null, all handlers are returned</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>player</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerEventAPI_PreventTerrainHeightSmoothing_" data-uid="Vintagestory.API.Server.IServerEventAPI.PreventTerrainHeightSmoothing*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_PreventTerrainHeightSmoothing_Vintagestory_API_Common_PreventTerrainHeightSmoothingDelegate_" data-uid="Vintagestory.API.Server.IServerEventAPI.PreventTerrainHeightSmoothing(Vintagestory.API.Common.PreventTerrainHeightSmoothingDelegate)">
+  PreventTerrainHeightSmoothing(PreventTerrainHeightSmoothingDelegate)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Event that tests whether a world gen system prevents terrain to be smoothed at a given location  (e.g. the Devastation Area needs this)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PreventTerrainHeightSmoothing(PreventTerrainHeightSmoothingDelegate handler)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handler</code> <a class="xref" href="Vintagestory.API.Common.PreventTerrainHeightSmoothingDelegate.html">PreventTerrainHeightSmoothingDelegate</a></dt>
     <dd></dd>
   </dl>
 

@@ -115,8 +115,6 @@ namespace Vintagestory.API.Common
         public override int VertexFlags => blockdamage.Block.VertexFlags.GlowLevel;
 
         public override float LifeLength => base.LifeLength + (float)rand.NextDouble();
-
-
     }
 
 
@@ -125,6 +123,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class CollectibleParticleProperties : IParticlePropertiesProvider
     {
+        public bool IgnoreUserConfig => false;
+        public CollectibleParticleProperties() { }
         public Random rand = new Random();
 
         public bool Async => false;

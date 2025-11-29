@@ -1462,7 +1462,7 @@ namespace Vintagestory.API.Common
                 {
                     MountedOn.Entity.TeleportToDouble(x,y,z, () =>
                     {
-                        onplrteleported(x, y, z, onTeleported, sapi);
+                        Onplrteleported(x, y, z, onTeleported, sapi);
                         onTeleported?.Invoke();
                     });
                     ignoreTeleportCall = false;
@@ -1476,7 +1476,7 @@ namespace Vintagestory.API.Common
            {
                 OnLoaded = () =>
                 {
-                    onplrteleported(x, y, z, onTeleported, sapi);
+                    Onplrteleported(x, y, z, onTeleported, sapi);
                     Teleporting = false;
                 },
            });
@@ -1484,7 +1484,7 @@ namespace Vintagestory.API.Common
             ignoreTeleportCall = false;
         }
 
-        private void onplrteleported(double x, double y, double z, Action onTeleported, ICoreServerAPI sapi)
+        public void Onplrteleported(double x, double y, double z, Action onTeleported, ICoreServerAPI sapi)
         {
             int oldX = ServerPos.XInt;
             int oldZ = ServerPos.ZInt;

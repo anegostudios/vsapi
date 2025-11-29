@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.Datastructures;
+using Vintagestory.API.Datastructures;
 
 #nullable disable
 
@@ -41,11 +41,6 @@ namespace Vintagestory.API.Common
         public override void ToTreeAttributes(ITreeAttribute tree)
         {
             SlotsToTreeAttributes(slots, tree);
-        }
-
-        public override float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)
-        {
-            return base.GetTransitionSpeedMul(transType, stack);
         }
     }
 }

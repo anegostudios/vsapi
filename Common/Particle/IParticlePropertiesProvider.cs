@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
@@ -11,6 +11,11 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IParticlePropertiesProvider
     {
+        /// <summary>
+        /// If true, the user set particle level is ignored. Use this sparingly, for very important particles, such as lore hints
+        /// </summary>
+        bool IgnoreUserConfig { get; } 
+
         /// <summary>
         /// If true, will be be spawned in the async particle system, which does not affect main game performance, recommended for large quantities of particles, slightly less optimal for particles that spawn very often
         /// </summary>

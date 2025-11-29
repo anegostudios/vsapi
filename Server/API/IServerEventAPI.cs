@@ -1,6 +1,7 @@
 using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -49,6 +50,19 @@ namespace Vintagestory.API.Server
         /// <param name="handler"></param>
         /// <param name="forWorldType">For which world types to use this generator</param>
         void MapRegionGeneration(MapRegionGeneratorDelegate handler, string forWorldType);
+
+        /// <summary>
+        /// Event that tests whether a world gen system prevents terrain to be smoothed at a given location  (e.g. the Devastation Area needs this)
+        /// </summary>
+        /// <param name="handler"></param>
+        void PreventTerrainHeightSmoothing(PreventTerrainHeightSmoothingDelegate handler);
+        /// <summary>
+        /// Tests whether any worldgen system wants to prevent terrain height smoothing at this location; the result will be true if any does
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="result"></param>
+        void IsTerrainHeightSmoothingPrevented(int chunkX, int chunkZ, BoolRef result);
 
         /// <summary>
         /// Vintagestory uses this method to generate the basic terrain (base terrain + rock strata + caves) in full columns. Only called once in pass EnumWorldGenPass.TerrainNoise. Register to this event if you need acces to a whole chunk column during inital generation.

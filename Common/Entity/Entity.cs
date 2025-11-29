@@ -867,6 +867,18 @@ namespace Vintagestory.API.Common.Entities
                         Pos.Motion.Set(0, 0, 0);
                         onTeleported?.Invoke();
                         Teleporting = false;
+
+                        var mountable = GetInterface<IMountable>();
+                        if (mountable != null)
+                        {
+                            foreach (var seat in mountable.Seats)
+                            {
+                                if (seat.Passenger is EntityPlayer player)
+                                {
+                                    player.Onplrteleported(x, y, z, null, sapi);
+                                }
+                            }
+                        }
                     }
                 });
 

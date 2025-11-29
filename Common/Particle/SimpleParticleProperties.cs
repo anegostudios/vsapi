@@ -14,6 +14,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class SimpleParticleProperties : IParticlePropertiesProvider
     {
+        public bool IgnoreUserConfig { get; set; }
+
         public static ThreadLocal<Random> randTL = new ThreadLocal<Random>(() => new Random());
         public static Random rand => randTL.Value;
 
@@ -224,6 +226,7 @@ namespace Vintagestory.API.Common
             writer.Write(Async);
 
             writer.Write(LightEmission);
+            writer.Write(IgnoreUserConfig);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -296,6 +299,7 @@ namespace Vintagestory.API.Common
             Bounciness = reader.ReadSingle();
             Async = reader.ReadBoolean();
             LightEmission = reader.ReadInt32();
+            IgnoreUserConfig = reader.ReadBoolean();
         }
 
         public void BeginParticle() {

@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -20,5 +20,10 @@ namespace Vintagestory.API.Common
         /// Called by EntityBlockFalling if required
         /// </summary>
         void DropContents(Vec3d atPos);
+
+        /// <summary>
+        /// Called if block entity ticking might have caused the container inventory to be emptied - for example, if fruit rots and (randomly) becomes a null itemstack instead of rot
+        /// </summary>
+        void CheckInventoryClearedMidTick();
     }
 }

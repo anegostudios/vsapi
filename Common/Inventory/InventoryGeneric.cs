@@ -162,24 +162,29 @@ namespace Vintagestory.API.Common
 
         public override float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)
         {
-            float baseMul = GetDefaultTransitionSpeedMul(transType);
+            float mul = GetDefaultTransitionSpeedMul(transType);
 
             if (transType == EnumTransitionType.Perish && PerishableFactorByFoodCategory != null && stack.Collectible.NutritionProps != null)
             {
-                if (!PerishableFactorByFoodCategory.TryGetValue(stack.Collectible.NutritionProps.FoodCategory, out baseMul))
+                if (!PerishableFactorByFoodCategory.TryGetValue(stack.Collectible.NutritionProps.FoodCategory, out float rateMul))
                 {
-                    baseMul = GetDefaultTransitionSpeedMul(transType);
+                    rateMul = 1;
                 }
-            }
-            else
-            {
-                if (TransitionableSpeedMulByType != null)
-                {
-                    if (!TransitionableSpeedMulByType.TryGetValue(transType, out baseMul)) baseMul = GetDefaultTransitionSpeedMul(transType);
-                }
+
+                mul *= rateMul;
             }
 
-            return InvokeTransitionSpeedDelegates(transType, stack, baseMul);
+            if (TransitionableSpeedMulByType != null)
+            {
+                if (!TransitionableSpeedMulByType.TryGetValue(transType, out float rateMul))
+                {
+                    rateMul = 1;
+                }
+
+                mul *= rateMul;
+            }
+
+            return InvokeTransitionSpeedDelegates(transType, stack, mul);
         }
 
 

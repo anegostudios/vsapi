@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
@@ -11,6 +11,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class ParticlesProviderBase : IParticlePropertiesProvider
     {
+        public bool IgnoreUserConfig { get; set; }
         public bool Async => false;
         public float Bounciness { get; set; }
         public bool RandomVelocityChange { get; set; }

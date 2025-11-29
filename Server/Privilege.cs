@@ -4,7 +4,7 @@ namespace Vintagestory.API.Server
 {
     public class Privilege
     {
-       
+
         public static string[] AllCodes()
         {
             return new string[]
@@ -36,11 +36,12 @@ namespace Vintagestory.API.Server
                 commandplayer,
                 controlplayergroups,
                 manageplayergroups,
-                selfkill
+                selfkill,
+                manageotherplayergroups
             };
         }
 
-        
+
         /// <summary>
         /// Place or break blocks
         /// </summary>
@@ -181,6 +182,9 @@ namespace Vintagestory.API.Server
         /// </summary>
         public static string manageplayergroups = "manageplayergroups";
 
-
+        /// <summary>
+        /// Ability to modify others players groups
+        /// </summary>
+        public static string manageotherplayergroups = "manageotherplayergroups";
     }
 }

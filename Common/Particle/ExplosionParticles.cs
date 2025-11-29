@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Vintagestory.API.Client;
@@ -89,6 +89,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class ExplosionSmokeParticles : IParticlePropertiesProvider
     {
+        public bool IgnoreUserConfig => false;
+
         Random rand = new Random();
         public Vec3d basePos = new Vec3d();
 

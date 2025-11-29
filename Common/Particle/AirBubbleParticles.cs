@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
@@ -9,6 +9,7 @@ namespace Vintagestory.API.Common
 {
     public class AirBubbleParticles : IParticlePropertiesProvider
     {
+        public bool IgnoreUserConfig => false;
         public bool Async => false;
 
         Random rand = new Random();

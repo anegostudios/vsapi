@@ -280,7 +280,8 @@ namespace Vintagestory.API.Client
             LightEmission = ColorUtil.ColorFromRgba(100, 100, 100, 255),
             MinVelocity = new Vec3f(-0.125f / 8f, 0f / 4f, -0.125f / 8f),
             AddVelocity = new Vec3f(0.25f / 8f, 0.25f / 4f, 0.25f / 8f),
-            Color = ColorUtil.ColorFromRgba(200, 250, 250, 255)
+            Color = ColorUtil.ColorFromRgba(200, 250, 250, 255),
+            IgnoreUserConfig = true
         };
     }
 }

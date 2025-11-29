@@ -47,7 +47,7 @@ namespace Vintagestory.API.Common
 
 
         Dictionary<int, AssetLocation> BlockCodes;
-        List<BlockOffsetAndNumber> TransformedOffsets;
+        public List<BlockOffsetAndNumber> TransformedOffsets;
 
         public void InitForUse(float rotateYDeg)
         {

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.IO;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Client;
@@ -15,6 +15,7 @@ namespace Vintagestory.API.Common
     [JsonObject(MemberSerialization.OptIn)]
     public class AdvancedParticleProperties : IParticlePropertiesProvider
     {
+        public bool IgnoreUserConfig { get; set; }
         public bool Async => false;
 
         /// <summary>

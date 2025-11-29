@@ -136,6 +136,8 @@ namespace Vintagestory.API.Common
 
     public delegate void ChunkColumnGenerationDelegate(IChunkColumnGenerateRequest request);
 
+    public delegate void PreventTerrainHeightSmoothingDelegate(int chunkX, int chunkZ, BoolRef prevent);
+
     public delegate void MapChunkGeneratorDelegate(IMapChunk mapChunk, int chunkX, int chunkZ);
 
     public delegate void MapRegionGeneratorDelegate(IMapRegion mapRegion, int regionX, int regionZ, ITreeAttribute chunkGenParams = null);

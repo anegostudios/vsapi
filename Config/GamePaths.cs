@@ -26,14 +26,13 @@ namespace Vintagestory.API.Config
                 DataPath = Path.Combine(appdata, "VintagestoryData");
             }
 
-            // Prodution env
+            // Production env
             if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets")))
             {
                 AssetsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets");
             }
             else
-
-            // Denv env
+            // Dev env
             {
                 AssetsPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "assets"));
             }
