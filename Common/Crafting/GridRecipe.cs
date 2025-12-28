@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
+using System.Collections.Concurrent;
 
 #nullable disable
 
@@ -297,83 +298,170 @@ public class GridRecipe : IByteSerializable
         return code.StartsWith('@');
     }
 
+    // Cache for storing results of CollectibleObject searches
+    private static ConcurrentDictionary<string, List<CollectibleObject>> _collectibleCache = new();
+
+    // Helper method to extract the base path (without wildcards and variants)
+    private static string GetBasePath(string codePath)
+    {
+        if (string.IsNullOrEmpty(codePath))
+            return codePath;
+
+        // Find the position of the first wildcard or variant
+        int wildcardIndex = codePath.IndexOfAny(new char[] { '*', '{', '?' });
+
+        if (wildcardIndex >= 0)
+        {
+            // Return the part up to the first wildcard
+            return codePath.Substring(0, wildcardIndex);
+        }
+
+        // If no wildcard, return the whole code
+        return codePath;
+    }
+
+
+    // Modified GetNameToCodeMappingForBasicWildcard
     protected void GetNameToCodeMappingForBasicWildcard(IWorldAccessor world, CraftingRecipeIngredient ingredient, Dictionary<string, string[]> mappings)
     {
+        // Extract the base path and form the cache key
+        string basePath = GetBasePath(ingredient.Code.Path);
+        string baseCode = $"{ingredient.Code.Domain}:{basePath}";
+        string cacheKey = $"{baseCode}:{ingredient.Type}";
+
+        // Get or create the list of collectible objects for this key
+        List<CollectibleObject> collectibles = _collectibleCache.GetOrAdd(cacheKey, key =>
+        {
+            List<CollectibleObject> result = new List<CollectibleObject>();
+
+            if (ingredient.Type == EnumItemClass.Block)
+            {
+                foreach (Block block in world.Blocks)
+                {
+                    if (block.IsMissing) continue;
+
+                    // Quick check: the block's path must contain basePath
+                    // May capture similar objects, but stricter checks later will filter them
+                    if (block.Code.Path.Contains(basePath))
+                    {
+                        result.Add(block);
+                    }
+                }
+            }
+            else
+            {
+                foreach (Item item in world.Items)
+                {
+                    if (item?.Code == null || item.IsMissing) continue;
+
+                    // Quick check: the item's path must contain basePath
+                    // May capture similar objects, but stricter checks later will filter them
+                    if (item.Code.Path.Contains(basePath))
+                    {
+                        result.Add(item);
+                    }
+                }
+            }
+
+            return result;
+        });
+
+        // Now process only the filtered objects
+        List<string> codes = new List<string>();
         int wildcardStartLen = ingredient.Code.Path.IndexOf('*');
         int wildcardEndLen = ingredient.Code.Path.Length - wildcardStartLen - 1;
 
-        List<string> codes = new();
-
-        if (ingredient.Type == EnumItemClass.Block)
+        foreach (CollectibleObject collectible in collectibles)
         {
-            foreach (Block block in world.Blocks)
+            // Skip if it doesn't match the type
+            if (ingredient.Type == EnumItemClass.Block && !(collectible is Block)) continue;
+            if (ingredient.Type == EnumItemClass.Item && !(collectible is Item)) continue;
+
+            // Check skip variants
+            if (ingredient.SkipVariants != null && WildcardUtil.MatchesVariants(ingredient.Code, collectible.Code, ingredient.SkipVariants)) continue;
+
+            // Check allowed variants
+            if (WildcardUtil.Match(ingredient.Code, collectible.Code, ingredient.AllowedVariants))
             {
-                if (block.IsMissing) continue;    // BlockList already performs the null check for us, in its enumerator
-
-                if (ingredient.SkipVariants != null && WildcardUtil.MatchesVariants(ingredient.Code, block.Code, ingredient.SkipVariants)) continue;
-
-                if (WildcardUtil.Match(ingredient.Code, block.Code, ingredient.AllowedVariants))
-                {
-                    string code = block.Code.Path.Substring(wildcardStartLen);
-                    string codePart = code.Substring(0, code.Length - wildcardEndLen).DeDuplicate();
-                    codes.Add(codePart);
-                }
-            }
-        }
-        else
-        {
-            foreach (Item item in world.Items)
-            {
-                if (item?.Code == null || item.IsMissing) continue;
-                if (ingredient.SkipVariants != null && WildcardUtil.MatchesVariants(ingredient.Code, item.Code, ingredient.SkipVariants)) continue;
-
-                if (WildcardUtil.Match(ingredient.Code, item.Code, ingredient.AllowedVariants))
-                {
-                    string code = item.Code.Path.Substring(wildcardStartLen);
-                    string codePart = code.Substring(0, code.Length - wildcardEndLen).DeDuplicate();
-                    codes.Add(codePart);
-                }
+                string code = collectible.Code.Path.Substring(wildcardStartLen);
+                string codePart = code.Substring(0, code.Length - wildcardEndLen).DeDuplicate();
+                codes.Add(codePart);
             }
         }
 
+        // Save results into mappings
         mappings[ingredient.Name] = codes.ToArray();
     }
 
+    // Modified GetNameToCodeMappingForAdvancedWildcard
     protected void GetNameToCodeMappingForAdvancedWildcard(IWorldAccessor world, CraftingRecipeIngredient ingredient, Dictionary<string, string[]> mappings)
     {
-        Dictionary<string, List<string>> codes = new();
+        // Extract the base path and form the cache key
+        string basePath = GetBasePath(ingredient.Code.Path);
+        string baseCode = $"{ingredient.Code.Domain}:{basePath}";
+        string cacheKey = $"{baseCode}:{ingredient.Type}";
 
+
+        // Get or create the list of collectible objects for this key
+        List<CollectibleObject> collectibles = _collectibleCache.GetOrAdd(cacheKey, key =>
+        {
+            List<CollectibleObject> result = new List<CollectibleObject>();
+
+            if (ingredient.Type == EnumItemClass.Block)
+            {
+                foreach (Block block in world.Blocks)
+                {
+                    if (block.IsMissing) continue;
+
+                    // Quick check: the block's path must contain basePath
+                    // May capture similar objects, but stricter checks later will filter them
+                    if (block.Code.Path.Contains(basePath))
+                    {
+                        result.Add(block);
+                    }
+                }
+            }
+            else
+            {
+                foreach (Item item in world.Items)
+                {
+                    if (item?.Code == null || item.IsMissing) continue;
+
+                    // Quick check: the item's path must contain basePath
+                    // May capture similar objects, but stricter checks later will filter them
+                    if (item.Code.Path.Contains(basePath))
+                    {
+                        result.Add(item);
+                    }
+                }
+            }
+
+            return result;
+        });
+
+        // Further processing using cached collections
+        Dictionary<string, List<string>> codes = new Dictionary<string, List<string>>();
         string regexTemplate = ReplaceVariantsToRegex(ingredient.Code.Path, out List<string> variants);
-        Regex regex = new(regexTemplate);
+        Regex regex = new Regex(regexTemplate);
 
-        if (ingredient.Type == EnumItemClass.Block)
+        foreach (CollectibleObject collectible in collectibles)
         {
-            foreach (Block block in world.Blocks)
-            {
-                if (block.IsMissing) continue; // BlockList already performs the null check for us, in its enumerator
+            // Skip if not matching by type
+            if (ingredient.Type == EnumItemClass.Block && !(collectible is Block)) continue;
+            if (ingredient.Type == EnumItemClass.Item && !(collectible is Item)) continue;
 
-                if (!WildcardUtil.Match(ingredient.Code.Domain, block.Code.Domain)) continue;
+            // Check domain
+            if (!WildcardUtil.Match(ingredient.Code.Domain, collectible.Code.Domain)) continue;
 
-                MatchCollectibleCode(block.Code, regex, variants, codes);
-            }
-        }
-        else
-        {
-            foreach (Item item in world.Items)
-            {
-                if (item?.Code == null || item.IsMissing) continue;
-
-                if (!WildcardUtil.Match(ingredient.Code.Domain, item.Code.Domain)) continue;
-
-                MatchCollectibleCode(item.Code, regex, variants, codes);
-            }
+            MatchCollectibleCode(collectible.Code, regex, variants, codes);
         }
 
+        // Save results into mappings with variant intersection
         foreach ((string variantCode, List<string> variantsList) in codes)
         {
             if (mappings.ContainsKey(variantCode))
             {
-                List<string> variantsIntersection = new();
+                List<string> variantsIntersection = new List<string>();
 
                 foreach (string variant in variantsList)
                 {
@@ -390,6 +478,12 @@ public class GridRecipe : IByteSerializable
                 mappings[variantCode] = variantsList.ToArray();
             }
         }
+    }
+
+    // Method to clear the cache
+    public static void ClearCollectibleCache()
+    {
+        _collectibleCache.Clear();
     }
 
     static protected string ReplaceVariantsToRegex(string value, out List<string> variants)
@@ -1059,3 +1153,4 @@ public class GridRecipe : IByteSerializable
         return recipe;
     }
 }
+
