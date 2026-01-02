@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Common;
 
@@ -134,7 +135,7 @@ namespace Vintagestory.API.Util
 
 
 
-
+        /*
         private static bool fastMatch(string needle, string haystack)
         {
             if (haystack == null) throw new ArgumentNullException("Text cannot be null");
@@ -192,6 +193,116 @@ namespace Vintagestory.API.Util
             // No * wildcard? Then we're good if needle is of equal length than haystack
             return needle.Length == haystack.Length;
         }
+
+        */
+
+        /// <summary>
+        /// Optimized version of fastMatch
+        /// </summary>
+        /// <param name="needle"></param>
+        /// <param name="haystack"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        private static bool fastMatch(string needle, string haystack)
+        {
+            if (haystack == null) throw new ArgumentNullException("haystack");
+            if (string.IsNullOrEmpty(needle)) return false;
+
+            // Special case: regular expression
+            if (needle[0] == '@')
+            {
+                // Cache compiled regular expressions for better performance
+                return RegexCache.IsMatch(needle.Substring(1), haystack);
+            }
+
+            // Use indices instead of Substring
+            int needlePos = 0;
+            int haystackPos = 0;
+            int needleLen = needle.Length;
+            int haystackLen = haystack.Length;
+            int lastWildcardPos = -1;
+            int lastHaystackPos = -1;
+
+            while (haystackPos < haystackLen)
+            {
+                if (needlePos < needleLen && needle[needlePos] == '*')
+                {
+                    // Found wildcard
+                    lastWildcardPos = needlePos;
+                    lastHaystackPos = haystackPos;
+                    needlePos++;
+
+                    // Skip consecutive wildcards
+                    while (needlePos < needleLen && needle[needlePos] == '*')
+                    {
+                        needlePos++;
+                    }
+
+                    // If wildcard at end of needle, return true immediately
+                    if (needlePos == needleLen) return true;
+                }
+                else if (needlePos < needleLen &&
+                        (needle[needlePos] == haystack[haystackPos] ||
+                         char.ToLowerInvariant(needle[needlePos]) == char.ToLowerInvariant(haystack[haystackPos])))
+                {
+                    // Characters match
+                    needlePos++;
+                    haystackPos++;
+                }
+                else if (lastWildcardPos != -1)
+                {
+                    // Backtrack to last wildcard
+                    needlePos = lastWildcardPos + 1;
+                    lastHaystackPos++;
+                    haystackPos = lastHaystackPos;
+                }
+                else
+                {
+                    // No match and no wildcard to backtrack
+                    return false;
+                }
+            }
+
+            // Skip remaining wildcards
+            while (needlePos < needleLen && needle[needlePos] == '*')
+            {
+                needlePos++;
+            }
+
+            // If reached end of both strings - match
+            return needlePos == needleLen;
+        }
+
+        // Class for caching compiled regular expressions
+        private static class RegexCache
+        {
+            private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, Regex> _cache
+                = new System.Collections.Concurrent.ConcurrentDictionary<string, Regex>();
+
+            public static bool IsMatch(string pattern, string input)
+            {
+                var regex = _cache.GetOrAdd(pattern, p => new Regex("^" + p + "$",
+                    RegexOptions.Compiled | RegexOptions.CultureInvariant));
+                return regex.IsMatch(input);
+            }
+
+
+            public static void Clear()
+            {
+                _cache.Clear();
+            }
+        }
+
+
+        /// <summary>
+        /// Clears the regex cache
+        /// Best to clean it up when exiting the world
+        /// </summary>
+        public static void ClearRegexCache()
+        {
+            RegexCache.Clear();
+        }
+        
 
         private static bool EndsWith(string haystack, string needle, int endCharsCount)
         {
@@ -291,3 +402,4 @@ namespace Vintagestory.API.Util
     }
     
 }
+
