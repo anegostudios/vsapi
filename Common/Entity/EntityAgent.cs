@@ -80,6 +80,8 @@ namespace Vintagestory.API.Common
         protected bool alwaysRunIdle = false;
         public IMountableSeat MountedOn { get; protected set; }
         public EnumEntityActivity CurrentControls;
+        protected long lastSprintActiveMs;
+        protected const long SprintGraceMs = 150;
 
 
         internal virtual bool LoadControlsFromServer
@@ -608,6 +610,7 @@ namespace Vintagestory.API.Common
                         defaultAnim = anim;
                     }
 
+                    if (ShouldSkipSprintAnim(anim, wasActive, nowActive)) continue;
                     if (onAnimControls(anim, wasActive, nowActive)) continue;
 
                     if (!wasActive && nowActive)
@@ -723,10 +726,73 @@ namespace Vintagestory.API.Common
         }
 
 
+        protected bool ShouldSkipSprintAnim(AnimationMetaData anim, bool wasActive, bool nowActive)
+        {
+            if (World?.Side != EnumAppSide.Client || anim == null)
+            {
+                return false;
+            }
+
+            bool hasSprintControl = HasControl(anim, EnumEntityActivity.SprintMode);
+            bool hasMoveControl = HasControl(anim, EnumEntityActivity.Move);
+            if (!hasSprintControl && !hasMoveControl)
+            {
+                return false;
+            }
+
+            long nowMs = World.ElapsedMilliseconds;
+            bool sprintActive = (CurrentControls & EnumEntityActivity.SprintMode) != 0;
+            bool moveActive = (CurrentControls & EnumEntityActivity.Move) != 0;
+
+            if (sprintActive)
+            {
+                lastSprintActiveMs = nowMs;
+            }
+
+            bool inSprintGrace = !sprintActive && moveActive && nowMs - lastSprintActiveMs <= SprintGraceMs;
+            if (!inSprintGrace)
+            {
+                return false;
+            }
+
+            if (hasSprintControl && wasActive && !nowActive)
+            {
+                return true;
+            }
+
+            if (hasMoveControl && !hasSprintControl && !wasActive && nowActive)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        protected static bool HasControl(AnimationMetaData anim, EnumEntityActivity activity)
+        {
+            AnimationTrigger trigger = anim.TriggeredBy;
+            EnumEntityActivity[] controls = trigger?.OnControls;
+            if (controls == null)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < controls.Length; i++)
+            {
+                if (controls[i] == activity)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         protected virtual bool onAnimControls(AnimationMetaData anim, bool wasActive, bool nowActive)
         {
             return false;
         }
+
 
         protected virtual void HandleHandAnimations(float dt)
         {
