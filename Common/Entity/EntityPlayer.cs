@@ -1044,6 +1044,11 @@ namespace Vintagestory.API.Common
                 return canDoEdgeSit;
             }
 
+            if (ShouldSkipSprintAnim(anim, wasActive, nowActive))
+            {
+                return true;
+            }
+
             return false;
         }
 
