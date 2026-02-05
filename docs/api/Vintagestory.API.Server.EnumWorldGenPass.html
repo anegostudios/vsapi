@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Enum EnumWorldGenPass
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The stages a chunk goes through when being created <a href="https://github.com/anegostudios/vsapi/blob/master///Server/Worldgen/EnumWorldGenPass.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>The stages a chunk goes through when being created <a href=https://github.com/anegostudios/vsapi/blob/master///Server/Worldgen/EnumWorldGenPass.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -128,29 +128,36 @@ Enum EnumWorldGenPass
 </h2>
   <dl class="parameters">
     <dt id="Vintagestory_API_Server_EnumWorldGenPass_Done"><code>Done = 6</code></dt>
-    <dd><p>Chunk generation complete. This pass is not triggered as an event.</p>
+  
+  <dd><p>Chunk generation complete. This pass is not triggered as an event.</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumWorldGenPass_NeighbourSunLightFlood"><code>NeighbourSunLightFlood = 4</code></dt>
-    <dd><p>Requires neighbour chunks. Does the lighting of the chunk.
+  
+  <dd><p>Requires neighbour chunks. Does the lighting of the chunk.
 0 = Snow layer
 0.95 = Sunlight flooding into neighbouring chunks</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumWorldGenPass_None"><code>None = 0</code></dt>
-    <dd><p>Nothing generated yet</p>
+  
+  <dd><p>Nothing generated yet</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumWorldGenPass_PreDone"><code>PreDone = 5</code></dt>
-    <dd><p>Requires neighbour chunks. Nothing left to generate, but neighbour chunks might still generate stuff into this chunk
+  
+  <dd><p>Requires neighbour chunks. Nothing left to generate, but neighbour chunks might still generate stuff into this chunk
 0.1 = Generate creatures</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumWorldGenPass_Terrain"><code>Terrain = 1</code></dt>
-    <dd><p>Does not require neighbour chunks to exist. Should generates 3d rock terrain mostly. Default generators by execute order:
+  
+  <dd><p>Does not require neighbour chunks to exist. Should generates 3d rock terrain mostly. Default generators by execute order:
 0 = Basic 3D Terrain (granite+rock)
 0.1 = Rock Strata
+0.2 = Rivers
 0.3 = Cave generator
 0.4 = Block layers (soil, gravel, sand, ice, tall grass, etc.)</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumWorldGenPass_TerrainFeatures"><code>TerrainFeatures = 2</code></dt>
-    <dd><p>Requires neighbour chunks. Ravines, Lakes, Boulders.  Default generators by execute order:
+  
+  <dd><p>Requires neighbour chunks. Ravines, Lakes, Boulders.  Default generators by execute order:
 0.1 = Hot springs
 0.2 = Deposits (Ores, Peat, Clay, etc.)
 0.3 = Worldgen Structures
@@ -158,7 +165,8 @@ Enum EnumWorldGenPass
 0.5 = Worldgen Structures Post Pass</p>
 </dd>
     <dt id="Vintagestory_API_Server_EnumWorldGenPass_Vegetation"><code>Vegetation = 3</code></dt>
-    <dd><p>Requires neighbour chunks. Default generators by execute order:
+  
+  <dd><p>Requires neighbour chunks. Default generators by execute order:
 0.2 = Story structures. Creates exclusion zones for the other vegetation passes
 0.5 = Block Patches, Shrubs and Trees
 0.9 = Rivulets (single block water sources)

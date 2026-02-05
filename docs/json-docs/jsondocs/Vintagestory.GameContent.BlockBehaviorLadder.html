@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Class BlockBehaviorLadder
 
   <div class="markdown summary"><p>Used to control ladder behavior, including horizontal orientation, placement, collection. Note that this does not control how entities react to ladders (see &quot;climbable&quot; in blocktype).
 Requires use of the 'horizontalorientation' variants.
-Uses the code &quot;Ladder&quot;. <a href="https://github.com/anegostudios/vssurvivalmod/blob/master///BlockBehavior/BehaviorLadder.cs">Open in GitHub</a></p>
+Uses the code &quot;Ladder&quot;. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///BlockBehavior/BehaviorLadder.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -127,16 +127,17 @@ public class BlockBehaviorLadder : BlockBehavior</code></pre>
 
 
   <h2 id="Vintagestory_GameContent_BlockBehaviorLadder_examples">Examples</h2>
-  <pre><code class="lang-csharp">"behaviors": [
-	{
-		"name": "Ladder",
-		"properties": {
-			"isFlexibleByType": {
-				"ladder-rope-*": true
-			}
-		}
-	}
-]</code></pre>
+  <pre><code>     &lt;pre&gt;&lt;code class=&quot;lang-csharp&quot;&gt;&quot;behaviors&quot;: [
+     	{
+     		&quot;name&quot;: &quot;Ladder&quot;,
+     		&quot;properties&quot;: {
+     			&quot;isFlexibleByType&quot;: {
+     				&quot;ladder-rope-*&quot;: true
+     			}
+     		}
+     	}
+     ]&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
 <pre><code class="lang-csharp">"variantgroups": [
 	{
 		"code": "side",
@@ -173,6 +174,39 @@ private string dropBlockFace</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_BlockBehaviorLadder_isCrude" data-uid="Vintagestory.GameContent.BlockBehaviorLadder.isCrude">
+  isCrude (Optional) (Default: False)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Crude ladders cannot stand on the floor or ceiling without some attachment to a wall behind some part of the ladder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
+public bool isCrude</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -1108,8 +1108,7 @@ int GetBlockId(int posX, int posY, int posZ)</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Please use BlockPos version instead, for dimension awareness&quot;)]
-Block GetBlockOrNull(int x, int y, int z, int layer = 4)</code></pre>
+    <pre><code class="lang-csharp hljs">Block GetBlockOrNull(int x, int y, int z, int layer = 4)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1280,13 +1279,12 @@ Gets the block type of the block at the given world coordinate.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieve chunk at given block position, returns null if chunk is not loaded</p>
+  <div class="markdown level1 summary"><p>Not dimension aware. For internal use only, where posY includes the dimension</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Please use BlockPos version instead, for dimension awareness&quot;)]
-IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ)</code></pre>
+    <pre><code class="lang-csharp hljs">IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2118,7 +2116,7 @@ Block GetMostSolidBlock(int x, int y, int z)</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Get a list of all decors at this position</p>
+  <div class="markdown level1 summary"><p>Get a list of all decors at this position.  The Dictionary keys are the faceAndSubposition value for each one, see <a class="xref" href="Vintagestory.API.Common.DecorBits.html#Vintagestory_API_Common_DecorBits__ctor_System_Int32_">DecorBits(int)</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

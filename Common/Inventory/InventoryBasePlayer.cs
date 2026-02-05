@@ -86,6 +86,7 @@ namespace Vintagestory.API.Common
         protected void spawnItemEntity(ItemStack itemstack, Vec3d pos, int despawnSeconds)
         {
             Entity eItem = Api.World.SpawnItemEntity(itemstack, pos);
+            eItem.WatchedAttributes.SetString("byPlayerUid", playerUID);
             eItem.Attributes.SetInt("minsecondsToDespawn", despawnSeconds);     // Set the despawn timer to the configured value for a player's despawned items, even if the despawn timer is different for other items
             var bh = eItem.GetBehavior("timeddespawn");   // Also set the despawn timer for the already-initialised behavior for the entity just spawned; the attribute will do the same job if the world or chunk is re-loaded
             if (bh is ITimedDespawn bhDespawn)

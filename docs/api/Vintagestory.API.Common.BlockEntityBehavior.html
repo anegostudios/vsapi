@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BlockEntityBehavior
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -270,7 +270,7 @@ Class BlockEntityBehavior
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonObject properties</code></pre>
+    <pre><code class="lang-csharp hljs">public JsonObject? properties</code></pre>
   </div>
 
 
@@ -465,7 +465,7 @@ Class BlockEntityBehavior
   <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockBroken_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockBroken*"></a>
 
   <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockBroken_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockBroken(Vintagestory.API.Common.IPlayer)">
-  OnBlockBroken(IPlayer)
+  OnBlockBroken(IPlayer?)
   
   </h3>
 
@@ -473,7 +473,7 @@ Class BlockEntityBehavior
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnBlockBroken(IPlayer byPlayer = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockBroken(IPlayer? byPlayer = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -496,7 +496,7 @@ Class BlockEntityBehavior
   <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockPlaced_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockPlaced*"></a>
 
   <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockPlaced_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockPlaced(Vintagestory.API.Common.ItemStack)">
-  OnBlockPlaced(ItemStack)
+  OnBlockPlaced(ItemStack?)
   
   </h3>
 
@@ -504,7 +504,7 @@ Class BlockEntityBehavior
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnBlockPlaced(ItemStack byItemStack = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockPlaced(ItemStack? byItemStack = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -804,7 +804,10 @@ public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Let's you add your own meshes to a chunk. Don't reuse the meshdata instance anywhere in your code. Return true to skip the default mesh.
+WARNING!
+The Tesselator runs in a seperate thread, so you have to make sure the fields and methods you access inside this method are thread safe.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -814,15 +817,18 @@ public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>mesher</code> <a class="xref" href="Vintagestory.API.Client.ITerrainMeshPool.html">ITerrainMeshPool</a></dt>
-    <dd></dd>
+    <dd><p>The chunk mesh, add your stuff here</p>
+</dd>
     <dt><code>tessThreadTesselator</code> <a class="xref" href="Vintagestory.API.Client.ITesselatorAPI.html">ITesselatorAPI</a></dt>
-    <dd></dd>
+    <dd><p>If you need to tesselate something, you should use this tesselator, since using the main thread tesselator can cause race conditions and crash the game</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>True to skip default mesh, false to also add the default mesh</p>
+</dd>
   </dl>
 
 

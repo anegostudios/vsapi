@@ -85,8 +85,7 @@ namespace Vintagestory.API.Datastructures
             int hashcode = 0;
             for (int i = 0; i < value.Length; i++)
             {
-                if (i == 0) hashcode = value[i].GetHashCode();
-                else hashcode ^= value[i].GetHashCode();
+                hashcode ^= value[i].GetHashCode();
             }
 
             return hashcode;

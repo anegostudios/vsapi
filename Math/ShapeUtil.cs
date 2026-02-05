@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,52 +8,63 @@ namespace Vintagestory.API.MathTools
 {
     public static class ShapeUtil
     {
-        static Vec3f[][] cubicShellNormalizedVectors;
-
         public static int MaxShells = 38;
 
-        static ShapeUtil()
+        public static int GetLength(int radius)
         {
-            cubicShellNormalizedVectors = new Vec3f[MaxShells][];
-            int[] ab = new int[2];
-
-            for (int r = 1; r < MaxShells; r++)
-            {
-                cubicShellNormalizedVectors[r] = new Vec3f[(2 * r + 1) * (2 * r + 1) * 6];
-                int j = 0;
-
-                foreach (BlockFacing facing in BlockFacing.ALLFACES)
-                {
-                    for (ab[0] = -r; ab[0] <= r; ab[0]++)
-                    {
-                        for (ab[1] = -r; ab[1] <= r; ab[1]++)
-                        {
-                            Vec3f pos = new Vec3f(facing.Normali.X * r, facing.Normali.Y * r, facing.Normali.Z * r);
-                            int l = 0;
-                            if (pos.X == 0) pos.X = ab[l++];
-                            if (pos.Y == 0) pos.Y = ab[l++];
-                            if (l < 2 && pos.Z == 0) pos.Z = ab[l++];
-
-                            cubicShellNormalizedVectors[r][j++] = pos.Normalize();
-                        }
-                    }
-                }
-            }
-
-            
+            return (2 * radius + 1) * (2 * radius + 1) * 6;
         }
 
+        public static FastVec3f GetRay(int r, int j)
+        {
+            int length = GetLength(r) / 6;
+            Vec3i facingNormali = BlockFacing.ALLFACES[j / length].Normali;
+            j = j % length;
 
+            int a = j / (2 * r + 1) - r;
+            int b = j % (2 * r + 1) - r;
+
+            FastVec3f pos = new FastVec3f(facingNormali.X * r, facingNormali.Y * r, facingNormali.Z * r);
+
+            // Two out of the three of pos.X, pos.Y, pos.Z must be 0
+            if (pos.X == 0)
+            {
+                pos.X = a;
+                if (pos.Y == 0) pos.Y = b;
+            }
+            else
+            {
+                if (pos.Y == 0) pos.Y = a;
+            }
+            if (pos.Z == 0) pos.Z = b;
+
+            return pos.Normalize();
+        }
 
         public static Vec3f[] GetCachedCubicShellNormalizedVectors(int radius)
         {
-            return cubicShellNormalizedVectors[radius];
+            Vec3f[] result = new Vec3f[GetLength(radius)];
+            for (int j = 0; j < result.Length; j++)
+            {
+                result[j] = new Vec3f(GetRay(radius, j));
+            }
+            return result;
+        }
+
+        public static FastVec3f[] GetCubicShellNormalizedVectors(int radius)
+        {
+            FastVec3f[] result = new FastVec3f[GetLength(radius)];
+            for (int j = 0; j < result.Length; j++)
+            {
+                result[j] = GetRay(radius, j);
+            }
+            return result;
         }
 
         public static Vec3i[] GenCubicShellVectors(int r)
         {
             int[] ab = new int[2];
-            Vec3i[] vectors = new Vec3i[(2 * r + 1) * (2 * r + 1) * 6];
+            Vec3i[] vectors = new Vec3i[GetLength(r)];
             int j = 0;
 
             foreach (BlockFacing facing in BlockFacing.ALLFACES)
@@ -79,7 +90,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Returns an array of vectors for each point in a square, sorted by manhatten distance to center, exluding the center point
+        /// Returns an array of vectors for each point in a square, sorted by manhattan distance to center, exluding the center point
         /// </summary>
         /// <param name="halflength"></param>
         /// <returns></returns>
@@ -100,7 +111,7 @@ namespace Vintagestory.API.MathTools
                 }
             }
 
-            return result.OrderBy(vec => vec.ManhattenDistance(0, 0)).ToArray();
+            return result.OrderBy(vec => vec.ManhattanDistance(0, 0)).ToArray();
         }
 
         /// <summary>

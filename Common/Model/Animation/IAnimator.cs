@@ -123,7 +123,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The head controller for this manager.
         /// </summary>
-        EntityHeadController HeadController { get; set; }
+        IHeadController HeadController { get; set; }
 
         /// <summary>
         /// Initialization call for the animation manager.
@@ -208,7 +208,7 @@ namespace Vintagestory.API.Common
         /// <param name="code">The code that the animation stopped with.</param>
         void TriggerAnimationStopped(string code);
 
-        void ShouldPlaySound(AnimationSound sound);
+        void ShouldPlaySound(string animation, AnimationSound sound);
 
         void OnServerTick(float dt);
 

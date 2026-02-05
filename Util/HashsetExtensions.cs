@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -38,7 +38,7 @@ namespace Vintagestory.API.Util
         }
 
 
-        public static T PopOne<T>(this ICollection<T> items)
+        public static T PopFirst<T>(this ICollection<T> items)
         {
             T item = items.FirstOrDefault();
             if (item != null)

@@ -52,10 +52,10 @@ namespace Vintagestory.API.Client
 
                     if (texturePath == null)
                     {
-                        if (!missingTextures.Contains(texturePath))
+                        if (!missingTextures.Contains(textureCode))
                         {
                             capi.Logger.Warning("Shape {0} has an element using texture code {1}, but no such texture exists", filenameForLogging, textureCode);
-                            missingTextures.Add(texturePath);
+                            missingTextures.Add(textureCode);
                         }
 
                         return capi.BlockTextureAtlas.UnknownTexturePosition;

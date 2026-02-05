@@ -68,6 +68,11 @@ namespace Vintagestory.API.Datastructures
             return Data[(z + TopLeftPadding) * Size + x + TopLeftPadding];
         }
 
+        public void SetUnpaddedInt(int x, int z, int value)
+        {
+            Data[(z + TopLeftPadding) * Size + x + TopLeftPadding] = value;
+        }
+
         public int GetUnpaddedColorLerped(float x, float z)
         {
             int ix = (int)x;
@@ -155,7 +160,5 @@ namespace Vintagestory.API.Datastructures
                 Data[index + Size + 1]
             );
         }
-
-
     }
 }

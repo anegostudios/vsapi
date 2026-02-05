@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AnimatableRenderer
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimatableRenderer.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimatableRenderer.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -172,17 +172,17 @@ Class AnimatableRenderer
 
   <a id="Vintagestory_API_Common_AnimatableRenderer__ctor_" data-uid="Vintagestory.API.Common.AnimatableRenderer.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimatableRenderer__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Common_AnimatorBase_System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__Vintagestory_API_Client_MeshRef_System_Int32_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimatableRenderer.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MeshRef,System.Int32,Vintagestory.API.Client.EnumRenderStage)">
-  AnimatableRenderer(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary&lt;string, AnimationMetaData&gt;, MeshRef, int, EnumRenderStage)
+  <h3 id="Vintagestory_API_Common_AnimatableRenderer__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Common_AnimatorBase_System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__Vintagestory_API_Client_MeshData_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimatableRenderer.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MeshData,Vintagestory.API.Client.EnumRenderStage)">
+  AnimatableRenderer(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary&lt;string, AnimationMetaData&gt;, MeshData, EnumRenderStage)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Create a new instance of AnimatableRenderer that can extract transparent and opaque parts from the provided MeshData and render it in seperated passes, if it contains any transparent geometry.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use constructor with MultiTextureMeshRef instead, the standard MeshRef texturing breaks when there is multiple texture atlasses&quot;)]
-public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary&lt;string, AnimationMetaData&gt; activeAnimationsByAnimCode, MeshRef meshref, int textureId, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
+    <pre><code class="lang-csharp hljs">public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary&lt;string, AnimationMetaData&gt; activeAnimationsByAnimCode, MeshData meshdata, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -197,55 +197,11 @@ public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, Ani
     <dd></dd>
     <dt><code>activeAnimationsByAnimCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</dt>
     <dd></dd>
-    <dt><code>meshref</code> <a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
-    <dd></dd>
-    <dt><code>textureId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>meshdata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
     <dd></dd>
     <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_AnimatableRenderer__ctor_" data-uid="Vintagestory.API.Common.AnimatableRenderer.#ctor*"></a>
-
-  <h3 id="Vintagestory_API_Common_AnimatableRenderer__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Common_AnimatorBase_System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__Vintagestory_API_Client_MultiTextureMeshRef_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimatableRenderer.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MultiTextureMeshRef,Vintagestory.API.Client.EnumRenderStage)">
-  AnimatableRenderer(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary&lt;string, AnimationMetaData&gt;, MultiTextureMeshRef, EnumRenderStage)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary&lt;string, AnimationMetaData&gt; activeAnimationsByAnimCode, MultiTextureMeshRef meshref, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>capi</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
-    <dd></dd>
-    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
-    <dd></dd>
-    <dt><code>rotationDeg</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
-    <dd></dd>
-    <dt><code>animator</code> <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></dt>
-    <dd></dd>
-    <dt><code>activeAnimationsByAnimCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>meshref</code> <a class="xref" href="Vintagestory.API.Client.MultiTextureMeshRef.html">MultiTextureMeshRef</a></dt>
-    <dd></dd>
-    <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
-    <dd></dd>
+    <dd><p>Renderstage for any non-transparent geometry</p>
+</dd>
   </dl>
 
 
@@ -654,8 +610,8 @@ public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, Ani
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimatableRenderer_meshref" data-uid="Vintagestory.API.Common.AnimatableRenderer.meshref">
-  meshref
+  <h3 id="Vintagestory_API_Common_AnimatableRenderer_mtmeshrefOpaque" data-uid="Vintagestory.API.Common.AnimatableRenderer.mtmeshrefOpaque">
+  mtmeshrefOpaque
   
   </h3>
 
@@ -663,7 +619,7 @@ public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, Ani
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MeshRef meshref</code></pre>
+    <pre><code class="lang-csharp hljs">public MultiTextureMeshRef mtmeshrefOpaque</code></pre>
   </div>
 
 
@@ -671,7 +627,7 @@ public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, Ani
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Client.MultiTextureMeshRef.html">MultiTextureMeshRef</a></dt>
     <dd></dd>
   </dl>
 
@@ -684,8 +640,8 @@ public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, Ani
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimatableRenderer_mtmeshref" data-uid="Vintagestory.API.Common.AnimatableRenderer.mtmeshref">
-  mtmeshref
+  <h3 id="Vintagestory_API_Common_AnimatableRenderer_mtmeshrefTransparent" data-uid="Vintagestory.API.Common.AnimatableRenderer.mtmeshrefTransparent">
+  mtmeshrefTransparent
   
   </h3>
 
@@ -693,7 +649,7 @@ public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, Ani
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MultiTextureMeshRef mtmeshref</code></pre>
+    <pre><code class="lang-csharp hljs">public MultiTextureMeshRef mtmeshrefTransparent</code></pre>
   </div>
 
 
@@ -848,7 +804,8 @@ public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, Ani
 Default render orders by render stage:<br>
 Before:<br>
 0 = Ambient Manager<br>
-0 = Camera<br><br>
+0 = Camera<br>
+<br>
 Opaque:<br>
 0.1 = Blue sky (Icosahedron)<br>
 0.2 = Night skybox<br>
@@ -860,24 +817,29 @@ Opaque:<br>
 0.6 = particles<br>
 0.7 = Cinematic camera line preview<br>
 0.8 = fp held item<br>
-0.9 = held item opaque custom renderer<br><br>
+0.9 = held item opaque custom renderer<br>
+<br>
 OIT:<br>
 0.2 = Frame buffer debug screen<br>
 0.35 = Clouds<br>
 0.37 = Terrain oit<br>
 0.4 = Enitities<br>
 0.6 = particles<br>
-0.9 = held item oit custom renderer<br><br>
+0.9 = held item oit custom renderer<br>
+<br>
 Shadow far:<br>
 0 = shadow map init<br>
 0.37 = Terrain shadow far<br>
-0.4 = Enitities<br><br>
+0.4 = Enitities<br>
+<br>
 Shadow far done:<br>
-1 = shadow map finish<br><br>
+1 = shadow map finish<br>
+<br>
 Shadow near:<br>
 0 = shadow map init<br>
 0.37 = Terrain shadow near<br>
-0.4 = Enitities<br><br>
+0.4 = Enitities<br>
+<br>
 Shadow near done:<br>
 1 = shadow map finish<br>
 Ortho:<br>
@@ -887,12 +849,15 @@ Ortho:<br>
 0.95 = sleeping overlay<br>
 0.98 = bow/spear aiming reticle<br>
 1 = Gui manager<br>
-1.02 = crosshair and mouse cursor<br><br>
+1.02 = crosshair and mouse cursor<br>
+<br>
 AfterFinalComposition:<br>
-2 = screenshot<br><br>
+2 = screenshot<br>
+<br>
 Done:<br>
 0.1 = gui manager<br>
-2 = screenshot<br><br>
+2 = screenshot<br>
+<br>
 0.98 = Cinematic camera camera advancing and frame capture when recording<br>
 0.99 = Chunk Tesselator Manager (uploads new/modified chunk meshes)<br>
 0.999 = Compress chunks scan<br>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AnimationMetaData
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Animation Meta Data is a json type that controls how an animation should be played. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationMetaData.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Animation Meta Data is a json type that controls how an animation should be played. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationMetaData.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -195,13 +195,13 @@ public class AnimationMetaData</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>The animations code identifier that we want to play</p>
+  <div class="markdown level1 summary"><p>The animations code identifier that we want to play</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string Animation</code></pre>
   </div>
 
@@ -223,8 +223,8 @@ public string Animation</code></pre>
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimationMetaData_AnimationSound" data-uid="Vintagestory.API.Common.AnimationMetaData.AnimationSound">
-  AnimationSound
+  <h3 id="Vintagestory_API_Common_AnimationMetaData_AnimationSounds" data-uid="Vintagestory.API.Common.AnimationMetaData.AnimationSounds">
+  AnimationSounds
   
   </h3>
 
@@ -233,7 +233,7 @@ public string Animation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
-public AnimationSound AnimationSound</code></pre>
+public AnimationSound[] AnimationSounds</code></pre>
   </div>
 
 
@@ -241,7 +241,7 @@ public AnimationSound AnimationSound</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -259,13 +259,13 @@ public AnimationSound AnimationSound</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The speed this animation should play at.</p>
+  <div class="markdown level1 summary"><p>The speed this animation should play at.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float AnimationSpeed</code></pre>
   </div>
 
@@ -292,8 +292,7 @@ public float AnimationSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>Custom attributes that can be used for the animation.
+  <div class="markdown level1 summary"><p>Custom attributes that can be used for the animation.
 Valid vanilla attributes are:<br></p>
 <ul>
 <li>damageAtFrame (float)<br></li>
@@ -306,6 +305,7 @@ Valid vanilla attributes are:<br></p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonObject Attributes</code></pre>
   </div>
 
@@ -332,14 +332,14 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Add</jsondefault>-->
-<p>The animation blend mode. Controls how this animation will react with other concurrent animations.
+  <div class="markdown level1 summary"><p>The animation blend mode. Controls how this animation will react with other concurrent animations.
 Also see <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_ElementBlendMode">ElementBlendMode</a> to control blend mode per element.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Add&quot;, false)]
 public EnumAnimationBlendMode BlendMode</code></pre>
   </div>
 
@@ -366,13 +366,13 @@ public EnumAnimationBlendMode BlendMode</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>If true, the server does not sync this animation.</p>
+  <div class="markdown level1 summary"><p>If true, the server does not sync this animation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool ClientSide</code></pre>
   </div>
 
@@ -399,13 +399,13 @@ public bool ClientSide</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>Unique identifier to be able to reference this AnimationMetaData instance</p>
+  <div class="markdown level1 summary"><p>Unique identifier to be able to reference this AnimationMetaData instance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string Code</code></pre>
   </div>
 
@@ -462,13 +462,13 @@ public string Code</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
-<p>A multiplier applied to the weight value to &quot;ease in&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
+  <div class="markdown level1 summary"><p>A multiplier applied to the weight value to &quot;ease in&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;10&quot;, false)]
 public float EaseInSpeed</code></pre>
   </div>
 
@@ -495,13 +495,13 @@ public float EaseInSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
-<p>A multiplier applied to the weight value to &quot;ease out&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
+  <div class="markdown level1 summary"><p>A multiplier applied to the weight value to &quot;ease out&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;10&quot;, false)]
 public float EaseOutSpeed</code></pre>
   </div>
 
@@ -528,13 +528,13 @@ public float EaseOutSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A way of specifying <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_BlendMode">BlendMode</a> per element.</p>
+  <div class="markdown level1 summary"><p>A way of specifying <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_BlendMode">BlendMode</a> per element.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, EnumAnimationBlendMode&gt; ElementBlendMode</code></pre>
   </div>
 
@@ -561,14 +561,14 @@ public Dictionary&lt;string, EnumAnimationBlendMode&gt; ElementBlendMode</code><
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A way of specifying <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_Weight">Weight</a> for each element.
+  <div class="markdown level1 summary"><p>A way of specifying <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_Weight">Weight</a> for each element.
 Also see <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_ElementBlendMode">ElementBlendMode</a> to control blend modes per element..</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, float&gt; ElementWeight</code></pre>
   </div>
 
@@ -625,14 +625,14 @@ public Dictionary&lt;string, float&gt; ElementWeight</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>99</jsondefault>-->
-<p>A value that determines whether to change the first-person eye position for the camera.
+  <div class="markdown level1 summary"><p>A value that determines whether to change the first-person eye position for the camera.
 Higher values will keep eye position static.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;99&quot;, false)]
 public float HoldEyePosAfterEasein</code></pre>
   </div>
 
@@ -659,13 +659,13 @@ public float HoldEyePosAfterEasein</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Should this animation speed be multiplied by the movement speed of the entity?</p>
+  <div class="markdown level1 summary"><p>Should this animation speed be multiplied by the movement speed of the entity?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool MulWithWalkSpeed</code></pre>
   </div>
 
@@ -722,13 +722,13 @@ public bool MulWithWalkSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Should this animation stop default animations from playing?</p>
+  <div class="markdown level1 summary"><p>Should this animation stop default animations from playing?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool SupressDefaultAnimation</code></pre>
   </div>
 
@@ -755,13 +755,13 @@ public bool SupressDefaultAnimation</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>Controls when this animation should be played.</p>
+  <div class="markdown level1 summary"><p>Controls when this animation should be played.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AnimationTrigger TriggeredBy</code></pre>
   </div>
 
@@ -818,14 +818,14 @@ public AnimationTrigger TriggeredBy</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The weight of this animation. When using multiple animations at a time, this controls the significance of each animation.
+  <div class="markdown level1 summary"><p>The weight of this animation. When using multiple animations at a time, this controls the significance of each animation.
 The method for determining final animation values depends on this and <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_BlendMode">BlendMode</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float Weight</code></pre>
   </div>
 
@@ -852,8 +852,7 @@ public float Weight</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>This property can be used in cases where a animation with high weight is played alongside another animation with low element weight.
+  <div class="markdown level1 summary"><p>This property can be used in cases where a animation with high weight is played alongside another animation with low element weight.
 In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue.<br></p>
 <ul>
 <li>0f = uncapped weight<br></li>
@@ -865,6 +864,7 @@ In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or si
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float WeightCapFactor</code></pre>
   </div>
 

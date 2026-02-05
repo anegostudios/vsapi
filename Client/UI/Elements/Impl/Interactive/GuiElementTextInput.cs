@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Cairo;
 
 #nullable disable
@@ -16,13 +16,19 @@ namespace Vintagestory.API.Client
 
         LoadedTexture placeHolderTextTexture;
 
+        protected double enabledAlpha = 1f;
+        protected double disabledAlpha = 0.35f;
+
         public override bool Enabled
         {
             get => base.Enabled;
             set
             {
+                var prevOn = enabled;
                 enabled = value;
                 MouseOverCursor = value ? "textselect" : null;
+                Font.Color[3] = enabled ? enabledAlpha : disabledAlpha;
+                if (prevOn != enabled) RecomposeText();
             }
         }
 
@@ -38,6 +44,7 @@ namespace Vintagestory.API.Client
             MouseOverCursor = "textselect";
             this.OnTextChanged = onTextChanged;
             highlightTexture = new LoadedTexture(capi);
+            enabledAlpha = font.Color[3];
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class JsonItemStack
   </div>
 
   <div class="markdown summary"><p>This is a representation of an item stack in JSON.
-It resembles a standard in-game item stack but can be stored before the game is loaded. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/JsonItemStack.cs">Open in GitHub</a></p>
+It resembles a standard in-game item stack but can be stored before the game is loaded. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/JsonItemStack.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -164,7 +164,7 @@ public class JsonItemStack</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(2)]
-[DocumentAsJson]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public AssetLocation Code</code></pre>
   </div>
 
@@ -198,7 +198,7 @@ public AssetLocation Code</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(1)]
-[DocumentAsJson]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;Block&quot;, false)]
 public EnumItemClass Type</code></pre>
   </div>
 
@@ -234,7 +234,8 @@ public EnumItemClass Type</code></pre>
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
 [ProtoMember(4)]
-public JsonObject Attributes</code></pre>
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonObject? Attributes</code></pre>
   </div>
 
 
@@ -242,7 +243,7 @@ public JsonObject Attributes</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -267,7 +268,7 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public int Quantity { get; set; }</code></pre>
   </div>
 
@@ -301,7 +302,7 @@ public int Quantity { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(3)]
-[DocumentAsJson]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public int StackSize</code></pre>
   </div>
 

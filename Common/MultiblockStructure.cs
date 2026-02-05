@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
@@ -80,7 +80,7 @@ namespace Vintagestory.API.Common
                 throw new InvalidOperationException("call InitForUse() first");
             }
 
-            BlockPos pos = new BlockPos();
+            BlockPos pos = new BlockPos(centerPos.dimension);
 
             for (int i = 0; i < TransformedOffsets.Count; i++)
             {

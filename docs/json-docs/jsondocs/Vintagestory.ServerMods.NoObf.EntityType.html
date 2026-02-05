@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class EntityType
   </div>
 
   <div class="markdown summary"><p>An entity type.
-Any json files inside of assets/entities will be loaded in as this type. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/EntityType.cs">Open in GitHub</a></p>
+Any json files inside of assets/entities will be loaded in as this type. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/EntityType.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -173,6 +173,7 @@ public class EntityType : RegistryObjectType</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public ClientEntityConfig Client</code></pre>
   </div>
 
@@ -206,6 +207,7 @@ public ClientEntityConfig Client</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public ServerEntityConfig Server</code></pre>
   </div>
 
@@ -228,7 +230,7 @@ public ServerEntityConfig Server</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_Sounds" data-uid="Vintagestory.ServerMods.NoObf.EntityType.Sounds">
-  Sounds (Recommended) (Default: None)
+  Sounds (Recommended) (Default: None. Sound ranges default to 24, and pitches default to non-random except for the idle sound.)
   
   </h3>
 
@@ -246,7 +248,8 @@ public ServerEntityConfig Server</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
-public Dictionary&lt;string, AssetLocation&gt; Sounds</code></pre>
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None. Sound ranges default to 24, and pitches default to non-random except for the idle sound.&quot;, false)]
+public Dictionary&lt;string, SoundAttributes&gt; Sounds</code></pre>
   </div>
 
 
@@ -254,7 +257,7 @@ public Dictionary&lt;string, AssetLocation&gt; Sounds</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -280,6 +283,7 @@ public Dictionary&lt;string, AssetLocation&gt; Sounds</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonObject Attributes</code></pre>
   </div>
 
@@ -288,7 +292,7 @@ public JsonObject Attributes</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -314,6 +318,7 @@ Key is a behavior code, and value is a set of attributes. Attributes will get me
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(ItemConverterType = typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, JsonObject&gt; BehaviorConfigs</code></pre>
   </div>
 
@@ -322,7 +327,7 @@ public Dictionary&lt;string, JsonObject&gt; BehaviorConfigs</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <span class="xref">JsonObject</span>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -336,7 +341,7 @@ public Dictionary&lt;string, JsonObject&gt; BehaviorConfigs</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_CanClimb" data-uid="Vintagestory.ServerMods.NoObf.EntityType.CanClimb">
-  CanClimb (Optional) (Default: false)
+  CanClimb (Optional) (Default: False)
   
   </h3>
 
@@ -347,6 +352,7 @@ public Dictionary&lt;string, JsonObject&gt; BehaviorConfigs</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool CanClimb</code></pre>
   </div>
 
@@ -369,7 +375,7 @@ public bool CanClimb</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_CanClimbAnywhere" data-uid="Vintagestory.ServerMods.NoObf.EntityType.CanClimbAnywhere">
-  CanClimbAnywhere (Optional) (Default: false)
+  CanClimbAnywhere (Optional) (Default: False)
   
   </h3>
 
@@ -380,6 +386,7 @@ public bool CanClimb</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool CanClimbAnywhere</code></pre>
   </div>
 
@@ -413,6 +420,7 @@ public bool CanClimbAnywhere</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.5&quot;, false)]
 public float ClimbTouchDistance</code></pre>
   </div>
 
@@ -446,6 +454,7 @@ public float ClimbTouchDistance</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.5, 0.5&quot;, false)]
 public Vec2f CollisionBoxSize</code></pre>
   </div>
 
@@ -479,6 +488,7 @@ public Vec2f CollisionBoxSize</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.5, 0.25&quot;, false)]
 public Vec2f DeadCollisionBoxSize</code></pre>
   </div>
 
@@ -502,7 +512,7 @@ public Vec2f DeadCollisionBoxSize</code></pre>
   <a id="Vintagestory_ServerMods_NoObf_EntityType_DeadHitBoxSize_" data-uid="Vintagestory.ServerMods.NoObf.EntityType.DeadHitBoxSize*"></a>
 
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_DeadHitBoxSize" data-uid="Vintagestory.ServerMods.NoObf.EntityType.DeadHitBoxSize">
-  DeadHitBoxSize (Optional)
+  DeadHitBoxSize (Optional) (Default: None)
   
   </h3>
 
@@ -513,6 +523,7 @@ public Vec2f DeadCollisionBoxSize</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Vec2f DeadHitBoxSize { get; set; }</code></pre>
   </div>
 
@@ -546,6 +557,7 @@ public Vec2f DeadHitBoxSize { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;DeadCollisionBoxSize&quot;, false)]
 public Vec2f DeadSelectionBoxSize</code></pre>
   </div>
 
@@ -579,6 +591,7 @@ public Vec2f DeadSelectionBoxSize</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public BlockDropItemStack[] Drops</code></pre>
   </div>
 
@@ -612,6 +625,7 @@ public BlockDropItemStack[] Drops</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.1&quot;, false)]
 public double EyeHeight</code></pre>
   </div>
 
@@ -645,6 +659,7 @@ public double EyeHeight</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float FallDamageMultiplier</code></pre>
   </div>
 
@@ -678,6 +693,7 @@ public float FallDamageMultiplier</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Land&quot;, false)]
 public EnumHabitat Habitat</code></pre>
   </div>
 
@@ -701,7 +717,7 @@ public EnumHabitat Habitat</code></pre>
   <a id="Vintagestory_ServerMods_NoObf_EntityType_HitBoxSize_" data-uid="Vintagestory.ServerMods.NoObf.EntityType.HitBoxSize*"></a>
 
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_HitBoxSize" data-uid="Vintagestory.ServerMods.NoObf.EntityType.HitBoxSize">
-  HitBoxSize (Optional)
+  HitBoxSize (Optional) (Default: None)
   
   </h3>
 
@@ -712,6 +728,7 @@ public EnumHabitat Habitat</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Vec2f HitBoxSize { get; set; }</code></pre>
   </div>
 
@@ -745,40 +762,8 @@ public Vec2f HitBoxSize { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.3&quot;, false)]
 public float IdleSoundChance</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_ServerMods_NoObf_EntityType_IdleSoundRange" data-uid="Vintagestory.ServerMods.NoObf.EntityType.IdleSoundRange">
-  IdleSoundRange (Optional) (Default: 24)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The sound range for the idle sound in blocks.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
-public float IdleSoundRange</code></pre>
   </div>
 
 
@@ -811,6 +796,7 @@ public float IdleSoundRange</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float KnockbackResistance</code></pre>
   </div>
 
@@ -833,7 +819,7 @@ public float KnockbackResistance</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_EntityType_RotateModelOnClimb" data-uid="Vintagestory.ServerMods.NoObf.EntityType.RotateModelOnClimb">
-  RotateModelOnClimb (Optional) (Default: false)
+  RotateModelOnClimb (Optional) (Default: False)
   
   </h3>
 
@@ -844,6 +830,7 @@ public float KnockbackResistance</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool RotateModelOnClimb</code></pre>
   </div>
 
@@ -877,6 +864,7 @@ public bool RotateModelOnClimb</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;CollisionBoxSize&quot;, false)]
 public Vec2f SelectionBoxSize</code></pre>
   </div>
 
@@ -910,6 +898,7 @@ public Vec2f SelectionBoxSize</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;EyeHeight&quot;, false)]
 public double? SwimmingEyeHeight</code></pre>
   </div>
 
@@ -943,6 +932,7 @@ public double? SwimmingEyeHeight</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;25&quot;, false)]
 public float Weight</code></pre>
   </div>
 

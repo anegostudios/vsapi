@@ -874,6 +874,7 @@ namespace Vintagestory.API.Client
                         {
                             wasMouseDownOnSlotIndex.Add(i);
                             distributeStacksPrevStackSizeBySlotId.Add(nowHoverSlotid, nowHoverSlot.StackSize);
+                            int prevStackSize = inventory[nowHoverSlotid].StackSize;
 
                             if (api.World.Player.InventoryManager.MouseItemSlot.StackSize > 0)
                             {
@@ -885,6 +886,8 @@ namespace Vintagestory.API.Client
                                     api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft],
                                     api.Input.KeyboardKeyState[(int)GlKeys.AltLeft]
                                 );
+
+                                distributeStacksAddedStackSizeBySlotId[nowHoverSlotid] = inventory[nowHoverSlotid].StackSize - prevStackSize;
                             }
 
                             if (api.World.Player.InventoryManager.MouseItemSlot.StackSize <= 0)
@@ -998,7 +1001,7 @@ namespace Vintagestory.API.Client
                 // Now picked up
                 if (wasEmpty && !mouseCursorInv.Empty)
                 {
-                    api.World.PlaySoundAt(mouseCursorInv[0].Itemstack.Collectible?.HeldSounds?.InvPickup ?? HeldSounds.InvPickUpDefault, 0, 0, 0, null, EnumSoundType.Sound, 1f);
+                    api.World.PlaySound(mouseCursorInv[0].Itemstack.Collectible?.HeldSounds?.InvPickup ?? HeldSounds.InvPickUpDefault);
                 }
                 else
                 {
@@ -1006,7 +1009,7 @@ namespace Vintagestory.API.Client
                     // Now dropped off
                     if ((!wasEmpty && mouseCursorInv.Empty) || wasCollObj?.Id != mouseCursorInv[0].Itemstack?.Collectible?.Id)
                     {
-                        api.World.PlaySoundAt(wasCollObj?.HeldSounds?.InvPlace ?? HeldSounds.InvPlaceDefault, 0, 0, 0, null, EnumSoundType.Sound, 1f);
+                        api.World.PlaySound(wasCollObj?.HeldSounds?.InvPlace ?? HeldSounds.InvPlaceDefault);
                     }
                 }
             }

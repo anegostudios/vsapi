@@ -17,6 +17,12 @@ namespace Vintagestory.API.Common
         Right
     }
 
+    public interface IWearable
+    {
+        public void ChangeCondition(ItemSlot slot, float changeVal);
+        public float GetWarmth(ItemSlot slot);
+    }
+
     public interface IWearableShapeSupplier
     {
         /// <summary>
@@ -29,6 +35,35 @@ namespace Vintagestory.API.Common
         Shape GetShape(ItemStack stack, Entity forEntity, string texturePrefixCode);
     }
 
+    public interface IWearableStatsSupplier
+    {
+        public bool IsArmorType(ItemSlot slot);
+        public EnumCharacterDressType GetDressType(ItemSlot slot);
+        public StatModifiers GetStatModifiers(ItemSlot slot);
+        public ProtectionModifiers GetProtectionModifiers(ItemSlot slot);
+        public AssetLocation[] GetFootStepSounds(ItemSlot slot);
+        public float GetMaxWarmth(ItemSlot slot);
+    }
+
+    public class StatModifiers
+    {
+        public float rangedWeaponsSpeed = 0f;
+        public float rangedWeaponsAcc = 0f;
+        public float walkSpeed = 0f;
+        public float healingeffectivness = 0f;
+        public float hungerrate = 0f;
+        public bool canEat = true;
+    }
+
+    public class ProtectionModifiers
+    {
+        public float RelativeProtection;
+        public float[] PerTierRelativeProtectionLoss;
+        public float FlatDamageReduction;
+        public float[] PerTierFlatDamageReductionLoss;
+        public int ProtectionTier;
+        public bool HighDamageTierResistant;
+    }
 
     /// <summary>
     /// A goal-directed entity which observes and acts upon an environment
@@ -141,12 +176,21 @@ namespace Vintagestory.API.Common
                 {
                     if (TryMount(MountedOn) && Api.Side == EnumAppSide.Server && MountedOn.MountSupplier?.OnEntity is Entity entity)
                     {
-                        Api.World.Logger.Audit("{0} loaded already mounted/seated on a {1} at {2}", GetName(), entity.Code.ToShortString(), entity.ServerPos.AsBlockPos);
+                        Api.World.Logger.Audit("{0} loaded already mounted/seated on a {1} at {2}", GetName(), entity.Code.ToShortString(), entity.Pos.AsBlockPos);
                     }
                 }
             }
 
             herdId = WatchedAttributes.GetLong("herdId", 0);
+        }
+
+        public override void OnEntitySpawn()
+        {
+            base.OnEntitySpawn();
+            if (WatchedAttributes.GetBool("noSpawnAnim") == true) return;
+
+            var spawnAnim = Properties.Attributes?["spawnAnimation"].AsString();
+            if (spawnAnim != null) StartAnimation(spawnAnim);
         }
 
 
@@ -172,7 +216,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public bool IsEyesSubmerged()
         {
-            BlockPos pos = SidedPos.AsBlockPos.Add(0, (float)(Swimming ? Properties.SwimmingEyeHeight : Properties.EyeHeight), 0);
+            BlockPos pos = Pos.AsBlockPos.Add(0, (float)(Swimming ? Properties.SwimmingEyeHeight : Properties.EyeHeight), 0);
             return World.BlockAccessor.GetBlock(pos).MatterState == EnumMatterState.Liquid;
         }
 
@@ -299,7 +343,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            if (Api.Side == EnumAppSide.Server && oldMountedOn != null && oldMountedOn.MountSupplier?.OnEntity is Entity entity) Api.World.Logger.Audit("{0} dismounts/disembarks from a {1} at {2}", GetName(), entity.Code.ToShortString(), entity.ServerPos.AsBlockPos);
+            if (Api.Side == EnumAppSide.Server && oldMountedOn != null && oldMountedOn.MountSupplier?.OnEntity is Entity entity) Api.World.Logger.Audit("{0} dismounts/disembarks from a {1} at {2}", GetName(), entity.Code.ToShortString(), entity.Pos.AsBlockPos);
 
             return true;
         }
@@ -353,7 +397,7 @@ namespace Vintagestory.API.Common
             if (mode == EnumInteractMode.Attack)
             {
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
-                int damagetier = slot.Itemstack == null ? 0 : slot.Itemstack.Collectible.ToolTier;
+                int damagetier = slot.Itemstack == null ? 0 : slot.Itemstack.Collectible.GetToolTier(slot);
 
                 var dmgMultiplier = byEntity.Stats.GetBlended("meleeWeaponsDamage");
                 if (Properties.Attributes?["isMechanical"].AsBool() == true)
@@ -362,6 +406,22 @@ namespace Vintagestory.API.Common
                 }
 
                 damage *= dmgMultiplier;
+                bool isCriticalhit = false;
+                damage = slot.Itemstack?.Collectible.GetDamageToEntity(damage, this, slot.Itemstack, ref isCriticalhit) ?? damage;
+
+                if (isCriticalhit)
+                {
+                    var sele = Properties.SelectionBoxSize;
+
+                    World.SpawnParticles(30,
+                        ColorUtil.WhiteArgb,
+                        Pos.XYZ.AddCopy(-sele.X * 0.9f, 0, -sele.X * 0.9f),
+                        Pos.XYZ.AddCopy(sele.X * 0.9f, sele.Y, sele.X * 0.9f),
+                        new Vec3f(-0.5f, -0.5f, -0.5f),
+                        new Vec3f(0.5f, 0.5f, 0.5f),
+                        0.15f, 0, 0.2f, EnumParticleModel.Quad
+                    );
+                }
 
                 IPlayer byPlayer = null;
 
@@ -369,13 +429,13 @@ namespace Vintagestory.API.Common
                 {
                     byPlayer = (byEntity as EntityPlayer).Player;
 
-                    World.PlaySoundAt(new AssetLocation("sounds/player/slap"), ServerPos.X, ServerPos.InternalY, ServerPos.Z, byPlayer);
+                    World.PlaySoundAt(new AssetLocation("sounds/player/slap"), Pos.X, Pos.InternalY, Pos.Z, byPlayer);
                     slot?.Itemstack?.Collectible.OnAttackingWith(byEntity.World, byEntity, this, slot);
                 }
 
                 if (Api.Side == EnumAppSide.Client && damage > 1 && !IsActivityRunning("invulnerable") && Properties.Attributes?["spawnDamageParticles"].AsBool() == true)
                 {
-                    Vec3d pos = SidedPos.XYZ + hitPosition;
+                    Vec3d pos = Pos.XYZ + hitPosition;
                     Vec3d minPos = pos.AddCopy(-0.15, -0.15, -0.15);
                     Vec3d maxPos = pos.AddCopy(0.15, 0.15, 0.15);
 
@@ -469,6 +529,14 @@ namespace Vintagestory.API.Common
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
         {
             if (!Alive) return false;
+
+            if (damageSource.CauseEntity is EntityPlayer fromPlayer)
+            {
+                if (!fromPlayer.Player.HasPrivilege("attackcreatures"))
+                {
+                    return false;
+                }
+            }
 
             return true;
         }
@@ -565,7 +633,7 @@ namespace Vintagestory.API.Common
                         (servercontrols.IsFlying ? servercontrols.Gliding ? EnumEntityActivity.Glide : EnumEntityActivity.Fly : 0) |
                         (servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
                         (servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |
-                        (!OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && SidedPos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0) |
+                        (!OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && Pos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0) |
                         (MountedOn != null ? EnumEntityActivity.Mounted : 0)
                     ;
                 }
@@ -656,11 +724,11 @@ namespace Vintagestory.API.Common
             {
                 if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
                 {
-                    ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
+                    Pos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
                 }
                 else
                 {
-                    ServerPos.Pitch = 0;
+                    Pos.Pitch = 0;
                 }
             }
             }
@@ -673,8 +741,7 @@ namespace Vintagestory.API.Common
         protected virtual void SpawnSnowStepParticles()
         {
             ICoreClientAPI capi = Api as ICoreClientAPI;
-            bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
-            EntityPos herepos = (isSelf ? Pos : ServerPos);
+            EntityPos herepos = Pos;
             double hormot = Pos.Motion.X * Pos.Motion.X + Pos.Motion.Z * Pos.Motion.Z;
             float val = (float)Math.Sqrt(hormot);
             if (Api.World.Rand.NextDouble() < 10 * val)
@@ -690,8 +757,7 @@ namespace Vintagestory.API.Common
         protected virtual void SpawnFloatingSediment(IAsyncParticleManager manager)
         {
             ICoreClientAPI capi = (Api as ICoreClientAPI);
-            bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
-            EntityPos herepos = (isSelf ? Pos : ServerPos);
+            EntityPos herepos = Pos;
 
             double width = SelectionBox.XSize * 0.75f;
 
@@ -709,7 +775,7 @@ namespace Vintagestory.API.Common
 
             FloatingSedimentParticles FloatingSedimentParticles = new FloatingSedimentParticles();
 
-            FloatingSedimentParticles.SedimentPos.Set((int)herepos.X, (int)herepos.InternalY - 1, (int)herepos.Z);//  = , herepos.XYZ.Add(0, 0.25, 0), 0.25f, 2
+            FloatingSedimentParticles.SedimentPos.SetAndCorrectDimension((int)herepos.X, (int)herepos.InternalY - 1, (int)herepos.Z);
 
             var block = FloatingSedimentParticles.SedimentBlock = World.BlockAccessor.GetBlock(FloatingSedimentParticles.SedimentPos);
             if (insideBlock != null && (block.BlockMaterial == EnumBlockMaterial.Gravel || block.BlockMaterial == EnumBlockMaterial.Soil || block.BlockMaterial == EnumBlockMaterial.Sand))
@@ -717,6 +783,7 @@ namespace Vintagestory.API.Common
                 FloatingSedimentParticles.BasePos.Set(SplashParticleProps.BasePos);
                 FloatingSedimentParticles.AddPos.Set(SplashParticleProps.AddPos);
                 FloatingSedimentParticles.quantity = mot * 150;
+
                 FloatingSedimentParticles.waterColor = insideBlock.GetColor(capi, FloatingSedimentParticles.SedimentPos);
                 manager.Spawn(FloatingSedimentParticles);
             }
@@ -740,7 +807,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// updated by GetWalkSpeedMultiplier()
         /// </summary>
-        protected BlockPos insidePos = new BlockPos();
+        protected BlockPos insidePos = new BlockPos(Dimensions.WillSetLater);
 
         /// <summary>
         /// Gets the walk speed multiplier.
@@ -748,12 +815,13 @@ namespace Vintagestory.API.Common
         /// <param name="groundDragFactor">The amount of drag provided by the current ground. (Default: 0.3)</param>
         public virtual double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
-            int y1 = (int)(SidedPos.InternalY - 0.05f);
-            int y2 = (int)(SidedPos.InternalY + 0.01f);
+            int y1 = (int)(Pos.InternalY - 0.05f);
+            int y2 = (int)(Pos.InternalY + 0.01f);
 
-            Block belowBlock = World.BlockAccessor.GetBlockRaw((int)SidedPos.X, y1, (int)SidedPos.Z);
+            Block belowBlock = World.BlockAccessor.GetBlockRaw((int)Pos.X, y1, (int)Pos.Z);
 
-            insidePos.Set((int)SidedPos.X, y2, (int)SidedPos.Z);
+            insidePos.Set((int)Pos.X, y2, (int)Pos.Z);
+            insidePos.SetDimension(Pos.Dimension);
             insideBlock = World.BlockAccessor.GetBlock(insidePos);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
@@ -821,8 +889,8 @@ namespace Vintagestory.API.Common
         {
             // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes for these 2 new fields
             // We don't use SetFloat to avoid triggering OnModified listeners on the server. This can be called outside the mainthread and produce deadlocks.
-            WatchedAttributes["headYaw"] = new FloatAttribute(ServerPos.HeadYaw);
-            WatchedAttributes["headPitch"] = new FloatAttribute(ServerPos.HeadPitch);
+            WatchedAttributes["headYaw"] = new FloatAttribute(Pos.HeadYaw);
+            WatchedAttributes["headPitch"] = new FloatAttribute(Pos.HeadPitch);
         }
 
         /// <summary>
@@ -831,8 +899,8 @@ namespace Vintagestory.API.Common
         protected override void GetHeadPositionFromWatchedAttributes()
         {
             // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes
-            ServerPos.HeadYaw = WatchedAttributes.GetFloat("headYaw");
-            ServerPos.HeadPitch = WatchedAttributes.GetFloat("headPitch");
+            Pos.HeadYaw = WatchedAttributes.GetFloat("headYaw");
+            Pos.HeadPitch = WatchedAttributes.GetFloat("headPitch");
         }
 
 

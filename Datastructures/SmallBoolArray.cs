@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -101,6 +101,16 @@ namespace Vintagestory.API.Datastructures
         public override int GetHashCode()
         {
             return 1537853281 + bits.GetHashCode();
+        }
+
+        public readonly bool AnySet(int v)
+        {
+            return (bits & v) != 0;
+        }
+
+        public readonly bool AllSet(int v)
+        {
+            return (bits & v) == v;
         }
     }
 }

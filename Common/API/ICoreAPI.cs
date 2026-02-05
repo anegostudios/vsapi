@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -227,9 +227,9 @@ namespace Vintagestory.API.Common
         IModLoader ModLoader { get; }
 
         /// <summary>
-        /// API for converting between registry object tags and tag ids, and for registering new tags
+        /// API for registering tags and tag types, converting between string tags and tag arrays
         /// </summary>
-        ITagRegistry TagRegistry { get; }
+        ITagsManager TagsManager { get; }
 
 
         /// <summary>
@@ -238,8 +238,5 @@ namespace Vintagestory.API.Common
         /// <param name="entityClassName"></param>
         /// <param name="config"></param>
         void RegisterEntityClass(string entityClassName, EntityProperties config);
-
-
-
     }
 }

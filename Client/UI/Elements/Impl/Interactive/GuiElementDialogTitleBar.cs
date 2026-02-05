@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Cairo;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -284,8 +284,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            int mouseX = api.Input.MouseX;
-            int mouseY = api.Input.MouseY;
+            int mouseX = args.X;
+            int mouseY = args.Y;
 
             if (closeIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY))
             {
@@ -388,6 +388,7 @@ namespace Vintagestory.API.Client
         /// <param name="onClose">The event fired when the title bar is closed.</param>
         /// <param name="font">The font of the title bar.</param>
         /// <param name="bounds">The bounds of the title bar.</param>
+        /// <param name="key"></param>
         public static GuiComposer AddDialogTitleBar(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null, string key = null)
         {
             if (!composer.Composed)
@@ -407,6 +408,7 @@ namespace Vintagestory.API.Client
         /// <param name="onClose">The event fired when the title bar is closed.</param>
         /// <param name="font">The font of the title bar.</param>
         /// <param name="bounds">The bounds of the title bar.</param>
+        /// <param name="key"></param>
         public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null, string key = null)
         {
             if (!composer.Composed)

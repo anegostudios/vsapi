@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AnimationUtil
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationUtil.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationUtil.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -432,7 +432,8 @@ Class AnimationUtil
 Default render orders by render stage:<br>
 Before:<br>
 0 = Ambient Manager<br>
-0 = Camera<br><br>
+0 = Camera<br>
+<br>
 Opaque:<br>
 0.1 = Blue sky (Icosahedron)<br>
 0.2 = Night skybox<br>
@@ -444,24 +445,29 @@ Opaque:<br>
 0.6 = particles<br>
 0.7 = Cinematic camera line preview<br>
 0.8 = fp held item<br>
-0.9 = held item opaque custom renderer<br><br>
+0.9 = held item opaque custom renderer<br>
+<br>
 OIT:<br>
 0.2 = Frame buffer debug screen<br>
 0.35 = Clouds<br>
 0.37 = Terrain oit<br>
 0.4 = Enitities<br>
 0.6 = particles<br>
-0.9 = held item oit custom renderer<br><br>
+0.9 = held item oit custom renderer<br>
+<br>
 Shadow far:<br>
 0 = shadow map init<br>
 0.37 = Terrain shadow far<br>
-0.4 = Enitities<br><br>
+0.4 = Enitities<br>
+<br>
 Shadow far done:<br>
-1 = shadow map finish<br><br>
+1 = shadow map finish<br>
+<br>
 Shadow near:<br>
 0 = shadow map init<br>
 0.37 = Terrain shadow near<br>
-0.4 = Enitities<br><br>
+0.4 = Enitities<br>
+<br>
 Shadow near done:<br>
 1 = shadow map finish<br>
 Ortho:<br>
@@ -471,12 +477,15 @@ Ortho:<br>
 0.95 = sleeping overlay<br>
 0.98 = bow/spear aiming reticle<br>
 1 = Gui manager<br>
-1.02 = crosshair and mouse cursor<br><br>
+1.02 = crosshair and mouse cursor<br>
+<br>
 AfterFinalComposition:<br>
-2 = screenshot<br><br>
+2 = screenshot<br>
+<br>
 Done:<br>
 0.1 = gui manager<br>
-2 = screenshot<br><br>
+2 = screenshot<br>
+<br>
 0.98 = Cinematic camera camera advancing and frame capture when recording<br>
 0.99 = Chunk Tesselator Manager (uploads new/modified chunk meshes)<br>
 0.999 = Compress chunks scan<br>
@@ -692,85 +701,6 @@ protected virtual int RenderTextureId { get; }</code></pre>
     <dt><code>meshdata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
     <dd></dd>
     <dt><code>shape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
-    <dd></dd>
-    <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
-    <dd></dd>
-    <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator*"></a>
-
-  <h3 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshRef_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)">
-  InitializeAnimator(string, MeshRef, Shape, Vec3f, EnumRenderStage)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use MultiTextureMeshRef initialize instead, standard MeshRef does not support multiple texture atlasses&quot;)]
-public virtual void InitializeAnimator(string cacheDictKey, MeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>meshref</code> <a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
-    <dd></dd>
-    <dt><code>blockShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
-    <dd></dd>
-    <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
-    <dd></dd>
-    <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator*"></a>
-
-  <h3 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MultiTextureMeshRef_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MultiTextureMeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)">
-  InitializeAnimator(string, MultiTextureMeshRef, Shape, Vec3f, EnumRenderStage)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimator(string cacheDictKey, MultiTextureMeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>meshref</code> <a class="xref" href="Vintagestory.API.Client.MultiTextureMeshRef.html">MultiTextureMeshRef</a></dt>
-    <dd></dd>
-    <dt><code>blockShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
     <dd></dd>
     <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
     <dd></dd>

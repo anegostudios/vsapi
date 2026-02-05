@@ -3,11 +3,10 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
-
-#nullable disable
 
 namespace Vintagestory.API.Datastructures
 {
@@ -16,7 +15,7 @@ namespace Vintagestory.API.Datastructures
     /// </summary>
     public class JsonObject : IReadOnlyCollection<JsonObject>
     {
-        JToken token;
+        JToken? token;
 
         public static JsonObject FromJson(string jsonCode)
         {
@@ -27,7 +26,7 @@ namespace Vintagestory.API.Datastructures
         /// Create a new instance of a JsonObject
         /// </summary>
         /// <param name="token"></param>
-        public JsonObject(JToken token) {
+        public JsonObject(JToken? token) {
             this.token = token;
         }
 
@@ -49,9 +48,10 @@ namespace Vintagestory.API.Datastructures
         public JsonObject this[string key] {
             get
             {
-                if ((token == null || !(token is JObject))) return new JsonObject(null);
+                JObject? jobj = token as JObject;
+                if (jobj == null) return new JsonObject(null);
 
-                (token as JObject).TryGetValue(key, StringComparison.OrdinalIgnoreCase, out var value);
+                jobj.TryGetValue(key, StringComparison.OrdinalIgnoreCase, out var value);
                 return new JsonObject(value);
             }
         }
@@ -59,12 +59,13 @@ namespace Vintagestory.API.Datastructures
         /// <summary>
         /// True if the token is not null
         /// </summary>
+        [MemberNotNullWhen(true, nameof(token), nameof(Token))]
         public bool Exists
         {
             get { return token != null; }
         }
 
-        public virtual JToken Token { 
+        public virtual JToken? Token { 
             get { return token; } 
             set { token = value; } 
         }
@@ -78,7 +79,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public bool KeyExists(string key)
         {
-            return token[key] != null;
+            return token?[key] != null;
         }
 
         /// <summary>
@@ -86,11 +87,14 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T AsObject<T>(T defaultValue = default(T))
+        [return: NotNullIfNotNull(nameof(defaultValue))]
+        public T? AsObject<T>(T? defaultValue = default(T))
         {
-            JsonSerializerSettings settings = null;
+            if (token == null) return defaultValue;
 
-            return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
+            JsonSerializerSettings? settings = null;
+
+            return (typeof(T) == typeof(String)) ? GetValue<T>(defaultValue) : token.ToObject<T>(JsonSerializer.Create(settings));
         }
 
         /// <summary>
@@ -98,9 +102,12 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T AsObject<T>(T defaultValue, string domain)
+        [return: NotNullIfNotNull(nameof(defaultValue))]
+        public T? AsObject<T>(T? defaultValue, string domain)
         {
-            JsonSerializerSettings settings = null;
+            if (token == null) return defaultValue;
+
+            JsonSerializerSettings? settings = null;
 
             if (domain != GlobalConstants.DefaultDomain)
             {
@@ -108,11 +115,36 @@ namespace Vintagestory.API.Datastructures
                 settings.Converters.Add(new AssetLocationJsonParser(domain));
             }
 
-            return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
+            return (typeof(T) == typeof(String)) ? GetValue<T>(defaultValue) : token.ToObject<T>(JsonSerializer.Create(settings));
         }
 
-        public T AsObject<T>(JsonSerializerSettings settings, T defaultValue, string domain = GlobalConstants.DefaultDomain)
+        /// <summary>
+        /// Deserialize the token to an object of the specified type T, with the specified domain for any AssetLocation which needs to be parsed,
+        /// and setting for whether sounds loaded should by default have a randomized pitch
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        [return: NotNullIfNotNull(nameof(defaultValue))]
+        public T? AsObject<T>(T? defaultValue, string domain, bool randomPitch)
         {
+            if (token == null) return defaultValue;
+
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new SoundAttributeConverter(randomPitch));
+
+            if (domain != GlobalConstants.DefaultDomain)
+            {
+                settings.Converters.Add(new AssetLocationJsonParser(domain));
+            }
+
+            return (typeof(T) == typeof(String)) ? GetValue<T>(defaultValue) : token.ToObject<T>(JsonSerializer.Create(settings));
+        }
+
+        [return: NotNullIfNotNull(nameof(defaultValue))]
+        public T? AsObject<T>(JsonSerializerSettings settings, T? defaultValue, string domain = GlobalConstants.DefaultDomain)
+        {
+            if (token == null) return defaultValue;
+
             if (domain != GlobalConstants.DefaultDomain)
             {
                 if (settings == null)
@@ -122,7 +154,7 @@ namespace Vintagestory.API.Datastructures
                 settings.Converters.Add(new AssetLocationJsonParser(domain));
             }
 
-            return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
+            return (typeof(T) == typeof(String)) ? GetValue<T>(defaultValue) : token.ToObject<T>(JsonSerializer.Create(settings));
         }
 
 
@@ -130,10 +162,10 @@ namespace Vintagestory.API.Datastructures
         /// Turn the token into an array of JsonObjects
         /// </summary>
         /// <returns></returns>
-        public JsonObject[] AsArray()
+        public JsonObject[]? AsArray()
         {
-            if (!(token is JArray)) return null;
-            JArray arr = (JArray)token;
+            JArray? arr = token as JArray;
+            if (arr == null) return null;
 
             JsonObject[] objs = new JsonObject[arr.Count];
 
@@ -150,19 +182,20 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         /// <param name="defaultValue">If the conversion fails, this value is used instead</param>
         /// <returns></returns>
-        public string AsString(string defaultValue = null)
+        [return: NotNullIfNotNull(nameof(defaultValue))]
+        public string? AsString(string? defaultValue = null)
         {
             return GetValue<string>(defaultValue);
         }
 
         [Obsolete("Use AsArray<string>() instead")]
-        public string[] AsStringArray(string[] defaultValue = null, string defaultDomain = null)
+        public string?[]? AsStringArray(string[]? defaultValue = null, string defaultDomain = GlobalConstants.DefaultDomain)
         {
             return AsArray<string>(defaultValue, defaultDomain);
         }
 
         [Obsolete("Use AsArray<float>() instead")]
-        public float[] AsFloatArray(float[] defaultValue = null)
+        public float[]? AsFloatArray(float[]? defaultValue = null)
         {
             return AsArray<float>(defaultValue);
         }
@@ -173,12 +206,13 @@ namespace Vintagestory.API.Datastructures
         /// <param name="defaultValue">If the conversion fails, this value is used instead</param>
         /// <param name="defaultDomain"></param>
         /// <returns></returns>
-        public T[] AsArray<T>(T[] defaultValue = null, string defaultDomain = null)
+        [return: NotNullIfNotNull(nameof(defaultValue))]
+        public T?[]? AsArray<T>(T[]? defaultValue = null, string defaultDomain = GlobalConstants.DefaultDomain)
         {
             if (!(token is JArray)) return defaultValue;
             JArray arr = (JArray)token;
 
-            T[] objs = new T[arr.Count];
+            T?[] objs = new T[arr.Count];
 
             for (int i = 0; i < objs.Length; i++)
             {
@@ -203,9 +237,10 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public bool AsBool(bool defaultValue = false)
         {
-            if (!(token is JValue)) return defaultValue;
+            JValue? jvalue = token as JValue;
+            if (jvalue == null) return defaultValue;
 
-            object value = ((JValue)token).Value;
+            object? value = jvalue.Value;
 
             if (value is bool) return (bool)value;
             if (value is string)
@@ -228,9 +263,10 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public int AsInt(int defaultValue = 0)
         {
-            if (!(token is JValue)) return defaultValue;
-            
-            object value = ((JValue)token).Value;
+            JValue? jvalue = token as JValue;
+            if (jvalue == null) return defaultValue;
+
+            object? value = jvalue.Value;
 
             if (value is long) return (int)((long)value);
             if (value is int) return (int)value;
@@ -255,9 +291,10 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public float AsFloat(float defaultValue = 0)
         {
-            if (!(token is JValue)) return defaultValue;
+            JValue? jvalue = token as JValue;
+            if (jvalue == null) return defaultValue;
 
-            object value = ((JValue)token).Value;
+            object? value = jvalue.Value;
 
             if (value is int) return (int)value;
             if (value is float) return (float)value;
@@ -283,9 +320,10 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public double AsDouble(double defaultValue = 0)
         {
-            if (!(token is JValue)) return defaultValue;
+            JValue? jvalue = token as JValue;
+            if (jvalue == null) return defaultValue;
 
-            object value = ((JValue)token).Value;
+            object? value = jvalue.Value;
 
             if (value is int) return (int)value;
             if (value is long) return (long)value;
@@ -301,15 +339,16 @@ namespace Vintagestory.API.Datastructures
             return defaultValue;
         }
         
-        T GetValue<T>(T defaultValue = default(T))
+        T? GetValue<T>(T? defaultValue = default(T))
         {
-            if (!(token is JValue)) return defaultValue;
+            JValue? jvalue = token as JValue;
+            if (jvalue == null) return defaultValue;
 
-            object value = ((JValue)token).Value;
+            object? value = jvalue.Value;
 
             if (!(value is T)) return defaultValue;
 
-            return token.ToObject<T>();
+            return (T)value;
         }
 
 
@@ -317,7 +356,7 @@ namespace Vintagestory.API.Datastructures
         /// Calls token.ToString()
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public override string? ToString()
         {
             return Util.StringExtensions.DeDuplicate(token?.ToString());
         }
@@ -336,7 +375,7 @@ namespace Vintagestory.API.Datastructures
         /// Note: If you converting this to a tree attribute, a subsequent call to tree.GetInt() might not work because Newtonsoft.JSON seems to load integers as long, so use GetDecimal() or GetLong() instead. Similar things might happen with float&lt;-&gt;double
         /// </summary>
         /// <returns></returns>
-        public IAttribute ToAttribute()
+        public IAttribute? ToAttribute()
         {
             return ToAttribute(token);
         }
@@ -346,15 +385,15 @@ namespace Vintagestory.API.Datastructures
             FillPlaceHolder(token, key, value);
         }
 
-        static internal void FillPlaceHolder(JToken token, string key, string value)
+        static internal void FillPlaceHolder(JToken? token, string key, string value)
         {
-            JValue jval = token as JValue;
-            if (jval != null && jval.Value is string)
+            JValue? jval = token as JValue;
+            if (jval != null && jval.Value is string jstring)
             {
-                jval.Value = (jval.Value as string).Replace("{" + key + "}", value);
+                jval.Value = jstring.Replace("{" + key + "}", value);
             }
 
-            JArray jarr = token as JArray;
+            JArray? jarr = token as JArray;
             if (jarr != null)
             {
                 foreach (JToken subtoken in jarr)
@@ -363,7 +402,7 @@ namespace Vintagestory.API.Datastructures
                 }
             }
 
-            JObject jobj = token as JObject;
+            JObject? jobj = token as JObject;
             if (jobj != null)
             {
                 foreach (var val in jobj)
@@ -374,9 +413,9 @@ namespace Vintagestory.API.Datastructures
         }
 
 
-        static IAttribute ToAttribute(JToken token)
+        static IAttribute? ToAttribute(JToken? token)
         {
-            JValue jval = token as JValue;
+            JValue? jval = token as JValue;
 
             // Scalar
 
@@ -390,25 +429,9 @@ namespace Vintagestory.API.Datastructures
                 if (jval.Value is string) return new StringAttribute((string)jval.Value);
             }
 
-            // Object, but an itemstack?
-            /*JObject jobj = token as JObject;
-            if (jobj != null)
-            {
-                if (jobj["type"] != null && jobj["code"] != null)
-                {
-                    JValue typeVal = jobj["type"] as JValue;
-                    if (typeVal != null && typeVal.Value is string)
-                    {
-
-                    }
-                }
-
-                return tree;
-            }*/
-
             // Object 
 
-            JObject jobj = token as JObject;
+            JObject? jobj = token as JObject;
             if (jobj != null)
             {
                 TreeAttribute tree = new TreeAttribute();
@@ -423,7 +446,7 @@ namespace Vintagestory.API.Datastructures
 
             // Array
 
-            JArray jarr = token as JArray;
+            JArray? jarr = token as JArray;
             if (jarr != null)
             {
                 if (!jarr.HasValues)
@@ -431,7 +454,7 @@ namespace Vintagestory.API.Datastructures
 
                 JToken first = jarr[0];
 
-                JValue jvalFirst = first as JValue;
+                JValue? jvalFirst = first as JValue;
                 if (jvalFirst != null)
                 {
                     if (jvalFirst.Value is int) return new IntArrayAttribute(ToPrimitiveArray<int>(jarr));
@@ -446,7 +469,9 @@ namespace Vintagestory.API.Datastructures
                 TreeAttribute[] attrs = new TreeAttribute[jarr.Count];
                 for (int i = 0; i < attrs.Length; i++)
                 {
-                    attrs[i] = (TreeAttribute)ToAttribute(jarr[i]);
+                    IAttribute? attr = ToAttribute(jarr[i]);
+                    ArgumentNullException.ThrowIfNull(attr);
+                    attrs[i] = (TreeAttribute)attr;
                 }
 
                 return new TreeArrayAttribute(attrs);
@@ -466,8 +491,7 @@ namespace Vintagestory.API.Datastructures
             T[] values = new T[array.Count];
             for (int i = 0; i < values.Length; i++)
             {
-                JValue val = array[i] as JValue;
-                values[i] = array[i].ToObject<T>();
+                values[i] = array[i].ToObject<T>()!;
             }
             return values;
         }
@@ -479,6 +503,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public JsonObject Clone()
         {
+            ArgumentNullException.ThrowIfNull(token);
             JsonObject cloned = new JsonObject(token.DeepClone());
             return cloned;
         }

@@ -1,10 +1,10 @@
-﻿using Cairo;
+using Cairo;
 
 #nullable disable
 
 namespace Vintagestory.API.Client
 {
-    class GuiElementInset : GuiElement
+    public class GuiElementInset : GuiElement
     {
         int depth;
         float brightness;

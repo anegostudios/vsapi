@@ -181,6 +181,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static double[] LinkTextColor = new double[] { 0.5, 0.5, 1, 1 };
         /// <summary>
+        /// Background color for buttons
+        /// </summary>
+        public static double[] ButtonBackColor = new double[] { 69 / 255.0, 52 / 255.0, 36 / 255.0, 0.8 };
+        /// <summary>
         /// A light brown text color.
         /// </summary>
         public static double[] ButtonTextColor = new double[] { 224 / 255.0, 207 / 255.0, 187 / 255.0, 1 };

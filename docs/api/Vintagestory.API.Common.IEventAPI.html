@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -453,6 +453,100 @@ This overload includes an ErrorHandler callback, triggered if calling onGameTick
 
   <a id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener*"></a>
 
+  <h3 id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__Vintagestory_API_MathTools_BlockPos_System_Action_System_Exception__System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},Vintagestory.API.MathTools.BlockPos,System.Action{System.Exception},System.Int32,System.Int32)">
+  RegisterGameTickListener(Action&lt;float&gt;, BlockPos, Action&lt;Exception&gt;, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+This overload includes an ErrorHandler callback, triggered if calling onGameTick throws an exception</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long RegisterGameTickListener(Action&lt;float&gt; onGameTick, BlockPos pos, Action&lt;Exception&gt; errorHandler, int millisecondInterval, int initialDelayOffsetMs = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onGameTick</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>errorHandler</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>millisecondInterval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>initialDelayOffsetMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>listenerId</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener*"></a>
+
+  <h3 id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Action_System_Exception__System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Action{System.Exception},System.Int32,System.Int32)">
+  RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, float&gt;, BlockPos, Action&lt;Exception&gt;, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+This overload includes an ErrorHandler callback, triggered if calling onGameTick throws an exception</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, float&gt; onGameTick, BlockPos pos, Action&lt;Exception&gt; errorHandler, int millisecondInterval, int initialDelayOffsetMs = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onGameTick</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-3">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a>, <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>errorHandler</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>millisecondInterval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>initialDelayOffsetMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>listenerId</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener*"></a>
+
   <h3 id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)">
   RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, float&gt;, BlockPos, int, int)
   
@@ -636,6 +730,46 @@ This overload includes an ErrorHandler callback, triggered if calling onGameTick
 
 
 
+  <a id="Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_" data-uid="Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe*"></a>
+
+  <h3 id="Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IRecipeBase_Vintagestory_API_Common_ItemSlot___" data-uid="Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.IRecipeBase,Vintagestory.API.Common.ItemSlot[])">
+  TriggerMatchesRecipe(IPlayer, IRecipeBase, ItemSlot[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TriggerMatchesRecipe(IPlayer forPlayer, IRecipeBase recipe, ItemSlot[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>recipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IEventAPI_TriggerPlayerDimensionChanged_" data-uid="Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged*"></a>
 
   <h3 id="Vintagestory_API_Common_IEventAPI_TriggerPlayerDimensionChanged_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)">
@@ -685,6 +819,37 @@ This overload includes an ErrorHandler callback, triggered if calling onGameTick
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>listenerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IEventAPI_UnregisterEventBusListener_" data-uid="Vintagestory.API.Common.IEventAPI.UnregisterEventBusListener*"></a>
+
+  <h3 id="Vintagestory_API_Common_IEventAPI_UnregisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_" data-uid="Vintagestory.API.Common.IEventAPI.UnregisterEventBusListener(Vintagestory.API.Common.EventBusListenerDelegate)">
+  UnregisterEventBusListener(EventBusListenerDelegate)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UnregisterEventBusListener(EventBusListenerDelegate OnEvent)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>OnEvent</code> <a class="xref" href="Vintagestory.API.Common.EventBusListenerDelegate.html">EventBusListenerDelegate</a></dt>
     <dd></dd>
   </dl>
 
@@ -910,6 +1075,37 @@ This overload includes an ErrorHandler callback, triggered if calling onGameTick
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.MatchGridRecipeDelegate.html">MatchGridRecipeDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_IEventAPI_MatchesRecipe" data-uid="Vintagestory.API.Common.IEventAPI.MatchesRecipe">
+  MatchesRecipe
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when a player tries to craft something</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event MatchRecipeDelegate MatchesRecipe</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.MatchRecipeDelegate.html">MatchRecipeDelegate</a></dt>
     <dd></dd>
   </dl>
 

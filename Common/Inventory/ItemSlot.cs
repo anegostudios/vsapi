@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.Client;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -16,6 +18,8 @@ namespace Vintagestory.API.Common
         /// Can be used to interecept marked dirty calls. 
         /// </summary>
         public event ActionConsumable MarkedDirty;
+
+        public virtual IEnumerable<TagCondition<TagSet>> CanStoreTags { get; set; } = [];
 
 
         /// <summary>
@@ -44,14 +48,16 @@ namespace Vintagestory.API.Common
         /// </summary>
         public string HexBackgroundColor;
 
+#nullable enable
         /// <summary>
         /// The ItemStack contained within the slot.
         /// </summary>
-        public ItemStack Itemstack
+        public ItemStack? Itemstack
         {
             get { return itemstack; }
             set { itemstack = value; }
         }
+#nullable disable
 
         /// <summary>
         /// The number of items in the stack.
@@ -104,7 +110,17 @@ namespace Vintagestory.API.Common
 
             bool flagsok = (sourceStack.Collectible.GetStorageFlags(sourceStack) & StorageType) > 0;
 
-            return flagsok &&  (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack, priority) > 0) && GetRemainingSlotSpace(sourceStack) > 0;
+            if (CanStoreTags.Any())
+            {
+                TagSet collectibleTags = sourceStack.Collectible.GetTags(sourceStack);
+
+                if (!TagCondition<TagSet>.SupersetOfAtLeastOne(collectibleTags, CanStoreTags))
+                {
+                    return false;
+                }
+            }
+
+            return flagsok && (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack, priority) > 0) && GetRemainingSlotSpace(sourceStack) > 0;
         }
 
         /// <summary>
@@ -115,6 +131,16 @@ namespace Vintagestory.API.Common
         public virtual bool CanHold(ItemSlot sourceSlot)
         {
             if (inventory?.PutLocked == true) return false;
+
+            if (CanStoreTags.Any() && sourceSlot?.itemstack != null)
+            {
+                TagSet collectibleTags = sourceSlot.itemstack.Collectible.GetTags(sourceSlot.itemstack);
+
+                if (!TagCondition<TagSet>.SupersetOfAtLeastOne(collectibleTags, CanStoreTags))
+                {
+                    return false;
+                }
+            }
 
             return 
                 sourceSlot?.Itemstack?.Collectible != null 

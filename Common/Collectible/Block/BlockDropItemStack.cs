@@ -1,13 +1,21 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
-#nullable disable
-
 namespace Vintagestory.API.Common
 {
+    [DocumentAsJson]
+    public class WeightedBlockDropItemstack : BlockDropItemStack
+    {
+        /// <summary>
+        /// How strongly to weight this drop
+        /// </summary>
+        [DocumentAsJson("Optional", "1")]
+        public float Weight = 1;
+    }
+
     /// <summary>
     /// Represents an itemstack that is dropped when breaking a block, with a potentially random quantity.
     /// </summary>
@@ -29,52 +37,52 @@ namespace Vintagestory.API.Common
     public class BlockDropItemStack
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
         /// Block or Item?
         /// </summary>
-        [DocumentAsJson] public EnumItemClass Type = EnumItemClass.Block;
+        [DocumentAsJson("Recommended", "Block")]
+        public EnumItemClass Type = EnumItemClass.Block;
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// Code of the block or item
         /// </summary>
-        [DocumentAsJson] public AssetLocation Code;
+        [DocumentAsJson("Required")]
+        public AssetLocation? Code;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// Quantity to be dropped
         /// </summary>
-        [DocumentAsJson] public NatFloat Quantity = NatFloat.One;
+        [DocumentAsJson("Optional", "1")]
+        public NatFloat Quantity = NatFloat.One;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Tree Attributes that should be attached to the resulting itemstack
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
-        public JsonObject Attributes;
+        [DocumentAsJson("Optional", "None")]
+        public JsonObject? Attributes;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// If true, and this drop occurs, no further drops will happen.
         /// </summary>
-        [DocumentAsJson] public bool LastDrop = false;
+        [DocumentAsJson("Optional", "False")]
+        public bool LastDrop = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// If set, then the given tool is required to make this block drop anything.
         /// </summary>
-        [DocumentAsJson] public EnumTool? Tool;
+        [DocumentAsJson("Optional", "None")]
+        public EnumTool? Tool;
 
         /// <summary>
         /// The resulting ItemStack for this block being broken by a tool.
         /// </summary>
-        public ItemStack ResolvedItemstack;
+        public ItemStack? ResolvedItemstack;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code).
         /// </summary>
-        [DocumentAsJson] public string DropModbyStat;
+        [DocumentAsJson("Optional", "None")]
+        public string? DropModbyStat;
 
 
         static Random random = new Random();
@@ -104,7 +112,7 @@ namespace Vintagestory.API.Common
         {
             if (Type == EnumItemClass.Block)
             {
-                Block block = resolver.GetBlock(Code);
+                Block? block = resolver.GetBlock(Code);
                 if (block == null)
                 {
                     resolver.Logger.Warning("Failed resolving a blocks block drop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
@@ -116,7 +124,7 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                Item item = resolver.GetItem(Code);
+                Item? item = resolver.GetItem(Code);
                 if (item == null)
                 {
                     resolver.Logger.Warning("Failed resolving a blocks item drop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
@@ -127,10 +135,10 @@ namespace Vintagestory.API.Common
 
             if (Attributes != null)
             {
-                IAttribute attributes = Attributes.ToAttribute();
-                if (attributes is ITreeAttribute)
+                IAttribute? attributes = Attributes.ToAttribute();
+                if (attributes is ITreeAttribute tree)
                 {
-                    ResolvedItemstack.Attributes = (ITreeAttribute)attributes;
+                    ResolvedItemstack.Attributes = tree;
                 }
             }
 
@@ -142,7 +150,7 @@ namespace Vintagestory.API.Common
         /// Returns an itemstack with random quantity as configured via the Quantity field
         /// </summary>
         /// <returns></returns>
-        public ItemStack GetNextItemStack(float dropQuantityMultiplier = 1f)
+        public ItemStack? GetNextItemStack(float dropQuantityMultiplier = 1f)
         {
             if (ResolvedItemstack == null) return null;
 
@@ -204,6 +212,8 @@ namespace Vintagestory.API.Common
         /// <param name="writer">The writer to write blocks to.</param>
         public virtual void ToBytes(BinaryWriter writer)
         {
+            ArgumentNullException.ThrowIfNull(Code);
+            ArgumentNullException.ThrowIfNull(ResolvedItemstack);
             writer.Write((short)Type);
             writer.Write(Code.ToShortString());
             Quantity.ToBytes(writer);
@@ -216,7 +226,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public ItemStack ToRandomItemstackForPlayer(IPlayer byPlayer, IWorldAccessor world, float dropQuantityMultiplier)
+        public ItemStack? ToRandomItemstackForPlayer(IPlayer? byPlayer, IWorldAccessor world, float dropQuantityMultiplier)
         {
             if (Tool != null && (byPlayer == null || Tool != byPlayer.InventoryManager.ActiveTool)) return null;
 
@@ -227,7 +237,7 @@ namespace Vintagestory.API.Common
                 extraMul = byPlayer.Entity.Stats.GetBlended(DropModbyStat);
             }
 
-            ItemStack stack = GetNextItemStack(dropQuantityMultiplier * extraMul);
+            ItemStack? stack = GetNextItemStack(dropQuantityMultiplier * extraMul);
 
             if (stack?.Collectible is IResolvableCollectible irc)
             {

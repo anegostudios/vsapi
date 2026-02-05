@@ -41,6 +41,7 @@ namespace Vintagestory.API.Common
 
         public ItemStack stackForWorldgen;
 
+
         /// <summary>
         /// Creats an empty instance. Use initialize to initialize it with the api.
         /// </summary>
@@ -129,7 +130,23 @@ namespace Vintagestory.API.Common
         public virtual long RegisterGameTickListener(Action<float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
         {
             if (Dimensions.ShouldNotTick(Pos, Api)) return 0L;
-            long listenerId = Api.Event.RegisterGameTickListener(onGameTick, TickingExceptionHandler, millisecondInterval, initialDelayOffsetMs);
+            long listenerId = Api.Event.RegisterGameTickListener(onGameTick, Pos, TickingExceptionHandler, millisecondInterval, initialDelayOffsetMs);
+            if (TickHandlers == null) TickHandlers = new List<long>(1);
+            TickHandlers.Add(listenerId);
+            return listenerId;
+        }
+
+        /// <summary>
+        /// Registers a game tick block listener that does the disposing for you when the Block is removed
+        /// </summary>
+        /// <param name="onGameTick"></param>
+        /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
+        /// <returns></returns>
+        public virtual long RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
+        {
+            if (Dimensions.ShouldNotTick(Pos, Api)) return 0L;
+            long listenerId = Api.Event.RegisterGameTickListener(onGameTick, Pos, TickingExceptionHandler, millisecondInterval, initialDelayOffsetMs);
             if (TickHandlers == null) TickHandlers = new List<long>(1);
             TickHandlers.Add(listenerId);
             return listenerId;
@@ -208,45 +225,14 @@ namespace Vintagestory.API.Common
             //api?.World.Logger.VerboseDebug("OnBlockRemoved(): {0}@{1}", this, pos);
         }
 
-        //Adds/Removes block entity behaviors to reflect the new block properties.
         /// <summary>
         /// Called when blockAccessor.ExchangeBlock() is used to exchange this block. Make sure to call the base method when overriding.
         /// </summary>
         /// <param name="block"></param>
         public virtual void OnExchanged(Block block)
         {
-            //var oldBlock = this.Block;
             if (block != this.Block) MarkDirty(true);
             this.Block = block;
-
-            // Add new behaviors
-            /*foreach (var beht in block.BlockEntityBehaviors)
-            {
-                if (Api.World.ClassRegistry.GetBlockEntityBehaviorClass(beht.Name) == null)
-                {
-                    Api.World.Logger.Warning(Lang.Get("Block entity behavior {0} for block {1} not found", beht.Name, block.Code));
-                    continue;
-                }
-
-                if (Behaviors.FirstOrDefault(bh => bh.GetType() == Api.World.ClassRegistry.GetBlockEntityBehaviorClass(beht.Name)) != null) continue;
-
-                if (beht.properties == null) beht.properties = new JsonObject(new JObject());
-                BlockEntityBehavior behavior = Api.World.ClassRegistry.CreateBlockEntityBehavior(this, beht.Name);
-                behavior.properties = beht.properties;
-
-                Behaviors.Add(behavior);
-            }
-
-            // Remove old behaviors
-            foreach (var oldbh in oldBlock.BlockEntityBehaviors)
-            {
-                if (block.BlockEntityBehaviors.FirstOrDefault(bh => bh.Name == oldbh.Name) == null)
-                {
-                    var type = Api.World.ClassRegistry.GetBlockEntityBehaviorClass(oldbh.Name);
-                    this.Behaviors.RemoveAll(bh => bh.GetType() == type);
-                }
-            }*/
-
         }
 
         /// <summary>

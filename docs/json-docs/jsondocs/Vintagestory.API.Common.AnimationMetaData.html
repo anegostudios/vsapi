@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AnimationMetaData
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Animation Meta Data is a json type that controls how an animation should be played. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationMetaData.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Animation Meta Data is a json type that controls how an animation should be played. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationMetaData.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -205,6 +205,7 @@ public bool AdjustCollisionBox { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string Animation</code></pre>
   </div>
 
@@ -226,8 +227,8 @@ public string Animation</code></pre>
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimationMetaData_AnimationSound" data-uid="Vintagestory.API.Common.AnimationMetaData.AnimationSound">
-  AnimationSound
+  <h3 id="Vintagestory_API_Common_AnimationMetaData_AnimationSounds" data-uid="Vintagestory.API.Common.AnimationMetaData.AnimationSounds">
+  AnimationSounds
   
   </h3>
 
@@ -236,7 +237,7 @@ public string Animation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
-public AnimationSound AnimationSound</code></pre>
+public AnimationSound[] AnimationSounds</code></pre>
   </div>
 
 
@@ -244,7 +245,7 @@ public AnimationSound AnimationSound</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -269,6 +270,7 @@ public AnimationSound AnimationSound</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string Code</code></pre>
   </div>
 
@@ -302,6 +304,7 @@ public string Code</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float AnimationSpeed</code></pre>
   </div>
 
@@ -342,6 +345,7 @@ Valid vanilla attributes are:<br></p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonObject Attributes</code></pre>
   </div>
 
@@ -350,7 +354,7 @@ public JsonObject Attributes</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -376,6 +380,7 @@ Also see <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vi
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Add&quot;, false)]
 public EnumAnimationBlendMode BlendMode</code></pre>
   </div>
 
@@ -398,7 +403,7 @@ public EnumAnimationBlendMode BlendMode</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_AnimationMetaData_ClientSide" data-uid="Vintagestory.API.Common.AnimationMetaData.ClientSide">
-  ClientSide (Optional) (Default: false)
+  ClientSide (Optional) (Default: False)
   
   </h3>
 
@@ -409,6 +414,7 @@ public EnumAnimationBlendMode BlendMode</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool ClientSide</code></pre>
   </div>
 
@@ -442,6 +448,7 @@ public bool ClientSide</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;10&quot;, false)]
 public float EaseInSpeed</code></pre>
   </div>
 
@@ -475,6 +482,7 @@ public float EaseInSpeed</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;10&quot;, false)]
 public float EaseOutSpeed</code></pre>
   </div>
 
@@ -508,6 +516,7 @@ public float EaseOutSpeed</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, EnumAnimationBlendMode&gt; ElementBlendMode</code></pre>
   </div>
 
@@ -542,6 +551,7 @@ Also see <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vi
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, float&gt; ElementWeight</code></pre>
   </div>
 
@@ -576,6 +586,7 @@ Higher values will keep eye position static.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;99&quot;, false)]
 public float HoldEyePosAfterEasein</code></pre>
   </div>
 
@@ -598,7 +609,7 @@ public float HoldEyePosAfterEasein</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_AnimationMetaData_MulWithWalkSpeed" data-uid="Vintagestory.API.Common.AnimationMetaData.MulWithWalkSpeed">
-  MulWithWalkSpeed (Optional) (Default: false)
+  MulWithWalkSpeed (Optional) (Default: False)
   
   </h3>
 
@@ -609,6 +620,7 @@ public float HoldEyePosAfterEasein</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool MulWithWalkSpeed</code></pre>
   </div>
 
@@ -631,7 +643,7 @@ public bool MulWithWalkSpeed</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_AnimationMetaData_SupressDefaultAnimation" data-uid="Vintagestory.API.Common.AnimationMetaData.SupressDefaultAnimation">
-  SupressDefaultAnimation (Optional) (Default: false)
+  SupressDefaultAnimation (Optional) (Default: False)
   
   </h3>
 
@@ -642,6 +654,7 @@ public bool MulWithWalkSpeed</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool SupressDefaultAnimation</code></pre>
   </div>
 
@@ -675,6 +688,7 @@ public bool SupressDefaultAnimation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AnimationTrigger TriggeredBy</code></pre>
   </div>
 
@@ -709,6 +723,7 @@ The method for determining final animation values depends on this and <a class="
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float Weight</code></pre>
   </div>
 
@@ -748,6 +763,7 @@ In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or si
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float WeightCapFactor</code></pre>
   </div>
 

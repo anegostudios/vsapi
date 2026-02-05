@@ -45,7 +45,7 @@ namespace Vintagestory.API.Common
         public int TextureWidth = 16;
 
         /// <summary>
-        /// The height of the texture (default: 16) 
+        /// The height of the texture (default: 16)
         /// </summary>
         [JsonProperty]
         public int TextureHeight = 16;
@@ -72,6 +72,13 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Only relevant for UnloadableShape
+        /// </summary>
+        public virtual void KeepLoaded()
+        {
+        }
+
+        /// <summary>
         /// Attempts to resolve all references within the shape. Logs missing references them to the errorLogger
         /// </summary>
         /// <param name="errorLogger"></param>
@@ -80,7 +87,7 @@ namespace Vintagestory.API.Common
         {
             Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>();
             var Elements = this.Elements;
-            CollectElements(Elements, elementsByName);
+            CollectElements(Elements, elementsByName, new HashSet<string>(), errorLogger, shapeNameForLogging);
 
             var Animations = this.Animations;   // iterating a local reference to an array is quicker, as optimiser then knows the array object is unchanging
             if (Animations != null)
@@ -111,7 +118,7 @@ namespace Vintagestory.API.Common
 
             for (int i = 0; i < Elements.Length; i++)
             {
-                Elements[i].ResolveRefernces();
+                Elements[i].ResolveReferences();
             }
 
             return elementsByName;
@@ -308,7 +315,7 @@ namespace Vintagestory.API.Common
                     foreach (var val in childShape.Textures)
                     {
                         if (TextureSizes.ContainsKey(val.Key)) continue;
-                        
+
                         TextureSizes[val.Key] = new int[] { childShape.TextureWidth, childShape.TextureHeight };
                     }
                 }
@@ -345,13 +352,15 @@ namespace Vintagestory.API.Common
         }
 
 
-
         /// <summary>
         /// Collects all the elements in the shape recursively.
         /// </summary>
         /// <param name="elements"></param>
         /// <param name="elementsByName"></param>
-        public void CollectElements(ShapeElement[] elements, IDictionary<string, ShapeElement> elementsByName)
+        /// <param name="attachPointCodesForDuplicateCheck"></param>
+        /// <param name="errorLogger"></param>
+        /// <param name="shapeName"></param>
+        public void CollectElements(ShapeElement[] elements, IDictionary<string, ShapeElement> elementsByName, HashSet<string> attachPointCodesForDuplicateCheck, ILogger errorLogger, string shapeName)
         {
             if (elements == null) return;
 
@@ -361,15 +370,25 @@ namespace Vintagestory.API.Common
 
                 elementsByName[elem.Name] = elem;
 
-                CollectElements(elem.Children, elementsByName);
+                if (elem.AttachmentPoints != null)
+                {
+                    foreach (var ap in elem.AttachmentPoints)
+                    {
+                        if (attachPointCodesForDuplicateCheck.Contains(ap.Code))
+                        {
+                            errorLogger.Warning("Shape file {0}: Found duplicated attachment point code '{1}' (attached to element {2}), this will result in undefined behavior. Ensure a unique code for each AP.", shapeName, ap.Code, elem.Name);
+                        }
+                        else
+                        {
+                            attachPointCodesForDuplicateCheck.Add(ap.Code);
+                        }
+                    }
+                }
+
+                CollectElements(elem.Children, elementsByName, attachPointCodesForDuplicateCheck, errorLogger, shapeName);
             }
         }
 
-        [Obsolete("Must call ResolveAndFindJoints(errorLogger, shapeName, joints) instead")]
-        public void ResolveAndLoadJoints(params string[] requireJointsForElements)
-        {
-            ResolveAndFindJoints(null, null, null, requireJointsForElements);
-        }
 
         /// <summary>
         /// Resolves all joints and loads them.
@@ -390,7 +409,7 @@ namespace Vintagestory.API.Common
             if (elementsByName == null)
             {
                 elementsByName = new Dictionary<string, ShapeElement>(Elements.Length);
-                CollectElements(Elements, elementsByName);
+                CollectElements(Elements, elementsByName, new HashSet<string>(), errorLogger, shapeName);
             }
 
             int jointCount = 0;
@@ -440,7 +459,7 @@ namespace Vintagestory.API.Common
                 if (elem == null) continue;
                 AnimationJoint joint = new AnimationJoint() { JointId = ++jointCount, Element = elem };
                 JointsById[jointCount] = joint;
-                
+
                 maxDepth = Math.Max(maxDepth, elem.CountParents());
             }
 
@@ -561,7 +580,7 @@ namespace Vintagestory.API.Common
             return GetElementByName(wildcard, Elements, true);
         }
 
-        
+
 
         /// <summary>
         /// Recursively searches the element by name from the shape.
@@ -594,13 +613,13 @@ namespace Vintagestory.API.Common
         public void RemoveElements(string[] elementNames)
         {
             if (elementNames == null) return;
-            
+
             foreach (var val in elementNames)
             {
                 RemoveElementByName(val);
                 RemoveElementByName("skinpart-" + val);
             }
-            
+
         }
 
         /// <summary>
@@ -701,7 +720,7 @@ namespace Vintagestory.API.Common
 
             for (int i = 0; i < shape.Elements.Length; i++)
             {
-                shape.Elements[i].ResolveRefernces();
+                shape.Elements[i].ResolveReferences();
             }
 
             return shape;

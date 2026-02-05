@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class BlockType
   </div>
 
   <div class="markdown summary"><p>Defines an in-game block using a json file. BlockTypes use all properties from <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a>, but also contain some unique properties.
-Any json file placed in your &quot;assets/blocktypes&quot; folder will be loaded as a blocktype in the game. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/BlockType.cs">Open in GitHub</a></p>
+Any json file placed in your &quot;assets/blocktypes&quot; folder will be loaded as a blocktype in the game. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/BlockType.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -256,6 +256,9 @@ public class BlockType : CollectibleType</code></pre>
       <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_ParticleProperties">CollectibleType.ParticleProperties</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_ParticlesTextureCode">CollectibleType.ParticlesTextureCode</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Enabled">RegistryObjectType.Enabled</a>
     </div>
     <div>
@@ -331,6 +334,7 @@ public class BlockType : CollectibleType</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;Stone&quot;, false)]
 public EnumBlockMaterial BlockMaterial</code></pre>
   </div>
 
@@ -364,6 +368,7 @@ public EnumBlockMaterial BlockMaterial</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
 public int RequiredMiningTier</code></pre>
   </div>
 
@@ -397,6 +402,7 @@ public int RequiredMiningTier</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;6&quot;, false)]
 public float Resistance</code></pre>
   </div>
 
@@ -430,6 +436,7 @@ public float Resistance</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;All ( [\&quot;*\&quot;] )&quot;, false)]
 public string[] AllowSpawnCreatureGroups</code></pre>
   </div>
 
@@ -463,6 +470,7 @@ public string[] AllowSpawnCreatureGroups</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string ClimateColorMap</code></pre>
   </div>
 
@@ -485,7 +493,7 @@ public string ClimateColorMap</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Climbable" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Climbable">
-  Climbable (Optional) (Default: false)
+  Climbable (Optional) (Default: False)
   
   </h3>
 
@@ -496,6 +504,7 @@ public string ClimateColorMap</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool Climbable</code></pre>
   </div>
 
@@ -530,6 +539,7 @@ Defines the area with which the player character collides with. If not specified
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionBox&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube CollisionBoxR</code></pre>
   </div>
 
@@ -564,6 +574,7 @@ Defines multiple areas with which the player character collides with.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionBoxes&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube[] CollisionBoxesR</code></pre>
   </div>
 
@@ -598,6 +609,7 @@ Shorthand way of setting <a class="xref" href="Vintagestory.ServerMods.NoObf.Blo
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionSelectionBox&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube CollisionSelectionBoxR</code></pre>
   </div>
 
@@ -632,6 +644,7 @@ Shorthand way of setting <a class="xref" href="Vintagestory.ServerMods.NoObf.Blo
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionSelectionBoxes&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube[] CollisionSelectionBoxesR</code></pre>
   </div>
 
@@ -665,6 +678,7 @@ private RotatableCube[] CollisionSelectionBoxesR</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public BlockCropPropertiesType CropProps</code></pre>
   </div>
 
@@ -687,7 +701,7 @@ public BlockCropPropertiesType CropProps</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_DoNotRenderAtLod2" data-uid="Vintagestory.ServerMods.NoObf.BlockType.DoNotRenderAtLod2">
-  DoNotRenderAtLod2 (Optional) (Default: false)
+  DoNotRenderAtLod2 (Optional) (Default: False)
   
   </h3>
 
@@ -698,6 +712,7 @@ public BlockCropPropertiesType CropProps</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool DoNotRenderAtLod2</code></pre>
   </div>
 
@@ -731,6 +746,7 @@ public bool DoNotRenderAtLod2</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float DragMultiplier</code></pre>
   </div>
 
@@ -764,6 +780,7 @@ public float DragMultiplier</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;JSON&quot;, false)]
 public EnumDrawType DrawType</code></pre>
   </div>
 
@@ -797,6 +814,7 @@ public EnumDrawType DrawType</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public BlockDropItemStack[] Drops</code></pre>
   </div>
 
@@ -819,7 +837,7 @@ public BlockDropItemStack[] Drops</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_EmitSideAo" data-uid="Vintagestory.ServerMods.NoObf.BlockType.EmitSideAo">
-  EmitSideAo (Optional) (Default: See desc.)
+  EmitSideAo (Optional) (Default: See description)
   
   </h3>
 
@@ -830,6 +848,7 @@ public BlockDropItemStack[] Drops</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;See description&quot;, false)]
 public Dictionary&lt;string, bool&gt; EmitSideAo</code></pre>
   </div>
 
@@ -863,6 +882,7 @@ public Dictionary&lt;string, bool&gt; EmitSideAo</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public BlockEntityBehaviorType[] EntityBehaviors</code></pre>
   </div>
 
@@ -897,6 +917,7 @@ To attach a block entity to a block, add the block entity code here..</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string EntityClass</code></pre>
   </div>
 
@@ -930,6 +951,7 @@ public string EntityClass</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default&quot;, false)]
 public EnumFaceCullMode FaceCullMode</code></pre>
   </div>
 
@@ -963,6 +985,7 @@ public EnumFaceCullMode FaceCullMode</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int Fertility</code></pre>
   </div>
 
@@ -996,6 +1019,7 @@ public int Fertility</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;false&quot;, false)]
 public bool Frostable</code></pre>
   </div>
 
@@ -1029,6 +1053,7 @@ public bool Frostable</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;99&quot;, false)]
 public ushort LightAbsorption</code></pre>
   </div>
 
@@ -1062,6 +1087,7 @@ public ushort LightAbsorption</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string LiquidCode</code></pre>
   </div>
 
@@ -1095,6 +1121,7 @@ public string LiquidCode</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int LiquidLevel</code></pre>
   </div>
 
@@ -1128,6 +1155,7 @@ public int LiquidLevel</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeShape Lod0Shape</code></pre>
   </div>
 
@@ -1161,6 +1189,7 @@ public CompositeShape Lod0Shape</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeShape Lod2Shape</code></pre>
   </div>
 
@@ -1195,6 +1224,7 @@ Defines the area with which particles collide with. If not provided, will use <a
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;ParticleCollisionBox&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube ParticleCollisionBoxR</code></pre>
   </div>
 
@@ -1229,6 +1259,7 @@ Defines multiple areas with which particles collide with. If not provided, will 
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;ParticleCollisionBoxes&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube[] ParticleCollisionBoxesR</code></pre>
   </div>
 
@@ -1251,7 +1282,7 @@ private RotatableCube[] ParticleCollisionBoxesR</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RainPermeable" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RainPermeable">
-  RainPermeable (Optional) (Default: false)
+  RainPermeable (Optional) (Default: False)
   
   </h3>
 
@@ -1262,6 +1293,7 @@ private RotatableCube[] ParticleCollisionBoxesR</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool RainPermeable</code></pre>
   </div>
 
@@ -1284,7 +1316,7 @@ public bool RainPermeable</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomDrawOffset" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomDrawOffset">
-  RandomDrawOffset (Optional) (Default: false)
+  RandomDrawOffset (Optional) (Default: False)
   
   </h3>
 
@@ -1295,6 +1327,7 @@ public bool RainPermeable</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool RandomDrawOffset</code></pre>
   </div>
 
@@ -1329,6 +1362,7 @@ If placing an instance of this block on top of one another, setting this to XZ w
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;XYZ&quot;, false)]
 public EnumRandomizeAxes RandomizeAxes</code></pre>
   </div>
 
@@ -1351,7 +1385,7 @@ public EnumRandomizeAxes RandomizeAxes</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomizeRotations" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomizeRotations">
-  RandomizeRotations (Optional) (Default: false)
+  RandomizeRotations (Optional) (Default: False)
   
   </h3>
 
@@ -1362,6 +1396,7 @@ public EnumRandomizeAxes RandomizeAxes</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool RandomizeRotations</code></pre>
   </div>
 
@@ -1384,7 +1419,7 @@ public bool RandomizeRotations</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomSizeAdjust" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomSizeAdjust">
-  RandomSizeAdjust (Optional) (Default: false)
+  RandomSizeAdjust (Optional) (Default: False)
   
   </h3>
 
@@ -1395,6 +1430,7 @@ public bool RandomizeRotations</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public float RandomSizeAdjust</code></pre>
   </div>
 
@@ -1428,6 +1464,7 @@ public float RandomSizeAdjust</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Opaque&quot;, false)]
 public EnumChunkRenderPass RenderPass</code></pre>
   </div>
 
@@ -1471,6 +1508,7 @@ Examples:
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int Replaceable</code></pre>
   </div>
 
@@ -1504,6 +1542,7 @@ public int Replaceable</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string SeasonColorMap</code></pre>
   </div>
 
@@ -1538,6 +1577,7 @@ Defines the area which the players mouse pointer collides with for selection. If
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;SelectionBox&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube SelectionBoxR</code></pre>
   </div>
 
@@ -1572,6 +1612,7 @@ Defines multiple areas which the players mouse pointer collides with for selecti
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;SelectionBoxes&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Default Collision Box&quot;, false)]
 private RotatableCube[] SelectionBoxesR</code></pre>
   </div>
 
@@ -1605,6 +1646,7 @@ private RotatableCube[] SelectionBoxesR</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeShape ShapeInventory</code></pre>
   </div>
 
@@ -1638,6 +1680,7 @@ public CompositeShape ShapeInventory</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;All true&quot;, false)]
 public Dictionary&lt;string, bool&gt; SideAo</code></pre>
   </div>
 
@@ -1671,6 +1714,7 @@ public Dictionary&lt;string, bool&gt; SideAo</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;All true&quot;, false)]
 public Dictionary&lt;string, bool&gt; SideOpaque</code></pre>
   </div>
 
@@ -1704,6 +1748,7 @@ public Dictionary&lt;string, bool&gt; SideOpaque</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;All true&quot;, false)]
 public Dictionary&lt;string, bool&gt; SideSolid</code></pre>
   </div>
 
@@ -1737,6 +1782,7 @@ public Dictionary&lt;string, bool&gt; SideSolid</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;&quot;, false)]
 public Dictionary&lt;string, bool&gt; SideSolidOpaqueAo</code></pre>
   </div>
 
@@ -1770,6 +1816,7 @@ public Dictionary&lt;string, bool&gt; SideSolidOpaqueAo</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public BlockSounds Sounds</code></pre>
   </div>
 
@@ -1803,6 +1850,7 @@ public BlockSounds Sounds</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, CompositeTexture&gt; TexturesInventory</code></pre>
   </div>
 
@@ -1836,6 +1884,7 @@ public Dictionary&lt;string, CompositeTexture&gt; TexturesInventory</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public VertexFlags VertexFlags</code></pre>
   </div>
 
@@ -1869,6 +1918,7 @@ public VertexFlags VertexFlags</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float WalkspeedMultiplier</code></pre>
   </div>
 
@@ -1902,6 +1952,7 @@ public float WalkspeedMultiplier</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Unused&quot;, &quot;&quot;, false)]
 public bool Ambientocclusion</code></pre>
   </div>
 

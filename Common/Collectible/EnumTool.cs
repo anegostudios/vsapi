@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Common
 {
@@ -38,6 +38,8 @@ namespace Vintagestory.API.Common
         Poleaxe,
         Halberd,
         Polearm,
-        Staff
+        Staff,
+        Tongs,
+        Crowbar
     }
 }

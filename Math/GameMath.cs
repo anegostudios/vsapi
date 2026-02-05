@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -41,6 +41,10 @@ namespace Vintagestory.API.MathTools
         /// 90°
         /// </summary>
         public const float PIHALF = (float)Math.PI / 2;
+        /// <summary>
+        /// 1 divided by the square root of 2 - useful for creating normalised vectors, e.g. (ONEOVERROOT2, ONEOVERROOT2, 0) is a vector with length 1.0.
+        /// </summary>
+        public const float ONEOVERROOT2 = 0.7071068f;
 
         public const double DEG2RAD_DOUBLE = Math.PI / 180.0;
         public const float DEG2RAD = (float)Math.PI / 180.0f;
@@ -1500,7 +1504,7 @@ namespace Vintagestory.API.MathTools
             int dm = GameMath.Max(dx, dy, dz), i = dm; /* maximum difference */
             x1 = y1 = z1 = dm / 2; /* error offset */
 
-            BlockPos pos = new BlockPos();
+            BlockPos pos = new BlockPos(Config.Dimensions.NormalWorld);    // Not really a BlockPos
 
             for (; ; )
             {  /* loop */
@@ -1607,6 +1611,14 @@ namespace Vintagestory.API.MathTools
         public static T Map<T>(T value, T fromMin, T fromMax, T toMin, T toMax) where T : INumber<T>
         {
             return (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin;
+        }
+
+        /// <summary>
+        /// Rounds the given float to the closest (1/interval) fraction - for example, 1/32 for getting voxel-accurate sub-block coordinates
+        /// </summary>
+        public static float RoundTo(float v, float interval)
+        {
+            return (int)(v * interval + 0.5f * Math.Sign(v)) / interval;
         }
     }
 

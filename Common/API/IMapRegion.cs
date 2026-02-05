@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
@@ -8,8 +8,14 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public interface IStructureLocation
+    {
+        string Code { get; }
+        Cuboidi Location { get; }
+    }
+
     [ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
-    public class GeneratedStructure
+    public class GeneratedStructure : IStructureLocation
     {
         /// <summary>
         /// Block position of the structure
@@ -27,14 +33,17 @@ namespace Vintagestory.API.Common
         public string Group;
 
         /// <summary>
-        /// If this flag is set, trees and shrubs will not generate inside the structure's bounding box 
+        /// If this flag is set, trees and shrubs will not generate inside the structure's bounding box
         /// </summary>
         public bool SuppressTreesAndShrubs;
 
         /// <summary>
-        /// If this flag is set, rivulets will not generate inside the structure's bounding box 
+        /// If this flag is set, rivulets will not generate inside the structure's bounding box
         /// </summary>
         public bool SuppressRivulets;
+
+        string IStructureLocation.Code => Code;
+        Cuboidi IStructureLocation.Location => Location;
     }
 
     /// <summary>
@@ -46,6 +55,10 @@ namespace Vintagestory.API.Common
         /// Density maps for block patches
         /// </summary>
         Dictionary<string, IntDataMap2D> BlockPatchMaps { get; set; }
+        /// <summary>
+        /// Density maps for animal spawning
+        /// </summary>
+        Dictionary<string, ByteDataMap2D> AnimalSpawnMaps { get; set; }
 
         /// <summary>
         /// Currently unuseds
@@ -80,7 +93,7 @@ namespace Vintagestory.API.Common
         /// Holds temperature and rain fall.<br/>
         /// 16-23 bits = Red = temperature<br/>
         /// 8-15 bits = Green = rain<br/>
-        /// 0-7 bits = Blue = unused 
+        /// 0-7 bits = Blue = unused
         /// </summary>
         IntDataMap2D ClimateMap { get; set; }
 
@@ -94,7 +107,7 @@ namespace Vintagestory.API.Common
         /// Holds the rock strata noise maps
         /// </summary>
         IntDataMap2D[] RockStrata { get; set; }
-        
+
 
         /// <summary>
         /// Holds the raw mod data.
@@ -121,6 +134,15 @@ namespace Vintagestory.API.Common
         /// </summary>
         List<GeneratedStructure> GeneratedStructures { get; }
 
+        /// <summary>
+        /// Low-resolution terrain height map
+        /// </summary>
+        ushort[] TerrainMap { get; set; }
+
+        /// <summary>
+        /// Rivers map for medium rivers
+        /// </summary>
+        long[] RiversMap { get; set; }
 
         bool DirtyForSaving { get; set; }
 
@@ -134,7 +156,7 @@ namespace Vintagestory.API.Common
         void SetModdata(string key, byte[] data);
 
         /// <summary>
-        /// Server: Removes the permanently stored data. 
+        /// Server: Removes the permanently stored data.
         /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
@@ -169,5 +191,15 @@ namespace Vintagestory.API.Common
         /// A thread-safe way to add a new GeneratedStructure, also marks DirtyForSaving = true
         /// </summary>
         void AddGeneratedStructure(GeneratedStructure generatedStructure);
+
+        /// <summary>
+        /// A thread-safe way to add new GeneratedStructures, also marks DirtyForSaving = true
+        /// </summary>
+        void AddGeneratedStructures(IEnumerable<GeneratedStructure> generatedStructure);
+
+        /// <summary>
+        /// Add a map region's terrainmap data to the padding regions of its neighbor's terrainmap
+        /// </summary>
+        void UpdateLowResTerrainPadding(IMapRegion mapRegion, int dx, int dz, int mapSize);
     }
 }

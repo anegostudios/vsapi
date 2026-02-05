@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,12 +97,12 @@ Class Size3d
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class. <a href="https://github.com/anegostudios/vsapi/blob/master///Math/Size/Size3.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class. <a href=https://github.com/anegostudios/vsapi/blob/master///Math/Size/Size3.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Size3d</code></pre>
+    <pre><code class="lang-csharp hljs">public class Size3d : ISize3</code></pre>
   </div>
 
 
@@ -116,6 +116,12 @@ Class Size3d
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.MathTools.ISize3.html">ISize3</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -310,6 +316,320 @@ Class Size3d
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_HeightAsDouble_" data-uid="Vintagestory.API.MathTools.Size3d.HeightAsDouble*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_HeightAsDouble" data-uid="Vintagestory.API.MathTools.Size3d.HeightAsDouble">
+  HeightAsDouble
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double HeightAsDouble { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_HeightAsFloat_" data-uid="Vintagestory.API.MathTools.Size3d.HeightAsFloat*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_HeightAsFloat" data-uid="Vintagestory.API.MathTools.Size3d.HeightAsFloat">
+  HeightAsFloat
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float HeightAsFloat { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_HeightAsInt_" data-uid="Vintagestory.API.MathTools.Size3d.HeightAsInt*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_HeightAsInt" data-uid="Vintagestory.API.MathTools.Size3d.HeightAsInt">
+  HeightAsInt
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HeightAsInt { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_LengthAsDouble_" data-uid="Vintagestory.API.MathTools.Size3d.LengthAsDouble*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_LengthAsDouble" data-uid="Vintagestory.API.MathTools.Size3d.LengthAsDouble">
+  LengthAsDouble
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double LengthAsDouble { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_LengthAsFloat_" data-uid="Vintagestory.API.MathTools.Size3d.LengthAsFloat*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_LengthAsFloat" data-uid="Vintagestory.API.MathTools.Size3d.LengthAsFloat">
+  LengthAsFloat
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LengthAsFloat { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_LengthAsInt_" data-uid="Vintagestory.API.MathTools.Size3d.LengthAsInt*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_LengthAsInt" data-uid="Vintagestory.API.MathTools.Size3d.LengthAsInt">
+  LengthAsInt
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LengthAsInt { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_Volume_" data-uid="Vintagestory.API.MathTools.Size3d.Volume*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_Volume" data-uid="Vintagestory.API.MathTools.Size3d.Volume">
+  Volume
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Volume { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_WidthAsDouble_" data-uid="Vintagestory.API.MathTools.Size3d.WidthAsDouble*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_WidthAsDouble" data-uid="Vintagestory.API.MathTools.Size3d.WidthAsDouble">
+  WidthAsDouble
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double WidthAsDouble { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_WidthAsFloat_" data-uid="Vintagestory.API.MathTools.Size3d.WidthAsFloat*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_WidthAsFloat" data-uid="Vintagestory.API.MathTools.Size3d.WidthAsFloat">
+  WidthAsFloat
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float WidthAsFloat { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Size3d_WidthAsInt_" data-uid="Vintagestory.API.MathTools.Size3d.WidthAsInt*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Size3d_WidthAsInt" data-uid="Vintagestory.API.MathTools.Size3d.WidthAsInt">
+  WidthAsInt
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int WidthAsInt { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

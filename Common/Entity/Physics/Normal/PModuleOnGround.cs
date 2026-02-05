@@ -109,7 +109,7 @@ public class PModuleOnGround : PModule
 
             // Play jump sound.
             IPlayer player = entityPlayer?.World.PlayerByUid(entityPlayer.PlayerUID);
-            entity.PlayEntitySound("jump", player, false);
+            entity.PlayEntitySound("jump", player);
         }
     }
 }

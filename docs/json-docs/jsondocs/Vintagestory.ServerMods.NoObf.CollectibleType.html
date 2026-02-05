@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Class CollectibleType
 
   <div class="markdown summary"><p>A type of in-game collectible object. Extends from <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a>.
 This is mainly used to control items (and block's items) when they are in the inventory.
-<a class="xref" href="Vintagestory.ServerMods.NoObf.ItemType.html">ItemType</a>s get most of their data from here, <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html">BlockType</a>s use this as well as their own specific data. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/CollectibleType.cs">Open in GitHub</a></p>
+<a class="xref" href="Vintagestory.ServerMods.NoObf.ItemType.html">ItemType</a>s get most of their data from here, <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html">BlockType</a>s use this as well as their own specific data. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/CollectibleType.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -181,6 +181,7 @@ public abstract class CollectibleType : RegistryObjectType</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, string[]&gt; CreativeInventory</code></pre>
   </div>
 
@@ -214,6 +215,7 @@ public Dictionary&lt;string, string[]&gt; CreativeInventory</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public ModelTransform GroundTransform</code></pre>
   </div>
 
@@ -247,6 +249,7 @@ public ModelTransform GroundTransform</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public ModelTransform GuiTransform</code></pre>
   </div>
 
@@ -280,6 +283,7 @@ public ModelTransform GuiTransform</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public CompositeShape Shape</code></pre>
   </div>
 
@@ -313,6 +317,7 @@ public CompositeShape Shape</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public ModelTransform TpHandTransform</code></pre>
   </div>
 
@@ -346,6 +351,7 @@ public ModelTransform TpHandTransform</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public ModelTransform TpOffHandTransform</code></pre>
   </div>
 
@@ -379,6 +385,7 @@ public ModelTransform TpOffHandTransform</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.5&quot;, false)]
 public float AttackPower</code></pre>
   </div>
 
@@ -412,6 +419,7 @@ public float AttackPower</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1.5&quot;, false)]
 public float AttackRange</code></pre>
   </div>
 
@@ -446,6 +454,7 @@ public float AttackRange</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonObject Attributes</code></pre>
   </div>
 
@@ -454,7 +463,7 @@ public JsonObject Attributes</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -479,6 +488,7 @@ public JsonObject Attributes</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CollectibleBehaviorType[] Behaviors</code></pre>
   </div>
 
@@ -512,6 +522,7 @@ public CollectibleBehaviorType[] Behaviors</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CombustibleProperties CombustibleProps</code></pre>
   </div>
 
@@ -545,6 +556,7 @@ public CombustibleProperties CombustibleProps</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CreativeTabAndStackList[] CreativeInventoryStacks</code></pre>
   </div>
 
@@ -578,6 +590,7 @@ public CreativeTabAndStackList[] CreativeInventoryStacks</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CrushingProperties CrushingProps</code></pre>
   </div>
 
@@ -611,6 +624,7 @@ public CrushingProperties CrushingProps</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EnumItemDamageSource[] DamagedBy</code></pre>
   </div>
 
@@ -646,6 +660,7 @@ public EnumItemDamageSource[] DamagedBy</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [Obsolete(&quot;Use Size instead from game version 1.20.4 onwards, with the same values&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.5, 0.5, 0.5&quot;, false)]
 public Size3f Dimensions { get; set; }</code></pre>
   </div>
 
@@ -679,6 +694,7 @@ public Size3f Dimensions { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int Durability</code></pre>
   </div>
 
@@ -712,6 +728,7 @@ public int Durability</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public GrindingProperties GrindingProps</code></pre>
   </div>
 
@@ -734,7 +751,7 @@ public GrindingProperties GrindingProps</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldLeftReadyAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldLeftReadyAnimation">
-  HeldLeftReadyAnimation (Optional) (Default: &quot;helditemready&quot;)
+  HeldLeftReadyAnimation (Optional) (Default: helditemready)
   
   </h3>
 
@@ -745,6 +762,7 @@ public GrindingProperties GrindingProps</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;helditemready&quot;, false)]
 public string HeldLeftReadyAnimation</code></pre>
   </div>
 
@@ -778,6 +796,7 @@ public string HeldLeftReadyAnimation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string HeldLeftTpIdleAnimation</code></pre>
   </div>
 
@@ -800,7 +819,7 @@ public string HeldLeftTpIdleAnimation</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightReadyAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldRightReadyAnimation">
-  HeldRightReadyAnimation (Optional) (Default: &quot;helditemready&quot;)
+  HeldRightReadyAnimation (Optional) (Default: helditemready)
   
   </h3>
 
@@ -811,6 +830,7 @@ public string HeldLeftTpIdleAnimation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;helditemready&quot;, false)]
 public string HeldRightReadyAnimation</code></pre>
   </div>
 
@@ -844,6 +864,7 @@ public string HeldRightReadyAnimation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string HeldRightTpIdleAnimation</code></pre>
   </div>
 
@@ -877,6 +898,7 @@ public string HeldRightTpIdleAnimation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public HeldSounds HeldSounds</code></pre>
   </div>
 
@@ -899,7 +921,7 @@ public HeldSounds HeldSounds</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldTpHitAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldTpHitAnimation">
-  HeldTpHitAnimation (Optional) (Default: &quot;breakhand&quot;)
+  HeldTpHitAnimation (Optional) (Default: breakhand)
   
   </h3>
 
@@ -910,6 +932,7 @@ public HeldSounds HeldSounds</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;breakhand&quot;, false)]
 public string HeldTpHitAnimation</code></pre>
   </div>
 
@@ -932,7 +955,7 @@ public string HeldTpHitAnimation</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldTpUseAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldTpUseAnimation">
-  HeldTpUseAnimation (Optional) (Default: &quot;interactstatic&quot;)
+  HeldTpUseAnimation (Optional) (Default: interactstatic)
   
   </h3>
 
@@ -943,6 +966,7 @@ public string HeldTpHitAnimation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;interactstatic&quot;, false)]
 public string HeldTpUseAnimation</code></pre>
   </div>
 
@@ -976,6 +1000,7 @@ public string HeldTpUseAnimation</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;[0, 0, 0]&quot;, false)]
 public byte[] LightHsv</code></pre>
   </div>
 
@@ -1009,6 +1034,7 @@ public byte[] LightHsv</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool LiquidSelectable</code></pre>
   </div>
 
@@ -1042,6 +1068,7 @@ public bool LiquidSelectable</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;9999&quot;, false)]
 public int MaterialDensity</code></pre>
   </div>
 
@@ -1075,6 +1102,7 @@ public int MaterialDensity</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Solid&quot;, false)]
 public EnumMatterState MatterState</code></pre>
   </div>
 
@@ -1108,6 +1136,7 @@ public EnumMatterState MatterState</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public int MaxStackSize</code></pre>
   </div>
 
@@ -1141,6 +1170,7 @@ public int MaxStackSize</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;EnumBlockMaterial, float&gt; MiningSpeed</code></pre>
   </div>
 
@@ -1174,6 +1204,7 @@ public Dictionary&lt;EnumBlockMaterial, float&gt; MiningSpeed</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public FoodNutritionProperties NutritionProps</code></pre>
   </div>
 
@@ -1207,6 +1238,7 @@ public FoodNutritionProperties NutritionProps</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AdvancedParticleProperties[] ParticleProperties</code></pre>
   </div>
 
@@ -1216,6 +1248,40 @@ public AdvancedParticleProperties[] ParticleProperties</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_ParticlesTextureCode" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.ParticlesTextureCode">
+  ParticlesTextureCode (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, the breaking particles will be taken from this texture, otherwise it'll just pick the first texture</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string ParticlesTextureCode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -1240,6 +1306,7 @@ public AdvancedParticleProperties[] ParticleProperties</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.05&quot;, false)]
 public float RenderAlphaTest</code></pre>
   </div>
 
@@ -1273,6 +1340,7 @@ public float RenderAlphaTest</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0.5, 0.5, 0.5&quot;, false)]
 public Size3f Size</code></pre>
   </div>
 
@@ -1306,6 +1374,7 @@ public Size3f Size</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public int StorageFlags</code></pre>
   </div>
 
@@ -1339,6 +1408,7 @@ public int StorageFlags</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeTexture Texture</code></pre>
   </div>
 
@@ -1372,6 +1442,7 @@ public CompositeTexture Texture</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, CompositeTexture&gt; Textures</code></pre>
   </div>
 
@@ -1405,6 +1476,7 @@ public Dictionary&lt;string, CompositeTexture&gt; Textures</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EnumTool? Tool</code></pre>
   </div>
 
@@ -1439,6 +1511,7 @@ If this object is a weapon, this also determines the object's damage tier.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int ToolTier</code></pre>
   </div>
 
@@ -1472,6 +1545,7 @@ public int ToolTier</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public TransitionableProperties[] TransitionableProps</code></pre>
   </div>
 
@@ -1506,6 +1580,8 @@ Used for scaling, rotation or offseting the block when rendered in the first per
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[Obsolete(&quot;Use TpHandTransform instead&quot;)]
+[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 public ModelTransform FpHandTransform</code></pre>
   </div>
 
@@ -1539,6 +1615,7 @@ public ModelTransform FpHandTransform</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;heldTpIdleAnimation&quot;)]
+[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 private string HeldOldTpIdleAnimation</code></pre>
   </div>
 
@@ -1574,6 +1651,7 @@ private string HeldOldTpIdleAnimation</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [Obsolete(&quot;Use tool tier&quot;)]
+[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 public int MiningTier { get; set; }</code></pre>
   </div>
 

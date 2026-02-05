@@ -69,12 +69,24 @@ namespace Vintagestory.API.MathTools
             set { if (index == 0) X = value; else if (index == 1) Y = value; }
         }
 
+        [Obsolete("Use the correctly-spelled ManhattanDistance instead")]
         public int ManhattenDistance(Vec2i point)
+        {
+            return ManhattanDistance(point);
+        }
+
+        public int ManhattanDistance(Vec2i point)
         {
             return Math.Abs(X - point.X) + Math.Abs(Y - point.Y);
         }
 
+        [Obsolete("Use the correctly-spelled ManhattanDistance instead")]
         public int ManhattenDistance(int x, int y)
+        {
+            return ManhattanDistance(x, y);
+        }
+
+        public int ManhattanDistance(int x, int y)
         {
             return Math.Abs(X - x) + Math.Abs(Y - y);
         }

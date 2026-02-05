@@ -75,7 +75,7 @@ namespace Vintagestory.API.Datastructures
 
         /// <summary>
         /// Marks part of the attribute tree as dirty, allowing for a partial update of the attribute tree.
-        /// Has no effect it the whole tree is already marked dirty. If more than 5 paths are marked dirty it will wipe the list of dirty paths and just marked the whole tree as dirty
+        /// If the whole tree is already marked dirty, it will still trigger modified listeners.
         /// </summary>
         /// <param name="path"></param>
         public void MarkPathDirty(string path)
@@ -92,13 +92,6 @@ namespace Vintagestory.API.Datastructures
             }
 
             if (allDirty) return;
-
-            if (attributePathsDirty.Count >= 10)
-            {
-                attributePathsDirty.Clear();
-                allDirty = true;
-            }
-
 
             attributePathsDirty.Add(path);
         }

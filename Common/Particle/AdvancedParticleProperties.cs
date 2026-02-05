@@ -19,73 +19,73 @@ namespace Vintagestory.API.Common
         public bool Async => false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Allows each particle to randomly change its velocity over time.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool RandomVelocityChange { get; set; }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// If true, particle dies if it falls below the rain height at its given location
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool DieOnRainHeightmap { get; set; }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// More particles that spawn from this particle over time. See <see cref="SecondarySpawnInterval"/> to control rate.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "None")]
         public AdvancedParticleProperties[] SecondaryParticles { get; set; }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// More particles that spawn when this particle dies.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "None")]
         public AdvancedParticleProperties[] DeathParticles { get; set; }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The inverval that the <see cref="SecondaryParticles"/> spawn.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0")]
         public NatFloat SecondarySpawnInterval { get; set; } = NatFloat.createUniform(0, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0")]
         public float Bounciness { get; set; }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not the particle dies in air.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool DieInAir { get; set; } = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not the particle dies in water.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool DieInLiquid { get; set; } = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not the particle floats on liquids.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool SwimOnLiquid { get; set; } = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
         /// The Hue/Saturation/Value/Alpha for the color of the particle.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "Random")]
         public NatFloat[] HsvaColor = new NatFloat[] {
             NatFloat.createUniform(128, 128),
             NatFloat.createUniform(128, 128),
@@ -94,135 +94,135 @@ namespace Vintagestory.API.Common
         };
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not to color the particle by the block it's on.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool ColorByBlock { get; set; } = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A transforming opacity value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat OpacityEvolve { get; set; } = null;
+        [DocumentAsJson("Optional", "None")]
+        public EvolvingNatFloat OpacityEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A transforming Red value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat RedEvolve { get; set; } = null;
+        [DocumentAsJson("Optional", "None")]
+        public EvolvingNatFloat RedEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A transforming Green value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat GreenEvolve { get; set; } = null;
+        [DocumentAsJson("Optional", "None")]
+        public EvolvingNatFloat GreenEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A transforming Blue value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat BlueEvolve { get; set; } = null;
+        [DocumentAsJson("Optional", "None")]
+        public EvolvingNatFloat BlueEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The gravity effect on the particle.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "1")]
         public NatFloat GravityEffect { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The life length, in seconds, of the particle.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "1")]
         public NatFloat LifeLength { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0, 0, 0</jsondefault>-->
         /// Offset from the blocks hitboxes top middle position
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0, 0, 0")]
         public NatFloat[] PosOffset = new NatFloat[]
         {
             NatFloat.createUniform(0, 0), NatFloat.createUniform(0, 0), NatFloat.createUniform(0, 0)
         };
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The quantity of the particles given.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "1")]
         public NatFloat Quantity { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The size of the particles given.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "1")]
         public NatFloat Size { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// A transforming Size value.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0")]
         public EvolvingNatFloat SizeEvolve { get; set; } = EvolvingNatFloat.createIdentical(0);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
         /// The velocity of the particles.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "Random")]
         public NatFloat[] Velocity { get; set; } = new NatFloat[]
         {
             NatFloat.createUniform(0f, 0.5f), NatFloat.createUniform(0f, 0.5f), NatFloat.createUniform(0f, 0.5f)
         };
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A dynamic velocity value.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "None")]
         public EvolvingNatFloat[] VelocityEvolve { get; set; } = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Cube</jsondefault>-->
         /// Sets the base model for the particle.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "Cube")]
         public EnumParticleModel ParticleModel { get; set; } = EnumParticleModel.Cube;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The level of glow in the particle.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0")]
         public int VertexFlags { get; set; } = 0;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not the particle is self propelled.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool SelfPropelled { get; set; } = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
         /// Whether or not the particle collides with the terrain.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "True")]
         public bool TerrainCollision { get; set; } = true;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much the particles are affected by wind.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0")]
         public float WindAffectednes { get; set; } = 0;
 
 
@@ -360,17 +360,32 @@ namespace Vintagestory.API.Common
             writer.Write(VertexFlags);
 
 
-            writer.Write(OpacityEvolve == null);
-            if (OpacityEvolve != null) OpacityEvolve.ToBytes(writer);
+            if (OpacityEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                OpacityEvolve.ToBytes(writer);
+            } else writer.Write(true);
 
-            writer.Write(RedEvolve == null);
-            if (RedEvolve != null) RedEvolve.ToBytes(writer);
+            if (RedEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                RedEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
-            writer.Write(GreenEvolve == null);
-            if (GreenEvolve != null) GreenEvolve.ToBytes(writer);
+            if (GreenEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                GreenEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
-            writer.Write(BlueEvolve == null);
-            if (BlueEvolve != null) BlueEvolve.ToBytes(writer);
+            if (BlueEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                BlueEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
 
             SizeEvolve.ToBytes(writer);
@@ -453,23 +468,16 @@ namespace Vintagestory.API.Common
                 BlueEvolve = EvolvingNatFloat.CreateFromBytes(reader);
             }
 
-            SizeEvolve.FromBytes(reader);
+            SizeEvolve = EvolvingNatFloat.CreateFromBytes(reader);
             SelfPropelled = reader.ReadBoolean();
             TerrainCollision = reader.ReadBoolean();
             ColorByBlock = reader.ReadBoolean();
 
             if (reader.ReadBoolean())
             {
-                VelocityEvolve = new EvolvingNatFloat[]
-                {
-                    EvolvingNatFloat.createIdentical(0),
-                    EvolvingNatFloat.createIdentical(0),
-                    EvolvingNatFloat.createIdentical(0),
-                };
-
-                VelocityEvolve[0].FromBytes(reader);
-                VelocityEvolve[1].FromBytes(reader);
-                VelocityEvolve[2].FromBytes(reader);
+                VelocityEvolve[0] = EvolvingNatFloat.CreateFromBytes(reader);
+                VelocityEvolve[1] = EvolvingNatFloat.CreateFromBytes(reader);
+                VelocityEvolve[2] = EvolvingNatFloat.CreateFromBytes(reader);
             }
             SecondarySpawnInterval = NatFloat.createFromBytes(reader);
             int secondaryPropCount = reader.ReadInt32();

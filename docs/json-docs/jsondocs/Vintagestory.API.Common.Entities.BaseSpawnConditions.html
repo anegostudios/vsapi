@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BaseSpawnConditions
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A base class for entities spawning conditions. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/SpawnConditions.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A base class for entities spawning conditions. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/SpawnConditions.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -163,6 +163,12 @@ public class BaseSpawnConditions : ClimateSpawnCondition</code></pre>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinForestOrShrubs">ClimateSpawnCondition.MinForestOrShrubs</a>
     </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_RandomMapCodePool">ClimateSpawnCondition.RandomMapCodePool</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_HabitatSize">ClimateSpawnCondition.HabitatSize</a>
+    </div>
   </dd></dl>
 
 
@@ -194,7 +200,7 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public string Group</code></pre>
   </div>
 
@@ -227,7 +233,7 @@ public string Group</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;1&quot;, false)]
 public NatFloat HerdSize</code></pre>
   </div>
 
@@ -260,7 +266,7 @@ public NatFloat HerdSize</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;WorldGenValues&quot;, false)]
 public EnumGetClimateMode ClimateValueMode</code></pre>
   </div>
 
@@ -293,7 +299,7 @@ public EnumGetClimateMode ClimateValueMode</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AssetLocation[] Companions</code></pre>
   </div>
 
@@ -316,7 +322,7 @@ public AssetLocation[] Companions</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodes" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes">
-  InsideBlockCodes (Optional) (Default: &quot;air&quot;)
+  InsideBlockCodes (Optional) (Default: air)
   
   </h3>
 
@@ -326,7 +332,7 @@ public AssetLocation[] Companions</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;air&quot;, false)]
 public AssetLocation[] InsideBlockCodes</code></pre>
   </div>
 
@@ -359,7 +365,7 @@ public AssetLocation[] InsideBlockCodes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;MaxLight&quot;, false)]
 public EnumLightLevelType LightLevelType</code></pre>
   </div>
 
@@ -392,7 +398,7 @@ public EnumLightLevelType LightLevelType</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;32&quot;, false)]
 public int MaxLightLevel</code></pre>
   </div>
 
@@ -425,7 +431,7 @@ public int MaxLightLevel</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int MinLightLevel</code></pre>
   </div>
 
@@ -448,7 +454,7 @@ public int MinLightLevel</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_RequireSolidGround" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround">
-  RequireSolidGround (Optional) (Default: true)
+  RequireSolidGround (Optional) (Default: True)
   
   </h3>
 
@@ -458,7 +464,7 @@ public int MinLightLevel</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool RequireSolidGround</code></pre>
   </div>
 
@@ -481,17 +487,17 @@ public bool RequireSolidGround</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_TryOnlySurface" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface">
-  TryOnlySurface (Optional) (Default: false)
+  TryOnlySurface (Optional) (Default: False)
   
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>checks to see if the object can only spawn in the surface.</p>
+<p>checks to see if the object can only spawn on the surface.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool TryOnlySurface</code></pre>
   </div>
 
@@ -525,7 +531,7 @@ public bool TryOnlySurface</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 [Obsolete(&quot;Use HerdSize instead&quot;)]
 public NatFloat GroupSize { get; set; }</code></pre>
   </div>

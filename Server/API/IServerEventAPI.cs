@@ -52,6 +52,13 @@ namespace Vintagestory.API.Server
         void MapRegionGeneration(MapRegionGeneratorDelegate handler, string forWorldType);
 
         /// <summary>
+        /// Event that is triggered for the center mapregion whenever all surrounding mapregions are first generated/loaded, called repeatedly on mapregion re-loading
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <param name="forWorldType">For which world types to use this generator</param>
+        void MapRegionNeighborsLoaded(MapRegionGeneratorDelegate handler, string forWorldType);
+
+        /// <summary>
         /// Event that tests whether a world gen system prevents terrain to be smoothed at a given location  (e.g. the Devastation Area needs this)
         /// </summary>
         /// <param name="handler"></param>
@@ -115,7 +122,7 @@ namespace Vintagestory.API.Server
         event OnInteractDelegate OnPlayerInteractEntity;
 
         /// <summary>
-        /// Called when a new player joins
+        /// Called when a player joins for the very first time
         /// </summary>
         event PlayerDelegate PlayerCreate;
 
@@ -125,14 +132,19 @@ namespace Vintagestory.API.Server
         event PlayerDelegate PlayerRespawn;
 
         /// <summary>
-        /// Called when a player joins
+        /// Called when a new or existing player join, their game client is still loading
         /// </summary>
         event PlayerDelegate PlayerJoin;
 
         /// <summary>
-        /// Called when a player joins and his client is now fully loaded and ready to play
+        /// Called after PlayerJoin. Called when a player joins and his client is now fully loaded and ready to play
         /// </summary>
         event PlayerDelegate PlayerNowPlaying;
+
+        /// <summary>
+        /// Called after PlayerNowPlaying when mods have signalled the player is now ready to play. This is currently called only after the player has selected his character and class, or right away if he already selected character and class in a previous join
+        /// </summary>
+        event PlayerDelegate PlayerReady;
 
         /// <summary>
         /// Called when a player intentionally leaves
@@ -153,6 +165,11 @@ namespace Vintagestory.API.Server
         /// Called when a player died
         /// </summary>
         event PlayerDeathDelegate PlayerDeath;
+
+        /// <summary>
+        /// Called before any server side hand interact code is executed
+        /// </summary>
+        event HandInteractDelegate HandInteract;
 
         /// <summary>
         /// Whenever a player switched his game mode or has it switched for him
@@ -265,5 +282,6 @@ namespace Vintagestory.API.Server
         /// </summary>
         event MountGaitReceivedDelegate MountGaitReceived;
         void TriggerMountGaitReceived(Entity mountEntity, string gaitCode);
+        
     }
 }

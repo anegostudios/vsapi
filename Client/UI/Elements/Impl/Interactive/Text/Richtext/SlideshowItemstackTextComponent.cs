@@ -1,15 +1,20 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 #nullable disable
 
 namespace Vintagestory.API.Client
 {
-
+    public interface IHandbookGrouping
+    {
+        AssetLocation GetCodeForHandbookGrouping(ItemStack stack);
+        string GetWildcardForHandbookGrouping(string wildcard, ItemStack stack);
+    }
 
     public delegate ItemStack StackDisplayDelegate();
 
@@ -25,7 +30,7 @@ namespace Vintagestory.API.Client
 
         protected Action<ItemStack> onStackClicked;
 
-        protected float secondsVisible =1;
+        protected float secondsVisible = 1;
         protected int curItemIndex;
 
         public bool ShowStackSize { get; set; }
@@ -60,6 +65,11 @@ namespace Vintagestory.API.Client
             this.onStackClicked = onStackClicked;
         }
 
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double unscaleSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : this(capi, itemstackgroup, allstacks, unscaleSize, floatType, "groupBy", onStackClicked)
+        {
+            // Keeping this for backwards compatibility
+        }
+
         /// <summary>
         /// Looks at the collectibles handbook groupBy attribute and makes a list of itemstacks from that
         /// </summary>
@@ -68,14 +78,15 @@ namespace Vintagestory.API.Client
         /// <param name="allstacks"></param>
         /// <param name="unscaleSize"></param>
         /// <param name="floatType"></param>
+        /// <param name="groupByCode"></param>
         /// <param name="onStackClicked"></param>
-        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double unscaleSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : base(capi)
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double unscaleSize, EnumFloat floatType, string groupByCode, Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();
             this.onStackClicked = onStackClicked;
             this.unscaledSize = unscaleSize;
 
-            string[] groups = itemstackgroup.Collectible.Attributes?["handbook"]?["groupBy"]?.AsArray<string>(null);
+            string[] groups = itemstackgroup.Collectible.Attributes?["handbook"]?[groupByCode ?? "groupBy"]?.AsArray<string>(null);
 
             List<ItemStack> nowGroupedStacks = new List<ItemStack>();
             List<ItemStack> stacks = new List<ItemStack>();
@@ -90,13 +101,17 @@ namespace Vintagestory.API.Client
                     AssetLocation[] groupWildCards = new AssetLocation[groups.Length];
                     for (int i = 0; i < groups.Length; i++)
                     {
-                        if (!groups[i].Contains(":"))
+                        string groupStr = itemstackgroup.Collectible.GetCollectibleInterface<IHandbookGrouping>()?
+                                                                    .GetWildcardForHandbookGrouping(groups[i], itemstackgroup)
+                                       ?? groups[i];
+
+                        if (!groupStr.Contains(":"))
                         {
-                            groupWildCards[i] = new AssetLocation(itemstackgroup.Collectible.Code.Domain, groups[i]);
+                            groupWildCards[i] = new AssetLocation(itemstackgroup.Collectible.Code.Domain, groupStr);
                         }
                         else
                         {
-                            groupWildCards[i] = new AssetLocation(groups[i]);
+                            groupWildCards[i] = new AssetLocation(groupStr);
                         }
 
                     }
@@ -108,9 +123,13 @@ namespace Vintagestory.API.Client
                             nowGroupedStacks.Add(val);
                             continue;
                         }
+
+                        AssetLocation code = val.Collectible.GetCollectibleInterface<IHandbookGrouping>()?
+                                                            .GetCodeForHandbookGrouping(val) ?? val.Collectible.Code;
+
                         for (int i = 0; i < groupWildCards.Length; i++)
                         {
-                            if (val.Collectible.WildCardMatch(groupWildCards[i]))
+                            if (code != null && WildcardUtil.Match(groupWildCards[i], code))
                             {
                                 stacks.Add(val);
                                 nowGroupedStacks.Add(val);
@@ -166,9 +185,9 @@ namespace Vintagestory.API.Client
             {
                 ctx.SetSourceRGBA(1, 1, 1, 0.2);
                 ctx.Rectangle(
-                    BoundsPerLine[0].X, 
+                    BoundsPerLine[0].X,
                     BoundsPerLine[0].Y,  /* - BoundsPerLine[0].Ascent / 2 */ /* why /2??? */ /* why this ascent at all???? wtf? */
-                    BoundsPerLine[0].Width, 
+                    BoundsPerLine[0].Width,
                     BoundsPerLine[0].Height
                 );
                 ctx.Fill();
@@ -201,7 +220,7 @@ namespace Vintagestory.API.Client
 
             ElementBounds scibounds = ElementBounds.FixedSize((int)(bounds.Width / RuntimeEnv.GUIScale), (int)(bounds.Height / RuntimeEnv.GUIScale));
             scibounds.ParentBounds = capi.Gui.WindowBounds;
-            
+
             scibounds.CalcWorldBounds();
             scibounds.absFixedX = renderX + bounds.X + renderOffset.X;
             scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y /*- BoundsPerLine[0].Ascent / 2 - why???? */;
@@ -210,10 +229,10 @@ namespace Vintagestory.API.Client
 
             api.Render.PushScissor(scibounds, true);
 
-            api.Render.RenderItemstackToGui(slot, 
-                renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X + offX, 
-                renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY /*- BoundsPerLine[0].Ascent / 2 - why?????*/, 
-                100 + renderOffset.Z, (float)bounds.Width * renderSize, 
+            api.Render.RenderItemstackToGui(slot,
+                renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X + offX,
+                renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY /*- BoundsPerLine[0].Ascent / 2 - why?????*/,
+                100 + renderOffset.Z, (float)bounds.Width * renderSize,
                 ColorUtil.WhiteArgb, true, false, ShowStackSize
             );
 

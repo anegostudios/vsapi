@@ -31,24 +31,24 @@ namespace Vintagestory.API.Config
     public static class GameVersion
     {
         /// <summary>
-        /// Assembly Info Version number in the format: major.minor.revision
+        /// Assembly Info Version number in the format: major.minor.revision-[rc/pre.subrevision]
         /// </summary>
-        public const string OverallVersion = "1.21.6";
+        public const string OverallVersion = "1.22.0";
 
         /// <summary>
         /// Whether this is a stable or unstable version
         /// </summary>
-        public const EnumGameBranch Branch = EnumGameBranch.Stable;
+        public const EnumGameBranch Branch = EnumGameBranch.Unstable;
 
         /// <summary>
-        /// Version number in the format: major.minor.revision[appendix]
+        /// Version number in the format: major.minor.revision-[rc/pre.subrevision]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "";
+        public const string ShortGameVersion = OverallVersion + "-pre.1";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
         /// <summary>
-        /// Version number in the format: major.minor.revision [release title]
+        /// Version number in the format: major.minor.revision-[rc/pre.subrevision] [release title]
         /// </summary>
         public static string LongGameVersion = "v" + ShortGameVersion + " (" + Branch + ")";
 
@@ -68,11 +68,14 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.21.10";
+        public const string NetworkVersion = "1.22.0";
 
         /// <summary>
         /// Version of the world generator - a change in version will insert a smoothed chunk between old and new version
         /// </summary>
+        // 3 since April 29, 2025 (before 1.21.0-pre.1 release)
+        // 2 since March 17, 2023 (before 1.18.0-rc.1 release)
+        // 0 before that
         public const int WorldGenVersion = 3;
 
         /// <summary>
@@ -100,6 +103,11 @@ namespace Vintagestory.API.Config
         static string[] separators = new string[] { ".", "-" };
         public static int[] SplitVersionString(string version)
         {
+            if (version == null || version.Length == 0)
+            {
+                throw new ArgumentNullException("version");
+            }
+
             // Initial check to see if calling code (is a little borked) and using version string like 1.17-pre.1 instead of 1.17.0-pre.1, which would break stuff later in this method because later code assumes that "pre" is in parts[3]
             int hyphenIndex = version.IndexOf('-');
             string majorMinorVersion = hyphenIndex < 1 ? version : version.Substring(0, hyphenIndex);

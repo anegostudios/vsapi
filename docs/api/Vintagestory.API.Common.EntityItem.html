@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class EntityItem
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/EntityItem.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/EntityItem.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -185,6 +185,9 @@ Class EntityItem
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ServerPos">Entity.ServerPos</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SidedPos">Entity.SidedPos</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_PreviousServerPos">Entity.PreviousServerPos</a>
@@ -334,9 +337,6 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Collided">Entity.Collided</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SidedPos">Entity.SidedPos</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_LocalEyePos">Entity.LocalEyePos</a>
     </div>
     <div>
@@ -463,6 +463,9 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollideWithLiquid">Entity.OnCollideWithLiquid()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_doSplashEffects_System_Double_System_Double_">Entity.doSplashEffects(double, double)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SpawnWaterMovementParticles_System_Single_System_Double_System_Double_System_Double_">Entity.SpawnWaterMovementParticles(float, double, double, double)</a>
     </div>
     <div>
@@ -511,19 +514,19 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HasBehavior_System_String_">Entity.HasBehavior(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HasBehavior__1">Entity.HasBehavior&lt;T&gt;()</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HasBehavior__1">Entity.HasBehavior&lt;TEntityBehavior&gt;()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior_System_String_">Entity.GetBehavior(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior__1">Entity.GetBehavior&lt;T&gt;()</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior__1">Entity.GetBehavior&lt;TEntityBehavior&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterfaces__1">Entity.GetInterfaces&lt;T&gt;()</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterfaces__1">Entity.GetInterfaces&lt;TInterface&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterface__1">Entity.GetInterface&lt;T&gt;()</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterface__1">Entity.GetInterface&lt;TInterface&gt;()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_">Entity.IsActivityRunning(string)</a>
@@ -553,7 +556,7 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Revive">Entity.Revive()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_">Entity.PlayEntitySound(string, IPlayer, bool, float)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_">Entity.PlayEntitySound(string, IPlayer)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Notify_System_String_System_Object_">Entity.Notify(string, object)</a>
@@ -595,7 +598,10 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HasTags_System_String___">Entity.HasTags(params string[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsFirstTick">Entity.IsFirstTick()</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetAttributesFrom_Newtonsoft_Json_Linq_JToken_">Entity.SetAttributesFrom(JToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBoneName_System_String_System_String_">Entity.GetBoneName(string, string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -1286,7 +1292,7 @@ Class EntityItem
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called every 1/75 second</p>
+  <div class="markdown level1 summary"><p>Called every 20ms</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

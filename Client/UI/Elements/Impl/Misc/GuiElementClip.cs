@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 
 #nullable disable
 
@@ -53,7 +53,7 @@ namespace Vintagestory.API.Client
     public static class GuiElementClipHelpler
     {
         /// <summary>
-        /// Add a clip area. Thhis select an area to be rendered, where anything outside will be invisible. Useful for scrollable content. Can be called multiple times, to reduce the render area further, but needs an equal amount of calls to EndClip()
+        /// Add a clip area. This selects an area to be rendered, where anything outside will be invisible. Useful for scrollable content. Can be called multiple times, to reduce the render area further, but needs an equal amount of calls to EndClip()
         /// </summary>
         /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the object.</param>

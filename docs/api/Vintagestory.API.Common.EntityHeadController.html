@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,12 +97,12 @@ Class EntityHeadController
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/EntityHeadController.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/EntityHeadController.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EntityHeadController</code></pre>
+    <pre><code class="lang-csharp hljs">public class EntityHeadController : IHeadController</code></pre>
   </div>
 
 
@@ -116,6 +116,12 @@ Class EntityHeadController
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.IHeadController.html">IHeadController</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist derived">
     <dt>Derived</dt>
@@ -180,12 +186,12 @@ Class EntityHeadController
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityHeadController(IAnimationManager animator, EntityAgent entity, Shape entityShape)</code></pre>
+    <pre><code class="lang-csharp hljs">public EntityHeadController(IAnimationManager animationManager, EntityAgent entity, Shape entityShape)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>animator</code> <a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a></dt>
+    <dt><code>animationManager</code> <a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a></dt>
     <dd></dd>
     <dt><code>entity</code> <a class="xref" href="Vintagestory.API.Common.EntityAgent.html">EntityAgent</a></dt>
     <dd></dd>
@@ -209,8 +215,8 @@ Class EntityHeadController
 
 
 
-  <h3 id="Vintagestory_API_Common_EntityHeadController_HeadPose" data-uid="Vintagestory.API.Common.EntityHeadController.HeadPose">
-  HeadPose
+  <h3 id="Vintagestory_API_Common_EntityHeadController_animationManager" data-uid="Vintagestory.API.Common.EntityHeadController.animationManager">
+  animationManager
   
   </h3>
 
@@ -218,187 +224,7 @@ Class EntityHeadController
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ElementPose HeadPose</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_EntityHeadController_LowerTorsoPose" data-uid="Vintagestory.API.Common.EntityHeadController.LowerTorsoPose">
-  LowerTorsoPose
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ElementPose LowerTorsoPose</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_EntityHeadController_NeckPose" data-uid="Vintagestory.API.Common.EntityHeadController.NeckPose">
-  NeckPose
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ElementPose NeckPose</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_EntityHeadController_UpperFootLPose" data-uid="Vintagestory.API.Common.EntityHeadController.UpperFootLPose">
-  UpperFootLPose
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ElementPose UpperFootLPose</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_EntityHeadController_UpperFootRPose" data-uid="Vintagestory.API.Common.EntityHeadController.UpperFootRPose">
-  UpperFootRPose
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ElementPose UpperFootRPose</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_EntityHeadController_UpperTorsoPose" data-uid="Vintagestory.API.Common.EntityHeadController.UpperTorsoPose">
-  UpperTorsoPose
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ElementPose UpperTorsoPose</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_EntityHeadController_animManager" data-uid="Vintagestory.API.Common.EntityHeadController.animManager">
-  animManager
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IAnimationManager animManager</code></pre>
+    <pre><code class="lang-csharp hljs">protected readonly IAnimationManager animationManager</code></pre>
   </div>
 
 
@@ -428,7 +254,7 @@ Class EntityHeadController
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected EntityAgent entity</code></pre>
+    <pre><code class="lang-csharp hljs">protected readonly EntityAgent entity</code></pre>
   </div>
 
 
@@ -449,8 +275,8 @@ Class EntityHeadController
 
 
 
-  <h3 id="Vintagestory_API_Common_EntityHeadController_pitchOffset" data-uid="Vintagestory.API.Common.EntityHeadController.pitchOffset">
-  pitchOffset
+  <h3 id="Vintagestory_API_Common_EntityHeadController_headPose" data-uid="Vintagestory.API.Common.EntityHeadController.headPose">
+  headPose
   
   </h3>
 
@@ -458,7 +284,37 @@ Class EntityHeadController
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float pitchOffset</code></pre>
+    <pre><code class="lang-csharp hljs">protected readonly ElementPose headPose</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_headYOffsetFactor" data-uid="Vintagestory.API.Common.EntityHeadController.headYOffsetFactor">
+  headYOffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float headYOffsetFactor</code></pre>
   </div>
 
 
@@ -479,8 +335,8 @@ Class EntityHeadController
 
 
 
-  <h3 id="Vintagestory_API_Common_EntityHeadController_yawOffset" data-uid="Vintagestory.API.Common.EntityHeadController.yawOffset">
-  yawOffset
+  <h3 id="Vintagestory_API_Common_EntityHeadController_headZOffsetFactor" data-uid="Vintagestory.API.Common.EntityHeadController.headZOffsetFactor">
+  headZOffsetFactor
   
   </h3>
 
@@ -488,7 +344,7 @@ Class EntityHeadController
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float yawOffset</code></pre>
+    <pre><code class="lang-csharp hljs">protected float headZOffsetFactor</code></pre>
   </div>
 
 
@@ -500,6 +356,162 @@ Class EntityHeadController
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_neckPose" data-uid="Vintagestory.API.Common.EntityHeadController.neckPose">
+  neckPose
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ElementPose neckPose</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_neckYOffsetFactor" data-uid="Vintagestory.API.Common.EntityHeadController.neckYOffsetFactor">
+  neckYOffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float neckYOffsetFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_neckZOffsetFactor" data-uid="Vintagestory.API.Common.EntityHeadController.neckZOffsetFactor">
+  neckZOffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float neckZOffsetFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_EntityHeadController_PitchOffset_" data-uid="Vintagestory.API.Common.EntityHeadController.PitchOffset*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_PitchOffset" data-uid="Vintagestory.API.Common.EntityHeadController.PitchOffset">
+  PitchOffset
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float PitchOffset { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityHeadController_YawOffset_" data-uid="Vintagestory.API.Common.EntityHeadController.YawOffset*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_YawOffset" data-uid="Vintagestory.API.Common.EntityHeadController.YawOffset">
+  YawOffset
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float YawOffset { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -512,6 +524,78 @@ Class EntityHeadController
 </h2>
 
 
+  <a id="Vintagestory_API_Common_EntityHeadController_GetOffsets_" data-uid="Vintagestory.API.Common.EntityHeadController.GetOffsets*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_GetOffsets_System_Single_" data-uid="Vintagestory.API.Common.EntityHeadController.GetOffsets(System.Single)">
+  GetOffsets(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual (float yOffsetDeg, float zOffsetDeg) GetOffsets(float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single-.yoffsetdeg">yOffsetDeg</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single-.zoffsetdeg">zOffsetDeg</a>)</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityHeadController_GetPose_" data-uid="Vintagestory.API.Common.EntityHeadController.GetPose*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityHeadController_GetPose_System_String_" data-uid="Vintagestory.API.Common.EntityHeadController.GetPose(System.String)">
+  GetPose(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ElementPose GetPose(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityHeadController_OnFrame_" data-uid="Vintagestory.API.Common.EntityHeadController.OnFrame*"></a>
 
   <h3 id="Vintagestory_API_Common_EntityHeadController_OnFrame_System_Single_" data-uid="Vintagestory.API.Common.EntityHeadController.OnFrame(System.Single)">
@@ -519,7 +603,7 @@ Class EntityHeadController
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The event fired when the game ticks.</p>
+  <div class="markdown level1 summary"><p>Called from AnimationManager each frame before frame.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

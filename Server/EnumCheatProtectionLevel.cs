@@ -12,7 +12,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         Off,
         /// <summary>
-        /// Server will: Simulate each players movements and correct the position if the client reports the player at a different positions, verify the players picking range when placing or removing blocks
+        /// Server will: verify the players picking range when placing, removing or interacting with blocks
         /// </summary>
         Basic,
         /// <summary>

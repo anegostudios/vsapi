@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Common
 {
@@ -16,5 +16,7 @@ namespace Vintagestory.API.Common
         public const int Removable = 16;
         /// <summary>If true, this decor supplies its own different models for NSEWUD placement, if false the code will auto-rotate the model</summary>
         public const int HasSidedVariants = 32;
+        /// <summary>If true, this decor can be applied to all types of blocks (i.e. JSON models) not only solid block sides</summary>
+        public const int CanAddToAnything = 64;
     }
 }

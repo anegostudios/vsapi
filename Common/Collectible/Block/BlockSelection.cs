@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -28,6 +28,12 @@ namespace Vintagestory.API.Common
         /// Which selection box was aimed at. The index corresponds to the array returned by Block.GetSelectionBoxes()
         /// </summary>
         public int SelectionBoxIndex;
+
+        /// <summary>
+        /// Which selection box was aimed at. The id corresponds to CuboidfWithId.Id, if the selection box cuboid is of that type
+        /// </summary>
+        public string SelectionBoxId;
+
 
         /// <summary>
         /// Always false during block use. True during placement if the Position value was offseted. Example:
@@ -89,6 +95,7 @@ namespace Vintagestory.API.Common
                 Face = this.Face,
                 HitPosition = this.HitPosition?.Clone(),
                 SelectionBoxIndex = this.SelectionBoxIndex,
+                SelectionBoxId = this.SelectionBoxId,
                 Position = this.Position?.Copy(),
                 DidOffset = DidOffset
             };

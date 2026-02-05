@@ -1,9 +1,10 @@
+using Newtonsoft.Json;
+using ProtoBuf;
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
-using Newtonsoft.Json;
-using ProtoBuf;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 
 #nullable disable
@@ -157,6 +158,15 @@ namespace Vintagestory.API.MathTools
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
+            return this;
+        }
+
+        public BlockPos Set(EntityPos pos)
+        {
+            SetDimension(pos.Dimension);
+            X = (int)pos.X;
+            Y = (int)pos.Y;
+            Z = (int)pos.Z;
             return this;
         }
 
@@ -599,7 +609,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Substract a position => you'll have the manhatten distance
+        /// Substract a position => you'll have the manhattan distance
         /// </summary>
         /// <param name="pos"></param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -612,7 +622,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Substract a position =&gt; you'll have the manhatten distance
+        /// Substract a position => you'll have the manhattan distance
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -629,7 +639,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Substract a position => you'll have the manhatten distance.
+        /// Substract a position => you'll have the manhattan distance.
         /// <br/>If used within a non-zero dimension the resulting BlockPos will be dimensionless as it's a distance or offset between two positions
         /// </summary>
         /// <param name="pos"></param>
@@ -693,6 +703,17 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Returns the Euclidean distance to between this and given position. Note if dimensions are different returns maximum value (i.e. infinite)
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public float DistanceTo(Vec3d pos)
+        {
+            return DistanceTo(pos.X, pos.Y, pos.Z);
+        }
+
+
+        /// <summary>
         /// Returns the Euclidean distance to between this and given position. Note this is dimension unaware
         /// </summary>
         /// <param name="x"></param>
@@ -748,6 +769,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="x"></param>
         /// <param name="z"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float HorDistanceSqTo(double x, double z)
         {
             double dx = x - X;
@@ -756,24 +778,35 @@ namespace Vintagestory.API.MathTools
             return (float)(dx * dx + dz * dz);
         }
 
+        [Obsolete("Use the correct spelling, Manhattan, instead")]
+        public int HorizontalManhattenDistance(BlockPos pos)
+        {
+            return HorizontalManhattanDistance(pos);
+        }
+
         /// <summary>
-        /// Returns the manhatten distance to given position
+        /// Returns the manhattan distance to given position
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public int HorizontalManhattenDistance(BlockPos pos)
+        public int HorizontalManhattanDistance(BlockPos pos)
         {
             if (pos.dimension != this.dimension) return int.MaxValue;
             return Math.Abs(X - pos.X) + Math.Abs(Z - pos.Z);
         }
 
+        [Obsolete("Use the correct spelling, Manhattan, instead")]
+        public int ManhattenDistance(BlockPos pos)
+        {
+            return ManhattanDistance(pos);
+        }
 
         /// <summary>
-        /// Returns the manhatten distance to given position
+        /// Returns the manhattan distance to given position
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public int ManhattenDistance(BlockPos pos)
+        public int ManhattanDistance(BlockPos pos)
         {
             if (pos.dimension != this.dimension) return int.MaxValue;
             return Math.Abs(X - pos.X) + Math.Abs(Y - pos.Y) + Math.Abs(Z - pos.Z);
@@ -781,14 +814,14 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Returns the manhatten distance to given position
+        /// Returns the manhattan distance to given position
         /// Note this is dimension unaware
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
-        public int ManhattenDistance(int x, int y, int z)
+        public int ManhattanDistance(int x, int y, int z)
         {
             return Math.Abs(X - x) + Math.Abs(Y - y) + Math.Abs(Z - z);
         }
@@ -984,21 +1017,28 @@ namespace Vintagestory.API.MathTools
             Z = (index3d >> 10) & mask;
             Y = (index3d >> 20) & mask;
         }
+
+        public BlockPos Set(double x, double y, double z)
+        {
+            X = (int)x;
+            Y = (int)y;
+            Z = (int)z;
+            return this;
+        }
+
     }
 
     // Exactly like BlockPos except using this class signifies the block should be looked for in the fluids layer; used for server block ticking
     public class FluidBlockPos : BlockPos
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         public FluidBlockPos()
         {
         }
+#pragma warning restore CS0618
 
-        public FluidBlockPos(int x, int y, int z, int dim)
+        public FluidBlockPos(int x, int y, int z, int dim) : base(x, y, z, dim)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
-            this.dimension = dim;
         }
 
         public override BlockPos Copy()

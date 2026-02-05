@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -125,5 +125,7 @@ namespace Vintagestory.API.Common
         void AddPathOrigin(string domain, string fullPath);
         void AddModOrigin(string domain, string fullPath);
         void AddModOrigin(string domain, string fullPath, string pathForReservedCharsCheck);
+
+        void RemoveModOrigin(string domain, string fullpath);
     }
 }

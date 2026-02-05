@@ -1,7 +1,5 @@
 ﻿using System;
 
-#nullable disable
-
 namespace Vintagestory.API.Common.Entities
 {
     /// <summary>

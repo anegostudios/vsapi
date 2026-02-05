@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class Cuboidf
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents a three dimensional axis-aligned cuboid using two 3D coordinates. Used for collision and selection boxes. <a href="https://github.com/anegostudios/vsapi/blob/master///Math/Cuboid/Cuboidf.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Represents a three dimensional axis-aligned cuboid using two 3D coordinates. Used for collision and selection boxes. <a href=https://github.com/anegostudios/vsapi/blob/master///Math/Cuboid/Cuboidf.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -128,6 +128,7 @@ public class Cuboidf : IEquatable&lt;Cuboidf&gt;</code></pre>
     <dt>Derived</dt>
     <dd>
       <div><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a></div>
+      <div><a class="xref" href="Vintagestory.API.MathTools.CuboidfWithId.html">CuboidfWithId</a></div>
     </dd>
   </dl>
 
@@ -187,47 +188,6 @@ public class Cuboidf : IEquatable&lt;Cuboidf&gt;</code></pre>
     <pre><code class="lang-csharp hljs">public Cuboidf()</code></pre>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_MathTools_Cuboidf__ctor_" data-uid="Vintagestory.API.MathTools.Cuboidf.#ctor*"></a>
-
-  <h3 id="Vintagestory_API_MathTools_Cuboidf__ctor_System_Double_System_Double_System_Double_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.Cuboidf.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
-  Cuboidf(double, double, double, double, double, double)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Cuboidf(double x1, double x2, double y1, double y2, double z1, double z2)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>x1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>x2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>y1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>y2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>z1</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-    <dt><code>z2</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -314,6 +274,37 @@ public class Cuboidf : IEquatable&lt;Cuboidf&gt;</code></pre>
 
   <a id="Vintagestory_API_MathTools_Cuboidf__ctor_" data-uid="Vintagestory.API.MathTools.Cuboidf.#ctor*"></a>
 
+  <h3 id="Vintagestory_API_MathTools_Cuboidf__ctor_Vintagestory_API_MathTools_ISize3_" data-uid="Vintagestory.API.MathTools.Cuboidf.#ctor(Vintagestory.API.MathTools.ISize3)">
+  Cuboidf(ISize3)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Cuboidf(ISize3 size)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>size</code> <a class="xref" href="Vintagestory.API.MathTools.ISize3.html">ISize3</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Cuboidf__ctor_" data-uid="Vintagestory.API.MathTools.Cuboidf.#ctor*"></a>
+
   <h3 id="Vintagestory_API_MathTools_Cuboidf__ctor_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Cuboidf.#ctor(Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f)">
   Cuboidf(Vec3f, Vec3f)
   
@@ -355,13 +346,12 @@ public class Cuboidf : IEquatable&lt;Cuboidf&gt;</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>Start X Pos</p>
+  <div class="markdown level1 summary"><p>Start X Pos</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float X1</code></pre>
   </div>
 
@@ -388,13 +378,12 @@ public float X1</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>End X Pos</p>
+  <div class="markdown level1 summary"><p>End X Pos</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float X2</code></pre>
   </div>
 
@@ -421,13 +410,12 @@ public float X2</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>Start Y Pos</p>
+  <div class="markdown level1 summary"><p>Start Y Pos</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float Y1</code></pre>
   </div>
 
@@ -454,13 +442,12 @@ public float Y1</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>End Y Pos</p>
+  <div class="markdown level1 summary"><p>End Y Pos</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float Y2</code></pre>
   </div>
 
@@ -487,13 +474,12 @@ public float Y2</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>Start Z Pos</p>
+  <div class="markdown level1 summary"><p>Start Z Pos</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float Z1</code></pre>
   </div>
 
@@ -520,13 +506,12 @@ public float Z1</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>End Z Pos</p>
+  <div class="markdown level1 summary"><p>End Z Pos</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float Z2</code></pre>
   </div>
 
@@ -1649,6 +1634,85 @@ public float Z2</code></pre>
 
 
 
+  <a id="Vintagestory_API_MathTools_Cuboidf_Intersects_" data-uid="Vintagestory.API.MathTools.Cuboidf.Intersects*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Cuboidf_Intersects_Vintagestory_API_MathTools_Cuboidf_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.Cuboidf.Intersects(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)">
+  Intersects(Cuboidf, double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Intersects(Cuboidf other, double offsetx, double offsety, double offsetz)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+    <dt><code>offsetx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>offsety</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>offsetz</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Cuboidf_IntersectsOrTouches_" data-uid="Vintagestory.API.MathTools.Cuboidf.IntersectsOrTouches*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Cuboidf_IntersectsOrTouches_Vintagestory_API_MathTools_Cuboidf_" data-uid="Vintagestory.API.MathTools.Cuboidf.IntersectsOrTouches(Vintagestory.API.MathTools.Cuboidf)">
+  IntersectsOrTouches(Cuboidf)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If the given cuboid intersects with this cuboid</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IntersectsOrTouches(Cuboidf other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_Cuboidf_OffsetCopy_" data-uid="Vintagestory.API.MathTools.Cuboidf.OffsetCopy*"></a>
 
   <h3 id="Vintagestory_API_MathTools_Cuboidf_OffsetCopy_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Cuboidf.OffsetCopy(System.Single,System.Single,System.Single)">
@@ -1938,6 +2002,88 @@ public float Z2</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.IVec3.html">IVec3</a></dt>
+    <dd></dd>
+    <dt><code>origin</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Cuboidf_RotatedCopyRad_" data-uid="Vintagestory.API.MathTools.Cuboidf.RotatedCopyRad*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Cuboidf_RotatedCopyRad_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Cuboidf.RotatedCopyRad(System.Single,System.Single,System.Single)">
+  RotatedCopyRad(float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Cuboidf RotatedCopyRad(float radX, float radY, float radZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>radX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Cuboidf_RotatedCopyRad_" data-uid="Vintagestory.API.MathTools.Cuboidf.RotatedCopyRad*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Cuboidf_RotatedCopyRad_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.Cuboidf.RotatedCopyRad(System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec3d)">
+  RotatedCopyRad(float, float, float, Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Cuboidf RotatedCopyRad(float radX, float radY, float radZ, Vec3d origin)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>radX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>origin</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
     <dd></dd>
@@ -2377,6 +2523,42 @@ public float Z2</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Cuboidf_TransformedCopy_" data-uid="Vintagestory.API.MathTools.Cuboidf.TransformedCopy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Cuboidf_TransformedCopy_System_Span_System_Single__" data-uid="Vintagestory.API.MathTools.Cuboidf.TransformedCopy(System.Span{System.Single})">
+  TransformedCopy(Span&lt;float&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Cuboidf TransformedCopy(Span&lt;float&gt; matrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
     <dd></dd>
   </dl>
 

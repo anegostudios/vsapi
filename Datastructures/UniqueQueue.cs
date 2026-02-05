@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using Vintagestory.API.Common;
 
 #nullable disable
 
@@ -91,6 +93,24 @@ namespace Vintagestory.API.Datastructures
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return queue.GetEnumerator();
+        }
+
+        public void Remove(T item)
+        {
+            hashSet.Remove(item);
+            Queue<T> tmp = new();
+            bool notFound = true;
+            do
+            {
+                T read = queue.Dequeue();
+                if (notFound && item.Equals(read))
+                {
+                    notFound = false;
+                    continue;
+                }
+                tmp.Enqueue(read);
+            } while (queue.Count > 0);
+            queue = tmp;
         }
     }
 }

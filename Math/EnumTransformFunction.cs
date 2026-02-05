@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.MathTools
 {
@@ -55,6 +55,10 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// firstval + GameMath.SmoothStep(factor * seq)
         /// </summary>
-        SMOOTHSTEP
+        SMOOTHSTEP,
+        /// <summary>
+        /// Used for EvolvingNatFloat (and any other similar structs), indicates that the EvolvingNatFloat is unspecified - similar purpose to it having a null value
+        /// </summary>
+        UNSPECIFIED
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -19,10 +19,8 @@ namespace Vintagestory.API.Common
         protected AnimatorBase animator;
         protected Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode = new Dictionary<string, AnimationMetaData>();
 
-        public MultiTextureMeshRef mtmeshref;
-
-        public MeshRef meshref;
-
+        public MultiTextureMeshRef mtmeshrefOpaque;
+        public MultiTextureMeshRef mtmeshrefTransparent;
         public int textureId;
 
         public float[] ModelMat = Mat4f.Create();
@@ -41,51 +39,73 @@ namespace Vintagestory.API.Common
         public Vec4f renderColor = ColorUtil.WhiteArgbVec.Clone();
         public bool backfaceCulling = true;
 
-        [Obsolete("Use constructor with MultiTextureMeshRef instead, the standard MeshRef texturing breaks when there is multiple texture atlasses")]
-        public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MeshRef meshref, int textureId, EnumRenderStage renderStage = EnumRenderStage.Opaque)
+
+        /// <summary>
+        /// Create a new instance of AnimatableRenderer that can extract transparent and opaque parts from the provided MeshData and render it in seperated passes, if it contains any transparent geometry.
+        /// </summary>
+        /// <param name="capi"></param>
+        /// <param name="pos"></param>
+        /// <param name="rotationDeg"></param>
+        /// <param name="animator"></param>
+        /// <param name="activeAnimationsByAnimCode"></param>
+        /// <param name="meshdata"></param>
+        /// <param name="renderStage">Renderstage for any non-transparent geometry</param>
+        public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MeshData meshdata, EnumRenderStage renderStage = EnumRenderStage.Opaque)
         {
             this.pos = pos;
             this.capi = capi;
             this.animator = animator;
             this.activeAnimationsByAnimCode = activeAnimationsByAnimCode;
-            this.meshref = meshref;
             this.rotationDeg = rotationDeg;
-            this.textureId = textureId;
             if (rotationDeg == null) this.rotationDeg = new Vec3f();
 
-            capi.Event.EnqueueMainThreadTask(() =>
+            if (RuntimeEnv.MainThreadId == Environment.CurrentManagedThreadId)
             {
-                capi.Event.RegisterRenderer(this, renderStage, "animatable");
-                capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowFar, "animatable");
-                capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowNear, "animatable");
-            }, "registerrenderers");
+                mainThreadInit(capi, meshdata, renderStage);
+            }
+            else
+            {
+                capi.Event.EnqueueMainThreadTask(() => mainThreadInit(capi, meshdata, renderStage), "animatableRendererInit");
+            }
         }
 
-        public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MultiTextureMeshRef meshref, EnumRenderStage renderStage = EnumRenderStage.Opaque)
+        private void mainThreadInit(ICoreClientAPI capi, MeshData meshdata, EnumRenderStage renderStage)
         {
-            this.pos = pos;
-            this.capi = capi;
-            this.animator = animator;
-            this.activeAnimationsByAnimCode = activeAnimationsByAnimCode;
-            this.mtmeshref = meshref;
-            this.rotationDeg = rotationDeg;
-            if (rotationDeg == null) this.rotationDeg = new Vec3f();
-
-            capi.Event.EnqueueMainThreadTask(() =>
+            if (meshdata.NeedsRenderPass(EnumChunkRenderPass.Transparent))
             {
-                capi.Event.RegisterRenderer(this, renderStage, "animatable");
-                capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowFar, "animatable");
-                capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowNear, "animatable");
-            }, "registerrenderers");
+                int tpPassInt = (int)EnumChunkRenderPass.Transparent;
+
+                var partialMeshData = meshdata.EmptyClone();
+                partialMeshData.AddMeshData(meshdata, (i) => meshdata.RenderPassesAndExtraBits[i] == tpPassInt);
+                mtmeshrefTransparent = capi.Render.UploadMultiTextureMesh(partialMeshData);
+
+                partialMeshData.Clear();
+                partialMeshData.AddMeshData(meshdata, (i) => meshdata.RenderPassesAndExtraBits[i] != tpPassInt);
+                mtmeshrefOpaque = capi.Render.UploadMultiTextureMesh(partialMeshData);
+
+                capi.Event.RegisterRenderer(this, EnumRenderStage.OIT, "animatable");
+            }
+            else
+            {
+                this.mtmeshrefOpaque = capi.Render.UploadMultiTextureMesh(meshdata);
+            }
+
+            capi.Event.RegisterRenderer(this, renderStage, "animatable");
+            capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowFar, "animatable");
+            capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowNear, "animatable");
         }
 
         public void OnRenderFrame(float dt, EnumRenderStage stage)
         {
-            if (!ShouldRender || (mtmeshref != null && (mtmeshref.Disposed || !mtmeshref.Initialized)) || (meshref != null && (meshref.Disposed || !meshref.Initialized))) return;
+            if (!ShouldRender || (mtmeshrefOpaque != null && (mtmeshrefOpaque.Disposed || !mtmeshrefOpaque.Initialized)) || (mtmeshrefOpaque != null && (mtmeshrefOpaque.Disposed || !mtmeshrefOpaque.Initialized))) return;
 
-            bool shadowPass = stage != EnumRenderStage.Opaque;
+            bool oit = stage == EnumRenderStage.OIT;
+            bool shadowPass = stage == EnumRenderStage.ShadowFar || stage == EnumRenderStage.ShadowNear;
 
-            capi.Render.GLDepthMask(true); // Tyron 28 Oct 2023, why is this line needed here? For some reason, in some cases depth masking is off when rendering here
+            if (!oit)
+            {
+                capi.Render.GLDepthMask(true); // Tyron 28 Oct 2023, why is this line needed here? For some reason, in some cases depth masking is off when rendering here
+            }
 
             EntityPlayer entityPlayer = capi.World.Player.Entity;
 
@@ -108,12 +128,12 @@ namespace Vintagestory.API.Common
             IShaderProgram prevProg = rpi.CurrentActiveShader;
             prevProg?.Stop();
 
-            capi.Render.GlDisableCullFace();
+            if (!oit) capi.Render.GlDisableCullFace();
 
-            IShaderProgram prog = rpi.GetEngineShader(shadowPass ? EnumShaderProgram.Shadowmapentityanimated : EnumShaderProgram.Entityanimated);
+            IShaderProgram prog = rpi.GetEngineShader(shadowPass ? EnumShaderProgram.Shadowmapentityanimated : (oit ? EnumShaderProgram.Entityanimated_Oit : EnumShaderProgram.Entityanimated));
             prog.Use();
             Vec4f lightrgbs = LightAffected ? capi.World.BlockAccessor.GetLightRGBs((int)pos.X, (int)pos.Y, (int)pos.Z) : ColorUtil.WhiteArgbVec;
-            rpi.GlToggleBlend(true, EnumBlendMode.Standard);
+            if (!oit) rpi.GlToggleBlend(true, EnumBlendMode.Standard);
 
             if (!shadowPass)
             {
@@ -146,19 +166,11 @@ namespace Vintagestory.API.Common
 
             prog.UBOs["Animation"].Update(animator.Matrices, 0, animator.MaxJointId * 16 * 4);
 
-            if ((stage == EnumRenderStage.Opaque || stage == EnumRenderStage.ShadowNear) && !backfaceCulling) capi.Render.GlDisableCullFace();
+            if ((stage == EnumRenderStage.Opaque || stage == EnumRenderStage.ShadowNear) && !backfaceCulling && !oit) capi.Render.GlDisableCullFace();
 
-            if (meshref != null)
-            {
-                prog.BindTexture2D("entityTex", textureId, 0);
-                capi.Render.RenderMesh(meshref);
-            } else
-            {
-                capi.Render.RenderMultiTextureMesh(mtmeshref, "entityTex");
-            }
-            
+            capi.Render.RenderMultiTextureMesh(oit ? mtmeshrefTransparent : mtmeshrefOpaque, "entityTex");            
 
-            if ((stage == EnumRenderStage.Opaque || stage == EnumRenderStage.ShadowNear) && !backfaceCulling) capi.Render.GlEnableCullFace();
+            if ((stage == EnumRenderStage.Opaque || stage == EnumRenderStage.ShadowNear) && !backfaceCulling && !oit) capi.Render.GlEnableCullFace();
 
             prog.Stop();
             prevProg?.Use();
@@ -167,12 +179,24 @@ namespace Vintagestory.API.Common
 
         public void Dispose()
         {
-            capi.Event.UnregisterRenderer(this, EnumRenderStage.Opaque);
-            capi.Event.UnregisterRenderer(this, EnumRenderStage.ShadowFar);
-            capi.Event.UnregisterRenderer(this, EnumRenderStage.ShadowNear);
-            mtmeshref?.Dispose();
-			meshref?.Dispose();
+            if (RuntimeEnv.MainThreadId == Environment.CurrentManagedThreadId)
+            {
+                disposeInternal();
+            }
+            else
+            {
+                capi.Event.EnqueueMainThreadTask(disposeInternal, "animatableRendererDispose");
+            }
         }
 
+        private void disposeInternal()
+        {
+            capi.Event.UnregisterRenderer(this, EnumRenderStage.Opaque);
+            capi.Event.UnregisterRenderer(this, EnumRenderStage.OIT);
+            capi.Event.UnregisterRenderer(this, EnumRenderStage.ShadowFar);
+            capi.Event.UnregisterRenderer(this, EnumRenderStage.ShadowNear);
+            mtmeshrefOpaque?.Dispose();
+            mtmeshrefTransparent?.Dispose();
+        }
     }
 }

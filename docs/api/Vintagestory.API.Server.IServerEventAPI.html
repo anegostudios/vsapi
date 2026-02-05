@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -160,10 +160,16 @@ Interface IServerEventAPI
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MatchesGridRecipe">IEventAPI.MatchesGridRecipe</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MatchesRecipe">IEventAPI.MatchesRecipe</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_PushEvent_System_String_Vintagestory_API_Datastructures_IAttribute_">IEventAPI.PushEvent(string, IAttribute)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_System_Double_System_String_">IEventAPI.RegisterEventBusListener(EventBusListenerDelegate, double, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_">IEventAPI.UnregisterEventBusListener(EventBusListenerDelegate)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;float&gt;, int, int)</a>
@@ -173,6 +179,12 @@ Interface IServerEventAPI
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, float&gt;, BlockPos, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Action_System_Exception__System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, float&gt;, BlockPos, Action&lt;Exception&gt;, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__Vintagestory_API_MathTools_BlockPos_System_Action_System_Exception__System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;float&gt;, BlockPos, Action&lt;Exception&gt;, int, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_">IEventAPI.RegisterCallback(Action&lt;float&gt;, int)</a>
@@ -200,6 +212,9 @@ Interface IServerEventAPI
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot___System_Int32_">IEventAPI.TriggerMatchesRecipe(IPlayer, GridRecipe, ItemSlot[], int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IRecipeBase_Vintagestory_API_Common_ItemSlot___">IEventAPI.TriggerMatchesRecipe(IPlayer, IRecipeBase, ItemSlot[])</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerEntityMounted_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_IMountableSeat_">IEventAPI.TriggerEntityMounted(EntityAgent, IMountableSeat)</a>
@@ -454,6 +469,41 @@ When world type is null, all handlers are returned</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void MapRegionGeneration(MapRegionGeneratorDelegate handler, string forWorldType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handler</code> <a class="xref" href="Vintagestory.API.Common.MapRegionGeneratorDelegate.html">MapRegionGeneratorDelegate</a></dt>
+    <dd></dd>
+    <dt><code>forWorldType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>For which world types to use this generator</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerEventAPI_MapRegionNeighborsLoaded_" data-uid="Vintagestory.API.Server.IServerEventAPI.MapRegionNeighborsLoaded*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_MapRegionNeighborsLoaded_Vintagestory_API_Common_MapRegionGeneratorDelegate_System_String_" data-uid="Vintagestory.API.Server.IServerEventAPI.MapRegionNeighborsLoaded(Vintagestory.API.Common.MapRegionGeneratorDelegate,System.String)">
+  MapRegionNeighborsLoaded(MapRegionGeneratorDelegate, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Event that is triggered for the center mapregion whenever all surrounding mapregions are first generated/loaded, called repeatedly on mapregion re-loading</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MapRegionNeighborsLoaded(MapRegionGeneratorDelegate handler, string forWorldType)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1199,6 +1249,37 @@ Allows for the event to be cancelled depending on the return value.</p>
 
 
 
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_HandInteract" data-uid="Vintagestory.API.Server.IServerEventAPI.HandInteract">
+  HandInteract
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called before any server side hand interact code is executed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event HandInteractDelegate HandInteract</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.HandInteractDelegate.html">HandInteractDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Server_IServerEventAPI_MountGaitReceived" data-uid="Vintagestory.API.Server.IServerEventAPI.MountGaitReceived">
   MountGaitReceived
   
@@ -1359,7 +1440,7 @@ Allows for the event to be cancelled depending on the return value.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when a new player joins</p>
+  <div class="markdown level1 summary"><p>Called when a player joins for the very first time</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1452,7 +1533,7 @@ Allows for the event to be cancelled depending on the return value.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when a player joins</p>
+  <div class="markdown level1 summary"><p>Called when a new or existing player join, their game client is still loading</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1514,12 +1595,43 @@ Allows for the event to be cancelled depending on the return value.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when a player joins and his client is now fully loaded and ready to play</p>
+  <div class="markdown level1 summary"><p>Called after PlayerJoin. Called when a player joins and his client is now fully loaded and ready to play</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">event PlayerDelegate PlayerNowPlaying</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.PlayerDelegate.html">PlayerDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_PlayerReady" data-uid="Vintagestory.API.Server.IServerEventAPI.PlayerReady">
+  PlayerReady
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called after PlayerNowPlaying when mods have signalled the player is now ready to play. This is currently called only after the player has selected his character and class, or right away if he already selected character and class in a previous join</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event PlayerDelegate PlayerReady</code></pre>
   </div>
 
 

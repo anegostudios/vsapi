@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 #nullable disable
 
@@ -87,7 +87,8 @@ namespace Vintagestory.API.Common
 
         internal void SetMat(float[] modelMatrix)
         {
-            for (int i = 0; i < 16; i++)
+            var AnimModelMatrix = this.AnimModelMatrix;
+            for (int i = 0; i < modelMatrix.Length; i++)
             {
                 AnimModelMatrix[i] = modelMatrix[i];
             }

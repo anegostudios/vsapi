@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BlockDropItemStack
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents an itemstack that is dropped when breaking a block, with a potentially random quantity. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockDropItemStack.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Represents an itemstack that is dropped when breaking a block, with a potentially random quantity. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockDropItemStack.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -118,6 +118,12 @@ public class BlockDropItemStack</code></pre>
   </dl>
 
 
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.WeightedBlockDropItemstack.html">WeightedBlockDropItemstack</a></div>
+    </dd>
+  </dl>
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
@@ -245,15 +251,15 @@ public class BlockDropItemStack</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>Tree Attributes that should be attached to the resulting itemstack</p>
+  <div class="markdown level1 summary"><p>Tree Attributes that should be attached to the resulting itemstack</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
-public JsonObject Attributes</code></pre>
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonObject? Attributes</code></pre>
   </div>
 
 
@@ -279,14 +285,13 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>Code of the block or item</p>
+  <div class="markdown level1 summary"><p>Code of the block or item</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Code</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public AssetLocation? Code</code></pre>
   </div>
 
 
@@ -312,14 +317,13 @@ public AssetLocation Code</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code).</p>
+  <div class="markdown level1 summary"><p>If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public string DropModbyStat</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string? DropModbyStat</code></pre>
   </div>
 
 
@@ -345,13 +349,12 @@ public string DropModbyStat</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>If true, and this drop occurs, no further drops will happen.</p>
+  <div class="markdown level1 summary"><p>If true, and this drop occurs, no further drops will happen.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool LastDrop</code></pre>
   </div>
 
@@ -378,13 +381,12 @@ public bool LastDrop</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>Quantity to be dropped</p>
+  <div class="markdown level1 summary"><p>Quantity to be dropped</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat Quantity</code></pre>
   </div>
 
@@ -416,7 +418,7 @@ public NatFloat Quantity</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ItemStack ResolvedItemstack</code></pre>
+    <pre><code class="lang-csharp hljs">public ItemStack? ResolvedItemstack</code></pre>
   </div>
 
 
@@ -442,13 +444,12 @@ public NatFloat Quantity</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>If set, then the given tool is required to make this block drop anything.</p>
+  <div class="markdown level1 summary"><p>If set, then the given tool is required to make this block drop anything.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EnumTool? Tool</code></pre>
   </div>
 
@@ -475,13 +476,12 @@ public EnumTool? Tool</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
-<p>Block or Item?</p>
+  <div class="markdown level1 summary"><p>Block or Item?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;Block&quot;, false)]
 public EnumItemClass Type</code></pre>
   </div>
 
@@ -586,7 +586,7 @@ public EnumItemClass Type</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ItemStack GetNextItemStack(float dropQuantityMultiplier = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">public ItemStack? GetNextItemStack(float dropQuantityMultiplier = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -688,7 +688,7 @@ public EnumItemClass Type</code></pre>
   <a id="Vintagestory_API_Common_BlockDropItemStack_ToRandomItemstackForPlayer_" data-uid="Vintagestory.API.Common.BlockDropItemStack.ToRandomItemstackForPlayer*"></a>
 
   <h3 id="Vintagestory_API_Common_BlockDropItemStack_ToRandomItemstackForPlayer_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IWorldAccessor_System_Single_" data-uid="Vintagestory.API.Common.BlockDropItemStack.ToRandomItemstackForPlayer(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.IWorldAccessor,System.Single)">
-  ToRandomItemstackForPlayer(IPlayer, IWorldAccessor, float)
+  ToRandomItemstackForPlayer(IPlayer?, IWorldAccessor, float)
   
   </h3>
 
@@ -696,7 +696,7 @@ public EnumItemClass Type</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ItemStack ToRandomItemstackForPlayer(IPlayer byPlayer, IWorldAccessor world, float dropQuantityMultiplier)</code></pre>
+    <pre><code class="lang-csharp hljs">public ItemStack? ToRandomItemstackForPlayer(IPlayer? byPlayer, IWorldAccessor world, float dropQuantityMultiplier)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class NatFloat
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A more natural random number generator (nature usually doesn't grow by the exact same numbers nor does it completely randomly) <a href="https://github.com/anegostudios/vsapi/blob/master///Math/NatFloat.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A more natural random number generator (nature usually doesn't grow by the exact same numbers nor does it completely randomly) <a href=https://github.com/anegostudios/vsapi/blob/master///Math/NatFloat.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -123,13 +123,7 @@ public class NatFloat</code></pre>
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
@@ -139,9 +133,6 @@ public class NatFloat</code></pre>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
   </dd></dl>
 
@@ -220,13 +211,12 @@ public class NatFloat</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The average value for the random float.</p>
+  <div class="markdown level1 summary"><p>The average value for the random float.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
 public float avg</code></pre>
   </div>
 
@@ -253,13 +243,12 @@ public float avg</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>UNIFORM</jsondefault>-->
-<p>The type of distribution to use that determines the commodity of values.</p>
+  <div class="markdown level1 summary"><p>The type of distribution to use that determines the commodity of values.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;UNIFORM&quot;, false)]
 public EnumDistribution dist</code></pre>
   </div>
 
@@ -286,13 +275,12 @@ public EnumDistribution dist</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>A full offset to apply to any values returned.</p>
+  <div class="markdown level1 summary"><p>A full offset to apply to any values returned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float offset</code></pre>
   </div>
 
@@ -319,13 +307,12 @@ public float offset</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The variation for the random float.</p>
+  <div class="markdown level1 summary"><p>The variation for the random float.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
 public float var</code></pre>
   </div>
 
@@ -486,6 +473,81 @@ public float var</code></pre>
 
 
 
+  <a id="Vintagestory_API_MathTools_NatFloat_Equals_" data-uid="Vintagestory.API.MathTools.NatFloat.Equals*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_NatFloat_Equals_System_Object_" data-uid="Vintagestory.API.MathTools.NatFloat.Equals(System.Object)">
+  Equals(object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_NatFloat_Equals_" data-uid="Vintagestory.API.MathTools.NatFloat.Equals*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_NatFloat_Equals_Vintagestory_API_MathTools_NatFloat_" data-uid="Vintagestory.API.MathTools.NatFloat.Equals(Vintagestory.API.MathTools.NatFloat)">
+  Equals(NatFloat)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(NatFloat other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_NatFloat_FromBytes_" data-uid="Vintagestory.API.MathTools.NatFloat.FromBytes*"></a>
 
   <h3 id="Vintagestory_API_MathTools_NatFloat_FromBytes_System_IO_BinaryReader_" data-uid="Vintagestory.API.MathTools.NatFloat.FromBytes(System.IO.BinaryReader)">
@@ -517,6 +579,39 @@ public float var</code></pre>
 
 
 
+  <a id="Vintagestory_API_MathTools_NatFloat_GetHashCode_" data-uid="Vintagestory.API.MathTools.NatFloat.GetHashCode*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_NatFloat_GetHashCode" data-uid="Vintagestory.API.MathTools.NatFloat.GetHashCode">
+  GetHashCode()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A hash code for the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_NatFloat_ToBytes_" data-uid="Vintagestory.API.MathTools.NatFloat.ToBytes*"></a>
 
   <h3 id="Vintagestory_API_MathTools_NatFloat_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.MathTools.NatFloat.ToBytes(System.IO.BinaryWriter)">
@@ -537,6 +632,39 @@ public float var</code></pre>
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_NatFloat_ToString_" data-uid="Vintagestory.API.MathTools.NatFloat.ToString*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_NatFloat_ToString" data-uid="Vintagestory.API.MathTools.NatFloat.ToString">
+  ToString()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a string that represents the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string that represents the current object.</p>
+</dd>
+  </dl>
 
 
 
@@ -1204,6 +1332,86 @@ public float var</code></pre>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_NatFloat_op_Equality_" data-uid="Vintagestory.API.MathTools.NatFloat.op_Equality*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_NatFloat_op_Equality_Vintagestory_API_MathTools_NatFloat_Vintagestory_API_MathTools_NatFloat_" data-uid="Vintagestory.API.MathTools.NatFloat.op_Equality(Vintagestory.API.MathTools.NatFloat,Vintagestory.API.MathTools.NatFloat)">
+  operator ==(NatFloat, NatFloat)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(NatFloat left, NatFloat right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_NatFloat_op_Inequality_" data-uid="Vintagestory.API.MathTools.NatFloat.op_Inequality*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_NatFloat_op_Inequality_Vintagestory_API_MathTools_NatFloat_Vintagestory_API_MathTools_NatFloat_" data-uid="Vintagestory.API.MathTools.NatFloat.op_Inequality(Vintagestory.API.MathTools.NatFloat,Vintagestory.API.MathTools.NatFloat)">
+  operator !=(NatFloat, NatFloat)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(NatFloat left, NatFloat right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

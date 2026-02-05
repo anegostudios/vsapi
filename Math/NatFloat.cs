@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 #nullable disable
@@ -90,28 +90,28 @@ namespace Vintagestory.API.MathTools
         public static NatFloat One { get { return new NatFloat(1, 0, EnumDistribution.UNIFORM); } }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// A full offset to apply to any values returned.
         /// </summary>
-        [DocumentAsJson] public float offset = 0f;
+        [DocumentAsJson("Optional", "0")]
+        public float offset = 0f;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The average value for the random float.
         /// </summary>
-        [DocumentAsJson] public float avg = 0f;
+        [DocumentAsJson("Recommended", "0")]
+        public float avg = 0f;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The variation for the random float.
         /// </summary>
-        [DocumentAsJson] public float var = 0;
+        [DocumentAsJson("Recommended", "0")]
+        public float var = 0;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>UNIFORM</jsondefault>-->
         /// The type of distribution to use that determines the commodity of values.
         /// </summary>
-        [DocumentAsJson] public EnumDistribution dist = EnumDistribution.UNIFORM;
+        [DocumentAsJson("Optional", "UNIFORM")]
+        public EnumDistribution dist = EnumDistribution.UNIFORM;
 
         [ThreadStatic]
         static Random threadsafeRand;
@@ -174,6 +174,42 @@ namespace Vintagestory.API.MathTools
         public static NatFloat create(EnumDistribution distribution, float averagevalue, float variance)
         {
             return new NatFloat(averagevalue, variance, distribution);
+        }
+
+
+
+        public override int GetHashCode()
+        {
+            return offset.GetHashCode() ^ avg.GetHashCode() ^ var.GetHashCode() ^ dist.GetHashCode();
+        }
+
+        public bool Equals(NatFloat other)
+        {
+            return other != null 
+                && other.offset == offset 
+                && other.avg == avg
+                && other.var == var
+                && other.dist == dist;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as NatFloat);
+        }
+
+        public static bool operator ==(NatFloat left, NatFloat right)
+        {
+            if (object.ReferenceEquals(left, null))
+            {
+                return object.ReferenceEquals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(NatFloat left, NatFloat right)
+        {
+            return !(left == right);
         }
 
 
@@ -476,6 +512,10 @@ namespace Vintagestory.API.MathTools
             avg = reader.ReadSingle();
             var = reader.ReadSingle();
             dist = (EnumDistribution)reader.ReadByte();
+        }
+
+        public override string ToString() {
+            return $"{{ avg: {avg}, var: {var}, dist: {dist} }}";
         }
     }
 }

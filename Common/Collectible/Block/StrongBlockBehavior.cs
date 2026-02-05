@@ -55,7 +55,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public virtual bool DoParticalSelection(IWorldAccessor world, BlockPos pos, ref EnumHandling handled)
+        public virtual bool DoPartialSelection(IWorldAccessor world, BlockPos pos, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
             return false;

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Cairo;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;

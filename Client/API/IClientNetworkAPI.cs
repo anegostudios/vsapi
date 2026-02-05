@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -158,6 +158,16 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
+        /// Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="internalPacket"></param>
+        void SendBlockEntityPacketWithOffset(int x, int y, int z, int packetIdOffset, object internalPacket);
+
+
+        /// <summary>
         /// Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
         /// </summary>
         /// <param name="entityid"></param>
@@ -201,6 +211,7 @@ namespace Vintagestory.API.Client
 
         /// <summary>
         /// If any mod denies the client event IsPlayerReady, then it has to call this method once to indicate that the player is now ready to play (which switches the server side client state from Connected to Playing)
+        /// This sends a packet to the server. IsPlayerReady is currently denied by the vanilla game when the player has not yet selected a character
         /// </summary>
         void SendPlayerNowReady();
 

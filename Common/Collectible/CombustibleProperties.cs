@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -89,71 +89,71 @@ namespace Vintagestory.API.Common
     public class CombustibleProperties
     {
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The temperature at which this collectible burns when used as a fuel.
         /// </summary>
-        [DocumentAsJson] public int BurnTemperature;
+        [DocumentAsJson("Optional", "0")]
+        public int BurnTemperature;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The duration, in real life seconds, that this collectible burns for when used as a fuel. 
         /// </summary>
-        [DocumentAsJson] public float BurnDuration;
+        [DocumentAsJson("Optional", "0")]
+        public float BurnDuration;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>500</jsondefault>-->
         /// How many degrees celsius it can resists before it ignites
         /// </summary>
-        [DocumentAsJson] public int HeatResistance = 500;
+        [DocumentAsJson("Optional", "500")]
+        public int HeatResistance = 500;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// How many degrees celsius it takes to smelt/transform this collectible into another. Required if <see cref="SmeltedStack"/> is set.
         /// </summary>
-        [DocumentAsJson] public int MeltingPoint;
+        [DocumentAsJson("Recommended", "0")]
+        public int MeltingPoint;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// If there is a melting point, the max temperature it can reach. A value of 0 implies no limit.
         /// </summary>
-        [DocumentAsJson] public int MaxTemperature;
+        [DocumentAsJson("Optional", "0")]
+        public int MaxTemperature;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// For how many seconds the temperature has to be above the melting point until the item is smelted. Recommended if <see cref="SmeltedStack"/> is set.
         /// </summary>
-        [DocumentAsJson] public float MeltingDuration;
+        [DocumentAsJson("Recommended", "0")]
+        public float MeltingDuration;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much smoke this item produces when being used as fuel
         /// </summary>
-        [DocumentAsJson] public float SmokeLevel = 1f;
+        [DocumentAsJson("Optional", "1")]
+        public float SmokeLevel = 1f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How many of this collectible are needed to smelt into <see cref="SmeltedStack"/>.
         /// </summary>
-        [DocumentAsJson] public int SmeltedRatio = 1;
+        [DocumentAsJson("Optional", "1")]
+        public int SmeltedRatio = 1;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Smelt</jsondefault>-->
         /// Some smelt types have specific functionality, and are also used for correct naming in the tool tip.
         /// If using <see cref="EnumSmeltType.Bake"/>, you will need to include <see cref="BakingProperties"/> in your item attributes.
         /// </summary>
-        [DocumentAsJson] public EnumSmeltType SmeltingType;
+        [DocumentAsJson("Recommended", "Smelt")]
+        public EnumSmeltType SmeltingType;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// If set, this is the resulting itemstack once the MeltingPoint has been reached for the supplied duration.
         /// </summary>
-        [DocumentAsJson] public JsonItemStack SmeltedStack;
+        [DocumentAsJson("Recommended", "0")]
+        public JsonItemStack SmeltedStack;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
         /// If true, a container is required to smelt this item. 
         /// </summary>
-        [DocumentAsJson] public bool RequiresContainer = true;
+        [DocumentAsJson("Optional", "True")]
+        public bool RequiresContainer = true;
 
 
         /// <summary>
@@ -233,55 +233,55 @@ namespace Vintagestory.API.Common
     public class BakingProperties
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>160</jsondefault>-->
         /// The temperature required to bake the item.
         /// </summary>
-        [DocumentAsJson] public float? Temp;
+        [DocumentAsJson("Recommended", "160")]
+        public float? Temp;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The initial value, from 0 to 1, that determines how cooked the item is.
         /// When cooking an object with numerous cooking stages, these stages can be stacked using these values. Simply set the second stage's <see cref="LevelFrom"/> to the first stages <see cref="LevelTo"/>.
         /// </summary>
-        [DocumentAsJson] public float LevelFrom;
+        [DocumentAsJson("Recommended", "0")]
+        public float LevelFrom;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
         /// The final value, from 0 to 1, that determines how cooked the item is.
         /// When the cooking value reaches this value, the collectible will change into the next item.
         /// When cooking an object with numerous cooking stages, these stages can be stacked using these values. Simply set the second stage's <see cref="LevelFrom"/> to the first stages <see cref="LevelTo"/>.
         /// </summary>
-        [DocumentAsJson] public float LevelTo;
+        [DocumentAsJson("Recommended", "1")]
+        public float LevelTo;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The Y scale of this collectible when it begins cooking. Value will be linearly interpolated between this and <see cref="EndScaleY"/>.
         /// </summary>
-        [DocumentAsJson] public float StartScaleY;
+        [DocumentAsJson("Optional", "1")]
+        public float StartScaleY;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The Y scale of this collectible when it has finished cooking. Value will be linearly interpolated between <see cref="StartScaleY"/> and this.
         /// </summary>
-        [DocumentAsJson] public float EndScaleY;
+        [DocumentAsJson("Optional", "1")]
+        public float EndScaleY;
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The code of the resulting collectible when this item finishes its cooking stage.
         /// </summary>
-        [DocumentAsJson] public string ResultCode;
+        [DocumentAsJson("Required")]
+        public string ResultCode;
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The code of the initial collectible that is being baked.
         /// </summary>
-        [DocumentAsJson] public string InitialCode;
+        [DocumentAsJson("Required")]
+        public string InitialCode;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>false</jsondefault>-->
         /// If true, only one instance of this collectible can be baked at a time. If false, 4 of this collectible can be baked at a time.
         /// </summary>
-        [DocumentAsJson] public bool LargeItem;
+        [DocumentAsJson("Recommended", "False")]
+        public bool LargeItem;
 
         public static BakingProperties ReadFrom(ItemStack stack)
         {
@@ -292,7 +292,7 @@ namespace Vintagestory.API.Common
 
             if (result.Temp == null || result.Temp == 0)
             {
-                CombustibleProperties props = stack.Collectible.CombustibleProps;
+                CombustibleProperties props = stack.Collectible.GetCombustibleProperties(null, stack, null);
                 if (props != null) result.Temp = props.MeltingPoint - 40;
             }
             return result;

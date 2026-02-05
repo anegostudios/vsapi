@@ -1,5 +1,7 @@
-﻿
+
 #nullable disable
+using Vintagestory.API.Datastructures;
+
 namespace Vintagestory.API.Client
 {
     public class FrameBufferRef
@@ -11,5 +13,7 @@ namespace Vintagestory.API.Client
 
         public int Width;
         public int Height;
+
+        public bool Disposed;
     }
 }

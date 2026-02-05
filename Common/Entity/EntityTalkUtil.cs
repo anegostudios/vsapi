@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
@@ -17,6 +17,7 @@ namespace Vintagestory.API.Util
         Idle,
         Hurt,
         Hurt2,
+        Smallhurt,
         Death,
         Purchase,
         Complain,
@@ -98,9 +99,12 @@ namespace Vintagestory.API.Util
         {
             if (soundLength < 0)
             {
+                var loc = getSoundLocOnly(pitch, out pitchOffset);
+                if (loc == null) return null;
+
                 SoundParams param = new SoundParams()
                 {
-                    Location = getSoundLocOnly(pitch, out _),
+                    Location = loc,
                     DisposeOnFinish = true,
                     ShouldLoop = false,
                 };
@@ -122,12 +126,17 @@ namespace Vintagestory.API.Util
                 }
 
                 int len = sounds.Count;
+                if (len == 0)
+                {
+                    capi.Logger.Warning("EntityTalkUtil: No sounds found at {0}", soundName);
+                    pitchOffset = 0;
+                    return null;
+                }
                 int index = (int)GameMath.Clamp((pitch - 0.65f) * len, 0, len - 1);
 
                 float pitchPerStep = 1f / len;
                 float basePitch = index * pitchPerStep + 0.65f;
                 pitchOffset = pitch - basePitch;
-
                 return sounds[index].Location;
             }
 
@@ -336,6 +345,21 @@ namespace Vintagestory.API.Util
 
                                 break;
                             }
+
+                        case EnumTalkType.Smallhurt:
+                            {
+                                float startPitch = 0.75f + 0.4f * (float)Rand.NextDouble() + (1 - (float)totalLettersTalked / totalLettersToTalk);
+                                float endPitch = startPitch - 0.1f;
+                                PlaySound(startPitch, endPitch, 0.7f, 0.4f, soundLen);
+
+                                if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
+                                {
+                                    chordDelay = 0.2f * chordDelayMul;
+                                    currentLetterInWord = 0;
+                                }
+                                chordDelay = 0;
+                                break;
+                            }
                     }
 
                     if (AddSoundLengthChordDelay)
@@ -375,6 +399,7 @@ namespace Vintagestory.API.Util
             
 
             var loc = GetSoundLocation(startPitch, out var pitchOffset);
+            if (loc == null) return;
 
             SoundParams param = new SoundParams()
             {
@@ -430,6 +455,10 @@ namespace Vintagestory.API.Util
             if (talkType == EnumTalkType.Hurt || talkType == EnumTalkType.Hurt2)
             {
                 lettersLeftToTalk = 2 + world.Rand.Next(3);
+            }
+            if (talkType == EnumTalkType.Smallhurt)
+            {
+                lettersLeftToTalk = 1 + world.Rand.Next(2);
             }
 
             if (talkType == EnumTalkType.Idle)
@@ -491,6 +520,7 @@ namespace Vintagestory.API.Util
                 { EnumTalkType.Laugh, 0.2f },
                 { EnumTalkType.Hurt, 0.07f },
                 { EnumTalkType.Hurt2, 0.07f },
+                { EnumTalkType.Smallhurt, 0.08f },
                 { EnumTalkType.Goodbye, 0.07f },
                 { EnumTalkType.Complain, 0.09f },
                 { EnumTalkType.Purchase, 0.15f },

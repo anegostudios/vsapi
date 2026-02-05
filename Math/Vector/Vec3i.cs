@@ -122,7 +122,13 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        [Obsolete("Use the correctly-spelled ManhattanDistanceTo instead")]
         public int ManhattenDistanceTo(Vec3i vec)
+        {
+            return ManhattanDistanceTo(vec);
+        }
+
+        public int ManhattanDistanceTo(Vec3i vec)
         {
             return Math.Abs(X - vec.X) + Math.Abs(Y - vec.Y) + Math.Abs(Z - vec.Z);
         }
@@ -282,12 +288,7 @@ namespace Vintagestory.API.MathTools
 
         public BlockPos ToBlockPos()
         {
-            return new BlockPos()
-            {
-                X = this.X,
-                Y = this.Y,
-                Z = this.Z
-            };
+            return new BlockPos(X, Y, Z);
         }
 
         public bool Equals(int x, int y, int z)
@@ -295,7 +296,13 @@ namespace Vintagestory.API.MathTools
             return this.X == x && this.Y == y && this.Z == z;
         }
 
-
+        public Vec3i Mul(int mul)
+        {
+            this.X *= mul;
+            this.Y *= mul;
+            this.Z *= mul;
+            return this;
+        }
 
         public static Vec3i operator *(Vec3i left, int right)
         {

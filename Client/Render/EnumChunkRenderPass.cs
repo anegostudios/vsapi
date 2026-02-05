@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -46,6 +46,10 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Uses the depth buffer from the OIT pass to prevent water plants showing in sailboats 
         /// </summary>
-        OpaqueWaterPlant = 7
+        OpaqueWaterPlant = 7,
+        /// <summary>
+        /// Decor overlays need to come last because they are on top of other things; they are essentially Opaque but done last
+        /// </summary>
+        Decor = 8
     }
 }

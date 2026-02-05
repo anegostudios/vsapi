@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -6,14 +6,10 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+
     public class DrunkPerceptionEffect : PerceptionEffect
     {
-        NormalizedSimplexNoise noisegen = NormalizedSimplexNoise.FromDefaultOctaves(4, 1, 0.9, 123);
-
-        public DrunkPerceptionEffect(ICoreClientAPI capi) : base(capi)
-        {
-
-        }
+        public DrunkPerceptionEffect(ICoreClientAPI capi) : base(capi) { }
 
         float accum;
         float accum1s;
@@ -51,16 +47,18 @@ namespace Vintagestory.API.Client
 
             var hc = capi.World.Player.Entity.AnimManager.HeadController;
 
-            hc.yawOffset = (float)(Math.Cos(accum / 1.12) + Math.Cos(accum / 1.2f) + Math.Cos(accum / 4f) * 0.2f) * f * 60f;
+            hc.YawOffset = (float)(Math.Cos(accum / 1.12) + Math.Cos(accum / 1.2f) + Math.Cos(accum / 4f) * 0.2f) * f * 60f;
             accum /= 2;
-            hc.pitchOffset = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
+            hc.PitchOffset = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
 
-            hc.pitchOffset = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
+            hc.PitchOffset = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
 
 
             double accum2 = (float)((capi.InWorldEllapsedMilliseconds / 9000.0) % 100 * Math.PI);
             float intox = capi.Render.ShaderUniforms.PerceptionEffectIntensity;
-            capi.Render.ShaderUniforms.AmbientBloomLevelAdd[DefaultShaderUniforms.BloomAddDrunkIndex] = GameMath.Clamp((float)Math.Abs(Math.Cos(accum2 / 1.12) + Math.Sin(accum2 / 2.2) + Math.Cos(accum2 * 2.3)) * intox * 2, intox / 3f, 1.8f);
+
+            var b = GameMath.Clamp((float)Math.Abs(Math.Cos(accum2 / 1.12) + Math.Sin(accum2 / 2.2) + Math.Cos(accum2 * 2.3)) * intox * 2, intox / 3f, 1.8f); ;
+            capi.Render.ShaderUniforms.AmbientBloomLevelAdd[DefaultShaderUniforms.BloomAddDrunkIndex] = b;
         }
 
         public override void ApplyToFpHand(Matrixf modelMat)
@@ -90,7 +88,5 @@ namespace Vintagestory.API.Client
 
             capi.Render.ShaderUniforms.PerceptionEffectId = 2;
         }
-
-
     }
 }

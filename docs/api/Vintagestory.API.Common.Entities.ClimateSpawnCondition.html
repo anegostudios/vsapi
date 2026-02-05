@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class ClimateSpawnCondition
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A list of conditions based on climate. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/SpawnConditions.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A list of conditions based on climate. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/SpawnConditions.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -171,18 +171,82 @@ public class ClimateSpawnCondition</code></pre>
 
 
 
+  <h3 id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_HabitatSize" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.HabitatSize">
+  HabitatSize
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, will check for suitable habitat size (e.g. when underwater and size of 2 will check that there is also water 2 blocks away in all directions
+For habitat land: Not implemented yet
+For habitat air: Not implemented yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;true&quot;, false)]
+public int HabitatSize</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_MapCode" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.MapCode">
+  MapCode
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public string MapCode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_MaxForest" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.MaxForest">
   MaxForest
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The maximum amount of forest cover needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The maximum amount of forest cover needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float MaxForest</code></pre>
   </div>
 
@@ -209,13 +273,12 @@ public float MaxForest</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The maximum amount of rain for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The maximum amount of rain for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float MaxRain</code></pre>
   </div>
 
@@ -242,13 +305,12 @@ public float MaxRain</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The maximum amount of shrubbery needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The maximum amount of shrubbery needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float MaxShrubs</code></pre>
   </div>
 
@@ -275,13 +337,12 @@ public float MaxShrubs</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>40</jsondefault>-->
-<p>The maximum tempurature for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The maximum tempurature for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;40&quot;, false)]
 public float MaxTemp</code></pre>
   </div>
 
@@ -308,13 +369,12 @@ public float MaxTemp</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>2</jsondefault>-->
-<p>Won't span above maxY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
+  <div class="markdown level1 summary"><p>Won't span above maxY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;2&quot;, false)]
 public float MaxY</code></pre>
   </div>
 
@@ -341,13 +401,12 @@ public float MaxY</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The minimum amount of forest cover needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The minimum amount of forest cover needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float MinForest</code></pre>
   </div>
 
@@ -374,13 +433,12 @@ public float MinForest</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The minimum amount of forest or shrubs for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The minimum amount of forest or shrubs for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float MinForestOrShrubs</code></pre>
   </div>
 
@@ -407,13 +465,12 @@ public float MinForestOrShrubs</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The minimum amount of rain for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The minimum amount of rain for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float MinRain</code></pre>
   </div>
 
@@ -440,13 +497,12 @@ public float MinRain</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The minimum amount of shrubbery needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The minimum amount of shrubbery needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float MinShrubs</code></pre>
   </div>
 
@@ -473,13 +529,12 @@ public float MinShrubs</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>-40</jsondefault>-->
-<p>The minimum tempurature for the object to spawn.</p>
+  <div class="markdown level1 summary"><p>The minimum tempurature for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;-40&quot;, false)]
 public float MinTemp</code></pre>
   </div>
 
@@ -506,13 +561,12 @@ public float MinTemp</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>Won't span below minY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
+  <div class="markdown level1 summary"><p>Won't span below minY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float MinY</code></pre>
   </div>
 
@@ -533,8 +587,143 @@ public float MinY</code></pre>
 
 
 
+
+  <h3 id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_RandomMapCodePool" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.RandomMapCodePool">
+  RandomMapCodePool
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If defined, further constrains the spawning areas by a large scale 2D density map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;null&quot;, false)]
+public string[] RandomMapCodePool</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_Clone_" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.Clone*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_Clone" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.Clone">
+  Clone()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ClimateSpawnCondition Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html">ClimateSpawnCondition</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_MatchesClimate_" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.MatchesClimate*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_MatchesClimate_Vintagestory_API_Common_ClimateCondition_" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.MatchesClimate(Vintagestory.API.Common.ClimateCondition)">
+  MatchesClimate(ClimateCondition)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MatchesClimate(ClimateCondition climate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>climate</code> <a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_MatchesForestation_" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.MatchesForestation*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_MatchesForestation_Vintagestory_API_Common_ClimateCondition_" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.MatchesForestation(Vintagestory.API.Common.ClimateCondition)">
+  MatchesForestation(ClimateCondition)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MatchesForestation(ClimateCondition climate)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>climate</code> <a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Common_Entities_ClimateSpawnCondition_SetFrom_" data-uid="Vintagestory.API.Common.Entities.ClimateSpawnCondition.SetFrom*"></a>

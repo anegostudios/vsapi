@@ -1,10 +1,7 @@
-using OpenTK.Windowing.GraphicsLibraryFramework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection.Metadata;
 using System.Threading;
-using Vintagestory.API.Common;
 
 #nullable disable
 

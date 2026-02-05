@@ -1,4 +1,5 @@
-﻿using Cairo;
+using Cairo;
+using System.Linq;
 using Vintagestory.API.Config;
 
 #nullable disable
@@ -141,21 +142,27 @@ namespace Vintagestory.API.Client
 
             return Lines.Length > 1 ? EnumCalcBoundsResult.Multiline : EnumCalcBoundsResult.Continue;
         }
-        
 
+
+        // This is not really the correct way of solving it
+        // This offset ought to be *per line* not for all text lines
         protected double GetFontOrientOffsetX()
         {
             if (Lines.Length == 0) return 0;
+            
+            var leftSpace = Lines.Min(line => line.LeftSpace);
+            var rightSpace = Lines.Min(line => line.RightSpace);
 
-            var textLine = Lines[Lines.Length - 1];
-            double offsetX = 0; if (Font.Orientation == EnumTextOrientation.Center)
+            double offsetX = 0;
+
+            if (Font.Orientation == EnumTextOrientation.Center)
             {
-                offsetX = (textLine.LeftSpace + textLine.RightSpace) / 2;
+                offsetX = (leftSpace + rightSpace) / 2;
             }
 
             if (Font.Orientation == EnumTextOrientation.Right)
             {
-                offsetX = textLine.LeftSpace + textLine.RightSpace;
+                offsetX = leftSpace + rightSpace;
             }
 
             return offsetX;

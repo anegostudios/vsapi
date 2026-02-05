@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class EntityBehaviorPassivePhysics
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/EntityBehavior/BehaviorPassivePhysics.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/EntityBehavior/BehaviorPassivePhysics.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -195,6 +195,9 @@ Class EntityBehaviorPassivePhysics
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnEntityReceiveSaturation_System_Single_Vintagestory_API_Common_EnumFoodCategory_System_Single_System_Single_">EntityBehavior.OnEntityReceiveSaturation(float, EnumFoodCategory, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__">EntityBehavior.OnReceivedServerPos(bool, ref EnumHandling)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__">EntityBehavior.GetDrops(IWorldAccessor, BlockPos, IPlayer, ref EnumHandling)</a>
@@ -352,6 +355,130 @@ Class EntityBehaviorPassivePhysics
 
 
 
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_AirDragValue" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.AirDragValue">
+  AirDragValue
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of drag while travelling through the air.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double AirDragValue</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_BoyancyMul" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.BoyancyMul">
+  BoyancyMul
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of drag while travelling on the ground.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double BoyancyMul</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_GravityPerSecond" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.GravityPerSecond">
+  GravityPerSecond
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of gravity applied per tick to this entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GravityPerSecond</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_GroundDragValue" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.GroundDragValue">
+  GroundDragValue
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of drag while travelling on the ground.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GroundDragValue</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnPhysicsTickCallback" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTickCallback">
   OnPhysicsTickCallback
   
@@ -383,6 +510,127 @@ Class EntityBehaviorPassivePhysics
 
 
 
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_WaterDragValue" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.WaterDragValue">
+  WaterDragValue
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of drag while travelling through water.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double WaterDragValue</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_collidedBefore" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.collidedBefore">
+  collidedBefore
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool collidedBefore</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_feetInLiquidBefore" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.feetInLiquidBefore">
+  feetInLiquidBefore
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool feetInLiquidBefore</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_motionBeforeY" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.motionBeforeY">
+  motionBeforeY
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected double motionBeforeY</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_newPos" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.newPos">
   newPos
   
@@ -401,6 +649,96 @@ Class EntityBehaviorPassivePhysics
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_onGroundBefore" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.onGroundBefore">
+  onGroundBefore
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool onGroundBefore</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_prevPos" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.prevPos">
+  prevPos
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly Vec3d prevPos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_swimmingBefore" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.swimmingBefore">
+  swimmingBefore
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool swimmingBefore</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -615,6 +953,42 @@ Class EntityBehaviorPassivePhysics
 
 
 
+  <a id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_IsFirstTick_" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.IsFirstTick*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_IsFirstTick_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.IsFirstTick(Vintagestory.API.Common.Entities.Entity)">
+  IsFirstTick(Entity)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool IsFirstTick(Entity entity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_MotionAndCollision_" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision*"></a>
 
   <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_MotionAndCollision_Vintagestory_API_Common_Entities_EntityPos_System_Single_" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)">
@@ -731,42 +1105,6 @@ Class EntityBehaviorPassivePhysics
   <dl class="parameters">
     <dt><code>version</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnReceivedServerPos_" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)">
-  OnReceivedServerPos(bool, ref EnumHandling)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>The event fired when the server position is changed.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnReceivedServerPos(bool isTeleport, ref EnumHandling handled)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>isTeleport</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Whether or not this entity was teleported.</p>
-</dd>
-    <dt><code>handled</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
-    <dd><p>How this event is handled.</p>
-</dd>
   </dl>
 
 

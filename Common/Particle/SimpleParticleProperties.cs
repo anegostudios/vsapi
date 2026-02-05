@@ -50,12 +50,12 @@ namespace Vintagestory.API.Common
         public bool ShouldSwimOnLiquid { get; set; }
         public bool WithTerrainCollision { get; set; } = true;
 
-        public EvolvingNatFloat OpacityEvolve { get; set; }
-        public EvolvingNatFloat RedEvolve { get; set; }
-        public EvolvingNatFloat GreenEvolve { get; set; }
-        public EvolvingNatFloat BlueEvolve { get; set; }
+        public EvolvingNatFloat OpacityEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
+        public EvolvingNatFloat RedEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
+        public EvolvingNatFloat GreenEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
+        public EvolvingNatFloat BlueEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
 
-        public EvolvingNatFloat SizeEvolve { get; set; }
+        public EvolvingNatFloat SizeEvolve { get; set; } = EvolvingNatFloat.NoValueSet;
 
         public bool SelfPropelled;
 
@@ -193,20 +193,40 @@ namespace Vintagestory.API.Common
             writer.Write(ShouldDieInAir);
             writer.Write(ShouldDieInLiquid);
 
-            writer.Write(OpacityEvolve == null);
-            if (OpacityEvolve != null) OpacityEvolve.ToBytes(writer);
+            if (OpacityEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                OpacityEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
-            writer.Write(RedEvolve == null);
-            if (RedEvolve != null) RedEvolve.ToBytes(writer);
+            if (RedEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                RedEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
-            writer.Write(GreenEvolve == null);
-            if (GreenEvolve != null) GreenEvolve.ToBytes(writer);
+            if (GreenEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                GreenEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
-            writer.Write(BlueEvolve == null);
-            if (BlueEvolve != null) BlueEvolve.ToBytes(writer);
+            if (BlueEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                BlueEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
-            writer.Write(SizeEvolve == null);
-            if (SizeEvolve != null) SizeEvolve.ToBytes(writer);
+            if (SizeEvolve != EvolvingNatFloat.NoValueSet)
+            {
+                writer.Write(false);
+                SizeEvolve.ToBytes(writer);
+            }
+            else writer.Write(true);
 
             writer.Write(SelfPropelled);
 
@@ -266,7 +286,6 @@ namespace Vintagestory.API.Common
             {
                 BlueEvolve = EvolvingNatFloat.CreateFromBytes(reader);
             }
-
 
             if (!reader.ReadBoolean())
             {

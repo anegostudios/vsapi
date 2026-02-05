@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 #nullable disable
 
@@ -41,6 +42,15 @@ namespace Vintagestory.API.Config
         /// Used in various places if the dimension of a chunk is combined into the chunk's y value.
         /// </summary>
         public const int DimensionSizeInChunks = 2 * MaxWorldSizeY / ChunkSize;
+
+        /// <summary>
+        /// The low-res terrain height map will be in squares of this size
+        /// </summary>
+        public const int LowResMapInterval = 4;
+        /// <summary>
+        /// The low-res terrain height map will have padding of this much
+        /// </summary>
+        public const int LowResMapPadding = 4;
 
         /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card
@@ -160,6 +170,13 @@ namespace Vintagestory.API.Config
         public static float GuiGearRotJitter = 0f;
 
         public const int MaxViewDistanceForLodBiases = 640;
+
+        /// <summary>
+        /// Needed for tongs
+        /// </summary>
+        public static int TooHotToTouchTemperature = 100;
+
+        public static int CollectibleDefaultTemperature = 20;
 
 
         /// <summary>
@@ -374,5 +391,7 @@ namespace Vintagestory.API.Config
         {
             return FoodSpoilSatLossMulHandler(spoilState, stack, byEntity);
         }
+
+        public static SoundAttributes DefaultBuildSound = new SoundAttributes(new AssetLocation("sounds/player/build"), true) { Range = 16 };
     }
 }

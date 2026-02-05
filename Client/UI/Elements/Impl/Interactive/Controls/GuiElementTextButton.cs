@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -173,7 +173,7 @@ namespace Vintagestory.API.Client
             {
                 // Brown background
                 Rectangle(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
-                ctx.SetSourceRGBA(69 / 255.0, 52 / 255.0, 36 / 255.0, 0.8);
+                ctx.SetSourceRGBA(GuiStyle.ButtonBackColor);
                 ctx.Fill();
             }
 

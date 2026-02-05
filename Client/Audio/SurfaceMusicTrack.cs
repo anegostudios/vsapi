@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +72,12 @@ namespace Vintagestory.API.Client
 
         [JsonProperty]
         public float DistanceToSpawnPoint = -1;
+
+        [JsonProperty]
+        public float StructureDistance = 10;
+        [JsonProperty]
+        public string InStructureLocationCode = null;
+
 
         /// <summary>
         /// The current song's priority. If higher than 1, will stop other tracks and start this one
@@ -173,7 +179,7 @@ namespace Vintagestory.API.Client
         protected float nowMinHour;
         protected float nowMaxHour;
 
-        
+
         /// <summary>
         /// Gets the previous frequency setting.
         /// </summary>
@@ -187,7 +193,7 @@ namespace Vintagestory.API.Client
             get { return capi.Settings.Int["musicFrequency"]; }
         }
 
-        
+
 
         /// <summary>
         /// Initialize the track.
@@ -229,7 +235,7 @@ namespace Vintagestory.API.Client
             Random rnd = capi.World.Rand;
 
             float hourRange = Math.Min(2 + Math.Max(0, prevFrequency), MaxHour - MinHour);
-            
+
             nowMinHour = Math.Max(MinHour, Math.Min(MaxHour - 1, MinHour - 1 + (float)(rnd.NextDouble() * (hourRange+1))));
             nowMaxHour = Math.Min(MaxHour, nowMinHour + hourRange);
         }
@@ -262,25 +268,37 @@ namespace Vintagestory.API.Client
         /// <returns>Should we play the current track?</returns>
         public virtual bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
         {
-            if (IsActive || !ShouldPlayMusic) return false;
-            if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return false;
-            if (OnPlayList != "*" && !OnPlayLists.Contains(props.PlayListCode)) return false;
-            if (props.sunSlight < MinSunlight) return false;
-            if (musicEngine.LastPlayedTrack == this) return false;
-            if (conds.Temperature > MaxTemperature) return false;
-            if (conds.Rainfall < MinRainFall) return false;
-            if (props.DistanceToSpawnPoint < DistanceToSpawnPoint) return false;
+            var code = GetPlayTestCode(props, conds, pos);
+            // capi.Logger.Debug("{0}: play test code: {1}", Name, code);
+            return code == "ok";
+        }
+
+        public string GetPlayTestCode(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
+        {
+            if (IsActive || !ShouldPlayMusic) return "notactive";
+            if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return "onglobalcooldown";
+            if (OnPlayList != "*" && !OnPlayLists.Contains(props.PlayListCode)) return "notonplaylist";
+            if (props.sunSlight < MinSunlight) return "toodark";
+            if (musicEngine.LastPlayedTrack == this) return "recentlyplayed";
+            if (conds.Temperature > MaxTemperature) return "toohot";
+            if (conds.Rainfall < MinRainFall) return "toodry";
+            if (props.DistanceToSpawnPoint < DistanceToSpawnPoint) return "tooclosetospawn";
             float season = capi.World.Calendar.GetSeasonRel(pos);
-            if (season < MinSeason || season > MaxSeason) return false;
+            if (season < MinSeason || season > MaxSeason) return "outofseason";
 
             float latitude = (float)Math.Abs(capi.World.Calendar.OnGetLatitude(pos.Z));
-            if (latitude < MinLatitude || latitude > MaxLatitude) return false;
+            if (latitude < MinLatitude || latitude > MaxLatitude) return "beyondlatitude";
+
+            if (InStructureLocationCode != null)
+            {
+                if (!inStructureRange(InStructureLocationCode, StructureDistance)) return "notinstructurerange";
+            }
+
 
             tracksCooldownUntilMs.TryGetValue(Name, out long trackCoolDownMs);
             if (capi.World.ElapsedMilliseconds < trackCoolDownMs)
             {
-                //capi.Logger.Debug("{0}: On track cooldown ({1}s)", Name, (trackCoolDownMs - capi.World.ElapsedMilliseconds) / 1000);
-                return false;
+                return "oncooldown";
             }
 
             if (prevFrequency == 3)
@@ -288,24 +306,53 @@ namespace Vintagestory.API.Client
                 float hour = capi.World.Calendar.HourOfDay / 24f * capi.World.Calendar.HoursPerDay;
                 if (hour < MinHour || hour > MaxHour)
                 {
-                    //world.Logger.Debug("{0}: {1} not inside [{2},{3}]", Name, hour, MinHour, MaxHour);
-                    return false;
+                    return "wronghours";
                 }
 
-            } else
+            }
+            else
             {
                 float hour = capi.World.Calendar.HourOfDay / 24f * capi.World.Calendar.HoursPerDay;
                 if (hour < nowMinHour || hour > nowMaxHour)
                 {
-                    //world.Logger.Debug("{0}: {1} not inside [{2},{3}]", Name, hour, MinHour, MaxHour);
-                    return false;
+                    return "wronghours";
                 }
             }
-            
 
-            //world.Logger.Debug("{0}: {1} is inside [{2},{3}]!", Name, hour, MinHour, MaxHour);
 
-            return true;
+            return "ok";
+        }
+
+        private bool inStructureRange(string nearStructureCode, float structureDistance)
+        {
+            int rsize = capi.World.BlockAccessor.RegionSize;
+            int range = (int)Math.Ceiling(structureDistance / rsize);
+
+            var plrentity = capi.World.Player.Entity;
+            int minrx = (int)((plrentity.Pos.X - structureDistance) / rsize);
+            int minrz = (int)((plrentity.Pos.Z - structureDistance) / rsize);
+            int maxrx = (int)((plrentity.Pos.X + structureDistance) / rsize);
+            int maxrz = (int)((plrentity.Pos.Z + structureDistance) / rsize);
+
+            int px = plrentity.Pos.XInt;
+            int py = plrentity.Pos.YInt;
+            int pz = plrentity.Pos.ZInt;
+
+            for (int rx = minrx; rx <= maxrx; rx++)
+            {
+                for (int rz = minrz; rz <= maxrz; rz++)
+                {
+                    var mr = capi.World.BlockAccessor.GetMapRegion(rx, rz);
+                    foreach (var val in mr.GeneratedStructures)
+                    {
+                        if (val.Code.Equals(nearStructureCode)) {
+                            if (val.Location.ShortestDistanceFrom(px, py, pz) < structureDistance) return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -346,6 +393,12 @@ namespace Vintagestory.API.Client
                 return false;
             }
 
+            if (InStructureLocationCode != null && !inStructureRange(InStructureLocationCode, StructureDistance) && ShouldPlayMusic && IsActive)
+            {
+                FadeOut(3);
+                SetCooldown(0); // Play again when it was playing and player left and re-entered the structure
+            }
+
             if (!ShouldPlayMusic)
             {
                 FadeOut(3);
@@ -353,9 +406,9 @@ namespace Vintagestory.API.Client
 
             return true;
         }
-        
+
         /// <summary>
-        /// Fades out the current track.  
+        /// Fades out the current track.
         /// </summary>
         /// <param name="seconds">The duration of the fade out in seconds.</param>
         /// <param name="onFadedOut">What to have happen after the track has faded out.</param>

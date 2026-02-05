@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class WaterSplashParticles
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Particle/WaterSplashParticles.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Particle/WaterSplashParticles.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -169,12 +169,6 @@ Class WaterSplashParticles
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_TerrainCollision">ParticlesProviderBase.TerrainCollision</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_ToBytes_System_IO_BinaryWriter_">ParticlesProviderBase.ToBytes(BinaryWriter)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_">ParticlesProviderBase.FromBytes(BinaryReader, IWorldAccessor)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_SecondarySpawnInterval">ParticlesProviderBase.SecondarySpawnInterval</a>
@@ -664,6 +658,40 @@ Class WaterSplashParticles
 </h2>
 
 
+  <a id="Vintagestory_API_Common_WaterSplashParticles_FromBytes_" data-uid="Vintagestory.API.Common.WaterSplashParticles.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_WaterSplashParticles_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.WaterSplashParticles.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)">
+  FromBytes(BinaryReader, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>How the particle is read from the save.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>resolver</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_WaterSplashParticles_GetRgbaColor_" data-uid="Vintagestory.API.Common.WaterSplashParticles.GetRgbaColor*"></a>
 
   <h3 id="Vintagestory_API_Common_WaterSplashParticles_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.WaterSplashParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)">
@@ -727,6 +755,38 @@ Class WaterSplashParticles
     <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_WaterSplashParticles_ToBytes_" data-uid="Vintagestory.API.Common.WaterSplashParticles.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_WaterSplashParticles_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Common.WaterSplashParticles.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>How the particle is written to the save. (if it is)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+using Newtonsoft.Json;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
@@ -7,21 +8,25 @@ using System.IO;
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
-    /// Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.
+    /// Represents a vector of 3 floats. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public struct FastVec3f
     {
         /// <summary>
         /// The X-Component of the vector
         /// </summary>
+        [JsonProperty]
         public float X;
         /// <summary>
         /// The Y-Component of the vector
         /// </summary>
+        [JsonProperty]
         public float Y;
         /// <summary>
         /// The Z-Component of the vector
         /// </summary>
+        [JsonProperty]
         public float Z;
 
 
@@ -87,6 +92,16 @@ namespace Vintagestory.API.MathTools
             this.Z = vec.Z;
         }
 
+        public FastVec3f(Vec3d vec)
+        {
+            if (vec != null)
+            {
+                this.X = (float)vec.X;
+                this.Y = (float)vec.Y;
+                this.Z = (float)vec.Z;
+            }
+        }
+
         /// <summary>
         /// Returns the n-th coordinate
         /// </summary>
@@ -121,6 +136,24 @@ namespace Vintagestory.API.MathTools
             return false;
         }
 
+        public static bool operator ==(FastVec3f left, FastVec3f right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(FastVec3f left, FastVec3f right)
+        {
+            return !(left == right);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked // Already the default, but just to be extra sure we're not checking for integer overflows here
+            {
+                return 29 * (13 * X.GetHashCode() + Y.GetHashCode()) + Z.GetHashCode();
+            }
+        }
+
         /// <summary>
         /// Returns the dot product with given vector
         /// </summary>
@@ -149,6 +182,15 @@ namespace Vintagestory.API.MathTools
         public double Dot(float[] pos)
         {
             return X * pos[0] + Y * pos[1] + Z * pos[2];
+        }
+
+        public FastVec3f Cross(FastVec3f vec)
+        {
+            FastVec3f outv = new FastVec3f();
+            outv.X = Y * vec.Z - Z * vec.Y;
+            outv.Y = Z * vec.X - X * vec.Z;
+            outv.Z = X * vec.Y - Y * vec.X;
+            return outv;
         }
 
         /// <summary>
@@ -237,7 +279,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Calculates the square distance the two endpoints
+        /// Calculates the square distance between the two endpoints
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -252,6 +294,18 @@ namespace Vintagestory.API.MathTools
             ;
         }
 
+
+        /// <summary>
+        /// Calculates the square distance between the two endpoints
+        /// </summary>
+        public float DistanceSq(FastVec3f vec)
+        {
+            return 
+                (X - vec.X) * (X - vec.X) +
+                (Y - vec.Y) * (Y - vec.Y) +
+                (Z - vec.Z) * (Z - vec.Z)
+            ;
+        }
 
         /// <summary>
         /// Calculates the distance the two endpoints
@@ -392,6 +446,24 @@ namespace Vintagestory.API.MathTools
             return new FastVec3f(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
         }
 
+        public bool NotZero()
+        {
+            if (X != 0f || Y != 0f || Z != 0f) return true;
+            return false;
+        }
+
+        internal static void ExchangeValues(ref FastVec3f vec1, ref FastVec3f vec2)
+        {
+            FastVec3f tmp = vec1;
+            vec1 = vec2;
+            vec2 = tmp;
+        }
+
+        public Vec3f ToVec3f()
+        {
+            return new Vec3f(X, Y, Z);
+        }
+
         public static FastVec3f operator +(FastVec3f left, float right)
         {
             return new FastVec3f(left.X + right, left.Y + right, left.Z + right);
@@ -400,6 +472,16 @@ namespace Vintagestory.API.MathTools
         public static FastVec3f operator -(FastVec3f left, float right)
         {
             return new FastVec3f(left.X - right, left.Y - right, left.Z - right);
+        }
+
+        public static FastVec3f operator +(FastVec3f left, FastVec3f right)
+        {
+            return new FastVec3f(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
+
+        public static FastVec3f operator -(FastVec3f left, FastVec3f right)
+        {
+            return new FastVec3f(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
         }
 
         public static FastVec3f operator *(FastVec3f left, float right)

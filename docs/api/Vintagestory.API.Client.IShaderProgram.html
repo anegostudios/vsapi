@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -309,6 +309,37 @@ Interface IShaderProgram
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool LoadError { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IShaderProgram_Oit_" data-uid="Vintagestory.API.Client.IShaderProgram.Oit*"></a>
+
+  <h3 id="Vintagestory_API_Client_IShaderProgram_Oit" data-uid="Vintagestory.API.Client.IShaderProgram.Oit">
+  Oit
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Oit { get; set; }</code></pre>
   </div>
 
 
@@ -721,6 +752,119 @@ Interface IShaderProgram
 
   <a id="Vintagestory_API_Client_IShaderProgram_Uniform_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform*"></a>
 
+  <h3 id="Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Single_System_Single_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single,System.Single)">
+  Uniform(string, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Equivalent to Uniform(string uniformName, Vec2f value)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Uniform(string uniformName, float valueX, float valueY)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>uniformName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>valueX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>valueY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IShaderProgram_Uniform_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform*"></a>
+
+  <h3 id="Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single,System.Single,System.Single)">
+  Uniform(string, float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Equivalent to Uniform(string uniformName, Vec3f value)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Uniform(string uniformName, float valueX, float valueY, float valueZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>uniformName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>valueX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>valueY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>valueZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IShaderProgram_Uniform_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform*"></a>
+
+  <h3 id="Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Single_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single,System.Single,System.Single,System.Single)">
+  Uniform(string, float, float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Uniform(string uniformName, float valueX, float valueY, float valueZ, float valueW)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>uniformName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>valueX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>valueY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>valueZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>valueW</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IShaderProgram_Uniform_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform*"></a>
+
   <h3 id="Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec2f_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)">
   Uniform(string, Vec2f)
   
@@ -738,6 +882,40 @@ Interface IShaderProgram
     <dt><code>uniformName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>value</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IShaderProgram_Uniform_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform*"></a>
+
+  <h3 id="Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2i)">
+  Uniform(string, Vec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Equivalent to Uniform(string uniformName, Vec2f value)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Uniform(string uniformName, Vec2i value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>uniformName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>value</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
     <dd></dd>
   </dl>
 

@@ -157,7 +157,7 @@ namespace Vintagestory.API.Common
         public bool DieInAir => false; public bool DieInLiquid => true; public bool SwimOnLiquid => false; 
         public int VertexFlags => 0; public float GravityEffect => -0.04f; public bool TerrainCollision => true; 
         public float LifeLength => 5f + (float)SimpleParticleProperties.rand.NextDouble();
-        public EvolvingNatFloat OpacityEvolve => EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -125f); public EvolvingNatFloat RedEvolve => null; public EvolvingNatFloat GreenEvolve => null; public EvolvingNatFloat BlueEvolve => null;
+        public EvolvingNatFloat OpacityEvolve => EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -125f); public EvolvingNatFloat RedEvolve => EvolvingNatFloat.NoValueSet; public EvolvingNatFloat GreenEvolve => EvolvingNatFloat.NoValueSet; public EvolvingNatFloat BlueEvolve => EvolvingNatFloat.NoValueSet;
         public Vec3d Pos
         {
             get

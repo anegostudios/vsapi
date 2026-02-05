@@ -1,16 +1,15 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.MathTools
 {
 
     /// <summary>
-    /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
+    /// Represents a 2D size
     /// </summary>
     public class Size2f
     {
         public float Width;
         public float Height;
-
 
         public Size2f()
         {
@@ -28,9 +27,9 @@ namespace Vintagestory.API.MathTools
             return new Size2f(Width, Height);
         }
     }
-    
+
     /// <summary>
-    /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
+    /// Represents a 2D size
     /// </summary>
     public class Size2d
     {
@@ -58,13 +57,12 @@ namespace Vintagestory.API.MathTools
 
 
     /// <summary>
-    /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
+    /// Represents a 2D size
     /// </summary>
     public class Size2i
     {
         public int Width;
         public int Height;
-
 
         public Size2i()
         {
@@ -80,6 +78,33 @@ namespace Vintagestory.API.MathTools
         public Size2i Clone()
         {
             return new Size2i(Width, Height);
+        }
+    }
+
+    /// <summary>
+    /// Represents a 2D size
+    /// </summary>
+    public class HorSize2i
+    {
+        public int Width;
+        public int Length;
+
+        public int Area => Width * Length;
+
+        public HorSize2i()
+        {
+
+        }
+
+        public HorSize2i(int width, int length)
+        {
+            this.Width = width;
+            this.Length = length;
+        }
+
+        public HorSize2i Clone()
+        {
+            return new HorSize2i(Width, Length);
         }
     }
 }

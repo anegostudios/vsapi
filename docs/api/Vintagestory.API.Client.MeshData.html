@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class MeshData
   </div>
 
   <div class="markdown summary"><p>A data structure that can be used to upload mesh information onto the graphics card
-Please note, all arrays are used as a buffer. They do not tightly fit the data but are always sized as a multiple of 2 from the initial size. <a href="https://github.com/anegostudios/vsapi/blob/master///Client/Model/Mesh/MeshData.cs">Open in GitHub</a></p>
+Please note, all arrays are used as a buffer. They do not tightly fit the data but are always sized as a multiple of 2 from the initial size. <a href=https://github.com/anegostudios/vsapi/blob/master///Client/Model/Mesh/MeshData.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -303,6 +303,37 @@ Any component that is null is ignored by UploadModel/UpdateModel</p>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_MeshData_BlockCenter" data-uid="Vintagestory.API.Client.MeshData.BlockCenter">
+  BlockCenter
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Use as a temporary origin for mesh rotation and scaling - just make sure never to modify this!!!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static Vec3f BlockCenter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
     <dd></dd>
   </dl>
 
@@ -2381,7 +2412,8 @@ public short[] RenderPasses { get; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds both the climate map and season map index (per face). Both should be added at the same time so that their indexing and ColorMapIdsCount is consistent</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2414,7 +2446,8 @@ public short[] RenderPasses { get; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Adds both the climate map and season map index as well as a frostable bit (per face). Where frostable is used, all three should be added at the same time so that indexing and ColorMapIdsCount is consistent</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2449,7 +2482,8 @@ public short[] RenderPasses { get; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stores an index for the face. Typically there should be 6 indices per face, instructing the GPU to draw two triangles. Since game version 1.21, for blocks and items these should always follow a 0,1,2,0,2,3 pattern</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2480,7 +2514,8 @@ public short[] RenderPasses { get; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Add 6 indices in a single AddIndices() call, instructing the GPU to draw two triangles. Since game version 1.21, for blocks and items these should always follow a 0,1,2,0,2,3 pattern</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2523,7 +2558,7 @@ public short[] RenderPasses { get; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Add 6 indices</p>
+  <div class="markdown level1 summary"><p>Add 6 indices in a single AddIndices() call, instructing the GPU to draw two triangles. Since game version 1.21, for blocks and items these should always follow a 0,1,2,0,2,3 pattern</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2565,7 +2600,8 @@ public short[] RenderPasses { get; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Add a set of indices of any length</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2672,14 +2708,14 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddMeshData(MeshData data, EnumChunkRenderPass filterByRenderPass)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddMeshData(MeshData data, EnumChunkRenderPass excludeRenderPass)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>data</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
     <dd></dd>
-    <dt><code>filterByRenderPass</code> <a class="xref" href="Vintagestory.API.Client.EnumChunkRenderPass.html">EnumChunkRenderPass</a></dt>
+    <dt><code>excludeRenderPass</code> <a class="xref" href="Vintagestory.API.Client.EnumChunkRenderPass.html">EnumChunkRenderPass</a></dt>
     <dd></dd>
   </dl>
 
@@ -2802,7 +2838,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Add 6 indices in a single call, instructing the GPU to draw two triangles. The parameter is the first index used, this method automatically generates the remaining 5 indices in the 0,1,2,0,2,3 pattern</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2833,7 +2870,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stores the renderpass (per face)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2864,7 +2902,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stores the textureId for the face. I.e. this is the id of the atlas itself, for the texture atlas page holding the current face's texture</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3187,7 +3226,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stores the XyzFace index - note, not commonly used, mainly for knapping and clayform rendering</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3282,7 +3322,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Clone the meshdata using the MeshDataRecycler, useful for performance for large meshes (such as chunk meshes)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3367,7 +3408,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Disposes of the basic mesh data (xyz, uv, rgba, flags, indices)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3652,7 +3694,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Doubles the size of the Indices buffer</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3678,7 +3721,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Increases the size of the Indices buffer by at least the quantity specified (maybe more)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3709,7 +3753,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Doubles the size of the Normals buffer</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -3949,6 +3994,43 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
 
 
 
+  <a id="Vintagestory_API_Client_MeshData_NeedsRenderPass_" data-uid="Vintagestory.API.Client.MeshData.NeedsRenderPass*"></a>
+
+  <h3 id="Vintagestory_API_Client_MeshData_NeedsRenderPass_Vintagestory_API_Client_EnumChunkRenderPass_" data-uid="Vintagestory.API.Client.MeshData.NeedsRenderPass(Vintagestory.API.Client.EnumChunkRenderPass)">
+  NeedsRenderPass(EnumChunkRenderPass)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns true if at least one quad in this mesh needs to be rendered in given render pass</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool NeedsRenderPass(EnumChunkRenderPass renderPass)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>renderPass</code> <a class="xref" href="Vintagestory.API.Client.EnumChunkRenderPass.html">EnumChunkRenderPass</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_MeshData_RemoveIndex_" data-uid="Vintagestory.API.Client.MeshData.RemoveIndex*"></a>
 
   <h3 id="Vintagestory_API_Client_MeshData_RemoveIndex" data-uid="Vintagestory.API.Client.MeshData.RemoveIndex">
@@ -4037,6 +4119,47 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
 
   <a id="Vintagestory_API_Client_MeshData_Rotate_" data-uid="Vintagestory.API.Client.MeshData.Rotate*"></a>
 
+  <h3 id="Vintagestory_API_Client_MeshData_Rotate_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.MeshData.Rotate(System.Single,System.Single,System.Single)">
+  Rotate(float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rotate the mesh by given angles around the block center (0.5f, 0.5f, 0.5f)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MeshData Rotate(float radX, float radY, float radZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>radX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_MeshData_Rotate_" data-uid="Vintagestory.API.Client.MeshData.Rotate*"></a>
+
   <h3 id="Vintagestory_API_Client_MeshData_Rotate_Vintagestory_API_MathTools_Vec3f_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.MeshData.Rotate(Vintagestory.API.MathTools.Vec3f,System.Single,System.Single,System.Single)">
   Rotate(Vec3f, float, float, float)
   
@@ -4059,6 +4182,47 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
     <dt><code>radY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>radZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_MeshData_Scale_" data-uid="Vintagestory.API.Client.MeshData.Scale*"></a>
+
+  <h3 id="Vintagestory_API_Client_MeshData_Scale_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.MeshData.Scale(System.Single,System.Single,System.Single)">
+  Scale(float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Scale the mesh by given values around the block center (0.5f, 0.5f, 0.5f)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MeshData Scale(float scaleX, float scaleY, float scaleZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scaleX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>scaleY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>scaleZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -4416,7 +4580,8 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Measures the size in bytes of this Meshdata, useful for monitoring</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -4447,7 +4612,9 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns new MeshData objects, each for an individual texture index. The returned meshes will contain (between them) the data from this mesh.
+<br>Used for multi-atlas support. If only a single atlas page is currently in use (in the current mesh), as is commonly the case, then simply returns the current mesh without cloning it</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

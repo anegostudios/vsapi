@@ -90,7 +90,7 @@ public class DamageSource
     /// <returns></returns>
     public Vec3d GetSourcePosition()
     {
-        return SourceEntity == null ? SourcePos : SourceEntity.SidedPos.XYZ;
+        return SourceEntity == null ? SourcePos : SourceEntity.Pos.XYZ;
     }
 
     /// <summary>

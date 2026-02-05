@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CompositeShape
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Shape/CompositeShape.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Shape/CompositeShape.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -148,7 +148,7 @@ public class CompositeShape</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public AssetLocation Base</code></pre>
   </div>
 
@@ -181,7 +181,7 @@ public AssetLocation Base</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeShape[] Alternates</code></pre>
   </div>
 
@@ -214,7 +214,7 @@ public CompositeShape[] Alternates</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;VintageStory&quot;, false)]
 public EnumShapeFormat Format</code></pre>
   </div>
 
@@ -237,7 +237,7 @@ public EnumShapeFormat Format</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_CompositeShape_InsertBakedTextures" data-uid="Vintagestory.API.Common.CompositeShape.InsertBakedTextures">
-  InsertBakedTextures (Optional) (Default: false)
+  InsertBakedTextures (Optional) (Default: False)
   
   </h3>
 
@@ -247,7 +247,7 @@ public EnumShapeFormat Format</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool InsertBakedTextures</code></pre>
   </div>
 
@@ -280,7 +280,7 @@ public bool InsertBakedTextures</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float offsetX</code></pre>
   </div>
 
@@ -313,7 +313,7 @@ public float offsetX</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float offsetY</code></pre>
   </div>
 
@@ -346,7 +346,7 @@ public float offsetY</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float offsetZ</code></pre>
   </div>
 
@@ -379,7 +379,7 @@ public float offsetZ</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeShape[] Overlays</code></pre>
   </div>
 
@@ -412,7 +412,7 @@ public CompositeShape[] Overlays</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public int? QuantityElements</code></pre>
   </div>
 
@@ -445,7 +445,7 @@ public int? QuantityElements</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float rotateX</code></pre>
   </div>
 
@@ -478,7 +478,7 @@ public float rotateX</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float rotateY</code></pre>
   </div>
 
@@ -511,7 +511,7 @@ public float rotateY</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float rotateZ</code></pre>
   </div>
 
@@ -544,7 +544,7 @@ public float rotateZ</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float Scale</code></pre>
   </div>
 
@@ -577,7 +577,7 @@ public float Scale</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string[] SelectiveElements</code></pre>
   </div>
 
@@ -600,7 +600,7 @@ public string[] SelectiveElements</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_CompositeShape_VoxelizeTexture" data-uid="Vintagestory.API.Common.CompositeShape.VoxelizeTexture">
-  VoxelizeTexture (Optional) (Default: false)
+  VoxelizeTexture (Optional) (Default: False)
   
   </h3>
 
@@ -610,7 +610,7 @@ public string[] SelectiveElements</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool VoxelizeTexture</code></pre>
   </div>
 

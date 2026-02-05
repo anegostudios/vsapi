@@ -552,9 +552,12 @@ namespace Vintagestory.API.Client
             
             bool handled = multilineMode || args.KeyCode != (int)GlKeys.Tab;
 
-            if (args.KeyCode is (int)GlKeys.BackSpace or (int)GlKeys.Delete)
+            if (enabled && args.KeyCode is (int)GlKeys.BackSpace or (int)GlKeys.Delete)
             {
-                if (args.CtrlPressed && OnDeleteWord(args.KeyCode == (int)GlKeys.BackSpace ? -1 : 1));
+                if (args.CtrlPressed && OnDeleteWord(args.KeyCode == (int)GlKeys.BackSpace ? -1 : 1))
+                {
+                    // Success! Do nothing.
+                }
                 else if (selectedTextStart == null)
                 {
                     if (args.KeyCode == (int)GlKeys.BackSpace) OnKeyBackSpace();
@@ -642,7 +645,7 @@ namespace Vintagestory.API.Client
 
             if (!mouseDown && selectedTextStart == CaretPosWithoutLineBreaks) selectedTextStart = null;
 
-            if (args.KeyCode is (int)GlKeys.Enter or (int)GlKeys.KeypadEnter)
+            if (enabled && args.KeyCode is (int)GlKeys.Enter or (int)GlKeys.KeypadEnter)
             {
                 if (multilineMode)
                 {
@@ -675,8 +678,8 @@ namespace Vintagestory.API.Client
                 return true;
             }
             if (keyString == "c") return OnCopyCut(CopyCutMode.Copy);
-            if (keyString == "x") return OnCopyCut(CopyCutMode.Cut);
-            if (keyString == "v") return OnPaste();
+            if (keyString == "x" && enabled) return OnCopyCut(CopyCutMode.Cut);
+            if (keyString == "v" && enabled) return OnPaste();
             return false;
         }
 
@@ -757,7 +760,7 @@ namespace Vintagestory.API.Client
         private void OnKeyBackSpace()
         {
             var caret = CaretPosWithoutLineBreaks;
-            if (caret == 0) return;
+            if (caret == 0) return; 
 
             string alltext = GetText();
             alltext = alltext.Substring(0, caret - 1) + alltext.Substring(caret, alltext.Length - caret);
@@ -773,7 +776,7 @@ namespace Vintagestory.API.Client
 
         public override void OnKeyPress(ICoreClientAPI api, KeyEvent args)
         {
-            if (!HasFocus) return;
+            if (!HasFocus || !enabled) return;
             if (isLengthCapped()) return;
 
             if (selectedTextStart != null) DeleteSelectedText(CaretPosWithoutLineBreaks, 0);

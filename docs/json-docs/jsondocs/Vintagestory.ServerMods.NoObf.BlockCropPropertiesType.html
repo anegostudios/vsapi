@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BlockCropPropertiesType
   <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Used for crop blocks that grow over time. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/BlockCropPropertiesType.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Used for crop blocks that grow over time. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/BlockCropPropertiesType.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -153,7 +153,7 @@ public class BlockCropPropertiesType</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public int GrowthStages</code></pre>
   </div>
 
@@ -186,7 +186,7 @@ public int GrowthStages</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public float NutrientConsumption</code></pre>
   </div>
 
@@ -219,7 +219,7 @@ public float NutrientConsumption</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public float TotalGrowthMonths</code></pre>
   </div>
 
@@ -252,7 +252,7 @@ public float TotalGrowthMonths</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;N&quot;, false)]
 public EnumSoilNutrient RequiredNutrient</code></pre>
   </div>
 
@@ -285,7 +285,7 @@ public EnumSoilNutrient RequiredNutrient</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CropBehaviorType[] Behaviors</code></pre>
   </div>
 
@@ -318,7 +318,7 @@ public CropBehaviorType[] Behaviors</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;-5&quot;, false)]
 public float ColdDamageBelow</code></pre>
   </div>
 
@@ -351,7 +351,7 @@ public float ColdDamageBelow</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0.5&quot;, false)]
 public float ColdDamageRipeMul</code></pre>
   </div>
 
@@ -384,7 +384,7 @@ public float ColdDamageRipeMul</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0.5&quot;, false)]
 public float DamageGrowthStuntMul</code></pre>
   </div>
 
@@ -417,7 +417,7 @@ public float DamageGrowthStuntMul</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;40&quot;, false)]
 public float HeatDamageAbove</code></pre>
   </div>
 
@@ -450,7 +450,7 @@ public float HeatDamageAbove</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Unused&quot;, &quot;0&quot;, false)]
 public int HarvestGrowthStageLoss</code></pre>
   </div>
 
@@ -483,7 +483,7 @@ public int HarvestGrowthStageLoss</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Unused&quot;, &quot;false&quot;, false)]
 public bool MultipleHarvests</code></pre>
   </div>
 
@@ -516,7 +516,7 @@ public bool MultipleHarvests</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 public float TotalGrowthDays</code></pre>
   </div>
 

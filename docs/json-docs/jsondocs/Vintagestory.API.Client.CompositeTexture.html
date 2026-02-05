@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CompositeTexture
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Holds data about a texture. Also allows textures to be overlayed on top of one another. <a href="https://github.com/anegostudios/vsapi/blob/master///Client/Texture/CompositeTexture.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Holds data about a texture. Also allows textures to be overlayed on top of one another. <a href=https://github.com/anegostudios/vsapi/blob/master///Client/Texture/CompositeTexture.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -138,15 +138,15 @@ public class CompositeTexture</code></pre>
 	}
 },</code></pre>
 <p>Connected textures example (See <a href="https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962">https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962</a>)</p>
- <pre><code class="lang-json">"textures": {
- 	"all": {
- 		"base": "block/stone/cobblestone/tiling/1",
- 		"tiles": [
- 			{ "base": "block/stone/cobblestone/tiling/*" }
- 		],
- 		"tilesWidth": 4
- 	}
- }</code></pre>
+<pre><code class="lang-json">"textures": {
+	"all": {
+		"base": "block/stone/cobblestone/tiling/1",
+		"tiles": [
+			{ "base": "block/stone/cobblestone/tiling/*" }
+		],
+		"tilesWidth": 4
+	}
+}</code></pre>
 
 
 
@@ -167,7 +167,7 @@ public class CompositeTexture</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public AssetLocation Base</code></pre>
   </div>
 
@@ -200,7 +200,7 @@ public AssetLocation Base</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;255&quot;, false)]
 public int Alpha</code></pre>
   </div>
 
@@ -233,7 +233,7 @@ public int Alpha</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeTexture[] Alternates</code></pre>
   </div>
 
@@ -266,7 +266,7 @@ public CompositeTexture[] Alternates</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public BlendedOverlayTexture[] BlendedOverlays</code></pre>
   </div>
 
@@ -299,7 +299,7 @@ public BlendedOverlayTexture[] BlendedOverlays</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int Rotation</code></pre>
   </div>
 
@@ -336,7 +336,7 @@ public int Rotation</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeTexture[] Tiles</code></pre>
   </div>
 
@@ -369,7 +369,7 @@ public CompositeTexture[] Tiles</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int TilesWidth</code></pre>
   </div>
 
@@ -403,7 +403,7 @@ public int TilesWidth</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 public AssetLocation[] Overlays { set; }</code></pre>
   </div>
 

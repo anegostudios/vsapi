@@ -1,4 +1,4 @@
-﻿using SkiaSharp;
+using SkiaSharp;
 using System;
 
 #nullable disable
@@ -445,6 +445,28 @@ namespace Vintagestory.API.MathTools
                 (c1 * a1 + c2 * a2 * (1 - a1)) /
                 (a1 + a2 * (1 - a1))
             );
+        }
+
+        /// <summary>
+        /// Mixes H and S, and Max() of V
+        /// </summary>
+        /// <param name="rightHsv"></param>
+        /// <param name="leftHsv"></param>
+        /// <returns></returns>
+        public static byte[] MergeLightHSV(byte[] rightHsv, byte[] leftHsv)
+        {
+            if (leftHsv == null) return rightHsv;
+            if (rightHsv == null) return leftHsv;
+
+            float totalval = rightHsv[2] + leftHsv[2];
+            float t = leftHsv[2] / totalval;
+
+            return new byte[]
+            {
+                (byte)(leftHsv[0] * t + rightHsv[0] * (1-t)),
+                (byte)(leftHsv[1] * t + rightHsv[1] * (1-t)),
+                Math.Max(leftHsv[2], rightHsv[2])
+            };
         }
 
         /// <summary>

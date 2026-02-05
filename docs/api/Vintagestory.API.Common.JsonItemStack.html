@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,14 +98,14 @@ Class JsonItemStack
   </div>
 
   <div class="markdown summary"><p>This is a representation of an item stack in JSON.
-It resembles a standard in-game item stack but can be stored before the game is loaded. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/JsonItemStack.cs">Open in GitHub</a></p>
+It resembles a standard in-game item stack but can be stored before the game is loaded. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/JsonItemStack.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DocumentAsJson]
 [ProtoContract]
-public class JsonItemStack : IRecipeOutput</code></pre>
+public class JsonItemStack : IRecipeOutput, IByteSerializable, IConcreteCloneable&lt;JsonItemStack&gt;, ICloneable</code></pre>
   </div>
 
 
@@ -123,6 +123,9 @@ public class JsonItemStack : IRecipeOutput</code></pre>
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="Vintagestory.API.Common.IRecipeOutput.html">IRecipeOutput</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.IByteSerializable.html">IByteSerializable</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.IConcreteCloneable-1.html">IConcreteCloneable</a>&lt;<a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
     </dd>
   </dl>
 
@@ -190,8 +193,7 @@ public class JsonItemStack : IRecipeOutput</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>Tree Attributes that should be attached to the resulting itemstack.</p>
+  <div class="markdown level1 summary"><p>Tree Attributes that should be attached to the resulting itemstack.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -199,7 +201,8 @@ public class JsonItemStack : IRecipeOutput</code></pre>
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
 [ProtoMember(4)]
-public JsonObject Attributes</code></pre>
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonObject? Attributes</code></pre>
   </div>
 
 
@@ -225,14 +228,13 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>The asset location code of the block or item.</p>
+  <div class="markdown level1 summary"><p>The asset location code of the block or item.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(2)]
-[DocumentAsJson]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public AssetLocation Code</code></pre>
   </div>
 
@@ -264,7 +266,7 @@ public AssetLocation Code</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ItemStack ResolvedItemstack</code></pre>
+    <pre><code class="lang-csharp hljs">public ItemStack? ResolvedItemstack</code></pre>
   </div>
 
 
@@ -290,14 +292,13 @@ public AssetLocation Code</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>Amount of items in this stacks</p>
+  <div class="markdown level1 summary"><p>Amount of items in this stacks</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(3)]
-[DocumentAsJson]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public int StackSize</code></pre>
   </div>
 
@@ -324,14 +325,13 @@ public int StackSize</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
-<p>Block or Item?</p>
+  <div class="markdown level1 summary"><p>Block or Item?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(1)]
-[DocumentAsJson]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;Block&quot;, false)]
 public EnumItemClass Type</code></pre>
   </div>
 
@@ -363,13 +363,12 @@ public EnumItemClass Type</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>Alias of <a class="xref" href="Vintagestory.API.Common.JsonItemStack.html#Vintagestory_API_Common_JsonItemStack_StackSize">StackSize</a>. No real need to use this instead of it.</p>
+  <div class="markdown level1 summary"><p>Alias of <a class="xref" href="Vintagestory.API.Common.JsonItemStack.html#Vintagestory_API_Common_JsonItemStack_StackSize">StackSize</a>. No real need to use this instead of it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public int Quantity { get; set; }</code></pre>
   </div>
 
@@ -380,6 +379,39 @@ public int Quantity { get; set; }</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_JsonItemStack_ResolvedItemStack_" data-uid="Vintagestory.API.Common.JsonItemStack.ResolvedItemStack*"></a>
+
+  <h3 id="Vintagestory_API_Common_JsonItemStack_ResolvedItemStack" data-uid="Vintagestory.API.Common.JsonItemStack.ResolvedItemStack">
+  ResolvedItemStack
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Was added for interface.<br>
+Field 'ResolvedItemstack' is left for compatibility reasons</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ItemStack? ResolvedItemStack { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
     <dd></dd>
   </dl>
 
@@ -406,7 +438,7 @@ public int Quantity { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonItemStack Clone()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual JsonItemStack Clone()</code></pre>
   </div>
 
 
@@ -415,6 +447,37 @@ public int Quantity { get; set; }</code></pre>
     <dt><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_JsonItemStack_CloneTo_" data-uid="Vintagestory.API.Common.JsonItemStack.CloneTo*"></a>
+
+  <h3 id="Vintagestory_API_Common_JsonItemStack_CloneTo_System_Object_" data-uid="Vintagestory.API.Common.JsonItemStack.CloneTo(System.Object)">
+  CloneTo(object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void CloneTo(object stack)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stack</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 
@@ -437,7 +500,7 @@ public int Quantity { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void FillPlaceHolder(string key, string value)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void FillPlaceHolder(string key, string value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -495,6 +558,40 @@ public int Quantity { get; set; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_JsonItemStack_FromBytes_" data-uid="Vintagestory.API.Common.JsonItemStack.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_JsonItemStack_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.JsonItemStack.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)">
+  FromBytes(BinaryReader, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loads the ItemStack from the reader.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>resolver</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_JsonItemStack_FromString_" data-uid="Vintagestory.API.Common.JsonItemStack.FromString*"></a>
 
   <h3 id="Vintagestory_API_Common_JsonItemStack_FromString_System_String_" data-uid="Vintagestory.API.Common.JsonItemStack.FromString(System.String)">
@@ -506,7 +603,7 @@ public int Quantity { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static JsonItemStack FromString(string jsonItemstack)</code></pre>
+    <pre><code class="lang-csharp hljs">public static JsonItemStack? FromString(string jsonItemstack)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -542,7 +639,7 @@ public int Quantity { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Matches(IWorldAccessor worldForResolve, ItemStack inputStack)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool Matches(IWorldAccessor worldForResolve, ItemStack inputStack)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -550,6 +647,44 @@ public int Quantity { get; set; }</code></pre>
     <dt><code>worldForResolve</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
     <dd></dd>
     <dt><code>inputStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_JsonItemStack_Resolve_" data-uid="Vintagestory.API.Common.JsonItemStack.Resolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_JsonItemStack_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_" data-uid="Vintagestory.API.Common.JsonItemStack.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)">
+  Resolve(IWorldAccessor, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>sourceForErrorLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -580,7 +715,7 @@ public int Quantity { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, bool printWarningOnError = true)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, bool printWarningOnError)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

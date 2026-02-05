@@ -67,25 +67,25 @@ namespace Vintagestory.API.Common
         /// Gets the evolving opacity value of the particle.
         /// </summary>
         /// <returns>An evolving value based on opacity.</returns>
-        public virtual EvolvingNatFloat OpacityEvolve => null;
+        public virtual EvolvingNatFloat OpacityEvolve => EvolvingNatFloat.NoValueSet;
 
         /// <summary>
         /// Gets the evolving red value of the particle.
         /// </summary>
         /// <returns></returns>
-        public virtual EvolvingNatFloat RedEvolve => null;
+        public virtual EvolvingNatFloat RedEvolve => EvolvingNatFloat.NoValueSet;
 
         /// <summary>
         /// Gets the evolving green value of the particle.
         /// </summary>
         /// <returns></returns>
-        public virtual EvolvingNatFloat GreenEvolve => null;
+        public virtual EvolvingNatFloat GreenEvolve => EvolvingNatFloat.NoValueSet;
 
         /// <summary>
         /// Gets the evolving blue value of the particle.
         /// </summary>
         /// <returns></returns>
-        public virtual EvolvingNatFloat BlueEvolve => null;
+        public virtual EvolvingNatFloat BlueEvolve => EvolvingNatFloat.NoValueSet;
 
         /// <summary>
         /// Gets the model type of the particle.
@@ -103,7 +103,7 @@ namespace Vintagestory.API.Common
         /// gets the dynamic size of the particle.
         /// </summary>
         /// <returns></returns>
-        public virtual EvolvingNatFloat SizeEvolve => null;
+        public virtual EvolvingNatFloat SizeEvolve => EvolvingNatFloat.NoValueSet;
 
         /// <summary>
         /// Get the dynamic speeds of the particle.

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -110,34 +110,34 @@ namespace Vintagestory.API.Common
     public class TransitionableProperties
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>None</jsondefault>-->
         /// What kind of transition can it make?
         /// </summary>
-        [DocumentAsJson] public EnumTransitionType Type = EnumTransitionType.None;
+        [DocumentAsJson("Recommended", "None")]
+        public EnumTransitionType Type = EnumTransitionType.None;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>36</jsondefault>-->
         /// The amount of hours before this item starts the transitioning process.
         /// </summary>
-        [DocumentAsJson] public NatFloat FreshHours = NatFloat.createUniform(36f, 0);
+        [DocumentAsJson("Recommended", "36")]
+        public NatFloat FreshHours = NatFloat.createUniform(36f, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>12</jsondefault>-->
         /// The amount of hours it takes for the item to transition, after <see cref="FreshHours"/> has elapsed.
         /// </summary>
-        [DocumentAsJson] public NatFloat TransitionHours = NatFloat.createUniform(12f, 0);
+        [DocumentAsJson("Recommended", "12")]
+        public NatFloat TransitionHours = NatFloat.createUniform(12f, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The itemstack the collectible turns into upon transitioning.
         /// </summary>
-        [DocumentAsJson] public JsonItemStack TransitionedStack;
+        [DocumentAsJson("Required")]
+        public JsonItemStack TransitionedStack;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// Conversion ratio of fresh stacksize to transitioned stack size
         /// </summary>
-        [DocumentAsJson] public float TransitionRatio = 1;
+        [DocumentAsJson("Optional", "1")]
+        public float TransitionRatio = 1;
         
         /// <summary>
         /// Duplicates the properties, which includes cloning the stack that was eaten.

@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Server
 {
@@ -19,6 +19,7 @@ namespace Vintagestory.API.Server
         /// Does not require neighbour chunks to exist. Should generates 3d rock terrain mostly. Default generators by execute order:
         /// 0 = Basic 3D Terrain (granite+rock)
         /// 0.1 = Rock Strata
+        /// 0.2 = Rivers
         /// 0.3 = Cave generator
         /// 0.4 = Block layers (soil, gravel, sand, ice, tall grass, etc.)
         /// </summary>

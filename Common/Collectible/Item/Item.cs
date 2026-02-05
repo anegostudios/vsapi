@@ -19,8 +19,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         public override int Id { get { return ItemId; } }
 
-        public ItemTagArray Tags = ItemTagArray.Empty;
-
         /// <summary>
         /// The type of the collectible object
         /// </summary>
@@ -75,7 +73,7 @@ namespace Vintagestory.API.Common
         {
             if (Textures == null || Textures.Count == 0) return 0;
 
-            BakedCompositeTexture tex = Textures?.First().Value?.Baked;
+            BakedCompositeTexture tex = ParticlesTextureCode != null ? Textures[ParticlesTextureCode].Baked : Textures?.First().Value?.Baked;
             return tex == null ? 0 : capi.ItemTextureAtlas.GetRandomColor(tex.TextureSubId);
         }
 
@@ -158,21 +156,5 @@ namespace Vintagestory.API.Common
             TpOffHandTransform = null;
             GroundTransform = null;
         }
-
-        public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
-        {
-            if (world.Api is ICoreClientAPI clientApi && clientApi.Settings.Bool["extendedDebugInfo"])
-            {
-                IEnumerable<string> tags = GetTags(inSlot.Itemstack).ToArray().Select(clientApi.TagRegistry.ItemTagIdToTag).Order();
-                if (tags.Any())
-                {
-                    dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
-                }
-            }
-
-            base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
-        }
-
-        public virtual ItemTagArray GetTags(ItemStack stack) => Tags;
     }
 }

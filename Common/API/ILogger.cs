@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 #nullable disable
 
@@ -29,7 +30,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new log entry with the specified log type, format string and arguments.
         /// </summary>
-        void Log(EnumLogType logType, string format, params object[] args);
+        void Log(EnumLogType logType, [StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new log entry with the specified log type and message.
         /// </summary>
@@ -42,7 +43,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Chat"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Chat(string format, params object[] args);
+        void Chat([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
 
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Chat"/> log entry with the specified message.
@@ -52,7 +53,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Event"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Event(string format, params object[] args);
+        void Event([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Event"/> log entry with the specified message.
         /// </summary>
@@ -61,7 +62,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.StoryEvent"/> log entry with the specified format string and arguments.
         /// </summary>
-        void StoryEvent(string format, params object[] args);
+        void StoryEvent([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.StoryEvent"/> log entry with the specified message.
         /// </summary>
@@ -70,7 +71,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Build"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Build(string format, params object[] args);
+        void Build([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Build"/> log entry with the specified message.
         /// </summary>
@@ -79,7 +80,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.VerboseDebug"/> log entry with the specified format string and arguments.
         /// </summary>
-        void VerboseDebug(string format, params object[] args);
+        void VerboseDebug([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.VerboseDebug"/> log entry with the specified message.
         /// </summary>
@@ -88,7 +89,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Debug"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Debug(string format, params object[] args);
+        void Debug([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Debug"/> log entry with the specified message.
         /// </summary>
@@ -97,7 +98,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Notification"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Notification(string format, params object[] args);
+        void Notification([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Notification"/> log entry with the specified message.
         /// </summary>
@@ -106,7 +107,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Warning"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Warning(string format, params object[] args);
+        void Warning([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Warning"/> log entry with the specified message.
         /// </summary>
@@ -119,7 +120,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Error"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Error(string format, params object[] args);
+        void Error([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Error"/> log entry with the specified message.
         /// </summary>
@@ -132,7 +133,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Fatal"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Fatal(string format, params object[] args);
+        void Fatal([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Fatal"/> log entry with the specified message.
         /// </summary>
@@ -145,7 +146,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Audit"/> log entry with the specified format string and arguments.
         /// </summary>
-        void Audit(string format, params object[] args);
+        void Audit([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Audit"/> log entry with the specified message.
         /// </summary>
@@ -187,9 +188,9 @@ namespace Vintagestory.API.Common
         /// This is the only method necessary to be overridden by the
         /// implementing class, actually does the logging as necessary.
         /// </summary>
-        protected abstract void LogImpl(EnumLogType logType, string format, params object[] args);
+        protected abstract void LogImpl(EnumLogType logType, [StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args);
 
-        public void Log(EnumLogType logType, string format, params object[] args)
+        public void Log(EnumLogType logType, [StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
         {
             LogImpl(logType, format, args);
             EntryAdded?.Invoke(logType, format, args);
@@ -203,49 +204,49 @@ namespace Vintagestory.API.Common
                 e.InnerException == null ? "" : " ---> " + e.InnerException + "\n   --- End of inner exception stack trace ---\n", 
                 CleanStackTrace(e.StackTrace));
 
-        public void Chat(string format, params object[] args)
+        public void Chat([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Chat, format, args);
         public void Chat(string message)
             => Log(EnumLogType.Chat, message, _emptyArgs);
 
-        public void Event(string format, params object[] args)
+        public void Event([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Event, format, args);
         public void Event(string message)
             => Log(EnumLogType.Event, message, _emptyArgs);
 
-        public void StoryEvent(string format, params object[] args)
+        public void StoryEvent([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.StoryEvent, format, args);
         public void StoryEvent(string message)
             => Log(EnumLogType.StoryEvent, message, _emptyArgs);
 
-        public void Build(string format, params object[] args)
+        public void Build([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Build, format, args);
         public void Build(string message)
             => Log(EnumLogType.Build, message, _emptyArgs);
 
-        public void VerboseDebug(string format, params object[] args)
+        public void VerboseDebug([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.VerboseDebug, format, args);
         public void VerboseDebug(string message)
             => Log(EnumLogType.VerboseDebug, message, _emptyArgs);
 
-        public void Debug(string format, params object[] args)
+        public void Debug([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Debug, format, args);
         public void Debug(string message)
             => Log(EnumLogType.Debug, message, _emptyArgs);
 
-        public void Notification(string format, params object[] args)
+        public void Notification([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Notification, format, args);
         public void Notification(string message)
             => Log(EnumLogType.Notification, message, _emptyArgs);
 
-        public void Warning(string format, params object[] args)
+        public void Warning([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Warning, format, args);
         public void Warning(string message)
             => Log(EnumLogType.Warning, message, _emptyArgs);
         public void Warning(Exception e)
             => LogException(EnumLogType.Warning, e);
 
-        public void Error(string format, params object[] args)
+        public void Error([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
         {
             try
             {
@@ -290,19 +291,19 @@ namespace Vintagestory.API.Common
             return s;
         }
 
-        public void Fatal(string format, params object[] args)
+        public void Fatal([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Fatal, format, args);
         public void Fatal(string message)
             => Log(EnumLogType.Fatal, message, _emptyArgs);
         public void Fatal(Exception e)
             => LogException(EnumLogType.Error, e);
 
-        public void Audit(string format, params object[] args)
+        public void Audit([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Audit, format, args);
         public void Audit(string message)
             => Log(EnumLogType.Audit, message, _emptyArgs);
 
-        public void Worldgen(string format, params object[] args)
+        public void Worldgen([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
             => Log(EnumLogType.Worldgen, format, args);
         public void Worldgen(Exception e)
             => LogException(EnumLogType.Worldgen, e);

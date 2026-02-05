@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+using ProtoBuf;
 using System;
 
 #nullable disable
@@ -15,7 +15,7 @@ namespace Vintagestory.API.MathTools
         [ProtoMember(1)]
         [DocumentAsJson]
         public int X1;
-        
+
         [ProtoMember(2)]
         [DocumentAsJson]
         public int Y1;
@@ -38,16 +38,16 @@ namespace Vintagestory.API.MathTools
 
         public int[] Coordinates => new int[] { X1, Y1, Z1, X2, Y2, Z2 };
 
-        public int MinX => Math.Min(X1, X2); 
-        public int MinY => Math.Min(Y1, Y2); 
-        public int MinZ => Math.Min(Z1, Z2); 
+        public int MinX => Math.Min(X1, X2);
+        public int MinY => Math.Min(Y1, Y2);
+        public int MinZ => Math.Min(Z1, Z2);
 
 
-        public int MaxX => Math.Max(X1, X2); 
-        public int MaxY => Math.Max(Y1, Y2); 
+        public int MaxX => Math.Max(X1, X2);
+        public int MaxY => Math.Max(Y1, Y2);
         public int MaxZ => Math.Max(Z1, Z2);
 
-        public int SizeX => MaxX - MinX; 
+        public int SizeX => MaxX - MinX;
         public int SizeY => MaxY - MinY;
 
         public int SizeZ => MaxZ - MinZ;
@@ -58,6 +58,7 @@ namespace Vintagestory.API.MathTools
         public Vec3i Start => new Vec3i(X1, Y1, Z1);
         public Vec3i End => new Vec3i(X2, Y2, Z2);
         public Vec3i Center => new Vec3i((X1 + X2) / 2, (Y1 + Y2) / 2, (Z1 + Z2) / 2);
+        public FastVec3i FastCenter => new FastVec3i((X1 + X2) / 2, (Y1 + Y2) / 2, (Z1 + Z2) / 2);
 
         public int CenterX => (X1 + X2) / 2;
         public int CenterY => (Y1 + Y2) / 2;
@@ -215,6 +216,11 @@ namespace Vintagestory.API.MathTools
         public bool ContainsOrTouches(int x, int y, int z)
         {
             return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY && z >= MinZ && z <= MaxZ;
+        }
+
+        public bool ContainsOrTouches(FastVec3i vec)
+        {
+            return vec.X >= MinX && vec.X <= MaxX && vec.Y >= MinY && vec.Y <= MaxY && vec.Z >= MinZ && vec.Z <= MaxZ;
         }
 
         public bool ContainsOrTouches(Cuboidi cuboid)
@@ -432,11 +438,11 @@ namespace Vintagestory.API.MathTools
             }
 
             return new Cuboidi(
-                (int)(Math.Round(min[0]) + origin.X), 
-                (int)(Math.Round(min[1]) + origin.Y), 
-                (int)(Math.Round(min[2]) + origin.Z), 
-                (int)(Math.Round(max[0]) + origin.X), 
-                (int)(Math.Round(max[1]) + origin.Y), 
+                (int)(Math.Round(min[0]) + origin.X),
+                (int)(Math.Round(min[1]) + origin.Y),
+                (int)(Math.Round(min[2]) + origin.Z),
+                (int)(Math.Round(max[0]) + origin.X),
+                (int)(Math.Round(max[1]) + origin.Y),
                 (int)(Math.Round(max[2] + origin.Z))
             );
         }

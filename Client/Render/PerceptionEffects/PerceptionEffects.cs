@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Vintagestory.API.Common;
 
 #nullable disable
@@ -20,6 +20,7 @@ namespace Vintagestory.API.Client
             RegisterPerceptionEffect(new DamagedPerceptionEffect(capi), "damaged");
             RegisterPerceptionEffect(new FreezingPerceptionEffect(capi), "freezing");
             RegisterPerceptionEffect(new DrunkPerceptionEffect(capi), "drunk");
+            RegisterPerceptionEffect(new PsychedelicPerceptionEffect(capi), "psychedelic");
         }
 
         public void RegisterPerceptionEffect(PerceptionEffect effect, string code)
@@ -70,6 +71,7 @@ namespace Vintagestory.API.Client
             TriggerEffect("damaged", 1, true);
             TriggerEffect("freezing", 1, true);
             TriggerEffect("drunk", 0, true);
+            TriggerEffect("psychedelic", 0, true);
 
             foreach (var effect in activePerceptionEffects)
             {

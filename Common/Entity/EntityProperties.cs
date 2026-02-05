@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// List of entity tags ids
         /// </summary>
-        public EntityTagArray Tags = EntityTagArray.Empty;
+        public EntityTagSet Tags = EntityTagSet.Empty;
 
         /// <summary>
         /// Natural habitat of the entity. Decides whether to apply gravity or not
@@ -126,25 +127,18 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EntityServerProperties Server;
 
-        /// <summary>
-        /// The sounds that this entity can make.
-        /// </summary>
-        public Dictionary<string, AssetLocation> Sounds;
+        /// <summary> The sounds that this entity can make. </summary>
+        public Dictionary<string, SoundAttributes> Sounds;
 
         /// <summary>
         /// The sounds this entity can make after being resolved.
         /// </summary>
-        public Dictionary<string, AssetLocation[]> ResolvedSounds = new Dictionary<string, AssetLocation[]>();
+        public Dictionary<string, AssetLocation[]> ResolvedSounds = new();
 
         /// <summary>
         /// The chance that an idle sound will play for the entity.
         /// </summary>
         public float IdleSoundChance = 0.3f;
-
-        /// <summary>
-        /// The sound range for the idle sound in blocks.
-        /// </summary>
-        public float IdleSoundRange = 24;
 
         /// <summary>
         /// The drops for the entity when they are killed.
@@ -186,14 +180,14 @@ namespace Vintagestory.API.Common.Entities
                     DropsCopy[i] = Drops[i].Clone();
             }
 
-            Dictionary<string, AssetLocation> csounds = new Dictionary<string, AssetLocation>();
+            Dictionary<string, SoundAttributes> csounds = new();
             foreach (var val in Sounds)
             {
                 csounds[val.Key] = val.Value.Clone();
             }
 
 
-            Dictionary<string, AssetLocation[]> cresolvedsounds = new Dictionary<string, AssetLocation[]>();
+            Dictionary<string, AssetLocation[]> cresolvedsounds = new();
             foreach (var val in ResolvedSounds)
             {
                 AssetLocation[] locs = val.Value;
@@ -228,9 +222,8 @@ namespace Vintagestory.API.Common.Entities
                 RotateModelOnClimb = RotateModelOnClimb,
                 KnockbackResistance = KnockbackResistance,
                 Attributes = Attributes,
-                Sounds = new Dictionary<string, AssetLocation>(Sounds),
+                Sounds = new Dictionary<string, SoundAttributes>(Sounds),
                 IdleSoundChance = IdleSoundChance,
-                IdleSoundRange = IdleSoundRange,
                 Drops = DropsCopy,
                 EyeHeight = EyeHeight,
                 SwimmingEyeHeight = SwimmingEyeHeight,
@@ -240,9 +233,7 @@ namespace Vintagestory.API.Common.Entities
             };
         }
 
-        /// <summary>
-        /// Initalizes the properties for the entity.
-        /// </summary>
+        /// <summary> Initalizes the properties for the entity. </summary>
         /// <param name="entity">the entity to tie this to.</param>
         /// <param name="api">The Core API</param>
         public void Initialize(Entity entity, ICoreAPI api)
@@ -266,19 +257,17 @@ namespace Vintagestory.API.Common.Entities
             InitSounds(api.Assets);
         }
 
-        /// <summary>
-        /// Initializes the sounds for this entity type.
-        /// </summary>
-        /// <param name="assetManager"></param>
+        /// <summary> Initializes the sounds for this entity type. </summary>
         public void InitSounds(IAssetManager assetManager)
         {
             if (Sounds != null)
             {
-                foreach (var val in Sounds)
+                foreach (var entry in Sounds)
                 {
-                    if (val.Value.Path.EndsWith('*'))
+                    AssetLocation soundLoc = entry.Value.Location;
+                    if (entry.Value.Location.Path.EndsWith('*'))
                     {
-                        List<IAsset> assets = assetManager.GetManyInCategory("sounds", val.Value.Path.Substring(0, val.Value.Path.Length - 1), val.Value.Domain);
+                        List<IAsset> assets = assetManager.GetMany(soundLoc.Path.Substring(0, soundLoc.Path.Length - 1), soundLoc.Domain, false);
                         AssetLocation[] sounds = new AssetLocation[assets.Count];
                         int i = 0;
 
@@ -287,11 +276,11 @@ namespace Vintagestory.API.Common.Entities
                             sounds[i++] = asset.Location;
                         }
 
-                        ResolvedSounds[val.Key] = sounds;
+                        ResolvedSounds[entry.Key] = sounds;
                     }
                     else
                     {
-                        ResolvedSounds[val.Key] = new AssetLocation[] { val.Value.Clone().WithPathPrefix("sounds/") };
+                        ResolvedSounds[entry.Key] = [ soundLoc ];
                     }
                 }
             }

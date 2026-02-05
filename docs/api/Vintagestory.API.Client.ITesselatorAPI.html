@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface ITesselatorAPI | VintageStory API ">
       
-      <meta name="description" content="Interface that allows custom model model meshing for items, blocks and entities Texturing crash course:  Block, Item and Entity textures are loaded from json files in the form of a CompositeTexture instance After connecting to a game server, the client inserts all of these textures into their type-respective texture atlasses After insertion a &amp;quot;texture sub-id&amp;quot; is left behind in the CompositeTexture.Baked Property You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key) Shape Tesselation crash course: Block and Item shapes are loaded from json files in the form of a CompositeShape instance A CompositeShape instance hold some block/item specific information as well as an identifier to a Shape instance After connecting to a game server, the client loads all shapes from the shape folder then finds each blocks/items shape by its shape identifier  Result is a MeshData instance that holds all vertices, UV coords, colors and etc. for each block That meshdata instance is  a) Held as-is in memory for using during chunk tesselation (you can get a reference to it through getDefaultBlockMesh()) b) &amp;quot;Compiled&amp;quot; to a Model for use during rendering in the gui.  Model Compilation means all it&#39;s mesh data is uploaded onto the graphcis through a VAO and a ModelRef instance is left behind which can be used by the RenderAPI to render it.">
+      <meta name="description" content="Interface that allows custom model model meshing for items, blocks and entities Texturing crash course:  Block, Item and Entity textures are loaded from json files in the form of a CompositeTexture instance After connecting to a game server, the client inserts all of these textures into their type-respective texture atlasses After insertion a &amp;quot;texture sub-id&amp;quot; is left behind in the CompositeTexture.Baked Property You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key)  Shape Tesselation crash course: Block and Item shapes are loaded from json files in the form of a CompositeShape instance A CompositeShape instance hold some block/item specific information as well as an identifier to a Shape instance After connecting to a game server, the client loads all shapes from the shape folder then finds each blocks/items shape by its shape identifier  Result is a MeshData instance that holds all vertices, UV coords, colors and etc. for each block That meshdata instance is  a) Held as-is in memory for using during chunk tesselation (you can get a reference to it through getDefaultBlockMesh()) b) &amp;quot;Compiled&amp;quot; to a Model for use during rendering in the gui.  Model Compilation means all it&#39;s mesh data is uploaded onto the graphcis through a VAO and a ModelRef instance is left behind which can be used by the RenderAPI to render it.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -103,7 +103,8 @@ Texturing crash course:<br></p>
 <li>Block, Item and Entity textures are loaded from json files in the form of a CompositeTexture instance<br></li>
 <li>After connecting to a game server, the client inserts all of these textures into their type-respective texture atlasses<br></li>
 <li>After insertion a &quot;texture sub-id&quot; is left behind in the CompositeTexture.Baked Property<br></li>
-<li>You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key)<br><br>
+<li>You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key)<br>
+<br>
 Shape Tesselation crash course:<br></li>
 <li>Block and Item shapes are loaded from json files in the form of a CompositeShape instance<br></li>
 <li>A CompositeShape instance hold some block/item specific information as well as an identifier to a Shape instance<br></li>
@@ -470,9 +471,11 @@ ITexPositionSource GetTexSource(Block block, int altTextureNumber = 0, bool retu
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Type of shape, used for error logging only</p>
+</dd>
     <dt><code>name</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd></dd>
+    <dd><p>Assetlocation of the shape defining file (e.g. itemtype code), used for error logging only</p>
+</dd>
     <dt><code>compositeShape</code> <a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
     <dd></dd>
     <dt><code>modeldata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
@@ -520,7 +523,8 @@ ITexPositionSource GetTexSource(Block block, int altTextureNumber = 0, bool retu
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>typeForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Used for error logging only</p>
+</dd>
     <dt><code>shapeBase</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
     <dd></dd>
     <dt><code>modeldata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
@@ -648,7 +652,8 @@ ITexPositionSource GetTexSource(Block block, int altTextureNumber = 0, bool retu
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>typeForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>Used for error logging only</p>
+</dd>
     <dt><code>shapeBase</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
     <dd></dd>
     <dt><code>modeldata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
@@ -656,7 +661,8 @@ ITexPositionSource GetTexSource(Block block, int altTextureNumber = 0, bool retu
     <dt><code>texSource</code> <a class="xref" href="Vintagestory.API.Client.ITexPositionSource.html">ITexPositionSource</a></dt>
     <dd></dd>
     <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
-    <dd></dd>
+    <dd><p>In radians</p>
+</dd>
     <dt><code>quantityElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
     <dd></dd>
     <dt><code>selectiveElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>

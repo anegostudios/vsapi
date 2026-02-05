@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 #nullable disable
@@ -151,6 +151,32 @@ namespace Vintagestory.API.Config
         public static string ReplaceInvalidChars(string filename)
         {
             return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        }
+
+
+        /// <summary>
+        /// Remove username from paths printed in log files
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string RemoveUsername(string path)
+        {
+            if (RuntimeEnv.OS == OS.Windows)
+            {
+                string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify);
+                if (!string.IsNullOrEmpty(appData)) return path.Replace(appData, "%appdata%");
+            }
+
+            string userPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile, Environment.SpecialFolderOption.DoNotVerify);
+            if (string.IsNullOrEmpty(userPath)) return path;
+
+            return RuntimeEnv.OS switch
+            {
+                OS.Windows => path.Replace(userPath, "%userprofile%"),
+                OS.Linux => path.Replace(userPath, "~"),
+                OS.Mac => path.Replace(userPath, "~"),
+                _ => path
+            };
         }
 
     }

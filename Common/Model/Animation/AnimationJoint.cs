@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -26,20 +27,24 @@ namespace Vintagestory.API.Common
         {
             List<ShapeElement> elems = Element.GetParentPath();
 
-            float[] modelTransform = Mat4f.Create();
+            Span<float> modelTransform = stackalloc float [16];
+            Mat4f.NewIdentity(modelTransform);
+            float[] tmp = new float[16];   // Performance note: If we did not create it here, it would be created inside GetLocalTransformMatrix anyhow...
             
             for (int i = 0; i < elems.Count; i++)
             {
                 ShapeElement elem = elems[i];
-                float[] localTransform = elem.GetLocalTransformMatrix(0);
-                Mat4f.Mul(modelTransform, modelTransform, localTransform);
+                Mat4f.Identity(tmp);
+                Mat4f.Mul(modelTransform, elem.GetLocalTransformMatrix(0, tmp));
             }
 
-            Mat4f.Mul(modelTransform, modelTransform, Element.GetLocalTransformMatrix(0));
+            Mat4f.Identity(tmp);
+            Mat4f.Mul(modelTransform, Element.GetLocalTransformMatrix(0, tmp));
 
-            float[] inverseTransformMatrix = Mat4f.Invert(Mat4f.Create(), modelTransform);
+            Mat4f.Invert(modelTransform);
 
-            return Mat4f.Mul(frameModelTransform, frameModelTransform, inverseTransformMatrix);
+            Mat4f.Mul(frameModelTransform, modelTransform);
+            return frameModelTransform;
         }
     }
 }

@@ -4,8 +4,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
-
-#nullable disable
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -21,7 +20,7 @@ namespace Vintagestory.API.Common.Entities
         public EntityBehavior(Entity entity)
         {
             this.entity = entity;
-            ProfilerName = "done-behavior-" + PropertyName();
+            ProfilerName = ("done-behavior-" + PropertyName()).DeDuplicate();
         }
 
         /// <summary>
@@ -130,7 +129,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="byPlayer">The player this entity was killed by.</param>
         /// <param name="handling">How this event was handled.</param>
         /// <returns>the items dropped from this entity</returns>
-        public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)
+        public virtual ItemStack[]? GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
 
@@ -219,7 +218,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="es"></param>
         /// <param name="player"></param>
         /// <param name="handled"></param>
-        public virtual WorldInteraction[] GetInteractionHelp(IClientWorldAccessor world, EntitySelection es, IClientPlayer player, ref EnumHandling handled)
+        public virtual WorldInteraction[]? GetInteractionHelp(IClientWorldAccessor world, EntitySelection es, IClientPlayer player, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
             return null;
@@ -281,7 +280,7 @@ namespace Vintagestory.API.Common.Entities
 
         }
 
-        public virtual ITexPositionSource GetTextureSource(ref EnumHandling handling)
+        public virtual ITexPositionSource? GetTextureSource(ref EnumHandling handling)
         {
             return null;
         }
@@ -313,7 +312,7 @@ namespace Vintagestory.API.Common.Entities
             return 0;
         }
 
-        public virtual string GetName(ref EnumHandling handling)
+        public virtual string? GetName(ref EnumHandling handling)
         {
             return null;
         }
@@ -323,6 +322,7 @@ namespace Vintagestory.API.Common.Entities
         /// If false, then this entity will always retaliate (disregarding subsequent)
         /// </summary>
         /// <param name="eOther"></param>
+        /// <param name="handling"></param>
         public virtual bool ToleratesDamageFrom(Entity eOther, ref EnumHandling handling)
         {
             return false;

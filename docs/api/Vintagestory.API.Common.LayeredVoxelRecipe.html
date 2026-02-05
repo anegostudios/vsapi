@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class LayeredVoxelRecipe | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class LayeredVoxelRecipe | VintageStory API ">
+      
+      <meta name="description" content="Creates a recipe using a 3D voxel-based system. Used for recipes types such as clayforming, smithing, or stone-knapping. Open in GitHub">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Common.LayeredVoxelRecipe">
+
+
+
+  <h1 id="Vintagestory_API_Common_LayeredVoxelRecipe" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe" class="text-break">
+Class LayeredVoxelRecipe  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Creates a recipe using a 3D voxel-based system. Used for recipes types such as clayforming, smithing, or stone-knapping. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Crafting/LayeredVoxelRecipe.cs>Open in GitHub</a></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public abstract class LayeredVoxelRecipe : RecipeBase, IRecipeBase, IByteSerializable, IConcreteCloneable&lt;RecipeBase&gt;, ICloneable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.RecipeBase.html">RecipeBase</a></div>
+      <div><span class="xref">LayeredVoxelRecipe</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.IByteSerializable.html">IByteSerializable</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.IConcreteCloneable-1.html">IConcreteCloneable</a>&lt;<a class="xref" href="Vintagestory.API.Common.RecipeBase.html">RecipeBase</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_Enabled">RecipeBase.Enabled</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_Name">RecipeBase.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_Attributes">RecipeBase.Attributes</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_RequiresTrait">RecipeBase.RequiresTrait</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_AverageDurability">RecipeBase.AverageDurability</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_CopyAttributesFrom">RecipeBase.CopyAttributesFrom</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MergeAttributesFrom">RecipeBase.MergeAttributesFrom</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_AllowedVariants">RecipeBase.AllowedVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_SkipVariants">RecipeBase.SkipVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ShowInCreatedBy">RecipeBase.ShowInCreatedBy</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_RecipeId">RecipeBase.RecipeId</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_CollectiblePreSearchResultsCache">RecipeBase.CollectiblePreSearchResultsCache</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_Clone">RecipeBase.Clone()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GenerateRecipesForAllIngredientCombinations_Vintagestory_API_Common_IWorldAccessor_">RecipeBase.GenerateRecipesForAllIngredientCombinations(IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GenerateOutputStack_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_">RecipeBase.GenerateOutputStack(ItemSlot[], ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetElementInGrid__1_System_Int32_System_Int32___0___System_Int32_">RecipeBase.GetElementInGrid&lt;TGridCellElement&gt;(int, int, TGridCellElement[], int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetGridIndex__1_System_Int32_System_Int32___0___System_Int32_">RecipeBase.GetGridIndex&lt;TGridCellElement&gt;(int, int, TGridCellElement[], int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_IsAdvancedWildcard_System_String_">RecipeBase.IsAdvancedWildcard(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_IsBasicWildcard_System_String_">RecipeBase.IsBasicWildcard(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_IsRegex_System_String_">RecipeBase.IsRegex(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_IsExactMatch_System_String_">RecipeBase.IsExactMatch(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetMatchType_System_String_System_Boolean_">RecipeBase.GetMatchType(string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ReplaceVariantsToRegex_System_String_System_Collections_Generic_List_System_String___System_Collections_Generic_Dictionary_System_String_System_String__">RecipeBase.ReplaceVariantsToRegex(string, out List&lt;string&gt;, Dictionary&lt;string, string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_WildCardToRegex_System_String_">RecipeBase.WildCardToRegex(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetIngredientById_System_String_">RecipeBase.GetIngredientById(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_">RecipeBase.GetNameToCodeMapping(IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetInputStackForIngredientId_System_String_Vintagestory_API_Common_ItemSlot___">RecipeBase.GetInputStackForIngredientId(string, ItemSlot[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetNameToCodeMappingForBasicWildcard_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeIngredient_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___">RecipeBase.GetNameToCodeMappingForBasicWildcard(IWorldAccessor, IRecipeIngredient, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetNameToCodeMappingForAdvancedWildcard_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeIngredient_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___">RecipeBase.GetNameToCodeMappingForAdvancedWildcard(IWorldAccessor, IRecipeIngredient, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GetVariantValuesFromAdvancedWildcard_Vintagestory_API_Common_IRecipeIngredient_System_Collections_Generic_IEnumerable_Vintagestory_API_Common_CollectibleObject__System_Collections_Generic_Dictionary_System_String_System_String__">RecipeBase.GetVariantValuesFromAdvancedWildcard(IRecipeIngredient, IEnumerable&lt;CollectibleObject&gt;, Dictionary&lt;string, string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_AddVariantCombination_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___System_Collections_Generic_Dictionary_System_String_System_String__">RecipeBase.AddVariantCombination(Dictionary&lt;string, HashSet&lt;string&gt;&gt;, Dictionary&lt;string, string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GenerateAllowedVariantsCombinations_System_Collections_Generic_Dictionary_System_String_System_String____">RecipeBase.GenerateAllowedVariantsCombinations(Dictionary&lt;string, string[]&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GenerateAllowedVariantsCombinationsRecursive_System_Int32_System_String___System_Collections_Generic_IEnumerable_System_ValueTuple_System_String_System_String___System_Collections_Generic_Dictionary_System_String_System_String____System_Collections_Generic_List_System_Collections_Generic_Dictionary_System_String_System_String___">RecipeBase.GenerateAllowedVariantsCombinationsRecursive(int, string[], IEnumerable&lt;(string variant, string value)&gt;, Dictionary&lt;string, string[]&gt;, List&lt;Dictionary&lt;string, string&gt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_CollectVariantValues_System_Text_RegularExpressions_Match_System_Collections_Generic_List_System_String__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___">RecipeBase.CollectVariantValues(Match, List&lt;string&gt;, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_AddVariantValuesToMapping_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___">RecipeBase.AddVariantValuesToMapping(Dictionary&lt;string, HashSet&lt;string&gt;&gt;, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_FillIngredientPlaceHolders_Vintagestory_API_Common_IRecipeIngredient_System_String_System_String_">RecipeBase.FillIngredientPlaceHolders(IRecipeIngredient, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MatchesAtPosition_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IRecipeIngredient___">RecipeBase.MatchesAtPosition(ItemSlot[], IRecipeIngredient[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MatchesAtPosition_System_Int32_System_Int32_Vintagestory_API_Common_ItemSlot___System_Int32_System_Int32_Vintagestory_API_Common_IRecipeIngredient___">RecipeBase.MatchesAtPosition(int, int, ItemSlot[], int, int, IRecipeIngredient[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MatchStackToIngredient_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IRecipeIngredient_">RecipeBase.MatchStackToIngredient(ItemStack, IRecipeIngredient)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ConsumeInputShapeLess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IRecipeIngredient___">RecipeBase.ConsumeInputShapeLess(IPlayer, ItemSlot[], IRecipeIngredient[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ConsumeInputAt_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IRecipeIngredient___">RecipeBase.ConsumeInputAt(IPlayer, ItemSlot[], IRecipeIngredient[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ConsumeInputAt_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_Common_IRecipeIngredient___">RecipeBase.ConsumeInputAt(IPlayer, ItemSlot[], int, int, int, int, IRecipeIngredient[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MatchesShapeLess_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeIngredient___">RecipeBase.MatchesShapeLess(ItemSlot[], IWorldAccessor, IRecipeIngredient[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MergeStacks_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_ItemStack__">RecipeBase.MergeStacks(ItemSlot[], List&lt;ItemStack&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MergeIngredientStacks_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_System_ValueTuple_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IRecipeIngredient___Vintagestory_API_Common_IRecipeIngredient___Vintagestory_API_Common_IWorldAccessor_">RecipeBase.MergeIngredientStacks(ItemSlot[], List&lt;(ItemStack stack, IRecipeIngredient ingredient)&gt;, IRecipeIngredient[], IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MatchWildcardIngredients_System_Collections_Generic_List_Vintagestory_API_Common_ItemStack__Vintagestory_API_Common_IRecipeIngredient___">RecipeBase.MatchWildcardIngredients(List&lt;ItemStack&gt;, IRecipeIngredient[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MatchIngredientStacks_System_Collections_Generic_List_System_ValueTuple_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IRecipeIngredient___System_Collections_Generic_List_Vintagestory_API_Common_ItemStack__">RecipeBase.MatchIngredientStacks(List&lt;(ItemStack stack, IRecipeIngredient ingredient)&gt;, List&lt;ItemStack&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_SeparateAndMergeIngredients_Vintagestory_API_Common_IRecipeIngredient___System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__">RecipeBase.SeparateAndMergeIngredients(IRecipeIngredient[], List&lt;IRecipeIngredient&gt;, List&lt;IRecipeIngredient&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ConsumeExactMatchIngredient_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__Vintagestory_API_Common_IPlayer_">RecipeBase.ConsumeExactMatchIngredient(ItemStack, ItemSlot, ItemSlot[], List&lt;IRecipeIngredient&gt;, IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ConsumeWildcardMatchIngredient_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__Vintagestory_API_Common_IPlayer_">RecipeBase.ConsumeWildcardMatchIngredient(ItemStack, ItemSlot, ItemSlot[], List&lt;IRecipeIngredient&gt;, IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GenerateRecipesForTagOnlyIngredients_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeBase_">RecipeBase.GenerateRecipesForTagOnlyIngredients(IWorldAccessor, IRecipeBase)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_GenerateRecipesForTagOnlyIngredient_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeBase_Vintagestory_API_Common_IRecipeIngredient_">RecipeBase.GenerateRecipesForTagOnlyIngredient(IWorldAccessor, IRecipeBase, IRecipeIngredient)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_FilterOutRecipesWithExactIngredientsThatDontMatchTags_System_Collections_Generic_IEnumerable_Vintagestory_API_Common_IRecipeBase__Vintagestory_API_Common_IWorldAccessor_">RecipeBase.FilterOutRecipesWithExactIngredientsThatDontMatchTags(IEnumerable&lt;IRecipeBase&gt;, IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MatchResolvedStackToIngredientTags_Vintagestory_API_Common_IRecipeIngredient_Vintagestory_API_Common_IWorldAccessor_">RecipeBase.MatchResolvedStackToIngredientTags(IRecipeIngredient, IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe__ctor_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe__ctor" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.#ctor">
+  LayeredVoxelRecipe()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected LayeredVoxelRecipe()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_Ingredients" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Ingredients">
+  Ingredients
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>An array of ingredients for this recipe. If only using a single ingredient, see <a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe.html#Vintagestory_API_Common_LayeredVoxelRecipe_Ingredient">Ingredient</a>.<br>
+Required if not using <a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe.html#Vintagestory_API_Common_LayeredVoxelRecipe_Ingredient">Ingredient</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public CraftingRecipeIngredient[] Ingredients</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_Output" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Output">
+  Output
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The final output of this recipe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public JsonItemStack Output</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_Pattern" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Pattern">
+  Pattern
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A 2D array of strings that are layered together to form the recipe. Use &quot;#&quot; for solid, and &quot;_&quot; or &quot; &quot; for a gap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public string[][] Pattern</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[][]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_Voxels" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Voxels">
+  Voxels
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>An array of voxels, created from <a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe.html#Vintagestory_API_Common_LayeredVoxelRecipe_Pattern">Pattern</a> during loading. This array is cloned when a player starts creating the recipe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool[,,] Voxels</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[,,]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_Ingredient_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Ingredient*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_Ingredient" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Ingredient">
+  Ingredient
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A single ingredient for this recipe. If you need to use more than one ingredient, see <a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe.html#Vintagestory_API_Common_LayeredVoxelRecipe_Ingredients">Ingredients</a>.<br>
+Required if not using <a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe.html#Vintagestory_API_Common_LayeredVoxelRecipe_Ingredients">Ingredients</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public CraftingRecipeIngredient? Ingredient { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_QuantityLayers_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.QuantityLayers*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_QuantityLayers" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.QuantityLayers">
+  QuantityLayers
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The number of layers in this recipe, in the Y-axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract int QuantityLayers { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_RecipeCategoryCode_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RecipeCategoryCode*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_RecipeCategoryCode" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RecipeCategoryCode">
+  RecipeCategoryCode
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A category code for this recipe type. Used for error logging.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string RecipeCategoryCode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_RecipeIngredients_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RecipeIngredients*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_RecipeIngredients" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RecipeIngredients">
+  RecipeIngredients
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override IEnumerable&lt;IRecipeIngredient&gt; RecipeIngredients { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_RecipeOutput_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RecipeOutput*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_RecipeOutput" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RecipeOutput">
+  RecipeOutput
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override IRecipeOutput RecipeOutput { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IRecipeOutput.html">IRecipeOutput</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_RotateRecipe_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RotateRecipe*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_RotateRecipe" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.RotateRecipe">
+  RotateRecipe
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, the recipe is rotated 90 degrees in the Y axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool RotateRecipe { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_CloneTo_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.CloneTo*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_CloneTo_System_Object_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.CloneTo(System.Object)">
+  CloneTo(object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void CloneTo(object recipe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>recipe</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_FromBytes_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)">
+  FromBytes(BinaryReader, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deserializes the alloy</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>resolver</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_GenVoxels_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.GenVoxels*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_GenVoxels" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.GenVoxels">
+  GenVoxels()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Generates the voxels for the recipe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GenVoxels()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_OnParsed_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.OnParsed*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_OnParsed_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.OnParsed(Vintagestory.API.Common.IWorldAccessor)">
+  OnParsed(IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnParsed(IWorldAccessor world)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_Resolve_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Resolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)">
+  Resolve(IWorldAccessor, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resolves the recipe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Resolve(IWorldAccessor world, string sourceForErrorLogging)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>sourceForErrorLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_ToBytes_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serialized the recipe</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_LayeredVoxelRecipe_WildCardMatch_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.WildCardMatch*"></a>
+
+  <h3 id="Vintagestory_API_Common_LayeredVoxelRecipe_WildCardMatch_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.LayeredVoxelRecipe.WildCardMatch(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)">
+  WildCardMatch(AssetLocation, AssetLocation)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Matches the wildcards for the clay recipe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool WildCardMatch(AssetLocation wildCard, AssetLocation blockCode)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>wildCard</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>blockCode</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

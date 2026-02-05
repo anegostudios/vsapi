@@ -18,7 +18,7 @@ namespace Vintagestory.API.Client
     {
         Action<int> handler;
 
-        internal GuiTab[] tabs;
+        public GuiTab[] tabs;
 
         LoadedTexture baseTexture;
         LoadedTexture[] hoverTextures;

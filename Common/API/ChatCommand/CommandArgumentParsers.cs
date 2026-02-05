@@ -172,6 +172,8 @@ namespace Vintagestory.API.Common
         protected bool isMandatoryArg;
         protected int argCount = 1;
         protected string argName;
+        // Optional
+        protected string explanation;
 
         protected ArgumentParserBase(string argName, bool isMandatoryArg)
         {
@@ -184,6 +186,12 @@ namespace Vintagestory.API.Common
         public bool IsMandatoryArg => isMandatoryArg;
         public bool IsMissing { get; set; }
         public int ArgCount => argCount;
+
+        public virtual ArgumentParserBase WithExplanation(string desc)
+        {
+            explanation = desc;
+            return this;
+        }
 
         public virtual string[] GetValidRange(CmdArgs args)
         {
@@ -201,6 +209,18 @@ namespace Vintagestory.API.Common
         {
             return isMandatoryArg ? "&lt;" + argName + "&gt;" : "[" + argName + "]";
         }
+
+        /// <summary>
+        /// Like GetSyntaxExplanation() but can return the custom-specified explanation instead of the default explanation. Sub-classes should not normally modify this
+        /// </summary>
+        /// <param name="indent"></param>
+        /// <returns></returns>
+        public virtual string GetSyntaxWithExplanation(string indent)
+        {
+            if (explanation == null) return GetSyntaxExplanation(indent);
+            return indent + GetSyntax() + " " + explanation;
+        }
+
         public virtual string GetSyntaxExplanation(string indent)
         {
             return null;
@@ -788,8 +808,8 @@ namespace Vintagestory.API.Common
         private bool entityMatches(Entity e, Vec3d sourcePos, AssetLocation type, string classstr, string tagstr, float? range, Cuboidi box, string name, bool? alive, long? id)
         {
             if (id != null && e.EntityId != id) return false;
-            if (range != null && e.SidedPos.DistanceTo(sourcePos) > range) return false;
-            if (box != null && !box.ContainsOrTouches(e.SidedPos)) return false;
+            if (range != null && e.Pos.DistanceTo(sourcePos) > range) return false;
+            if (box != null && !box.ContainsOrTouches(e.Pos)) return false;
             if (classstr != null && classstr != e.Class.ToLowerInvariant()) return false;
             if (type != null && !WildcardUtil.Match(type, e.Code)) return false;
             if (alive != null && e.Alive != alive) return false;

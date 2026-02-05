@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CreativeTabAndStackList
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Allows you to add a list of item stacks to put various into creative menu tabs. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/CreativeTabAndStackList.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Allows you to add a list of item stacks to put various into creative menu tabs. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/CreativeTabAndStackList.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -215,13 +215,12 @@ public class CreativeTabAndStackList</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>A list of item stacks to put in tabs. Note that every itemstack here will be placed in every <a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html#Vintagestory_API_Common_CreativeTabAndStackList_Tabs">Tabs</a> entry.</p>
+  <div class="markdown level1 summary"><p>A list of item stacks to put in tabs. Note that every itemstack here will be placed in every <a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html#Vintagestory_API_Common_CreativeTabAndStackList_Tabs">Tabs</a> entry.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public JsonItemStack[] Stacks</code></pre>
   </div>
 
@@ -248,13 +247,12 @@ public JsonItemStack[] Stacks</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>A list of creative tabs to put items into. Note that all itemstacks in <a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html#Vintagestory_API_Common_CreativeTabAndStackList_Stacks">Stacks</a> will be placed in all tabs.</p>
+  <div class="markdown level1 summary"><p>A list of creative tabs to put items into. Note that all itemstacks in <a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html#Vintagestory_API_Common_CreativeTabAndStackList_Stacks">Stacks</a> will be placed in all tabs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string[] Tabs</code></pre>
   </div>
 

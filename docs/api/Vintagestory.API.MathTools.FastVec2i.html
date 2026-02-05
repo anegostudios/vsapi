@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -378,6 +378,38 @@ public ulong val</code></pre>
 
 
 
+  <a id="Vintagestory_API_MathTools_FastVec2i_Z_" data-uid="Vintagestory.API.MathTools.FastVec2i.Z*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_Z" data-uid="Vintagestory.API.MathTools.FastVec2i.Z">
+  Z
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identical to .Y - optionally, you can use .Z instead for code readability if the vector represents X,Z values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Z { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_FastVec2i_Zero_" data-uid="Vintagestory.API.MathTools.FastVec2i.Zero*"></a>
 
   <h3 id="Vintagestory_API_MathTools_FastVec2i_Zero" data-uid="Vintagestory.API.MathTools.FastVec2i.Zero">
@@ -593,6 +625,80 @@ public ulong val</code></pre>
 
 
 
+  <a id="Vintagestory_API_MathTools_FastVec2i_ManhattanDistance_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattanDistance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_ManhattanDistance_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattanDistance(System.Int32,System.Int32)">
+  ManhattanDistance(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ManhattanDistance(int x, int y)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec2i_ManhattanDistance_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattanDistance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec2i_ManhattanDistance_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattanDistance(Vintagestory.API.MathTools.Vec2i)">
+  ManhattanDistance(Vec2i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ManhattanDistance(Vec2i point)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>point</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_FastVec2i_ManhattenDistance_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattenDistance*"></a>
 
   <h3 id="Vintagestory_API_MathTools_FastVec2i_ManhattenDistance_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec2i.ManhattenDistance(System.Int32,System.Int32)">
@@ -604,7 +710,8 @@ public ulong val</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ManhattenDistance(int x, int y)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the correctly-spelled ManhattanDistance instead&quot;)]
+public int ManhattenDistance(int x, int y)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -642,7 +749,8 @@ public ulong val</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ManhattenDistance(Vec2i point)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the correctly-spelled ManhattanDistance instead&quot;)]
+public int ManhattenDistance(Vec2i point)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

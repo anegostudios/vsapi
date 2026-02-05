@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 
@@ -242,7 +242,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         MusicTrack StartTrack(AssetLocation soundLocation, float priority, EnumSoundType soundType, Action<ILoadedSound> onLoaded = null);
 
-        void StartTrack(MusicTrack track, float priority, EnumSoundType soundType, bool playnow=true);
+        void StartTrack(MusicTrack track, EnumSoundType soundType, Action<ILoadedSound> onLoaded = null, bool playnow=true);
 
 
         /// <summary>

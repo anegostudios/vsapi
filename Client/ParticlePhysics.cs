@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 #nullable disable
 
@@ -42,7 +43,7 @@ namespace Vintagestory.API.Client
 
         Cuboidd particleCollBox = new Cuboidd();
         Cuboidd blockCollBox = new Cuboidd();
-        BlockPos tmpPos = new BlockPos();
+        BlockPos tmpPos = new BlockPos(Config.Dimensions.WillSetLater);
 
         public ParticlePhysics(IBlockAccessor blockAccess)
         {
@@ -68,7 +69,7 @@ namespace Vintagestory.API.Client
             int yPrev = (int)pos.Y;
             int zPrev = (int)pos.Z;
 
-            tmpPos.Set(xPrev, yPrev, zPrev);
+            tmpPos.SetAndCorrectDimension(xPrev, yPrev, zPrev);
             Block block = BlockAccess.GetBlock(tmpPos, BlockLayersAccess.Fluid);
             Block prevBlock = block;
 
@@ -76,8 +77,7 @@ namespace Vintagestory.API.Client
             {
                 if (block.IsLiquid())
                 {
-                    tmpPos.Set(xPrev, (int)(pos.Y + 1), zPrev);
-                    block = BlockAccess.GetBlock(tmpPos, BlockLayersAccess.Fluid);
+                    block = BlockAccess.GetBlockAbove(tmpPos, BlockLayersAccess.Fluid);
 
                     float waterY = (int)pos.Y + prevBlock.LiquidLevel / 8f + (block.IsLiquid() ? 9 / 8f : 0);
                     float bottomSubmergedness = waterY - (float)pos.Y;
@@ -94,14 +94,11 @@ namespace Vintagestory.API.Client
                     velocity.X *= 0.99f;
                     velocity.Z *= 0.99f;
 
-                    if (prevBlock.PushVector != null && swimlineSubmergedness >= 0)
+                    if (prevBlock is IBlockFlowing blockFlowing && !blockFlowing.IsStill && swimlineSubmergedness >= 0)
                     {
                         float factor = deltatime / (33f / 1000f);
-                        velocity.Add(
-                            (float)prevBlock.PushVector.X * 15 * factor,
-                            (float)prevBlock.PushVector.Y * 15 * factor,
-                            (float)prevBlock.PushVector.Z * 15 * factor
-                        );
+                        FastVec3f pushVector = blockFlowing.GetPushVector(tmpPos);
+                        velocity.Add(pushVector * (7.5f * factor));
                     }
 
                 }
@@ -109,21 +106,18 @@ namespace Vintagestory.API.Client
             }
             else
             {
-                if (block.PushVector != null)
+                if (prevBlock is IBlockFlowing blockFlowing && !blockFlowing.IsStill)
                 {
-                    velocity.Add(
-                        (float)block.PushVector.X * 30 * deltatime,
-                        (float)block.PushVector.Y * 30 * deltatime,
-                        (float)block.PushVector.Z * 30 * deltatime
-                    );
+                    FastVec3f pushVector = blockFlowing.GetPushVector(tmpPos);
+                    velocity.Add(pushVector * (30 * deltatime));
                 }
 
             }
         }
 
         public float MotionCap = 2;
-        BlockPos minPos = new BlockPos();
-        BlockPos maxPos = new BlockPos();
+        BlockPos minPos = new BlockPos(Config.Dimensions.WillSetLater);
+        BlockPos maxPos = new BlockPos(Config.Dimensions.WillSetLater);
 
         /// <summary>
         /// Updates the velocity vector according to the amount of passed time, gravity and terrain collision.
@@ -157,7 +151,7 @@ namespace Vintagestory.API.Client
                 (int)(particleCollBox.Z2 + Math.Max(0, motion.Z))
             );
 
-            tmpPos.dimension = minPos.dimension;
+            tmpPos.SetDimension(minPos.dimension);
             particleCollBox.Y1 %= BlockPos.DimensionBoundary;
             particleCollBox.Y2 %= BlockPos.DimensionBoundary;
 

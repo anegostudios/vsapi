@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -44,6 +45,21 @@ namespace Vintagestory.API.Util
                 array[n] = array[k];
                 array[k] = temp;
             }
+        }
+
+        public static T PopLast<T>(this List<T> items)
+        {
+            var item = items[items.Count - 1];
+            items.RemoveAt(items.Count - 1);
+            return item;
+        }
+
+        public static bool Contains<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
+            foreach (var item in source)
+            {
+                if (predicate(item)) return true;
+            }
+            return false;
         }
     }
 

@@ -57,8 +57,6 @@ namespace Vintagestory.API.Client
         int unscaledHandleWidth = 15;
         int unscaledHandleHeight = 35;
 
-        int unscaledHoverTextHeight = 50;
-
         double handleWidth;
         double handleHeight;
         double padding;

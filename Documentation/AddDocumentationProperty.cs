@@ -19,6 +19,7 @@ namespace Vintagestory.API
         /// <param name="typeWithFullNamespace">The name of the type, along with its full namespace. e.g. "System.Single" or "VintageStory.API.Common.CompositeShape".</param>
         /// <param name="requiredStatus">The text to put inside the "required" tag in DocFX.</param>
         /// <param name="defaultStatus">The text to put inside the "default" tag in DocFX. Use an empty string for none.</param>
+        /// <param name="attribute"></param>
         public AddDocumentationPropertyAttribute(string name, string summary, string typeWithFullNamespace, string requiredStatus, string defaultStatus, bool attribute = false)
         {}
 

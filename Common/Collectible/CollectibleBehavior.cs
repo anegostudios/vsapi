@@ -1,7 +1,9 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
 #nullable disable
@@ -306,15 +308,35 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-        [Obsolete("Use OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling bhHandling) instead")]
+        [Obsolete("Use OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe, ref EnumHandling bhHandling) instead")]
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)
         {
         }
 
+        [Obsolete("Use OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe, ref EnumHandling bhHandling) instead")]
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling bhHandling)
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             // Keep this to avoid breaking existing mods that override this method
             OnCreatedByCrafting(allInputslots, outputSlot, ref bhHandling);
+#pragma warning restore CS0618 // Type or member is obsolete
+        }
+
+        public virtual void OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe, ref EnumHandling bhHandling)
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            // Keep this to avoid breaking existing mods that override this method
+            if (byRecipe is GridRecipe gridRecipe)
+            {
+                OnCreatedByCrafting(allInputSlots, outputSlot, gridRecipe, ref bhHandling);
+            }
+#pragma warning restore CS0618 // Type or member is obsolete
+        }
+
+        [Obsolete("Use GetMiningSpeed instead")]
+        public virtual float OnGetMiningSpeed(IItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
+        {
+            return GetMiningSpeed(itemstack as ItemStack, blockSel, block, forPlayer, ref bhHandling);
         }
 
         /// <summary>
@@ -322,9 +344,19 @@ namespace Vintagestory.API.Common
         /// If 'bhHandling' is not set to 'PreventDefault', the mining speed will be multiplied by standard item mining speed.
         /// </summary>
         /// <returns>Mining speed multiplier</returns>
-        public virtual float OnGetMiningSpeed(IItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
+        public virtual float GetMiningSpeed(ItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
         {
             return 1;
+        }
+
+        /// <summary>
+        /// Sets return value to mining speeds for all materials of the item if 'bhHandling' is not equal to 'PassThrough'.
+        /// </summary>
+        /// <returns>Mining speeds</returns>
+        public virtual Dictionary<EnumBlockMaterial, float> GetMiningSpeeds(ItemSlot slot, ref EnumHandling bhHandling)
+        {
+            bhHandling = EnumHandling.PassThrough;
+            return null;
         }
 
         /// <summary>
@@ -332,17 +364,35 @@ namespace Vintagestory.API.Common
         /// If 'bhHandling' is not set to 'PreventDefault', standard item durability will be added to result.
         /// </summary>
         /// <returns>Additional durability</returns>
+        [Obsolete("Use GetMaxDurability() instead, there do not return additional durability but the total durability")]
         public virtual int OnGetMaxDurability(ItemStack itemstack, ref EnumHandling bhHandling)
         {
             return 0;
         }
 
         /// <summary>
-        /// Adds return value to resulted durability if 'bhHandling' is not equal to 'PassThrough'.
+        /// Define the max durability of this item
+        /// </summary>
+        /// <param name="itemstack"></param>
+        /// <param name="durability">The standard max durability of this item</param>
+        /// <param name="bhHandling">If not set to PassThrough, the returned value is used</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public virtual int GetMaxDurability(ItemStack itemstack, int durability, ref EnumHandling bhHandling)
+        {
+            bhHandling = EnumHandling.PassThrough;
+            return durability;
+        }
+
+        /// <summary>
+        /// Sets return value to remaining durability if 'bhHandling' is not equal to 'PassThrough'.
         /// If 'bhHandling' is not set to 'PreventDefault', standard item durability will be added to result.
         /// </summary>
-        /// <returns>Additional durability</returns>
-        public virtual int OnGetRemainingDurability(ItemStack itemstack, ref EnumHandling bhHandling)
+        /// <param name="itemstack"></param>
+        /// <param name="remainingDurability">Current remaining durability</param>
+        /// <param name="bhHandling"></param>
+        /// <returns>Remaining durability</returns>
+        public virtual int GetRemainingDurability(ItemStack itemstack, int remainingDurability, ref EnumHandling bhHandling)
         {
             return 0;
         }
@@ -351,6 +401,14 @@ namespace Vintagestory.API.Common
         /// Called when item is damaged via 'CollectibleObject.DamageItem'
         /// </summary>
         public virtual void OnDamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, ref int amount, ref EnumHandling bhHandling)
+        {
+
+        }
+
+        /// <summary>
+        /// Called when item is destroyed via 'CollectibleObject.OnDestroyItem'
+        /// </summary>
+        public virtual void OnDestroyItem(IWorldAccessor world, Entity byEntity, ItemSlot itemSlot, ref EnumHandling bhHandling)
         {
 
         }
@@ -368,6 +426,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="slot"></param>
         /// <param name="props"></param>
+        /// <param name="handling"></param>
         /// <returns>The stack it should transition into</returns>
         public virtual ItemStack OnTransitionNow(ItemSlot slot, TransitionableProperties props, ref EnumHandling handling)
         {
@@ -375,9 +434,77 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
+        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size, ref EnumHandling handling)
         {
             
+        }
+
+        public virtual float GetAttackPower(ItemStack itemstack, float attackPower, ref EnumHandling bhHandling)
+        {
+            bhHandling = EnumHandling.PassThrough;
+            return attackPower;
+        }
+
+        public virtual float GetAttackRange(ItemStack itemstack, float attackRange, ref EnumHandling bhHandling)
+        {
+            bhHandling = EnumHandling.PassThrough;
+            return attackRange;
+        }
+
+        public virtual void SetTemperature(IWorldAccessor world, ItemStack itemstack, float temperature, bool delayCooldown, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+        }
+
+        public virtual float GetTemperature(IWorldAccessor world, ItemStack itemstack, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return GlobalConstants.CollectibleDefaultTemperature;
+        }
+
+        public virtual void AfterGetTemperature(IWorldAccessor world, ItemStack itemstack, float temperature, ref EnumHandling handling)
+        {
+            
+        }
+
+        public virtual float GetDamageToEntity(float baseDamage, Entity entity, ItemStack itemStack, ref bool isCriticalHit, ref EnumHandling handling)
+        {
+            return baseDamage;
+        }
+
+        public virtual bool RequiresTransitionableTicking(IWorldAccessor world, ItemStack itemstack, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return false;
+        }
+
+        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, GridRecipe matchingRecipe, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return false;
+        }
+
+        public virtual TransitionState[] UpdateAndGetTransitionStates(IWorldAccessor world, ItemSlot inslot, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return null;
+        }
+
+        public virtual TransitionState UpdateAndGetTransitionState(IWorldAccessor world, ItemSlot inslot, EnumTransitionType type, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return null;
+        }
+
+        public virtual int GetMergableQuantity(ItemStack sinkStack, ItemStack sourceStack, EnumMergePriority priority, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return 0;
+        }
+
+        public virtual void TryMergeStacks(ItemStackMergeOperation op, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
         }
     }
 }

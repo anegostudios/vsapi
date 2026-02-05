@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.MathTools
 {
@@ -7,25 +7,37 @@ namespace Vintagestory.API.MathTools
     /// Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
     [DocumentAsJson]
-    public class Size3f
+    public class Size3f : ISize3
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The X-dimension of this size.
         /// </summary>
-        [DocumentAsJson] public float Width;
+        [DocumentAsJson("Recommended", "0")]
+        public float Width;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The Y-dimension for this size.
         /// </summary>
-        [DocumentAsJson] public float Height;
+        [DocumentAsJson("Recommended", "0")]
+        public float Height;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The Z-dimension for this size.
         /// </summary>
-        [DocumentAsJson] public float Length;
+        [DocumentAsJson("Recommended", "0")]
+        public float Length;
+
+        public float Volume => Width * Height * Length;
+
+        public int WidthAsInt => (int)Width;
+        public int HeightAsInt => (int)Height;
+        public int LengthAsInt => (int)Length;
+        public double WidthAsDouble => (double)Width;
+        public double HeightAsDouble => (double)Height;
+        public double LengthAsDouble => (double)Length;
+        public float WidthAsFloat => (float)Width;
+        public float HeightAsFloat => (float)Height;
+        public float LengthAsFloat => (float)Length;
 
         public Size3f()
         {
@@ -53,13 +65,22 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
-    public class Size3d
+    public class Size3d : ISize3
     {
         public double Width;
         public double Height;
         public double Length;
 
-
+        public int WidthAsInt => (int)Width;
+        public int HeightAsInt => (int)Height;
+        public int LengthAsInt => (int)Length;
+        public double WidthAsDouble => (double)Width;
+        public double HeightAsDouble => (double)Height;
+        public double LengthAsDouble => (double)Length;
+        public float WidthAsFloat => (float)Width;
+        public float HeightAsFloat => (float)Height;
+        public float LengthAsFloat => (float)Length;
+        public double Volume => Width * Height * Length;
         public Size3d()
         {
 
@@ -88,12 +109,23 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 integers. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
-    public class Size3i
+    public class Size3i : ISize3
     {
         public int Width;
         public int Height;
         public int Length;
 
+        public int WidthAsInt => (int)Width;
+        public int HeightAsInt => (int)Height;
+        public int LengthAsInt => (int)Length;
+        public double WidthAsDouble => (double)Width;
+        public double HeightAsDouble => (double)Height;
+        public double LengthAsDouble => (double)Length;
+        public float WidthAsFloat => (float)Width;
+        public float HeightAsFloat => (float)Height;
+        public float LengthAsFloat => (float)Length;
+
+        public int Volume => Width * Height * Length;
 
         public Size3i()
         {

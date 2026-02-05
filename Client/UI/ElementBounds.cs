@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -89,7 +89,7 @@ namespace Vintagestory.API.Client
         public bool IsDrawingSurface;
 
 
-        private bool requiresrelculation = true;
+        protected bool requiresrelculation = true;
         public virtual bool RequiresRecalculation { get { return requiresrelculation; } }
 
         /// <summary>
@@ -981,6 +981,29 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
+        /// Sets a fixed x position
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public ElementBounds WithFixedX(int x)
+        {
+            this.fixedX = x;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets a fixed y position
+        /// </summary>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public ElementBounds WithFixedY(int y)
+        {
+            this.fixedY = y;
+            return this;
+        }
+
+
+        /// <summary>
         /// Sets a new fixed offset that is used during element alignment.
         /// </summary>
         /// <param name="offx"></param>
@@ -1207,6 +1230,7 @@ namespace Vintagestory.API.Client
                 BothSizing = ElementSizing.Percentual
             };
         }
+
 
 
         /// <summary>

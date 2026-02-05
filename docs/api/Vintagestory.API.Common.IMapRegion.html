@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -129,6 +129,38 @@ Interface IMapRegion
 
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="Vintagestory_API_Common_IMapRegion_AnimalSpawnMaps_" data-uid="Vintagestory.API.Common.IMapRegion.AnimalSpawnMaps*"></a>
+
+  <h3 id="Vintagestory_API_Common_IMapRegion_AnimalSpawnMaps" data-uid="Vintagestory.API.Common.IMapRegion.AnimalSpawnMaps">
+  AnimalSpawnMaps
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Density maps for animal spawning</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;string, ByteDataMap2D&gt; AnimalSpawnMaps { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Datastructures.ByteDataMap2D.html">ByteDataMap2D</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Common_IMapRegion_BeachMap_" data-uid="Vintagestory.API.Common.IMapRegion.BeachMap*"></a>
@@ -611,6 +643,38 @@ Dictionary&lt;string, byte[]&gt; ModData { get; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_IMapRegion_RiversMap_" data-uid="Vintagestory.API.Common.IMapRegion.RiversMap*"></a>
+
+  <h3 id="Vintagestory_API_Common_IMapRegion_RiversMap" data-uid="Vintagestory.API.Common.IMapRegion.RiversMap">
+  RiversMap
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rivers map for medium rivers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long[] RiversMap { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IMapRegion_RockStrata_" data-uid="Vintagestory.API.Common.IMapRegion.RockStrata*"></a>
 
   <h3 id="Vintagestory_API_Common_IMapRegion_RockStrata" data-uid="Vintagestory.API.Common.IMapRegion.RockStrata">
@@ -675,6 +739,38 @@ Dictionary&lt;string, byte[]&gt; ModData { get; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_IMapRegion_TerrainMap_" data-uid="Vintagestory.API.Common.IMapRegion.TerrainMap*"></a>
+
+  <h3 id="Vintagestory_API_Common_IMapRegion_TerrainMap" data-uid="Vintagestory.API.Common.IMapRegion.TerrainMap">
+  TerrainMap
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Low-resolution terrain height map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ushort[] TerrainMap { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IMapRegion_UpheavelMap_" data-uid="Vintagestory.API.Common.IMapRegion.UpheavelMap*"></a>
 
   <h3 id="Vintagestory_API_Common_IMapRegion_UpheavelMap" data-uid="Vintagestory.API.Common.IMapRegion.UpheavelMap">
@@ -728,6 +824,38 @@ Dictionary&lt;string, byte[]&gt; ModData { get; }</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>generatedStructure</code> <a class="xref" href="Vintagestory.API.Common.GeneratedStructure.html">GeneratedStructure</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IMapRegion_AddGeneratedStructures_" data-uid="Vintagestory.API.Common.IMapRegion.AddGeneratedStructures*"></a>
+
+  <h3 id="Vintagestory_API_Common_IMapRegion_AddGeneratedStructures_System_Collections_Generic_IEnumerable_Vintagestory_API_Common_GeneratedStructure__" data-uid="Vintagestory.API.Common.IMapRegion.AddGeneratedStructures(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.GeneratedStructure})">
+  AddGeneratedStructures(IEnumerable&lt;GeneratedStructure&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A thread-safe way to add new GeneratedStructures, also marks DirtyForSaving = true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddGeneratedStructures(IEnumerable&lt;GeneratedStructure&gt; generatedStructure)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>generatedStructure</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.GeneratedStructure.html">GeneratedStructure</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -922,6 +1050,44 @@ Client: Not implemented. Map chunk Moddata is not synced from server to client</
     <dt><code>T</code></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IMapRegion_UpdateLowResTerrainPadding_" data-uid="Vintagestory.API.Common.IMapRegion.UpdateLowResTerrainPadding*"></a>
+
+  <h3 id="Vintagestory_API_Common_IMapRegion_UpdateLowResTerrainPadding_Vintagestory_API_Common_IMapRegion_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IMapRegion.UpdateLowResTerrainPadding(Vintagestory.API.Common.IMapRegion,System.Int32,System.Int32,System.Int32)">
+  UpdateLowResTerrainPadding(IMapRegion, int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add a map region's terrainmap data to the padding regions of its neighbor's terrainmap</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateLowResTerrainPadding(IMapRegion mapRegion, int dx, int dz, int mapSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mapRegion</code> <a class="xref" href="Vintagestory.API.Common.IMapRegion.html">IMapRegion</a></dt>
+    <dd></dd>
+    <dt><code>dx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>dz</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>mapSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
 
 
 

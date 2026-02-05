@@ -59,6 +59,7 @@ namespace Vintagestory.API.Client
         public float FrostVignetting;
         public float ExtraSepia;
 
+        public const int BloomAddPsychedelicIndex = 2;
         public const int BloomAddDrunkIndex = 1;
         public const int BloomAddEnvIndex = 0;
 
@@ -80,6 +81,7 @@ namespace Vintagestory.API.Client
         public float WindWaveCounterHighFreq = 0f;
 
         public float GlitchStrength = 0f;
+        public float PsychedelicStrength = 0f;
         public float GlitchWaviness = 0f;
         public float WindSpeed = 0f;
         public float WindWaveIntensity = 1f;
@@ -116,7 +118,7 @@ namespace Vintagestory.API.Client
         public Vec3f PlayerPosForFoam = new Vec3f();
         public Vec3d playerReferencePos;
         public Vec3d playerReferencePosForFoam;
-        BlockPos plrPos = new BlockPos();
+        BlockPos plrPos = new BlockPos(Dimensions.NormalWorld);
 
         internal float SkyDaylight;
 

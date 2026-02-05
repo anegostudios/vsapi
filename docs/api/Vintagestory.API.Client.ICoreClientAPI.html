@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -136,7 +136,7 @@ Interface ICoreClientAPI
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ModLoader">ICoreAPI.ModLoader</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_TagRegistry">ICoreAPI.TagRegistry</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_TagsManager">ICoreAPI.TagsManager</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_">ICoreAPI.RegisterEntityClass(string, EntityProperties)</a>
@@ -1438,8 +1438,8 @@ bool RegisterCommand(ClientChatCommand chatcommand)</code></pre>
 
   <a id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack*"></a>
 
-  <h3 id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_Vintagestory_API_Client_MusicTrack_System_Single_Vintagestory_API_Client_EnumSoundType_System_Boolean_" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Client.MusicTrack,System.Single,Vintagestory.API.Client.EnumSoundType,System.Boolean)">
-  StartTrack(MusicTrack, float, EnumSoundType, bool)
+  <h3 id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_Vintagestory_API_Client_MusicTrack_Vintagestory_API_Common_EnumSoundType_System_Action_Vintagestory_API_Client_ILoadedSound__System_Boolean_" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Client.MusicTrack,Vintagestory.API.Common.EnumSoundType,System.Action{Vintagestory.API.Client.ILoadedSound},System.Boolean)">
+  StartTrack(MusicTrack, EnumSoundType, Action&lt;ILoadedSound&gt;, bool)
   
   </h3>
 
@@ -1447,16 +1447,16 @@ bool RegisterCommand(ClientChatCommand chatcommand)</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void StartTrack(MusicTrack track, float priority, EnumSoundType soundType, bool playnow = true)</code></pre>
+    <pre><code class="lang-csharp hljs">void StartTrack(MusicTrack track, EnumSoundType soundType, Action&lt;ILoadedSound&gt; onLoaded = null, bool playnow = true)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>track</code> <a class="xref" href="Vintagestory.API.Client.MusicTrack.html">MusicTrack</a></dt>
     <dd></dd>
-    <dt><code>priority</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dt><code>soundType</code> <a class="xref" href="Vintagestory.API.Common.EnumSoundType.html">EnumSoundType</a></dt>
     <dd></dd>
-    <dt><code>soundType</code> <a class="xref" href="Vintagestory.API.Client.EnumSoundType.html">EnumSoundType</a></dt>
+    <dt><code>onLoaded</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Client.ILoadedSound.html">ILoadedSound</a>&gt;</dt>
     <dd></dd>
     <dt><code>playnow</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
@@ -1475,7 +1475,7 @@ bool RegisterCommand(ClientChatCommand chatcommand)</code></pre>
 
   <a id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack*"></a>
 
-  <h3 id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_Vintagestory_API_Common_AssetLocation_System_Single_Vintagestory_API_Client_EnumSoundType_System_Action_Vintagestory_API_Client_ILoadedSound__" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Common.AssetLocation,System.Single,Vintagestory.API.Client.EnumSoundType,System.Action{Vintagestory.API.Client.ILoadedSound})">
+  <h3 id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_Vintagestory_API_Common_AssetLocation_System_Single_Vintagestory_API_Common_EnumSoundType_System_Action_Vintagestory_API_Client_ILoadedSound__" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Common.AssetLocation,System.Single,Vintagestory.API.Common.EnumSoundType,System.Action{Vintagestory.API.Client.ILoadedSound})">
   StartTrack(AssetLocation, float, EnumSoundType, Action&lt;ILoadedSound&gt;)
   
   </h3>
@@ -1495,7 +1495,7 @@ If you supply an onLoaded method the track is not started immediately and you ca
     <dd></dd>
     <dt><code>priority</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
-    <dt><code>soundType</code> <a class="xref" href="Vintagestory.API.Client.EnumSoundType.html">EnumSoundType</a></dt>
+    <dt><code>soundType</code> <a class="xref" href="Vintagestory.API.Common.EnumSoundType.html">EnumSoundType</a></dt>
     <dd></dd>
     <dt><code>onLoaded</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Client.ILoadedSound.html">ILoadedSound</a>&gt;</dt>
     <dd></dd>

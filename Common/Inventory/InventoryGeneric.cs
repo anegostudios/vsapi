@@ -164,9 +164,10 @@ namespace Vintagestory.API.Common
         {
             float mul = GetDefaultTransitionSpeedMul(transType);
 
-            if (transType == EnumTransitionType.Perish && PerishableFactorByFoodCategory != null && stack.Collectible.NutritionProps != null)
+            var nutritionProps = stack.Collectible.GetNutritionProperties(Api.World, stack, null);
+            if (transType == EnumTransitionType.Perish && PerishableFactorByFoodCategory != null && nutritionProps != null)
             {
-                if (!PerishableFactorByFoodCategory.TryGetValue(stack.Collectible.NutritionProps.FoodCategory, out float rateMul))
+                if (!PerishableFactorByFoodCategory.TryGetValue(nutritionProps.FoodCategory, out float rateMul))
                 {
                     rateMul = 1;
                 }

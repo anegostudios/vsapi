@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using Vintagestory.API.MathTools;
 
@@ -21,6 +21,10 @@ namespace Vintagestory.API.Common
             return a.faceAndSubposition;
         }
 
+        /// <summary>
+        /// The value is the faceAndSubposition - i.e. BlockFacing.Index + 6 * subPosition.  For normal full-face decors, it should have values 0-5.
+        /// </summary>
+        /// <param name="value"></param>
         public DecorBits(int value)
         {
             faceAndSubposition = value;

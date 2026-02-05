@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -9,6 +9,7 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Util
 {
     public delegate T fillCallback<T>(int index);
+
 
     public static class ArrayUtil
     {

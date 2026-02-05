@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using Vintagestory.API.Client;
-
-#nullable disable
 
 namespace Vintagestory.API.Common
 {
@@ -23,64 +22,69 @@ namespace Vintagestory.API.Common
     public class BlockSounds
     {
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Played when an entity walks on this block.
         /// </summary>
-        [DocumentAsJson] public virtual AssetLocation Walk { get; set; } = null;
+        [DocumentAsJson("Optional", "See game/soundconfig.json. Range defaults to 12.")]
+        [JsonConverter(typeof(SoundAttributeConverter), true, 12)]
+        public virtual SoundAttributes Walk { get; set; } = new SoundAttributes();
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
-        /// Played when an entity moves inside this block. Primarily used for liquids.
+        /// Played when an entity moves inside this block. Primarily used for liquids and foliage.
         /// </summary>
-        [DocumentAsJson] public virtual AssetLocation Inside { get; set; } = null;
+        [DocumentAsJson("Optional", "None. Range defaults to 12.")]
+        [JsonConverter(typeof(SoundAttributeConverter), true, 12)]
+        public virtual SoundAttributes Inside { get; set; } = new SoundAttributes();
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Played when this block is broken.
         /// </summary>
-        [DocumentAsJson] public virtual AssetLocation Break { get; set; } = null;
+        [DocumentAsJson("Optional", "See game/soundconfig.json. Range defaults to 16.")]
+        [JsonConverter(typeof(SoundAttributeConverter), true, 16)]
+        public virtual SoundAttributes Break { get; set; } = new SoundAttributes();
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Played when this block is placed.
         /// </summary>
-        [DocumentAsJson] public virtual AssetLocation Place { get; set; } = null;
+        [DocumentAsJson("Optional", "See game/soundconfig.json. Range defaults to 16.")]
+        [JsonConverter(typeof(SoundAttributeConverter), true, 16)]
+        public virtual SoundAttributes Place { get; set; } = new SoundAttributes();
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Played when this block is hit. Will be overridden by <see cref="ByTool"/> if an appropriate tool is set.
         /// </summary>
-        [DocumentAsJson] public virtual AssetLocation Hit { get; set; } = null;
+        [DocumentAsJson("Optional", "See game/soundconfig.json. Range defaults to 16.")]
+        [JsonConverter(typeof(SoundAttributeConverter), true, 16)]
+        public virtual SoundAttributes Hit { get; set; } = new SoundAttributes();
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Played in ambience for this block.
         /// </summary>
-        [DocumentAsJson] public AssetLocation Ambient = null;
+        [DocumentAsJson("Optional", "None")]
+        public AssetLocation? Ambient = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Ambient</jsondefault>-->
         /// The type of sound for this block's ambient sound.
         /// </summary>
-        [DocumentAsJson] public EnumSoundType AmbientSoundType = EnumSoundType.Ambient;
+        [DocumentAsJson("Optional", "Ambient")]
+        public EnumSoundType AmbientSoundType = EnumSoundType.Ambient;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>3</jsondefault>-->
         /// Adjacent ambient sound sources are merged to avoid playing too many sounds too loudly. This is the maximum distance a sound source can be from another to allow a merge.
         /// </summary>
-        [DocumentAsJson] public float AmbientMaxDistanceMerge = 3;
+        [DocumentAsJson("Optional", "3")]
+        public float AmbientMaxDistanceMerge = 3;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
         /// Amount of nearby ambient sound blocks in order to reach full ambient sound volume
         /// </summary>
-        [DocumentAsJson] public float AmbientBlockCount = 10f;
+        [DocumentAsJson("Optional", "10")]
+        public float AmbientBlockCount = 10f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Gets the sound that occurs when a specific tool hits a block.  (Note for coders: if none specified in the JSON, this will be null from version 1.20.4 onwards)
         /// </summary>
-        [DocumentAsJson] public virtual Dictionary<EnumTool, BlockSounds> ByTool { get; set; }
+        [DocumentAsJson("Optional", "None")]
+        public virtual Dictionary<EnumTool, BlockSounds>? ByTool { get; set; }
 
         /// <summary>
         /// Clones the block sounds.
@@ -90,11 +94,11 @@ namespace Vintagestory.API.Common
         {
             BlockSounds sounds = new BlockSounds()
             {
-                Walk = Walk?.PermanentClone(),
-                Inside = Inside?.PermanentClone(),
-                Break = Break?.PermanentClone(),
-                Place = Place?.PermanentClone(),
-                Hit = Hit?.PermanentClone(),
+                Walk = Walk.Clone(),
+                Inside = Inside.Clone(),
+                Break = Break.Clone(),
+                Place = Place.Clone(),
+                Hit = Hit.Clone(),
                 Ambient = Ambient?.PermanentClone(),
                 AmbientBlockCount = AmbientBlockCount,
                 AmbientSoundType = AmbientSoundType,
@@ -118,9 +122,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="byPlayer"></param>
         /// <returns></returns>
-        public AssetLocation GetBreakSound(IPlayer byPlayer)
+        public SoundAttributes GetBreakSound(IPlayer? byPlayer)
         {
-            EnumTool? tool = byPlayer?.InventoryManager?.ActiveHotbarSlot?.Itemstack?.Collectible?.Tool;
+            EnumTool? tool = byPlayer?.InventoryManager?.ActiveHotbarSlot?.Itemstack?.Collectible?.GetTool(byPlayer.InventoryManager.ActiveHotbarSlot);
             return tool == null ? Break : GetBreakSound((EnumTool)tool);
         }
 
@@ -129,9 +133,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="byPlayer"></param>
         /// <returns></returns>
-        public AssetLocation GetHitSound(IPlayer byPlayer)
+        public SoundAttributes GetHitSound(IPlayer? byPlayer)
         {
-            EnumTool? tool = byPlayer?.InventoryManager?.ActiveHotbarSlot?.Itemstack?.Collectible?.Tool;
+            EnumTool? tool = byPlayer?.InventoryManager?.ActiveHotbarSlot?.Itemstack?.Collectible?.GetTool(byPlayer.InventoryManager.ActiveHotbarSlot);
             return tool == null ? Hit : GetHitSound((EnumTool)tool);
         }
 
@@ -140,11 +144,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="tool">The Tool used.</param>
         /// <returns>The resulting sound</returns>
-        public AssetLocation GetBreakSound(EnumTool tool)
+        public SoundAttributes GetBreakSound(EnumTool tool)
         {
             if (ByTool != null)
             {
-                ByTool.TryGetValue(tool, out BlockSounds toolSounds);
+                ByTool.TryGetValue(tool, out BlockSounds? toolSounds);
                 if (toolSounds?.Break != null) return toolSounds.Break;
             }
 
@@ -156,27 +160,20 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="tool"></param>
         /// <returns></returns>
-        public AssetLocation GetHitSound(EnumTool tool)
+        public SoundAttributes GetHitSound(EnumTool tool)
         {
             if (ByTool != null)
             {
-                ByTool.TryGetValue(tool, out BlockSounds toolSounds);
+                ByTool.TryGetValue(tool, out BlockSounds? toolSounds);
                 if (toolSounds?.Hit != null) return toolSounds.Hit;
             }
 
             return Hit;
         }
 
-
-
         [OnDeserialized]
         public void OnDeserializedMethod(StreamingContext context)
         {
-            Walk?.WithPathPrefixOnce("sounds/");
-            Inside?.WithPathPrefixOnce("sounds/");
-            Break?.WithPathPrefixOnce("sounds/");
-            Place?.WithPathPrefixOnce("sounds/");
-            Hit?.WithPathPrefixOnce("sounds/");
             Ambient?.WithPathPrefixOnce("sounds/");
         }
     }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CropBehaviorType
   <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Allows further complex behavior for crop blocks. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/CropBehaviorType.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Allows further complex behavior for crop blocks. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/CropBehaviorType.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -160,6 +160,7 @@ public class CropBehaviorType</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string name</code></pre>
   </div>
 
@@ -194,6 +195,7 @@ public string name</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonObject properties</code></pre>
   </div>
 
@@ -202,7 +204,7 @@ public JsonObject properties</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 

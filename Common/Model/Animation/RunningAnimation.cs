@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.MathTools;
 
@@ -37,7 +37,8 @@ namespace Vintagestory.API.Common
 
         public ShapeElementWeights[] ElementWeights;
 
-        public int SoundPlayedAtIteration = -1;
+        public int[] SoundPlayedAtIteration = null;
+
 
         /// <summary>
         /// Between 0 and 1
@@ -172,7 +173,7 @@ namespace Vintagestory.API.Common
             CurrentFrame = 0;
             Iterations = 0;
             EasingFactor = 0;
-            SoundPlayedAtIteration = -1;
+            SoundPlayedAtIteration = null;
         }
 
         public void EaseOut(float dt)

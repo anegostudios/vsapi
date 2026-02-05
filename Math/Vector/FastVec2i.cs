@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+using ProtoBuf;
 using System;
 
 namespace Vintagestory.API.MathTools
@@ -13,6 +13,8 @@ namespace Vintagestory.API.MathTools
         public ulong val;
         public int X { get { return (int)val; } set { val = (val & 0xFFFF_FFFF_0000_0000) + (uint)value; } }
         public int Y { get { return (int)(val >>> 32); } set { val = (uint)val + ((ulong)value << 32); } }
+        /// <summary>Identical to .Y - optionally, you can use .Z instead for code readability if the vector represents X,Z values</summary>
+        public int Z { get { return (int)(val >>> 32); } set { val = (uint)val + ((ulong)value << 32); } }    // Intentionally the same as Y
 
         public static FastVec2i Zero => new FastVec2i(0, 0);
 
@@ -58,12 +60,24 @@ namespace Vintagestory.API.MathTools
             set { if (index == 0) X = value; else if (index == 1) Y = value; }
         }
 
+        [Obsolete("Use the correctly-spelled ManhattanDistance instead")]
         public int ManhattenDistance(Vec2i point)
+        {
+            return ManhattanDistance(point);
+        }
+
+        public int ManhattanDistance(Vec2i point)
         {
             return Math.Abs(X - point.X) + Math.Abs(Y - point.Y);
         }
 
+        [Obsolete("Use the correctly-spelled ManhattanDistance instead")]
         public int ManhattenDistance(int x, int y)
+        {
+            return ManhattanDistance(x, y);
+        }
+
+        public int ManhattanDistance(int x, int y)
         {
             return Math.Abs(X - x) + Math.Abs(Y - y);
         }

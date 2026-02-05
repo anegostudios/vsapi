@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -9,7 +9,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 ints, similar to a Vec3i or a BlockPos but this is a struct
     /// </summary>
-    public struct FastVec3i
+    public struct FastVec3i : IEquatable<FastVec3i>
     {
         /// <summary>
         /// The X-Component of the vector

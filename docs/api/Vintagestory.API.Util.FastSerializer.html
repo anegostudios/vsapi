@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Class FastSerializer
 
   <div class="markdown summary"><p>A faster implementation of a ProtoBuf serializer.
 <br>Note 1: for int and ushort and other primitives/structs, the default value of 0 will not be written (because the read value will be 0 anyhow, so not writing the 0 value makes no difference to what the reader eventually reads): except in arrays and other simple collections such as List, where 0 values will be written, so that the reader reads out all subsequent values in the array with the correct indexing
-<br>Note 2: for reference types including string, if the value is null then nothing will be written.  A read collection may therefore be shorter than the written collection, if the written collection included null values: be careful serializing arrays of reference types, if necessary replace null values with something else prior to serialization.  For convenience, one special exception here is arrays or lists of string: if a null string is in the array, FastSerializer will instead automatically write an empty string &quot;&quot;. (We don't do that for other reference types because it is not necessarily clear what the default non-null value should be....) <a href="https://github.com/anegostudios/vsapi/blob/master///Util/FastSerializer.cs">Open in GitHub</a></p>
+<br>Note 2: for reference types including string, if the value is null then nothing will be written.  A read collection may therefore be shorter than the written collection, if the written collection included null values: be careful serializing arrays of reference types, if necessary replace null values with something else prior to serialization.  For convenience, one special exception here is arrays or lists of string: if a null string is in the array, FastSerializer will instead automatically write an empty string &quot;&quot;. (We don't do that for other reference types because it is not necessarily clear what the default non-null value should be....) <a href=https://github.com/anegostudios/vsapi/blob/master///Util/FastSerializer.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -371,6 +371,42 @@ Class FastSerializer
 
 
 
+  <a id="Vintagestory_API_Util_FastSerializer_GetSize_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_GetSize_Vintagestory_API_MathTools_Vec2iStruct_" data-uid="Vintagestory.API.Util.FastSerializer.GetSize(Vintagestory.API.MathTools.Vec2iStruct)">
+  GetSize(Vec2iStruct)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetSize(Vec2iStruct val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>val</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2iStruct.html">Vec2iStruct</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
 
   <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Boolean)">
@@ -513,6 +549,41 @@ Class FastSerializer
 
   <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
 
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IDictionary_Vintagestory_API_MathTools_Vec2iStruct_System_Single__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IDictionary{Vintagestory.API.MathTools.Vec2iStruct,System.Single})">
+  Write(FastMemoryStream, int, IDictionary&lt;Vec2iStruct, float&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IDictionary&lt;Vec2iStruct, float&gt; dict)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>dict</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.Vec2iStruct.html">Vec2iStruct</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
   <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_Byte____" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.Byte[]})">
   Write(FastMemoryStream, int, IEnumerable&lt;byte[]&gt;)
   
@@ -567,6 +638,42 @@ Class FastSerializer
     <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
     <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_System_Collections_Generic_IEnumerable_System_Single__" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,System.Collections.Generic.IEnumerable{System.Single})">
+  Write(FastMemoryStream, int, IEnumerable&lt;float&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This one always writes packed, make sure to specify IsPacked=true in the ProtoMember header</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, IEnumerable&lt;float&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -917,6 +1024,41 @@ Class FastSerializer
     <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
     <dt><code>val</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_FastSerializer_Write_" data-uid="Vintagestory.API.Util.FastSerializer.Write*"></a>
+
+  <h3 id="Vintagestory_API_Util_FastSerializer_Write_Vintagestory_API_Datastructures_FastMemoryStream_System_Int32_Vintagestory_API_MathTools_Vec2iStruct_" data-uid="Vintagestory.API.Util.FastSerializer.Write(Vintagestory.API.Datastructures.FastMemoryStream,System.Int32,Vintagestory.API.MathTools.Vec2iStruct)">
+  Write(FastMemoryStream, int, Vec2iStruct)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Write(FastMemoryStream stream, int field, Vec2iStruct val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>field</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>val</code> <a class="xref" href="Vintagestory.API.MathTools.Vec2iStruct.html">Vec2iStruct</a></dt>
     <dd></dd>
   </dl>
 

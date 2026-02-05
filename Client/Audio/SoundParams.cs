@@ -1,4 +1,5 @@
 ﻿using ProtoBuf;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -6,21 +7,6 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
-    /// <summary>
-    /// Sound types, often used to determine specific volume controls.
-    /// </summary>
-    public enum EnumSoundType
-    {
-        Sound, 
-        Music, 
-        Ambient,
-        Weather,
-        Entity,
-        MusicGlitchunaffected,
-        AmbientGlitchunaffected,
-        SoundGlitchunaffected
-    }
-
     /// <summary>
     /// The sound paramaters used for loading sounds on the client side
     /// </summary>

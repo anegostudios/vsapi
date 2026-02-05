@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,13 +97,13 @@ Class BarrelRecipe
   <dl><dt>Assembly</dt><dd>VSSurvivalMod.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Creates a recipe for use inside a barrel. Primarily used to craft with liquids. <a href="https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Recipe/Barrel/BarrelRecipe.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Creates a recipe for use inside a barrel. Primarily used to craft with liquids. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Recipe/Barrel/BarrelRecipe.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public class BarrelRecipe</code></pre>
+public class BarrelRecipe : RecipeBase</code></pre>
   </div>
 
 
@@ -113,12 +113,47 @@ public class BarrelRecipe</code></pre>
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.RecipeBase.html">RecipeBase</a></div>
       <div><span class="xref">BarrelRecipe</span></div>
     </dd>
   </dl>
 
 
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_Enabled">RecipeBase.Enabled</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_Name">RecipeBase.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_Attributes">RecipeBase.Attributes</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_RequiresTrait">RecipeBase.RequiresTrait</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_AverageDurability">RecipeBase.AverageDurability</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_CopyAttributesFrom">RecipeBase.CopyAttributesFrom</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_MergeAttributesFrom">RecipeBase.MergeAttributesFrom</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_AllowedVariants">RecipeBase.AllowedVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_SkipVariants">RecipeBase.SkipVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RecipeBase.html#Vintagestory_API_Common_RecipeBase_ShowInCreatedBy">RecipeBase.ShowInCreatedBy</a>
+    </div>
+  </dd></dl>
 
 
 
@@ -147,6 +182,7 @@ public class BarrelRecipe</code></pre>
 </h2>
 
 
+  <a id="Vintagestory_GameContent_BarrelRecipe_Code_" data-uid="Vintagestory.GameContent.BarrelRecipe.Code*"></a>
 
   <h3 id="Vintagestory_GameContent_BarrelRecipe_Code" data-uid="Vintagestory.GameContent.BarrelRecipe.Code">
   Code (Required)
@@ -154,13 +190,13 @@ public class BarrelRecipe</code></pre>
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>A code for this recipe, used to create an entry in the handbook.</p>
+<p>Is used only to group recipes together. Recipes with same code will be displayed as one, but cycled through.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public string Code</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public string? Code { get; set; }</code></pre>
   </div>
 
 
@@ -180,6 +216,7 @@ public string Code</code></pre>
 
 
 
+  <a id="Vintagestory_GameContent_BarrelRecipe_Ingredients_" data-uid="Vintagestory.GameContent.BarrelRecipe.Ingredients*"></a>
 
   <h3 id="Vintagestory_GameContent_BarrelRecipe_Ingredients" data-uid="Vintagestory.GameContent.BarrelRecipe.Ingredients">
   Ingredients (Required)
@@ -192,8 +229,8 @@ public string Code</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public BarrelRecipeIngredient[] Ingredients</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public BarrelRecipeIngredient[]? Ingredients { get; set; }</code></pre>
   </div>
 
 
@@ -213,6 +250,7 @@ public BarrelRecipeIngredient[] Ingredients</code></pre>
 
 
 
+  <a id="Vintagestory_GameContent_BarrelRecipe_Output_" data-uid="Vintagestory.GameContent.BarrelRecipe.Output*"></a>
 
   <h3 id="Vintagestory_GameContent_BarrelRecipe_Output" data-uid="Vintagestory.GameContent.BarrelRecipe.Output">
   Output (Required)
@@ -225,8 +263,8 @@ public BarrelRecipeIngredient[] Ingredients</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public BarrelOutputStack Output</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public BarrelOutputStack? Output { get; set; }</code></pre>
   </div>
 
 
@@ -246,6 +284,7 @@ public BarrelOutputStack Output</code></pre>
 
 
 
+  <a id="Vintagestory_GameContent_BarrelRecipe_SealHours_" data-uid="Vintagestory.GameContent.BarrelRecipe.SealHours*"></a>
 
   <h3 id="Vintagestory_GameContent_BarrelRecipe_SealHours" data-uid="Vintagestory.GameContent.BarrelRecipe.SealHours">
   SealHours (Required)
@@ -258,8 +297,8 @@ public BarrelOutputStack Output</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public double SealHours</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public double SealHours { get; set; }</code></pre>
   </div>
 
 
@@ -268,107 +307,6 @@ public double SealHours</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_GameContent_BarrelRecipe_Enabled_" data-uid="Vintagestory.GameContent.BarrelRecipe.Enabled*"></a>
-
-  <h3 id="Vintagestory_GameContent_BarrelRecipe_Enabled" data-uid="Vintagestory.GameContent.BarrelRecipe.Enabled">
-  Enabled (Optional) (Default: True)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Should this recipe be loaded by the recipe loader?</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public bool Enabled { get; set; }</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_GameContent_BarrelRecipe_Name_" data-uid="Vintagestory.GameContent.BarrelRecipe.Name*"></a>
-
-  <h3 id="Vintagestory_GameContent_BarrelRecipe_Name" data-uid="Vintagestory.GameContent.BarrelRecipe.Name">
-  Name (Obsolete)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Unused. Defines a name for the recipe.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Name { get; set; }</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_GameContent_BarrelRecipe_RecipeId" data-uid="Vintagestory.GameContent.BarrelRecipe.RecipeId">
-  RecipeId (Obsolete)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>Unused. Defines an ID for the recipe.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public int RecipeId</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -386,6 +386,38 @@ Interface IWorldManagerAPI
 
 
 
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_CurrentWorldFilepath_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldFilepath*"></a>
+
+  <h3 id="Vintagestory_API_Server_IWorldManagerAPI_CurrentWorldFilepath" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldFilepath">
+  CurrentWorldFilepath
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The current world filename including the full path</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string CurrentWorldFilepath { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_IWorldManagerAPI_CurrentWorldName_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldName*"></a>
 
   <h3 id="Vintagestory_API_Server_IWorldManagerAPI_CurrentWorldName" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldName">
@@ -393,12 +425,12 @@ Interface IWorldManagerAPI
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The current world filename</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string CurrentWorldName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use CurrentWorldFilepath instead&quot;)]
+string CurrentWorldName { get; }</code></pre>
   </div>
 
 
@@ -855,6 +887,43 @@ Used in InitWorldgen to check chunks before the games is running</p>
     <dt><code>chunkY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
     <dt><code>chunkZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>onlyIfInRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the chunk will not be sent to connected players that are out of range from that chunk</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_BroadcastMapRegion_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BroadcastMapRegion*"></a>
+
+  <h3 id="Vintagestory_API_Server_IWorldManagerAPI_BroadcastMapRegion_System_Int32_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BroadcastMapRegion(System.Int32,System.Int32,System.Boolean)">
+  BroadcastMapRegion(int, int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Send or Resend a loaded MapRegion to all connected players. Has no effect when the MapRegion is not loaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void BroadcastMapRegion(int regionX, int regionZ, bool onlyIfInRange = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>regionX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>regionZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
     <dt><code>onlyIfInRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>If true, the chunk will not be sent to connected players that are out of range from that chunk</p>

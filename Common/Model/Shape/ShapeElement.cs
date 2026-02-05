@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
 using Vintagestory.API.MathTools;
@@ -191,20 +191,23 @@ namespace Vintagestory.API.Common
         {
             List<ShapeElement> elems = GetParentPath();
 
-            float[] modelTransform = Mat4f.Create();
+            Span<float> modelTransform = stackalloc float[16];
+            Mat4f.NewIdentity(modelTransform);
+            float[] tmp = new float[16];   // Performance note: If we did not create it here, it would be created inside GetLocalTransformMatrix anyhow...
 
             for (int i = 0; i < elems.Count; i++)
             {
                 ShapeElement elem = elems[i];
-                float[] localTransform = elem.GetLocalTransformMatrix(0);
-                Mat4f.Mul(modelTransform, modelTransform, localTransform);
+                Mat4f.Identity(tmp);
+                Mat4f.Mul(modelTransform, elem.GetLocalTransformMatrix(0, tmp));
             }
 
-            Mat4f.Mul(modelTransform, modelTransform, GetLocalTransformMatrix(0));
+            Mat4f.Identity(tmp);
+            Mat4f.Mul(modelTransform, GetLocalTransformMatrix(0, tmp));
 
-            float[] inverseTransformMatrix = Mat4f.Invert(Mat4f.Create(), modelTransform);
+            Mat4f.Invert(modelTransform);
 
-            return inverseTransformMatrix;
+            return Mat4f.Copy(tmp, modelTransform);
         }
 
 
@@ -220,7 +223,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        internal void ResolveRefernces()
+        internal void ResolveReferences()
         {
             var Children = this.Children;
             if (Children != null)
@@ -229,7 +232,7 @@ namespace Vintagestory.API.Common
                 {
                     ShapeElement child = Children[i];
                     child.ParentElement = this;
-                    child.ResolveRefernces();
+                    child.ResolveReferences();
                 }
             }
 
@@ -287,15 +290,18 @@ namespace Vintagestory.API.Common
             if (tf == null) tf = noTransform;
 
             ShapeElement elem = this;
-            if (output == null) output = Mat4f.Create();
+            output ??= Mat4f.Create();
+            Span<float> matrix = (Span<float>)output;
 
-            Span<float> origin = stackalloc float[] { 0f, 0f, 0f };
+            float origin0 = 0f;
+            float origin1 = 0f;
+            float origin2 = 0f;
 
             if (elem.RotationOrigin != null)
             {
-                origin[0] = (float)elem.RotationOrigin[0] / 16;
-                origin[1] = (float)elem.RotationOrigin[1] / 16;
-                origin[2] = (float)elem.RotationOrigin[2] / 16;
+                origin0 = (float)elem.RotationOrigin[0] / 16;
+                origin1 = (float)elem.RotationOrigin[1] / 16;
+                origin2 = (float)elem.RotationOrigin[2] / 16;
             }
 
             // R = rotate, S = scale, T = translate
@@ -307,22 +313,14 @@ namespace Vintagestory.API.Common
                 // ==================================================
                 // BASE ELEMENT TRANSLATE SCALE ROTATE
                 // ==================================================
-                Mat4f.Translate(output, output, origin[0], origin[1], origin[2]);
+                Mat4f.Translate(matrix, origin0, origin1, origin2);
 
-                Mat4f.Scale(output, output, (float)elem.ScaleX, (float)elem.ScaleY, (float)elem.ScaleZ);
+                Mat4f.Scale(matrix, (float)elem.ScaleX, (float)elem.ScaleY, (float)elem.ScaleZ);
 
-                if (elem.RotationX != 0)
-                {
-                    Mat4f.RotateX(output, output, (float)(elem.RotationX * GameMath.DEG2RAD));
-                }
-                if (elem.RotationY != 0)
-                {
-                    Mat4f.RotateY(output, output, (float)(elem.RotationY * GameMath.DEG2RAD));
-                }
-                if (elem.RotationZ != 0)
-                {
-                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ * GameMath.DEG2RAD));
-                }
+                Mat4f.RotateByXYZ(matrix,
+                    (float)(elem.RotationX * GameMath.DEG2RAD),
+                    (float)(elem.RotationY * GameMath.DEG2RAD),
+                    (float)(elem.RotationZ * GameMath.DEG2RAD));
 
                 // note: lumped together with next translation
                 // Mat4f.Translate(output, output, -originX, -originY, -originZ);
@@ -331,53 +329,35 @@ namespace Vintagestory.API.Common
                 // KEYFRAME TRANSLATE SCALE ROTATE
                 // ==================================================
 
-                Mat4f.Translate(output, output,
-                    -origin[0] + (float)elem.From[0] / 16 + tf.translateX,
-                    -origin[1] + (float)elem.From[1] / 16 + tf.translateY,
-                    -origin[2] + (float)elem.From[2] / 16 + tf.translateZ
+                Mat4f.Translate(matrix,
+                    -origin0 + (float)elem.From[0] / 16 + tf.translateX,
+                    -origin1 + (float)elem.From[1] / 16 + tf.translateY,
+                    -origin2 + (float)elem.From[2] / 16 + tf.translateZ
                 );
 
-                Mat4f.Scale(output, output, tf.scaleX, tf.scaleY, tf.scaleZ);
+                Mat4f.Scale(matrix, tf.scaleX, tf.scaleY, tf.scaleZ);
 
-                if (tf.degX + tf.degOffX != 0)
-                {
-                    Mat4f.RotateX(output, output, (float)(tf.degX + tf.degOffX) * GameMath.DEG2RAD);
-                }
-                if (tf.degY + tf.degOffY != 0)
-                {
-                    Mat4f.RotateY(output, output, (float)(tf.degY + tf.degOffY) * GameMath.DEG2RAD);
-                }
-                if (tf.degZ + tf.degOffZ != 0)
-                {
-                    Mat4f.RotateZ(output, output, (float)(tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
-                }
+                Mat4f.RotateByXYZ(matrix,
+                    (float)(tf.degX + tf.degOffX) * GameMath.DEG2RAD,
+                    (float)(tf.degY + tf.degOffY) * GameMath.DEG2RAD,
+                    (float)(tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
             }
             else
             {
-                Mat4f.Translate(output, output, origin[0], origin[1], origin[2]);
+                Mat4f.Translate(matrix, origin0, origin1, origin2);
 
-                if (elem.RotationX + tf.degX + tf.degOffX != 0)
-                {
-                    Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
-                }
-                if (elem.RotationY + tf.degY + tf.degOffY != 0)
-                {
-                    Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
-                }
-                if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
-                {
-                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
-                }
+                Mat4f.RotateByXYZ(matrix,
+                    (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD,
+                    (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD,
+                    (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
 
-                Mat4f.Scale(output, output, (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ);
+                Mat4f.Scale(matrix, (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ);
 
-                Mat4f.Translate(output, output,
-                    (float)elem.From[0] / 16 + tf.translateX,
-                    (float)elem.From[1] / 16 + tf.translateY,
-                    (float)elem.From[2] / 16 + tf.translateZ
+                Mat4f.Translate(matrix,
+                    (float)elem.From[0] / 16 + tf.translateX - origin0,
+                    (float)elem.From[1] / 16 + tf.translateY - origin1,
+                    (float)elem.From[2] / 16 + tf.translateZ - origin2
                 );
-
-                Mat4f.Translate(output, output, -origin[0], -origin[1], -origin[2]);
             }
 
             return output;
@@ -475,7 +455,9 @@ namespace Vintagestory.API.Common
 
         public virtual void FreeRAMServer()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             Faces = null;
+#pragma warning restore CS0618 // Type or member is obsolete
             FacesResolved = null;   // We don't need the Faces information on the server-side
             var Children = this.Children;
             if (Children != null)

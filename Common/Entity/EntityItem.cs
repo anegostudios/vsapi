@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.GameContent;
 
 #nullable disable
 
@@ -22,7 +23,7 @@ namespace Vintagestory.API.Common
     public class EntityItem : Entity
     {
         public EntityItemSlot Slot;
-        
+
         public long itemSpawnedMilliseconds;
 
         /// <summary>
@@ -106,6 +107,18 @@ namespace Vintagestory.API.Common
 
             DoInitialActiveCheck(api);
 
+
+            JsonObject gravityFactor = Itemstack.Collectible.Attributes?["gravityFactor"];
+            if (gravityFactor?.Exists == true)
+            {
+                WatchedAttributes.SetDouble("gravityFactor", gravityFactor.AsDouble(1));
+            }
+            JsonObject airdragFactor = Itemstack.Collectible.Attributes?["airDragFactor"];
+            if (airdragFactor?.Exists == true)
+            {
+                WatchedAttributes.SetDouble("airDragFactor", airdragFactor.AsDouble(1));
+            }
+
             this.Properties.Initialize(this, api);
 
             LocalEyePos.Y = Properties.EyeHeight;
@@ -120,30 +133,22 @@ namespace Vintagestory.API.Common
                 Slot.Itemstack = Itemstack;
             });
 
-            JsonObject gravityFactor = Itemstack.Collectible.Attributes?["gravityFactor"];
-            if (gravityFactor?.Exists == true)
-            {
-                WatchedAttributes.SetDouble("gravityFactor", gravityFactor.AsDouble(1));
-            }
-            JsonObject airdragFactor = Itemstack.Collectible.Attributes?["airDragFactor"];
-            if (airdragFactor?.Exists == true)
-            {
-                WatchedAttributes.SetDouble("airDragFactor", airdragFactor.AsDouble(1));
-            }
 
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;
             Swimming = FeetInLiquid = World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid).IsLiquid();
 
             tmpPos.Set(Pos.XInt, Pos.YInt, Pos.ZInt);
+            tmpPos.SetDimension(Pos.Dimension);
             windLoss = World.BlockAccessor.GetDistanceToRainFall(tmpPos) / 4f;
+
+            var ebpp = GetBehavior<EntityBehaviorPassivePhysics>();
+            if (ebpp != null) ebpp.BoyancyMul = Itemstack.ItemAttributes?["boyancyMul"].AsFloat(1) ?? 1;
         }
 
-        long lastPlayedSizzlesTotalMs;
         float getWindSpeedAccum = 0.25f;
         Vec3d windSpeed = new Vec3d();
-        BlockPos tmpPos = new BlockPos();
+        BlockPos tmpPos = new BlockPos(Dimensions.WillSetLater);
         float windLoss;
-
 
         public override void OnGameTick(float dt)
         {
@@ -172,7 +177,8 @@ namespace Vintagestory.API.Common
 
                 if (IsOnFire)
                 {
-                    Block fluidBlock = World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid);
+                    tmpPos.Set(Pos.X, Pos.Y, Pos.Z);
+                    Block fluidBlock = World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.Fluid);
                     if (fluidBlock.IsLiquid() && fluidBlock.LiquidCode != "lava" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
                     {
                         IsOnFire = false;
@@ -193,13 +199,14 @@ namespace Vintagestory.API.Common
 
             if (Itemstack != null)
             {
-                if (!Collided && !Swimming && World.Side == EnumAppSide.Server)
+                if (!Collided && !Swimming && World.Side == EnumAppSide.Server && State == EnumEntityState.Active)
                 {
                     getWindSpeedAccum += dt;
                     if (getWindSpeedAccum > 0.25)
                     {
                         getWindSpeedAccum = 0;
                         tmpPos.Set(Pos.XInt, Pos.YInt, Pos.ZInt);
+                        tmpPos.SetDimension(Pos.Dimension);
                         windSpeed = World.BlockAccessor.GetWindSpeedAt(tmpPos);
 
                         windSpeed.X = Math.Max(0, Math.Abs(windSpeed.X) - windLoss) * Math.Sign(windSpeed.X);
@@ -209,38 +216,30 @@ namespace Vintagestory.API.Common
 
                     float fac = GameMath.Clamp(1000f / Itemstack.Collectible.MaterialDensity, 1f, 10);
 
-                    SidedPos.Motion.X += windSpeed.X / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(SidedPos.Motion.X)), 0, 1);
-                    SidedPos.Motion.Y += windSpeed.Y / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(SidedPos.Motion.Y)), 0, 1);
-                    SidedPos.Motion.Z += windSpeed.Z / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(SidedPos.Motion.Z)), 0, 1);
+                    Pos.Motion.X += windSpeed.X / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(Pos.Motion.X)), 0, 1);
+                    Pos.Motion.Y += windSpeed.Y / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(Pos.Motion.Y)), 0, 1);
+                    Pos.Motion.Z += windSpeed.Z / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(Pos.Motion.Z)), 0, 1);
                 }
 
                 Itemstack.Collectible.OnGroundIdle(this);
 
-                if (FeetInLiquid && !InLava)
+                if (Itemstack.Collectible.GetTemperature(World, Itemstack) > GlobalConstants.CollectibleDefaultTemperature)
                 {
-                    float temp = Itemstack.Collectible.GetTemperature(World, Itemstack);
-
-                    if (temp > 20)
+                    tmpPos.Set(Pos.X, Pos.Y, Pos.Z);
+                    Block insideBlock = FeetInLiquid ? World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.Fluid) : World.BlockAccessor.GetBlock(tmpPos);
+                    var coolingMedium = insideBlock.GetInterface<ICoolingMedium>(World, tmpPos);
+                    if (coolingMedium == null && CollidedVertically)
                     {
-                        Itemstack.Collectible.SetTemperature(World, Itemstack, Math.Max(20, temp - 5));
-
-                        if (temp > 90)
-                        {
-                            double width = SelectionBox.XSize;
-                            SplashParticleProps.BasePos.Set(Pos.X - width / 2, Pos.Y - 0.75, Pos.Z - width / 2);
-                            SplashParticleProps.AddVelocity.Set(0, 0, 0);
-                            SplashParticleProps.QuantityMul = 0.1f;
-                            World.SpawnParticles(SplashParticleProps);
-                        }
-
-                        if (temp > 200 && World.Side == EnumAppSide.Client && World.ElapsedMilliseconds - lastPlayedSizzlesTotalMs > 10000)
-                        {
-                            World.PlaySoundAt(new AssetLocation("sounds/sizzle"), this, null);
-                            lastPlayedSizzlesTotalMs = World.ElapsedMilliseconds;
-                        }
+                        tmpPos.Down();
+                        Block belowBlock = World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.MostSolid);
+                        coolingMedium = belowBlock.GetInterface<ICoolingMedium>(World, tmpPos);
+                    }
+                    if (coolingMedium?.CanCool(Slot, Pos.XYZ) == true)
+                    {
+                        coolingMedium.CoolNow(Slot, Pos.XYZ, 0.02f, true);
+                        if (Slot.StackSize == 0) Die();
                     }
                 }
-
             }
             else
             {
@@ -253,7 +252,8 @@ namespace Vintagestory.API.Common
         public override void Ignite()
         {
             var stack = this.Itemstack;
-            if (InLava || (stack != null && stack.Collectible.CombustibleProps != null && (stack.Collectible.CombustibleProps.MeltingPoint < 700 || stack.Collectible.CombustibleProps.BurnTemperature > 0)))
+            CombustibleProperties combustibleProps = stack?.Collectible?.GetCombustibleProperties(Api.World, stack, null);
+            if (InLava || (stack != null && combustibleProps != null && (combustibleProps.MeltingPoint < 700 || combustibleProps.BurnTemperature > 0)))
             {
                 base.Ignite();
             }
@@ -317,17 +317,14 @@ namespace Vintagestory.API.Common
             item.SimulationRange = (int)(0.75f * GlobalConstants.DefaultSimulationRange);
             item.Itemstack = itemstack;
 
-            item.ServerPos.SetPosWithDimension(position);
+            item.Pos.SetPosWithDimension(position);
 
             if (velocity == null)
             {
                 velocity = new Vec3d((float)world.Rand.NextDouble() * 0.1f - 0.05f, (float)world.Rand.NextDouble() * 0.1f - 0.05f, (float)world.Rand.NextDouble() * 0.1f - 0.05f);
             }
 
-            item.ServerPos.Motion = velocity;
-
-
-            item.Pos.SetFrom(item.ServerPos);
+            item.Pos.Motion = velocity;
 
             return item;
         }
@@ -335,7 +332,7 @@ namespace Vintagestory.API.Common
 
         public override bool CanCollect(Entity byEntity)
         {
-            return Alive && World.ElapsedMilliseconds - itemSpawnedMilliseconds > 1000;
+            return Alive && (ByPlayerUid == null || World.ElapsedMilliseconds - itemSpawnedMilliseconds > 1000);
         }
 
         public override ItemStack OnCollected(Entity byEntity)

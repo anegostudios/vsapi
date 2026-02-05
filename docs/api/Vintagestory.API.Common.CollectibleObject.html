@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CollectibleObject
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Contains all properties shared by Blocks and Items <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Collectible.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Contains all properties shared by Blocks and Items <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Collectible.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -1224,6 +1224,37 @@ Class CollectibleObject
 
 
 
+  <h3 id="Vintagestory_API_Common_CollectibleObject_ParticlesTextureCode" data-uid="Vintagestory.API.Common.CollectibleObject.ParticlesTextureCode">
+  ParticlesTextureCode
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If set, the breaking particles will be taken from this texture, otherwise it'll just pick the first texture</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ParticlesTextureCode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_CollectibleObject_RenderAlphaTest" data-uid="Vintagestory.API.Common.CollectibleObject.RenderAlphaTest">
   RenderAlphaTest
   
@@ -1274,6 +1305,36 @@ Class CollectibleObject
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.EnumItemStorageFlags.html">EnumItemStorageFlags</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_Tags" data-uid="Vintagestory.API.Common.CollectibleObject.Tags">
+  Tags
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TagSet Tags</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
     <dd></dd>
   </dl>
 
@@ -1358,7 +1419,7 @@ Class CollectibleObject
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3f TopMiddlePos</code></pre>
+    <pre><code class="lang-csharp hljs">public FastVec3f TopMiddlePos</code></pre>
   </div>
 
 
@@ -1366,7 +1427,7 @@ Class CollectibleObject
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3f.html">FastVec3f</a></dt>
     <dd></dd>
   </dl>
 
@@ -1545,7 +1606,7 @@ Class CollectibleObject
   
   </h3>
 
-  <div class="markdown level1 summary"><p>This value is set the the BlockId or ItemId-Remapper if it encounters a block/item in the savegame,
+  <div class="markdown level1 summary"><p>This value is set by the BlockId- or ItemId-Remapper if it encounters a block/item in the savegame,
 but no longer exists as a loaded block/item</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1614,7 +1675,7 @@ but no longer exists as a loaded block/item</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use tool tier&quot;)]
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetToolTier()&quot;)]
 public int MiningTier { get; set; }</code></pre>
   </div>
 
@@ -1690,7 +1751,7 @@ public int MiningTier { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual float AppendPerishableInfoText(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, TransitionState state, bool nowSpoiling)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual float AppendPerishableInfoText(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, TransitionState state, bool nowSpoiling)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1928,7 +1989,8 @@ public int MiningTier { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, GridRecipe matchingRecipe)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use &#39;ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe)&#39; instead&quot;)]
+public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, GridRecipe matchingRecipe)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1938,6 +2000,48 @@ public int MiningTier { get; set; }</code></pre>
     <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
     <dd></dd>
     <dt><code>matchingRecipe</code> <a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true to prevent default ingredient consumption</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_ConsumeCraftingIngredients_" data-uid="Vintagestory.API.Common.CollectibleObject.ConsumeCraftingIngredients*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_ConsumeCraftingIngredients_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IRecipeBase_" data-uid="Vintagestory.API.Common.CollectibleObject.ConsumeCraftingIngredients(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IRecipeBase)">
+  ConsumeCraftingIngredients(ItemSlot[], ItemSlot, IRecipeBase)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called after the player has taken out the item from the output slot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>matchingRecipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
     <dd></dd>
   </dl>
 
@@ -1970,7 +2074,8 @@ public int MiningTier { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1, bool destroyOnZeroDurability = true) instead&quot;)]
+public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1984,6 +2089,83 @@ public int MiningTier { get; set; }</code></pre>
     <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>Amount of damage</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_DamageItem_" data-uid="Vintagestory.API.Common.CollectibleObject.DamageItem*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_DamageItem_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.CollectibleObject.DamageItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,System.Int32,System.Boolean)">
+  DamageItem(IWorldAccessor, Entity, ItemSlot, int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Causes the item to be damaged. If 'destroyOnZeroDurability == true' will play a breaking sound and remove the itemstack if no more durability is left</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemSlot, int amount, bool destroyOnZeroDurability)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>itemSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>amount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Amount of damage</p>
+</dd>
+    <dt><code>destroyOnZeroDurability</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_DestroyItem_" data-uid="Vintagestory.API.Common.CollectibleObject.DestroyItem*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_DestroyItem_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.CollectibleObject.DestroyItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot)">
+  DestroyItem(IWorldAccessor, Entity, ItemSlot)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Will play a breaking sound and remove the itemstack</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void DestroyItem(IWorldAccessor world, Entity byEntity, ItemSlot itemSlot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>itemSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -2118,8 +2300,8 @@ public virtual ModelTransformKeyFrame[] GeldHeldFpHitAnimation(ItemSlot slot, En
 
   <a id="Vintagestory_API_Common_CollectibleObject_GetAttackPower_" data-uid="Vintagestory.API.Common.CollectibleObject.GetAttackPower*"></a>
 
-  <h3 id="Vintagestory_API_Common_CollectibleObject_GetAttackPower_Vintagestory_API_Common_IItemStack_" data-uid="Vintagestory.API.Common.CollectibleObject.GetAttackPower(Vintagestory.API.Common.IItemStack)">
-  GetAttackPower(IItemStack)
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetAttackPower_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.CollectibleObject.GetAttackPower(Vintagestory.API.Common.ItemStack)">
+  GetAttackPower(ItemStack)
   
   </h3>
 
@@ -2128,12 +2310,12 @@ public virtual ModelTransformKeyFrame[] GeldHeldFpHitAnimation(ItemSlot slot, En
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual float GetAttackPower(IItemStack withItemStack)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual float GetAttackPower(ItemStack itemStack)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>withItemStack</code> <a class="xref" href="Vintagestory.API.Common.IItemStack.html">IItemStack</a></dt>
+    <dt><code>itemStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
     <dd></dd>
   </dl>
 
@@ -2425,6 +2607,169 @@ public virtual ModelTransformKeyFrame[] GeldHeldFpHitAnimation(ItemSlot slot, En
 
 
 
+  <a id="Vintagestory_API_Common_CollectibleObject_GetCombustibleProperties_" data-uid="Vintagestory.API.Common.CollectibleObject.GetCombustibleProperties*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetCombustibleProperties_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.CollectibleObject.GetCombustibleProperties(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos)">
+  GetCombustibleProperties(IWorldAccessor, ItemStack, BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should return the burnable properties of the item/block</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual CombustibleProperties GetCombustibleProperties(IWorldAccessor world, ItemStack itemstack, BlockPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd><p>May be null</p>
+</dd>
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd><p>Set if its an itemstack for which to get properties</p>
+</dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd><p>May be null</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html">CombustibleProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_GetCrushingProperties_" data-uid="Vintagestory.API.Common.CollectibleObject.GetCrushingProperties*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetCrushingProperties_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.CollectibleObject.GetCrushingProperties(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)">
+  GetCrushingProperties(IWorldAccessor, ItemStack)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should return properties used for crushing collectible into something else</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual CrushingProperties GetCrushingProperties(IWorldAccessor world, ItemStack itemstack)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CrushingProperties.html">CrushingProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_GetDamageToEntity_" data-uid="Vintagestory.API.Common.CollectibleObject.GetDamageToEntity*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetDamageToEntity_System_Single_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemStack_System_Boolean__" data-uid="Vintagestory.API.Common.CollectibleObject.GetDamageToEntity(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemStack,System.Boolean@)">
+  GetDamageToEntity(float, Entity, ItemStack, ref bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of damage dealt when used as a weapon on given entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual float GetDamageToEntity(float baseDamage, Entity entity, ItemStack itemStack, ref bool isCriticalHit)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>baseDamage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>entity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>itemStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>isCriticalHit</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_GetDamagedBy_" data-uid="Vintagestory.API.Common.CollectibleObject.GetDamagedBy*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetDamagedBy_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.CollectibleObject.GetDamagedBy(Vintagestory.API.Common.ItemSlot)">
+  GetDamagedBy(ItemSlot)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>From which damage sources does the item take durability damage</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual EnumItemDamageSource[] GetDamagedBy(ItemSlot slot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumItemDamageSource.html">EnumItemDamageSource</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_CollectibleObject_GetDurability_" data-uid="Vintagestory.API.Common.CollectibleObject.GetDurability*"></a>
 
   <h3 id="Vintagestory_API_Common_CollectibleObject_GetDurability_Vintagestory_API_Common_IItemStack_" data-uid="Vintagestory.API.Common.CollectibleObject.GetDurability(Vintagestory.API.Common.IItemStack)">
@@ -2449,6 +2794,45 @@ public virtual int GetDurability(IItemStack itemstack)</code></pre>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_GetGrindingProperties_" data-uid="Vintagestory.API.Common.CollectibleObject.GetGrindingProperties*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetGrindingProperties_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.CollectibleObject.GetGrindingProperties(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)">
+  GetGrindingProperties(IWorldAccessor, ItemStack)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should return properties used for grounding collectible into something else</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual GrindingProperties GetGrindingProperties(IWorldAccessor world, ItemStack itemstack)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.GrindingProperties.html">GrindingProperties</a></dt>
     <dd></dd>
   </dl>
 
@@ -3117,6 +3501,43 @@ Warning: This method is likely to get called in a background thread. Please make
 
 
 
+  <a id="Vintagestory_API_Common_CollectibleObject_GetMiningSpeeds_" data-uid="Vintagestory.API.Common.CollectibleObject.GetMiningSpeeds*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetMiningSpeeds_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.CollectibleObject.GetMiningSpeeds(Vintagestory.API.Common.ItemSlot)">
+  GetMiningSpeeds(ItemSlot)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the mining speeds for all materials of the item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Dictionary&lt;EnumBlockMaterial, float&gt; GetMiningSpeeds(ItemSlot slot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="Vintagestory.API.Common.EnumBlockMaterial.html">EnumBlockMaterial</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_CollectibleObject_GetNutritionProperties_" data-uid="Vintagestory.API.Common.CollectibleObject.GetNutritionProperties*"></a>
 
   <h3 id="Vintagestory_API_Common_CollectibleObject_GetNutritionProperties_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.CollectibleObject.GetNutritionProperties(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.Entities.Entity)">
@@ -3270,6 +3691,42 @@ Warning: This method is likely to get called in a background thread. Please make
 
 
 
+  <a id="Vintagestory_API_Common_CollectibleObject_GetTags_" data-uid="Vintagestory.API.Common.CollectibleObject.GetTags*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetTags_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.CollectibleObject.GetTags(Vintagestory.API.Common.ItemStack)">
+  GetTags(ItemStack)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TagSet GetTags(ItemStack stack)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_CollectibleObject_GetTemperature_" data-uid="Vintagestory.API.Common.CollectibleObject.GetTemperature*"></a>
 
   <h3 id="Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)">
@@ -3351,6 +3808,44 @@ Warning: This method is likely to get called in a background thread. Please make
 
 
 
+  <a id="Vintagestory_API_Common_CollectibleObject_GetTool_" data-uid="Vintagestory.API.Common.CollectibleObject.GetTool*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetTool_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.CollectibleObject.GetTool(Vintagestory.API.Common.ItemSlot)">
+  GetTool(ItemSlot)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns tool type of the item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual EnumTool? GetTool(ItemSlot slot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a>?</dt>
+    <dd><p>Tool type</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_CollectibleObject_GetToolMode_" data-uid="Vintagestory.API.Common.CollectibleObject.GetToolMode*"></a>
 
   <h3 id="Vintagestory_API_Common_CollectibleObject_GetToolMode_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_" data-uid="Vintagestory.API.Common.CollectibleObject.GetToolMode(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection)">
@@ -3420,6 +3915,43 @@ Warning: This method is likely to get called in a background thread. Please make
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Client.SkillItem.html">SkillItem</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_GetToolTier_" data-uid="Vintagestory.API.Common.CollectibleObject.GetToolTier*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_GetToolTier_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.CollectibleObject.GetToolTier(Vintagestory.API.Common.ItemSlot)">
+  GetToolTier(ItemSlot)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>What tier this tool can mine when held in hands</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int GetToolTier(ItemSlot slot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -3859,12 +4391,13 @@ IMPORTANT: Calling code should have looked up the block using IBlockAccessor.Get
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when this collectible is attempted to being used as part of a crafting recipe and should get consumed now. Return false if it doesn't match the ingredient</p>
+  <div class="markdown level1 summary"><p>Called when this collectible is attempted to being used as part of a grid crafting recipe and should get consumed now. Return false if it doesn't match the ingredient</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use &#39;MatchesForCrafting(ItemStack inputStack, IRecipeBase recipe, IRecipeIngredient ingredient)&#39; instead&quot;)]
+public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3874,6 +4407,47 @@ IMPORTANT: Calling code should have looked up the block using IBlockAccessor.Get
     <dt><code>gridRecipe</code> <a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
     <dd></dd>
     <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_MatchesForCrafting_" data-uid="Vintagestory.API.Common.CollectibleObject.MatchesForCrafting*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_MatchesForCrafting_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IRecipeBase_Vintagestory_API_Common_IRecipeIngredient_" data-uid="Vintagestory.API.Common.CollectibleObject.MatchesForCrafting(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IRecipeBase,Vintagestory.API.Common.IRecipeIngredient)">
+  MatchesForCrafting(ItemStack, IRecipeBase, IRecipeIngredient)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when this collectible is attempted to being used as part of a crafting recipe and should get consumed now. Return false if it doesn't match the ingredient</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool MatchesForCrafting(ItemStack inputStack, IRecipeBase recipe, IRecipeIngredient ingredient)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>recipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
+    <dd></dd>
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
     <dd></dd>
   </dl>
 
@@ -4108,7 +4682,8 @@ The renderinfo object is pre-filled with default values.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, GridRecipe gridRecipe, CraftingRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use &#39;OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, IRecipeBase recipe, IRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)&#39; instead&quot;)]
+public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, GridRecipe gridRecipe, CraftingRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -4120,6 +4695,47 @@ The renderinfo object is pre-filled with default values.</p>
     <dt><code>gridRecipe</code> <a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
     <dd></dd>
     <dt><code>fromIngredient</code> <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>quantity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_OnConsumedByCrafting_" data-uid="Vintagestory.API.Common.CollectibleObject.OnConsumedByCrafting*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_OnConsumedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IRecipeBase_Vintagestory_API_Common_IRecipeIngredient_Vintagestory_API_Common_IPlayer_System_Int32_" data-uid="Vintagestory.API.Common.CollectibleObject.OnConsumedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IRecipeBase,Vintagestory.API.Common.IRecipeIngredient,Vintagestory.API.Common.IPlayer,System.Int32)">
+  OnConsumedByCrafting(ItemSlot[], ItemSlot, IRecipeBase, IRecipeIngredient, IPlayer, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, IRecipeBase recipe, IRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allInputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>stackInSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>recipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
+    <dd></dd>
+    <dt><code>fromIngredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
     <dd></dd>
     <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
     <dd></dd>
@@ -4150,7 +4766,8 @@ The renderinfo object is pre-filled with default values.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use &#39;OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe)&#39; instead&quot;)]
+public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -4160,6 +4777,42 @@ The renderinfo object is pre-filled with default values.</p>
     <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
     <dd></dd>
     <dt><code>byRecipe</code> <a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_OnCreatedByCrafting_" data-uid="Vintagestory.API.Common.CollectibleObject.OnCreatedByCrafting*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_OnCreatedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IRecipeBase_" data-uid="Vintagestory.API.Common.CollectibleObject.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IRecipeBase)">
+  OnCreatedByCrafting(ItemSlot[], ItemSlot, IRecipeBase)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when a matching recipe has been found and an item is placed into the crafting output slot (which is still before the player clicks on the output slot to actually craft the item and consume the ingredients)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allInputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>byRecipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
     <dd></dd>
   </dl>
 
@@ -4379,7 +5032,7 @@ The renderinfo object is pre-filled with default values.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called continously when a custom attack action is playing. Return false to stop the action.</p>
+  <div class="markdown level1 summary"><p>Called continously when a custom attack action is playing. Return false to stop the action. Called every 20ms</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -4631,7 +5284,7 @@ You can also check if the entityplayer of this player is dead to check if droppi
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called every frame while the player is using this collectible. Return false to stop the interaction.</p>
+  <div class="markdown level1 summary"><p>Called every 20ms while the player is using this collectible. Return false to stop the interaction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -4912,7 +5565,7 @@ You can also check if the entityplayer of this player is dead to check if droppi
   
   </h3>
 
-  <div class="markdown level1 summary"><p>General using access. Override OnHeldAttackStep or OnHeldInteractStep to alter the behavior.</p>
+  <div class="markdown level1 summary"><p>General using access. Override OnHeldAttackStep or OnHeldInteractStep to alter the behavior. Called every 20ms</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -5793,6 +6446,42 @@ public static int QuantityBackPackSlots(IItemStack itemstack)</code></pre>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.TransitionState.html">TransitionState</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CollectibleObject_getCoolingMedium_" data-uid="Vintagestory.API.Common.CollectibleObject.getCoolingMedium*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleObject_getCoolingMedium_Vintagestory_API_Common_BlockSelection_" data-uid="Vintagestory.API.Common.CollectibleObject.getCoolingMedium(Vintagestory.API.Common.BlockSelection)">
+  getCoolingMedium(BlockSelection)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ICoolingMedium getCoolingMedium(BlockSelection blockSel)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.GameContent.ICoolingMedium.html">ICoolingMedium</a></dt>
     <dd></dd>
   </dl>
 

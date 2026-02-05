@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -36,28 +36,28 @@ namespace Vintagestory.API.Datastructures
     public class RotatableCube : Cuboidf
     {
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The cube's rotation around the X axis.
         /// </summary>
-        [DocumentAsJson] public float RotateX = 0;
+        [DocumentAsJson("Optional", "0")]
+        public float RotateX = 0;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The cube's rotation around the Y axis.
         /// </summary>
-        [DocumentAsJson] public float RotateY = 0;
+        [DocumentAsJson("Optional", "0")]
+        public float RotateY = 0;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The cube's rotation around the Z axis.
         /// </summary>
-        [DocumentAsJson] public float RotateZ = 0;
+        [DocumentAsJson("Optional", "0")]
+        public float RotateZ = 0;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>(0.5, 0.5, 0.5)</jsondefault>-->
         /// The origin point for the object to rotate around. Measured in meters from zero, not percent.
         /// </summary>
-        [DocumentAsJson] public Vec3d Origin = new Vec3d(0.5, 0.5, 0.5);
+        [DocumentAsJson("Optional", "(0.5, 0.5, 0.5)")]
+        public Vec3d Origin = new Vec3d(0.5, 0.5, 0.5);
 
         public RotatableCube()
         {

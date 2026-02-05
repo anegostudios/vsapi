@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class ClientEntityConfig
   <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Specific configuration settings for entities on the client-side. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/EntityType.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Specific configuration settings for entities on the client-side. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/EntityType.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -166,6 +166,7 @@ You will likely want to use Shape.</li>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string Renderer</code></pre>
   </div>
 
@@ -199,6 +200,7 @@ public string Renderer</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public CompositeShape Shape</code></pre>
   </div>
 
@@ -233,6 +235,7 @@ public CompositeShape Shape</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public Dictionary&lt;string, CompositeTexture&gt; Textures { get; set; }</code></pre>
   </div>
 
@@ -266,6 +269,7 @@ public Dictionary&lt;string, CompositeTexture&gt; Textures { get; set; }</code><
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AnimationMetaData[] Animations</code></pre>
   </div>
 
@@ -299,6 +303,7 @@ public AnimationMetaData[] Animations</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(ItemConverterType = typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonObject[] Behaviors</code></pre>
   </div>
 
@@ -307,7 +312,7 @@ public JsonObject[] Behaviors</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a>[]</dt>
+    <dt><span class="xref">JsonObject</span>[]</dt>
     <dd></dd>
   </dl>
 
@@ -332,6 +337,7 @@ public JsonObject[] Behaviors</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int GlowLevel</code></pre>
   </div>
 
@@ -354,7 +360,7 @@ public int GlowLevel</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_ClientEntityConfig_PitchStep" data-uid="Vintagestory.ServerMods.NoObf.ClientEntityConfig.PitchStep">
-  PitchStep (Optional) (Default: true)
+  PitchStep (Optional) (Default: True)
   
   </h3>
 
@@ -365,6 +371,7 @@ public int GlowLevel</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool PitchStep</code></pre>
   </div>
 
@@ -398,6 +405,7 @@ public bool PitchStep</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float Size</code></pre>
   </div>
 
@@ -431,6 +439,7 @@ public float Size</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float SizeGrowthFactor</code></pre>
   </div>
 
@@ -464,6 +473,7 @@ public float SizeGrowthFactor</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 protected CompositeTexture Texture</code></pre>
   </div>
 

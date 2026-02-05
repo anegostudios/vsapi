@@ -290,13 +290,12 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Retrieve chunk at given block position, returns null if chunk is not loaded
+        /// Not dimension aware. For internal use only, where posY includes the dimension
         /// </summary>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
-        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ);
 
         /// <summary>
@@ -317,7 +316,6 @@ namespace Vintagestory.API.Common
         /// <param name = "z">z coordinate</param>
         /// <param name="layer">Block layer</param>
         /// <returns>ID of the block at the given position</returns>
-        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         Block GetBlockOrNull(int x, int y, int z, int layer = BlockLayersAccess.MostSolid);
 
 
@@ -788,7 +786,7 @@ namespace Vintagestory.API.Common
         Block[] GetDecors(BlockPos position);
 
         /// <summary>
-        /// Get a list of all decors at this position
+        /// Get a list of all decors at this position.  The Dictionary keys are the faceAndSubposition value for each one, see <see cref="DecorBits(int)"/>
         /// </summary>
         /// <param name="position"></param>
         /// <returns>null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition (subposition used for cave art etc.), see <see cref="DecorBits"/></returns>

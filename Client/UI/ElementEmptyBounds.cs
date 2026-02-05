@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Client
 {
@@ -31,7 +31,7 @@ namespace Vintagestory.API.Client
 
         public override void CalcWorldBounds()
         {
-       
+            requiresrelculation  = false;
         }
 
 

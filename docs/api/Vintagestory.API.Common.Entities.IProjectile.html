@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -130,6 +130,38 @@ Some of the properties may not be used by all projectiles. But they can still be
 
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_Collectible_" data-uid="Vintagestory.API.Common.Entities.IProjectile.Collectible*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_Collectible" data-uid="Vintagestory.API.Common.Entities.IProjectile.Collectible">
+  Collectible
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If projectile can be collected when stuck.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Collectible { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Common_Entities_IProjectile_Damage_" data-uid="Vintagestory.API.Common.Entities.IProjectile.Damage*"></a>
@@ -388,38 +420,6 @@ Some of the properties may not be used by all projectiles. But they can still be
 
 
 
-  <a id="Vintagestory_API_Common_Entities_IProjectile_NonCollectible_" data-uid="Vintagestory.API.Common.Entities.IProjectile.NonCollectible*"></a>
-
-  <h3 id="Vintagestory_API_Common_Entities_IProjectile_NonCollectible" data-uid="Vintagestory.API.Common.Entities.IProjectile.NonCollectible">
-  NonCollectible
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>If projectile can be collected when stuck.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool NonCollectible { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_Entities_IProjectile_ProjectileStack_" data-uid="Vintagestory.API.Common.Entities.IProjectile.ProjectileStack*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_IProjectile_ProjectileStack" data-uid="Vintagestory.API.Common.Entities.IProjectile.ProjectileStack">
@@ -523,7 +523,7 @@ Some of the properties may not be used by all projectiles. But they can still be
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Projectile wieght used for knockback calculations.</p>
+  <div class="markdown level1 summary"><p>Projectile weight used for knockback calculations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -567,6 +567,38 @@ Some of the properties may not be used by all projectiles. But they can still be
     <pre><code class="lang-csharp hljs">void PreInitialize()</code></pre>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_IProjectile_SetFromConfig_" data-uid="Vintagestory.API.Common.Entities.IProjectile.SetFromConfig*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_IProjectile_SetFromConfig_Vintagestory_API_Common_Entities_IProjectileJsonConfig_" data-uid="Vintagestory.API.Common.Entities.IProjectile.SetFromConfig(Vintagestory.API.Common.Entities.IProjectileJsonConfig)">
+  SetFromConfig(IProjectileJsonConfig)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets projectile parameters from config</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetFromConfig(IProjectileJsonConfig config)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>config</code> <a class="xref" href="Vintagestory.API.Common.Entities.IProjectileJsonConfig.html">IProjectileJsonConfig</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

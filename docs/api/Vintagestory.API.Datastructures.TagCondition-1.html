@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Struct TagCondition&lt;TTagSet&gt; | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct TagCondition&lt;TTagSet&gt; | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Datastructures.TagCondition`1">
+
+
+
+  <h1 id="Vintagestory_API_Datastructures_TagCondition_1" data-uid="Vintagestory.API.Datastructures.TagCondition`1" class="text-break">
+Struct TagCondition&lt;TTagSet&gt;  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Datastructures.html">Datastructures</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly struct TagCondition&lt;TTagSet&gt; : ITagCondition&lt;TagCondition&lt;TTagSet&gt;, TTagSet&gt; where TTagSet : IHasSetOperations&lt;TTagSet&gt;, ITagSet</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TTagSet</code></dt>
+    <dd></dd>
+  </dl>
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.ITagCondition-2.html">ITagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;, TTagSet&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1__ctor_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1__ctor__0__0_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.#ctor(`0,`0)">
+  TagCondition(TTagSet, TTagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TagCondition(TTagSet tags, TTagSet inverted)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tags</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+    <dt><code>inverted</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_Empty" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Empty">
+  Empty
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly TagCondition&lt;TTagSet&gt; Empty</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_InvertPrefix" data-uid="Vintagestory.API.Datastructures.TagCondition`1.InvertPrefix">
+  InvertPrefix
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string InvertPrefix = &quot;not-&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_InvertedTags" data-uid="Vintagestory.API.Datastructures.TagCondition`1.InvertedTags">
+  InvertedTags
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly TTagSet InvertedTags</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_Tags" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Tags">
+  Tags
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly TTagSet Tags</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_Except_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Except*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_Except_Vintagestory_API_Datastructures_TagCondition__0__" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Except(Vintagestory.API.Datastructures.TagCondition{`0})">
+  Except(TagCondition&lt;TTagSet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TagCondition&lt;TTagSet&gt; Except(TagCondition&lt;TTagSet&gt; array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_Get_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Get*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_Get_Vintagestory_API_Common_ICoreAPI_System_String___" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Get(Vintagestory.API.Common.ICoreAPI,System.String[])">
+  Get(ICoreAPI, params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TagCondition&lt;TTagSet&gt; Get(ICoreAPI api, params string[] tags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_GetEmpty_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.GetEmpty*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_GetEmpty" data-uid="Vintagestory.API.Datastructures.TagCondition`1.GetEmpty">
+  GetEmpty()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TagCondition&lt;TTagSet&gt; GetEmpty()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_Intersect_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Intersect*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_Intersect_Vintagestory_API_Datastructures_TagCondition__0__" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Intersect(Vintagestory.API.Datastructures.TagCondition{`0})">
+  Intersect(TagCondition&lt;TTagSet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TagCondition&lt;TTagSet&gt; Intersect(TagCondition&lt;TTagSet&gt; array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_IsEmpty_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.IsEmpty*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_IsEmpty" data-uid="Vintagestory.API.Datastructures.TagCondition`1.IsEmpty">
+  IsEmpty()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEmpty()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_IsSubsetOf_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.IsSubsetOf*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_IsSubsetOf__0_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.IsSubsetOf(`0)">
+  IsSubsetOf(TTagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSubsetOf(TTagSet array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_IsSupersetOf_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.IsSupersetOf*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_IsSupersetOf__0_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.IsSupersetOf(`0)">
+  IsSupersetOf(TTagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSupersetOf(TTagSet array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_Overlaps_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Overlaps*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_Overlaps__0_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Overlaps(`0)">
+  Overlaps(TTagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Overlaps(TTagSet array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_OverlapsWithEach_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.OverlapsWithEach*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_OverlapsWithEach__0_System_Collections_Generic_IEnumerable_Vintagestory_API_Datastructures_TagCondition__0___" data-uid="Vintagestory.API.Datastructures.TagCondition`1.OverlapsWithEach(`0,System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.TagCondition{`0}})">
+  OverlapsWithEach(TTagSet, IEnumerable&lt;TagCondition&lt;TTagSet&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool OverlapsWithEach(TTagSet array, IEnumerable&lt;TagCondition&lt;TTagSet&gt;&gt; conditions)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+    <dt><code>conditions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_SetEquals_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.SetEquals*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_SetEquals__0_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.SetEquals(`0)">
+  SetEquals(TTagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SetEquals(TTagSet array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_SupersetOfAtLeastOne_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.SupersetOfAtLeastOne*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_SupersetOfAtLeastOne__0_System_Collections_Generic_IEnumerable_Vintagestory_API_Datastructures_TagCondition__0___" data-uid="Vintagestory.API.Datastructures.TagCondition`1.SupersetOfAtLeastOne(`0,System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.TagCondition{`0}})">
+  SupersetOfAtLeastOne(TTagSet, IEnumerable&lt;TagCondition&lt;TTagSet&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool SupersetOfAtLeastOne(TTagSet array, IEnumerable&lt;TagCondition&lt;TTagSet&gt;&gt; conditions)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+    <dt><code>conditions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_SymmetricExcept_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.SymmetricExcept*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_SymmetricExcept_Vintagestory_API_Datastructures_TagCondition__0__" data-uid="Vintagestory.API.Datastructures.TagCondition`1.SymmetricExcept(Vintagestory.API.Datastructures.TagCondition{`0})">
+  SymmetricExcept(TagCondition&lt;TTagSet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TagCondition&lt;TTagSet&gt; SymmetricExcept(TagCondition&lt;TTagSet&gt; array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_ToTags_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.ToTags*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_ToTags_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.ToTags(Vintagestory.API.Common.ICoreAPI)">
+  ToTags(ICoreAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; ToTags(ICoreAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagCondition_1_Union_" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Union*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagCondition_1_Union_Vintagestory_API_Datastructures_TagCondition__0__" data-uid="Vintagestory.API.Datastructures.TagCondition`1.Union(Vintagestory.API.Datastructures.TagCondition{`0})">
+  Union(TagCondition&lt;TTagSet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TagCondition&lt;TTagSet&gt; Union(TagCondition&lt;TTagSet&gt; array)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

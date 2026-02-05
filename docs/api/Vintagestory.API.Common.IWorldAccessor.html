@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -1302,7 +1302,7 @@ Retrieving the list is not a very fast process, not suggested to be called every
   <a id="Vintagestory_API_Common_IWorldAccessor_GetBlock_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetBlock*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetBlock_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetBlock(Vintagestory.API.Common.AssetLocation)">
-  GetBlock(AssetLocation)
+  GetBlock(AssetLocation?)
   
   </h3>
 
@@ -1311,7 +1311,7 @@ Retrieving the list is not a very fast process, not suggested to be called every
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Block GetBlock(AssetLocation blockCode)</code></pre>
+    <pre><code class="lang-csharp hljs">Block? GetBlock(AssetLocation? blockCode)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1631,7 +1631,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_GetEntitiesAround_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetEntitiesAround*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetEntitiesAround_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__" data-uid="Vintagestory.API.Common.IWorldAccessor.GetEntitiesAround(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})">
-  GetEntitiesAround(Vec3d, float, float, ActionConsumable&lt;Entity&gt;)
+  GetEntitiesAround(Vec3d, float, float, ActionConsumable&lt;Entity&gt;?)
   
   </h3>
 
@@ -1640,7 +1640,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Entity[] GetEntitiesAround(Vec3d position, float horRange, float vertRange, ActionConsumable&lt;Entity&gt; matches = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Entity[] GetEntitiesAround(Vec3d position, float horRange, float vertRange, ActionConsumable&lt;Entity&gt;? matches = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1674,7 +1674,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_GetEntitiesInsideCuboid_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetEntitiesInsideCuboid*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetEntitiesInsideCuboid_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__" data-uid="Vintagestory.API.Common.IWorldAccessor.GetEntitiesInsideCuboid(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})">
-  GetEntitiesInsideCuboid(BlockPos, BlockPos, ActionConsumable&lt;Entity&gt;)
+  GetEntitiesInsideCuboid(BlockPos, BlockPos, ActionConsumable&lt;Entity&gt;?)
   
   </h3>
 
@@ -1683,7 +1683,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Entity[] GetEntitiesInsideCuboid(BlockPos startPos, BlockPos endPos, ActionConsumable&lt;Entity&gt; matches = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Entity[] GetEntitiesInsideCuboid(BlockPos startPos, BlockPos endPos, ActionConsumable&lt;Entity&gt;? matches = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1752,7 +1752,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_GetEntityType_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetEntityType*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetEntityType_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetEntityType(Vintagestory.API.Common.AssetLocation)">
-  GetEntityType(AssetLocation)
+  GetEntityType(AssetLocation?)
   
   </h3>
 
@@ -1761,7 +1761,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EntityProperties GetEntityType(AssetLocation entityCode)</code></pre>
+    <pre><code class="lang-csharp hljs">EntityProperties? GetEntityType(AssetLocation? entityCode)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1789,7 +1789,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_GetIntersectingEntities_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetIntersectingEntities*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetIntersectingEntities_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Cuboidf___Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__" data-uid="Vintagestory.API.Common.IWorldAccessor.GetIntersectingEntities(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Cuboidf[],Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})">
-  GetIntersectingEntities(BlockPos, Cuboidf[], ActionConsumable&lt;Entity&gt;)
+  GetIntersectingEntities(BlockPos, Cuboidf[], ActionConsumable&lt;Entity&gt;?)
   
   </h3>
 
@@ -1798,7 +1798,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Entity[] GetIntersectingEntities(BlockPos basePos, Cuboidf[] collisionBoxes, ActionConsumable&lt;Entity&gt; matches = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Entity[] GetIntersectingEntities(BlockPos basePos, Cuboidf[] collisionBoxes, ActionConsumable&lt;Entity&gt;? matches = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1867,7 +1867,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_GetItem_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetItem*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetItem_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetItem(Vintagestory.API.Common.AssetLocation)">
-  GetItem(AssetLocation)
+  GetItem(AssetLocation?)
   
   </h3>
 
@@ -1876,7 +1876,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Item GetItem(AssetLocation itemCode)</code></pre>
+    <pre><code class="lang-csharp hljs">Item? GetItem(AssetLocation? itemCode)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1936,7 +1936,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_GetNearestEntity_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetNearestEntity*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetNearestEntity_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__" data-uid="Vintagestory.API.Common.IWorldAccessor.GetNearestEntity(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})">
-  GetNearestEntity(Vec3d, float, float, ActionConsumable&lt;Entity&gt;)
+  GetNearestEntity(Vec3d, float, float, ActionConsumable&lt;Entity&gt;?)
   
   </h3>
 
@@ -1945,7 +1945,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Entity GetNearestEntity(Vec3d position, float horRange, float vertRange, ActionConsumable&lt;Entity&gt; matches = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Entity GetNearestEntity(Vec3d position, float horRange, float vertRange, ActionConsumable&lt;Entity&gt;? matches = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1979,7 +1979,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_GetPlayersAround_" data-uid="Vintagestory.API.Common.IWorldAccessor.GetPlayersAround*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_GetPlayersAround_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_IPlayer__" data-uid="Vintagestory.API.Common.IWorldAccessor.GetPlayersAround(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.IPlayer})">
-  GetPlayersAround(Vec3d, float, float, ActionConsumable&lt;IPlayer&gt;)
+  GetPlayersAround(Vec3d, float, float, ActionConsumable&lt;IPlayer&gt;?)
   
   </h3>
 
@@ -1988,7 +1988,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IPlayer[] GetPlayersAround(Vec3d position, float horRange, float vertRange, ActionConsumable&lt;IPlayer&gt; matches = null)</code></pre>
+    <pre><code class="lang-csharp hljs">IPlayer[] GetPlayersAround(Vec3d position, float horRange, float vertRange, ActionConsumable&lt;IPlayer&gt;? matches = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2230,7 +2230,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,System.Double,System.Double,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)">
-  PlaySoundAt(AssetLocation, double, double, double, IPlayer, bool, float, float)
+  PlaySoundAt(AssetLocation?, double, double, double, IPlayer?, bool, float, float)
   
   </h3>
 
@@ -2239,13 +2239,13 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation? location, double posx, double posy, double posz, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>location</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd><p>The sound path, without sounds/ prefix or the .ogg ending</p>
+    <dd><p>The sound path, with sounds/ prefix and without the .ogg ending</p>
 </dd>
     <dt><code>posx</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
@@ -2254,7 +2254,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
     <dt><code>posz</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
     <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
-    <dd><p>If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
 </dd>
     <dt><code>randomizePitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
@@ -2279,7 +2279,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,System.Double,System.Double,System.Double,Vintagestory.API.Common.IPlayer,System.Single,System.Single,System.Single)">
-  PlaySoundAt(AssetLocation, double, double, double, IPlayer, float, float, float)
+  PlaySoundAt(AssetLocation?, double, double, double, IPlayer?, float, float, float)
   
   </h3>
 
@@ -2288,7 +2288,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer, float pitch, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation? location, double posx, double posy, double posz, IPlayer? dualCallByPlayer, float pitch, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2324,8 +2324,8 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
 
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
 
-  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_Vintagestory_API_Client_EnumSoundType_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,System.Double,System.Double,System.Double,Vintagestory.API.Common.IPlayer,Vintagestory.API.Client.EnumSoundType,System.Single,System.Single,System.Single)">
-  PlaySoundAt(AssetLocation, double, double, double, IPlayer, EnumSoundType, float, float, float)
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumSoundType_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,System.Double,System.Double,System.Double,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumSoundType,System.Single,System.Single,System.Single)">
+  PlaySoundAt(AssetLocation?, double, double, double, IPlayer?, EnumSoundType, float, float, float)
   
   </h3>
 
@@ -2333,7 +2333,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer, EnumSoundType soundType, float pitch, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation? location, double posx, double posy, double posz, IPlayer? dualCallByPlayer, EnumSoundType soundType, float pitch, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2348,7 +2348,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
     <dd></dd>
     <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
     <dd></dd>
-    <dt><code>soundType</code> <a class="xref" href="Vintagestory.API.Client.EnumSoundType.html">EnumSoundType</a></dt>
+    <dt><code>soundType</code> <a class="xref" href="Vintagestory.API.Common.EnumSoundType.html">EnumSoundType</a></dt>
     <dd></dd>
     <dt><code>pitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
@@ -2372,7 +2372,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)">
-  PlaySoundAt(AssetLocation, Entity, IPlayer, bool, float, float)
+  PlaySoundAt(AssetLocation?, Entity, IPlayer?, bool, float, float)
   
   </h3>
 
@@ -2381,18 +2381,18 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, Entity atEntity, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation? location, Entity atEntity, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>location</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd><p>The sound path, without sounds/ prefix or the .ogg ending</p>
+    <dd><p>The sound path, with sounds/ prefix and without the .ogg ending</p>
 </dd>
     <dt><code>atEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
     <dd></dd>
     <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
-    <dd><p>If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
 </dd>
     <dt><code>randomizePitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
@@ -2417,7 +2417,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_IPlayer_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.IPlayer,System.Single,System.Single,System.Single)">
-  PlaySoundAt(AssetLocation, Entity, IPlayer, float, float, float)
+  PlaySoundAt(AssetLocation?, Entity, IPlayer?, float, float, float)
   
   </h3>
 
@@ -2426,7 +2426,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, Entity atEntity, IPlayer dualCallByPlayer, float pitch, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation? location, Entity atEntity, IPlayer? dualCallByPlayer, float pitch, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2459,7 +2459,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)">
-  PlaySoundAt(AssetLocation, IPlayer, IPlayer, bool, float, float)
+  PlaySoundAt(AssetLocation?, IPlayer, IPlayer?, bool, float, float)
   
   </h3>
 
@@ -2468,18 +2468,18 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, IPlayer atPlayer, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation? location, IPlayer atPlayer, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>location</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd><p>The sound path, without sounds/ prefix or the .ogg ending</p>
+    <dd><p>The sound path, with sounds/ prefix and without the .ogg ending</p>
 </dd>
     <dt><code>atPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
     <dd></dd>
     <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
-    <dd><p>If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
 </dd>
     <dt><code>randomizePitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
@@ -2504,7 +2504,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_MathTools_BlockPos_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)">
-  PlaySoundAt(AssetLocation, BlockPos, double, IPlayer, bool, float, float)
+  PlaySoundAt(AssetLocation?, BlockPos, double, IPlayer?, bool, float, float)
   
   </h3>
 
@@ -2513,13 +2513,13 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, BlockPos pos, double yOffsetFromCenter, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation? location, BlockPos pos, double yOffsetFromCenter, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>location</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd><p>The sound path, without sounds/ prefix or the .ogg ending</p>
+    <dd><p>The sound path, with sounds/ prefix and without the .ogg ending</p>
 </dd>
     <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
     <dd></dd>
@@ -2527,7 +2527,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
     <dd><p>How much above or below the central Y position of the block to play</p>
 </dd>
     <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
-    <dd><p>If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
 </dd>
     <dt><code>randomizePitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
@@ -2549,10 +2549,203 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
 
 
 
+  <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_SoundAttributes_System_Double_System_Double_System_Double_System_Int32_Vintagestory_API_Common_IPlayer_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.SoundAttributes,System.Double,System.Double,System.Double,System.Int32,Vintagestory.API.Common.IPlayer,System.Single)">
+  PlaySoundAt(SoundAttributes, double, double, double, int, IPlayer?, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays given sound at given position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PlaySoundAt(SoundAttributes sound, double x, double y, double z, int dimension, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
+    <dd><p>The sound information, including file location, type, and how to choose volume and pitch</p>
+</dd>
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>dimension</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+</dd>
+    <dt><code>volumeMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_SoundAttributes_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_IPlayer_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.SoundAttributes,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.IPlayer,System.Single)">
+  PlaySoundAt(SoundAttributes, Entity, IPlayer?, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays given sound at given position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PlaySoundAt(SoundAttributes sound, Entity atEntity, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
+    <dd><p>The sound information, including file location, type, and how to choose volume and pitch</p>
+</dd>
+    <dt><code>atEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+</dd>
+    <dt><code>volumeMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_SoundAttributes_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IPlayer_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.SoundAttributes,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.IPlayer,System.Single)">
+  PlaySoundAt(SoundAttributes, IPlayer, IPlayer?, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays given sound at given player position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PlaySoundAt(SoundAttributes sound, IPlayer atPlayer, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
+    <dd><p>The sound information, including file location, type, and how to choose volume and pitch</p>
+</dd>
+    <dt><code>atPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+</dd>
+    <dt><code>volumeMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_SoundAttributes_Vintagestory_API_MathTools_BlockPos_System_Double_Vintagestory_API_Common_IPlayer_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.SoundAttributes,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Single)">
+  PlaySoundAt(SoundAttributes, BlockPos, double, IPlayer?, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays given sound at given position - dimension aware. Plays at the center of the BlockPos</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PlaySoundAt(SoundAttributes sound, BlockPos pos, double yOffsetFromCenter, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
+    <dd><p>The sound information, including file location, type, and how to choose volume and pitch</p>
+</dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>yOffsetFromCenter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>How much above or below the central Y position of the block to play</p>
+</dd>
+    <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd><p>If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+</dd>
+    <dt><code>volumeMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)">
-  PlaySoundFor(AssetLocation, IPlayer, bool, float, float)
+  PlaySoundFor(AssetLocation?, IPlayer?, bool, float, float)
   
   </h3>
 
@@ -2561,13 +2754,13 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundFor(AssetLocation location, IPlayer forPlayer, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundFor(AssetLocation? location, IPlayer? forPlayer, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>location</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd><p>The sound path, without sounds/ prefix or the .ogg ending</p>
+    <dd><p>The sound path, with sounds/ prefix and without the .ogg ending</p>
 </dd>
     <dt><code>forPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
     <dd></dd>
@@ -2594,7 +2787,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IPlayer_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IPlayer,System.Single,System.Single,System.Single)">
-  PlaySoundFor(AssetLocation, IPlayer, float, float, float)
+  PlaySoundFor(AssetLocation?, IPlayer?, float, float, float)
   
   </h3>
 
@@ -2602,7 +2795,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void PlaySoundFor(AssetLocation location, IPlayer forPlayer, float pitch, float range = 32, float volume = 1)</code></pre>
+    <pre><code class="lang-csharp hljs">void PlaySoundFor(AssetLocation? location, IPlayer? forPlayer, float pitch, float range = 32, float volume = 1)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2630,10 +2823,53 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
 
 
 
+  <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_Vintagestory_API_Common_SoundAttributes_Vintagestory_API_Common_IPlayer_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor(Vintagestory.API.Common.SoundAttributes,Vintagestory.API.Common.IPlayer,System.Single)">
+  PlaySoundFor(SoundAttributes, IPlayer?, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays given sound only for given player. Useful when called server side, for the client side there is no difference over using PlaySoundAt or PlaySoundFor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int PlaySoundFor(SoundAttributes sound, IPlayer? forPlayer, float volumeMultiplier = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
+    <dd><p>The sound information, including file location, type, and how to choose volume and pitch</p>
+</dd>
+    <dt><code>forPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>volumeMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IWorldAccessor_PlayerByUid_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlayerByUid*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlayerByUid_System_String_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlayerByUid(System.String)">
-  PlayerByUid(string)
+  PlayerByUid(string?)
   
   </h3>
 
@@ -2642,7 +2878,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IPlayer PlayerByUid(string playerUid)</code></pre>
+    <pre><code class="lang-csharp hljs">IPlayer PlayerByUid(string? playerUid)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2709,7 +2945,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_IWorldIntersectionSupplier_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection(Vintagestory.API.MathTools.IWorldIntersectionSupplier,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.BlockSelection@,Vintagestory.API.Common.EntitySelection@,Vintagestory.API.MathTools.BlockFilter,Vintagestory.API.MathTools.EntityFilter)">
-  RayTraceForSelection(IWorldIntersectionSupplier, Vec3d, Vec3d, ref BlockSelection, ref EntitySelection, BlockFilter, EntityFilter)
+  RayTraceForSelection(IWorldIntersectionSupplier, Vec3d, Vec3d, ref BlockSelection?, ref EntitySelection?, BlockFilter?, EntityFilter?)
   
   </h3>
 
@@ -2718,7 +2954,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RayTraceForSelection(IWorldIntersectionSupplier supplier, Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void RayTraceForSelection(IWorldIntersectionSupplier supplier, Vec3d fromPos, Vec3d toPos, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? bfilter = null, EntityFilter? efilter = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2755,7 +2991,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_Ray_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection(Vintagestory.API.MathTools.Ray,Vintagestory.API.Common.BlockSelection@,Vintagestory.API.Common.EntitySelection@,Vintagestory.API.MathTools.BlockFilter,Vintagestory.API.MathTools.EntityFilter)">
-  RayTraceForSelection(Ray, ref BlockSelection, ref EntitySelection, BlockFilter, EntityFilter)
+  RayTraceForSelection(Ray, ref BlockSelection?, ref EntitySelection?, BlockFilter?, EntityFilter?)
   
   </h3>
 
@@ -2764,7 +3000,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RayTraceForSelection(Ray ray, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null, EntityFilter efilter = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void RayTraceForSelection(Ray ray, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? filter = null, EntityFilter? efilter = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2796,7 +3032,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_System_Single_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,System.Single,Vintagestory.API.Common.BlockSelection@,Vintagestory.API.Common.EntitySelection@,Vintagestory.API.MathTools.BlockFilter,Vintagestory.API.MathTools.EntityFilter)">
-  RayTraceForSelection(Vec3d, float, float, float, ref BlockSelection, ref EntitySelection, BlockFilter, EntityFilter)
+  RayTraceForSelection(Vec3d, float, float, float, ref BlockSelection?, ref EntitySelection?, BlockFilter?, EntityFilter?)
   
   </h3>
 
@@ -2805,7 +3041,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RayTraceForSelection(Vec3d fromPos, float pitch, float yaw, float range, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void RayTraceForSelection(Vec3d fromPos, float pitch, float yaw, float range, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? bfilter = null, EntityFilter? efilter = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2844,7 +3080,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <a id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_" data-uid="Vintagestory.API.Common.IWorldAccessor.RayTraceForSelection(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.BlockSelection@,Vintagestory.API.Common.EntitySelection@,Vintagestory.API.MathTools.BlockFilter,Vintagestory.API.MathTools.EntityFilter)">
-  RayTraceForSelection(Vec3d, Vec3d, ref BlockSelection, ref EntitySelection, BlockFilter, EntityFilter)
+  RayTraceForSelection(Vec3d, Vec3d, ref BlockSelection?, ref EntitySelection?, BlockFilter?, EntityFilter?)
   
   </h3>
 
@@ -2853,7 +3089,7 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RayTraceForSelection(Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void RayTraceForSelection(Vec3d fromPos, Vec3d toPos, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? bfilter = null, EntityFilter? efilter = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3129,7 +3365,7 @@ Ignores any subsequent registers for the same blockpos while a callback is still
   <a id="Vintagestory_API_Common_IWorldAccessor_SpawnCubeParticles_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnCubeParticles*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnCubeParticles_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_System_Single_System_Int32_System_Single_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnCubeParticles(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d,System.Single,System.Int32,System.Single,Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.Vec3f)">
-  SpawnCubeParticles(BlockPos, Vec3d, float, int, float, IPlayer, Vec3f)
+  SpawnCubeParticles(BlockPos, Vec3d, float, int, float, IPlayer?, Vec3f?)
   
   </h3>
 
@@ -3138,7 +3374,7 @@ Ignores any subsequent registers for the same blockpos while a callback is still
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1, IPlayer dualCallByPlayer = null, Vec3f velocity = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1, IPlayer? dualCallByPlayer = null, Vec3f? velocity = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3176,7 +3412,7 @@ Ignores any subsequent registers for the same blockpos while a callback is still
   <a id="Vintagestory_API_Common_IWorldAccessor_SpawnCubeParticles_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnCubeParticles*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnCubeParticles_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_ItemStack_System_Single_System_Int32_System_Single_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnCubeParticles(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.ItemStack,System.Single,System.Int32,System.Single,Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.Vec3f)">
-  SpawnCubeParticles(Vec3d, ItemStack, float, int, float, IPlayer, Vec3f)
+  SpawnCubeParticles(Vec3d, ItemStack?, float, int, float, IPlayer?, Vec3f?)
   
   </h3>
 
@@ -3185,7 +3421,7 @@ Ignores any subsequent registers for the same blockpos while a callback is still
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SpawnCubeParticles(Vec3d pos, ItemStack item, float radius, int quantity, float scale = 1, IPlayer dualCallByPlayer = null, Vec3f velocity = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void SpawnCubeParticles(Vec3d pos, ItemStack? item, float radius, int quantity, float scale = 1, IPlayer? dualCallByPlayer = null, Vec3f? velocity = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3255,7 +3491,7 @@ This should be done inside its Initialize method before base.Initialize is calle
   <a id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d)">
-  SpawnItemEntity(ItemStack, BlockPos, Vec3d)
+  SpawnItemEntity(ItemStack?, BlockPos, Vec3d?)
   
   </h3>
 
@@ -3265,7 +3501,7 @@ Returns the entity spawned (may be null!)</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Entity SpawnItemEntity(ItemStack itemstack, BlockPos pos, Vec3d velocity = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Entity? SpawnItemEntity(ItemStack? itemstack, BlockPos pos, Vec3d? velocity = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3297,7 +3533,7 @@ Returns the entity spawned (may be null!)</p>
   <a id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)">
-  SpawnItemEntity(ItemStack, Vec3d, Vec3d)
+  SpawnItemEntity(ItemStack?, Vec3d, Vec3d?)
   
   </h3>
 
@@ -3307,7 +3543,7 @@ Returns the entity spawned (may be null!)</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Entity SpawnItemEntity(ItemStack itemstack, Vec3d position, Vec3d velocity = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Entity? SpawnItemEntity(ItemStack? itemstack, Vec3d position, Vec3d? velocity = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3339,7 +3575,7 @@ Returns the entity spawned (may be null!)</p>
   <a id="Vintagestory_API_Common_IWorldAccessor_SpawnParticles_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnParticles*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnParticles_System_Single_System_Int32_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_MathTools_Vec3f_System_Single_System_Single_System_Single_Vintagestory_API_Common_EnumParticleModel_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnParticles(System.Single,System.Int32,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f,System.Single,System.Single,System.Single,Vintagestory.API.Common.EnumParticleModel,Vintagestory.API.Common.IPlayer)">
-  SpawnParticles(float, int, Vec3d, Vec3d, Vec3f, Vec3f, float, float, float, EnumParticleModel, IPlayer)
+  SpawnParticles(float, int, Vec3d, Vec3d, Vec3f, Vec3f, float, float, float, EnumParticleModel, IPlayer?)
   
   </h3>
 
@@ -3348,7 +3584,7 @@ Returns the entity spawned (may be null!)</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SpawnParticles(float quantity, int color, Vec3d minPos, Vec3d maxPos, Vec3f minVelocity, Vec3f maxVelocity, float lifeLength, float gravityEffect, float scale = 1, EnumParticleModel model = EnumParticleModel.Quad, IPlayer dualCallByPlayer = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void SpawnParticles(float quantity, int color, Vec3d minPos, Vec3d maxPos, Vec3f minVelocity, Vec3f maxVelocity, float lifeLength, float gravityEffect, float scale = 1, EnumParticleModel model = EnumParticleModel.Quad, IPlayer? dualCallByPlayer = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3392,7 +3628,7 @@ Returns the entity spawned (may be null!)</p>
   <a id="Vintagestory_API_Common_IWorldAccessor_SpawnParticles_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnParticles*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnParticles_Vintagestory_API_Common_IParticlePropertiesProvider_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnParticles(Vintagestory.API.Common.IParticlePropertiesProvider,Vintagestory.API.Common.IPlayer)">
-  SpawnParticles(IParticlePropertiesProvider, IPlayer)
+  SpawnParticles(IParticlePropertiesProvider, IPlayer?)
   
   </h3>
 
@@ -3401,7 +3637,7 @@ Returns the entity spawned (may be null!)</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SpawnParticles(IParticlePropertiesProvider particlePropertiesProvider, IPlayer dualCallByPlayer = null)</code></pre>
+    <pre><code class="lang-csharp hljs">void SpawnParticles(IParticlePropertiesProvider particlePropertiesProvider, IPlayer? dualCallByPlayer = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

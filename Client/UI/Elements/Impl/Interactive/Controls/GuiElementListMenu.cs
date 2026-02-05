@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Config;
@@ -199,12 +199,13 @@ namespace Vintagestory.API.Client
                 expandedBoxWidth = Math.Max(expandedBoxWidth, elem.MaxLineWidth + 5 * scaleMul + scaled(scrollbarWidth + 5));
             }
 
+            double maximumHeightAvailable = api.Render.FrameHeight - Bounds.absY - Bounds.InnerHeight;
 
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)expandedBoxHeight);
             Context ctx = genContext(surface);
 
             visibleBounds = Bounds.FlatCopy();
-            visibleBounds.fixedHeight = Math.Min(MaxHeight, expandedBoxHeight / RuntimeEnv.GUIScale);
+            visibleBounds.fixedHeight = Math.Min(Math.Min(MaxHeight, expandedBoxHeight / RuntimeEnv.GUIScale), maximumHeightAvailable / RuntimeEnv.GUIScale);
             visibleBounds.fixedWidth = expandedBoxWidth / RuntimeEnv.GUIScale;
             visibleBounds.fixedY += Bounds.InnerHeight / RuntimeEnv.GUIScale;
             visibleBounds.CalcWorldBounds();
@@ -229,8 +230,6 @@ namespace Vintagestory.API.Client
             ElementBounds switchParentBounds = Bounds.FlatCopy();
             switchParentBounds.IsDrawingSurface = true;
             switchParentBounds.CalcWorldBounds();
-
-            
 
             for (int i = 0; i < Values.Length; i++)
             {
@@ -279,6 +278,8 @@ namespace Vintagestory.API.Client
             scrollbar.Bounds.WithFixedSize(scrollbarWidth, visibleBounds.fixedHeight - 3).WithFixedPosition(expandedBoxWidth / RuntimeEnv.GUIScale - 10, 0).WithFixedPadding(0, 2);
             scrollbar.Bounds.WithEmptyParent();
             scrollbar.Bounds.CalcWorldBounds();
+            scrollbar.CurrentYPosition = 0;
+            scrollbar.TriggerChanged();
 
             surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)scrollbar.Bounds.OuterHeight);
             ctx = genContext(surface);
@@ -348,7 +349,6 @@ namespace Vintagestory.API.Client
                     110 + 200
                 );
 
-
                 if (multiSelect)
                 {
                     api.Render.GlPushMatrix();
@@ -412,7 +412,7 @@ namespace Vintagestory.API.Client
 
             if ((args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.KeypadEnter) && expanded)
             {
-                expanded = false;
+                Close();
                 SelectedIndex = HoveredIndex;
                 onSelectionChanged?.Invoke(Values[SelectedIndex], true);
                 args.Handled = true;
@@ -425,7 +425,7 @@ namespace Vintagestory.API.Client
 
                 if (!expanded)
                 {
-                    expanded = true;
+                    Open();
                     HoveredIndex = SelectedIndex;
                     return;
                 }
@@ -486,6 +486,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void Open()
         {
+            ComposeDynamicElements();
             expanded = true;
         }
 
@@ -511,7 +512,7 @@ namespace Vintagestory.API.Client
 
             if (dy < 0 || dy > visibleBounds.OuterHeight)
             {
-                expanded = false;
+                Close();
                 args.Handled = true;
                 api.Gui.PlaySound("menubutton");
                 return;
@@ -535,7 +536,7 @@ namespace Vintagestory.API.Client
 
                 api.Gui.PlaySound("toggleswitch");
 
-                if (!multiSelect) expanded = false;
+                if (!multiSelect) Close();
                 args.Handled = true;
             }
         }
@@ -553,7 +554,7 @@ namespace Vintagestory.API.Client
         public override void OnFocusLost()
         {
             base.OnFocusLost();
-            expanded = false;
+            Close();
         }
 
         /// <summary>

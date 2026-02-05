@@ -33,7 +33,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The entity head controller for this animator.
         /// </summary>
-        public EntityHeadController HeadController { get; set; }
+        public IHeadController HeadController { get; set; }
 
         /// <summary>
         /// The list of currently active animations that should be playing
@@ -141,7 +141,6 @@ namespace Vintagestory.API.Common
             var state = Animator?.GetAnimationState(animCode);
             if (state != null)
             {
-                //state.EasingFactor = 0; 
                 state.CurrentFrame = 0;
                 state.Iterations = 0;
             }
@@ -457,14 +456,16 @@ namespace Vintagestory.API.Common
             
             runTriggers();
         }
-        
+
+        public bool RunWhilePaused = false;
+
         /// <summary>
         /// The event fired each time the client ticks.
         /// </summary>
         /// <param name="dt"></param>
         public virtual void OnClientFrame(float dt)
         {
-            if (capi.IsGamePaused || Animator == null) return;
+            if ((!RunWhilePaused && capi.IsGamePaused) || Animator == null) return;
 
             if (HeadController != null)
             {
@@ -476,6 +477,20 @@ namespace Vintagestory.API.Common
                 Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
                 AdjustCollisionBoxToAnimation = ActiveAnimationsByAnimCode.Any(anim => anim.Value.AdjustCollisionBox);
                 runTriggers();
+            }
+
+            if (loopingSounds != null)
+            {
+                foreach (var val in loopingSounds)
+                {
+                    if (!ActiveAnimationsByAnimCode.ContainsKey(val.Key))
+                    {
+                        val.Value.Stop();
+                        val.Value.Dispose();
+                        loopingSounds.Remove(val.Key);
+                        break;
+                    }
+                }
             }
         }
 
@@ -511,7 +526,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         public void Dispose()
         {
-           
+            if (loopingSounds != null)
+            {
+                foreach (var val in loopingSounds)
+                {
+                    val.Value.Stop();
+                    val.Value.Dispose();
+                }
+            }
         }
 
         public virtual void TriggerAnimationStopped(string code)
@@ -519,9 +541,43 @@ namespace Vintagestory.API.Common
             OnAnimationStopped?.Invoke(code);
         }
 
-        public void ShouldPlaySound(AnimationSound sound)
+        Dictionary<string, ILoadedSound> loopingSounds = null;
+        public void ShouldPlaySound(string animationMetaCode, AnimationSound sound)
         {
-            entity.World.PlaySoundAt(sound.Location, entity, null, sound.RandomizePitch, sound.Range);
+            if (sound.Chance < 1 && entity.World.Rand.NextSingle() >= sound.Chance) return;
+
+            if (sound.Looping)
+            {
+                var cworld = entity.World as IClientWorldAccessor;
+                if (cworld != null)
+                {
+                    if (loopingSounds == null) loopingSounds = new Dictionary<string, ILoadedSound>();
+
+                    ILoadedSound lsound;
+                    if (!loopingSounds.TryGetValue(animationMetaCode, out lsound))
+                    {
+                        lsound = cworld.LoadSound(new SoundParams()
+                        {
+                            Location = sound.Attributes.Location,
+                            DisposeOnFinish = false,
+                            Range = sound.Attributes.Range,
+                            Position = entity.Pos.XYZFloat,
+                            ShouldLoop = true,
+                            SoundType = sound.Attributes.Type,
+                            Pitch = sound.Attributes.Pitch.nextFloat(1f, entity.World.Rand),
+                            Volume = sound.Attributes.Volume.nextFloat(1f, entity.World.Rand)
+                        });
+
+                        loopingSounds.Add(animationMetaCode, lsound);
+                    }
+
+                    lsound.Start();                    
+                }
+            }
+            else
+            {
+                entity.World.PlaySoundAt(sound.Attributes, entity, null);
+            }
         }
     }
 }

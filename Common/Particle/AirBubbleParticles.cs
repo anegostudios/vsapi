@@ -78,7 +78,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns>0.25f</returns>
         public float LifeLength { get; set; }=0.25f;
-        public EvolvingNatFloat OpacityEvolve => null; public EvolvingNatFloat RedEvolve => null; public EvolvingNatFloat GreenEvolve => null; public EvolvingNatFloat BlueEvolve => null;
+        public EvolvingNatFloat OpacityEvolve => EvolvingNatFloat.NoValueSet; public EvolvingNatFloat RedEvolve => EvolvingNatFloat.NoValueSet; public EvolvingNatFloat GreenEvolve => EvolvingNatFloat.NoValueSet; public EvolvingNatFloat BlueEvolve => EvolvingNatFloat.NoValueSet;
         public bool RandomVelocityChange { get; set; }
         public Vec3d Pos => new Vec3d(BasePos.X + rand.NextDouble() * Range - Range/2f, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * Range - Range/2f);
 
@@ -131,6 +131,15 @@ namespace Vintagestory.API.Common
         /// <param name="writer"></param>
         public void ToBytes(BinaryWriter writer)
         {
+            BasePos.ToBytes(writer);
+            AddVelocity.ToBytes(writer);
+            writer.Write(Bounciness);
+            writer.Write(SwimOnLiquid);
+            writer.Write(LifeLength);
+            writer.Write(RandomVelocityChange);
+            writer.Write(Range);
+            writer.Write(quantity);
+            writer.Write(horVelocityMul);
         }
 
         /// <summary>
@@ -140,6 +149,15 @@ namespace Vintagestory.API.Common
         /// <param name="resolver"></param>
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
         {
+            BasePos = Vec3d.CreateFromBytes(reader);
+            AddVelocity = Vec3f.CreateFromBytes(reader);
+            Bounciness = reader.ReadSingle();
+            SwimOnLiquid = reader.ReadBoolean();
+            LifeLength = reader.ReadSingle();
+            RandomVelocityChange = reader.ReadBoolean();
+            Range = reader.ReadSingle();
+            quantity = reader.ReadSingle();
+            horVelocityMul = reader.ReadSingle();
         }
 
         public void BeginParticle() { }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class GuiDialogBlockEntityInventory
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A block entity inventory system for things like a campfire, or other things like that. <a href="https://github.com/anegostudios/vsapi/blob/master///Client/UI/Dialog/GuiDialogBlockEntityInventory.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A block entity inventory system for things like a campfire, or other things like that. <a href=https://github.com/anegostudios/vsapi/blob/master///Client/UI/Dialog/GuiDialogBlockEntityInventory.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -405,6 +405,47 @@ Class GuiDialogBlockEntityInventory
 
   <a id="Vintagestory_API_Client_GuiDialogBlockEntityInventory__ctor_" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor*"></a>
 
+  <h3 id="Vintagestory_API_Client_GuiDialogBlockEntityInventory__ctor_System_String_Vintagestory_API_Common_InventoryBase_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor(System.String,Vintagestory.API.Common.InventoryBase,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32,Vintagestory.API.Client.ICoreClientAPI)">
+  GuiDialogBlockEntityInventory(string, InventoryBase, BlockPos, int, int, ICoreClientAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiDialogBlockEntityInventory(string dialogTitle, InventoryBase inventory, BlockPos blockEntityPos, int packetIdOffset, int cols, ICoreClientAPI capi)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dialogTitle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>inventory</code> <a class="xref" href="Vintagestory.API.Common.InventoryBase.html">InventoryBase</a></dt>
+    <dd></dd>
+    <dt><code>blockEntityPos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>packetIdOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>cols</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>capi</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiDialogBlockEntityInventory__ctor_" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor*"></a>
+
   <h3 id="Vintagestory_API_Client_GuiDialogBlockEntityInventory__ctor_System_String_Vintagestory_API_Common_InventoryBase_Vintagestory_API_MathTools_BlockPos_System_Int32_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor(System.String,Vintagestory.API.Common.InventoryBase,Vintagestory.API.MathTools.BlockPos,System.Int32,Vintagestory.API.Client.ICoreClientAPI)">
   GuiDialogBlockEntityInventory(string, InventoryBase, BlockPos, int, ICoreClientAPI)
   
@@ -433,6 +474,40 @@ Class GuiDialogBlockEntityInventory
 
 
 
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiDialogBlockEntityInventory_packetIdOffset" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.packetIdOffset">
+  packetIdOffset
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int packetIdOffset</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -491,6 +566,38 @@ Escape menu: 0.89</p>
 
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Client_GuiDialogBlockEntityInventory_DoSendPacketWithOffset_" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.DoSendPacketWithOffset*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiDialogBlockEntityInventory_DoSendPacketWithOffset_System_Object_" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.DoSendPacketWithOffset(System.Object)">
+  DoSendPacketWithOffset(object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>We tunnel our packet through a block entity packet so the block entity can handle all the network stuff</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void DoSendPacketWithOffset(object p)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>p</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Client_GuiDialogBlockEntityInventory_OnGuiClosed_" data-uid="Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed*"></a>

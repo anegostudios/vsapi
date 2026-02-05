@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Util;
 
 #nullable disable
@@ -20,7 +20,7 @@ namespace Vintagestory.API.Common
         Leaves,
         Stone,
         Ore,
-        Liquid,
+        Water,
         Snow,
         Ice,
         Metal,
@@ -66,7 +66,7 @@ namespace Vintagestory.API.Common
             blastResistances[blastType][(int)EnumBlockMaterial.Leaves] = 0.4;
             blastResistances[blastType][(int)EnumBlockMaterial.Stone] = 2;
             blastResistances[blastType][(int)EnumBlockMaterial.Ore] = 16;
-            blastResistances[blastType][(int)EnumBlockMaterial.Liquid] = 4;
+            blastResistances[blastType][(int)EnumBlockMaterial.Water] = 4;
             blastResistances[blastType][(int)EnumBlockMaterial.Snow] = 0.4;
             blastResistances[blastType][(int)EnumBlockMaterial.Ice] = 2;
             blastResistances[blastType][(int)EnumBlockMaterial.Metal] = 8;
@@ -94,7 +94,7 @@ namespace Vintagestory.API.Common
             blastResistances[blastType][(int)EnumBlockMaterial.Wood] = 2;
             blastResistances[blastType][(int)EnumBlockMaterial.Leaves] = 0.4;
             blastResistances[blastType][(int)EnumBlockMaterial.Stone] = 3;
-            blastResistances[blastType][(int)EnumBlockMaterial.Liquid] = 4;
+            blastResistances[blastType][(int)EnumBlockMaterial.Water] = 4;
             blastResistances[blastType][(int)EnumBlockMaterial.Snow] = 0.4;
             blastResistances[blastType][(int)EnumBlockMaterial.Ice] = 2;
             blastResistances[blastType][(int)EnumBlockMaterial.Metal] = 8;
@@ -123,7 +123,7 @@ namespace Vintagestory.API.Common
             blastResistances[blastType][(int)EnumBlockMaterial.Leaves] = 0.4 * 12;
             blastResistances[blastType][(int)EnumBlockMaterial.Stone] = 5.6 * 12;
             blastResistances[blastType][(int)EnumBlockMaterial.Ore] = 4 * 12;
-            blastResistances[blastType][(int)EnumBlockMaterial.Liquid] = 4 * 12;
+            blastResistances[blastType][(int)EnumBlockMaterial.Water] = 4 * 12;
             blastResistances[blastType][(int)EnumBlockMaterial.Snow] = 0.4 * 12;
             blastResistances[blastType][(int)EnumBlockMaterial.Ice] = 2 * 12;
             blastResistances[blastType][(int)EnumBlockMaterial.Metal] = 8 * 12;

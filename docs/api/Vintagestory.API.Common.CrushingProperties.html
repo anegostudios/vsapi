@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CrushingProperties
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Defines a set of properties that allow an object to be ground in a quern. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/CrushingProperties.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Defines a set of properties that allow an object to be ground in a quern. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/CrushingProperties.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -190,13 +190,12 @@ public class CrushingProperties</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>If set, the block/item is crusable in a pulverizer and this is the resulting itemstack once the crushing time is over.</p>
+  <div class="markdown level1 summary"><p>If set, the block/item is crusable in a pulverizer and this is the resulting itemstack once the crushing time is over.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public JsonItemStack CrushedStack</code></pre>
   </div>
 
@@ -223,8 +222,7 @@ public JsonItemStack CrushedStack</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The hardness tier for this collectible. Affects what pounder cap must be used for pulverization.</p>
+  <div class="markdown level1 summary"><p>The hardness tier for this collectible. Affects what pounder cap must be used for pulverization.</p>
 <ul>
 <li>0 = stone</li>
 <li>1 = copper</li>
@@ -236,7 +234,7 @@ public JsonItemStack CrushedStack</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;1&quot;, false)]
 public int HardnessTier</code></pre>
   </div>
 
@@ -263,13 +261,12 @@ public int HardnessTier</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The random quantity of item to return. Note that this value is multiplied by <a class="xref" href="Vintagestory.API.Common.CrushingProperties.html#Vintagestory_API_Common_CrushingProperties_CrushedStack">CrushedStack</a>'s quantity.</p>
+  <div class="markdown level1 summary"><p>The random quantity of item to return. Note that this value is multiplied by <a class="xref" href="Vintagestory.API.Common.CrushingProperties.html#Vintagestory_API_Common_CrushingProperties_CrushedStack">CrushedStack</a>'s quantity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat Quantity</code></pre>
   </div>
 

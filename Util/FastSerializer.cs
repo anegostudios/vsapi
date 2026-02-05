@@ -89,6 +89,23 @@ namespace Vintagestory.API.Util
             Write(stream, 2, y);
         }
 
+        public static void Write(FastMemoryStream stream, int field, Vec2iStruct val)
+        {
+            int x = val.X;
+            int y = val.Y;
+            if (x == 0 && y == 0)
+            {
+                // Don't write nothing at all if the Vec2i has value (0,0) as otherwise we might have no key for a Dictionary: so here we explicitly write the zero value of x
+                WriteTagLengthDelim(stream, field, 3);
+                WriteTagVarInt(stream, 1);
+                Write(stream, 0);
+                return;
+            }
+            WriteTagLengthDelim(stream, field, 2 + GetSize(x) + GetSize(y));
+            Write(stream, 1, x);
+            Write(stream, 2, y);
+        }
+
         public static void Write(FastMemoryStream stream, int field, Vec4i val)
         {
             if (val == null) return;
@@ -221,6 +238,46 @@ namespace Vintagestory.API.Util
             }
         }
 
+        public static void Write(FastMemoryStream stream, int field, IDictionary<Vec2iStruct, float> dict)
+        {
+            if (dict != null)
+            {
+                foreach (var entry in dict)
+                {
+                    // Note: if the float Entry.Value has the default value of 0f, then the following code will not write the .Value, for better performance - the read Entry.Value will have the default value anyhow
+                    WriteTagLengthDelim(stream, field, 2 + GetSize(entry.Key) + GetSize(entry.Value));
+                    Write(stream, 1, entry.Key);
+                    Write(stream, 2, entry.Value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// This one always writes packed, make sure to specify IsPacked=true in the ProtoMember header
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="field"></param>
+        /// <param name="collection"></param>
+        public static void Write(FastMemoryStream stream, int field, IEnumerable<float> collection)
+        {
+            if (collection != null)
+            {
+                int size = 0;
+                if (collection is float[] array)
+                {
+                    size = array.Length * 4;
+                    WriteTagLengthDelim(stream, field, size);
+                    stream.Write(array);
+                }
+                else
+                {
+                    foreach (float val in collection) size += 4;
+                    WriteTagLengthDelim(stream, field, size);
+                    foreach (float val in collection) stream.Write(val);
+                }
+            }
+        }
+
         public static void WritePacked(FastMemoryStream stream, int field, IEnumerable<ushort> collection)
         {
             if (collection != null)
@@ -284,6 +341,12 @@ namespace Vintagestory.API.Util
         public static int GetSize(Vec2i val)
         {
             if (val == null) return -1;    // If null, it can't be written by Write(), so return -1 as the tag byte also will not be written
+            int byteCount = 2 + GetSize(val.X) + GetSize(val.Y);
+            return byteCount + GetSize(byteCount);
+        }
+
+        public static int GetSize(Vec2iStruct val)
+        {
             int byteCount = 2 + GetSize(val.X) + GetSize(val.Y);
             return byteCount + GetSize(byteCount);
         }

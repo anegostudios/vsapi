@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -267,6 +267,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="data"></param>
         void SetValue(object data);
+
+        /// <summary>
+        /// An optional description of this argument (or an example), to be shown in command handbook or with /help
+        /// </summary>
+        /// <param name="desc"></param>
+        /// <returns></returns>
+        ArgumentParserBase WithExplanation(string desc);
     }
 
 

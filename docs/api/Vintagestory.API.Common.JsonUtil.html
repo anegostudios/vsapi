@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class JsonUtil
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Util/JsonUtil.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Util/JsonUtil.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -156,7 +156,7 @@ Class JsonUtil
   <a id="Vintagestory_API_Common_JsonUtil_CreateSerializerForDomain_" data-uid="Vintagestory.API.Common.JsonUtil.CreateSerializerForDomain*"></a>
 
   <h3 id="Vintagestory_API_Common_JsonUtil_CreateSerializerForDomain_System_String_Newtonsoft_Json_JsonSerializerSettings_" data-uid="Vintagestory.API.Common.JsonUtil.CreateSerializerForDomain(System.String,Newtonsoft.Json.JsonSerializerSettings)">
-  CreateSerializerForDomain(string, JsonSerializerSettings)
+  CreateSerializerForDomain(string, JsonSerializerSettings?)
   
   </h3>
 
@@ -164,7 +164,7 @@ Class JsonUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static JsonSerializer CreateSerializerForDomain(string domain, JsonSerializerSettings settings = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static JsonSerializer CreateSerializerForDomain(string domain, JsonSerializerSettings? settings = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -203,7 +203,7 @@ Class JsonUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T FromBytes&lt;T&gt;(byte[] data)</code></pre>
+    <pre><code class="lang-csharp hljs">public static T? FromBytes&lt;T&gt;(byte[] data)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -246,7 +246,7 @@ Class JsonUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T FromString&lt;T&gt;(string data)</code></pre>
+    <pre><code class="lang-csharp hljs">public static T? FromString&lt;T&gt;(string data)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -314,7 +314,7 @@ Class JsonUtil
   <a id="Vintagestory_API_Common_JsonUtil_PopulateObject_" data-uid="Vintagestory.API.Common.JsonUtil.PopulateObject*"></a>
 
   <h3 id="Vintagestory_API_Common_JsonUtil_PopulateObject_System_Object_System_String_System_String_Newtonsoft_Json_JsonSerializerSettings_" data-uid="Vintagestory.API.Common.JsonUtil.PopulateObject(System.Object,System.String,System.String,Newtonsoft.Json.JsonSerializerSettings)">
-  PopulateObject(object, string, string, JsonSerializerSettings)
+  PopulateObject(object, string, string, JsonSerializerSettings?)
   
   </h3>
 
@@ -322,7 +322,7 @@ Class JsonUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void PopulateObject(object toPopulate, string text, string domain, JsonSerializerSettings settings = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void PopulateObject(object toPopulate, string text, string domain, JsonSerializerSettings? settings = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -433,7 +433,7 @@ Class JsonUtil
   <a id="Vintagestory_API_Common_JsonUtil_ToObject_" data-uid="Vintagestory.API.Common.JsonUtil.ToObject*"></a>
 
   <h3 id="Vintagestory_API_Common_JsonUtil_ToObject__1_Newtonsoft_Json_Linq_JToken_System_String_Newtonsoft_Json_JsonSerializerSettings_" data-uid="Vintagestory.API.Common.JsonUtil.ToObject``1(Newtonsoft.Json.Linq.JToken,System.String,Newtonsoft.Json.JsonSerializerSettings)">
-  ToObject&lt;T&gt;(JToken, string, JsonSerializerSettings)
+  ToObject&lt;T&gt;(JToken, string, JsonSerializerSettings?)
   
   </h3>
 
@@ -442,7 +442,7 @@ Class JsonUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T ToObject&lt;T&gt;(this JToken token, string domain, JsonSerializerSettings settings = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static T? ToObject&lt;T&gt;(this JToken token, string domain, JsonSerializerSettings? settings = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -483,7 +483,7 @@ Class JsonUtil
   <a id="Vintagestory_API_Common_JsonUtil_ToObject_" data-uid="Vintagestory.API.Common.JsonUtil.ToObject*"></a>
 
   <h3 id="Vintagestory_API_Common_JsonUtil_ToObject__1_System_String_System_String_Newtonsoft_Json_JsonSerializerSettings_" data-uid="Vintagestory.API.Common.JsonUtil.ToObject``1(System.String,System.String,Newtonsoft.Json.JsonSerializerSettings)">
-  ToObject&lt;T&gt;(string, string, JsonSerializerSettings)
+  ToObject&lt;T&gt;(string, string, JsonSerializerSettings?)
   
   </h3>
 
@@ -492,7 +492,7 @@ Class JsonUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T ToObject&lt;T&gt;(string text, string domain, JsonSerializerSettings settings = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static T? ToObject&lt;T&gt;(string text, string domain, JsonSerializerSettings? settings = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

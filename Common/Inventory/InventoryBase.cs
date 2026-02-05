@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -601,40 +601,33 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual ItemSlot[] SlotsFromTreeAttributes(ITreeAttribute tree, ItemSlot[] slots = null, List<ItemSlot> modifiedSlots = null)
         {
-            if (tree == null)
-            {
-                return slots;
-            }
+            if (tree == null) return slots;
 
-            if (slots == null /*|| slots.Length != tree.GetInt("qslots") - wtf is this good for? The slot count from tree attr might be outdated!*/)
+            if (slots == null)
             {
-                slots = new ItemSlot[tree.GetInt("qslots")];
-                for (int i = 0; i < slots.Length; i++)
-                {
-                    slots[i] = NewSlot(i);
-                }
+                slots = GenEmptySlots(tree.GetInt("qslots"));
             }
-
+            
+            
             for (int slotId = 0; slotId < slots.Length; slotId++)
             {
                 ItemStack newstack = tree.GetTreeAttribute("slots")?.GetItemstack("" + slotId);
                 slots[slotId].Itemstack = newstack;
+                if (Api?.World == null) continue; // Only load up the stacks, don't resovle yet 
 
-                if (Api?.World == null) continue;
                 newstack?.ResolveBlockOrItem(Api.World);
-
                 if (modifiedSlots != null)
                 {
                     ItemStack oldstack = slots[slotId].Itemstack;
-                    bool a = (newstack != null && !newstack.Equals(Api.World, oldstack));
-                    bool b = (oldstack != null && !oldstack.Equals(Api.World, newstack));
+                    bool oldModified = newstack != null && !newstack.Equals(Api.World, oldstack);
+                    bool newModified = oldstack != null && !oldstack.Equals(Api.World, newstack);
 
-                    bool didModify = a || b;
-                    if (didModify) modifiedSlots.Add(slots[slotId]);
+                    if (oldModified || newModified)
+                    {
+                        modifiedSlots.Add(slots[slotId]);
+                    }
                 }
             }
-
-
 
             return slots;
         }
@@ -719,9 +712,12 @@ namespace Vintagestory.API.Common
             if (slot.Empty) return;
             if (player != null && player.WorldData.CurrentGameMode == EnumGameMode.Creative) return;
 
-            if (slot.Itemstack.Collectible.Attributes?.IsTrue("allowHotCrafting") != true && slot.Itemstack.Collectible.GetTemperature(Api.World, slot.Itemstack) > 300 && !hasHeatResistantHandGear(player))
+            if (
+                slot.Itemstack.Collectible.Attributes?.IsTrue("allowHotCrafting") != true
+                && slot.Itemstack.Collectible.GetTemperature(Api.World, slot.Itemstack) > GlobalConstants.TooHotToTouchTemperature
+                && (!hasHeatResistantHandGear(player) || slot.Inventory?.className == "craftinggrid"))
             {
-                (Api as ICoreServerAPI).SendIngameError(player as IServerPlayer, "requiretongs", Lang.Get("Requires tongs to hold"));
+                (Api as ICoreServerAPI).SendIngameError(player as IServerPlayer, "requiretongs", slot.Inventory?.className == "craftinggrid" ? Lang.Get("Too hot to craft!") : Lang.Get("Requires tongs to hold"));
                 player.Entity.ReceiveDamage(new DamageSource() { DamageTier = 0, Source = EnumDamageSource.Player, SourceEntity = player.Entity, Type = EnumDamageType.Fire }, 0.25f);
                 player.InventoryManager.DropItem(slot, true);
             }
@@ -893,7 +889,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Gets the enumerator for the inventory.
         /// </summary>
-        public IEnumerator<ItemSlot> GetEnumerator()
+        public virtual IEnumerator<ItemSlot> GetEnumerator()
         {
             for (int i = 0; i < Count; i++)
             {

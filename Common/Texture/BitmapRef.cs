@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using SkiaSharp;
 
 #nullable disable
@@ -119,5 +119,9 @@ namespace Vintagestory.API.Common
         public abstract void Save(string filename);
 
         public abstract void MulAlpha(int alpha = 255);
+        /// <summary>
+        /// Crops to a bitmap of newsize x newsize, taken from the center of the old bitmap
+        /// </summary>
+        public abstract BitmapRef CropTo(int newsize);
     }
 }

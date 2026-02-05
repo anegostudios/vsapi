@@ -41,12 +41,9 @@ namespace Vintagestory.API.Client
         
     }
 
-	/// <summary>
-    /// Entity texture Atlas.
-    /// </summary>
-    
+
     /// <summary>
-    /// Texture atlas base.
+    /// Represents a texture atlas, which is a large texture containing many smaller textures packed together to reduce the number of texture bindings during rendering.
     /// </summary>
     public interface ITextureAtlasAPI
     {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -160,10 +160,16 @@ Interface IClientEventAPI
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MatchesGridRecipe">IEventAPI.MatchesGridRecipe</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MatchesRecipe">IEventAPI.MatchesRecipe</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_PushEvent_System_String_Vintagestory_API_Datastructures_IAttribute_">IEventAPI.PushEvent(string, IAttribute)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_System_Double_System_String_">IEventAPI.RegisterEventBusListener(EventBusListenerDelegate, double, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_">IEventAPI.UnregisterEventBusListener(EventBusListenerDelegate)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;float&gt;, int, int)</a>
@@ -173,6 +179,12 @@ Interface IClientEventAPI
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, float&gt;, BlockPos, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Action_System_Exception__System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, float&gt;, BlockPos, Action&lt;Exception&gt;, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__Vintagestory_API_MathTools_BlockPos_System_Action_System_Exception__System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;float&gt;, BlockPos, Action&lt;Exception&gt;, int, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_">IEventAPI.RegisterCallback(Action&lt;float&gt;, int)</a>
@@ -200,6 +212,9 @@ Interface IClientEventAPI
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot___System_Int32_">IEventAPI.TriggerMatchesRecipe(IPlayer, GridRecipe, ItemSlot[], int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IRecipeBase_Vintagestory_API_Common_ItemSlot___">IEventAPI.TriggerMatchesRecipe(IPlayer, IRecipeBase, ItemSlot[])</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerEntityMounted_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_IMountableSeat_">IEventAPI.TriggerEntityMounted(EntityAgent, IMountableSeat)</a>
@@ -1040,6 +1055,68 @@ Note: Not called when the server forcefully changes active slot.</p>
 
 
 
+  <h3 id="Vintagestory_API_Client_IClientEventAPI_OnPlayerBreakingBlock" data-uid="Vintagestory.API.Client.IClientEventAPI.OnPlayerBreakingBlock">
+  OnPlayerBreakingBlock
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handlers for callbacks in a regular interval while player is breaking a block in survival</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;BlockDamage&gt; OnPlayerBreakingBlock</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.BlockDamage.html">BlockDamage</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_IClientEventAPI_OnPlayerBrokenBlock" data-uid="Vintagestory.API.Client.IClientEventAPI.OnPlayerBrokenBlock">
+  OnPlayerBrokenBlock
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Handlers for when the player in survival has broken a block</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;BlockDamage&gt; OnPlayerBrokenBlock</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.BlockDamage.html">BlockDamage</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Client_IClientEventAPI_OnSendChatMessage" data-uid="Vintagestory.API.Client.IClientEventAPI.OnSendChatMessage">
   OnSendChatMessage
   
@@ -1061,6 +1138,37 @@ Note: Not called when the server forcefully changes active slot.</p>
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Client.ClientChatLineDelegate.html">ClientChatLineDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_IClientEventAPI_OnUnBreakingBlock" data-uid="Vintagestory.API.Client.IClientEventAPI.OnUnBreakingBlock">
+  OnUnBreakingBlock
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>When a partially broken block reverted</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;BlockDamage&gt; OnUnBreakingBlock</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.BlockDamage.html">BlockDamage</a>&gt;</dt>
     <dd></dd>
   </dl>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -99,7 +99,7 @@ Class JsonPatch
 
   <div class="markdown summary"><p>Defines a patch for a json asset. This allows modifying json files through mods without directly editing them.
 To help with creating patches, it is highly recommended to learn how to use the in-built modmaker program.
-See <a href="https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker">https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker</a> for more info. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/JsonPatchLoader.cs">Open in GitHub</a></p>
+See <a href="https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker">https://wiki.vintagestory.at/Modding:Inbuilt_ModMaker</a> for more info. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/JsonPatchLoader.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -143,7 +143,7 @@ public class JsonPatch</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public AssetLocation File</code></pre>
   </div>
 
@@ -176,7 +176,7 @@ public AssetLocation File</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public EnumJsonPatchOp Op</code></pre>
   </div>
 
@@ -209,7 +209,7 @@ public EnumJsonPatchOp Op</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string Path</code></pre>
   </div>
 
@@ -244,6 +244,7 @@ public string Path</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public JsonObject Value</code></pre>
   </div>
 
@@ -252,7 +253,7 @@ public JsonObject Value</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -276,7 +277,7 @@ public JsonObject Value</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public PatchCondition Condition</code></pre>
   </div>
 
@@ -309,7 +310,7 @@ public PatchCondition Condition</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public PatchModDependence[] DependsOn</code></pre>
   </div>
 
@@ -342,7 +343,7 @@ public PatchModDependence[] DependsOn</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool Enabled</code></pre>
   </div>
 
@@ -365,7 +366,7 @@ public bool Enabled</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_JsonPatch_FromPath" data-uid="Vintagestory.ServerMods.NoObf.JsonPatch.FromPath">
-  FromPath (Optional)
+  FromPath (Optional) (Default: None)
   
   </h3>
 
@@ -375,7 +376,7 @@ public bool Enabled</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string FromPath</code></pre>
   </div>
 
@@ -408,7 +409,7 @@ public string FromPath</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Universal&quot;, false)]
 public EnumAppSide? Side</code></pre>
   </div>
 
@@ -443,7 +444,7 @@ public EnumAppSide? Side</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Side instead&quot;)]
-[DocumentAsJson]
+[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 public EnumAppSide? SideType { get; set; }</code></pre>
   </div>
 

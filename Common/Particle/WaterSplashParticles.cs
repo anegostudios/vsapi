@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
@@ -15,7 +16,7 @@ namespace Vintagestory.API.Common
         public Vec3f AddVelocity = new Vec3f();
 
         public Block SedimentBlock;
-        public BlockPos SedimentPos = new BlockPos();
+        public BlockPos SedimentPos = new BlockPos(Config.Dimensions.WillSetLater);
         public float quantity;
 
         public int waterColor;
@@ -24,17 +25,16 @@ namespace Vintagestory.API.Common
         public override bool DieInLiquid => false;
         public override bool DieInAir => true;
         public override float GravityEffect => 0f; 
-        public override float LifeLength => 7f; 
+        public override float LifeLength => 9f; 
         public override bool SwimOnLiquid => false;
         public override Vec3d Pos => new Vec3d(BasePos.X + rand.NextDouble() * AddPos.X, BasePos.Y + rand.NextDouble() * AddPos.Y, BasePos.Z + AddPos.Z * rand.NextDouble());
         public override float Quantity => quantity;
 
-        public override float Size => 0.15f;
+        public override float Size => 0.25f;
 
         public override int VertexFlags => 1<<9; // Adds a 0.2 multiplier to the WBOIT weight so that it renders behind water
-        public override EvolvingNatFloat SizeEvolve => new EvolvingNatFloat(EnumTransformFunction.LINEAR, 1.5f);
-
-        public override EvolvingNatFloat OpacityEvolve => new EvolvingNatFloat(EnumTransformFunction.QUADRATIC, -32);
+        public override EvolvingNatFloat SizeEvolve => new EvolvingNatFloat(EnumTransformFunction.LINEAR, 3f);
+        public override EvolvingNatFloat OpacityEvolve => new EvolvingNatFloat(EnumTransformFunction.QUADRATIC, -50);
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
@@ -67,7 +67,10 @@ namespace Vintagestory.API.Common
         public Vec3f AddVelocity = new Vec3f();
         public float QuantityMul;
 
-        public override bool DieInLiquid => false; public override float GravityEffect => 1f; public override float LifeLength => 1.25f; public override bool SwimOnLiquid => true;
+        public override bool DieInLiquid => false;
+        public override float GravityEffect => 1f;
+        public override float LifeLength => 1.25f;
+        public override bool SwimOnLiquid => true;
         public override Vec3d Pos => new Vec3d(BasePos.X + rand.NextDouble() * AddPos.X, BasePos.Y + rand.NextDouble() * AddPos.Y, BasePos.Z + AddPos.Z * rand.NextDouble());
 
         public override float Quantity => 30 * QuantityMul;
@@ -87,5 +90,25 @@ namespace Vintagestory.API.Common
         {
             return new Vec3f(1f * (float)rand.NextDouble() - 0.5f + AddVelocity.X, 3 * (float)rand.NextDouble() + 2f + AddVelocity.Y, 1f * (float)rand.NextDouble() - 0.5f + AddVelocity.Z);
         }
+
+
+
+        public override void ToBytes(BinaryWriter writer)
+        {
+            BasePos.ToBytes(writer);
+            AddPos.ToBytes(writer);
+            AddVelocity.ToBytes(writer);
+            writer.Write(QuantityMul);
+        }
+
+        public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+        {
+            BasePos = Vec3d.CreateFromBytes(reader);
+            AddPos = Vec3d.CreateFromBytes(reader);
+            AddVelocity = Vec3f.CreateFromBytes(reader);
+            QuantityMul = reader.ReadSingle();
+        }
+
+
     }
 }

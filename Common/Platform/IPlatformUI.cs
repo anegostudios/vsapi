@@ -1,4 +1,4 @@
-﻿using OpenTK.Windowing.Desktop;
+using OpenTK.Windowing.Desktop;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
@@ -11,6 +11,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IXPlatformInterface
     {
+        bool ConfirmMessageBox(string title, string text);
 
         public GameWindow Window { get; set; }
 

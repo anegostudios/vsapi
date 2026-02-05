@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class InventoryBase
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Basic class representing an item inventory <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Inventory/InventoryBase.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Basic class representing an item inventory <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Inventory/InventoryBase.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -132,6 +132,7 @@ Class InventoryBase
       <div><a class="xref" href="Vintagestory.API.Common.DummyInventory.html">DummyInventory</a></div>
       <div><a class="xref" href="Vintagestory.API.Common.InventoryBasePlayer.html">InventoryBasePlayer</a></div>
       <div><a class="xref" href="Vintagestory.API.Common.InventoryGeneric.html">InventoryGeneric</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.InventoryInfinite.html">InventoryInfinite</a></div>
     </dd>
   </dl>
 
@@ -175,6 +176,9 @@ Class InventoryBase
   </div>
   <div>
       <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__">EnumerableExtensions.Nearest&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, double&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ListExtensions.html#Vintagestory_API_Util_ListExtensions_Contains__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Boolean__">ListExtensions.Contains&lt;TSource&gt;(IEnumerable&lt;TSource&gt;, Func&lt;TSource, bool&gt;)</a>
   </div>
   <div>
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
@@ -1744,7 +1748,7 @@ public WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List&lt;ItemSlot&gt; 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerator&lt;ItemSlot&gt; GetEnumerator()</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual IEnumerator&lt;ItemSlot&gt; GetEnumerator()</code></pre>
   </div>
 
 

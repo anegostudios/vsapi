@@ -5,8 +5,6 @@ using System.IO;
 using System.Text;
 using Vintagestory.API.Config;
 
-#nullable disable
-
 namespace Vintagestory.API.Common
 {
     public static class JsonUtil
@@ -25,7 +23,7 @@ namespace Vintagestory.API.Common
         /// <typeparam name="T">The designated type</typeparam>
         /// <param name="data">The json object.</param>
         /// <returns></returns>
-        public static T FromBytes<T>(byte[] data)
+        public static T? FromBytes<T>(byte[] data)
         {
             using (var stream = new MemoryStream(data))
             {
@@ -36,7 +34,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public static T FromString<T>(string data)
+        public static T? FromString<T>(string data)
         {
             return JsonConvert.DeserializeObject<T>(data);
         }
@@ -63,7 +61,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public static void PopulateObject(object toPopulate, string text, string domain, JsonSerializerSettings settings = null)
+        public static void PopulateObject(object toPopulate, string text, string domain, JsonSerializerSettings? settings = null)
         {
             if (domain != GlobalConstants.DefaultDomain)
             {
@@ -76,7 +74,7 @@ namespace Vintagestory.API.Common
             JsonConvert.PopulateObject(text, toPopulate, settings);
         }
 
-        public static JsonSerializer CreateSerializerForDomain(string domain, JsonSerializerSettings settings = null)
+        public static JsonSerializer CreateSerializerForDomain(string domain, JsonSerializerSettings? settings = null)
         {
             if (domain != GlobalConstants.DefaultDomain)
             {
@@ -105,7 +103,7 @@ namespace Vintagestory.API.Common
         /// <param name="domain">The domain of the text.</param>
         /// <param name="settings">The settings of the deserializer. (default: Null)</param>
         /// <returns></returns>
-        public static T ToObject<T>(string text, string domain, JsonSerializerSettings settings = null)
+        public static T? ToObject<T>(string text, string domain, JsonSerializerSettings? settings = null)
         {
             if (domain != GlobalConstants.DefaultDomain)
             {
@@ -127,7 +125,7 @@ namespace Vintagestory.API.Common
         /// <param name="domain">The domain of the text.</param>
         /// <param name="settings">The settings of the deserializer. (default: Null)</param>
         /// <returns></returns>
-        public static T ToObject<T>(this JToken token, string domain, JsonSerializerSettings settings = null)
+        public static T? ToObject<T>(this JToken token, string domain, JsonSerializerSettings? settings = null)
         {
             if (domain != GlobalConstants.DefaultDomain)
             {
@@ -142,21 +140,16 @@ namespace Vintagestory.API.Common
         }
     }
 
-    public class AssetLocationJsonParser : JsonConverter
+    public class AssetLocationJsonParser : JsonConverter<AssetLocation>
     {
-        string domain;
+        protected string domain;
 
         public AssetLocationJsonParser(string domain)
         {
             this.domain = domain;
         }
 
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(AssetLocation);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override AssetLocation? ReadJson(JsonReader reader, Type objectType, AssetLocation? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             if (reader.Value is string)
             {
@@ -165,7 +158,9 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override bool CanWrite { get => false; }
+
+        public override void WriteJson(JsonWriter writer, AssetLocation? value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

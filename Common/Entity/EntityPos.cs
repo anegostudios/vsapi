@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+using ProtoBuf;
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -153,11 +153,27 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
+        /// Returns the position as a Vec3d object. Note, dimension aware
+        /// </summary>
+        public FastVec3d XYZFast
+        {
+            get { return new FastVec3d(x, InternalY, z); }
+        }
+
+        /// <summary>
         /// Returns the position as a Vec3f object
         /// </summary>
         public Vec3f XYZFloat
         {
             get { return new Vec3f((float)x, (float)InternalY, (float)z); }
+        }
+
+        /// <summary>
+        /// Returns the position as a FastVec3f object
+        /// </summary>
+        public FastVec3f XYZFloatFast
+        {
+            get { return new FastVec3f((float)x, (float)InternalY, (float)z); }
         }
 
         internal int XInt
@@ -178,6 +194,30 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="pos">The Vec3d to set to.</param>
         public void SetPosWithDimension(Vec3d pos)
+        {
+            this.X = pos.X;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y = pos.Y % BlockPos.DimensionBoundary;
+            this.z = pos.Z;
+            this.Dimension = (int)pos.Y / BlockPos.DimensionBoundary;
+        }
+
+        /// <summary>
+        /// Sets this position to a Vec3d, including setting the dimension
+        /// </summary>
+        /// <param name="pos">The Vec3d to set to.</param>
+        public void SetPosWithDimension(IVec3 pos)
+        {
+            this.X = pos.XAsDouble;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y = pos.YAsDouble % BlockPos.DimensionBoundary;
+            this.z = pos.ZAsDouble;
+            this.Dimension = (int)pos.YAsDouble / BlockPos.DimensionBoundary;
+        }
+
+        /// <summary>
+        /// Sets this position to a Vec3d, including setting the dimension
+        /// </summary>
+        /// <param name="pos">The Vec3d to set to.</param>
+        public void SetPosWithDimension(FastVec3d pos)
         {
             this.X = pos.X;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
             this.y = pos.Y % BlockPos.DimensionBoundary;
@@ -641,8 +681,8 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public EntityPos BehindCopy(double offset)
         {
-            float cosYaw = GameMath.Cos(-yaw);
-            float sinYaw = GameMath.Sin(-yaw);
+            float cosYaw = GameMath.Cos(yaw);
+            float sinYaw = GameMath.Sin(yaw);
 
             var copy = new EntityPos(x + sinYaw * offset, y, z + cosYaw * offset, yaw, pitch, roll);
             copy.Dimension = Dimension;

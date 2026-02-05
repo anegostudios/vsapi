@@ -39,7 +39,7 @@ namespace Vintagestory.API.Datastructures
         public static void SetBlockPos(this ITreeAttribute tree, string code, BlockPos value)
         {
             tree.SetInt(code + "X", value.X);
-            tree.SetInt(code + "Y", value.Y);
+            tree.SetInt(code + "Y", value.InternalY);
             tree.SetInt(code + "Z", value.Z);
         }
 
@@ -196,7 +196,7 @@ namespace Vintagestory.API.Datastructures
             byte attrId;
             while ((attrId = stream.ReadByte()) != 0)
             {
-                string key = stream.ReadString();
+                string key = string.Intern(stream.ReadString());
 
                 Type t = AttributeIdMapping[attrId];
                 IAttribute attr = (IAttribute)Activator.CreateInstance(t);
@@ -659,7 +659,7 @@ namespace Vintagestory.API.Datastructures
         public virtual string GetString(string key, string defaultValue = null)
         {
             string val = (attributes.TryGetValue(key) as StringAttribute)?.value;
-            return val == null ? defaultValue : val;
+            return val == null ? defaultValue : string.Intern(val);
         }
 
         /// <summary>
@@ -1115,15 +1115,6 @@ namespace Vintagestory.API.Datastructures
         public static void TerminateWrite(BinaryWriter writer)
         {
             writer.Write((byte)0);
-        }
-    }
-
-    public static class DictionaryExtensions
-    {
-        public static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key)
-        {
-            source.TryGetValue(key, out TValue val);
-            return val;
         }
     }
 }

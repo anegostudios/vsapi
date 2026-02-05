@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #nullable disable
 
@@ -23,16 +23,15 @@ namespace Vintagestory.API.Common
         public bool usedObsoleteNotation = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// If set, the collectible is grindable in a quern and this is the resulting itemstack once the grinding time is over.
         /// </summary>
-        [DocumentAsJson] public JsonItemStack GroundStack;
+        [DocumentAsJson("Required")]
+        public JsonItemStack GroundStack;
 
         /// <summary>
-        /// <!--<jsonoptional>Obsolete</jsonoptional>-->
         /// Obsolete. Please use <see cref="GroundStack"/> instead.
         /// </summary>
-        [DocumentAsJson]
+        [DocumentAsJson("Obsolete")]
         [Obsolete("Use GroundStack instead")]
         public JsonItemStack GrindedStack { 
             get

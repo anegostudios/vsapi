@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Vintagestory.API.Config;
 
 #nullable disable
@@ -16,8 +17,8 @@ namespace Vintagestory.API.Common
         public static TyronThreadPool Inst = new TyronThreadPool();
         public ILogger Logger;
 
-        public ConcurrentDictionary<int, string> RunningTasks = new ConcurrentDictionary<int, string>();
-        public ConcurrentDictionary<int, Thread> DedicatedThreads = new ConcurrentDictionary<int, Thread>();
+        public ConcurrentDictionary<int, string> RunningTasks = new ConcurrentDictionary<int, string>(Math.Min(8, Environment.ProcessorCount), 8);
+        public ConcurrentDictionary<int, Thread> DedicatedThreads = new ConcurrentDictionary<int, Thread>(Math.Min(8, Environment.ProcessorCount), 8);
         int keyCounter = 0;
         int dedicatedCounter = 0;
 
@@ -49,6 +50,7 @@ namespace Vintagestory.API.Common
             }
             if (sb.Length == 0) sb.Append("[empty]");
             sb.AppendLine();
+
 
             return "Current threadpool tasks: " + sb.ToString() + "\nThread pool thread count: " + ThreadPool.ThreadCount;
         }
@@ -106,43 +108,58 @@ namespace Vintagestory.API.Common
 
         public static void QueueTask(Action callback, string caller)
         {
-            int key = Inst.MarkStarted(caller);
-            QueueTask(callback);
-            Inst.MarkEnded(key);
+            if (RuntimeEnv.DebugThreadPool)
+            {
+                Inst.Logger.VerboseDebug("QueueTask." + Environment.StackTrace);
+            }
+
+            ThreadPool.QueueUserWorkItem((_) =>
+            {
+                int key = Inst.MarkStarted(caller);
+                callback();
+                Inst.MarkEnded(key);
+            });
         }
 
+        public static void QueueTask(Func<Task> callback, string caller)
+        {
+            if (RuntimeEnv.DebugThreadPool)
+            {
+                Inst.Logger.VerboseDebug("QueueTask." + Environment.StackTrace);
+            }
+
+            ThreadPool.QueueUserWorkItem(async void (_) =>
+            {
+                int key = Inst.MarkStarted(caller);
+                try
+                {
+                    await callback();
+                }
+                catch (Exception e)
+                {
+                    Inst.Logger.Warning("QueueTask: " + caller + " threw an exception!");
+                    Inst.Logger.Warning(e);
+                }
+                Inst.MarkEnded(key);
+            });
+        }
+
+        [Obsolete("Use QueueTask instead.")]
         public static void QueueLongDurationTask(Action callback, string caller)
         {
-            int key = Inst.MarkStarted(caller);
-            QueueLongDurationTask(callback);
-            Inst.MarkEnded(key);
+            QueueTask(callback, caller);
         }
 
-
+        [Obsolete("Use QueueTask with the caller parameter instead.")]
         public static void QueueTask(Action callback)
         {
-            if (RuntimeEnv.DebugThreadPool)
-            {
-                Inst.Logger.VerboseDebug("QueueTask." + Environment.StackTrace);
-            }
-
-            ThreadPool.QueueUserWorkItem((a) =>
-            {
-                callback();
-            });
+            QueueTask(callback, "Unknown");
         }
 
+        [Obsolete("Use QueueTask with the caller parameter instead.")]
         public static void QueueLongDurationTask(Action callback)
         {
-            if (RuntimeEnv.DebugThreadPool)
-            {
-                Inst.Logger.VerboseDebug("QueueTask." + Environment.StackTrace);
-            }
-
-            ThreadPool.QueueUserWorkItem((a) =>
-            {
-                callback();
-            });
+            QueueTask(callback, "Unknown");
         }
 
         /// <summary>

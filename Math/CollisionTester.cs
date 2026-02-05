@@ -1,6 +1,7 @@
 using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
 #nullable disable
@@ -23,18 +24,18 @@ namespace Vintagestory.API.MathTools
         public Cuboidd entityBox = new();
 
         // Use class level fields to reduce garbage collection
-        public BlockPos tmpPos = new();
+        public BlockPos tmpPos = new(Dimensions.WillSetLater);
         public Vec3d tmpPosDelta = new();
 
-        public BlockPos minPos = new();
-        public BlockPos maxPos = new();
+        public BlockPos minPos = new(Dimensions.WillSetLater);
+        public BlockPos maxPos = new(Dimensions.WillSetLater);
 
         public Vec3d pos = new();
 
         readonly Cuboidd tmpBox = new();
-        readonly BlockPos blockPos = new();
+        readonly BlockPos blockPos = new(Dimensions.WillSetLater);
         readonly Vec3d blockPosVec = new();
-        readonly BlockPos collBlockPos = new();
+        readonly BlockPos collBlockPos = new(Dimensions.WillSetLater);
 
         /// <summary>
         /// Takes the entity positiona and motion and adds them, respecting any colliding blocks. The resulting new position is put into outposition
@@ -47,7 +48,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="yExtra">Default 1 for the extra high collision boxes of fences</param>
         public void ApplyTerrainCollision(Entity entity, EntityPos entityPos, float dtFactor, ref Vec3d newPosition, float stepHeight = 1, float yExtra = 1)
         {
-            minPos.dimension = entityPos.Dimension;
+            minPos.SetDimension(entityPos.Dimension);
 
             var worldAccessor = entity.World;
             Vec3d pos = this.pos;           // Local copy for efficiency
@@ -98,7 +99,8 @@ namespace Vintagestory.API.MathTools
             int collisionBoxListCount = CollisionBoxList.Count;
             Cuboidd[] CollisionBoxListCuboids = CollisionBoxList.cuboids;   // Local reference for efficiency
 
-            collBlockPos.dimension = entityPos.Dimension;
+            double preCollisionMotionY = motionY;
+            collBlockPos.SetDimension(entityPos.Dimension);
             // ---------- Y COLLISION. Call events and set collided vertically.
             for (int i = 0; i < CollisionBoxListCuboids.Length; i++)
             {
@@ -121,6 +123,7 @@ namespace Vintagestory.API.MathTools
             entityBox.Translate(0, motionY, 0);
 
             entity.CollidedVertically = collided;
+            if (collided && Math.Abs(motionY - preCollisionMotionY) > epsilon) motionY += motEpsY;   // Add back the epsilon, because it has gone as a result of the pushOutY call
 
             // Check if horizontal collision is possible.
             bool horizontallyBlocked = false;
@@ -303,7 +306,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public Cuboidd GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true)
         {
-            BlockPos blockPos = new();
+            BlockPos blockPos = new(Dimensions.NormalWorld);   // The dimension is included in the Vec3d pos.Y field
             Vec3d blockPosVec = new();
             Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
 
@@ -328,7 +331,9 @@ namespace Vintagestory.API.MathTools
                     for (int z = minZ; z <= maxZ; z++)
                     {
                         blockPos.Z = z;
+#pragma warning disable CS0618 // Type or member is obsolete - but it's correct here as the dimension is included in the y field
                         Block block = blockAccessor.GetMostSolidBlock(x, y, z);
+#pragma warning restore CS0618
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
                         if (collisionBoxes == null) continue;
@@ -361,6 +366,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="pos"></param>
         /// <param name="intoCuboid"></param>
         /// <param name="alsoCheckTouch"></param>
+        /// <param name="dimension"></param>
         /// <returns></returns>
         public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCuboid, bool alsoCheckTouch = true, int dimension = 0)
         {
@@ -474,14 +480,14 @@ namespace Vintagestory.API.MathTools
         public void NewTick(EntityPos entityPos)
         {
             minPos.Set(int.MinValue, int.MinValue, int.MinValue);
-            minPos.dimension = entityPos.Dimension;
-            tmpPos.dimension = entityPos.Dimension;
+            minPos.SetDimension(entityPos.Dimension);
+            tmpPos.SetDimension(entityPos.Dimension);
         }
 
         public void AssignToEntity(PhysicsBehaviorBase entityPhysics, int dimension)
         {
-            minPos.dimension = dimension;
-            tmpPos.dimension = dimension;
+            minPos.SetDimension(dimension);
+            tmpPos.SetDimension(dimension);
         }
 
         protected override void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra, int dimension)
@@ -521,10 +527,10 @@ namespace Vintagestory.API.MathTools
         {
             if (IsColliding(blockAccessor, entity.CollisionBox, tmpVec, false))
             {
-                Vec3d pos = entity.SidedPos.XYZ;
+                Vec3d pos = entity.Pos.XYZ;
                 entityBox.SetAndTranslate(entity.CollisionBox, pos.X, pos.Y, pos.Z);
 
-                GenerateCollisionBoxList(blockAccessor, 0, 0, 0, 0.5f, 0, entity.SidedPos.Dimension);
+                GenerateCollisionBoxList(blockAccessor, 0, 0, 0, 0.5f, 0, entity.Pos.Dimension);
 
                 int collisionBoxListCount = CollisionBoxList.Count;
                 if (collisionBoxListCount == 0) return;
@@ -569,8 +575,8 @@ namespace Vintagestory.API.MathTools
                 }
                 else deltaZ -= clippingLimit;
 
-                entity.SidedPos.X = pos.X + deltaX;
-                entity.SidedPos.Z = pos.Z + deltaZ;
+                entity.Pos.X = pos.X + deltaX;
+                entity.Pos.Z = pos.Z + deltaZ;
             }
         }
     }

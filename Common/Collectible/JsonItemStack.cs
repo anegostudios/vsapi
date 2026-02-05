@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using ProtoBuf;
+using System;
 using System.IO;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
-
-#nullable disable
 
 namespace Vintagestory.API.Common
 {
@@ -30,34 +29,35 @@ namespace Vintagestory.API.Common
     /// </example>
     [DocumentAsJson]
     [ProtoContract]
-    public class JsonItemStack : IRecipeOutput
+    public class JsonItemStack : IRecipeOutput, IConcreteCloneable<JsonItemStack>
     {
+        #region From JSON
+#pragma warning disable CS8618 // Should be handed by Json parser
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
         /// Block or Item?
         /// </summary>
         [ProtoMember(1)]
-        [DocumentAsJson] public EnumItemClass Type;
+        [DocumentAsJson("Recommended", "Block")]
+        public EnumItemClass Type;
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The asset location code of the block or item.
         /// </summary>
         [ProtoMember(2)]
-        [DocumentAsJson] public AssetLocation Code;
+        [DocumentAsJson("Required")]
+        public AssetLocation Code;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// Amount of items in this stacks
         /// </summary>
         [ProtoMember(3)]
-        [DocumentAsJson] public int StackSize = 1;
+        [DocumentAsJson("Optional", "1")]
+        public int StackSize = 1;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// Alias of <see cref="StackSize"/>. No real need to use this instead of it.
         /// </summary>
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "1")]
         public int Quantity
         {
             get { return StackSize;  }
@@ -65,20 +65,32 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Tree Attributes that should be attached to the resulting itemstack.
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         [ProtoMember(4)]
-        public JsonObject Attributes;
+        [DocumentAsJson("Optional", "None")]
+        public JsonObject? Attributes;
+#pragma warning restore CS8618
+        #endregion
 
         /// <summary>
         /// The resolved item after conversion.
         /// </summary>
-        public ItemStack ResolvedItemstack;
-        
+        public ItemStack? ResolvedItemstack;
 
-        public static JsonItemStack FromString(string jsonItemstack)
+        /// <summary>
+        /// Was added for interface.<br/>
+        /// Field 'ResolvedItemstack' is left for compatibility reasons
+        /// </summary>
+        public ItemStack? ResolvedItemStack
+        {
+            get => ResolvedItemstack;
+            set => ResolvedItemstack = value;
+        }
+
+
+        public static JsonItemStack? FromString(string jsonItemstack)
         {
             return JsonObject.FromJson(jsonItemstack).AsObject<JsonItemStack>();
         }
@@ -94,7 +106,7 @@ namespace Vintagestory.API.Common
         {
             if (Type == EnumItemClass.Block)
             {
-                Block block = resolver.GetBlock(Code);
+                Block? block = resolver.GetBlock(Code);
                 if (block == null || block.IsMissing)
                 {
                     if (printWarningOnError)
@@ -104,12 +116,12 @@ namespace Vintagestory.API.Common
                     return false;
                 }
 
-                ResolvedItemstack = new ItemStack(block, StackSize);
+                ResolvedItemStack = new ItemStack(block, StackSize);
 
             }
             else
             {
-                Item item = resolver.GetItem(Code);
+                Item? item = resolver.GetItem(Code);
                 if (item == null || item.IsMissing)
                 {
                     if (printWarningOnError)
@@ -118,26 +130,26 @@ namespace Vintagestory.API.Common
                     }
                     return false;
                 }
-                ResolvedItemstack = new ItemStack(item, StackSize);
+                ResolvedItemStack = new ItemStack(item, StackSize);
             }
 
             if (Attributes != null)
             {
-                IAttribute attributes = Attributes.ToAttribute();
-                if (attributes is ITreeAttribute)
+                IAttribute? attributes = Attributes.ToAttribute();
+                if (attributes is ITreeAttribute treeAttribute)
                 {
-                    ResolvedItemstack.Attributes = (ITreeAttribute)attributes;
+                    ResolvedItemStack.Attributes = treeAttribute;
                 }
             }
 
             return true;
         }
 
-        public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, bool printWarningOnError = true)
+        public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, bool printWarningOnError)
         {
             if (Type == EnumItemClass.Block)
             {
-                Block block = resolver.GetBlock(Code);
+                Block? block = resolver.GetBlock(Code);
                 if (block == null || block.IsMissing)
                 {
                     if (printWarningOnError)
@@ -147,12 +159,12 @@ namespace Vintagestory.API.Common
                     return false;
                 }
 
-                ResolvedItemstack = new ItemStack(block, StackSize);
+                ResolvedItemStack = new ItemStack(block, StackSize);
 
             }
             else
             {
-                Item item = resolver.GetItem(Code);
+                Item? item = resolver.GetItem(Code);
                 if (item == null || item.IsMissing)
                 {
                     if (printWarningOnError)
@@ -161,45 +173,42 @@ namespace Vintagestory.API.Common
                     }
                     return false;
                 }
-                ResolvedItemstack = new ItemStack(item, StackSize);
+                ResolvedItemStack = new ItemStack(item, StackSize);
             }
 
             if (Attributes != null)
             {
-                IAttribute attributes = Attributes.ToAttribute();
-                if (attributes is ITreeAttribute)
+                IAttribute? attributes = Attributes.ToAttribute();
+                if (attributes is ITreeAttribute treeAttribute)
                 {
-                    ResolvedItemstack.Attributes = (ITreeAttribute)attributes;
+                    ResolvedItemStack.Attributes = treeAttribute;
                 }
             }
 
             return true;
         }
 
-
-        public bool Matches(IWorldAccessor worldForResolve, ItemStack inputStack)
+        public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
         {
-            return ResolvedItemstack.Equals(worldForResolve, inputStack, GlobalConstants.IgnoredStackAttributes);
+            return Resolve(world, sourceForErrorLogging, true);
         }
 
+        public virtual bool Matches(IWorldAccessor worldForResolve, ItemStack inputStack)
+        {
+            return ResolvedItemStack?.Equals(worldForResolve, inputStack, GlobalConstants.IgnoredStackAttributes) == true;
+        }
 
         /// <summary>
         /// Creates a deep copy of this object
         /// </summary>
         /// <returns></returns>
-        public JsonItemStack Clone()
+        public virtual JsonItemStack Clone()
         {
-            JsonItemStack stack = new JsonItemStack()
-            {
-                Code = Code.Clone(),
-                ResolvedItemstack = ResolvedItemstack?.Clone(),
-                StackSize = StackSize,
-                Type = Type,
-            };
+            JsonItemStack result = new();
 
-            if (Attributes != null) stack.Attributes = Attributes.Clone();
+            CloneTo(result);
 
-            return stack;
+            return result;
         }
 
         /// <summary>
@@ -215,9 +224,17 @@ namespace Vintagestory.API.Common
 
             if (reader.ReadBoolean())
             {
-                ResolvedItemstack = new ItemStack(reader);
+                ResolvedItemStack = new ItemStack(reader);
             }
             
+        }
+
+        /// <summary>
+        /// Loads the ItemStack from the reader.
+        /// </summary>
+        public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+        {
+            FromBytes(reader, resolver.ClassRegistry);
         }
 
         /// <summary>
@@ -229,17 +246,30 @@ namespace Vintagestory.API.Common
             writer.Write((short)Type);
             writer.Write(Code.ToShortString());
             writer.Write(StackSize);
-            writer.Write(ResolvedItemstack != null);
-            if (ResolvedItemstack != null)
-            {
-                ResolvedItemstack.ToBytes(writer);
-            }
+            writer.Write(ResolvedItemStack != null);
+            ResolvedItemStack?.ToBytes(writer);
         }
 
-        public void FillPlaceHolder(string key, string value)
+        public virtual void FillPlaceHolder(string key, string value)
         {
             Code = Code.CopyWithPath(Code.Path.Replace("{" + key + "}", value));
             Attributes?.FillPlaceHolder(key, value);
+        }
+
+        object ICloneable.Clone() => Clone();
+
+        protected virtual void CloneTo(object stack)
+        {
+            if (stack is not JsonItemStack jsonItemStack)
+            {
+                return;
+            }
+
+            jsonItemStack.Code = Code.Clone();
+            jsonItemStack.ResolvedItemStack = ResolvedItemStack?.Clone();
+            jsonItemStack.StackSize = StackSize;
+            jsonItemStack.Type = Type;
+            jsonItemStack.Attributes = Attributes?.Clone();
         }
     }
 }

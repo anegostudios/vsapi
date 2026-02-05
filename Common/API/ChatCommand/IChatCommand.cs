@@ -187,4 +187,5 @@ public interface IChatCommand
     string GetFullName(string alias, bool isRootAlias = false);
     string GetCallSyntax(string alias , bool isRootAlias = false);
     string GetCallSyntaxUnformatted(string alias , bool isRootAlias = false);
+    
 }

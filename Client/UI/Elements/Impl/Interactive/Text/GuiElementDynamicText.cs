@@ -15,7 +15,7 @@ namespace Vintagestory.API.Client
         EnumTextOrientation orientation;
 
         LoadedTexture textTexture;
-        
+
         public Action OnClick;
         public bool autoHeight;
 
@@ -44,7 +44,7 @@ namespace Vintagestory.API.Client
             RecomposeText();
         }
 
-     
+
         /// <summary>
         /// Automatically adjusts the height of the dynamic text.
         /// </summary>
@@ -76,7 +76,7 @@ namespace Vintagestory.API.Client
                         ctx.Dispose();
                         surface.Dispose();
                     }, "recompstatbar");
-                });
+                }, "DynamicTextRecompose");
             } else
             {
                 ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
@@ -121,11 +121,11 @@ namespace Vintagestory.API.Client
                 this.text = text;
                 Bounds.CalcWorldBounds();
                 if (autoHeight) AutoHeight();
-                
+
                 RecomposeText(async);
             }
         }
-        
+
 
         public override void Dispose()
         {

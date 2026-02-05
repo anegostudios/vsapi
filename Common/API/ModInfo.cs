@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +36,9 @@ namespace Vintagestory.API.Common
         Code
     }
 
+    public delegate BitmapExternal BitmapSupplierDelegate();
+
+
     /// <summary>
     /// Meta data for a specific mod folder, archive, source file or assembly.
     /// Either loaded from a "modinfo.json" or from the assembly's
@@ -45,7 +48,7 @@ namespace Vintagestory.API.Common
     {
         private IReadOnlyList<string> _authors = Array.Empty<string>();
 
-        
+
         /// <summary> The type of this mod. Can be "Theme", "Content" or "Code". </summary>
         [JsonRequired]
         public EnumModType Type;
@@ -84,6 +87,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         [JsonProperty]
         public string IconPath = null;
+
+        [JsonProperty]
+        public string[] BackgroundPaths = null;
+
+        [JsonIgnore]
+        public BitmapSupplierDelegate[] Backgrounds = null;
+
 
         /// <summary> A short description of what this mod does. (optional) </summary>
         [JsonProperty]
@@ -139,7 +149,7 @@ namespace Vintagestory.API.Common
         public bool CoreMod = false;
 
         // Parameterless constructor is needed for JSON conversion.
-        public ModInfo() {  }
+        public ModInfo() { }
 
         public ModInfo(EnumModType type, string name, string modID, string version,
                          string description, IEnumerable<string> authors, IEnumerable<string> contributors, string website,
@@ -147,19 +157,19 @@ namespace Vintagestory.API.Common
                          IEnumerable<ModDependency> dependencies)
         {
             Type = type;
-            Name    = name ?? throw new ArgumentNullException(nameof(name));
-            ModID   = modID ?? throw new ArgumentNullException(nameof(modID));
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            ModID = modID ?? throw new ArgumentNullException(nameof(modID));
             Version = version ?? "";
 
-            Description  = description ?? "";
-            Authors      = ReadOnlyCopy(authors);
+            Description = description ?? "";
+            Authors = ReadOnlyCopy(authors);
             Contributors = ReadOnlyCopy(contributors);
-            Website      = website ?? "";
+            Website = website ?? "";
 
-            Side             = side;
+            Side = side;
             RequiredOnClient = requiredOnClient;
             RequiredOnServer = requiredOnServer;
-            Dependencies     = ReadOnlyCopy(dependencies);
+            Dependencies = ReadOnlyCopy(dependencies);
 
             // Null-safe helper method which copies the specified elements into a read-only list.
             IReadOnlyList<T> ReadOnlyCopy<T>(IEnumerable<T> elements)
@@ -195,7 +205,7 @@ namespace Vintagestory.API.Common
             {
                 var chr = name[i];
                 var isLetter = ((chr >= 'a') && (chr <= 'z')) || ((chr >= 'A') && (chr <= 'Z'));
-                var isDigit  = ((chr >= '0') && (chr <= '9'));
+                var isDigit = ((chr >= '0') && (chr <= '9'));
 
                 if (isLetter || isDigit)
                 {
@@ -204,7 +214,7 @@ namespace Vintagestory.API.Common
                 // Otherwise, drop the character.
 
                 if (isDigit && (i == 0)) throw new ArgumentException(
-                    $"Can't convert '{ name }' to a mod ID automatically, because " +
+                    $"Can't convert '{name}' to a mod ID automatically, because " +
                     "it starts with a number, which is illegal", nameof(name));
             }
             return sb.ToString();
@@ -223,7 +233,7 @@ namespace Vintagestory.API.Common
             {
                 var chr = str[i];
                 var isLetter = (chr >= 'a') && (chr <= 'z');
-                var isDigit  = (chr >= '0') && (chr <= '9');
+                var isDigit = (chr >= '0') && (chr <= '9');
                 if (isLetter || (isDigit && (i != 0))) continue;
                 return false;
             }
@@ -276,9 +286,9 @@ namespace Vintagestory.API.Common
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
             {
                 var elementType = objectType.GetGenericArguments()[0];
-                var elements    = JArray.Load(reader).Select(e => e.ToObject(elementType));
-                var listType    = typeof(List<>).MakeGenericType(elementType);
-                var list        = (IList)Activator.CreateInstance(listType);
+                var elements = JArray.Load(reader).Select(e => e.ToObject(elementType));
+                var listType = typeof(List<>).MakeGenericType(elementType);
+                var list = (IList)Activator.CreateInstance(listType);
                 foreach (var element in elements) list.Add(element);
                 return listType.GetMethod("AsReadOnly").Invoke(list, Array.Empty<object>());
             }

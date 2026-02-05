@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class WorldInteraction
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A world interaction for the object. This is used to prompt the player about what a certain object can do. <a href="https://github.com/anegostudios/vsapi/blob/master///Client/API/WorldInteraction.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A world interaction for the object. This is used to prompt the player about what a certain object can do. <a href=https://github.com/anegostudios/vsapi/blob/master///Client/API/WorldInteraction.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -171,13 +171,13 @@ public class WorldInteraction</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>The text to show, will be used in the form of Lang.Get(ActionLangCode);</p>
+  <div class="markdown level1 summary"><p>The text to show, will be used in the form of Lang.Get(ActionLangCode);</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string ActionLangCode</code></pre>
   </div>
 
@@ -235,13 +235,13 @@ public string ActionLangCode</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
-<p>Does it require a mouse modifier key to perform this action (e.g. &quot;shift&quot; or &quot;ctrl&quot;)</p>
+  <div class="markdown level1 summary"><p>Does it require a mouse modifier key to perform this action (e.g. &quot;shift&quot; or &quot;ctrl&quot;)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;&quot;, false)]
 public string HotKeyCode</code></pre>
   </div>
 
@@ -298,7 +298,7 @@ public string HotKeyCode</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonalias>ItemStacks</jsonalias><jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+  <div class="markdown level1 summary"><!--<jsonalias>ItemStacks</jsonalias>-->
 <p>Does the player need to hold a certain items/blocks in hands? (e.g. a knife). You can define an array of item stacks here and the game will loop through them in a 1 second interval.
 This property is loaded from the entitytypes and blocktype json files and then resolved.</p>
 </div>
@@ -306,6 +306,7 @@ This property is loaded from the entitytypes and blocktype json files and then r
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;ItemStacks&quot;)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonItemStack[] JsonItemStacks</code></pre>
   </div>
 
@@ -332,13 +333,13 @@ public JsonItemStack[] JsonItemStacks</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>Left</jsondefault>-->
-<p>What mouse button should be used for this interaction?</p>
+  <div class="markdown level1 summary"><p>What mouse button should be used for this interaction?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;Left&quot;, false)]
 public EnumMouseButton MouseButton</code></pre>
   </div>
 
@@ -432,13 +433,13 @@ public EnumMouseButton MouseButton</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>Does it require pressing multiple keys to perform this action (if set then HotkeyCode is ignored)</p>
+  <div class="markdown level1 summary"><p>Does it require pressing multiple keys to perform this action (if set then HotkeyCode is ignored)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string[] HotKeyCodes { get; set; }</code></pre>
   </div>
 

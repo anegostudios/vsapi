@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 
@@ -18,7 +18,7 @@ namespace Vintagestory.API.MathTools
 
 
     // Based on https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-plane-and-ray-disk-intersection
-    // Our picking ray will always be a block at any position along the ray, because empty areas are considered air blocks. 
+    // Our picking ray will always be a block at any position along the ray, because empty areas are considered air blocks.
     // So what we are really interested in is on what block face is the ray exiting and continue search in that direction
     // => This code is a ray-intersects-plane algo. It wanders along the exiting faces of full blocks and checks at each position for collisions with the blocks selection box
     // TODO: Replace with Slab method? -> https://tavianator.com/fast-branchless-raybounding-box-intersections/
@@ -33,12 +33,13 @@ namespace Vintagestory.API.MathTools
 
         public Vec3d hitPosition = new Vec3d();
         public Ray ray = new Ray();
-        public BlockPos pos = new BlockPos();
+        public BlockPos pos = new BlockPos(Config.Dimensions.WillSetLater);
         public BlockFacing hitOnBlockFace = BlockFacing.DOWN;
         public int hitOnSelectionBox = 0;
+        public string hitOnSelectionBoxId = null;
 
 
-        
+
 
         public AABBIntersectionTest(IWorldIntersectionSupplier blockSelectionTester)
         {
@@ -106,6 +107,7 @@ namespace Vintagestory.API.MathTools
                 Position = pos.CopyAndCorrectDimension(),
                 HitPosition = hitPosition.SubCopy(pos.X, pos.InternalY, pos.Z),
                 SelectionBoxIndex = hitOnSelectionBox,
+                SelectionBoxId = hitOnSelectionBoxId,
                 Block = blockIntersected
             };
         }
@@ -143,6 +145,7 @@ namespace Vintagestory.API.MathTools
                     }
 
                     hitOnSelectionBox = i;
+                    hitOnSelectionBoxId = (hitboxes[i] as CuboidfWithId)?.Id;
                     intersects = true;
                     wasDecor = isDecor;
                     hitOnBlockFace = hitOnBlockFaceTmp;
@@ -200,19 +203,18 @@ namespace Vintagestory.API.MathTools
                 // Does intersect this plane somewhere (only negative because we are not interested in the ray leaving a face, negative because the ray points into the cube, the plane normal points away from the cube)
                 if (demon < -0.00001)
                 {
-                    Vec3d planeCenterPosition = blockSideFacing.PlaneCenter
-                        .ToVec3d()
+                    FastVec3d planeCenterPosition = new FastVec3d(blockSideFacing.PlaneCenter)
                         .Mul(w, h, l)
                         .Add(selectionBox.X1, selectionBox.Y1, selectionBox.Z1)
                     ;
 
-                    Vec3d pt = Vec3d.Sub(planeCenterPosition, ray.origin);
+                    FastVec3d pt = new FastVec3d(planeCenterPosition).Sub(ray.origin);
                     double t = (pt.X * planeNormal.X + pt.Y * planeNormal.Y + pt.Z * planeNormal.Z) / demon;
 
                     if (t >= 0)
                     {
-                        hitPosition = new Vec3d(ray.origin.X + ray.dir.X * t, ray.origin.Y + ray.dir.Y * t, ray.origin.Z + ray.dir.Z * t);
-                        lastExitedBlockFacePos = Vec3d.Sub(hitPosition, planeCenterPosition);
+                        hitPosition.Set(ray.origin.X + ray.dir.X * t, ray.origin.Y + ray.dir.Y * t, ray.origin.Z + ray.dir.Z * t);
+                        lastExitedBlockFacePos.Set(planeCenterPosition.ReverseSub(hitPosition));
 
                         // Does intersect this plane within the block
                         if (Math.Abs(lastExitedBlockFacePos.X) <= w / 2 && Math.Abs(lastExitedBlockFacePos.Y) <= h / 2 && Math.Abs(lastExitedBlockFacePos.Z) <= l / 2)
@@ -265,15 +267,15 @@ namespace Vintagestory.API.MathTools
 
                 if (demon > 0.00001)
                 {
-                    Vec3d planePosition = pos.ToVec3d().Add(blockSideFacing.PlaneCenter);
+                    FastVec3d planePosition = new FastVec3d(pos.X, pos.InternalY, pos.Z).Add(blockSideFacing.PlaneCenter);
 
-                    Vec3d pt = Vec3d.Sub(planePosition, ray.origin);
+                    FastVec3d pt = new FastVec3d(planePosition).Sub(ray.origin);
                     double t = (pt.X * planeNormal.X + pt.Y * planeNormal.Y + pt.Z * planeNormal.Z) / demon;
 
                     if (t >= 0)
                     {
-                        Vec3d pHit = new Vec3d(ray.origin.X + ray.dir.X * t, ray.origin.Y + ray.dir.Y * t, ray.origin.Z + ray.dir.Z * t);
-                        exitPos = Vec3d.Sub(pHit, planePosition);
+                        FastVec3d pHit = new FastVec3d(ray.origin.X + ray.dir.X * t, ray.origin.Y + ray.dir.Y * t, ray.origin.Z + ray.dir.Z * t);
+                        exitPos.Set(pHit.Sub(planePosition));
 
                         if (Math.Abs(exitPos.X) <= 0.5 && Math.Abs(exitPos.Y) <= 0.5 && Math.Abs(exitPos.Z) <= 0.5)
                         {

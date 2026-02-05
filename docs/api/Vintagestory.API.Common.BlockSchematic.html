@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BlockSchematic
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockSchematic.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockSchematic.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -485,6 +485,66 @@ public List&lt;int&gt; BlockIds</code></pre>
 
 
 
+  <h3 id="Vintagestory_API_Common_BlockSchematic_ConnectorBlockId" data-uid="Vintagestory.API.Common.BlockSchematic.ConnectorBlockId">
+  ConnectorBlockId
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int ConnectorBlockId</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockSchematic_Connectors" data-uid="Vintagestory.API.Common.BlockSchematic.Connectors">
+  Connectors
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ConnectorMetaData&gt; Connectors</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.Common.Collectible.Block.ConnectorMetaData.html">ConnectorMetaData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_BlockSchematic_DecorIds" data-uid="Vintagestory.API.Common.BlockSchematic.DecorIds">
   DecorIds
   
@@ -765,7 +825,8 @@ public string GameVersion</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>X/Y/Z position. First 10 bits is X, next 10 is Z and next 10 bits is Y</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -931,36 +992,6 @@ public BlockPos OriginalPos</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_BlockSchematic_PathwayBlocksUnpacked" data-uid="Vintagestory.API.Common.BlockSchematic.PathwayBlocksUnpacked">
-  PathwayBlocksUnpacked
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;BlockPosFacing&gt; PathwayBlocksUnpacked</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.Common.Collectible.Block.BlockPosFacing.html">BlockPosFacing</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1326,7 +1357,7 @@ public int SizeZ</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Dictionary&lt;string, Dictionary&lt;string, string&gt;&gt; BlockRemaps { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDictionary&lt;string, Dictionary&lt;string, string&gt;&gt; BlockRemaps { get; set; }</code></pre>
   </div>
 
 
@@ -1335,7 +1366,7 @@ public int SizeZ</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -1358,7 +1389,7 @@ public int SizeZ</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Dictionary&lt;string, Dictionary&lt;string, string&gt;&gt; ItemRemaps { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static IDictionary&lt;string, Dictionary&lt;string, string&gt;&gt; ItemRemaps { get; set; }</code></pre>
   </div>
 
 
@@ -1367,7 +1398,7 @@ public int SizeZ</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -2567,8 +2598,8 @@ public int SizeZ</code></pre>
 
   <a id="Vintagestory_API_Common_BlockSchematic_TransformWhilePacked_" data-uid="Vintagestory.API.Common.BlockSchematic.TransformWhilePacked*"></a>
 
-  <h3 id="Vintagestory_API_Common_BlockSchematic_TransformWhilePacked_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_EnumOrigin_System_Int32_System_Nullable_Vintagestory_API_MathTools_EnumAxis__System_Boolean_" data-uid="Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis},System.Boolean)">
-  TransformWhilePacked(IWorldAccessor, EnumOrigin, int, EnumAxis?, bool)
+  <h3 id="Vintagestory_API_Common_BlockSchematic_TransformWhilePacked_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_EnumOrigin_System_Int32_System_Nullable_Vintagestory_API_MathTools_EnumAxis__" data-uid="Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis})">
+  TransformWhilePacked(IWorldAccessor, EnumOrigin, int, EnumAxis?)
   
   </h3>
 
@@ -2577,7 +2608,7 @@ public int SizeZ</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null, bool isDungeon = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2589,8 +2620,6 @@ public int SizeZ</code></pre>
     <dt><code>angle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
     <dt><code>flipAxis</code> <a class="xref" href="Vintagestory.API.MathTools.EnumAxis.html">EnumAxis</a>?</dt>
-    <dd></dd>
-    <dt><code>isDungeon</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
@@ -7,6 +7,7 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
+
     /// <summary>
     /// Return false to stop walking the inventory
     /// </summary>
@@ -65,6 +66,7 @@ namespace Vintagestory.API.Common
     /// <typeparam name="T1">The additional type to pass in.</typeparam>
     /// <typeparam name="T2">The additional type to pass in.</typeparam>
     /// <typeparam name="T3">The additional type to pass in.</typeparam>
+    /// <typeparam name="T4">The additional type to pass in.</typeparam>
     /// <returns></returns>
     public delegate bool ActionBoolReturn<T1, T2, T3, T4>(T1 t1, T2 t2, T3 t3, T4 t4);
 
@@ -117,9 +119,7 @@ namespace Vintagestory.API.Common
 
     public delegate void UpdateEntityDelegate(int chunkx, int chunky, int chunkz, int id);
 
-    public delegate void UseEntityDelegate(IServerPlayer byPlayer, int chunkx, int chunky, int chunkz, int id);
-
-    public delegate void HitEntityDelegate(IServerPlayer byPlayer, int chunkx, int chunky, int chunkz, int id);
+    public delegate void HandInteractDelegate(IServerPlayer player, EnumHandInteractNw enumHandInteract, float secondsPassed, ref EnumHandling handling);
 
     public delegate void PlayerDelegate(IServerPlayer byPlayer);
     public delegate void PlayerCommonDelegate(IPlayer byPlayer);

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BarrelRecipeIngredient
   <dl><dt>Assembly</dt><dd>VSSurvivalMod.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Defines an ingredient for use in a <a class="xref" href="Vintagestory.GameContent.BarrelRecipe.html">BarrelRecipe</a>. <a href="https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Recipe/Barrel/BarrelRecipeIngredient.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Defines an ingredient for use in a <a class="xref" href="Vintagestory.GameContent.BarrelRecipe.html">BarrelRecipe</a>. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Recipe/Barrel/BarrelRecipeIngredient.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -130,7 +130,16 @@ public class BarrelRecipeIngredient : CraftingRecipeIngredient</code></pre>
       <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Code">CraftingRecipeIngredient.Code</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Tags">CraftingRecipeIngredient.Tags</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_ReverseTagsCheck">CraftingRecipeIngredient.ReverseTagsCheck</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Name">CraftingRecipeIngredient.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_StackSize">CraftingRecipeIngredient.StackSize</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Quantity">CraftingRecipeIngredient.Quantity</a>
@@ -156,17 +165,29 @@ public class BarrelRecipeIngredient : CraftingRecipeIngredient</code></pre>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_ReturnedStack">CraftingRecipeIngredient.ReturnedStack</a>
     </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Id">CraftingRecipeIngredient.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Consume">CraftingRecipeIngredient.Consume</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_DurabilityChange">CraftingRecipeIngredient.DurabilityChange</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Break">CraftingRecipeIngredient.Break</a>
+    </div>
   </dd></dl>
 
 
 
   <h2 id="Vintagestory_GameContent_BarrelRecipeIngredient_examples">Examples</h2>
-  <pre><code class="lang-json">{
-	"type": "item",
-	"code": "strongtanninportion",
-	"litres": 2,
-	"consumeLitres": 2
-}</code></pre>
+   <pre><code class="lang-json">{
+ 	"type": "item",
+ 	"code": "strongtanninportion",
+ 	"litres": 2,
+ 	"consumeLitres": 2
+ }</code></pre>
 <pre><code class="lang-json">{
 	"type": "item",
 	"code": "hide-prepared-small",
@@ -192,7 +213,7 @@ public class BarrelRecipeIngredient : CraftingRecipeIngredient</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Consume All&quot;, false)]
 public float? ConsumeLitres</code></pre>
   </div>
 
@@ -225,7 +246,7 @@ public float? ConsumeLitres</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Consume All&quot;, false)]
 public int? ConsumeQuantity</code></pre>
   </div>
 
@@ -258,7 +279,7 @@ public int? ConsumeQuantity</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public float Litres</code></pre>
   </div>
 

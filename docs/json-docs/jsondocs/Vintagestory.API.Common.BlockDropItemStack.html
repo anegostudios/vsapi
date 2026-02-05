@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BlockDropItemStack
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents an itemstack that is dropped when breaking a block, with a potentially random quantity. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockDropItemStack.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Represents an itemstack that is dropped when breaking a block, with a potentially random quantity. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockDropItemStack.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -118,6 +118,12 @@ public class BlockDropItemStack</code></pre>
   </dl>
 
 
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.WeightedBlockDropItemstack.html">WeightedBlockDropItemstack</a></div>
+    </dd>
+  </dl>
 
 
 
@@ -153,8 +159,8 @@ public class BlockDropItemStack</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Code</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public AssetLocation? Code</code></pre>
   </div>
 
 
@@ -186,7 +192,7 @@ public AssetLocation Code</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;Block&quot;, false)]
 public EnumItemClass Type</code></pre>
   </div>
 
@@ -221,7 +227,8 @@ public EnumItemClass Type</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
-public JsonObject Attributes</code></pre>
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonObject? Attributes</code></pre>
   </div>
 
 
@@ -229,7 +236,7 @@ public JsonObject Attributes</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -253,8 +260,8 @@ public JsonObject Attributes</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public string DropModbyStat</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string? DropModbyStat</code></pre>
   </div>
 
 
@@ -276,7 +283,7 @@ public string DropModbyStat</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_BlockDropItemStack_LastDrop" data-uid="Vintagestory.API.Common.BlockDropItemStack.LastDrop">
-  LastDrop (Optional) (Default: false)
+  LastDrop (Optional) (Default: False)
   
   </h3>
 
@@ -286,7 +293,7 @@ public string DropModbyStat</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool LastDrop</code></pre>
   </div>
 
@@ -319,7 +326,7 @@ public bool LastDrop</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat Quantity</code></pre>
   </div>
 
@@ -352,7 +359,7 @@ public NatFloat Quantity</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EnumTool? Tool</code></pre>
   </div>
 

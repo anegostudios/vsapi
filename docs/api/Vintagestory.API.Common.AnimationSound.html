@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AnimationSound
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationMetaData.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -165,6 +165,67 @@ public class AnimationSound</code></pre>
 
 
 
+  <h3 id="Vintagestory_API_Common_AnimationSound_Attributes" data-uid="Vintagestory.API.Common.AnimationSound.Attributes">
+  Attributes
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public SoundAttributes Attributes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationSound_Chance" data-uid="Vintagestory.API.Common.AnimationSound.Chance">
+  Chance
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Chance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_AnimationSound_Frame" data-uid="Vintagestory.API.Common.AnimationSound.Frame">
   Frame
   
@@ -195,8 +256,8 @@ public class AnimationSound</code></pre>
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimationSound_Location" data-uid="Vintagestory.API.Common.AnimationSound.Location">
-  Location
+  <h3 id="Vintagestory_API_Common_AnimationSound_Looping" data-uid="Vintagestory.API.Common.AnimationSound.Looping">
+  Looping
   
   </h3>
 
@@ -204,37 +265,7 @@ public class AnimationSound</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation Location</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_AnimationSound_RandomizePitch" data-uid="Vintagestory.API.Common.AnimationSound.RandomizePitch">
-  RandomizePitch
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RandomizePitch</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Looping</code></pre>
   </div>
 
 
@@ -243,36 +274,6 @@ public class AnimationSound</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_AnimationSound_Range" data-uid="Vintagestory.API.Common.AnimationSound.Range">
-  Range
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Range</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -308,6 +309,107 @@ public class AnimationSound</code></pre>
     <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationSound_CreateFromBytes_" data-uid="Vintagestory.API.Common.AnimationSound.CreateFromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationSound_CreateFromBytes_System_IO_BinaryReader_System_String_" data-uid="Vintagestory.API.Common.AnimationSound.CreateFromBytes(System.IO.BinaryReader,System.String)">
+  CreateFromBytes(BinaryReader, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnimationSound CreateFromBytes(BinaryReader reader, string version)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>version</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationSound_OnDeserialized_" data-uid="Vintagestory.API.Common.AnimationSound.OnDeserialized*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationSound_OnDeserialized_System_Runtime_Serialization_StreamingContext_" data-uid="Vintagestory.API.Common.AnimationSound.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
+  OnDeserialized(StreamingContext)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[OnDeserialized]
+protected void OnDeserialized(StreamingContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext">StreamingContext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationSound_ToBytes_" data-uid="Vintagestory.API.Common.AnimationSound.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationSound_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Common.AnimationSound.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

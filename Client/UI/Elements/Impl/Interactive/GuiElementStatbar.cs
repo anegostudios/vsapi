@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
@@ -21,17 +21,12 @@ namespace Vintagestory.API.Client
         float? previousValue;
         float valueChangeVelocity;
         float lineInterval = 10;
-        float prevValueDisplayRemainingSec;
         float prevValueSize = 0f;
-
-        float? nowRenderingPreviousValue;
 
         double[] color;
         bool rightToLeft = false;
 
         public bool HideWhenFull { get; set; }
-
-        public bool PrevValueBeingDisplayed => prevValueDisplayRemainingSec > 0;
 
         public float PreviousValueDisplayTime { get; set; } = 2;
 
@@ -68,8 +63,7 @@ namespace Vintagestory.API.Client
             flashTexture = new LoadedTexture(capi);
             valueTexture = new LoadedTexture(capi);
             previousValueTexture = new LoadedTexture(capi);
-
-            if (hideable) baseTexture = new LoadedTexture(capi);
+            baseTexture = new LoadedTexture(capi);
 
             this.hideable = hideable;
             this.color = color;
@@ -82,25 +76,14 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
 
-            if (hideable)
-            {
-                surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt+1, Bounds.OuterHeightInt+1);
-                ctx = new Context(surface);
+            surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt+1, Bounds.OuterHeightInt+1);
+            ctx = new Context(surface);
 
-                RoundRectangle(ctx, 0, 0, Bounds.InnerWidth, Bounds.InnerHeight, 1);
+            RoundRectangle(ctx, 0, 0, Bounds.InnerWidth, Bounds.InnerHeight, 1);
 
-                ctx.SetSourceRGBA(0.15, 0.15, 0.15, 1);
-                ctx.Fill();
-                EmbossRoundRectangleElement(ctx, 0, 0, Bounds.InnerWidth, Bounds.InnerHeight, false, 3, 1);
-            } else
-            {
-                ctx.Operator = Operator.Over; // WTF man, somewhere within this code or within cairo the main context operator is being changed
-                RoundRectangle(ctx, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1);
-
-                ctx.SetSourceRGBA(0.15, 0.15, 0.15, 1);
-                ctx.Fill();
-                EmbossRoundRectangleElement(ctx, Bounds, false, 3, 1);
-            }
+            ctx.SetSourceRGBA(0.15, 0.15, 0.15, 1);
+            ctx.Fill();
+            EmbossRoundRectangleElement(ctx, 0, 0, Bounds.InnerWidth, Bounds.InnerHeight, false, 3, 1);
 
 
             if (valuesSet)
@@ -108,12 +91,9 @@ namespace Vintagestory.API.Client
                 recomposeOverlays();
             }
 
-            if (hideable)
-            {
-                generateTexture(surface, ref baseTexture);
-                surface.Dispose();
-                ctx.Dispose();
-            }
+            generateTexture(surface, ref baseTexture);
+            surface.Dispose();
+            ctx.Dispose();
         }
 
         void recomposeOverlays()
@@ -122,7 +102,7 @@ namespace Vintagestory.API.Client
             {
                 ComposeValueOverlay();
                 ComposeFlashOverlay();
-            });
+            }, "StatbarRecompose");
 
             if (ShowValueOnHover)
             {
@@ -135,7 +115,7 @@ namespace Vintagestory.API.Client
             }
         }
 
-        
+
         void ComposeValueOverlay()
         {
             Bounds.CalcWorldBounds();
@@ -147,7 +127,7 @@ namespace Vintagestory.API.Client
             Context ctx = new Context(surface);
 
             double mainValueX = 0;
-            
+
             if (widthRel > 0.01)
             {
                 double width = Bounds.OuterWidth * widthRel;
@@ -166,7 +146,7 @@ namespace Vintagestory.API.Client
 
                 width = Bounds.InnerWidth * widthRel;
                 x = rightToLeft ? Bounds.InnerWidth - width : 0;
-    
+
                 EmbossRoundRectangleElement(ctx, x, 0, width, Bounds.InnerHeight, false, 2, 1);
             }
 
@@ -242,7 +222,7 @@ namespace Vintagestory.API.Client
             ctx.LineWidth = scaled(2.2);
 
             int lines = Math.Min(50, (int)((maxValue - minValue) / lineInterval));
-            
+
             for (int i = 1; i < lines; i++)
             {
                 ctx.NewPath();
@@ -275,20 +255,20 @@ namespace Vintagestory.API.Client
         {
             valueHeight = (int)Bounds.OuterHeight + 1;
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28);
+            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt + (int)scaled(28), Bounds.OuterHeightInt + (int)scaled(28));
             Context ctx = new Context(surface);
 
             ctx.SetSourceRGBA(0,0,0,0);
             ctx.Paint();
 
-            RoundRectangle(ctx, 12, 12, Bounds.OuterWidthInt + 4, Bounds.OuterHeightInt + 4, 1);
+            RoundRectangle(ctx, (int)scaled(12), (int)scaled(12), Bounds.OuterWidthInt + (int)scaled(4), Bounds.OuterHeightInt + (int)scaled(4), 1);
             ctx.SetSourceRGB(color[0], color[1], color[2]);
             ctx.FillPreserve();
-            surface.BlurFull(3);
+            surface.BlurFull(scaled(4));
             ctx.Fill();
-            surface.BlurFull(2);
+            surface.BlurFull(scaled(2));
 
-            RoundRectangle(ctx, 15, 15, Bounds.OuterWidthInt - 2, Bounds.OuterHeightInt - 2, 1);
+            RoundRectangle(ctx, (int)scaled(15), (int)scaled(15), Bounds.OuterWidthInt - 2, Bounds.OuterHeightInt - 2, 1);
             ctx.Operator = Operator.Clear;
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Fill();
@@ -309,10 +289,6 @@ namespace Vintagestory.API.Client
 
             if (value == maxValue && HideWhenFull) return;
 
-            if (hideable)
-            {
-                api.Render.RenderTexture(baseTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, Bounds.OuterHeightInt + 1);
-            }
 
             float alpha = 0;
             if (ShouldFlash)
@@ -330,9 +306,17 @@ namespace Vintagestory.API.Client
                 }
             }
 
+            int rndx = (int)scaled((api.World.Rand.NextDouble() * 10 - 5) * alpha);
+            int rndy = (int)scaled((api.World.Rand.NextDouble() * 10 - 5) * alpha);
+
+            x += rndx;
+            y += rndy;
+
+            api.Render.RenderTexture(baseTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, Bounds.OuterHeightInt + 1);
+
             if (alpha > 0)
             {
-                api.Render.RenderTexture(flashTexture.TextureId, x - 14, y - 14, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28, 50, new Vec4f(1.5f, 1, 1, alpha));
+                api.Render.RenderTexture(flashTexture.TextureId, x - (int)scaled(14), y - (int)scaled(14), Bounds.OuterWidthInt + (int)scaled(28), Bounds.OuterHeightInt + (int)scaled(28), 50, new Vec4f(1.5f, 1, 1, alpha));
             }
 
             if (previousValue != null && previousValueTexture.TextureId > 0 && prevValueSize > 0.01)
@@ -408,7 +392,7 @@ namespace Vintagestory.API.Client
             maxValue = max;
             recomposeOverlays();
         }
-        
+
         public override void Dispose()
         {
             base.Dispose();

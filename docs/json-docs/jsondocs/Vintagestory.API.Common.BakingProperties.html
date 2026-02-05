@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class BakingProperties
   </div>
 
   <div class="markdown summary"><p>Baking Properties are collectible attribute used for baking items in a clay oven.
-You will need to add these attributes if using <a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html#Vintagestory_API_Common_EnumSmeltType_Bake">Bake</a> inside <a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltingType">SmeltingType</a>. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/CombustibleProperties.cs">Open in GitHub</a></p>
+You will need to add these attributes if using <a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html#Vintagestory_API_Common_EnumSmeltType_Bake">Bake</a> inside <a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltingType">SmeltingType</a>. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/CombustibleProperties.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -179,7 +179,7 @@ public class BakingProperties</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string InitialCode</code></pre>
   </div>
 
@@ -212,7 +212,7 @@ public string InitialCode</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string ResultCode</code></pre>
   </div>
 
@@ -235,7 +235,7 @@ public string ResultCode</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_BakingProperties_LargeItem" data-uid="Vintagestory.API.Common.BakingProperties.LargeItem">
-  LargeItem (Recommended) (Default: false)
+  LargeItem (Recommended) (Default: False)
   
   </h3>
 
@@ -245,7 +245,7 @@ public string ResultCode</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;False&quot;, false)]
 public bool LargeItem</code></pre>
   </div>
 
@@ -279,7 +279,7 @@ When cooking an object with numerous cooking stages, these stages can be stacked
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
 public float LevelFrom</code></pre>
   </div>
 
@@ -314,7 +314,7 @@ When cooking an object with numerous cooking stages, these stages can be stacked
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;1&quot;, false)]
 public float LevelTo</code></pre>
   </div>
 
@@ -347,7 +347,7 @@ public float LevelTo</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;160&quot;, false)]
 public float? Temp</code></pre>
   </div>
 
@@ -380,7 +380,7 @@ public float? Temp</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float EndScaleY</code></pre>
   </div>
 
@@ -413,7 +413,7 @@ public float EndScaleY</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float StartScaleY</code></pre>
   </div>
 

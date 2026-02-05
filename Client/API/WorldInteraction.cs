@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Vintagestory.API.Common;
 
 #nullable disable
@@ -13,39 +13,40 @@ namespace Vintagestory.API.Client
     public class WorldInteraction
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Left</jsondefault>-->
         /// What mouse button should be used for this interaction?
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Recommended", "Left")]
         public EnumMouseButton MouseButton;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Does it require a mouse modifier key to perform this action (e.g. "shift" or "ctrl")
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional")]
         public string HotKeyCode;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Does it require pressing multiple keys to perform this action (if set then HotkeyCode is ignored)
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "None")]
         public string[] HotKeyCodes { get; set; }
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The text to show, will be used in the form of Lang.Get(ActionLangCode); 
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Required")]
         public string ActionLangCode;
 
         /// <summary>
-        /// <!--<jsonalias>ItemStacks</jsonalias><jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+		/// <!--<jsonalias>ItemStacks</jsonalias>-->
         /// Does the player need to hold a certain items/blocks in hands? (e.g. a knife). You can define an array of item stacks here and the game will loop through them in a 1 second interval.
         /// This property is loaded from the entitytypes and blocktype json files and then resolved.
         /// </summary>
         [JsonProperty("ItemStacks")]
+        [DocumentAsJson("Optional", "None")]
         public JsonItemStack[] JsonItemStacks;
 
         public ItemStack[] Itemstacks;

@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -11,9 +11,9 @@ namespace Vintagestory.API.Util
         public static BlockPos SetOrCreate(this BlockPos pos, BlockPos sourcePos)
         {
             if (sourcePos == null) return null;
-            if (pos == null) pos = new BlockPos();
+            if (pos == null) pos = new BlockPos(Config.Dimensions.WillSetLater);
 
-            pos.Set(sourcePos);
+            pos.Set(sourcePos, sourcePos.dimension);
             return pos;
         }
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class RotatableCube
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A rotatable version of a cuboid. <a href="https://github.com/anegostudios/vsapi/blob/master///Datastructures/RotatableCube.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A rotatable version of a cuboid. <a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/RotatableCube.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -244,6 +244,12 @@ public class RotatableCube : Cuboidf, IEquatable&lt;Cuboidf&gt;</code></pre>
       <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_ContainsOrTouches_Vintagestory_API_MathTools_IVec3_">Cuboidf.ContainsOrTouches(IVec3)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_Intersects_Vintagestory_API_MathTools_Cuboidf_System_Double_System_Double_System_Double_">Cuboidf.Intersects(Cuboidf, double, double, double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_IntersectsOrTouches_Vintagestory_API_MathTools_Cuboidf_">Cuboidf.IntersectsOrTouches(Cuboidf)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_OmniNotDownGrowBy_System_Single_">Cuboidf.OmniNotDownGrowBy(float)</a>
     </div>
     <div>
@@ -278,6 +284,15 @@ public class RotatableCube : Cuboidf, IEquatable&lt;Cuboidf&gt;</code></pre>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_RotatedCopy_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec3d_">Cuboidf.RotatedCopy(float, float, float, Vec3d)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_RotatedCopyRad_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec3d_">Cuboidf.RotatedCopyRad(float, float, float, Vec3d)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_RotatedCopyRad_System_Single_System_Single_System_Single_">Cuboidf.RotatedCopyRad(float, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_TransformedCopy_System_Span_System_Single__">Cuboidf.TransformedCopy(Span&lt;float&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_TransformedCopy_System_Single___">Cuboidf.TransformedCopy(float[])</a>
@@ -457,13 +472,12 @@ public class RotatableCube : Cuboidf, IEquatable&lt;Cuboidf&gt;</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>(0.5, 0.5, 0.5)</jsondefault>-->
-<p>The origin point for the object to rotate around. Measured in meters from zero, not percent.</p>
+  <div class="markdown level1 summary"><p>The origin point for the object to rotate around. Measured in meters from zero, not percent.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;(0.5, 0.5, 0.5)&quot;, false)]
 public Vec3d Origin</code></pre>
   </div>
 
@@ -490,13 +504,12 @@ public Vec3d Origin</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The cube's rotation around the X axis.</p>
+  <div class="markdown level1 summary"><p>The cube's rotation around the X axis.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float RotateX</code></pre>
   </div>
 
@@ -523,13 +536,12 @@ public float RotateX</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The cube's rotation around the Y axis.</p>
+  <div class="markdown level1 summary"><p>The cube's rotation around the Y axis.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float RotateY</code></pre>
   </div>
 
@@ -556,13 +568,12 @@ public float RotateY</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The cube's rotation around the Z axis.</p>
+  <div class="markdown level1 summary"><p>The cube's rotation around the Z axis.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float RotateZ</code></pre>
   </div>
 

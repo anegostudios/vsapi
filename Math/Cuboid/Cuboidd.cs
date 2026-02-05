@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common.Entities;
 
 #nullable disable

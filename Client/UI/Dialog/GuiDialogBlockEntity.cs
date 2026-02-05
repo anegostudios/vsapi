@@ -22,12 +22,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the opening sound for the dialog being opened, or null if none.
         /// </summary>
-        public virtual AssetLocation OpenSound { get; set; } = null;
+        public virtual SoundAttributes OpenSound { get; set; } = new SoundAttributes();
 
         /// <summary>
         /// Gets the opening sound for the dialog being opened, or null if none.
         /// </summary>
-        public virtual AssetLocation CloseSound { get; set; } = null;
+        public virtual SoundAttributes CloseSound { get; set; } = new SoundAttributes();
 
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Vintagestory.API.Client
         {
             if (Inventory != null) capi.World.Player.InventoryManager.OpenInventory(Inventory);
 
-            capi.Gui.PlaySound(OpenSound, true);
+            capi.Gui.PlaySound(OpenSound);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Vintagestory.API.Client
 
             capi.Network.SendBlockEntityPacket(BlockEntityPosition, (int)EnumBlockEntityPacketId.Close);
 
-            capi.Gui.PlaySound(CloseSound, true);
+            capi.Gui.PlaySound(CloseSound);
         }
 
         public override bool PrefersUngrabbedMouse => false;

@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 using System.IO;
+using System.Diagnostics.CodeAnalysis;
 
 #nullable disable
 
@@ -13,8 +14,10 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     [DocumentAsJson]
     [JsonObject(MemberSerialization.OptIn)]
-    public class EvolvingNatFloat
+    public struct EvolvingNatFloat
     {
+        public static readonly EvolvingNatFloat NoValueSet = new EvolvingNatFloat(EnumTransformFunction.UNSPECIFIED, 0f);
+
         static TransformFunction[] transfuncs;
 
         static EvolvingNatFloat()
@@ -53,25 +56,25 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>IDENTICAL</jsondefault>-->
         /// The type of function to use as this value changes.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "IDENTICAL")]
         EnumTransformFunction transform = EnumTransformFunction.IDENTICAL;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// A scale factor for the value during the transformation function.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Recommended", "0")]
         float factor = 0;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// The maximum value this random value can return.
         /// </summary>
         [JsonProperty]
-        float? maxvalue;
+        [DocumentAsJson("Optional", "None")]
+        float? maxvalue = null;
 
         public float Factor
         {
@@ -89,7 +92,7 @@ namespace Vintagestory.API.MathTools
         }
 
         public EvolvingNatFloat()
-        {   
+        {
         }
 
         public EvolvingNatFloat(EnumTransformFunction transform, float factor)
@@ -109,13 +112,6 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        EvolvingNatFloat setMax(float? value)
-        {
-            this.maxvalue = value;
-            return this;
-        }
-
-
 
         /// <summary>
         /// The sequence should always run from 0 to n
@@ -125,23 +121,23 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public float nextFloat(float firstvalue, float sequence)
         {
+            if (transform == EnumTransformFunction.UNSPECIFIED) return 0f;
             float result = transfuncs[(int)transform](firstvalue, factor, sequence);
-            if (maxvalue != null) return Math.Min((float)maxvalue, result);
+            if (maxvalue != null) return Math.Min(maxvalue.Value, result);
             return result;
         }
 
 
         public EvolvingNatFloat Clone()
         {
-            EvolvingNatFloat copy = (EvolvingNatFloat)MemberwiseClone();
-            return copy;
+            return new EvolvingNatFloat()
+            {
+                factor = factor,
+                maxvalue = maxvalue,
+                transform = transform
+            };
         }
 
-        public void FromBytes(BinaryReader reader)
-        {
-            transform = (EnumTransformFunction)reader.ReadByte();
-            factor = reader.ReadSingle();
-        }
 
         public void ToBytes(BinaryWriter writer)
         {
@@ -149,12 +145,36 @@ namespace Vintagestory.API.MathTools
             writer.Write(factor);
         }
 
-       
+
         public static EvolvingNatFloat CreateFromBytes(BinaryReader reader)
         {
-            EvolvingNatFloat evo = new EvolvingNatFloat();
-            evo.FromBytes(reader);
+            EvolvingNatFloat evo = new EvolvingNatFloat()
+            {
+                transform = (EnumTransformFunction)reader.ReadByte(),
+                factor = reader.ReadSingle()
+            };
             return evo;
+        }
+
+        public override bool Equals([NotNullWhen(true)] object obj)
+        {
+            if (obj is not EvolvingNatFloat enf) return false;
+            return enf.Transform == Transform && enf.factor == factor;
+        }
+
+        public static bool operator ==(EvolvingNatFloat left, EvolvingNatFloat right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(EvolvingNatFloat left, EvolvingNatFloat right)
+        {
+            return !left.Equals(right);
+        }
+
+        public override int GetHashCode()
+        {
+            return factor.GetHashCode() + (int)Transform * 269023;
         }
     }
 }

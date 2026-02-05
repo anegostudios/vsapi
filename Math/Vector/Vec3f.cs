@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using ProtoBuf;
 using System;
 using System.IO;
@@ -69,7 +69,7 @@ namespace Vintagestory.API.MathTools
 
         public static implicit operator FastVec3f(Vec3f a)     // For backwards compatibility for ModelTransform, mods should only require a recompile against 1.21 API
         {
-            return new FastVec3f(a);
+            return a == null ? new FastVec3f() : new FastVec3f(a);
         }
 
         /// <summary>
@@ -90,6 +90,13 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="vec"></param>
         public Vec3f(Vec4f vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+        }
+
+        public Vec3f(FastVec3f vec)
         {
             this.X = vec.X;
             this.Y = vec.Y;
@@ -255,7 +262,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Adds given x/y/z coordinates to the vector
+        /// Adds given vector's x/y/z coordinates to the vector
         /// </summary>
         /// <param name="vec"></param>
         /// <returns></returns>
@@ -267,9 +274,20 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        /// <summary>
+        /// Adds given vector's x/y/z coordinates to the vector
+        /// </summary>
+        public Vec3f Add(FastVec3f vec)
+        {
+            this.X += vec.X;
+            this.Y += vec.Y;
+            this.Z += vec.Z;
+            return this;
+        }
+
 
         /// <summary>
-        /// Adds given x/y/z coordinates to the vector
+        /// Adds given vector's x/y/z coordinates to the vector
         /// </summary>
         /// <param name="vec"></param>
         /// <returns></returns>
@@ -283,7 +301,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Substracts given x/y/z coordinates to the vector
+        /// Substracts given vector's x/y/z coordinates to the vector
         /// </summary>
         /// <param name="vec"></param>
         /// <returns></returns>
@@ -297,7 +315,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Substracts given x/y/z coordinates to the vector
+        /// Substracts given vector's x/y/z coordinates to the vector
         /// </summary>
         /// <param name="vec"></param>
         /// <returns></returns>
@@ -538,6 +556,14 @@ namespace Vintagestory.API.MathTools
             this.X = x;
             this.Y = y;
             this.Z = z;
+            return this;
+        }
+
+        public Vec3f Set(FastVec3f vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
             return this;
         }
 

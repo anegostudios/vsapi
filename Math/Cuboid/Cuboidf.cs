@@ -1,10 +1,33 @@
-﻿using System;
+using System;
 using Vintagestory.API.Client;
 
 #nullable disable
 
 namespace Vintagestory.API.MathTools
 {
+    public class CuboidfWithId : Cuboidf
+    {
+        public string Id;
+
+        public CuboidfWithId()
+        {
+        }
+        public CuboidfWithId(double x1, double y1, double z1, double x2, double y2, double z2)
+        {
+            Set((float)x1, (float)y1, (float)z1, (float)x2, (float)y2, (float)z2);
+        }
+        public CuboidfWithId(float x1, float y1, float z1, float x2, float y2, float z2)
+        {
+            Set(x1, y1, z1, x2, y2, z2);
+        }
+
+        public CuboidfWithId(Cuboidf cuboid)
+        {
+            Set(cuboid);
+        }
+
+    }
+
     /// <summary>
     /// Represents a three dimensional axis-aligned cuboid using two 3D coordinates. Used for collision and selection boxes.
     /// </summary>
@@ -12,40 +35,40 @@ namespace Vintagestory.API.MathTools
     public class Cuboidf : ICuboid<float,Cuboidf>
     {
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// Start X Pos
         /// </summary>
-        [DocumentAsJson] public float X1;
+        [DocumentAsJson("Optional", "0")]
+        public float X1;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// Start Y Pos
         /// </summary>
-        [DocumentAsJson] public float Y1;
+        [DocumentAsJson("Optional", "0")]
+        public float Y1;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// Start Z Pos
         /// </summary>
-        [DocumentAsJson] public float Z1;
+        [DocumentAsJson("Optional", "0")]
+        public float Z1;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// End X Pos
         /// </summary>
-        [DocumentAsJson] public float X2;
+        [DocumentAsJson("Optional", "0")]
+        public float X2;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// End Y Pos
         /// </summary>
-        [DocumentAsJson] public float Y2;
+        [DocumentAsJson("Optional", "0")]
+        public float Y2;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// End Z Pos
         /// </summary>
-        [DocumentAsJson] public float Z2;
+        [DocumentAsJson("Optional", "0")]
+        public float Z2;
 
         /// <summary>
         /// This is equivalent to width so long as X2 > X1, but could in theory be a negative number if the box has its corners the wrong way around
@@ -154,15 +177,18 @@ namespace Vintagestory.API.MathTools
             Z2 = size / 2;
         }
 
-        public Cuboidf(double x1, double x2, double y1, double y2, double z1, double z2)
+        public Cuboidf(ISize3 size)
         {
-            X1 = (float)x1;
-            X2 = (float)x2;
-            Y1 = (float)y1;
-            Y2 = (float)y2;
-            Z1 = (float)z1;
-            Z2 = (float)z2;
+            X1 = -size.WidthAsFloat / 2;
+            Y1 = -size.HeightAsFloat / 2;
+            Z1 = -size.LengthAsFloat / 2;
+
+            X2 = size.WidthAsFloat / 2;
+            Y2 = size.HeightAsFloat / 2;
+            Z2 = size.LengthAsFloat / 2;
         }
+
+
 
         public Cuboidf(Vec3f start, Vec3f end)
         {
@@ -284,6 +310,42 @@ namespace Vintagestory.API.MathTools
         {
             return ContainsOrTouches(vec.XAsFloat, vec.YAsFloat, vec.ZAsFloat);
         }
+
+
+        public bool Intersects(Cuboidf other, double offsetx, double offsety, double offsetz)
+        {
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            // We test the X pair first, then the Z pair, then the Y pair, as it's quite easy for any given pair to test false
+            if (X2 > other.X1 + offsetx &&
+                X1 < other.X2 + offsetx &&
+                Z2 > other.Z1 + offsetz &&
+                Z1 < other.Z2 + offsetz &&
+                Y2 > other.Y1 + offsety &&
+                Y1 < Math.Round(other.Y2 + offsety, 5) // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
+            ) return true;
+
+            return false;
+        }
+
+
+        /// <summary>
+        /// If the given cuboid intersects with this cuboid
+        /// </summary>
+        public bool IntersectsOrTouches(Cuboidf other)
+        {
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            // We test the X pair first, then the Z pair, then the Y pair, as it's quite easy for any given pair to test false
+            if (X2 >= other.X1 &&
+                X1 <= other.X2 &&
+                Y2 >= other.Y1 &&
+                Y1 <= other.Y2 &&
+                Z2 >= other.Z1 &&
+                Z1 <= other.Z2
+            ) return true;
+
+            return false;
+        }
+
 
         public Cuboidf OmniNotDownGrowBy(float size)
         {
@@ -452,30 +514,45 @@ namespace Vintagestory.API.MathTools
             float radY = degY * GameMath.DEG2RAD;
             float radZ = degZ * GameMath.DEG2RAD;
 
-            float[] matrix = Mat4f.Create();
-            Mat4f.Translate(matrix, matrix, (float)origin.X, (float)origin.Y, (float)origin.Z);
-            Mat4f.RotateX(matrix, matrix, radX);
-            Mat4f.RotateY(matrix, matrix, radY);
-            Mat4f.RotateZ(matrix, matrix, radZ);
-            Mat4f.Translate(matrix, matrix, -(float)origin.X, -(float)origin.Y, -(float)origin.Z);
+            Span<float> matrix = stackalloc float[16];
+            Mat4f.NewIdentity(matrix);
+            Mat4f.Translate(matrix, (float)origin.X, (float)origin.Y, (float)origin.Z);
+            Mat4f.RotateByXYZ(matrix, radX, radY, radZ);
+            Mat4f.Translate(matrix, -(float)origin.X, -(float)origin.Y, -(float)origin.Z);
 
             return TransformedCopy(matrix);
         }
 
-        /// <summary>
-        /// Performs a 3-dimensional rotation on the cuboid and returns a new axis-aligned cuboid resulting from this rotation. Not sure it it makes any sense to use this for other rotations than 90 degree intervals.
-        /// </summary>
-        public Cuboidf TransformedCopy(float[] matrix)
+        public Cuboidf RotatedCopyRad(float radX, float radY, float radZ, Vec3d origin)
         {
-            float[] dcoord1 = Mat4f.MulWithVec4(matrix, X1, Y1, Z1, 1);
-            float[] dcoord2 = Mat4f.MulWithVec4(matrix, X1, Y1, Z2, 1);
-            float[] dcoord3 = Mat4f.MulWithVec4(matrix, X2, Y1, Z2, 1);
-            float[] dcoord4 = Mat4f.MulWithVec4(matrix, X2, Y1, Z1, 1);
+            Span<float> matrix = stackalloc float[16];
+            Mat4f.NewIdentity(matrix);
+            Mat4f.Translate(matrix, (float)origin.X, (float)origin.Y, (float)origin.Z);
+            Mat4f.RotateByXYZ(matrix, radX, radY, radZ);
+            Mat4f.Translate(matrix, -(float)origin.X, -(float)origin.Y, -(float)origin.Z);
+            return TransformedCopy(matrix);
+        }
 
-            float[] ucoord1 = Mat4f.MulWithVec4(matrix, X1, Y2, Z1, 1);
-            float[] ucoord2 = Mat4f.MulWithVec4(matrix, X1, Y2, Z2, 1);
-            float[] ucoord3 = Mat4f.MulWithVec4(matrix, X2, Y2, Z2, 1);
-            float[] ucoord4 = Mat4f.MulWithVec4(matrix, X2, Y2, Z1, 1);
+        public Cuboidf RotatedCopyRad(float radX, float radY, float radZ)
+        {
+            Span<float> matrix = stackalloc float[16];
+            Mat4f.NewIdentity(matrix);
+            Mat4f.RotateByXYZ(matrix, radX, radY, radZ);
+            return TransformedCopy(matrix);
+        }
+
+
+        public Cuboidf TransformedCopy(Span<float> matrix)
+        {
+            Span<float> dcoord1 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, dcoord1, X1, Y1, Z1, 1);
+            Span<float> dcoord2 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, dcoord2, X1, Y1, Z2, 1);
+            Span<float> dcoord3 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, dcoord3, X2, Y1, Z2, 1);
+            Span<float> dcoord4 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, dcoord4, X2, Y1, Z1, 1);
+
+            Span<float> ucoord1 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, ucoord1, X1, Y2, Z1, 1);
+            Span<float> ucoord2 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, ucoord2, X1, Y2, Z2, 1);
+            Span<float> ucoord3 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, ucoord3, X2, Y2, Z2, 1);
+            Span<float> ucoord4 = stackalloc float[4]; Mat4f.MulWithVec4(matrix, ucoord4, X2, Y2, Z1, 1);
 
             Cuboidf cube = new Cuboidf()
             {
@@ -488,6 +565,14 @@ namespace Vintagestory.API.MathTools
             };
 
             return cube;
+        }
+
+        /// <summary>
+        /// Performs a 3-dimensional rotation on the cuboid and returns a new axis-aligned cuboid resulting from this rotation. Not sure it it makes any sense to use this for other rotations than 90 degree intervals.
+        /// </summary>
+        public Cuboidf TransformedCopy(float[] matrix)
+        {
+            return TransformedCopy((Span<float>)matrix);
         }
 
         /// <summary>

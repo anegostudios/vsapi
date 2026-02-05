@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
@@ -14,8 +14,8 @@ namespace Vintagestory.API.Client
     {
         public bool Dirty;
         public bool Render = true;
-        public GuiElementRichtext titleElement; 
-        public GuiElementRichtext descriptionElement; 
+        public GuiElementRichtext titleElement;
+        public GuiElementRichtext descriptionElement;
         public LoadedTexture texture;
 
         public static double ItemStackSize = GuiElementPassiveItemSlot.unscaledItemSize * 2.5;
@@ -94,7 +94,7 @@ namespace Vintagestory.API.Client
             titleElement.BeforeCalcBounds();
 
             double currentWidth = Math.Max(
-                titleElement.MaxLineWidth / RuntimeEnv.GUIScale, 
+                titleElement.MaxLineWidth / RuntimeEnv.GUIScale,
                 descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10 + 40 + GuiElementPassiveItemSlot.unscaledItemSize * 3
             );
 
@@ -115,7 +115,7 @@ namespace Vintagestory.API.Client
             Bounds.fixedHeight = 25 + unscaledTotalHeight;
         }
 
-        
+
 
         public void AsyncRecompose()
         {
@@ -205,7 +205,7 @@ namespace Vintagestory.API.Client
                     Dirty = false;
 
                 }, "genstackinfotexture");
-            });
+            }, "genstackinfotexture");
         }
 
 
@@ -229,7 +229,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        
+
 
 
 
@@ -251,7 +251,7 @@ namespace Vintagestory.API.Client
         /// <returns>True if recomposed</returns>
         public bool SetSourceSlot(ItemSlot nowSlot, bool forceRecompose = false)
         {
-            bool recompose = forceRecompose 
+            bool recompose = forceRecompose
                 || ((this.curStack == null) != (nowSlot?.Itemstack == null))
                 || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(api.World, curStack, RecompCheckIgnoredStackAttributes))
             ;
@@ -270,7 +270,7 @@ namespace Vintagestory.API.Client
                 {
                     Bounds.fixedHeight = 0;
                 }
-                
+
                 AsyncRecompose();
             }
 

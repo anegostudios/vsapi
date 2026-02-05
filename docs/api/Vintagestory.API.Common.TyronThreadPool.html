@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class TyronThreadPool
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/TyronThreadPool.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/TyronThreadPool.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -456,7 +456,8 @@ Class TyronThreadPool
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void QueueLongDurationTask(Action callback)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use QueueTask with the caller parameter instead.&quot;)]
+public static void QueueLongDurationTask(Action callback)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -487,7 +488,8 @@ Class TyronThreadPool
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void QueueLongDurationTask(Action callback, string caller)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use QueueTask instead.&quot;)]
+public static void QueueLongDurationTask(Action callback, string caller)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -520,7 +522,8 @@ Class TyronThreadPool
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void QueueTask(Action callback)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use QueueTask with the caller parameter instead.&quot;)]
+public static void QueueTask(Action callback)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -557,6 +560,39 @@ Class TyronThreadPool
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>callback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+    <dt><code>caller</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_TyronThreadPool_QueueTask_" data-uid="Vintagestory.API.Common.TyronThreadPool.QueueTask*"></a>
+
+  <h3 id="Vintagestory_API_Common_TyronThreadPool_QueueTask_System_Func_System_Threading_Tasks_Task__System_String_" data-uid="Vintagestory.API.Common.TyronThreadPool.QueueTask(System.Func{System.Threading.Tasks.Task},System.String)">
+  QueueTask(Func&lt;Task&gt;, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void QueueTask(Func&lt;Task&gt; callback, string caller)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>callback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>&gt;</dt>
     <dd></dd>
     <dt><code>caller</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>

@@ -1,4 +1,3 @@
-﻿using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -27,6 +26,11 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static int BlocksPreviewSubDimension_Client = -1;
 
+
+        /// <summary>
+        /// Used for initialising temporary BlockPos objects and other things where the initial dimension does not matter, we know we will set it later
+        /// </summary>
+        public const int WillSetLater = 0;
 
         /// <summary>
         /// This represents the XZ size of mini-dimensions (individual BlockAccessorMovables) within an overall dimension - we can pack 16 million of these into one dimension, which should be enough!

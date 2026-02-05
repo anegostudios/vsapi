@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CompositeShape
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Shape/CompositeShape.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Shape/CompositeShape.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -171,13 +171,12 @@ public class CompositeShape</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the shape is chosen.</p>
+  <div class="markdown level1 summary"><p>The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the shape is chosen.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeShape[] Alternates</code></pre>
   </div>
 
@@ -235,13 +234,12 @@ public CompositeShape[] Alternates</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The path to this shape file.</p>
+  <div class="markdown level1 summary"><p>The path to this shape file.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public AssetLocation Base</code></pre>
   </div>
 
@@ -268,13 +266,12 @@ public AssetLocation Base</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>VintageStory</jsondefault>-->
-<p>The format/filetype of this shape.</p>
+  <div class="markdown level1 summary"><p>The format/filetype of this shape.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;VintageStory&quot;, false)]
 public EnumShapeFormat Format</code></pre>
   </div>
 
@@ -332,13 +329,12 @@ public EnumShapeFormat Format</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.</p>
+  <div class="markdown level1 summary"><p>Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool InsertBakedTextures</code></pre>
   </div>
 
@@ -365,13 +361,12 @@ public bool InsertBakedTextures</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.</p>
+  <div class="markdown level1 summary"><p>The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeShape[] Overlays</code></pre>
   </div>
 
@@ -398,13 +393,12 @@ public CompositeShape[] Overlays</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>If non zero will only tesselate the first n elements of the shape</p>
+  <div class="markdown level1 summary"><p>If non zero will only tesselate the first n elements of the shape</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public int? QuantityElements</code></pre>
   </div>
 
@@ -431,13 +425,12 @@ public int? QuantityElements</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The scale of this shape on all axes.</p>
+  <div class="markdown level1 summary"><p>The scale of this shape on all axes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public float Scale</code></pre>
   </div>
 
@@ -464,13 +457,12 @@ public float Scale</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>If set will only tesselate elements with given name</p>
+  <div class="markdown level1 summary"><p>If set will only tesselate elements with given name</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string[] SelectiveElements</code></pre>
   </div>
 
@@ -497,13 +489,12 @@ public string[] SelectiveElements</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>If true, the shape is created from a voxelized version of the first defined texture</p>
+  <div class="markdown level1 summary"><p>If true, the shape is created from a voxelized version of the first defined texture</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool VoxelizeTexture</code></pre>
   </div>
 
@@ -530,13 +521,12 @@ public bool VoxelizeTexture</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>How much should this shape be offset on X axis?</p>
+  <div class="markdown level1 summary"><p>How much should this shape be offset on X axis?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float offsetX</code></pre>
   </div>
 
@@ -563,13 +553,12 @@ public float offsetX</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>How much should this shape be offset on Y axis?</p>
+  <div class="markdown level1 summary"><p>How much should this shape be offset on Y axis?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float offsetY</code></pre>
   </div>
 
@@ -596,13 +585,12 @@ public float offsetY</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>How much should this shape be offset on Z axis?</p>
+  <div class="markdown level1 summary"><p>How much should this shape be offset on Z axis?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float offsetZ</code></pre>
   </div>
 
@@ -629,13 +617,12 @@ public float offsetZ</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>How much, in degrees, should this shape be rotated around the X axis?</p>
+  <div class="markdown level1 summary"><p>How much, in degrees, should this shape be rotated around the X axis?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float rotateX</code></pre>
   </div>
 
@@ -662,13 +649,12 @@ public float rotateX</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>How much, in degrees, should this shape be rotated around the Y axis?</p>
+  <div class="markdown level1 summary"><p>How much, in degrees, should this shape be rotated around the Y axis?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float rotateY</code></pre>
   </div>
 
@@ -695,13 +681,12 @@ public float rotateY</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>How much, in degrees, should this shape be rotated around the Z axis?</p>
+  <div class="markdown level1 summary"><p>How much, in degrees, should this shape be rotated around the Z axis?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float rotateZ</code></pre>
   </div>
 

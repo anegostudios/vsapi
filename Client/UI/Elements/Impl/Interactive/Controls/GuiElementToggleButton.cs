@@ -29,7 +29,7 @@ namespace Vintagestory.API.Client
 
         int unscaledDepth = 4;
 
-        string icon;
+        public string icon;
 
         double pressedYOffset;
         double nonPressedYOffset;

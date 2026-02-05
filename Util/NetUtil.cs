@@ -12,7 +12,7 @@ namespace Vintagestory.API.Util
         public int? Port;
         public string Password;
 
-        
+
     }
 
     public static class NetUtil
@@ -21,7 +21,20 @@ namespace Vintagestory.API.Util
         {
             try
             {
-                Process.Start("start \"" + url + "\"");
+                switch (RuntimeEnv.OS)
+                {
+                    case OS.Windows:
+                        Process.Start("start \"" + url + "\"");
+                        break;
+                    case OS.Linux:
+                        url = $"\"{url}\"";
+                        Process.Start("xdg-open", url);
+                        break;
+                    case OS.Mac:
+                        url = $"\"{url}\"";
+                        Process.Start("open", url);
+                        break;
+                }
             }
             catch
             {
@@ -37,16 +50,6 @@ namespace Vintagestory.API.Util
                     {
                         Process.Start("explorer.exe", url);
                     }
-                }
-                else if (RuntimeEnv.OS == OS.Linux)
-                {
-                    url = $"\"{url}\"";
-                    Process.Start("xdg-open", url);
-                }
-                else if (RuntimeEnv.OS == OS.Mac)
-                {
-                    url = $"\"{url}\"";
-                    Process.Start("open", url);
                 }
                 else
                 {
@@ -114,7 +117,7 @@ namespace Vintagestory.API.Util
                 if (int.TryParse(parts[1], out port)) outport = port;
                 else error = Lang.Get("Invalid port number");
             }
-            
+
             error = null;
 
             return new UriInfo()
@@ -124,6 +127,6 @@ namespace Vintagestory.API.Util
                 Port = outport
             };
         }
-        
+
     }
 }

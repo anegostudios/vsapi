@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using ProtoBuf;
 using System;
 using System.IO;
@@ -142,6 +142,14 @@ namespace Vintagestory.API.MathTools
         }
 
         public Vec3d Add(Vec3f a)
+        {
+            this.X += a.X;
+            this.Y += a.Y;
+            this.Z += a.Z;
+            return this;
+        }
+
+        public Vec3d Add(FastVec3f a)
         {
             this.X += a.X;
             this.Y += a.Y;
@@ -375,6 +383,22 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public Vec3d Set(FastVec3d pos)
+        {
+            this.X = pos.X;
+            this.Y = pos.Y;
+            this.Z = pos.Z;
+            return this;
+        }
+
+        public Vec3d Set(IVec3 pos)
+        {
+            this.X = pos.XAsDouble;
+            this.Y = pos.YAsDouble;
+            this.Z = pos.ZAsDouble;
+            return this;
+        }
+
         public Vec3d Set(double x, double y, double z)
         {
             this.X = x;
@@ -413,6 +437,19 @@ namespace Vintagestory.API.MathTools
         /// <param name="pos"></param>
         /// <returns></returns>
         public Vec3d SetWithDimension(Common.Entities.EntityPos pos)
+        {
+            this.X = pos.X;
+            this.Y = pos.InternalY;
+            this.Z = pos.Z;
+            return this;
+        }
+
+        /// <summary>
+        /// Include dimension info. We don't always want this, but sometimes we do
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public Vec3d SetWithDimension(BlockPos pos)
         {
             this.X = pos.X;
             this.Y = pos.InternalY;
@@ -605,9 +642,11 @@ namespace Vintagestory.API.MathTools
 
         public Vec3d RotatedCopy(float yaw)
         {
-            Matrixf mat = new Matrixf();
-            mat.RotateY(yaw);
-            return mat.TransformVector(new Vec4d(X, Y, Z, 0)).XYZ;
+            double s = Math.Sin(yaw);
+            double c = Math.Cos(yaw);
+            double newX = c * X - s * Z;
+            double newZ = s * X + c * Z;
+            return new Vec3d(newX, Y, newZ);
         }
 
         public Vec3d AheadCopy(double offset, float Pitch, float Yaw)

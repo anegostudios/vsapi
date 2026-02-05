@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class CookingRecipe
   </div>
 
   <div class="markdown summary"><p>Defines a recipe to be made using a cooking pot.
-Creating a new recipe for a cooking pot will automatically register the new meal item, unless using <a class="xref" href="Vintagestory.GameContent.CookingRecipe.html#Vintagestory_GameContent_CookingRecipe_CooksInto">CooksInto</a>. <a href="https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Cooking/CookingRecipe.cs">Open in GitHub</a></p>
+Creating a new recipe for a cooking pot will automatically register the new meal item, unless using <a class="xref" href="Vintagestory.GameContent.CookingRecipe.html#Vintagestory_GameContent_CookingRecipe_CooksInto">CooksInto</a>. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Cooking/CookingRecipe.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -188,7 +188,7 @@ public class CookingRecipe</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string? Code</code></pre>
   </div>
 
@@ -221,7 +221,7 @@ public string? Code</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public CookingRecipeIngredient[]? Ingredients</code></pre>
   </div>
 
@@ -254,7 +254,7 @@ public CookingRecipeIngredient[]? Ingredients</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public TransitionableProperties? PerishableProps</code></pre>
   </div>
 
@@ -287,7 +287,7 @@ public TransitionableProperties? PerishableProps</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public CompositeShape? Shape</code></pre>
   </div>
 
@@ -320,7 +320,7 @@ public CompositeShape? Shape</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public JsonItemStack? CooksInto</code></pre>
   </div>
 
@@ -353,7 +353,7 @@ public JsonItemStack? CooksInto</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool Enabled</code></pre>
   </div>
 
@@ -386,7 +386,7 @@ public bool Enabled</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool IsFood</code></pre>
   </div>
 

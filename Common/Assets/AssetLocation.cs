@@ -65,7 +65,7 @@ namespace Vintagestory.API.Common
             return message + domain + AssetLocation.LocationSeparator + path;
         }
     }
-    
+
     /// <summary>
     /// Defines a complete path to an assets, including it's domain. Includes an extra Source field for debugging.
     /// </summary>
@@ -171,7 +171,7 @@ namespace Vintagestory.API.Common
         {
             ResolveToDomainAndPath(domainAndPath, out domain, out path);
         }
-        
+
         /// <summary>
         /// Helper function to resolve path dependancies.
         /// </summary>
@@ -232,7 +232,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Returns true if this is a valid path. For an asset location to be valid it needs to 
+        /// Returns true if this is a valid path. For an asset location to be valid it needs to
         /// have any string as domain, any string as path, the domain may not contain slashes, and the path may not contain 2 consecutive slashes
         /// </summary>
         public bool Valid

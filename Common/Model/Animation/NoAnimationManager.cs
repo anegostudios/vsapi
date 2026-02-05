@@ -86,13 +86,15 @@ namespace Vintagestory.API.Common
 
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode => new Dictionary<string, AnimationMetaData>();
 
-        public EntityHeadController HeadController { get; set; }
+        public IHeadController HeadController { get; set; }
 
         public bool AdjustCollisionBoxToAnimation => throw new NotImplementedException();
 
+#pragma warning disable CS0067 // Unused fields - but these might be used if an entity (including a modded entity) has a NoAnimationManager as its animation manager for some reason
         public event StartAnimationDelegate OnStartAnimation;
         public event Action<string> OnAnimationStopped;
         public event StartAnimationDelegate OnAnimationReceived;
+#pragma warning restore CS0067
 
         public void CopyOverAnimStates(RunningAnimation[] copyOverAnims, IAnimator animator)
         {
@@ -188,7 +190,7 @@ namespace Vintagestory.API.Common
             
         }
 
-        public void ShouldPlaySound(AnimationSound sound)
+        public void ShouldPlaySound(string animMetaCode, AnimationSound sound)
         {
             
         }

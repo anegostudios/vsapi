@@ -1,5 +1,6 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -39,47 +40,47 @@ namespace Vintagestory.API.Common
         public static readonly FastVec3f defaultTf = new FastVec3f(-0.000099f, -0.000099f, -0.000099f);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Offsetting
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional")]
         public FastVec3f Translation = defaultTf;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Rotation in degrees
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional")]
         public FastVec3f Rotation = defaultTf;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Sets the same scale of an object for all axes.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional")]
         public float Scale { set { ScaleXYZ.Set(value, value, value); } }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Rotation/Scaling Origin
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0.5, 0.5, 0.5")]
         public FastVec3f Origin = new FastVec3f(0.5f, 0.5f, 0.5f);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// For Gui Transform: Whether to slowly spin in gui item preview 
         /// For Ground Transform: Whether to apply a random rotation to the dropped item
         /// No effect on other transforms
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "True")]
         public bool Rotate = true;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Scaling per axis
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "1, 1, 1")]
         public FastVec3f ScaleXYZ = new FastVec3f(1, 1, 1);
 
 
@@ -248,9 +249,9 @@ namespace Vintagestory.API.Common
         {
             return new ModelTransform()
             {
-                Translation = new FastVec3f(3, 1, 0),
+                Translation = new FastVec3f(0, 0, 0),
                 Rotation = new FastVec3f(0, 0, 0),
-                Origin = new FastVec3f(0.6f, 0.6f, 0),
+                Origin = new FastVec3f(0.5f, 0.5f, 0.5f),
                 Scale = 1f,
                 Rotate = false
             };
@@ -333,6 +334,46 @@ namespace Vintagestory.API.Common
                 ScaleXYZ = ScaleXYZ,
                 Origin = Origin
             };
+        }
+
+        public void ToTreeAttribute(TreeAttribute tree)
+        {
+            tree.SetFloat("rotateX", Rotation.X);
+            tree.SetFloat("rotateY", Rotation.Y);
+            tree.SetFloat("rotateZ", Rotation.Z);
+            tree.SetFloat("translateX", Translation.X);
+            tree.SetFloat("translateY", Translation.Y);
+            tree.SetFloat("translateZ", Translation.Z);
+            tree.SetFloat("scaleX", ScaleXYZ.X);
+            tree.SetFloat("scaleY", ScaleXYZ.Y);
+            tree.SetFloat("scaleZ", ScaleXYZ.Z);
+            tree.SetFloat("originX", Origin.X);
+            tree.SetFloat("originY", Origin.Y);
+            tree.SetFloat("originZ", Origin.Z);
+            tree.SetBool("rotate", Rotate);
+        }
+
+        public ModelTransform FromTreeAttribute(TreeAttribute tree)
+        {
+            Rotation.X = tree.GetFloat("rotateX");
+            Rotation.Y = tree.GetFloat("rotateY");
+            Rotation.Z = tree.GetFloat("rotateZ");
+            Translation.X = tree.GetFloat("translateX");
+            Translation.Y = tree.GetFloat("translateY");
+            Translation.Z = tree.GetFloat("translateZ");
+            ScaleXYZ.X = tree.GetFloat("scaleX");
+            ScaleXYZ.Y = tree.GetFloat("scaleY");
+            ScaleXYZ.Z = tree.GetFloat("scaleZ");
+            Origin.X = tree.GetFloat("originX");
+            Origin.Y = tree.GetFloat("originY");
+            Origin.Z = tree.GetFloat("originZ");
+            Rotate = tree.GetBool("rotate", Rotate);
+            return this;
+        }
+
+        public static ModelTransform CreateFromTreeAttribute(TreeAttribute tree)
+        {
+            return new ModelTransform().FromTreeAttribute(tree);
         }
 
 

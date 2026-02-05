@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,12 +97,12 @@ Class PlayerHeadController
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/EntityHeadController.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/EntityHeadController.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PlayerHeadController : EntityHeadController</code></pre>
+    <pre><code class="lang-csharp hljs">public class PlayerHeadController : EntityHeadController, IHeadController</code></pre>
   </div>
 
 
@@ -117,40 +117,52 @@ Class PlayerHeadController
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.IHeadController.html">IHeadController</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_HeadPose">EntityHeadController.HeadPose</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_YawOffset">EntityHeadController.YawOffset</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_NeckPose">EntityHeadController.NeckPose</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_UpperTorsoPose">EntityHeadController.UpperTorsoPose</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_LowerTorsoPose">EntityHeadController.LowerTorsoPose</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_UpperFootLPose">EntityHeadController.UpperFootLPose</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_UpperFootRPose">EntityHeadController.UpperFootRPose</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_PitchOffset">EntityHeadController.PitchOffset</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_entity">EntityHeadController.entity</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_animManager">EntityHeadController.animManager</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_animationManager">EntityHeadController.animationManager</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_yawOffset">EntityHeadController.yawOffset</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_headPose">EntityHeadController.headPose</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_pitchOffset">EntityHeadController.pitchOffset</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_neckPose">EntityHeadController.neckPose</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_headYOffsetFactor">EntityHeadController.headYOffsetFactor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_headZOffsetFactor">EntityHeadController.headZOffsetFactor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_neckYOffsetFactor">EntityHeadController.neckYOffsetFactor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_neckZOffsetFactor">EntityHeadController.neckZOffsetFactor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_GetOffsets_System_Single_">EntityHeadController.GetOffsets(float)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityHeadController.html#Vintagestory_API_Common_EntityHeadController_GetPose_System_String_">EntityHeadController.GetPose(string)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -234,8 +246,8 @@ Class PlayerHeadController
 
 
 
-  <h3 id="Vintagestory_API_Common_PlayerHeadController_player" data-uid="Vintagestory.API.Common.PlayerHeadController.player">
-  player
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_bodyFollowSpeedFactor" data-uid="Vintagestory.API.Common.PlayerHeadController.bodyFollowSpeedFactor">
+  bodyFollowSpeedFactor
   
   </h3>
 
@@ -243,7 +255,7 @@ Class PlayerHeadController
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected IPlayer player</code></pre>
+    <pre><code class="lang-csharp hljs">protected float bodyFollowSpeedFactor</code></pre>
   </div>
 
 
@@ -251,7 +263,247 @@ Class PlayerHeadController
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_bodyFollowThresholdDeg" data-uid="Vintagestory.API.Common.PlayerHeadController.bodyFollowThresholdDeg">
+  bodyFollowThresholdDeg
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float bodyFollowThresholdDeg</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_clientApi" data-uid="Vintagestory.API.Common.PlayerHeadController.clientApi">
+  clientApi
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ICoreClientAPI clientApi</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_entityPlayer" data-uid="Vintagestory.API.Common.PlayerHeadController.entityPlayer">
+  entityPlayer
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly EntityPlayer entityPlayer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EntityPlayer.html">EntityPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_headFollowEntityPitchFactor" data-uid="Vintagestory.API.Common.PlayerHeadController.headFollowEntityPitchFactor">
+  headFollowEntityPitchFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float headFollowEntityPitchFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_headPitchLimitsDeg" data-uid="Vintagestory.API.Common.PlayerHeadController.headPitchLimitsDeg">
+  headPitchLimitsDeg
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float headPitchLimitsDeg</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_headYawLimitsDeg" data-uid="Vintagestory.API.Common.PlayerHeadController.headYawLimitsDeg">
+  headYawLimitsDeg
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float headYawLimitsDeg</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_lowerTorsoPose" data-uid="Vintagestory.API.Common.PlayerHeadController.lowerTorsoPose">
+  lowerTorsoPose
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ElementPose lowerTorsoPose</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_lowerTorsoZOffsetFactor" data-uid="Vintagestory.API.Common.PlayerHeadController.lowerTorsoZOffsetFactor">
+  lowerTorsoZOffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float lowerTorsoZOffsetFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -323,8 +575,410 @@ Class PlayerHeadController
 
 
 
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_upperFootLOffsetFactor" data-uid="Vintagestory.API.Common.PlayerHeadController.upperFootLOffsetFactor">
+  upperFootLOffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float upperFootLOffsetFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_upperFootLPose" data-uid="Vintagestory.API.Common.PlayerHeadController.upperFootLPose">
+  upperFootLPose
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ElementPose upperFootLPose</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_upperFootROffsetFactor" data-uid="Vintagestory.API.Common.PlayerHeadController.upperFootROffsetFactor">
+  upperFootROffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float upperFootROffsetFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_upperFootRPose" data-uid="Vintagestory.API.Common.PlayerHeadController.upperFootRPose">
+  upperFootRPose
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ElementPose upperFootRPose</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_upperTorsoPose" data-uid="Vintagestory.API.Common.PlayerHeadController.upperTorsoPose">
+  upperTorsoPose
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ElementPose upperTorsoPose</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_upperTorsoYOffsetFactor" data-uid="Vintagestory.API.Common.PlayerHeadController.upperTorsoYOffsetFactor">
+  upperTorsoYOffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float upperTorsoYOffsetFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_upperTorsoZOffsetFactor" data-uid="Vintagestory.API.Common.PlayerHeadController.upperTorsoZOffsetFactor">
+  upperTorsoZOffsetFactor
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float upperTorsoZOffsetFactor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_player_" data-uid="Vintagestory.API.Common.PlayerHeadController.player*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_player" data-uid="Vintagestory.API.Common.PlayerHeadController.player">
+  player
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected IClientPlayer? player { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.IClientPlayer.html">IClientPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_AdjustAngles_" data-uid="Vintagestory.API.Common.PlayerHeadController.AdjustAngles*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_AdjustAngles_System_Single_" data-uid="Vintagestory.API.Common.PlayerHeadController.AdjustAngles(System.Single)">
+  AdjustAngles(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void AdjustAngles(float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_AdjustBodyAngles_" data-uid="Vintagestory.API.Common.PlayerHeadController.AdjustBodyAngles*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_AdjustBodyAngles_System_Single_" data-uid="Vintagestory.API.Common.PlayerHeadController.AdjustBodyAngles(System.Single)">
+  AdjustBodyAngles(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void AdjustBodyAngles(float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_AdjustHeadAngles_" data-uid="Vintagestory.API.Common.PlayerHeadController.AdjustHeadAngles*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_AdjustHeadAngles_Vintagestory_API_Client_EnumCameraMode_System_Single_" data-uid="Vintagestory.API.Common.PlayerHeadController.AdjustHeadAngles(Vintagestory.API.Client.EnumCameraMode,System.Single)">
+  AdjustHeadAngles(EnumCameraMode, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void AdjustHeadAngles(EnumCameraMode cameraMode, float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cameraMode</code> <a class="xref" href="Vintagestory.API.Client.EnumCameraMode.html">EnumCameraMode</a></dt>
+    <dd></dd>
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_IsSelf_" data-uid="Vintagestory.API.Common.PlayerHeadController.IsSelf*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_IsSelf" data-uid="Vintagestory.API.Common.PlayerHeadController.IsSelf">
+  IsSelf()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool IsSelf()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_IsSelfImmersiveFirstPerson_" data-uid="Vintagestory.API.Common.PlayerHeadController.IsSelfImmersiveFirstPerson*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_IsSelfImmersiveFirstPerson" data-uid="Vintagestory.API.Common.PlayerHeadController.IsSelfImmersiveFirstPerson">
+  IsSelfImmersiveFirstPerson()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool IsSelfImmersiveFirstPerson()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Common_PlayerHeadController_OnFrame_" data-uid="Vintagestory.API.Common.PlayerHeadController.OnFrame*"></a>
@@ -334,12 +988,74 @@ Class PlayerHeadController
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The event fired when the game ticks.</p>
+  <div class="markdown level1 summary"><p>Called from AnimationManager each frame before frame.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnFrame(float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_SetTorsoOffsets_" data-uid="Vintagestory.API.Common.PlayerHeadController.SetTorsoOffsets*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_SetTorsoOffsets_System_Single_" data-uid="Vintagestory.API.Common.PlayerHeadController.SetTorsoOffsets(System.Single)">
+  SetTorsoOffsets(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void SetTorsoOffsets(float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_PlayerHeadController_TryLookIntoCamera_" data-uid="Vintagestory.API.Common.PlayerHeadController.TryLookIntoCamera*"></a>
+
+  <h3 id="Vintagestory_API_Common_PlayerHeadController_TryLookIntoCamera_System_Single_" data-uid="Vintagestory.API.Common.PlayerHeadController.TryLookIntoCamera(System.Single)">
+  TryLookIntoCamera(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void TryLookIntoCamera(float dt)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

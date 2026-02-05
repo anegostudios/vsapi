@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class EntityPos
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents all positional information of an entity, such as coordinates, motion and angles <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/EntityPos.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Represents all positional information of an entity, such as coordinates, motion and angles <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/EntityPos.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -809,6 +809,38 @@ protected double z</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_Entities_EntityPos_XYZFast_" data-uid="Vintagestory.API.Common.Entities.EntityPos.XYZFast*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityPos_XYZFast" data-uid="Vintagestory.API.Common.Entities.EntityPos.XYZFast">
+  XYZFast
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the position as a Vec3d object. Note, dimension aware</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d XYZFast { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_EntityPos_XYZFloat_" data-uid="Vintagestory.API.Common.Entities.EntityPos.XYZFloat*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_EntityPos_XYZFloat" data-uid="Vintagestory.API.Common.Entities.EntityPos.XYZFloat">
@@ -831,6 +863,38 @@ protected double z</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_EntityPos_XYZFloatFast_" data-uid="Vintagestory.API.Common.Entities.EntityPos.XYZFloatFast*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityPos_XYZFloatFast" data-uid="Vintagestory.API.Common.Entities.EntityPos.XYZFloatFast">
+  XYZFloatFast
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the position as a FastVec3f object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3f XYZFloatFast { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3f.html">FastVec3f</a></dt>
     <dd></dd>
   </dl>
 
@@ -2304,6 +2368,72 @@ protected double z</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd><p>The Vec3d to set to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_EntityPos_SetPosWithDimension_" data-uid="Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityPos_SetPosWithDimension_Vintagestory_API_MathTools_FastVec3d_" data-uid="Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension(Vintagestory.API.MathTools.FastVec3d)">
+  SetPosWithDimension(FastVec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets this position to a Vec3d, including setting the dimension</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPosWithDimension(FastVec3d pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd><p>The Vec3d to set to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_EntityPos_SetPosWithDimension_" data-uid="Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityPos_SetPosWithDimension_Vintagestory_API_MathTools_IVec3_" data-uid="Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension(Vintagestory.API.MathTools.IVec3)">
+  SetPosWithDimension(IVec3)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets this position to a Vec3d, including setting the dimension</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPosWithDimension(IVec3 pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.IVec3.html">IVec3</a></dt>
     <dd><p>The Vec3d to set to.</p>
 </dd>
   </dl>

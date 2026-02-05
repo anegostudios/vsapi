@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
@@ -17,7 +17,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IMapChunk
     {
-        ConcurrentDictionary<Vec2i, float> SnowAccum { get; }
+        float[] SnowAccum { get; }
 
         /// <summary>
         /// The map region this map chunk resides in
@@ -101,7 +101,7 @@ namespace Vintagestory.API.Common
         ushort[] RainHeightMap { get; }
 
         /// <summary>
-        /// The position of the last block before the first airblock before world gen pass Vegetation
+        /// The position of the last block before the first airblock before world gen pass Vegetation. For oceans/sealevel lakes this will be seafloor position.
         /// </summary>
         ushort[] WorldGenTerrainHeightMap { get; }
 

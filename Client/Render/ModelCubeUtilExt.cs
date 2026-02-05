@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -23,7 +23,7 @@ namespace Vintagestory.API.Client
         {
             for (int i = 0; i < 6; i++)
             {
-                var vec = new Vec3f(0, 1, 0).Mul(0.33f) + BlockFacing.ALLFACES[i].Normalf.Clone().Mul(0.66f);
+                var vec = new Vec3f(0, 1, 0).Mul(0.5f) + BlockFacing.ALLFACES[i].Normalf;
                 vec.Normalize();
                 gradientNormalMixedFlags[i] = VertexFlags.PackNormal(vec);
             }

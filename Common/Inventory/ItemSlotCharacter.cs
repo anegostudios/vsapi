@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #nullable disable
 
@@ -59,6 +59,11 @@ namespace Vintagestory.API.Common
         public static bool IsDressType(IItemStack itemstack, EnumCharacterDressType dressType)
         {
             if (itemstack == null || itemstack.Collectible.Attributes == null) return false;
+
+            if (itemstack.Collectible.GetCollectibleInterface<IWearableStatsSupplier>() is IWearableStatsSupplier wearableStats)
+            {
+                return dressType == wearableStats.GetDressType(new DummySlot((ItemStack)itemstack));
+            }
 
             string stackDressType = itemstack.Collectible.Attributes["clothescategory"].AsString() ?? itemstack.Collectible.Attributes["attachableToEntity"]["categoryCode"].AsString();
 

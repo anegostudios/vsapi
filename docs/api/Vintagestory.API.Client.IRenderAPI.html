@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -357,6 +357,38 @@ You can use this matrix instead of <a class="xref" href="Vintagestory.API.Client
 
 
 
+  <a id="Vintagestory_API_Client_IRenderAPI_CurrentFrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.CurrentFrameBuffer*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_CurrentFrameBuffer" data-uid="Vintagestory.API.Client.IRenderAPI.CurrentFrameBuffer">
+  CurrentFrameBuffer
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the current framebuffer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FrameBufferRef CurrentFrameBuffer { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.FrameBufferRef.html">FrameBufferRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_IRenderAPI_CurrentModelviewMatrix_" data-uid="Vintagestory.API.Client.IRenderAPI.CurrentModelviewMatrix*"></a>
 
   <h3 id="Vintagestory_API_Client_IRenderAPI_CurrentModelviewMatrix" data-uid="Vintagestory.API.Client.IRenderAPI.CurrentModelviewMatrix">
@@ -475,6 +507,37 @@ You can use this matrix instead of <a class="xref" href="Vintagestory.API.Client
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_Decal_" data-uid="Vintagestory.API.Client.IRenderAPI.Decal*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_Decal" data-uid="Vintagestory.API.Client.IRenderAPI.Decal">
+  Decal
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IDecalApi Decal { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.IDecalApi.html">IDecalApi</a></dt>
     <dd></dd>
   </dl>
 
@@ -635,38 +698,6 @@ string DecorativeFontName { get; }</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Client_IRenderAPI_FrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.FrameBuffer*"></a>
-
-  <h3 id="Vintagestory_API_Client_IRenderAPI_FrameBuffer" data-uid="Vintagestory.API.Client.IRenderAPI.FrameBuffer">
-  FrameBuffer
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Set the current framebuffer</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">FrameBufferRef FrameBuffer { set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Client.FrameBufferRef.html">FrameBufferRef</a></dt>
     <dd></dd>
   </dl>
 
@@ -1397,6 +1428,79 @@ It is recommended to use this methods in a few spots during render code to track
 
 
 
+  <a id="Vintagestory_API_Client_IRenderAPI_ClearFrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.ClearFrameBuffer*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_ClearFrameBuffer_Vintagestory_API_Client_FrameBufferRef_System_Single___System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Client.IRenderAPI.ClearFrameBuffer(Vintagestory.API.Client.FrameBufferRef,System.Single[],System.Boolean,System.Boolean)">
+  ClearFrameBuffer(FrameBufferRef, float[], bool, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearFrameBuffer(FrameBufferRef framebuffer, float[] clearColor, bool clearDepthBuffer = true, bool clearColorBuffers = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>framebuffer</code> <a class="xref" href="Vintagestory.API.Client.FrameBufferRef.html">FrameBufferRef</a></dt>
+    <dd></dd>
+    <dt><code>clearColor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>clearDepthBuffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>clearColorBuffers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_CreateFrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateFrameBuffer*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_CreateFrameBuffer_Vintagestory_API_Client_FramebufferAttrs_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateFrameBuffer(Vintagestory.API.Client.FramebufferAttrs)">
+  CreateFrameBuffer(FramebufferAttrs)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FrameBufferRef CreateFrameBuffer(FramebufferAttrs fbattributes)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fbattributes</code> <a class="xref" href="Vintagestory.API.Client.FramebufferAttrs.html">FramebufferAttrs</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.FrameBufferRef.html">FrameBufferRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_IRenderAPI_CreateFrameBuffer_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateFrameBuffer*"></a>
 
   <h3 id="Vintagestory_API_Client_IRenderAPI_CreateFrameBuffer_Vintagestory_API_Client_LoadedTexture_" data-uid="Vintagestory.API.Client.IRenderAPI.CreateFrameBuffer(Vintagestory.API.Client.LoadedTexture)">
@@ -1645,6 +1749,37 @@ It is recommended to use this methods in a few spots during render code to track
     <pre><code class="lang-csharp hljs">void GLEnableDepthTest()</code></pre>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_GenTexture_" data-uid="Vintagestory.API.Client.IRenderAPI.GenTexture*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_GenTexture_Vintagestory_API_Client_RawTexture_" data-uid="Vintagestory.API.Client.IRenderAPI.GenTexture(Vintagestory.API.Client.RawTexture)">
+  GenTexture(RawTexture)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void GenTexture(RawTexture texture)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <a class="xref" href="Vintagestory.API.Client.RawTexture.html">RawTexture</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -2508,6 +2643,50 @@ It is recommended to use this methods in a few spots during render code to track
 
 
 
+  <a id="Vintagestory_API_Client_IRenderAPI_GrabScreenshot_" data-uid="Vintagestory.API.Client.IRenderAPI.GrabScreenshot*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_GrabScreenshot_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Client.IRenderAPI.GrabScreenshot(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+  GrabScreenshot(int, int, bool, bool, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">BitmapRef GrabScreenshot(int width, int height, bool scaleScreenshot, bool flip, bool withAlpha = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>scaleScreenshot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>flip</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>withAlpha</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BitmapRef.html">BitmapRef</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_IRenderAPI_LoadOrUpdateTextureFromBgra_" data-uid="Vintagestory.API.Client.IRenderAPI.LoadOrUpdateTextureFromBgra*"></a>
 
   <h3 id="Vintagestory_API_Client_IRenderAPI_LoadOrUpdateTextureFromBgra_System_Int32___System_Boolean_System_Int32_Vintagestory_API_Client_LoadedTexture__" data-uid="Vintagestory.API.Client.IRenderAPI.LoadOrUpdateTextureFromBgra(System.Int32[],System.Boolean,System.Int32,Vintagestory.API.Client.LoadedTexture@)">
@@ -2724,6 +2903,67 @@ int LoadTextureFromRgba(int[] rgbaPixels, int width, int height, bool linearMag,
     <dd><p>The OpenGL Identifier for the resulting texture.</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_OrthoMode_" data-uid="Vintagestory.API.Client.IRenderAPI.OrthoMode*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_OrthoMode_System_Int32_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Client.IRenderAPI.OrthoMode(System.Int32,System.Int32,System.Boolean)">
+  OrthoMode(int, int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OrthoMode(int width, int height, bool inverseY = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>inverseY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_IRenderAPI_PerspectiveMode_" data-uid="Vintagestory.API.Client.IRenderAPI.PerspectiveMode*"></a>
+
+  <h3 id="Vintagestory_API_Client_IRenderAPI_PerspectiveMode" data-uid="Vintagestory.API.Client.IRenderAPI.PerspectiveMode">
+  PerspectiveMode()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PerspectiveMode()</code></pre>
+  </div>
+
+
 
 
 

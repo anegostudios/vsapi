@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CompositeTexture
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Holds data about a texture. Also allows textures to be overlayed on top of one another. <a href="https://github.com/anegostudios/vsapi/blob/master///Client/Texture/CompositeTexture.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Holds data about a texture. Also allows textures to be overlayed on top of one another. <a href=https://github.com/anegostudios/vsapi/blob/master///Client/Texture/CompositeTexture.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -170,15 +170,15 @@ public class CompositeTexture</code></pre>
 	}
 },</code></pre>
 <p>Connected textures example (See <a href="https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962">https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962</a>)</p>
- <pre><code class="lang-json">"textures": {
- 	"all": {
- 		"base": "block/stone/cobblestone/tiling/1",
- 		"tiles": [
- 			{ "base": "block/stone/cobblestone/tiling/*" }
- 		],
- 		"tilesWidth": 4
- 	}
- }</code></pre>
+<pre><code class="lang-json">"textures": {
+	"all": {
+		"base": "block/stone/cobblestone/tiling/1",
+		"tiles": [
+			{ "base": "block/stone/cobblestone/tiling/*" }
+		],
+		"tilesWidth": 4
+	}
+}</code></pre>
 
 
 
@@ -256,13 +256,12 @@ public class CompositeTexture</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>255</jsondefault>-->
-<p>Can be used to modify the opacity of the texture. 255 is fully opaque, 0 is fully transparent.</p>
+  <div class="markdown level1 summary"><p>Can be used to modify the opacity of the texture. 255 is fully opaque, 0 is fully transparent.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;255&quot;, false)]
 public int Alpha</code></pre>
   </div>
 
@@ -349,13 +348,12 @@ public int Alpha</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.</p>
+  <div class="markdown level1 summary"><p>The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeTexture[] Alternates</code></pre>
   </div>
 
@@ -413,13 +411,12 @@ public CompositeTexture[] Alternates</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
-<p>The basic texture for this composite texture</p>
+  <div class="markdown level1 summary"><p>The basic texture for this composite texture</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public AssetLocation Base</code></pre>
   </div>
 
@@ -446,13 +443,12 @@ public AssetLocation Base</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A set of textures to overlay above this texture. The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation.</p>
+  <div class="markdown level1 summary"><p>A set of textures to overlay above this texture. The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public BlendedOverlayTexture[] BlendedOverlays</code></pre>
   </div>
 
@@ -539,13 +535,12 @@ public BlendedOverlayTexture[] BlendedOverlays</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>Rotation of the texture may only be a multiple of 90</p>
+  <div class="markdown level1 summary"><p>Rotation of the texture may only be a multiple of 90</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int Rotation</code></pre>
   </div>
 
@@ -572,8 +567,7 @@ public int Rotation</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A way of basic support for connected textures. Textures should be named numerically from 1 to <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_TilesWidth">TilesWidth</a> squared.
+  <div class="markdown level1 summary"><p>A way of basic support for connected textures. Textures should be named numerically from 1 to <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_TilesWidth">TilesWidth</a> squared.
 <br>E.g., if <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_TilesWidth">TilesWidth</a> is 3, the order follows the pattern of:<br>
 1 2 3 <br>
 4 5 6 <br>
@@ -582,7 +576,7 @@ public int Rotation</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public CompositeTexture[] Tiles</code></pre>
   </div>
 
@@ -609,13 +603,12 @@ public CompositeTexture[] Tiles</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The number of tiles in one direction that make up the full connected textures defined in <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_Tiles">Tiles</a>.</p>
+  <div class="markdown level1 summary"><p>The number of tiles in one direction that make up the full connected textures defined in <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_Tiles">Tiles</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int TilesWidth</code></pre>
   </div>
 
@@ -770,13 +763,12 @@ public static Dictionary&lt;AssetLocation, List&lt;IAsset&gt;&gt; wildcardsCache
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Obsolete</jsonoptional>-->
-<p>Obsolete. Use <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_BlendedOverlays">BlendedOverlays</a> instead.</p>
+  <div class="markdown level1 summary"><p>Obsolete. Use <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_BlendedOverlays">BlendedOverlays</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 public AssetLocation[] Overlays { set; }</code></pre>
   </div>
 

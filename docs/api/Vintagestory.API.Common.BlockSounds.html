@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BlockSounds
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A set of sounds that are defined for a block. All fields use default or empty sounds if not set. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockSounds.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A set of sounds that are defined for a block. All fields use default or empty sounds if not set. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockSounds.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -178,14 +178,13 @@ public class BlockSounds</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
-<p>Played in ambience for this block.</p>
+  <div class="markdown level1 summary"><p>Played in ambience for this block.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Ambient</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public AssetLocation? Ambient</code></pre>
   </div>
 
 
@@ -211,13 +210,12 @@ public AssetLocation Ambient</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
-<p>Amount of nearby ambient sound blocks in order to reach full ambient sound volume</p>
+  <div class="markdown level1 summary"><p>Amount of nearby ambient sound blocks in order to reach full ambient sound volume</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;10&quot;, false)]
 public float AmbientBlockCount</code></pre>
   </div>
 
@@ -244,13 +242,12 @@ public float AmbientBlockCount</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>3</jsondefault>-->
-<p>Adjacent ambient sound sources are merged to avoid playing too many sounds too loudly. This is the maximum distance a sound source can be from another to allow a merge.</p>
+  <div class="markdown level1 summary"><p>Adjacent ambient sound sources are merged to avoid playing too many sounds too loudly. This is the maximum distance a sound source can be from another to allow a merge.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;3&quot;, false)]
 public float AmbientMaxDistanceMerge</code></pre>
   </div>
 
@@ -277,13 +274,12 @@ public float AmbientMaxDistanceMerge</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Ambient</jsondefault>-->
-<p>The type of sound for this block's ambient sound.</p>
+  <div class="markdown level1 summary"><p>The type of sound for this block's ambient sound.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Ambient&quot;, false)]
 public EnumSoundType AmbientSoundType</code></pre>
   </div>
 
@@ -292,7 +288,7 @@ public EnumSoundType AmbientSoundType</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Client.EnumSoundType.html">EnumSoundType</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumSoundType.html">EnumSoundType</a></dt>
     <dd></dd>
   </dl>
 
@@ -315,14 +311,14 @@ public EnumSoundType AmbientSoundType</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
-<p>Played when this block is broken.</p>
+  <div class="markdown level1 summary"><p>Played when this block is broken.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public virtual AssetLocation Break { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;See game/soundconfig.json. Range defaults to 16.&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { true, 16 })]
+public virtual SoundAttributes Break { get; set; }</code></pre>
   </div>
 
 
@@ -331,7 +327,7 @@ public virtual AssetLocation Break { get; set; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -349,14 +345,13 @@ public virtual AssetLocation Break { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>Gets the sound that occurs when a specific tool hits a block.  (Note for coders: if none specified in the JSON, this will be null from version 1.20.4 onwards)</p>
+  <div class="markdown level1 summary"><p>Gets the sound that occurs when a specific tool hits a block.  (Note for coders: if none specified in the JSON, this will be null from version 1.20.4 onwards)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public virtual Dictionary&lt;EnumTool, BlockSounds&gt; ByTool { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public virtual Dictionary&lt;EnumTool, BlockSounds&gt;? ByTool { get; set; }</code></pre>
   </div>
 
 
@@ -383,14 +378,14 @@ public virtual Dictionary&lt;EnumTool, BlockSounds&gt; ByTool { get; set; }</cod
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
-<p>Played when this block is hit. Will be overridden by <a class="xref" href="Vintagestory.API.Common.BlockSounds.html#Vintagestory_API_Common_BlockSounds_ByTool">ByTool</a> if an appropriate tool is set.</p>
+  <div class="markdown level1 summary"><p>Played when this block is hit. Will be overridden by <a class="xref" href="Vintagestory.API.Common.BlockSounds.html#Vintagestory_API_Common_BlockSounds_ByTool">ByTool</a> if an appropriate tool is set.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public virtual AssetLocation Hit { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;See game/soundconfig.json. Range defaults to 16.&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { true, 16 })]
+public virtual SoundAttributes Hit { get; set; }</code></pre>
   </div>
 
 
@@ -399,7 +394,7 @@ public virtual AssetLocation Hit { get; set; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -417,14 +412,14 @@ public virtual AssetLocation Hit { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
-<p>Played when an entity moves inside this block. Primarily used for liquids.</p>
+  <div class="markdown level1 summary"><p>Played when an entity moves inside this block. Primarily used for liquids and foliage.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public virtual AssetLocation Inside { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None. Range defaults to 12.&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { true, 12 })]
+public virtual SoundAttributes Inside { get; set; }</code></pre>
   </div>
 
 
@@ -433,7 +428,7 @@ public virtual AssetLocation Inside { get; set; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -451,14 +446,14 @@ public virtual AssetLocation Inside { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
-<p>Played when this block is placed.</p>
+  <div class="markdown level1 summary"><p>Played when this block is placed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public virtual AssetLocation Place { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;See game/soundconfig.json. Range defaults to 16.&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { true, 16 })]
+public virtual SoundAttributes Place { get; set; }</code></pre>
   </div>
 
 
@@ -467,7 +462,7 @@ public virtual AssetLocation Place { get; set; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -485,14 +480,14 @@ public virtual AssetLocation Place { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
-<p>Played when an entity walks on this block.</p>
+  <div class="markdown level1 summary"><p>Played when an entity walks on this block.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public virtual AssetLocation Walk { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;See game/soundconfig.json. Range defaults to 12.&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { true, 12 })]
+public virtual SoundAttributes Walk { get; set; }</code></pre>
   </div>
 
 
@@ -501,7 +496,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -560,7 +555,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation GetBreakSound(EnumTool tool)</code></pre>
+    <pre><code class="lang-csharp hljs">public SoundAttributes GetBreakSound(EnumTool tool)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -572,7 +567,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd><p>The resulting sound</p>
 </dd>
   </dl>
@@ -590,7 +585,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_BlockSounds_GetBreakSound_" data-uid="Vintagestory.API.Common.BlockSounds.GetBreakSound*"></a>
 
   <h3 id="Vintagestory_API_Common_BlockSounds_GetBreakSound_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockSounds.GetBreakSound(Vintagestory.API.Common.IPlayer)">
-  GetBreakSound(IPlayer)
+  GetBreakSound(IPlayer?)
   
   </h3>
 
@@ -599,7 +594,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation GetBreakSound(IPlayer byPlayer)</code></pre>
+    <pre><code class="lang-csharp hljs">public SoundAttributes GetBreakSound(IPlayer? byPlayer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -610,7 +605,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -636,7 +631,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation GetHitSound(EnumTool tool)</code></pre>
+    <pre><code class="lang-csharp hljs">public SoundAttributes GetHitSound(EnumTool tool)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -647,7 +642,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -664,7 +659,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_BlockSounds_GetHitSound_" data-uid="Vintagestory.API.Common.BlockSounds.GetHitSound*"></a>
 
   <h3 id="Vintagestory_API_Common_BlockSounds_GetHitSound_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockSounds.GetHitSound(Vintagestory.API.Common.IPlayer)">
-  GetHitSound(IPlayer)
+  GetHitSound(IPlayer?)
   
   </h3>
 
@@ -673,7 +668,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocation GetHitSound(IPlayer byPlayer)</code></pre>
+    <pre><code class="lang-csharp hljs">public SoundAttributes GetHitSound(IPlayer? byPlayer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -684,7 +679,7 @@ public virtual AssetLocation Walk { get; set; }</code></pre>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 

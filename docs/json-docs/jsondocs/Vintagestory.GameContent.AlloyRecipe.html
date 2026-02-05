@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AlloyRecipe
   <dl><dt>Assembly</dt><dd>VSSurvivalMod.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>This is used to define what metals can be mixed together to create another type of metal inside of a crucible. <a href="https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Recipe/AlloyRecipe.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>This is used to define what metals can be mixed together to create another type of metal inside of a crucible. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Recipe/AlloyRecipe.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -169,7 +169,7 @@ public class AlloyRecipe</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public MetalAlloyIngredient[] Ingredients</code></pre>
   </div>
 
@@ -202,7 +202,7 @@ public MetalAlloyIngredient[] Ingredients</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public JsonItemStack Output</code></pre>
   </div>
 
@@ -225,7 +225,7 @@ public JsonItemStack Output</code></pre>
 
 
   <h3 id="Vintagestory_GameContent_AlloyRecipe_Enabled" data-uid="Vintagestory.GameContent.AlloyRecipe.Enabled">
-  Enabled (Optional) (Default: true)
+  Enabled (Optional) (Default: True)
   
   </h3>
 
@@ -235,7 +235,7 @@ public JsonItemStack Output</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool Enabled</code></pre>
   </div>
 

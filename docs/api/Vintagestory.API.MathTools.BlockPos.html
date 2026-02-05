@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class BlockPos
   </div>
 
   <div class="markdown summary"><p>A useful data structure when operating with block postions.<br>
-Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A common pitfall is writing code like: BlockPos abovePos = pos.Up(); - with this code abovePos and pos will reference to the same object! <a href="https://github.com/anegostudios/vsapi/blob/master///Math/BlockPos.cs">Open in GitHub</a></p>
+Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A common pitfall is writing code like: BlockPos abovePos = pos.Up(); - with this code abovePos and pos will reference to the same object! <a href=https://github.com/anegostudios/vsapi/blob/master///Math/BlockPos.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -1396,6 +1396,43 @@ Note this is dimension unaware</p>
 
 
 
+  <a id="Vintagestory_API_MathTools_BlockPos_DistanceTo_" data-uid="Vintagestory.API.MathTools.BlockPos.DistanceTo*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_DistanceTo_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.BlockPos.DistanceTo(Vintagestory.API.MathTools.Vec3d)">
+  DistanceTo(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the Euclidean distance to between this and given position. Note if dimensions are different returns maximum value (i.e. infinite)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float DistanceTo(Vec3d pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_BlockPos_DivCopy_" data-uid="Vintagestory.API.MathTools.BlockPos.DivCopy*"></a>
 
   <h3 id="Vintagestory_API_MathTools_BlockPos_DivCopy_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockPos.DivCopy(System.Int32)">
@@ -1803,6 +1840,43 @@ Note this is dimension unaware</p>
 
 
 
+  <a id="Vintagestory_API_MathTools_BlockPos_HorizontalManhattanDistance_" data-uid="Vintagestory.API.MathTools.BlockPos.HorizontalManhattanDistance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_HorizontalManhattanDistance_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.BlockPos.HorizontalManhattanDistance(Vintagestory.API.MathTools.BlockPos)">
+  HorizontalManhattanDistance(BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the manhattan distance to given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HorizontalManhattanDistance(BlockPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_BlockPos_HorizontalManhattenDistance_" data-uid="Vintagestory.API.MathTools.BlockPos.HorizontalManhattenDistance*"></a>
 
   <h3 id="Vintagestory_API_MathTools_BlockPos_HorizontalManhattenDistance_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.BlockPos.HorizontalManhattenDistance(Vintagestory.API.MathTools.BlockPos)">
@@ -1810,12 +1884,12 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns the manhatten distance to given position</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int HorizontalManhattenDistance(BlockPos pos)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the correct spelling, Manhattan, instead&quot;)]
+public int HorizontalManhattenDistance(BlockPos pos)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1914,20 +1988,20 @@ Note this is dimension unaware</p>
 
 
 
-  <a id="Vintagestory_API_MathTools_BlockPos_ManhattenDistance_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattenDistance*"></a>
+  <a id="Vintagestory_API_MathTools_BlockPos_ManhattanDistance_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattanDistance*"></a>
 
-  <h3 id="Vintagestory_API_MathTools_BlockPos_ManhattenDistance_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattenDistance(System.Int32,System.Int32,System.Int32)">
-  ManhattenDistance(int, int, int)
+  <h3 id="Vintagestory_API_MathTools_BlockPos_ManhattanDistance_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattanDistance(System.Int32,System.Int32,System.Int32)">
+  ManhattanDistance(int, int, int)
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns the manhatten distance to given position
+  <div class="markdown level1 summary"><p>Returns the manhattan distance to given position
 Note this is dimension unaware</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ManhattenDistance(int x, int y, int z)</code></pre>
+    <pre><code class="lang-csharp hljs">public int ManhattanDistance(int x, int y, int z)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1956,6 +2030,43 @@ Note this is dimension unaware</p>
 
 
 
+  <a id="Vintagestory_API_MathTools_BlockPos_ManhattanDistance_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattanDistance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_ManhattanDistance_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattanDistance(Vintagestory.API.MathTools.BlockPos)">
+  ManhattanDistance(BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the manhattan distance to given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ManhattanDistance(BlockPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_BlockPos_ManhattenDistance_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattenDistance*"></a>
 
   <h3 id="Vintagestory_API_MathTools_BlockPos_ManhattenDistance_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.BlockPos.ManhattenDistance(Vintagestory.API.MathTools.BlockPos)">
@@ -1963,12 +2074,12 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns the manhatten distance to given position</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ManhattenDistance(BlockPos pos)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the correct spelling, Manhattan, instead&quot;)]
+public int ManhattenDistance(BlockPos pos)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2100,6 +2211,46 @@ Note this is dimension unaware</p>
 
   <a id="Vintagestory_API_MathTools_BlockPos_Set_" data-uid="Vintagestory.API.MathTools.BlockPos.Set*"></a>
 
+  <h3 id="Vintagestory_API_MathTools_BlockPos_Set_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.BlockPos.Set(System.Double,System.Double,System.Double)">
+  Set(double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos Set(double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_BlockPos_Set_" data-uid="Vintagestory.API.MathTools.BlockPos.Set*"></a>
+
   <h3 id="Vintagestory_API_MathTools_BlockPos_Set_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockPos.Set(System.Int32,System.Int32,System.Int32)">
   Set(int, int, int)
   
@@ -2160,6 +2311,42 @@ Note this is dimension unaware</p>
     <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_BlockPos_Set_" data-uid="Vintagestory.API.MathTools.BlockPos.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_Set_Vintagestory_API_Common_Entities_EntityPos_" data-uid="Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.Common.Entities.EntityPos)">
+  Set(EntityPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos Set(EntityPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
     <dd></dd>
   </dl>
 
@@ -2659,7 +2846,7 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhatten distance</p>
+  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhattan distance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2700,7 +2887,7 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhatten distance</p>
+  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhattan distance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2777,7 +2964,7 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhatten distance.
+  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhattan distance.
 <br>If used within a non-zero dimension the resulting BlockPos will be dimensionless as it's a distance or offset between two positions</p>
 </div>
   <div class="markdown level1 conceptual"></div>

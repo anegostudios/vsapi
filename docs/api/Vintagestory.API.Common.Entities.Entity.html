@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class Entity
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>The basic class for all entities in the game <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/Entity.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>The basic class for all entities in the game <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/Entity.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -1285,37 +1285,6 @@ Class Entity
 
 
 
-  <h3 id="Vintagestory_API_Common_Entities_Entity_Pos" data-uid="Vintagestory.API.Common.Entities.Entity.Pos">
-  Pos
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Client position</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityPos Pos</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_API_Common_Entities_Entity_PositionBeforeFalling" data-uid="Vintagestory.API.Common.Entities.Entity.PositionBeforeFalling">
   PositionBeforeFalling
   
@@ -1504,37 +1473,6 @@ These behaviors may have their regular ticking (including ShouldExecute() etc) c
 
 
 
-  <h3 id="Vintagestory_API_Common_Entities_Entity_ServerPos" data-uid="Vintagestory.API.Common.Entities.Entity.ServerPos">
-  ServerPos
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Server simulated position. May not exactly match the client positon</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityPos ServerPos</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_API_Common_Entities_Entity_SimulationRange" data-uid="Vintagestory.API.Common.Entities.Entity.SimulationRange">
   SimulationRange
   
@@ -1701,7 +1639,7 @@ These behaviors may have their regular ticking (including ShouldExecute() etc) c
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityTagArray Tags</code></pre>
+    <pre><code class="lang-csharp hljs">public EntityTagSet Tags</code></pre>
   </div>
 
 
@@ -1709,7 +1647,7 @@ These behaviors may have their regular ticking (including ShouldExecute() etc) c
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagSet.html">EntityTagSet</a></dt>
     <dd></dd>
   </dl>
 
@@ -2537,7 +2475,8 @@ Set and Called by the Entities ServerSystem</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>CollidedVertically || CollidedHorizontally</p>
+  <div class="markdown level1 summary"><p>CollidedVertically || CollidedHorizontally.
+<br>Note, this flag is only effective on the Server side for most entities (because there is no client-side physics and therefore no client-side collision detection, and this flag is not synced)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2882,6 +2821,38 @@ A density below 1000 means the entity floats on top of water if has a physics si
 
 
 
+  <a id="Vintagestory_API_Common_Entities_Entity_Pos_" data-uid="Vintagestory.API.Common.Entities.Entity.Pos*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_Pos" data-uid="Vintagestory.API.Common.Entities.Entity.Pos">
+  Pos
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Client position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityPos Pos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_Entity_Properties_" data-uid="Vintagestory.API.Common.Entities.Entity.Properties*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_Properties" data-uid="Vintagestory.API.Common.Entities.Entity.Properties">
@@ -2935,6 +2906,38 @@ A density below 1000 means the entity floats on top of water if has a physics si
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_ServerPos_" data-uid="Vintagestory.API.Common.Entities.Entity.ServerPos*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_ServerPos" data-uid="Vintagestory.API.Common.Entities.Entity.ServerPos">
+  ServerPos
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Pos instead.&quot;)]
+public EntityPos ServerPos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
     <dd></dd>
   </dl>
 
@@ -3015,12 +3018,12 @@ A density below 1000 means the entity floats on top of water if has a physics si
   
   </h3>
 
-  <div class="markdown level1 summary"><p>ServerPos on server, Pos on client</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityPos SidedPos { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Pos instead.&quot;)]
+public EntityPos SidedPos { get; }</code></pre>
   </div>
 
 
@@ -3533,7 +3536,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <a id="Vintagestory_API_Common_Entities_Entity_GetBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.GetBehavior*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_GetBehavior__1" data-uid="Vintagestory.API.Common.Entities.Entity.GetBehavior``1">
-  GetBehavior&lt;T&gt;()
+  GetBehavior&lt;TEntityBehavior&gt;()
   
   </h3>
 
@@ -3542,21 +3545,63 @@ position in relation to the target position of the schematic to be imported.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual T? GetBehavior&lt;T&gt;() where T : EntityBehavior</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual TEntityBehavior? GetBehavior&lt;TEntityBehavior&gt;() where TEntityBehavior : EntityBehavior</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><span class="xref">T</span></dt>
+    <dt><span class="xref">TEntityBehavior</span></dt>
     <dd></dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
-    <dt><code>T</code></dt>
+    <dt><code>TEntityBehavior</code></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_GetBoneName_" data-uid="Vintagestory.API.Common.Entities.Entity.GetBoneName*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_GetBoneName_System_String_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.GetBoneName(System.String,System.String)">
+  GetBoneName(string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the bone name from entity properties attributes, or returns the fallback if not defined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetBoneName(string key, string fallback)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The attribute key to look up in entity properties</p>
+</dd>
+    <dt><code>fallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fallback bone name to use if the attribute is not found</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The bone name from attributes or the fallback value</p>
+</dd>
+  </dl>
+
 
 
 
@@ -3711,7 +3756,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <a id="Vintagestory_API_Common_Entities_Entity_GetInterface_" data-uid="Vintagestory.API.Common.Entities.Entity.GetInterface*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_GetInterface__1" data-uid="Vintagestory.API.Common.Entities.Entity.GetInterface``1">
-  GetInterface&lt;T&gt;()
+  GetInterface&lt;TInterface&gt;()
   
   </h3>
 
@@ -3720,19 +3765,19 @@ position in relation to the target position of the schematic to be imported.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual T GetInterface&lt;T&gt;() where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual TInterface? GetInterface&lt;TInterface&gt;() where TInterface : class</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><span class="xref">T</span></dt>
+    <dt><span class="xref">TInterface</span></dt>
     <dd></dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
-    <dt><code>T</code></dt>
+    <dt><code>TInterface</code></dt>
     <dd></dd>
   </dl>
 
@@ -3748,7 +3793,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <a id="Vintagestory_API_Common_Entities_Entity_GetInterfaces_" data-uid="Vintagestory.API.Common.Entities.Entity.GetInterfaces*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_GetInterfaces__1" data-uid="Vintagestory.API.Common.Entities.Entity.GetInterfaces``1">
-  GetInterfaces&lt;T&gt;()
+  GetInterfaces&lt;TInterface&gt;()
   
   </h3>
 
@@ -3757,19 +3802,19 @@ position in relation to the target position of the schematic to be imported.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual List&lt;T&gt; GetInterfaces&lt;T&gt;() where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual List&lt;TInterface&gt; GetInterfaces&lt;TInterface&gt;() where TInterface : class</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;TInterface&gt;</dt>
     <dd></dd>
   </dl>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
-    <dt><code>T</code></dt>
+    <dt><code>TInterface</code></dt>
     <dd></dd>
   </dl>
 
@@ -3955,7 +4000,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <a id="Vintagestory_API_Common_Entities_Entity_HasBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.HasBehavior*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_HasBehavior__1" data-uid="Vintagestory.API.Common.Entities.Entity.HasBehavior``1">
-  HasBehavior&lt;T&gt;()
+  HasBehavior&lt;TEntityBehavior&gt;()
   
   </h3>
 
@@ -3963,7 +4008,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool HasBehavior&lt;T&gt;() where T : EntityBehavior</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool HasBehavior&lt;TEntityBehavior&gt;() where TEntityBehavior : EntityBehavior</code></pre>
   </div>
 
 
@@ -3975,7 +4020,7 @@ position in relation to the target position of the schematic to be imported.</p>
 
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
-    <dt><code>T</code></dt>
+    <dt><code>TEntityBehavior</code></dt>
     <dd></dd>
   </dl>
 
@@ -3995,17 +4040,16 @@ position in relation to the target position of the schematic to be imported.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns true if all named tags are present</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool HasTags(params string[] tagsToMatch)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool HasTags(params string[] tags)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>tagsToMatch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -4191,37 +4235,6 @@ position in relation to the target position of the schematic to be imported.</p>
     <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_Entities_Entity_IsFirstTick_" data-uid="Vintagestory.API.Common.Entities.Entity.IsFirstTick*"></a>
-
-  <h3 id="Vintagestory_API_Common_Entities_Entity_IsFirstTick" data-uid="Vintagestory.API.Common.Entities.Entity.IsFirstTick">
-  IsFirstTick()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsFirstTick()</code></pre>
-  </div>
-
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
@@ -4602,7 +4615,7 @@ position in relation to the target position of the schematic to be imported.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called every 1/75 second</p>
+  <div class="markdown level1 summary"><p>Called every 20ms</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -5048,29 +5061,27 @@ Packetid = 2 is used for BehaviorHarvestable</p>
 
   <a id="Vintagestory_API_Common_Entities_Entity_PlayEntitySound_" data-uid="Vintagestory.API.Common.Entities.Entity.PlayEntitySound*"></a>
 
-  <h3 id="Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_" data-uid="Vintagestory.API.Common.Entities.Entity.PlayEntitySound(System.String,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single)">
-  PlayEntitySound(string, IPlayer, bool, float)
+  <h3 id="Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.Entities.Entity.PlayEntitySound(System.String,Vintagestory.API.Common.IPlayer)">
+  PlayEntitySound(string, IPlayer)
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Assumes that it is only called on the server</p>
+  <div class="markdown level1 summary"><p>Call this serverside, and it will play the sound for all nearby clients.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>String code for the sound</p>
+</dd>
     <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
-    <dd></dd>
-    <dt><code>randomizePitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-    <dt><code>range</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
+    <dd><p>If also calling clientside, pass in that client's player here</p>
+</dd>
   </dl>
 
 
@@ -5240,6 +5251,39 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>milliseconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_SetAttributesFrom_" data-uid="Vintagestory.API.Common.Entities.Entity.SetAttributesFrom*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_SetAttributesFrom_Newtonsoft_Json_Linq_JToken_" data-uid="Vintagestory.API.Common.Entities.Entity.SetAttributesFrom(Newtonsoft.Json.Linq.JToken)">
+  SetAttributesFrom(JToken)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add to WatchedAttributes any attributes specified in the Json token
+<br>Limited to only the specific WatchedAttributes for which this is implemented - in 1.21.1 for vanilla, that's only &quot;generation&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetAttributesFrom(JToken token)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <span class="xref">JToken</span></dt>
     <dd></dd>
   </dl>
 
@@ -5880,6 +5924,39 @@ Right after calling this method, the world edit system will call .ToBytes() to s
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>startPos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_doSplashEffects_" data-uid="Vintagestory.API.Common.Entities.Entity.doSplashEffects*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_doSplashEffects_System_Double_System_Double_" data-uid="Vintagestory.API.Common.Entities.Entity.doSplashEffects(System.Double,System.Double)">
+  doSplashEffects(double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void doSplashEffects(double splashStrength, double particleStrength)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>splashStrength</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>particleStrength</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 

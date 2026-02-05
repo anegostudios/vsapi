@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -33,13 +33,12 @@ namespace Vintagestory.API.Common
     public class CrushingProperties
     {
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// If set, the block/item is crusable in a pulverizer and this is the resulting itemstack once the crushing time is over.
         /// </summary>
-        [DocumentAsJson] public JsonItemStack CrushedStack;
+        [DocumentAsJson("Required")]
+        public JsonItemStack CrushedStack;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
         /// The hardness tier for this collectible. Affects what pounder cap must be used for pulverization.
         /// - 0 = stone
         /// - 1 = copper
@@ -47,13 +46,14 @@ namespace Vintagestory.API.Common
         /// - 3 = iron
         /// - 4 = steel
         /// </summary>
-        [DocumentAsJson] public int HardnessTier = 1;
+        [DocumentAsJson("Recommended", "1")]
+        public int HardnessTier = 1;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The random quantity of item to return. Note that this value is multiplied by <see cref="CrushedStack"/>'s quantity.
         /// </summary>
-        [DocumentAsJson] public NatFloat Quantity = NatFloat.One;
+        [DocumentAsJson("Optional", "1")]
+        public NatFloat Quantity = NatFloat.One;
 
 
         /// <summary>

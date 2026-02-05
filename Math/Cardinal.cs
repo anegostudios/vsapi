@@ -60,7 +60,9 @@ namespace Vintagestory.API.MathTools
         public string Initial { get; private set; }
         public string Code { get; private set; }
 
-        public bool IsDiagnoal { get; private set; }
+        [Obsolete("Use the correctly-spelled IsDiagonal instead")]
+        public bool IsDiagnoal => IsDiagonal;
+        public bool IsDiagonal { get; private set; }
 
         public int OppositeIndex { get; private set; }
 
@@ -71,7 +73,7 @@ namespace Vintagestory.API.MathTools
             this.Normali = normali;
             this.Normalf = new Vec3f(normali);
             this.Index = index;
-            this.IsDiagnoal = isDiagonal;
+            this.IsDiagonal = isDiagonal;
             this.OppositeIndex = oppositeIndex;
             byNormali.Add(normali, this);
             byInitial.Add(initial, this);

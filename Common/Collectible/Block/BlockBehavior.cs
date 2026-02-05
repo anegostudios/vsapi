@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -35,8 +35,17 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="byPlayer"></param>
         /// <param name="handling"></param>
+        [Obsolete("Implement OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier, ref EnumHandling handling) instead")]
         public virtual void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)
         {
+            handling = EnumHandling.PassThrough;
+        }
+
+        public virtual void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier, ref EnumHandling handling)
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            OnBlockBroken(world, pos, byPlayer, ref handling);    // Calling this to ensure that even behaviors with the obsolete overload of this get it called. But better to override this method instead.
+#pragma warning restore CS0618
             handling = EnumHandling.PassThrough;
         }
 
@@ -329,7 +338,7 @@ namespace Vintagestory.API.Common
             handling = EnumHandling.PassThrough;
         }
 
-        public override void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling handled)
+        public override void OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
         }

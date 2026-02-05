@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AdvancedParticleProperties
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Used to add a set of particle properties to a collectible. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Particle/AdvancedParticleProperties.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Used to add a set of particle properties to a collectible. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Particle/AdvancedParticleProperties.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -208,13 +208,13 @@ public class AdvancedParticleProperties : IParticlePropertiesProvider</code></pr
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
-<p>The Hue/Saturation/Value/Alpha for the color of the particle.</p>
+  <div class="markdown level1 summary"><p>The Hue/Saturation/Value/Alpha for the color of the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Random&quot;, false)]
 public NatFloat[] HsvaColor</code></pre>
   </div>
 
@@ -241,13 +241,13 @@ public NatFloat[] HsvaColor</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0, 0, 0</jsondefault>-->
-<p>Offset from the blocks hitboxes top middle position</p>
+  <div class="markdown level1 summary"><p>Offset from the blocks hitboxes top middle position</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0, 0, 0&quot;, false)]
 public NatFloat[] PosOffset</code></pre>
   </div>
 
@@ -403,13 +403,13 @@ public NatFloat[] PosOffset</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A transforming Blue value.</p>
+  <div class="markdown level1 summary"><p>A transforming Blue value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
   </div>
 
@@ -437,13 +437,13 @@ public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.</p>
+  <div class="markdown level1 summary"><p>The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float Bounciness { get; set; }</code></pre>
   </div>
 
@@ -471,13 +471,13 @@ public float Bounciness { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Whether or not to color the particle by the block it's on.</p>
+  <div class="markdown level1 summary"><p>Whether or not to color the particle by the block it's on.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool ColorByBlock { get; set; }</code></pre>
   </div>
 
@@ -505,13 +505,13 @@ public bool ColorByBlock { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>More particles that spawn when this particle dies.</p>
+  <div class="markdown level1 summary"><p>More particles that spawn when this particle dies.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
   </div>
 
@@ -539,13 +539,13 @@ public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Whether or not the particle dies in air.</p>
+  <div class="markdown level1 summary"><p>Whether or not the particle dies in air.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool DieInAir { get; set; }</code></pre>
   </div>
 
@@ -573,13 +573,13 @@ public bool DieInAir { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Whether or not the particle dies in water.</p>
+  <div class="markdown level1 summary"><p>Whether or not the particle dies in water.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool DieInLiquid { get; set; }</code></pre>
   </div>
 
@@ -607,13 +607,13 @@ public bool DieInLiquid { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>If true, particle dies if it falls below the rain height at its given location</p>
+  <div class="markdown level1 summary"><p>If true, particle dies if it falls below the rain height at its given location</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool DieOnRainHeightmap { get; set; }</code></pre>
   </div>
 
@@ -641,13 +641,13 @@ public bool DieOnRainHeightmap { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The gravity effect on the particle.</p>
+  <div class="markdown level1 summary"><p>The gravity effect on the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat GravityEffect { get; set; }</code></pre>
   </div>
 
@@ -675,13 +675,13 @@ public NatFloat GravityEffect { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A transforming Green value.</p>
+  <div class="markdown level1 summary"><p>A transforming Green value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
   </div>
 
@@ -741,13 +741,13 @@ public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The life length, in seconds, of the particle.</p>
+  <div class="markdown level1 summary"><p>The life length, in seconds, of the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat LifeLength { get; set; }</code></pre>
   </div>
 
@@ -807,13 +807,13 @@ public NatFloat LifeLength { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A transforming opacity value.</p>
+  <div class="markdown level1 summary"><p>A transforming opacity value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
   </div>
 
@@ -903,13 +903,13 @@ public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Cube</jsondefault>-->
-<p>Sets the base model for the particle.</p>
+  <div class="markdown level1 summary"><p>Sets the base model for the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Cube&quot;, false)]
 public EnumParticleModel ParticleModel { get; set; }</code></pre>
   </div>
 
@@ -969,13 +969,13 @@ public EnumParticleModel ParticleModel { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The quantity of the particles given.</p>
+  <div class="markdown level1 summary"><p>The quantity of the particles given.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat Quantity { get; set; }</code></pre>
   </div>
 
@@ -1003,13 +1003,13 @@ public NatFloat Quantity { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Allows each particle to randomly change its velocity over time.</p>
+  <div class="markdown level1 summary"><p>Allows each particle to randomly change its velocity over time.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool RandomVelocityChange { get; set; }</code></pre>
   </div>
 
@@ -1037,13 +1037,13 @@ public bool RandomVelocityChange { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A transforming Red value.</p>
+  <div class="markdown level1 summary"><p>A transforming Red value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
   </div>
 
@@ -1071,13 +1071,13 @@ public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>More particles that spawn from this particle over time. See <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval">SecondarySpawnInterval</a> to control rate.</p>
+  <div class="markdown level1 summary"><p>More particles that spawn from this particle over time. See <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval">SecondarySpawnInterval</a> to control rate.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre>
   </div>
 
@@ -1105,13 +1105,13 @@ public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The inverval that the <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles">SecondaryParticles</a> spawn.</p>
+  <div class="markdown level1 summary"><p>The inverval that the <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles">SecondaryParticles</a> spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
   </div>
 
@@ -1139,13 +1139,13 @@ public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Whether or not the particle is self propelled.</p>
+  <div class="markdown level1 summary"><p>Whether or not the particle is self propelled.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool SelfPropelled { get; set; }</code></pre>
   </div>
 
@@ -1173,13 +1173,13 @@ public bool SelfPropelled { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
-<p>The size of the particles given.</p>
+  <div class="markdown level1 summary"><p>The size of the particles given.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat Size { get; set; }</code></pre>
   </div>
 
@@ -1207,13 +1207,13 @@ public NatFloat Size { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>A transforming Size value.</p>
+  <div class="markdown level1 summary"><p>A transforming Size value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
   </div>
 
@@ -1241,13 +1241,13 @@ public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>Whether or not the particle floats on liquids.</p>
+  <div class="markdown level1 summary"><p>Whether or not the particle floats on liquids.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool SwimOnLiquid { get; set; }</code></pre>
   </div>
 
@@ -1275,13 +1275,13 @@ public bool SwimOnLiquid { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
-<p>Whether or not the particle collides with the terrain.</p>
+  <div class="markdown level1 summary"><p>Whether or not the particle collides with the terrain.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool TerrainCollision { get; set; }</code></pre>
   </div>
 
@@ -1309,13 +1309,13 @@ public bool TerrainCollision { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
-<p>The velocity of the particles.</p>
+  <div class="markdown level1 summary"><p>The velocity of the particles.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Random&quot;, false)]
 public NatFloat[] Velocity { get; set; }</code></pre>
   </div>
 
@@ -1343,13 +1343,13 @@ public NatFloat[] Velocity { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>A dynamic velocity value.</p>
+  <div class="markdown level1 summary"><p>A dynamic velocity value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
   </div>
 
@@ -1377,13 +1377,13 @@ public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The level of glow in the particle.</p>
+  <div class="markdown level1 summary"><p>The level of glow in the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int VertexFlags { get; set; }</code></pre>
   </div>
 
@@ -1411,13 +1411,13 @@ public int VertexFlags { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>How much the particles are affected by wind.</p>
+  <div class="markdown level1 summary"><p>How much the particles are affected by wind.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float WindAffectednes { get; set; }</code></pre>
   </div>
 

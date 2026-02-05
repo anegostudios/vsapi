@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #nullable disable
 
@@ -26,12 +26,12 @@ namespace Vintagestory.API.Common
     /// <code language="json">
     ///"nutritionPropsByType": {
 	///	"*-flyagaric-*": {
-	///		"saturation": 80,
+	///		"satiety": 80,
 	///		"health": -6.5,
 	///		"foodcategory": "Vegetable"
 	///	},
 	///	"*-earthball-*": {
-	///		"saturation": 80,
+	///		"satiety": 80,
 	///		"health": -8,
 	///		"foodcategory": "Vegetable"
 	///	},
@@ -42,22 +42,21 @@ namespace Vintagestory.API.Common
     public class FoodNutritionProperties
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Fruit</jsondefault>-->
         /// The category of the food.
         /// </summary>
-        [DocumentAsJson] public EnumFoodCategory FoodCategory;
+        [DocumentAsJson("Recommended", "Fruit")]
+        public EnumFoodCategory FoodCategory;
 
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The saturation restored by the food.
         /// </summary>
-        [DocumentAsJson] public float Satiety = 0f;
+        [DocumentAsJson("Recommended", "0")]
+        public float Satiety = 0f;
 
         /// <summary>
-        /// <!--<jsonoptional>Obsolete</jsonoptional>-->
         /// Obsolete - Please use <see cref="Satiety"/> instead.
         /// </summary>
-        [DocumentAsJson]
+        [DocumentAsJson("Obsolete")]
         [Obsolete("Use Satiety instead.")]
         public float Saturation
         {
@@ -66,34 +65,43 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-        /// How much eating this will affect the player's intoxication.
+        /// How much eating this will affect the player's intoxication. (0..1)
         /// </summary>
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         public float Intoxication
         {
             get; set;
         }
 
+
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+        /// How much eating this will affect the player's psychedelic perception. (0..1)
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
+        public float Psychedelic
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// The delay before that extra saturation starts to go away.
         /// </summary>
-        [DocumentAsJson] public float SaturationLossDelay = 10f;
+        [DocumentAsJson("Optional", "10")]
+        public float SaturationLossDelay = 10f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The health restored by the food. Usually actually used to hurt the player with negative values.
         /// </summary>
-        [DocumentAsJson] public float Health = 0f;
+        [DocumentAsJson("Optional", "0")]
+        public float Health = 0f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// When an instance of this collectible is eaten, what item stack should be returned to the player?
         /// Possible example: Eating a 'meat on a stick' item would return a single stick.
         /// (Note: Bowl meals/liquids are specially designed to do this through their attributes and class.)
         /// </summary>
-        [DocumentAsJson] public JsonItemStack EatenStack;
+        [DocumentAsJson("Optional", "None")]
+        public JsonItemStack EatenStack;
 
         /// <summary>
         /// Duplicates the nutrition properties, which includes cloning the stack that was eaten.
@@ -107,6 +115,7 @@ namespace Vintagestory.API.Common
                 Satiety = Satiety,
                 Health = Health,
                 Intoxication = Intoxication,
+                Psychedelic = Psychedelic,
                 EatenStack = EatenStack?.Clone()
             };
         }

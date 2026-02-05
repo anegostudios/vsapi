@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
@@ -6,8 +6,6 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
-
-#nullable disable
 
 namespace Vintagestory.API.Common
 {
@@ -27,18 +25,18 @@ namespace Vintagestory.API.Common
     public class BlockEntityBehaviorType
     {
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The ID for this block entity behavior.
         /// </summary>
         [JsonProperty]
-        public string Name;
+        [DocumentAsJson("Required")]
+        public string Name = null!;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A set of properties specific to the block entity behavior class.
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
-        public JsonObject properties;
+        [DocumentAsJson("Optional", "None")]
+        public JsonObject? properties;
     }
 
     /// <summary>
@@ -64,9 +62,9 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The properties of this block behavior.
         /// </summary>
-        public JsonObject properties;
+        public JsonObject? properties;
 
-        public ICoreAPI Api;
+        public ICoreAPI Api = null!;
         
         public BlockEntityBehavior(BlockEntity blockentity)
         {
@@ -93,12 +91,12 @@ namespace Vintagestory.API.Common
             
         }
 
-        public virtual void OnBlockBroken(IPlayer byPlayer = null)
+        public virtual void OnBlockBroken(IPlayer? byPlayer = null)
         {
             
         }
 
-        public virtual void OnBlockPlaced(ItemStack byItemStack = null)
+        public virtual void OnBlockPlaced(ItemStack? byItemStack = null)
         {
             
         }
@@ -144,6 +142,14 @@ namespace Vintagestory.API.Common
             
         }
 
+        /// <summary>
+        /// Let's you add your own meshes to a chunk. Don't reuse the meshdata instance anywhere in your code. Return true to skip the default mesh.
+        /// WARNING!
+        /// The Tesselator runs in a seperate thread, so you have to make sure the fields and methods you access inside this method are thread safe.
+        /// </summary>
+        /// <param name="mesher">The chunk mesh, add your stuff here</param>
+        /// <param name="tessThreadTesselator">If you need to tesselate something, you should use this tesselator, since using the main thread tesselator can cause race conditions and crash the game</param>
+        /// <returns>True to skip default mesh, false to also add the default mesh</returns>
         public virtual bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator)
         {
             return false;

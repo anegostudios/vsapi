@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
@@ -66,6 +66,13 @@ namespace Vintagestory.API.Common
         /// <param name="bagstack"></param>
         /// <returns></returns>
         EnumItemStorageFlags GetStorageFlags(ItemStack bagstack);
+
+        /// <summary>
+        /// The types of items that can be stored in this bag
+        /// </summary>
+        /// <param name="bagstack"></param>
+        /// <returns></returns>
+        IEnumerable<TagCondition<TagSet>> GetStorageTags(ItemStack bagStack, ICoreAPI api);
     }
 
     public class ItemSlotBagContent : ItemSlotSurvival
@@ -121,9 +128,9 @@ namespace Vintagestory.API.Common
 
         public void SaveSlotIntoBag(ItemSlotBagContent slot)
         {
-            ItemStack backPackStack = BagSlots[slot.BagIndex].Itemstack;
+            ItemStack backpackStack = BagSlots[slot.BagIndex].Itemstack;
 
-            backPackStack?.Collectible.GetCollectibleInterface<IHeldBag>().Store(backPackStack, slot);
+            backpackStack?.Collectible.GetCollectibleInterface<IHeldBag>().Store(backpackStack, slot);
         }
 
         public void SaveSlotsIntoBags()
@@ -133,8 +140,8 @@ namespace Vintagestory.API.Common
             /*foreach (var bagslot in BagSlots)
             {
                 if (bagslot.Empty) continue;
-                ItemStack backPackStack = bagslot.Itemstack;
-                backPackStack.Collectible.GetCollectibleInterface<IHeldBag>().Clear(backPackStack);
+                ItemStack backpackStack = bagslot.Itemstack;
+                backpackStack.Collectible.GetCollectibleInterface<IHeldBag>().Clear(backpackStack);
             }*/
             
             foreach (var slot in bagContents)

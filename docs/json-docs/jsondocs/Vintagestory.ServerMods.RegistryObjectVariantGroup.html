@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class RegistryObjectVariantGroup
   <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>This is used to define a set of variant groups for specific registry objects. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/RegistryObjectVariantGroup.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>This is used to define a set of variant groups for specific registry objects. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/RegistryObjectVariantGroup.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -123,16 +123,16 @@ public class RegistryObjectVariantGroup</code></pre>
 
 
   <h2 id="Vintagestory_ServerMods_RegistryObjectVariantGroup_examples">Examples</h2>
-  <pre><code class="lang-json">"variantgroups": [
-	{
-		"code": "type",
-		"states": [ "spelt", "rye", "flax", "rice", "cassava", "amaranth", "sunflower" ]
-	},
-	{
-		"code": "state",
-		"states": [ "partbaked", "perfect", "charred" ]
-	}
-],</code></pre>
+   <pre><code class="lang-json">"variantgroups": [
+ 	{
+ 		"code": "type",
+ 		"states": [ "spelt", "rye", "flax", "rice", "cassava", "amaranth", "sunflower" ]
+ 	},
+ 	{
+ 		"code": "state",
+ 		"states": [ "partbaked", "perfect", "charred" ]
+ 	}
+ ],</code></pre>
 <pre><code class="lang-json">"variantgroups": [
 	{
 		"code": "rock",
@@ -159,7 +159,7 @@ public class RegistryObjectVariantGroup</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string Code</code></pre>
   </div>
 
@@ -192,7 +192,7 @@ public string Code</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;None&quot;, false)]
 public string[] States</code></pre>
   </div>
 
@@ -225,7 +225,7 @@ public string[] States</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Multiply&quot;, false)]
 public EnumCombination Combine</code></pre>
   </div>
 
@@ -258,7 +258,7 @@ public EnumCombination Combine</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AssetLocation LoadFromProperties</code></pre>
   </div>
 
@@ -291,7 +291,7 @@ public AssetLocation LoadFromProperties</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AssetLocation[] LoadFromPropertiesCombine</code></pre>
   </div>
 
@@ -324,7 +324,7 @@ public AssetLocation[] LoadFromPropertiesCombine</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string OnVariant</code></pre>
   </div>
 

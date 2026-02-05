@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class CookingRecipeIngredient
   </div>
 
   <div class="markdown summary"><p>An ingredient for a <a class="xref" href="Vintagestory.GameContent.CookingRecipe.html">CookingRecipe</a>.
-Note that each ingredient can have multiple valid itemstacks that satisfy the ingredient. <a href="https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Cooking/CookingRecipeIngredient.cs">Open in GitHub</a></p>
+Note that each ingredient can have multiple valid itemstacks that satisfy the ingredient. <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Systems/Cooking/CookingRecipeIngredient.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -125,18 +125,18 @@ public class CookingRecipeIngredient</code></pre>
 
   <h2 id="Vintagestory_GameContent_CookingRecipeIngredient_examples">Examples</h2>
   <pre><code class="lang-json">{
-	"code": "water",
-	"validStacks": [
-		{
-			"type": "item",
-			"code": "waterportion",
-			"shapeElement": "bowl/water"
-		}
-	],
-	"minQuantity": 1,
-	"maxQuantity": 1,
-	"portionSizeLitres": 1
-}</code></pre>
+              	"code": "water",
+              	"validStacks": [
+              		{
+              			"type": "item",
+              			"code": "waterportion",
+              			"shapeElement": "bowl/water"
+              		}
+              	],
+              	"minQuantity": 1,
+              	"maxQuantity": 1,
+              	"portionSizeLitres": 1
+              }</code></pre>
 
 
 
@@ -157,7 +157,7 @@ public class CookingRecipeIngredient</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public required string Code</code></pre>
   </div>
 
@@ -190,7 +190,7 @@ public required string Code</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public int MaxQuantity</code></pre>
   </div>
 
@@ -223,7 +223,7 @@ public int MaxQuantity</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public int MinQuantity</code></pre>
   </div>
 
@@ -256,7 +256,7 @@ public int MinQuantity</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public string TypeName</code></pre>
   </div>
 
@@ -289,7 +289,7 @@ public string TypeName</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public required CookingRecipeStack[] ValidStacks</code></pre>
   </div>
 
@@ -322,7 +322,7 @@ public required CookingRecipeStack[] ValidStacks</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float PortionSizeLitres</code></pre>
   </div>
 

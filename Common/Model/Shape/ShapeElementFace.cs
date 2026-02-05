@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Common
 {
@@ -34,6 +34,18 @@ namespace Vintagestory.API.Common
         /// Whether or not the element is enabled.
         /// </summary>
         public bool Enabled = true;
+
+        /// <summary>
+        /// Sets Windmode[0]/[1]/[2]/[3] to value 8
+        /// </summary>
+        public bool Frostable
+        {
+            set
+            {
+                if (WindMode == null) WindMode = new sbyte[4];
+                WindMode[0] = WindMode[1] = WindMode[2] = WindMode[3] = 8;
+            }
+        }
 
     }
 }

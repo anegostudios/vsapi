@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 
 #nullable disable
 
@@ -59,16 +59,16 @@ namespace Vintagestory.API.Common
     public class CreativeTabAndStackList
     {
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// A list of creative tabs to put items into. Note that all itemstacks in <see cref="Stacks"/> will be placed in all tabs.
         /// </summary>
-        [DocumentAsJson] public string[] Tabs;
+        [DocumentAsJson("Required")]
+        public string[] Tabs;
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// A list of item stacks to put in tabs. Note that every itemstack here will be placed in every <see cref="Tabs"/> entry.
         /// </summary>
-        [DocumentAsJson] public JsonItemStack[] Stacks;
+        [DocumentAsJson("Required")]
+        public JsonItemStack[] Stacks;
 
         /// <summary>
         /// Reads the blocks and items from the Json files and converts them to an array of tabs which contain those blocks and items.

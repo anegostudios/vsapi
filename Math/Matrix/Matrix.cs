@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -108,26 +108,20 @@ namespace Vintagestory.API.Client
 
         public Matrixf RotateDeg(Vec3f degrees)
         {
-            Mat4f.RotateX(Values, Values, degrees.X * GameMath.DEG2RAD);
-            Mat4f.RotateY(Values, Values, degrees.Y * GameMath.DEG2RAD);
-            Mat4f.RotateZ(Values, Values, degrees.Z * GameMath.DEG2RAD);
+            Mat4f.RotateByXYZ(Values, degrees.X * GameMath.DEG2RAD, degrees.Y * GameMath.DEG2RAD, degrees.Z * GameMath.DEG2RAD);
             return this;
         }
 
 
         public Matrixf Rotate(Vec3f radians)
         {
-            Mat4f.RotateX(Values, Values, radians.X);
-            Mat4f.RotateY(Values, Values, radians.Y);
-            Mat4f.RotateZ(Values, Values, radians.Z);
+            Mat4f.RotateByXYZ(Values, radians.X, radians.Y, radians.Z);
             return this;
         }
 
         public Matrixf Rotate(float radX, float radY, float radZ)
         {
-            Mat4f.RotateX(Values, Values, radX);
-            Mat4f.RotateY(Values, Values, radY);
-            Mat4f.RotateZ(Values, Values, radZ);
+            Mat4f.RotateByXYZ(Values, radX, radY, radZ);
             return this;
         }
 

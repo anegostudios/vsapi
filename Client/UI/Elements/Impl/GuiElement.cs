@@ -168,6 +168,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Generates a texture with an ID. (A static version of generateTexture())
         /// </summary>
+        /// <param name="api"></param>
         /// <param name="surface">The image surface supplied.</param>
         /// <param name="textureId">The previous texture id.</param>
         /// <param name="linearMag">Whether or not the texture will have linear magnification.</param>

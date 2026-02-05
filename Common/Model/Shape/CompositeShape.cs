@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.MathTools;
@@ -47,73 +47,73 @@ namespace Vintagestory.API.Common
     public class CompositeShape
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>None</jsondefault>-->
         /// The path to this shape file.
         /// </summary>
-        [DocumentAsJson] public AssetLocation Base;
+        [DocumentAsJson("Recommended", "None")]
+        public AssetLocation Base;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>VintageStory</jsondefault>-->
         /// The format/filetype of this shape.
         /// </summary>
-        [DocumentAsJson] public EnumShapeFormat Format;
+        [DocumentAsJson("Optional", "VintageStory")]
+        public EnumShapeFormat Format;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.
         /// </summary>
-        [DocumentAsJson] public bool InsertBakedTextures;
+        [DocumentAsJson("Optional", "False")]
+        public bool InsertBakedTextures;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much, in degrees, should this shape be rotated around the X axis?
         /// </summary>
-        [DocumentAsJson] public float rotateX;
+        [DocumentAsJson("Optional", "0")]
+        public float rotateX;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much, in degrees, should this shape be rotated around the Y axis?
         /// </summary>
-        [DocumentAsJson] public float rotateY;
+        [DocumentAsJson("Optional", "0")]
+        public float rotateY;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much, in degrees, should this shape be rotated around the Z axis?
         /// </summary>
-        [DocumentAsJson] public float rotateZ;
+        [DocumentAsJson("Optional", "0")]
+        public float rotateZ;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much should this shape be offset on X axis?
         /// </summary>
-        [DocumentAsJson] public float offsetX;
+        [DocumentAsJson("Optional", "0")]
+        public float offsetX;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much should this shape be offset on Y axis?
         /// </summary>
-        [DocumentAsJson] public float offsetY;
+        [DocumentAsJson("Optional", "0")]
+        public float offsetY;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// How much should this shape be offset on Z axis?
         /// </summary>
-        [DocumentAsJson] public float offsetZ;
+        [DocumentAsJson("Optional", "0")]
+        public float offsetZ;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The scale of this shape on all axes.
         /// </summary>
-        [DocumentAsJson] public float Scale = 1f;
+        [DocumentAsJson("Optional", "1")]
+        public float Scale = 1f;
 
         public Vec3f RotateXYZCopy => new Vec3f(rotateX, rotateY, rotateZ);
         public Vec3f OffsetXYZCopy => new Vec3f(offsetX, offsetY, offsetZ);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the shape is chosen.
         /// </summary>
-        [DocumentAsJson] public CompositeShape[] Alternates = null;
+        [DocumentAsJson("Optional", "None")]
+        public CompositeShape[] Alternates = null;
 
         /// <summary>
         /// Includes the base shape
@@ -121,28 +121,28 @@ namespace Vintagestory.API.Common
         public CompositeShape[] BakedAlternates = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.
         /// </summary>
-        [DocumentAsJson] public CompositeShape[] Overlays = null;
+        [DocumentAsJson("Optional", "None")]
+        public CompositeShape[] Overlays = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// If true, the shape is created from a voxelized version of the first defined texture
         /// </summary>
-        [DocumentAsJson] public bool VoxelizeTexture = false;
+        [DocumentAsJson("Optional", "False")]
+        public bool VoxelizeTexture = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// If non zero will only tesselate the first n elements of the shape
         /// </summary>
-        [DocumentAsJson] public int? QuantityElements = null;
+        [DocumentAsJson("Optional", "None")]
+        public int? QuantityElements = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// If set will only tesselate elements with given name
         /// </summary>
-        [DocumentAsJson] public string[] SelectiveElements;
+        [DocumentAsJson("Optional", "None")]
+        public string[] SelectiveElements;
 
         /// <summary>
         /// If set will not tesselate elements with given name
@@ -158,6 +158,13 @@ namespace Vintagestory.API.Common
                 for (int i = 0; i < Overlays.Length; i++)
                 {
                     hashcode ^= Overlays[i].GetHashCode();
+                }
+            }
+            if (SelectiveElements != null)
+            {
+                for (int i = 0; i < SelectiveElements.Length; i++)
+                {
+                    hashcode ^= SelectiveElements[i].GetHashCode();
                 }
             }
 

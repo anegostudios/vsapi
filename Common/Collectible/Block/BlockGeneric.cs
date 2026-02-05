@@ -192,7 +192,7 @@ namespace Vintagestory.API.Common
             return base.TryPlaceBlockForWorldGen(blockAccessor, pos, onBlockFace, worldgenRandom, attributes);
         }
 
-        public override bool DoParticalSelection(IWorldAccessor world, BlockPos pos)
+        public override bool DoPartialSelection(IWorldAccessor world, BlockPos pos)
         {
             bool result = true;
             bool preventDefault = false;
@@ -204,7 +204,7 @@ namespace Vintagestory.API.Common
 
 
                 EnumHandling handled = EnumHandling.PassThrough;
-                bool behaviorResult = sbh.DoParticalSelection(world, pos, ref handled);
+                bool behaviorResult = sbh.DoPartialSelection(world, pos, ref handled);
                 if (handled != EnumHandling.PassThrough)
                 {
                     result &= behaviorResult;
@@ -217,7 +217,7 @@ namespace Vintagestory.API.Common
             if (preventDefault) return result;
 
 
-            return base.DoParticalSelection(world, pos);
+            return base.DoPartialSelection(world, pos);
         }
     }
 }

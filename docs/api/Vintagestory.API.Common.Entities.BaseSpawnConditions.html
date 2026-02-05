@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class BaseSpawnConditions
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A base class for entities spawning conditions. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Entity/SpawnConditions.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A base class for entities spawning conditions. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/SpawnConditions.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -164,7 +164,25 @@ public class BaseSpawnConditions : ClimateSpawnCondition</code></pre>
       <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinForestOrShrubs">ClimateSpawnCondition.MinForestOrShrubs</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_RandomMapCodePool">ClimateSpawnCondition.RandomMapCodePool</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MapCode">ClimateSpawnCondition.MapCode</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_HabitatSize">ClimateSpawnCondition.HabitatSize</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_SetFrom_Vintagestory_API_Common_Entities_ClimateSpawnCondition_">ClimateSpawnCondition.SetFrom(ClimateSpawnCondition)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MatchesClimate_Vintagestory_API_Common_ClimateCondition_">ClimateSpawnCondition.MatchesClimate(ClimateCondition)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MatchesForestation_Vintagestory_API_Common_ClimateCondition_">ClimateSpawnCondition.MatchesForestation(ClimateCondition)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_Clone">ClimateSpawnCondition.Clone()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -214,13 +232,12 @@ public class BaseSpawnConditions : ClimateSpawnCondition</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>WorldGenValues</jsondefault>-->
-<p>Whether the rain and temperature values are referring to the worldgen values (i.e. yearly averages) or the current values at the moment of spawning.</p>
+  <div class="markdown level1 summary"><p>Whether the rain and temperature values are referring to the worldgen values (i.e. yearly averages) or the current values at the moment of spawning.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;WorldGenValues&quot;, false)]
 public EnumGetClimateMode ClimateValueMode</code></pre>
   </div>
 
@@ -247,13 +264,12 @@ public EnumGetClimateMode ClimateValueMode</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>Additional companions for the spawn.</p>
+  <div class="markdown level1 summary"><p>Additional companions for the spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AssetLocation[] Companions</code></pre>
   </div>
 
@@ -280,8 +296,7 @@ public AssetLocation[] Companions</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The group of the spawn conditions. Vanilla groups are:<br></p>
+  <div class="markdown level1 summary"><p>The group of the spawn conditions. Vanilla groups are:<br></p>
 <ul>
 <li>hostile<br></li>
 <li>neutral<br></li>
@@ -294,7 +309,7 @@ and in locations where hostiles should not spawn.</li>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;None&quot;, false)]
 public string Group</code></pre>
   </div>
 
@@ -321,13 +336,12 @@ public string Group</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
-<p>the group size for the spawn.</p>
+  <div class="markdown level1 summary"><p>the group size for the spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;1&quot;, false)]
 public NatFloat HerdSize</code></pre>
   </div>
 
@@ -354,13 +368,12 @@ public NatFloat HerdSize</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>"air"</jsondefault>-->
-<p>The blocks that the object will spawn in.</p>
+  <div class="markdown level1 summary"><p>The blocks that the object will spawn in.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;air&quot;, false)]
 public AssetLocation[] InsideBlockCodes</code></pre>
   </div>
 
@@ -507,13 +520,12 @@ public AssetLocation[] InsideBlockCodes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>MaxLight</jsondefault>-->
-<p>The type of light counted for spawning purposes.</p>
+  <div class="markdown level1 summary"><p>The type of light counted for spawning purposes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;MaxLight&quot;, false)]
 public EnumLightLevelType LightLevelType</code></pre>
   </div>
 
@@ -540,13 +552,12 @@ public EnumLightLevelType LightLevelType</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>32</jsondefault>-->
-<p>The maximum light level for an object to spawn.</p>
+  <div class="markdown level1 summary"><p>The maximum light level for an object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;32&quot;, false)]
 public int MaxLightLevel</code></pre>
   </div>
 
@@ -573,13 +584,12 @@ public int MaxLightLevel</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
-<p>The minimum light level for an object to spawn.</p>
+  <div class="markdown level1 summary"><p>The minimum light level for an object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int MinLightLevel</code></pre>
   </div>
 
@@ -606,13 +616,12 @@ public int MinLightLevel</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
-<p>Checks to see if the object requires solid ground.</p>
+  <div class="markdown level1 summary"><p>Checks to see if the object requires solid ground.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool RequireSolidGround</code></pre>
   </div>
 
@@ -639,13 +648,12 @@ public bool RequireSolidGround</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
-<p>checks to see if the object can only spawn in the surface.</p>
+  <div class="markdown level1 summary"><p>checks to see if the object can only spawn on the surface.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool TryOnlySurface</code></pre>
   </div>
 
@@ -677,13 +685,12 @@ public bool TryOnlySurface</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Obsolete</jsonoptional>-->
-<p>Obsolete. Use <a class="xref" href="Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_HerdSize">HerdSize</a> instead.</p>
+  <div class="markdown level1 summary"><p>Obsolete. Use <a class="xref" href="Vintagestory.API.Common.Entities.BaseSpawnConditions.html#Vintagestory_API_Common_Entities_BaseSpawnConditions_HerdSize">HerdSize</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Obsolete&quot;, &quot;&quot;, false)]
 [Obsolete(&quot;Use HerdSize instead&quot;)]
 public NatFloat GroupSize { get; set; }</code></pre>
   </div>
@@ -747,8 +754,8 @@ public NatFloat GroupSize { get; set; }</code></pre>
 
   <a id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise*"></a>
 
-  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_Server_IServerWorldAccessor_System_String_System_Collections_Generic_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})">
-  Initialise(IServerWorldAccessor, string, Dictionary&lt;AssetLocation, Block[]&gt;)
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_MathTools_LCGRandom_Vintagestory_API_Server_IServerWorldAccessor_System_String_System_Collections_Generic_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.MathTools.LCGRandom,Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})">
+  Initialise(LCGRandom, IServerWorldAccessor, string, Dictionary&lt;AssetLocation, Block[]&gt;)
   
   </h3>
 
@@ -756,11 +763,13 @@ public NatFloat GroupSize { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Initialise(IServerWorldAccessor server, string entityName, Dictionary&lt;AssetLocation, Block[]&gt; searchCache)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Initialise(LCGRandom lcgrnd, IServerWorldAccessor server, string entityName, Dictionary&lt;AssetLocation, Block[]&gt; searchCache)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
+    <dt><code>lcgrnd</code> <a class="xref" href="Vintagestory.API.MathTools.LCGRandom.html">LCGRandom</a></dt>
+    <dd></dd>
     <dt><code>server</code> <a class="xref" href="Vintagestory.API.Server.IServerWorldAccessor.html">IServerWorldAccessor</a></dt>
     <dd></dd>
     <dt><code>entityName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>

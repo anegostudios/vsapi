@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface ITagRegistry | VintageStory API ">
       
-      <meta name="description" content="On server side: blocks, items, entities tags and tags from preloaded-tags.json are registered after &#39;AssetsLoaded&#39; and before &#39;AssetsFinalize&#39; stages. On client side: all tags are received from server along side blocks, times, and entities, an available in &#39;AssetsFinalize&#39; stage. Tags can be converted to tag array or tag id as soon as it is registered. Tags can be registered only on server side no later than &#39;AssetsFinalize&#39; stage.">
+      
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,11 +97,7 @@ Interface ITagRegistry
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>On server side: blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br>
-On client side: all tags are received from server along side blocks, times, and entities, an available in 'AssetsFinalize' stage.<br>
-Tags can be converted to tag array or tag id as soon as it is registered.<br>
-Tags can be registered only on server side no later than 'AssetsFinalize' stage.</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -134,513 +130,24 @@ Tags can be registered only on server side no later than 'AssetsFinalize' stage.
 </h2>
 
 
-  <a id="Vintagestory_API_Common_ITagRegistry_BlockTagIdToTag_" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagIdToTag*"></a>
+  <a id="Vintagestory_API_Common_ITagRegistry_GetAllTags_" data-uid="Vintagestory.API.Common.ITagRegistry.GetAllTags*"></a>
 
-  <h3 id="Vintagestory_API_Common_ITagRegistry_BlockTagIdToTag_System_UInt16_" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagIdToTag(System.UInt16)">
-  BlockTagIdToTag(ushort)
+  <h3 id="Vintagestory_API_Common_ITagRegistry_GetAllTags" data-uid="Vintagestory.API.Common.ITagRegistry.GetAllTags">
+  GetAllTags()
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns tag by block tag id. If the tag id is not registered, it will return empty string.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string BlockTagIdToTag(ushort id)</code></pre>
+    <pre><code class="lang-csharp hljs">string[] GetAllTags()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd><p>Block tag id</p>
-</dd>
-  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>tag</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_BlockTagToTagId_" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagToTagId*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_BlockTagToTagId_System_String_" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagToTagId(System.String)">
-  BlockTagToTagId(string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns tag id of the block tag. If the tag is not registered, it will return 0.<br>
-Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ushort BlockTagToTagId(string tag)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Block tag</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd><p>tag id</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_BlockTagsToTagArray_" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagsToTagArray*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_BlockTagsToTagArray_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagsToTagArray(System.String[])">
-  BlockTagsToTagArray(params string[])
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Converts list of block tags to tags array. Unknown tags are ignored.<br>
-Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">BlockTagArray BlockTagsToTagArray(params string[] tags)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>List of block tags</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.BlockTagArray.html">BlockTagArray</a></dt>
-    <dd><p>Tag array suitable for quick comparisons</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_BlockTagsToTagIds_" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagsToTagIds*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_BlockTagsToTagIds_System_String___System_Boolean_" data-uid="Vintagestory.API.Common.ITagRegistry.BlockTagsToTagIds(System.String[],System.Boolean)">
-  BlockTagsToTagIds(string[], bool)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Converts a list of block tags to their corresponding tag IDs.<br>
-If removeUnknownTags is true, any unknown tags will be removed from the list.<br>
-Result is sorted in ascending order.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ushort[] BlockTagsToTagIds(string[] tags, bool removeUnknownTags = false)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>List of block tags</p>
-</dd>
-    <dt><code>removeUnknownTags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>If set to true, not registered tags wont be included in the result</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>[]</dt>
-    <dd><p>List of tag ids sorted in ascending order</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_EntityTagIdToTag_" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagIdToTag*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_EntityTagIdToTag_System_UInt16_" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagIdToTag(System.UInt16)">
-  EntityTagIdToTag(ushort)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns tag by entity tag id. If the tag id is not registered, it will return empty string.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string EntityTagIdToTag(ushort id)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd><p>Entity tag id</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>tag</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_EntityTagToTagId_" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagToTagId*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_EntityTagToTagId_System_String_" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagToTagId(System.String)">
-  EntityTagToTagId(string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns tag id of the entity tag. If the tag is not registered, it will return 0.<br>
-Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ushort EntityTagToTagId(string tag)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Entity tag</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd><p>tag id</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_EntityTagsToTagArray_" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagsToTagArray*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_EntityTagsToTagArray_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagsToTagArray(System.String[])">
-  EntityTagsToTagArray(params string[])
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Converts list of entity tags to tags array. Unknown tags are ignored.<br>
-Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EntityTagArray EntityTagsToTagArray(params string[] tags)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>List of entity tags</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagArray.html">EntityTagArray</a></dt>
-    <dd><p>Tag array suitable for quick comparisons</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_EntityTagsToTagIds_" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagsToTagIds*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_EntityTagsToTagIds_System_String___System_Boolean_" data-uid="Vintagestory.API.Common.ITagRegistry.EntityTagsToTagIds(System.String[],System.Boolean)">
-  EntityTagsToTagIds(string[], bool)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Converts a list of entity tags to their corresponding tag IDs.<br>
-If removeUnknownTags is true, any unknown tags will be removed from the list.<br>
-Result is sorted in ascending order.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ushort[] EntityTagsToTagIds(string[] tags, bool removeUnknownTags = false)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>List of entity tags</p>
-</dd>
-    <dt><code>removeUnknownTags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>If set to true, not registered tags wont be included in the result</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>[]</dt>
-    <dd><p>List of tag ids sorted in ascending order</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_ItemTagIdToTag_" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagIdToTag*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_ItemTagIdToTag_System_UInt16_" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagIdToTag(System.UInt16)">
-  ItemTagIdToTag(ushort)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns tag by item tag id. If the tag id is not registered, it will return empty string.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string ItemTagIdToTag(ushort id)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd><p>Item tag id</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>tag</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_ItemTagToTagId_" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagToTagId*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_ItemTagToTagId_System_String_" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagToTagId(System.String)">
-  ItemTagToTagId(string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Returns tag id of the item tag. If the tag is not registered, it will return 0.<br>
-Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ushort ItemTagToTagId(string tag)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>Item tag</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
-    <dd><p>tag id</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_ItemTagsToTagArray_" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagsToTagArray*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_ItemTagsToTagArray_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagsToTagArray(System.String[])">
-  ItemTagsToTagArray(params string[])
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Converts list of item tags to tags array. Unknown tags are ignored.<br>
-Blocks, items, entities tags and tags from preloaded-tags.json are registered after 'AssetsLoaded' and before 'AssetsFinalize' stages.<br></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ItemTagArray ItemTagsToTagArray(params string[] tags)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>List of item tags</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.ItemTagArray.html">ItemTagArray</a></dt>
-    <dd><p>Tag array suitable for quick comparisons</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_ItemTagsToTagIds_" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagsToTagIds*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_ItemTagsToTagIds_System_String___System_Boolean_" data-uid="Vintagestory.API.Common.ITagRegistry.ItemTagsToTagIds(System.String[],System.Boolean)">
-  ItemTagsToTagIds(string[], bool)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Converts a list of item tags to their corresponding tag IDs.<br>
-If removeUnknownTags is true, any unknown tags will be removed from the list.<br>
-Result is sorted in ascending order.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ushort[] ItemTagsToTagIds(string[] tags, bool removeUnknownTags = false)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd><p>List of item tags</p>
-</dd>
-    <dt><code>removeUnknownTags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>If set to true, not registered tags wont be included in the result</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>[]</dt>
-    <dd><p>List of tag ids sorted in ascending order</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_LoadTagsFromAssets_" data-uid="Vintagestory.API.Common.ITagRegistry.LoadTagsFromAssets*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_LoadTagsFromAssets_Vintagestory_API_Server_ICoreServerAPI_" data-uid="Vintagestory.API.Common.ITagRegistry.LoadTagsFromAssets(Vintagestory.API.Server.ICoreServerAPI)">
-  LoadTagsFromAssets(ICoreServerAPI)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Loads tags from 'TagRegistry.TagsAssetPath' assets from all domains. Is only used by 'RegistryObjectTypeLoader'. Not meant to be called by mods.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void LoadTagsFromAssets(ICoreServerAPI api)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Server.ICoreServerAPI.html">ICoreServerAPI</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -654,84 +161,18 @@ Result is sorted in ascending order.</p>
 
 
 
+  <a id="Vintagestory_API_Common_ITagRegistry_RegisterTags_" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterTags*"></a>
 
-  <a id="Vintagestory_API_Common_ITagRegistry_RegisterBlockTags_" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterBlockTags*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_RegisterBlockTags_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterBlockTags(System.String[])">
-  RegisterBlockTags(params string[])
+  <h3 id="Vintagestory_API_Common_ITagRegistry_RegisterTags_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterTags(System.String[])">
+  RegisterTags(params string[])
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Registers new block tags. Should be called only on server side. Should be called no later than 'AssetsFinalize' stage.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RegisterBlockTags(params string[] tags)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_RegisterEntityTags_" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterEntityTags*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_RegisterEntityTags_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterEntityTags(System.String[])">
-  RegisterEntityTags(params string[])
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Registers new entity tags. Should be called only on server side. Should be called no later than 'AssetsFinalize' stage.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RegisterEntityTags(params string[] tags)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_RegisterItemTags_" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterItemTags*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_RegisterItemTags_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterItemTags(System.String[])">
-  RegisterItemTags(params string[])
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Registers new item tags. Should be called only on server side. Should be called no later than 'AssetsFinalize' stage.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RegisterItemTags(params string[] tags)</code></pre>
+    <pre><code class="lang-csharp hljs">void RegisterTags(params string[] tags)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

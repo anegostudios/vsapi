@@ -7,8 +7,8 @@ namespace Vintagestory.API.Util
 {
     public static class SerializerUtil
     {
-        public delegate void ByteWriteDelegatae(BinaryWriter writer);
-        public delegate void ByteReadDelegatae(BinaryReader reader);
+        public delegate void ByteWriteDelegate(BinaryWriter writer);
+        public delegate void ByteReadDelegate(BinaryReader reader);
 
         public static readonly byte[] SerializedOne;
         public static readonly byte[] SerializedZero;
@@ -96,7 +96,7 @@ namespace Vintagestory.API.Util
             }
         }
 
-        public static byte[] ToBytes(ByteWriteDelegatae toWrite)
+        public static byte[] ToBytes(ByteWriteDelegate toWrite)
         {
             using (MemoryStream ms = new MemoryStream())
             {
@@ -109,7 +109,7 @@ namespace Vintagestory.API.Util
             }
         }
 
-        public static void FromBytes(byte[] data, ByteReadDelegatae toRead)
+        public static void FromBytes(byte[] data, ByteReadDelegate toRead)
         {
             using (MemoryStream ms = new MemoryStream(data))
             {

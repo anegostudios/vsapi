@@ -24,6 +24,17 @@ namespace Vintagestory.API.Client
         public bool Structures;
     }
 
+    public interface IMultiStageDecals
+    {
+        int StageForVertex(MeshData decalMesh, int vertexIndex);
+    }
+
+    public interface IDecalApi
+    {
+        Dictionary<string, int> TextureNameToIdMapping { get; }
+        TextureAtlasPosition[] DecalTextureAtlasPositionsByTextureSubId { get; }
+    }
+
     /// <summary>
     /// The main api component to assist you in rendering pretty stuff onto the screen
     /// </summary>
@@ -46,7 +57,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Set the current framebuffer
         /// </summary>
-        FrameBufferRef FrameBuffer { set; }
+        FrameBufferRef CurrentFrameBuffer { set; get; }
 
         /// <summary>
         /// A number of default shader uniforms
@@ -124,9 +135,12 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         ItemRenderInfo GetItemStackRenderInfo(ItemSlot inSlot, EnumItemRenderTarget ground, float dt);
 
+        IDecalApi Decal { get; }
 
         #region OpenGL
 
+        void OrthoMode(int width, int height, bool inverseY = false);
+        void PerspectiveMode();
         void Reset3DProjection();
         void Set3DProjection(float zfar, float fov);
 
@@ -316,6 +330,11 @@ namespace Vintagestory.API.Client
         #endregion
 
         #region Texture
+
+        BitmapRef GrabScreenshot(int width, int height, bool scaleScreenshot, bool flip, bool withAlpha = false);
+
+        void GenTexture(RawTexture texture);
+
         /// <summary>
         /// Creates a bitmap from a given PNG.
         /// </summary>
@@ -735,7 +754,6 @@ namespace Vintagestory.API.Client
         /// Renders given texture onto the screen, uses supplied quad for rendering (gui mode)
         /// </summary>
         /// <param name="quadModel"></param>
-        /// <param name="textureid"></param>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="width"></param>
@@ -789,6 +807,9 @@ namespace Vintagestory.API.Client
         void RenderLine(BlockPos origin, float posX1, float posY1, float posZ1, float posX2, float posY2, float posZ2, int color);
 
         FrameBufferRef CreateFrameBuffer(LoadedTexture intoTexture);
+        FrameBufferRef CreateFrameBuffer(FramebufferAttrs fbattributes);
+
+        void ClearFrameBuffer(FrameBufferRef framebuffer, float[] clearColor, bool clearDepthBuffer = true, bool clearColorBuffers = true);
 
         void RenderTextureIntoFrameBuffer(int atlasTextureId, LoadedTexture fromTexture, float sourceX, float sourceY, float sourceWidth, float sourceHeight, FrameBufferRef fb, float targetX, float targetY, float alphaTest = 0.005f);
 

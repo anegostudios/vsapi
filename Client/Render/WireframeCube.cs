@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.Client;
+using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -78,7 +78,7 @@ namespace Vintagestory.Client.NoObf
             capi.Render.GlToggleBlend(true);
 
 
-            prog.Uniform("origin", new Vec3f(0, 0, 0));
+            prog.Uniform("origin", 0f, 0f, 0f);
             prog.UniformMatrix("projectionMatrix", capi.Render.CurrentProjectionMatrix);
             prog.UniformMatrix("modelViewMatrix", mat.Values);
             prog.Uniform("colorIn", color ?? ColorUtil.WhiteArgbVec);
@@ -92,10 +92,11 @@ namespace Vintagestory.Client.NoObf
                 capi.Render.LineWidth = 1.6f;
             }
 
-            if (RuntimeEnv.OS != OS.Mac)
+            if (RuntimeEnv.OS == OS.Mac)
             {
-                capi.Render.GLDepthMask(true);
+                capi.Render.GLDisableDepthTest();
             }
+            capi.Render.GLDepthMask(true);
         }
 
         public void Dispose()

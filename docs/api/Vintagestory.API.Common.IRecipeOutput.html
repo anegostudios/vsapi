@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -101,7 +101,7 @@ Interface IRecipeOutput
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IRecipeOutput</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IRecipeOutput : IByteSerializable, ICloneable</code></pre>
   </div>
 
 
@@ -110,6 +110,19 @@ Interface IRecipeOutput
 
 
 
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IByteSerializable.html#Vintagestory_API_Common_IByteSerializable_ToBytes_System_IO_BinaryWriter_">IByteSerializable.ToBytes(BinaryWriter)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IByteSerializable.html#Vintagestory_API_Common_IByteSerializable_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_">IByteSerializable.FromBytes(BinaryReader, IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable.clone">ICloneable.Clone()</a>
+    </div>
+  </dd></dl>
 
   <dl class="typelist extensionMethods">
     <dt>Extension Methods</dt>
@@ -121,6 +134,41 @@ Interface IRecipeOutput
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
   </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_IRecipeOutput_ResolvedItemStack_" data-uid="Vintagestory.API.Common.IRecipeOutput.ResolvedItemStack*"></a>
+
+  <h3 id="Vintagestory_API_Common_IRecipeOutput_ResolvedItemStack" data-uid="Vintagestory.API.Common.IRecipeOutput.ResolvedItemStack">
+  ResolvedItemStack
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemStack? ResolvedItemStack { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
 
 
 
@@ -152,6 +200,44 @@ Interface IRecipeOutput
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IRecipeOutput_Resolve_" data-uid="Vintagestory.API.Common.IRecipeOutput.Resolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_IRecipeOutput_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_" data-uid="Vintagestory.API.Common.IRecipeOutput.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)">
+  Resolve(IWorldAccessor, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Resolve(IWorldAccessor world, string sourceForErrorLogging)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>sourceForErrorLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

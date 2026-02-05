@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.Client
 {
@@ -51,6 +51,26 @@ namespace Vintagestory.API.Client
         public TextureAtlasPosition Clone()
         {
             return new TextureAtlasPosition() { atlasTextureId = atlasTextureId, atlasNumber = atlasNumber, reloadIteration = reloadIteration, AvgColor = AvgColor, RndColors = RndColors, x1 = x1, y1 = y1, x2 = x2, y2 = y2 };
+        }
+
+        /// <summary>
+        /// Tests whether the given uv lies within this texture (including its edges) or not?
+        /// </summary>
+        public bool ContainsUV(float u, float v)
+        {
+            if (x1 <= x2)
+            {
+                if (u < x1 || u > x2) return false;
+            }
+            else if (u < x2 || u > x1) return false;
+
+            if (y1 <= y2)
+            {
+                if (v < y1 || v > y2) return false;
+            }
+            else if (v < y2 || v > y1) return false;
+
+            return true;
         }
     }
 }

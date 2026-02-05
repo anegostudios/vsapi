@@ -230,17 +230,10 @@ namespace Vintagestory.API.Client
                     currentLine.Clear();
                     currentLine.Add(i);
 
-                    posY += lineHeight;
-                    for (int k = 1; k < comp.BoundsPerLine.Length - 1; k++)
-                    {
-                        posY += comp.BoundsPerLine[k].Height;
-                    }
-                    posY += scaled(comp.UnscaledMarginTop);
-                    posY = Math.Ceiling(posY);
-
                     var lastBound = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1];
 
-                    
+                    posY = lastBound.Y;
+
                     if (lastBound.Width > 0)
                     {
                         lineHeight = lastBound.Height;

@@ -119,6 +119,15 @@ namespace Vintagestory.API.Client
         Ssao = 39,
         Bilateralblur = 40,
         Chunkliquiddepth = 41,
-        Chunkshadowmap_NoSSBOs = 42
+        /// <summary>
+        /// The part after the _ is not considered part of the file name
+        /// </summary>
+        Chunkshadowmap_NoSSBOs = 42,
+        Aurora = 43,
+        Cloudmap = 44,
+        Cloudvolumetric = 45,
+        Instanced = 46,
+        Lines = 47,
+        Entityanimated_Oit = 48
     }
 }

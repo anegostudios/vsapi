@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AdvancedParticleProperties
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Used to add a set of particle properties to a collectible. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Particle/AdvancedParticleProperties.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Used to add a set of particle properties to a collectible. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Particle/AdvancedParticleProperties.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -144,6 +144,7 @@ public class AdvancedParticleProperties</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
   </div>
 
@@ -178,6 +179,7 @@ public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float Bounciness { get; set; }</code></pre>
   </div>
 
@@ -201,7 +203,7 @@ public float Bounciness { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock">
-  ColorByBlock (Optional) (Default: false)
+  ColorByBlock (Optional) (Default: False)
   
   </h3>
 
@@ -212,6 +214,7 @@ public float Bounciness { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool ColorByBlock { get; set; }</code></pre>
   </div>
 
@@ -246,6 +249,7 @@ public bool ColorByBlock { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
   </div>
 
@@ -269,7 +273,7 @@ public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir">
-  DieInAir (Optional) (Default: false)
+  DieInAir (Optional) (Default: False)
   
   </h3>
 
@@ -280,6 +284,7 @@ public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool DieInAir { get; set; }</code></pre>
   </div>
 
@@ -303,7 +308,7 @@ public bool DieInAir { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid">
-  DieInLiquid (Optional) (Default: false)
+  DieInLiquid (Optional) (Default: False)
   
   </h3>
 
@@ -314,6 +319,7 @@ public bool DieInAir { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool DieInLiquid { get; set; }</code></pre>
   </div>
 
@@ -337,7 +343,7 @@ public bool DieInLiquid { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap">
-  DieOnRainHeightmap (Optional) (Default: false)
+  DieOnRainHeightmap (Optional) (Default: False)
   
   </h3>
 
@@ -348,6 +354,7 @@ public bool DieInLiquid { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool DieOnRainHeightmap { get; set; }</code></pre>
   </div>
 
@@ -382,6 +389,7 @@ public bool DieOnRainHeightmap { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat GravityEffect { get; set; }</code></pre>
   </div>
 
@@ -416,6 +424,7 @@ public NatFloat GravityEffect { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
   </div>
 
@@ -449,6 +458,7 @@ public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Random&quot;, false)]
 public NatFloat[] HsvaColor</code></pre>
   </div>
 
@@ -483,6 +493,7 @@ public NatFloat[] HsvaColor</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat LifeLength { get; set; }</code></pre>
   </div>
 
@@ -517,6 +528,7 @@ public NatFloat LifeLength { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
   </div>
 
@@ -551,6 +563,7 @@ public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Cube&quot;, false)]
 public EnumParticleModel ParticleModel { get; set; }</code></pre>
   </div>
 
@@ -584,6 +597,7 @@ public EnumParticleModel ParticleModel { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0, 0, 0&quot;, false)]
 public NatFloat[] PosOffset</code></pre>
   </div>
 
@@ -618,6 +632,7 @@ public NatFloat[] PosOffset</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat Quantity { get; set; }</code></pre>
   </div>
 
@@ -641,7 +656,7 @@ public NatFloat Quantity { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange">
-  RandomVelocityChange (Optional) (Default: false)
+  RandomVelocityChange (Optional) (Default: False)
   
   </h3>
 
@@ -652,6 +667,7 @@ public NatFloat Quantity { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool RandomVelocityChange { get; set; }</code></pre>
   </div>
 
@@ -686,6 +702,7 @@ public bool RandomVelocityChange { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
   </div>
 
@@ -720,6 +737,7 @@ public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre>
   </div>
 
@@ -754,6 +772,7 @@ public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
   </div>
 
@@ -777,7 +796,7 @@ public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled">
-  SelfPropelled (Optional) (Default: false)
+  SelfPropelled (Optional) (Default: False)
   
   </h3>
 
@@ -788,6 +807,7 @@ public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool SelfPropelled { get; set; }</code></pre>
   </div>
 
@@ -822,6 +842,7 @@ public bool SelfPropelled { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
 public NatFloat Size { get; set; }</code></pre>
   </div>
 
@@ -856,6 +877,7 @@ public NatFloat Size { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
   </div>
 
@@ -879,7 +901,7 @@ public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid">
-  SwimOnLiquid (Optional) (Default: false)
+  SwimOnLiquid (Optional) (Default: False)
   
   </h3>
 
@@ -890,6 +912,7 @@ public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
 public bool SwimOnLiquid { get; set; }</code></pre>
   </div>
 
@@ -913,7 +936,7 @@ public bool SwimOnLiquid { get; set; }</code></pre>
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision">
-  TerrainCollision (Optional) (Default: true)
+  TerrainCollision (Optional) (Default: True)
   
   </h3>
 
@@ -924,6 +947,7 @@ public bool SwimOnLiquid { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool TerrainCollision { get; set; }</code></pre>
   </div>
 
@@ -958,6 +982,7 @@ public bool TerrainCollision { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;Random&quot;, false)]
 public NatFloat[] Velocity { get; set; }</code></pre>
   </div>
 
@@ -992,6 +1017,7 @@ public NatFloat[] Velocity { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
   </div>
 
@@ -1026,6 +1052,7 @@ public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int VertexFlags { get; set; }</code></pre>
   </div>
 
@@ -1060,6 +1087,7 @@ public int VertexFlags { get; set; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public float WindAffectednes { get; set; }</code></pre>
   </div>
 

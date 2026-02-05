@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -78,6 +78,7 @@ namespace Vintagestory.API.Common
 
 
         protected HashSet<int> jointsDone = new HashSet<int>();
+        public static readonly float[] reusableIdentityMatrix = Mat4f.Create();   // This will be cloned within GenerateFrame() before being modified
 
 
         [OnDeserialized]
@@ -122,12 +123,7 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < resolvedKeyFrames.Length; i++)
             {
                 jointsDone.Clear();
-                GenerateFrame(i, resolvedKeyFrames, rootElements, jointsById, Mat4f.Create(), resolvedKeyFrames[i].RootElementTransforms, recursive);
-            }
-
-            for (int i = 0; i < resolvedKeyFrames.Length; i++)
-            {
-                resolvedKeyFrames[i].FinalizeMatrices(jointsById);
+                GenerateFrame(i, resolvedKeyFrames, rootElements, jointsById, reusableIdentityMatrix, resolvedKeyFrames[i].RootElementTransforms, recursive);
             }
 
             PrevNextKeyFrameByFrame = new AnimationFrame[QuantityFrames][];
@@ -149,6 +145,7 @@ namespace Vintagestory.API.Common
 
             if (frameNumber >= QuantityFrames) throw new InvalidOperationException("Invalid animation '" + Code + "'. Has QuantityFrames set to " + QuantityFrames + " but a key frame at frame " + frameNumber + ". QuantityFrames always must be higher than frame number");
 
+            float[] tmpLocalTransform = null;
             for (int i = 0; i < elements.Length; i++)
             {
                 ShapeElement element = elements[i];
@@ -159,17 +156,16 @@ namespace Vintagestory.API.Common
                 GenerateFrameForElement(frameNumber, element, ref animTransform);
                 transforms.Add(animTransform);
 
-                float[] animModelMatrix = Mat4f.CloneIt(modelMatrix);
-                Mat4f.Mul(animModelMatrix, animModelMatrix, element.GetLocalTransformMatrix(Version, null, animTransform));
-
                 if (element.JointId > 0 && !jointsDone.Contains(element.JointId))
                 {
-                    resKeyFrames[indexNumber].SetTransform(element.JointId, animModelMatrix);
                     jointsDone.Add(element.JointId);
                 }
 
                 if (recursive && element.Children != null)
                 {
+                    float[] animModelMatrix = Mat4f.CloneIt(modelMatrix);
+                    if (tmpLocalTransform == null) tmpLocalTransform = Mat4f.Create(); else Mat4f.Identity(tmpLocalTransform);   // Performance note: if not created here, it would be inside GetLocalTransformMatrix() anyhow
+                    Mat4f.Mul(animModelMatrix, animModelMatrix, element.GetLocalTransformMatrix(Version, tmpLocalTransform, animTransform));
                     GenerateFrame(indexNumber, resKeyFrames, element.Children, jointsById, animModelMatrix, animTransform.ChildElementPoses);
                 }
             }

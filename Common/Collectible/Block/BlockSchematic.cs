@@ -59,6 +59,9 @@ namespace Vintagestory.API.Common
         public Dictionary<int, AssetLocation> BlockCodes = new Dictionary<int, AssetLocation>();
         [JsonProperty]
         public Dictionary<int, AssetLocation> ItemCodes = new Dictionary<int, AssetLocation>();
+        /// <summary>
+        /// X/Y/Z position. First 10 bits is X, next 10 is Z and next 10 bits is Y
+        /// </summary>
         [JsonProperty]
         public List<uint> Indices = new List<uint>();
         [JsonProperty]
@@ -87,8 +90,9 @@ namespace Vintagestory.API.Common
         public List<Entity> EntitiesUnpacked = new List<Entity>();
         public Dictionary<BlockPos, Dictionary<int,Block>> DecorsUnpacked = new Dictionary<BlockPos, Dictionary<int,Block>>();
         public FastVec3i PackedOffset;
-        public List<BlockPosFacing> PathwayBlocksUnpacked;
+        public List<ConnectorMetaData> Connectors;
 
+        public static int ConnectorBlockId;
         public static int FillerBlockId;
         public static int PathwayBlockId;
         public static int UndergroundBlockId;
@@ -114,12 +118,12 @@ namespace Vintagestory.API.Common
         /// Set by the RemapperAssistant in OnFinalizeAssets
         /// <br/>Heads up!:  This is unordered, it will iterate through the different game versions' remaps not necessarily in the order they originally appear in remaps.json config.  If any block remaps over the years have duplicate original block names, behavior for those ones may be unpredictable
         /// </summary>
-        public static Dictionary<string, Dictionary<string, string>> BlockRemaps { get; set; }
+        public static IDictionary<string, Dictionary<string, string>> BlockRemaps { get; set; }
 
         /// <summary>
         /// Set by the RemapperAssistant in OnFinalizeAssets
         /// </summary>
-        public static Dictionary<string, Dictionary<string, string>> ItemRemaps { get; set; }
+        public static IDictionary<string, Dictionary<string, string>> ItemRemaps { get; set; }
         static BlockPos Zero = new BlockPos(0, 0, 0);
 
         /// <summary>
@@ -337,6 +341,8 @@ namespace Vintagestory.API.Common
             PathwaySides = new BlockFacing[pathwayslist.Count];
 
 
+            Vec3f dirToMiddle = new Vec3f();
+
             for (int i = 0; i < PathwayStarts.Length; i++)
             {
                 // Concept to determine on which side the door is:
@@ -346,7 +352,7 @@ namespace Vintagestory.API.Common
                 // => this is now basically the centerpoint of the door!
                 // 4. This final vector can now be used to determine the block facing
 
-                Vec3f dirToMiddle = new Vec3f();
+                dirToMiddle.Set(0f, 0f, 0f);
 
                 List<BlockPos> pathway = pathwayslist[i];
 
@@ -582,9 +588,9 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            if (PathwayBlocksUnpacked != null)
+            if (Connectors != null)
             {
-                foreach (var path in PathwayBlocksUnpacked)
+                foreach (var path in Connectors)
                 {
                     path.Position.X -= minX;
                     path.Position.Y -= minY;
@@ -700,7 +706,7 @@ namespace Vintagestory.API.Common
 
         public virtual void PlaceDecors(IBlockAccessor blockAccessor, BlockPos startPos)
         {
-            this.curPos.dimension = startPos.dimension;
+            this.curPos.SetDimension(startPos.dimension);
             for (int i = 0; i < DecorIndices.Count; i++)
             {
                 uint index = DecorIndices[i];
@@ -730,7 +736,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        BlockPos curPos = new BlockPos();
+        BlockPos curPos = new BlockPos(Config.Dimensions.WillSetLater);
         private void PlaceOneDecor(IBlockAccessor blockAccessor, int posX, int posY, int posZ, long storedBlockIdAndDecoPos)
         {
             var faceAndSubPosition = (int)(storedBlockIdAndDecoPos >> 24);
@@ -754,8 +760,7 @@ namespace Vintagestory.API.Common
         /// <param name="aroundOrigin"></param>
         /// <param name="angle"></param>
         /// <param name="flipAxis"></param>
-        /// <param name="isDungeon"></param>
-        public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null, bool isDungeon = false)
+        public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)
         {
             BlockPos startPos = new BlockPos(1024, 1024, 1024);
 
@@ -941,7 +946,7 @@ namespace Vintagestory.API.Common
                     {
                         be.Pos = pos;
                         be.CreateBehaviors(block, worldForResolve);
-                        rotatable.OnTransformed(worldForResolve ,tree, angle, BlockCodes, ItemCodes, flipAxis);
+                        rotatable.OnTransformed(worldForResolve, tree, angle, BlockCodes, ItemCodes, flipAxis);
                     }
                     tree.SetString("blockCode", block.Code.ToShortString());
                     beData = StringEncodeTreeAttribute(tree, reusableMemoryStream);
@@ -961,7 +966,7 @@ namespace Vintagestory.API.Common
 
                     entity.FromBytes(reader, false);
 
-                    var pos = entity.ServerPos;
+                    var pos = entity.Pos;
 
                     double offx = 0;
                     double offz = 0;
@@ -1002,7 +1007,6 @@ namespace Vintagestory.API.Common
                     pos.Yaw -= angle * GameMath.DEG2RAD;
 
                     entity.Pos.SetPos(pos);
-                    entity.ServerPos.SetPos(pos);
                     entity.PositionBeforeFalling.X = pos.X;
                     entity.PositionBeforeFalling.Z = pos.Z;
 

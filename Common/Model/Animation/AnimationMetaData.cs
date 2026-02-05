@@ -14,26 +14,6 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-    [DocumentAsJson]
-    public class AnimationSound
-    {
-        public int Frame;
-        public AssetLocation Location;
-        public bool RandomizePitch = true;
-        public float Range = 32;
-
-        public AnimationSound Clone()
-        {
-            return new AnimationSound()
-            {
-                Frame = Frame,
-                Location = Location.Clone(),
-                RandomizePitch = RandomizePitch,
-                Range = Range
-            };
-        }
-    }
-
     /// <summary>
     /// Defines how multiple animations should be blended together.
     /// </summary>
@@ -61,26 +41,26 @@ namespace Vintagestory.API.Common
     public class AnimationTrigger
     {
         /// <summary>
-        /// <!--<jsonoptional>Recommended</jsonoptional>-->
         /// An array of controls that should begin the animation.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Recommended")]
         public EnumEntityActivity[] OnControls;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// If set to true, all OnControls elements need to be happening simultaneously to trigger the animation.
         /// If set to false, at least one OnControls element needs to be happening to trigger the animation.
         /// Defaults to false.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool MatchExact = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Is this animation the default animation for the entity?
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool DefaultAnim = false;
 
         public AnimationTrigger Clone()
@@ -134,14 +114,13 @@ namespace Vintagestory.API.Common
     public class AnimationMetaData
     {
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// Unique identifier to be able to reference this AnimationMetaData instance
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Required")]
         public string Code;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Custom attributes that can be used for the animation.
         /// Valid vanilla attributes are:<br/>
         /// - damageAtFrame (float)<br/>
@@ -149,47 +128,47 @@ namespace Vintagestory.API.Common
         /// - authorative (bool)<br/>
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
+        [DocumentAsJson("Optional", "None")]
         public JsonObject Attributes;
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The animations code identifier that we want to play
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Required")]
         public string Animation;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The weight of this animation. When using multiple animations at a time, this controls the significance of each animation.
         /// The method for determining final animation values depends on this and <see cref="BlendMode"/>.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "1")]
         public float Weight = 1f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A way of specifying <see cref="Weight"/> for each element.
         /// Also see <see cref="ElementBlendMode"/> to control blend modes per element..
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "None")]
         public Dictionary<string, float> ElementWeight = new Dictionary<string, float>();
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The speed this animation should play at.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "1")]
         public float AnimationSpeed = 1f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Should this animation speed be multiplied by the movement speed of the entity?
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool MulWithWalkSpeed = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// This property can be used in cases where a animation with high weight is played alongside another animation with low element weight.
         /// In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue.<br/>
         /// - 0f = uncapped weight<br/>
@@ -197,69 +176,72 @@ namespace Vintagestory.API.Common
         /// - 1f = weight cannot exceed 1
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "0")]
         public float WeightCapFactor = 0f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
         /// A multiplier applied to the weight value to "ease in" the animation. Choose a high value for looping animations or it will be glitchy
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "10")]
         public float EaseInSpeed = 10f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
         /// A multiplier applied to the weight value to "ease out" the animation. Choose a high value for looping animations or it will be glitchy
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "10")]
         public float EaseOutSpeed = 10f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Controls when this animation should be played.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "None")]
         public AnimationTrigger TriggeredBy;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Add</jsondefault>-->
         /// The animation blend mode. Controls how this animation will react with other concurrent animations.
         /// Also see <see cref="ElementBlendMode"/> to control blend mode per element.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "Add")]
         public EnumAnimationBlendMode BlendMode = EnumAnimationBlendMode.Add;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A way of specifying <see cref="BlendMode"/> per element.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "None")]
         public Dictionary<string, EnumAnimationBlendMode> ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Should this animation stop default animations from playing?
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool SupressDefaultAnimation = false;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>99</jsondefault>-->
         /// A value that determines whether to change the first-person eye position for the camera.
         /// Higher values will keep eye position static.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "99")]
         public float HoldEyePosAfterEasein = 99f;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// If true, the server does not sync this animation.
         /// </summary>
         [JsonProperty]
+        [DocumentAsJson("Optional", "False")]
         public bool ClientSide;
+
         [JsonProperty]
         public bool WithFpVariant;
+
         [JsonProperty]
-        public AnimationSound AnimationSound;
+        public AnimationSound[] AnimationSounds;
 
         public AnimationMetaData FpVariant;
         public float StartFrameOnce;
@@ -295,9 +277,12 @@ namespace Vintagestory.API.Common
                 FpVariant.Init();
             }
 
-            if (AnimationSound != null)
+            for (int i = 0; AnimationSounds != null && i < AnimationSounds.Length; ++i)
             {
-                AnimationSound.Location.WithPathPrefixOnce("sounds/");
+                if (AnimationSounds[i]?.Attributes.Location == null)
+                {
+                    ShapeElement.Logger?.Warning("Animation with code '" + Code + "' has null sound at index " + i);
+                }
             }
 
             return this;
@@ -352,7 +337,7 @@ namespace Vintagestory.API.Common
             {
                 Code = this.Code,
                 Animation = this.Animation,
-                AnimationSound = this.AnimationSound,
+                AnimationSounds = this.AnimationSounds,
                 Weight = this.Weight,
                 Attributes = this.Attributes,
                 ClientSide = this.ClientSide,
@@ -441,13 +426,14 @@ namespace Vintagestory.API.Common
             writer.Write(Attributes?.ToString() ?? "");
             writer.Write(WeightCapFactor);
 
-            writer.Write(AnimationSound != null);
-            if (AnimationSound != null)
+            writer.Write(AnimationSounds?.Length ?? 0);
+
+            if (AnimationSounds != null)
             {
-                writer.Write(AnimationSound.Location.ToShortString());
-                writer.Write(AnimationSound.Range);
-                writer.Write(AnimationSound.Frame);
-                writer.Write(AnimationSound.RandomizePitch);
+                foreach (var animsound in AnimationSounds)
+                {
+                    animsound.ToBytes(writer);
+                }
             }
 
             writer.Write(AdjustCollisionBox);
@@ -496,19 +482,19 @@ namespace Vintagestory.API.Common
 
             animdata.MulWithWalkSpeed = reader.ReadBoolean();
 
-            if (GameVersion.IsAtLeastVersion(version, "1.12.5-dev.1"))
+            if (version != "" && GameVersion.IsAtLeastVersion(version, "1.12.5-dev.1"))
             {
                 animdata.StartFrameOnce = reader.ReadSingle();
             }
-            if (GameVersion.IsAtLeastVersion(version, "1.13.0-dev.3"))
+            if (version != "" && GameVersion.IsAtLeastVersion(version, "1.13.0-dev.3"))
             {
                animdata.HoldEyePosAfterEasein = reader.ReadSingle();
             }
-            if (GameVersion.IsAtLeastVersion(version, "1.17.0-dev.18"))
+            if (version != "" && GameVersion.IsAtLeastVersion(version, "1.17.0-dev.18"))
             {
                 animdata.ClientSide = reader.ReadBoolean();
             }
-            if (GameVersion.IsAtLeastVersion(version, "1.19.0-dev.20"))
+            if (version != "" && GameVersion.IsAtLeastVersion(version, "1.19.0-dev.20"))
             {
                 string attributes = reader.ReadString();
                 if (attributes != "")
@@ -519,26 +505,36 @@ namespace Vintagestory.API.Common
                     animdata.Attributes = new JsonObject(JToken.Parse("{}"));
                 }
             }
-            if (GameVersion.IsAtLeastVersion(version, "1.19.0-rc.6"))
+            if (version != "" && GameVersion.IsAtLeastVersion(version, "1.19.0-rc.6"))
             {
                 animdata.WeightCapFactor = reader.ReadSingle();
             }
 
-            if (GameVersion.IsAtLeastVersion(version, "1.20.0-dev.13"))
+            if (version != "" && GameVersion.IsAtLeastVersion(version, "1.22.0-dev.2"))
             {
-                if (reader.ReadBoolean())
+                int animsoundslen = reader.ReadInt32();
+                if (animsoundslen > 0)
                 {
-                    animdata.AnimationSound = new AnimationSound()
+                    animdata.AnimationSounds = new AnimationSound[animsoundslen];
+                    for (int i = 0; i < animsoundslen; i++)
                     {
-                        Location = AssetLocation.Create(reader.ReadString()),
-                        Range = reader.ReadSingle(),
-                        Frame = reader.ReadInt32(),
-                        RandomizePitch = reader.ReadBoolean()
-                    };
+                        animdata.AnimationSounds[i] = AnimationSound.CreateFromBytes(reader, version);
+                    }
+                }
+            }
+            else
+            {
+                if (version != "" && GameVersion.IsAtLeastVersion(version, "1.20.0-dev.13"))
+                {
+                    if (reader.ReadBoolean())
+                    {
+                        animdata.AnimationSounds = new AnimationSound[1];
+                        animdata.AnimationSounds[0] = AnimationSound.CreateFromBytes(reader, version);
+                    }
                 }
             }
 
-            if (GameVersion.IsAtLeastVersion(version, "1.21.0-dev.1"))
+            if (version != "" && GameVersion.IsAtLeastVersion(version, "1.21.0-dev.1"))
             {
                 animdata.AdjustCollisionBox = reader.ReadBoolean();
             }

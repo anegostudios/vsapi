@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -73,6 +73,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         IShader GeometryShader { get; set; }
 
+        bool Oit { get; set; }
 
         void Use();
         void Stop();
@@ -83,8 +84,22 @@ namespace Vintagestory.API.Client
         void Uniform(string uniformName, int value);
 
         void Uniform(string uniformName, Vec2f value);
+        /// <summary>
+        /// Equivalent to Uniform(string uniformName, Vec2f value)
+        /// </summary>
+        void Uniform(string uniformName, Vec2i value);
+        /// <summary>
+        /// Equivalent to Uniform(string uniformName, Vec2f value)
+        /// </summary>
+        void Uniform(string uniformName, float valueX, float valueY);
 
         void Uniform(string uniformName, Vec3f value);
+        /// <summary>
+        /// Equivalent to Uniform(string uniformName, Vec3f value)
+        /// </summary>
+        void Uniform(string uniformName, float valueX, float valueY, float valueZ);
+
+        void Uniform(string uniformName, float valueX, float valueY, float valueZ, float valueW);
 
         void Uniform(string uniformName, Vec4f value);
 

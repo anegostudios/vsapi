@@ -98,9 +98,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Returns the default block mesh ref that being used by the engine when rendering an item in the inventory. The alternate and inventory versions are seperate.
         /// </summary>
-        /// <param name="block"></param>
+        /// <param name="item"></param>
         /// <returns></returns>
-        MultiTextureMeshRef GetDefaultItemMeshRef(Item block);
+        MultiTextureMeshRef GetDefaultItemMeshRef(Item item);
 
         Shape GetCachedShape(AssetLocation location);
         MeshData CreateMesh(string typeForLogging, CompositeShape cshape, TextureSourceBuilder texgen, ITexPositionSource texSource = null);
@@ -162,8 +162,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Tesselate a shape based on its composite shape file
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="name"></param>
+        /// <param name="type">Type of shape, used for error logging only</param>
+        /// <param name="name">Assetlocation of the shape defining file (e.g. itemtype code), used for error logging only</param>
         /// <param name="compositeShape"></param>
         /// <param name="modeldata"></param>
         /// <param name="texSource"></param>
@@ -188,7 +188,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Turns a shape into a mesh data object that you can feed into the chunk tesselator or upload to the graphics card for rendering. Can be used to supply a custom texture source. 
         /// </summary>
-        /// <param name="typeForLogging"></param>
+        /// <param name="typeForLogging">Used for error logging only</param>
         /// <param name="shapeBase"></param>
         /// <param name="modeldata"></param>
         /// <param name="texSource"></param>
@@ -207,11 +207,11 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Turns a shape into a mesh data object that you can feed into the chunk tesselator or upload to the graphics card for rendering. Can be used to supply a custom texture source. Will add a customints array to the meshdata that holds each elements JointId for all its vertices (you will have to manually set the jointid for each element though)
         /// </summary>
-        /// <param name="typeForLogging"></param>
+        /// <param name="typeForLogging">Used for error logging only</param>
         /// <param name="shapeBase"></param>
         /// <param name="modeldata"></param>
         /// <param name="texSource"></param>
-        /// <param name="rotation"></param>
+        /// <param name="rotation">In radians</param>
         /// <param name="quantityElements"></param>
         /// <param name="selectiveElements"></param>
         void TesselateShapeWithJointIds(string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f rotation, int? quantityElements = null, string[] selectiveElements = null);
@@ -276,5 +276,14 @@ namespace Vintagestory.API.Client
         /// <param name="returnNullWhenMissing"></param>
         /// <returns></returns>
         ITexPositionSource GetTextureSource(Entity entity, Dictionary<string, CompositeTexture> extraTextures = null, int altTextureNumber = 0, bool returnNullWhenMissing = false);
+    }
+
+    /// <summary>
+    /// Used if the chunk will not be fully tesselated, but requeuing it is expected to succeed next time
+    /// <br/>See TextureAtlasManager.RuntimeCreateNewAtlas() for an example: if creation of a new atlas is required, that must occur on the main thread before tesselation can proceed
+    /// </summary>
+    public class RetryTesselationException : Exception
+    {
+        public RetryTesselationException(string message) : base(message) { }
     }
 }

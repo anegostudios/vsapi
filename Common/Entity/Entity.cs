@@ -12,6 +12,7 @@ using System.Text;
 #nullable disable
 using static Vintagestory.API.Common.EntityAgent;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -144,7 +145,7 @@ namespace Vintagestory.API.Common.Entities
         /// <br/>If set only on server side, 'MarkTagDirty()' should be called to sync value with clients. This will trigger full entity synchronization, which can be performance heavy.
         /// <br/>Tags are not saved into save file, and always loaded from entity type when entity is created. Indexes of tags are dynamically assigned on game start, and are not consistent between saves.
         /// </summary>
-        public EntityTagArray Tags = EntityTagArray.Empty;
+        public EntityTagSet Tags = EntityTagSet.Empty;
 
         internal bool tagsDirty = false;
 
@@ -174,12 +175,13 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Client position
         /// </summary>
-        public EntityPos Pos = new EntityPos();
+        public EntityPos Pos { get; private set; } = new EntityPos();
 
-        /// <summary>
-        /// Server simulated position. May not exactly match the client positon
-        /// </summary>
-        public EntityPos ServerPos = new EntityPos();
+        [Obsolete("Use Pos instead.")]
+        public EntityPos ServerPos => Pos;
+
+        [Obsolete("Use Pos instead.")]
+        public EntityPos SidedPos => Pos;
 
         /// <summary>
         /// Server simulated position copy. Needed by Entities server system to send pos updatess only if ServerPos differs noticably from PreviousServerPos
@@ -420,17 +422,10 @@ namespace Vintagestory.API.Common.Entities
 
 
         /// <summary>
-        /// CollidedVertically || CollidedHorizontally
+        /// CollidedVertically || CollidedHorizontally.
+        /// <br/>Note, this flag is only effective on the Server side for most entities (because there is no client-side physics and therefore no client-side collision detection, and this flag is not synced)
         /// </summary>
         public bool Collided { get { return CollidedVertically || CollidedHorizontally; } }
-
-        /// <summary>
-        /// ServerPos on server, Pos on client
-        /// </summary>
-        public EntityPos SidedPos
-        {
-            get { return World.Side == EnumAppSide.Server ? ServerPos : Pos; }
-        }
 
         /// <summary>
         /// The height of the eyes for the given entity.
@@ -572,32 +567,7 @@ namespace Vintagestory.API.Common.Entities
 
             Stats.Initialize(api);
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
-            WatchedAttributes.SetFloat("onHurt", 0);
-            int onHurtCounter = WatchedAttributes.GetInt("onHurtCounter");
-            WatchedAttributes.RegisterModifiedListener("onHurt", () => {
-                float damage = WatchedAttributes.GetFloat("onHurt", 0);
-                if (damage == 0) return;
-                int newOnHurtCounter = WatchedAttributes.GetInt("onHurtCounter");
-                if (newOnHurtCounter == onHurtCounter) return;
-
-                onHurtCounter = newOnHurtCounter;
-
-                if (Attributes.GetInt("dmgkb") == 0)
-                {
-                    Attributes.SetInt("dmgkb", 1);
-                }
-
-                if (damage > 0.05)
-                {
-                    SetActivityRunning("invulnerable", 500);
-                    // Gets already called on the server directly
-                    if (World.Side == EnumAppSide.Client)
-                    {
-                        OnHurt(null, WatchedAttributes.GetFloat("onHurt", 0));
-                    }
-                }
-            });
-
+            
             WatchedAttributes.RegisterModifiedListener("onFire", updateOnFire);
             WatchedAttributes.RegisterModifiedListener("entityDead", updateColSelBoxes);
 
@@ -622,7 +592,7 @@ namespace Vintagestory.API.Common.Entities
                 int generation = WatchedAttributes.GetAsInt("generation");
                 if (generation >= 10)
                 {
-                    EntityTagArray domesticatedTag = Api.TagRegistry.EntityTagsToTagArray("domesticated");
+                    EntityTagSet domesticatedTag = Api.TagRegistry.EntityTagsToTagSet("domesticated");
                     Tags |= domesticatedTag;
                 }
             }*/
@@ -712,7 +682,7 @@ namespace Vintagestory.API.Common.Entities
 
         public virtual bool InRangeOf(Vec3d position, float horRangeSq, float vertRange)
         {
-            return SidedPos.InRangeOf(position, horRangeSq, vertRange);
+            return Pos.InRangeOf(position, horRangeSq, vertRange);
         }
 
         protected void updateColSelBoxes()
@@ -813,7 +783,7 @@ namespace Vintagestory.API.Common.Entities
 
             if (Properties.Attributes?["isMechanical"].AsBool() != true && byPlayer?.Entity != null)
             {
-                dropMul = 1 + byPlayer.Entity.Stats.GetBlended("animalLootDropRate");
+                dropMul = byPlayer.Entity.Stats.GetBlended("animalLootDropRate");
             }
 
             for (int i = 0; i < Properties.Drops.Length; i++)
@@ -862,7 +832,6 @@ namespace Vintagestory.API.Common.Entities
                     {
                         IsTeleport = true;
                         Pos.SetPos(x, y, z);
-                        ServerPos.SetPos(x, y, z);
                         PositionBeforeFalling.Set(x, y, z);
                         Pos.Motion.Set(0, 0, 0);
                         onTeleported?.Invoke();
@@ -924,9 +893,6 @@ namespace Vintagestory.API.Common.Entities
             Pos.Yaw = position.Yaw;
             Pos.Pitch = position.Pitch;
             Pos.Roll = position.Roll;
-            ServerPos.Yaw = position.Yaw;
-            ServerPos.Pitch = position.Pitch;
-            ServerPos.Roll = position.Roll;
 
             TeleportToDouble(position.X, position.Y, position.Z, onTeleported);
         }
@@ -951,15 +917,19 @@ namespace Vintagestory.API.Common.Entities
 
                 if (damageSource.Type != EnumDamageType.Heal && damage > 0)
                 {
-                    WatchedAttributes.SetInt("onHurtCounter", WatchedAttributes.GetInt("onHurtCounter") + 1);
-                    WatchedAttributes.SetFloat("onHurt", damage); // Causes the client to be notified
-                    if (damage > 0.05f)
+                    // Damage over time is not instant
+                    if (damageSource.TicksPerDuration < 2)
                     {
-                        AnimManager.StartAnimation("hurt");
+                        WatchedAttributes.SetInt("onHurtCounter", WatchedAttributes.GetInt("onHurtCounter") + 1);
+                        WatchedAttributes.SetFloat("onHurt", damage); // Causes the client to be notified
+                        if (damage > 0.05f)
+                        {
+                            AnimManager.StartAnimation("hurt");
+                        }
                     }
                 }
 
-                if (damageSource.GetSourcePosition() != null)
+                if (damageSource.GetSourcePosition() != null && damageSource.TicksPerDuration < 2)
                 {
                     bool verticalAttack = false;
                     if (damageSource.GetAttackAngle(Pos.XYZ, out var attackYaw, out var attackPitch))
@@ -967,7 +937,7 @@ namespace Vintagestory.API.Common.Entities
                         verticalAttack = Math.Abs(attackPitch) > 80 * GameMath.DEG2RAD || Math.Abs(attackPitch) < 10 * GameMath.DEG2RAD;
                     }
 
-                    Vec3d dir = (SidedPos.XYZ - damageSource.GetSourcePosition()).Normalize();
+                    Vec3d dir = (Pos.XYZ - damageSource.GetSourcePosition()).Normalize();
 
                     if (verticalAttack)
                     {
@@ -1014,7 +984,7 @@ namespace Vintagestory.API.Common.Entities
 
         int prevInvulnerableTime;
         /// <summary>
-        /// Called every 1/75 second
+        /// Called every 20ms
         /// </summary>
         /// <param name="dt"></param>
         public virtual void OnGameTick(float dt)
@@ -1057,7 +1027,7 @@ namespace Vintagestory.API.Common.Entities
 
                 if (World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
                 {
-                    PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
+                    PlayEntitySound("idle", null);
                 }
             }
             else   // Serverside
@@ -1148,7 +1118,7 @@ namespace Vintagestory.API.Common.Entities
                 }
                 catch (Exception)
                 {
-                    World.Logger.Error("Error ticking animations for entity " + Code.ToShortString() + " at " + SidedPos.AsBlockPos);
+                    World.Logger.Error("Error ticking animations for entity " + Code.ToShortString() + " at " + Pos.AsBlockPos);
                     throw;
                 }
 
@@ -1172,8 +1142,8 @@ namespace Vintagestory.API.Common.Entities
             Api.World.SpawnParticles(
                 q,
                 ColorUtil.ColorFromRgba(20, 20, 20, 255),
-                new Vec3d(ServerPos.X + SelectionBox.X1, ServerPos.InternalY + SelectionBox.Y1, ServerPos.Z + SelectionBox.Z1),
-                new Vec3d(ServerPos.X + SelectionBox.X2, ServerPos.InternalY + SelectionBox.Y2, ServerPos.Z + SelectionBox.Z2),
+                new Vec3d(Pos.X + SelectionBox.X1, Pos.InternalY + SelectionBox.Y1, Pos.Z + SelectionBox.Z1),
+                new Vec3d(Pos.X + SelectionBox.X2, Pos.InternalY + SelectionBox.Y2, Pos.Z + SelectionBox.Z2),
                 new Vec3f(-1f, -1f, -1f),
                 new Vec3f(2f, 2f, 2f),
                 2, 1, 1, EnumParticleModel.Cube
@@ -1384,23 +1354,30 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual void OnCollideWithLiquid()
         {
-            if (World.Side == EnumAppSide.Server) return;
+            if (World.Side == EnumAppSide.Client) return; // Physics sim is server side
 
-            EntityPos pos = SidedPos;
-            float yDistance = (float)Math.Abs(PositionBeforeFalling.Y - pos.Y);
+            float yDistance = (float)Math.Abs(PositionBeforeFalling.Y - Pos.Y);
 
             double width = SelectionBox.XSize;
             double height = SelectionBox.YSize;
 
-            double splashStrength = 2 * GameMath.Sqrt(width * height) + pos.Motion.Length() * 10;
+            double splashStrength = 2 * GameMath.Sqrt(width * height) + Pos.Motion.Length() * 10;
 
             if (splashStrength < 0.4f || yDistance < 0.25f) return;
 
+            doSplashEffects(splashStrength, splashStrength);
+        }
+
+        protected void doSplashEffects(double splashStrength, double particleStrength)
+        {
+            EntityPos pos = Pos;
             string[] soundsBySize = new string[] { "sounds/environment/smallsplash", "sounds/environment/mediumsplash", "sounds/environment/largesplash" };
             string sound = soundsBySize[(int)GameMath.Clamp(splashStrength / 1.6, 0, 2)];
 
             splashStrength = Math.Min(10, splashStrength);
 
+            double width = SelectionBox.XSize;
+            double height = SelectionBox.YSize;
             float qmod = GameMath.Sqrt(width * height);
 
             World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.InternalY, (float)pos.Z, null);
@@ -1409,13 +1386,13 @@ namespace Vintagestory.API.Common.Entities
             World.SpawnCubeParticles(blockpos, aboveBlockPos, SelectionBox.XSize, (int)(qmod * 8 * splashStrength), 0.75f);
             World.SpawnCubeParticles(blockpos, aboveBlockPos, SelectionBox.XSize, (int)(qmod * 8 * splashStrength), 0.25f);
 
-            if (splashStrength >= 2)
+            if (particleStrength >= 2)
             {
                 SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y - 0.75, pos.Z - width / 2);
                 SplashParticleProps.AddPos.Set(width, 0.75, width);
 
                 SplashParticleProps.AddVelocity.Set((float)GameMath.Clamp(pos.Motion.X * 30f, -2, 2), 1, (float)GameMath.Clamp(pos.Motion.Z * 30f, -2, 2));
-                SplashParticleProps.QuantityMul = (float)(splashStrength - 1) * qmod;
+                SplashParticleProps.QuantityMul = (float)(particleStrength - 1) * qmod;
 
                 World.SpawnParticles(SplashParticleProps);
             }
@@ -1433,7 +1410,7 @@ namespace Vintagestory.API.Common.Entities
 
             float dist = Math.Max(0, (28 - climate.Temperature)/6f) + Math.Max(0, (0.8f - climate.Rainfall) * 3f);
 
-            double noise = bioLumiNoise.Noise(SidedPos.X / 300.0, SidedPos.Z / 300.0);
+            double noise = bioLumiNoise.Noise(Pos.X / 300.0, Pos.Z / 300.0);
             double qmul = noise * 2 - 1 - dist;
 
 
@@ -1442,12 +1419,12 @@ namespace Vintagestory.API.Common.Entities
             // Hard coded player swim hitbox thing
             if (this is EntityPlayer && Swimming)
             {
-                bioLumiParticles.MinPos.Set(SidedPos.X + 2f * SelectionBox.X1, SidedPos.Y + offy + 0.5f + 1.25f * SelectionBox.Y1, SidedPos.Z + 2f * SelectionBox.Z1);
+                bioLumiParticles.MinPos.Set(Pos.X + 2f * SelectionBox.X1, Pos.Y + offy + 0.5f + 1.25f * SelectionBox.Y1, Pos.Z + 2f * SelectionBox.Z1);
                 bioLumiParticles.AddPos.Set(3f * SelectionBox.XSize, 0.5f * SelectionBox.YSize, 3f * SelectionBox.ZSize);
             }
             else
             {
-                bioLumiParticles.MinPos.Set(SidedPos.X + 1.25f * SelectionBox.X1, SidedPos.Y + offy + 1.25f * SelectionBox.Y1, SidedPos.Z + 1.25f * SelectionBox.Z1);
+                bioLumiParticles.MinPos.Set(Pos.X + 1.25f * SelectionBox.X1, Pos.Y + offy + 1.25f * SelectionBox.Y1, Pos.Z + 1.25f * SelectionBox.Z1);
                 bioLumiParticles.AddPos.Set(1.5f * SelectionBox.XSize, 1.5f * SelectionBox.YSize, 1.5f * SelectionBox.ZSize);
             }
 
@@ -1570,12 +1547,6 @@ namespace Vintagestory.API.Common.Entities
                     break;
                 }
             }
-
-            // Position not set automatically if the entity has interpolation. I'd rather not check this every time.
-            if (handled == EnumHandling.PassThrough && GetBehavior("entityinterpolation") == null)
-            {
-                Pos.SetFrom(ServerPos);
-            }
         }
 
         /// <summary>
@@ -1613,7 +1584,7 @@ namespace Vintagestory.API.Common.Entities
                     Pos.SetPosWithDimension(newPos);
                     ((EntityPlayer)this).UpdatePartitioning();
                 }
-                ServerPos.SetPosWithDimension(newPos);
+                Pos.SetPosWithDimension(newPos);
                 World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);
                 return;
             }
@@ -1735,6 +1706,7 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+#nullable enable
         /// <summary>
         /// Returns true if the entity has given active behavior
         /// </summary>
@@ -1742,21 +1714,39 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual bool HasBehavior(string behaviorName)
         {
-            var behaviors = SidedProperties.Behaviors;
+            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+
+            if (behaviors == null)
+            {
+                return false;
+            }
+
             for (int i = 0; i < behaviors.Count; i++)
             {
-                if (behaviors[i].PropertyName().Equals(behaviorName)) return true;
+                if (behaviors[i]?.PropertyName()?.Equals(behaviorName) == true)
+                {
+                    return true;
+                }
             }
 
             return false;
         }
 
-        public virtual bool HasBehavior<T>() where T : EntityBehavior
+        public virtual bool HasBehavior<TEntityBehavior>() where TEntityBehavior : EntityBehavior
         {
-            var behaviors = SidedProperties.Behaviors;
+            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+
+            if (behaviors == null)
+            {
+                return false;
+            }
+
             for (int i = 0; i < behaviors.Count; i++)
             {
-                if (behaviors[i] is T) return true;
+                if (behaviors[i] is TEntityBehavior)
+                {
+                    return true;
+                }
             }
 
             return false;
@@ -1769,11 +1759,21 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual EntityBehavior? GetBehavior(string name)
         {
-            var behaviors = SidedProperties.Behaviors;
+            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+
+            if (behaviors == null)
+            {
+                return null;
+            }
+
             for (int i = 0; i < behaviors.Count; i++)
             {
-                if (behaviors[i].PropertyName().Equals(name)) return behaviors[i];
+                if (behaviors[i]?.PropertyName()?.Equals(name) == true)
+                {
+                    return behaviors[i];
+                }
             }
+
             return null;
         }
 
@@ -1781,30 +1781,52 @@ namespace Vintagestory.API.Common.Entities
         /// Returns the first behavior instance for given entity of given type. Returns null if it doesn't exist.
         /// </summary>
         /// <returns></returns>
-        public virtual T? GetBehavior<T>() where T : EntityBehavior
+        public virtual TEntityBehavior? GetBehavior<TEntityBehavior>() where TEntityBehavior : EntityBehavior
         {
-            var behaviors = SidedProperties.Behaviors;
+            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+
+            if (behaviors == null)
+            {
+                return null;
+            }
+
             for (int i = 0; i < behaviors.Count; i++)
             {
-                if (behaviors[i] is T result) return result;
+                if (behaviors[i] is TEntityBehavior result)
+                {
+                    return result;
+                }
             }
+
             return null;
         }
 
         /// <summary>
         /// Returns itself and any behaviors that implement the interface T as a List
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TInterface"></typeparam>
         /// <returns></returns>
-        public virtual List<T> GetInterfaces<T>() where T : class
+        public virtual List<TInterface> GetInterfaces<TInterface>() where TInterface : class
         {
-            List<T> interfaces = new List<T>();
-            if (this is T self) interfaces.Add(self);
+            List<TInterface> interfaces = [];
 
-            var behaviors = SidedProperties.Behaviors;
+            if (this is TInterface self)
+            {
+                interfaces.Add(self);
+            }
+
+            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+            if (behaviors == null)
+            {
+                return interfaces;
+            }
+
             for (int i = 0; i < behaviors.Count; i++)
             {
-                if (behaviors[i] is T found) interfaces.Add(found);
+                if (behaviors[i] is TInterface found)
+                {
+                    interfaces.Add(found);
+                }
             }
 
             return interfaces;
@@ -1813,19 +1835,33 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Returns itself or the first behavior that implements the interface T
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TInterface"></typeparam>
         /// <returns></returns>
-        public virtual T GetInterface<T>() where T : class
+        public virtual TInterface? GetInterface<TInterface>() where TInterface : class
         {
-            if (this is T) return this as T;
-            var behaviors = SidedProperties.Behaviors;
+            if (this is TInterface)
+            {
+                return this as TInterface;
+            }
+
+
+            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+            if (behaviors == null)
+            {
+                return null;
+            }
+
             for (int i = 0; i < behaviors.Count; i++)
             {
-                if (behaviors[i] is T found) return found;
+                if (behaviors[i] is TInterface found)
+                {
+                    return found;
+                }
             }
+
             return null;
         }
-
+#nullable disable
 
         /// <summary>
         /// Returns true if given activity is running
@@ -1935,7 +1971,7 @@ namespace Vintagestory.API.Common.Entities
                 WatchedAttributes["extraInfoText"] = new TreeAttribute();
             }
 
-            if (this is EntityPlayer && GameVersion.IsLowerVersionThan(version, "1.7.0"))
+            if (this is EntityPlayer && version != "" && GameVersion.IsLowerVersionThan(version, "1.7.0"))
             {
                 ITreeAttribute healthTree = WatchedAttributes.GetTreeAttribute("health");
                 if (healthTree != null)
@@ -1945,11 +1981,10 @@ namespace Vintagestory.API.Common.Entities
             }
 
 
-            ServerPos.FromBytes(reader);
+            Pos.FromBytes(reader);
 
             GetHeadPositionFromWatchedAttributes();
 
-            Pos.SetFrom(ServerPos);
             PositionBeforeFalling.X = reader.ReadDouble();
             PositionBeforeFalling.Y = reader.ReadDouble();
             PositionBeforeFalling.Z = reader.ReadDouble();
@@ -1964,7 +1999,7 @@ namespace Vintagestory.API.Common.Entities
             }
 
             // In 1.8 animation data format was changed to use a TreeAttribute.
-            if (isSync || GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1"))
+            if (isSync || (version != "" && GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1")))
             {
                 TreeAttribute tree = new TreeAttribute();
                 tree.FromBytes(reader);
@@ -1986,7 +2021,7 @@ namespace Vintagestory.API.Common.Entities
 
 
             // Upgrade to 1500 sat
-            if (this is EntityPlayer && GameVersion.IsLowerVersionThan(version, "1.10-dev.2"))
+            if (this is EntityPlayer && version != "" && GameVersion.IsLowerVersionThan(version, "1.10-dev.2"))
             {
                 ITreeAttribute hungerTree = WatchedAttributes.GetTreeAttribute("hunger");
                 if (hungerTree != null)
@@ -1999,7 +2034,7 @@ namespace Vintagestory.API.Common.Entities
 
             if (isSync)
             {
-                Tags = EntityTagArray.FromBytes(reader);
+                Tags = EntityTagSet.FromBytes(reader);
 
                 var seatControls = SidedProperties != null ? GetInterface<IMountable>()?.ControllingControls : null;
                 int controlsSerialized = reader.ReadInt32();
@@ -2039,7 +2074,7 @@ namespace Vintagestory.API.Common.Entities
             Stats.ToTreeAttributes(WatchedAttributes, forClient);
 
             WatchedAttributes.ToBytes(writer);
-            ServerPos.ToBytes(writer);
+            Pos.ToBytes(writer);
             writer.Write(PositionBeforeFalling.X);
             writer.Write(PositionBeforeFalling.Y);
             writer.Write(PositionBeforeFalling.Z);
@@ -2142,7 +2177,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     for (int i = 0; i < drops.Length; i++)
                     {
-                        World.SpawnItemEntity(drops[i], SidedPos.XYZ.Add(0, 0.25, 0));
+                        World.SpawnItemEntity(drops[i], Pos.XYZ.Add(0, 0.25, 0));
                     }
                 }
 
@@ -2179,24 +2214,16 @@ namespace Vintagestory.API.Common.Entities
         }
 
 
-        /// <summary>
-        /// Assumes that it is only called on the server
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="dualCallByPlayer"></param>
-        /// <param name="randomizePitch"></param>
-        /// <param name="range"></param>
-        public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
+        /// <summary> Call this serverside, and it will play the sound for all nearby clients. </summary>
+        /// <param name="type">String code for the sound</param>
+        /// <param name="dualCallByPlayer">If also calling clientside, pass in that client's player here</param>
+        public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null)
         {
-            if (Properties.ResolvedSounds != null && Properties.ResolvedSounds.TryGetValue(type, out AssetLocation[] locations) && locations.Length > 0)
+            if (Properties.Sounds != null && Properties.Sounds.TryGetValue(type, out SoundAttributes sound) && sound.Location != null)
             {
-                World.PlaySoundAt(
-                    locations[World.Rand.Next(locations.Length)],
-                    (float)SidedPos.X, (float)SidedPos.InternalY, (float)SidedPos.Z,
-                    dualCallByPlayer,
-                    randomizePitch,
-                    range
-                );
+                Properties.ResolvedSounds.TryGetValue(type, out AssetLocation[] locations);
+                sound.Location = locations[World.Rand.Next(locations.Length)]; // Note we can modify this struct with no effects outside this method
+                World.PlaySoundAt(sound, this, dualCallByPlayer);
             }
         }
 
@@ -2237,10 +2264,6 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="startPos"></param>
         public virtual void WillExport(BlockPos startPos)
         {
-            ServerPos.X -= startPos.X;
-            ServerPos.Y -= startPos.Y;
-            ServerPos.Z -= startPos.Z;
-
             Pos.X -= startPos.X;
             Pos.Y -= startPos.Y;
             Pos.Z -= startPos.Z;
@@ -2258,11 +2281,6 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="startPos"></param>
         public virtual void DidImportOrExport(BlockPos startPos)
         {
-            ServerPos.X += startPos.X;
-            ServerPos.Y += startPos.Y;
-            ServerPos.Z += startPos.Z;
-            ServerPos.Dimension = startPos.dimension;
-
             Pos.X += startPos.X;
             Pos.Y += startPos.Y;
             Pos.Z += startPos.Z;
@@ -2421,7 +2439,7 @@ namespace Vintagestory.API.Common.Entities
                 infotext.AppendLine("<font color=\"#bbbbbb\">Id:" + EntityId + "</font>");
                 infotext.AppendLine("<font color=\"#bbbbbb\">Code: " + Code + "</font>");
 
-                IEnumerable<string> tags = Tags.ToArray().Select(Api.TagRegistry.EntityTagIdToTag).Order();
+                IEnumerable<string> tags = Api.TagsManager.GetEntityTags(Tags).Order();
                 if (tags.Any())
                 {
                     infotext.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
@@ -2476,13 +2494,13 @@ namespace Vintagestory.API.Common.Entities
                 if (preventDefault) return intersects;
             }
 
-            if (interesectionTester.RayIntersectsWithCuboid(SelectionBox, SidedPos.X, SidedPos.InternalY, SidedPos.Z))
+            if (interesectionTester.RayIntersectsWithCuboid(SelectionBox, Pos.X, Pos.InternalY, Pos.Z))
             {
                 intersectionDistance = Pos.SquareDistanceTo(ray.origin);
                 return true;
             }
 
-            if (CanAttackInside && SelectionBox.Contains(ray.origin.X - SidedPos.X, ray.origin.Y - SidedPos.Y, ray.origin.Z - SidedPos.Z))
+            if (CanAttackInside && SelectionBox.Contains(ray.origin.X - Pos.X, ray.origin.Y - Pos.Y, ray.origin.Z - Pos.Z))
             {
                 intersectionDistance = 0;
                 return true;
@@ -2516,21 +2534,39 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public void MarkTagsDirty() => tagsDirty = true;
 
-        /// <summary>
-        /// Returns true if all named tags are present
-        /// </summary>
-        /// <param name="tagsToMatch"></param>
-        /// <returns></returns>
-        public virtual bool HasTags(params string[] tagsToMatch)
+        public virtual bool HasTags(params string[] tags)
         {
-            EntityTagArray needle = Api.TagRegistry.EntityTagsToTagArray(tagsToMatch);
-            return Tags.ContainsAll(needle);
+            var needle = Api.TagsManager.GetEntityTagSet(tags);
+            return Tags.IsSubsetOf(needle);
         }
 
 
-        public bool IsFirstTick()
+        /// <summary>
+        /// Add to WatchedAttributes any attributes specified in the Json token
+        /// <br/>Limited to only the specific WatchedAttributes for which this is implemented - in 1.21.1 for vanilla, that's only "generation"
+        /// </summary>
+        /// <param name="token"></param>
+        public virtual void SetAttributesFrom(JToken token)
         {
-            return PreviousServerPos.X == 0 && PreviousServerPos.Y == 0 && PreviousServerPos.Z == 0;
+            JsonObject var = new JsonObject(token);
+            if (var.Count == 0) return;
+
+            // Temporarily hard-coded as in 1.21.1 we implement this only for entity generation
+            if (var["generation"].Exists)
+            {
+                WatchedAttributes.SetInt("generation", var["generation"].AsInt(0));
+            }
+        }
+
+        /// <summary>
+        /// Gets the bone name from entity properties attributes, or returns the fallback if not defined.
+        /// </summary>
+        /// <param name="key">The attribute key to look up in entity properties</param>
+        /// <param name="fallback">The fallback bone name to use if the attribute is not found</param>
+        /// <returns>The bone name from attributes or the fallback value</returns>
+        public string GetBoneName(string key, string fallback)
+        {
+            return Properties.Attributes?[key]?.AsString() ?? fallback;
         }
     }
 }

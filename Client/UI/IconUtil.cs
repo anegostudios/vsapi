@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Cairo;
 using Vintagestory.API.Common;
@@ -27,6 +27,7 @@ namespace Vintagestory.API.Client
         {
             return (ctx, x, y, w, h, rgba) =>
             {
+                if (asset == null) return;
                 capi.Gui.DrawSvg(asset, ctx.GetTarget() as ImageSurface, x, y, (int)w, (int)h, ColorUtil.FromRGBADoubles(rgba));
             };
         }

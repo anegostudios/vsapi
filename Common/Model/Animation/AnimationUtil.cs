@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
@@ -53,7 +53,7 @@ namespace Vintagestory.API.Common
             InitializeAnimator(cacheDictKey, meshdata, shape, rotation);
         }
 
-        public virtual void InitializeAnimator(string cacheDictKey, MeshData meshdata, Shape shape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque) 
+        public virtual void InitializeAnimator(string cacheDictKey, MeshData meshdata, Shape shape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)
         {
             if (meshdata == null)
             {
@@ -62,35 +62,7 @@ namespace Vintagestory.API.Common
 
             animator = GetAnimator(api, cacheDictKey, shape);
             renderer?.Dispose();
-
-            if (RuntimeEnv.MainThreadId == Environment.CurrentManagedThreadId)
-            {
-                renderer = new AnimatableRenderer(capi, position, rotation, animator, activeAnimationsByAnimCode, capi.Render.UploadMultiTextureMesh(meshdata), renderStage);
-            } else
-            {
-                renderer = new AnimatableRenderer(capi, position, rotation, animator, activeAnimationsByAnimCode, null, renderStage);
-                capi.Event.EnqueueMainThreadTask(() => {
-                    renderer.mtmeshref = capi.Render.UploadMultiTextureMesh(meshdata);
-                }, "uploadmesh");
-            }
-        }
-
-
-        [Obsolete("Use MultiTextureMeshRef initialize instead, standard MeshRef does not support multiple texture atlasses")]
-        public virtual void InitializeAnimator(string cacheDictKey, MeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)
-        {
-            if (api.Side != EnumAppSide.Client) throw new NotImplementedException("Server side animation system not implemented yet.");
-
-            animator = GetAnimator(api, cacheDictKey, blockShape);
-            renderer = new AnimatableRenderer(capi, position, rotation, animator, activeAnimationsByAnimCode, meshref, RenderTextureId, renderStage);
-        }
-
-        public virtual void InitializeAnimator(string cacheDictKey, MultiTextureMeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)
-        {
-            if (api.Side != EnumAppSide.Client) throw new NotImplementedException("Server side animation system not implemented yet.");
-
-            animator = GetAnimator(api, cacheDictKey, blockShape);
-            renderer = new AnimatableRenderer(capi, position, rotation, animator, activeAnimationsByAnimCode, meshref, renderStage);
+            renderer = new AnimatableRenderer(capi, position, rotation, animator, activeAnimationsByAnimCode, meshdata, renderStage);
         }
 
         public virtual void InitializeAnimatorServer(string cacheDictKey, Shape blockShape)
@@ -200,7 +172,6 @@ namespace Vintagestory.API.Common
                     RootPoses = (animator as ClientAnimator).RootPoses
                 };
             }
-
 
             return animator;
         }

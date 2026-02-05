@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -98,7 +98,7 @@ Class RegistryObjectType
   </div>
 
   <div class="markdown summary"><p>The very base class for an in-game object. Extended by blocktypes, itemtypes, and entitytypes.
-Controls the object's code, variant types, allowed/disallowed variants, world interactions, and a class for extra functionality. <a href="https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/RegistryObjectType.cs">Open in GitHub</a></p>
+Controls the object's code, variant types, allowed/disallowed variants, world interactions, and a class for extra functionality. <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Loading/RegistryObjectType.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -169,7 +169,7 @@ public abstract class RegistryObjectType</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
 public AssetLocation Code</code></pre>
   </div>
 
@@ -203,6 +203,7 @@ public AssetLocation Code</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AssetLocation[] AllowedVariants</code></pre>
   </div>
 
@@ -236,6 +237,7 @@ public AssetLocation[] AllowedVariants</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string Class</code></pre>
   </div>
 
@@ -258,7 +260,7 @@ public string Class</code></pre>
 
 
   <h3 id="Vintagestory_ServerMods_NoObf_RegistryObjectType_Enabled" data-uid="Vintagestory.ServerMods.NoObf.RegistryObjectType.Enabled">
-  Enabled (Optional) (Default: true)
+  Enabled (Optional) (Default: True)
   
   </h3>
 
@@ -268,7 +270,7 @@ public string Class</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
 public bool Enabled</code></pre>
   </div>
 
@@ -302,6 +304,7 @@ public bool Enabled</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public AssetLocation[] SkipVariants</code></pre>
   </div>
 
@@ -335,6 +338,7 @@ public AssetLocation[] SkipVariants</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public string[] Tags</code></pre>
   </div>
 
@@ -367,7 +371,7 @@ public string[] Tags</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 public RegistryObjectVariantGroup[] VariantGroups</code></pre>
   </div>
 
@@ -401,6 +405,7 @@ public RegistryObjectVariantGroup[] VariantGroups</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Unused&quot;, &quot;None&quot;, false)]
 public WorldInteraction[] Interactions</code></pre>
   </div>
 

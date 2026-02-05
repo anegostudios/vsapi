@@ -16,9 +16,17 @@ namespace Vintagestory.API.Client
     public class MeshData
     {
         public static MeshDataRecycler Recycler;
+        [ThreadStatic]
+        static float[] vec4Tmp;
+
         public const int StandardVerticesPerFace = 4;
         public const int StandardIndicesPerFace = 6;
         public const int BaseSizeInBytes = 34;            // 20 for 5 floats (xyzuv) + 4 rgba + 4 flags + 6 on average for indices (1.5 indices per vertex, 4 bytes per index)
+
+        /// <summary>
+        /// Use as a temporary origin for mesh rotation and scaling - just make sure never to modify this!!!
+        /// </summary>
+        protected static Vec3f BlockCenter = new Vec3f(0.5f, 0.5f, 0.5f);
 
         public int[] TextureIds = Array.Empty<int>();
 
@@ -373,7 +381,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Offset the mesh by given values
         /// </summary>
-        /// <param name="offset"></param>
         public MeshData Translate(Vec3f offset)
         {
             Translate(offset.X, offset.Y, offset.Z);
@@ -383,9 +390,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Offset the mesh by given values
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
         public MeshData Translate(float x, float y, float z)
         {
             for (int i = 0; i < VerticesCount; i++)
@@ -400,25 +404,25 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Rotate the mesh by given angles around given origin
         /// </summary>
-        /// <param name="origin"></param>
-        /// <param name="radX"></param>
-        /// <param name="radY"></param>
-        /// <param name="radZ"></param>
         public MeshData Rotate(Vec3f origin, float radX, float radY, float radZ)
         {
             Span<float> matrix = stackalloc float[16];
             Mat4f.RotateXYZ(matrix, radX, radY, radZ);
-            return MatrixTransform(matrix, new float[4], origin);
+            return MatrixTransform(matrix, vec4Tmp ??= new float[4], origin);
+        }
+
+        /// <summary>
+        /// Rotate the mesh by given angles around the block center (0.5f, 0.5f, 0.5f)
+        /// </summary>
+        public MeshData Rotate(float radX, float radY, float radZ)
+        {
+            return Rotate(BlockCenter, radX, radY, radZ);
         }
 
 
         /// <summary>
         /// Scale the mesh by given values around given origin
         /// </summary>
-        /// <param name="origin"></param>
-        /// <param name="scaleX"></param>
-        /// <param name="scaleY"></param>
-        /// <param name="scaleZ"></param>
         public MeshData Scale(Vec3f origin, float scaleX, float scaleY, float scaleZ)
         {
             for (int i = 0; i < VerticesCount; i++)
@@ -435,27 +439,30 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
+        /// Scale the mesh by given values around the block center (0.5f, 0.5f, 0.5f)
+        /// </summary>
+        public MeshData Scale(float scaleX, float scaleY, float scaleZ)
+        {
+            return Scale(BlockCenter, scaleX, scaleY, scaleZ);
+        }
+
+        /// <summary>
         /// Apply given transformation on the mesh
         /// </summary>
-        /// <param name="transform"></param>        
         public MeshData ModelTransform(ModelTransform transform)
         {
-            float[] matrix = Mat4f.Create();
+            Span<float> matrix = stackalloc float[16];
+            Mat4f.NewIdentity(matrix);
 
             float dx = transform.Translation.X + transform.Origin.X;
             float dy = transform.Translation.Y + transform.Origin.Y;
             float dz = transform.Translation.Z + transform.Origin.Z;
-            Mat4f.Translate(matrix, matrix, dx, dy, dz);
+            Mat4f.Translate(matrix, dx, dy, dz);
+            Mat4f.RotateByXYZ(matrix, transform.Rotation.X * GameMath.DEG2RAD, transform.Rotation.Y * GameMath.DEG2RAD, transform.Rotation.Z * GameMath.DEG2RAD);
+            Mat4f.Scale(matrix, transform.ScaleXYZ.X, transform.ScaleXYZ.Y, transform.ScaleXYZ.Z);
+            Mat4f.Translate(matrix, -transform.Origin.X, -transform.Origin.Y, -transform.Origin.Z);
 
-            Mat4f.RotateX(matrix, matrix, transform.Rotation.X * GameMath.DEG2RAD);
-            Mat4f.RotateY(matrix, matrix, transform.Rotation.Y * GameMath.DEG2RAD);
-            Mat4f.RotateZ(matrix, matrix, transform.Rotation.Z * GameMath.DEG2RAD);
-
-            Mat4f.Scale(matrix, matrix, transform.ScaleXYZ.X, transform.ScaleXYZ.Y, transform.ScaleXYZ.Z);
-
-            Mat4f.Translate(matrix, matrix, -transform.Origin.X, -transform.Origin.Y, -transform.Origin.Z);
-
-            MatrixTransform(matrix);
+            MatrixTransform(matrix, vec4Tmp ??= new float[4], null);
 
             return this;
         }
@@ -463,10 +470,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Apply given transformation on the mesh
         /// </summary>
-        /// <param name="matrix"></param>
         public MeshData MatrixTransform(float[] matrix)
         {
-            return MatrixTransform(matrix, new float[4]);
+            return MatrixTransform(matrix, vec4Tmp ??= new float[4]);
         }
 
         /// <summary>
@@ -544,7 +550,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Apply given transformation on the mesh
         /// </summary>
-        /// <param name="matrix"></param>
         public MeshData MatrixTransform(double[] matrix)
         {
             // For performance, before proceeding with a full-scale matrix operation on the whole mesh, we test whether the matrix is a translation-only matrix, meaning a matrix with no scaling or rotation.
@@ -629,7 +634,8 @@ namespace Vintagestory.API.Client
                     double oy = matrix[4 * 0 + 1] * inVec[0] + matrix[4 * 1 + 1] * inVec[1] + matrix[4 * 2 + 1] * inVec[2];
                     double oz = matrix[4 * 0 + 2] * inVec[0] + matrix[4 * 1 + 2] * inVec[1] + matrix[4 * 2 + 2] * inVec[2];
 
-                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.PackNormal(ox, oy, oz));
+                    double len = Math.Sqrt(ox * ox + oy * oy + oz * oz);
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.PackNormal(ox / len, oy / len, oz / len));
                 }
             }
 
@@ -654,12 +660,6 @@ namespace Vintagestory.API.Client
         /// Creates a new mesh data instance with given components, but you can also freely nullify or set individual components after initialization
         /// Any component that is null is ignored by UploadModel/UpdateModel
         /// </summary>
-        /// <param name="capacityVertices"></param>
-        /// <param name="capacityIndices"></param>
-        /// <param name="withUv"></param>
-        /// <param name="withNormals"></param>
-        /// <param name="withRgba"></param>
-        /// <param name="withFlags"></param>
         public MeshData(int capacityVertices, int capacityIndices, bool withNormals = false, bool withUv = true, bool withRgba = true, bool withFlags = true)
         {
             XyzFaces = Array.Empty<byte>();
@@ -695,7 +695,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// This constructor creates a basic MeshData with xyz, Uv, Rgba, Flags and Indices only; Indices to Vertices ratio is the default 6:4
         /// </summary>
-        /// <param name="capacity"></param>
         public MeshData(int capacity)
         {
             xyz = new float[capacity * 3];
@@ -712,7 +711,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets up the tints array for holding tint info
         /// </summary>
-        /// <returns></returns>
         public MeshData WithColorMaps()
         {
             SeasonColorMapIds = new byte[VerticesMax / 4];
@@ -724,7 +722,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets up the xyzfaces array for holding xyzfaces info
         /// </summary>
-        /// <returns></returns>
         public MeshData WithXyzFaces()
         {
             XyzFaces = new byte[VerticesMax / 4];
@@ -734,7 +731,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets up the renderPasses array for holding render pass info
         /// </summary>
-        /// <returns></returns>
         public MeshData WithRenderpasses()
         {
             RenderPassesAndExtraBits = new short[VerticesMax / 4];
@@ -745,11 +741,28 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets up the renderPasses array for holding render pass info
         /// </summary>
-        /// <returns></returns>
         public MeshData WithNormals()
         {
             Normals = new int[VerticesMax];
             return this;
+        }
+
+        /// <summary>
+        /// Returns true if at least one quad in this mesh needs to be rendered in given render pass  
+        /// </summary>
+        /// <param name="renderPass"></param>
+        /// <returns></returns>
+        public bool NeedsRenderPass(EnumChunkRenderPass renderPass)
+        {
+            int renderPassInt = (int)renderPass;
+            for (int i = 0; i < RenderPassCount; i++)
+            {
+                if (RenderPassesAndExtraBits[i] == renderPassInt)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 
@@ -758,15 +771,13 @@ namespace Vintagestory.API.Client
         /// Is filtered to only add mesh data for given render pass.
         /// A negative render pass value defaults to EnumChunkRenderPass.Opaque
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filterByRenderPass"></param>
-        public void AddMeshData(MeshData data, EnumChunkRenderPass filterByRenderPass)
+        public void AddMeshData(MeshData data, EnumChunkRenderPass excludeRenderPass)
         {
-            int renderPassInt = (int)filterByRenderPass;
+            int renderPassInt = (int)excludeRenderPass;
 
             AddMeshData(data, (i) =>
             {
-                return data.RenderPassesAndExtraBits[i] != renderPassInt && (data.RenderPassesAndExtraBits[i] != -1 || filterByRenderPass != EnumChunkRenderPass.Opaque);
+                return data.RenderPassesAndExtraBits[i] != renderPassInt && (data.RenderPassesAndExtraBits[i] != -1 || excludeRenderPass != EnumChunkRenderPass.Opaque);
             });
         }
 
@@ -1219,10 +1230,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="color"></param>
         public void AddVertexSkipTex(float x, float y, float z, int color = ColorUtil.WhiteArgb)
         {
             int count = VerticesCount;
@@ -1256,11 +1263,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
         public void AddVertex(float x, float y, float z, float u, float v)
         {
             int count = VerticesCount;
@@ -1287,12 +1289,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <param name="color"></param>
         public void AddVertex(float x, float y, float z, float u, float v, int color)
         {
             AddWithFlagsVertex(x, y, z, u, v, color, 0);
@@ -1302,12 +1298,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <param name="color"></param>
         public void AddVertex(float x, float y, float z, float u, float v, byte[] color)
         {
             int count = VerticesCount;
@@ -1343,13 +1333,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <param name="color"></param>
-        /// <param name="flags"></param>
         public void AddWithFlagsVertex(float x, float y, float z, float u, float v, int color, int flags)
         {
             int count = VerticesCount;
@@ -1394,13 +1377,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <param name="color"></param>
-        /// <param name="flags"></param>
         public void AddVertexWithFlags(float x, float y, float z, float u, float v, int color, int flags)
         {
             AddVertexWithFlagsSkipColor(x, y, z, u, v, flags);
@@ -1419,12 +1395,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <param name="u"></param>
-        /// <param name="v"></param>
-        /// <param name="flags"></param>
         public void AddVertexWithFlagsSkipColor(float x, float y, float z, float u, float v, int flags)
         {
             int count = VerticesCount;
@@ -1473,9 +1443,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new normal to the mesh. Grows the normal buffer if necessary.
         /// </summary>
-        /// <param name="normalizedX"></param>
-        /// <param name="normalizedY"></param>
-        /// <param name="normalizedZ"></param>
         public void AddNormal(float normalizedX, float normalizedY, float normalizedZ)
         {
             if (NormalsCount >= Normals.Length) GrowNormalsBuffer();
@@ -1486,7 +1453,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a new normal to the mesh. Grows the normal buffer if necessary.
         /// </summary>
-        /// <param name="facing"></param>
         public void AddNormal(BlockFacing facing)
         {
             if (NormalsCount >= Normals.Length) GrowNormalsBuffer();
@@ -1494,6 +1460,9 @@ namespace Vintagestory.API.Client
             Normals[NormalsCount++] = facing.NormalPacked;
         }
 
+        /// <summary>
+        /// Adds both the climate map and season map index (per face). Both should be added at the same time so that their indexing and ColorMapIdsCount is consistent
+        /// </summary>
         public void AddColorMapIndex(byte climateMapIndex, byte seasonMapIndex)
         {
             if (ColorMapIdsCount >= SeasonColorMapIds.Length)
@@ -1505,6 +1474,10 @@ namespace Vintagestory.API.Client
             ClimateColorMapIds[ColorMapIdsCount] = climateMapIndex;
             SeasonColorMapIds[ColorMapIdsCount++] = seasonMapIndex;
         }
+
+        /// <summary>
+        /// Adds both the climate map and season map index as well as a frostable bit (per face). Where frostable is used, all three should be added at the same time so that indexing and ColorMapIdsCount is consistent
+        /// </summary>
         public void AddColorMapIndex(byte climateMapIndex, byte seasonMapIndex, bool frostableBit)
         {
             if (FrostableBits == null) FrostableBits = new bool[ClimateColorMapIds.Length];
@@ -1521,6 +1494,9 @@ namespace Vintagestory.API.Client
             SeasonColorMapIds[ColorMapIdsCount++] = seasonMapIndex;
         }
 
+        /// <summary>
+        /// Stores the renderpass (per face)
+        /// </summary>
         public void AddRenderPass(short renderPass)
         {
             if (RenderPassCount >= RenderPassesAndExtraBits.Length)
@@ -1532,6 +1508,9 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Stores the XyzFace index - note, not commonly used, mainly for knapping and clayform rendering
+        /// </summary>
         public void AddXyzFace(byte faceIndex)
         {
             if (XyzFacesCount >= XyzFaces.Length)
@@ -1542,6 +1521,9 @@ namespace Vintagestory.API.Client
             XyzFaces[XyzFacesCount++] = faceIndex;
         }
 
+        /// <summary>
+        /// Stores the textureId for the face. I.e. this is the id of the atlas itself, for the texture atlas page holding the current face's texture
+        /// </summary>
         public void AddTextureId(int textureId)
         {
             if (TextureIndicesCount >= TextureIndices.Length)
@@ -1552,6 +1534,9 @@ namespace Vintagestory.API.Client
             TextureIndices[TextureIndicesCount++] = getTextureIndex(textureId);
         }
 
+        /// <summary>
+        /// Stores an index for the face. Typically there should be 6 indices per face, instructing the GPU to draw two triangles. Since game version 1.21, for blocks and items these should always follow a 0,1,2,0,2,3 pattern
+        /// </summary>
         public void AddIndex(int index)
         {
             if (IndicesCount >= IndicesMax)
@@ -1563,19 +1548,16 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Add 6 indices
+        /// Add 6 indices in a single AddIndices() call, instructing the GPU to draw two triangles. Since game version 1.21, for blocks and items these should always follow a 0,1,2,0,2,3 pattern
         /// </summary>
-        /// <param name="i1"></param>
-        /// <param name="i2"></param>
-        /// <param name="i3"></param>
-        /// <param name="i4"></param>
-        /// <param name="i5"></param>
-        /// <param name="i6"></param>
         public void AddIndices(int i1, int i2, int i3, int i4, int i5, int i6)
         {
             AddIndices(false, i1, i2, i3, i4, i5, i6);
         }
 
+        /// <summary>
+        /// Add 6 indices in a single AddIndices() call, instructing the GPU to draw two triangles. Since game version 1.21, for blocks and items these should always follow a 0,1,2,0,2,3 pattern
+        /// </summary>
         public void AddIndices(bool allowSSBOs, int i1, int i2, int i3, int i4, int i5, int i6)
         {
             int count = IndicesCount;
@@ -1604,6 +1586,9 @@ namespace Vintagestory.API.Client
 #endif
         }
 
+        /// <summary>
+        /// Add 6 indices in a single call, instructing the GPU to draw two triangles. The parameter is the first index used, this method automatically generates the remaining 5 indices in the 0,1,2,0,2,3 pattern
+        /// </summary>
         public void AddQuadIndices(int i)
         {
             int count = IndicesCount;
@@ -1622,6 +1607,9 @@ namespace Vintagestory.API.Client
             IndicesCount = count;
         }
 
+        /// <summary>
+        /// Add a set of indices of any length
+        /// </summary>
         public void AddIndices(int[] indices)
         {
             int length = indices.Length;
@@ -1639,6 +1627,9 @@ namespace Vintagestory.API.Client
             IndicesCount = count;
         }
 
+        /// <summary>
+        /// Doubles the size of the Indices buffer
+        /// </summary>
         public void GrowIndexBuffer()
         {
             int i = IndicesCount;
@@ -1653,6 +1644,9 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Increases the size of the Indices buffer by at least the quantity specified (maybe more)
+        /// </summary>
         public void GrowIndexBuffer(int byAtLeastQuantity)
         {
             int newSize = Math.Max(IndicesCount * 2, IndicesCount + byAtLeastQuantity);
@@ -1668,7 +1662,9 @@ namespace Vintagestory.API.Client
         }
 
 
-
+        /// <summary>
+        /// Doubles the size of the Normals buffer
+        /// </summary>
         public void GrowNormalsBuffer()
         {
             if (Normals != null)
@@ -1788,7 +1784,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Creates a compact, deep copy of the mesh
         /// </summary>
-        /// <returns></returns>
         public MeshData Clone()
         {
             MeshData newMesh = CloneBasicData();
@@ -1799,7 +1794,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Clone the basic xyz, uv, rgba and flags arrays, which are common to every chunk mesh (though not necessarily all used by individual block/item/entity models)
         /// </summary>
-        /// <returns></returns>
         private MeshData CloneBasicData()
         {
             MeshData dest = new MeshData(false);
@@ -1833,6 +1827,9 @@ namespace Vintagestory.API.Client
             return dest;
         }
 
+        /// <summary>
+        /// Clones the basic mesh data (xyz, uv, rgba, flags, indices), requires the dest to already have buffers of sufficient size
+        /// </summary>
         private void CopyBasicData(MeshData dest)
         {
             dest.SetVerticesCount(VerticesCount);
@@ -1844,6 +1841,10 @@ namespace Vintagestory.API.Client
             Array.Copy(Indices, dest.Indices, IndicesCount);
         }
 
+
+        /// <summary>
+        /// Disposes of the basic mesh data (xyz, uv, rgba, flags, indices)
+        /// </summary>
         public void DisposeBasicData()
         {
             xyz = null;
@@ -1856,7 +1857,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Clone the extra mesh data fields. Some of these fields are used only by block/item meshes (some only be Microblocks). Some others are not used by all chunk meshes, though may be used by certain meshes in certain renderpasses (e.g. CustomInts). Either way, cannot sensibly be retained within the MeshDataRecycler system, must be cloned every time
         /// </summary>
-        /// <returns></returns>
         private void CloneExtraData(MeshData dest)
         {
             unchecked
@@ -1940,6 +1940,9 @@ namespace Vintagestory.API.Client
             CustomInts = null;
         }
 
+        /// <summary>
+        /// Clone the meshdata using the MeshDataRecycler, useful for performance for large meshes (such as chunk meshes)
+        /// </summary>
         public MeshData CloneUsingRecycler()
         {
             int recyclableSizeInBytes = VerticesCount * BaseSizeInBytes;
@@ -1973,11 +1976,9 @@ namespace Vintagestory.API.Client
         }
 
 
-
         /// <summary>
         /// Creates an empty copy of the mesh
         /// </summary>
-        /// <returns></returns>
         public MeshData EmptyClone()
         {
             MeshData dest = new MeshData(false);
@@ -2063,7 +2064,6 @@ namespace Vintagestory.API.Client
         }
 
 
-
         /// <summary>
         /// Sets the counts of all data to 0
         /// </summary>
@@ -2084,6 +2084,9 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        /// <summary>
+        /// Measures the size in bytes of this Meshdata, useful for monitoring
+        /// </summary>
         public int SizeInBytes()
         {
             return
@@ -2135,6 +2138,11 @@ namespace Vintagestory.API.Client
             }
         }
 
+
+        /// <summary>
+        /// Returns new MeshData objects, each for an individual texture index. The returned meshes will contain (between them) the data from this mesh.
+        /// <br/>Used for multi-atlas support. If only a single atlas page is currently in use (in the current mesh), as is commonly the case, then simply returns the current mesh without cloning it
+        /// </summary>
         public MeshData[] SplitByTextureId()
         {
             var meshes = new MeshData[TextureIds.Length];

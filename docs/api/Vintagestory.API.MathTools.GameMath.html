@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class GameMath
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A large set of useful game mathematics functions <a href="https://github.com/anegostudios/vsapi/blob/master///Math/GameMath.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A large set of useful game mathematics functions <a href=https://github.com/anegostudios/vsapi/blob/master///Math/GameMath.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -202,6 +202,37 @@ Class GameMath
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_GameMath_ONEOVERROOT2" data-uid="Vintagestory.API.MathTools.GameMath.ONEOVERROOT2">
+  ONEOVERROOT2
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>1 divided by the square root of 2 - useful for creating normalised vectors, e.g. (ONEOVERROOT2, ONEOVERROOT2, 0) is a vector with length 1.0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const float ONEOVERROOT2 = 0.7071068</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -3261,6 +3292,45 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_GameMath_RoundTo_" data-uid="Vintagestory.API.MathTools.GameMath.RoundTo*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_GameMath_RoundTo_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.RoundTo(System.Single,System.Single)">
+  RoundTo(float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rounds the given float to the closest (1/interval) fraction - for example, 1/32 for getting voxel-accurate sub-block coordinates</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float RoundTo(float v, float interval)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>interval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 

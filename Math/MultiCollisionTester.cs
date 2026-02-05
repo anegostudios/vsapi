@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
@@ -14,20 +15,16 @@ namespace Vintagestory.API.MathTools
 
         public Cuboidd[] entityBox = ArrayUtil.CreateFilled(10, (i) => new Cuboidd());
         protected int count;
-        Cuboidf[] collBox = new Cuboidf[10];
 
         // Use class level fields to reduce garbage collection
-        public BlockPos tmpPos = new();
+        public BlockPos tmpPos = new(Dimensions.WillSetLater);
         public Vec3d tmpPosDelta = new();
 
-        public BlockPos minPos = new();
-        public BlockPos maxPos = new();
+        public BlockPos minPos = new(Dimensions.WillSetLater);
+        public BlockPos maxPos = new(Dimensions.WillSetLater);
 
         public Vec3d pos = new();
 
-        readonly Cuboidd tmpBox = new();
-        readonly BlockPos blockPos = new();
-        readonly Vec3d blockPosVec = new();
 
         public void ApplyTerrainCollision(Cuboidf[] collisionBoxes, int collBoxCount, Entity entity, EntityPos entityPos, float dtFactor, ref Vec3d newPosition, float stepHeight = 1, float yExtra = 1)
         {
@@ -50,7 +47,7 @@ namespace Vintagestory.API.MathTools
             double motionY = entityPos.Motion.Y * dtFactor;
             double motionZ = entityPos.Motion.Z * dtFactor;
 
-            GenerateCollisionBoxList(world.BlockAccessor, motionX, motionY, motionZ, stepHeight, yExtra);
+            GenerateCollisionBoxList(world.BlockAccessor, motionX, motionY, motionZ, stepHeight, yExtra, entityPos.Dimension);
 
             bool collided = false;
             int collisionBoxListCount = CollisionBoxList.Count;
@@ -168,7 +165,7 @@ namespace Vintagestory.API.MathTools
             newPosition.Set(pos.X + motionX, pos.Y + motionY, pos.Z + motionZ);
         }
 
-        protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra)
+        protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra, int dimension)
         {
             double minx = double.MaxValue, miny = double.MaxValue, minz = double.MaxValue;
             double maxx = double.MinValue, maxy = double.MinValue, maxz = double.MinValue;
@@ -200,6 +197,8 @@ namespace Vintagestory.API.MathTools
                 (int)(maxz + Math.Max(0, motionZ))
             );
 
+            minPos.SetDimension(dimension);
+            tmpPos.SetDimension(dimension);
 
             // Clear the list and add every cuboid the block has to it.
             CollisionBoxList.Clear();
@@ -228,11 +227,12 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public Cuboidd GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf[] ecollisionBoxes, int collBoxCount, Vec3d pos, bool alsoCheckTouch = true)
         {
+            BlockPos blockPos = new(Dimensions.NormalWorld);    // The dimension is in the Vec3d pos.Y
+            Vec3d blockPosVec = new();
+
             for (int j = 0; j < collBoxCount; j++)
             {
                 var entityBoxRel = ecollisionBoxes[j];
-                BlockPos blockPos = new();
-                Vec3d blockPosVec = new();
                 Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
 
                 entityBox.Y1 = Math.Round(entityBox.Y1, 5); // Fix float/double rounding errors. Only need to fix the vertical because gravity.
@@ -251,7 +251,9 @@ namespace Vintagestory.API.MathTools
                     {
                         for (int z = minZ; z <= maxZ; z++)
                         {
+#pragma warning disable CS0618 // Type or member is obsolete - but it's correct here as the dimension is included in the y field
                             Block block = blockAccessor.GetMostSolidBlock(x, y, z);
+#pragma warning restore CS0618
                             blockPos.Set(x, y, z);
                             blockPosVec.Set(x, y, z);
 

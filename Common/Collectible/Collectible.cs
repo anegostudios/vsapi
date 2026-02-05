@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
+using Vintagestory.GameContent;
 
 #nullable disable
 
@@ -32,7 +34,7 @@ namespace Vintagestory.API.Common
         public EnumMatterState MatterState = EnumMatterState.Solid;
 
         /// <summary>
-        /// This value is set the the BlockId or ItemId-Remapper if it encounters a block/item in the savegame,
+        /// This value is set by the BlockId- or ItemId-Remapper if it encounters a block/item in the savegame,
         /// but no longer exists as a loaded block/item
         /// </summary>
         public bool IsMissing { get; set; }
@@ -108,7 +110,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public int ToolTier;
 
-        [Obsolete("Use tool tier")]
+        [Obsolete("Use GetToolTier()")]
         public int MiningTier { get { return ToolTier; } set { ToolTier = value; } }
 
         public HeldSounds HeldSounds;
@@ -117,6 +119,11 @@ namespace Vintagestory.API.Common
         /// List of creative tabs in which this collectible should appear in
         /// </summary>
         public string[] CreativeInventoryTabs;
+
+        /// <summary>
+        /// If set, the breaking particles will be taken from this texture, otherwise it'll just pick the first texture
+        /// </summary>
+        public string ParticlesTextureCode = null;
 
         /// <summary>
         /// If you want to add itemstacks with custom attributes to the creative inventory, add them to this list
@@ -191,7 +198,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The origin point from which particles are being spawned
         /// </summary>
-        public Vec3f TopMiddlePos = new Vec3f(0.5f, 1, 0.5f);
+        public FastVec3f TopMiddlePos = new FastVec3f(0.5f, 1, 0.5f);
 
 
         /// <summary>
@@ -258,7 +265,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public ThreeBytes LightHsv = new ThreeBytes();
 
+        public TagSet Tags = TagSet.Empty;
 
+        public virtual TagSet GetTags(ItemStack stack) => Tags;
 
         // Non overridable so people don't accidently forget to call the base method for assigning the api in OnLoaded
         public void OnLoadedNative(ICoreAPI api)
@@ -305,6 +314,18 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Should return the burnable properties of the item/block
+        /// </summary>
+        /// <param name="world">May be null</param>
+        /// <param name="itemstack">Set if its an itemstack for which to get properties</param>
+        /// <param name="pos">May be null</param>
+        /// <returns></returns>
+        public virtual CombustibleProperties GetCombustibleProperties(IWorldAccessor world, ItemStack itemstack, BlockPos pos)
+        {
+            return CombustibleProps;
+        }
+
+        /// <summary>
         /// Should return the nutrition properties of the item/block
         /// </summary>
         /// <param name="world"></param>
@@ -328,6 +349,27 @@ namespace Vintagestory.API.Common
             return TransitionableProps;
         }
 
+        /// <summary>
+        /// Should return properties used for grounding collectible into something else
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="itemstack"></param>
+        /// <returns></returns>
+        public virtual GrindingProperties GetGrindingProperties(IWorldAccessor world, ItemStack itemstack)
+        {
+            return GrindingProps;
+        }
+
+        /// <summary>
+        /// Should return properties used for crushing collectible into something else
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="itemstack"></param>
+        /// <returns></returns>
+        public virtual CrushingProperties GetCrushingProperties(IWorldAccessor world, ItemStack itemstack)
+        {
+            return CrushingProps;
+        }
 
         /// <summary>
         /// Should returns true if this collectible requires UpdateAndGetTransitionStates() to be called when ticking.
@@ -338,7 +380,22 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool RequiresTransitionableTicking(IWorldAccessor world, ItemStack itemstack)
         {
-            return TransitionableProps != null && TransitionableProps.Length > 0;
+            TransitionableProperties[] transitionableProps = itemstack.Collectible.GetTransitionableProperties(world, itemstack, null);
+            bool requiresTicking = transitionableProps != null && transitionableProps.Length > 0;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool bhTicking = behavior.RequiresTransitionableTicking(world, itemstack, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    requiresTicking = bhTicking;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return requiresTicking;
+            }
+
+            return requiresTicking;
         }
 
 
@@ -428,19 +485,18 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetMaxDurability(ItemStack itemstack)
         {
-            int durability = 0;
+            int durability = Durability;
 
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    int additionalDurability = bh.OnGetMaxDurability(itemstack, ref bhHandling);
-                    if (bhHandling != EnumHandling.PassThrough)
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    int bhduramax = bh.GetMaxDurability(itemstack, durability, ref handling);
+                    if (handling != EnumHandling.PassThrough)
                     {
-                        durability += additionalDurability;
+                        durability = bhduramax;
                     }
                 },
                 () => {
-                    durability += Durability;
+                    durability = Durability;
                 }
             );
 
@@ -449,19 +505,18 @@ namespace Vintagestory.API.Common
 
         public virtual int GetRemainingDurability(ItemStack itemstack)
         {
-            int durability = 0;
+            int durability = (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack));
 
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    int additionalDurability = bh.OnGetMaxDurability(itemstack, ref bhHandling);
-                    if (bhHandling != EnumHandling.PassThrough)
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    int bhdura = bh.GetRemainingDurability(itemstack, durability, ref handling);
+                    if (handling != EnumHandling.PassThrough)
                     {
-                        durability += additionalDurability;
+                        durability = bhdura;
                     }
                 },
                 () => {
-                    durability += (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack));
+                    durability = (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack));
                 }
             );
 
@@ -471,12 +526,62 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The amount of damage dealt when used as a weapon
         /// </summary>
-        /// <param name="withItemStack"></param>
+        /// <param name="itemStack"></param>
         /// <returns></returns>
-        public virtual float GetAttackPower(IItemStack withItemStack)
+        public virtual float GetAttackPower(ItemStack itemStack)
         {
-            return AttackPower;
+            float atp = AttackPower;
+
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    float attackpower = bh.GetAttackPower(itemStack, atp, ref handling);
+                    if (handling != EnumHandling.PassThrough)
+                    {
+                        atp = attackpower;
+                    }
+                },
+                () => {
+                    atp = AttackPower;
+                }
+            );
+
+            return atp;
         }
+
+
+        /// <summary>
+        /// The amount of damage dealt when used as a weapon on given entity
+        /// </summary>
+        /// <param name="baseDamage"></param>
+        /// <param name="entity"></param>
+        /// <param name="itemStack"></param>
+        /// <param name="isCriticalHit"></param>
+        /// <returns></returns>
+        public virtual float GetDamageToEntity(float baseDamage, Entity entity, ItemStack itemStack, ref bool isCriticalHit)
+        {
+            float outDamage = 0;
+            bool outCrit = false;
+            bool bhcrit = isCriticalHit;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    outDamage = bh.GetDamageToEntity(baseDamage, entity, itemStack, ref bhcrit, ref handling);
+                    if (handling != EnumHandling.PassThrough)
+                    {
+                        baseDamage = outDamage;
+                        outCrit = bhcrit;
+                    }
+                },
+                () => {
+                    outDamage = baseDamage;
+                    outCrit = bhcrit;
+                }
+            );
+
+            isCriticalHit = outCrit;
+
+            return outDamage;
+        }
+
 
         /// <summary>
         /// The the attack range when used as a weapon
@@ -485,7 +590,22 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetAttackRange(IItemStack withItemStack)
         {
-            return AttackRange;
+            float atr = AttackRange;
+
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    float attackrange = bh.GetAttackRange((ItemStack)withItemStack, atr, ref handling);
+                    if (handling != EnumHandling.PassThrough)
+                    {
+                        atr = attackrange;
+                    }
+                },
+                () => {
+                    atr = AttackRange;
+                }
+            );
+
+            return atr;
         }
 
 
@@ -526,11 +646,14 @@ namespace Vintagestory.API.Common
             Vec3f faceVec = blockSel.Face.Normalf;
             Random rnd = player.Entity.World.Rand;
 
-            bool cantMine = block.RequiredMiningTier > 0 && itemslot.Itemstack?.Collectible != null && (itemslot.Itemstack.Collectible.ToolTier < block.RequiredMiningTier || (MiningSpeed == null || !MiningSpeed.ContainsKey(mat)));
+            var miningSpeeds = GetMiningSpeeds(itemslot);
+            int requiredMiningTier = block.GetRequiredMiningTier(api.World, blockSel.Position);
+            bool cantMine = requiredMiningTier > 0 && itemslot.Itemstack?.Collectible != null && (itemslot.Itemstack.Collectible.GetToolTier(itemslot) < requiredMiningTier || (miningSpeeds == null || !miningSpeeds.ContainsKey(mat)));
 
             double chance = mat == EnumBlockMaterial.Ore ? 0.72 : 0.12;
 
-            if ((counter % 5 == 0) && (rnd.NextDouble() < chance || cantMine) && (mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Ore) && (Tool == EnumTool.Pickaxe || Tool == EnumTool.Hammer))
+            EnumTool? tool = itemslot.Itemstack?.Collectible.GetTool(itemslot);
+            if ((counter % 5 == 0) && (rnd.NextDouble() < chance || cantMine) && (mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Ore) && (tool == EnumTool.Pickaxe || tool == EnumTool.Hammer))
             {
                 double posx = blockSel.Position.X + blockSel.HitPosition.X;
                 double posy = blockSel.Position.Y + blockSel.HitPosition.Y;
@@ -620,9 +743,10 @@ namespace Vintagestory.API.Common
             Block block = blockSel.Block ?? world.BlockAccessor.GetBlock(blockSel.Position);
             block.OnBlockBroken(world, blockSel.Position, byPlayer, dropQuantityMultiplier);
 
-            if (DamagedBy != null && DamagedBy.Contains(EnumItemDamageSource.BlockBreaking))
+            EnumItemDamageSource[] damagedBy = GetDamagedBy(itemslot);
+            if (damagedBy != null && damagedBy.Contains(EnumItemDamageSource.BlockBreaking))
             {
-                DamageItem(world, byEntity, itemslot);
+                DamageItem(world, byEntity, itemslot, 1, true);
             }
 
             return true;
@@ -648,24 +772,24 @@ namespace Vintagestory.API.Common
             }
 
             float toolMiningSpeed = 1;
+            Dictionary<EnumBlockMaterial, float> miningSpeeds = GetMiningSpeeds(new DummySlot((ItemStack)itemstack));
 
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    float miningSpeedMultiplier = bh.OnGetMiningSpeed(itemstack, blockSel, block, forPlayer, ref bhHandling);
-                    if (bhHandling != EnumHandling.PassThrough)
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    float miningSpeedMultiplier = bh.GetMiningSpeed(itemstack as ItemStack, blockSel, block, forPlayer, ref handling);
+                    if (handling != EnumHandling.PassThrough)
                     {
                         toolMiningSpeed *= miningSpeedMultiplier;
                     }
                 },
                 () => {
-                    if (MiningSpeed == null || !MiningSpeed.ContainsKey(material))
+                    if (miningSpeeds == null || !miningSpeeds.ContainsKey(material))
                     {
                         toolMiningSpeed *= traitRate;
                     }
                     else
                     {
-                        toolMiningSpeed *= MiningSpeed[material] * traitRate * GlobalConstants.ToolMiningSpeedModifier;
+                        toolMiningSpeed *= miningSpeeds[material] * traitRate * GlobalConstants.ToolMiningSpeedModifier;
                     }
                 }
             );
@@ -673,6 +797,60 @@ namespace Vintagestory.API.Common
             return toolMiningSpeed;
         }
 
+        /// <summary>
+        /// Returns the mining speeds for all materials of the item.
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
+        public virtual Dictionary<EnumBlockMaterial, float> GetMiningSpeeds(ItemSlot slot)
+        {
+            Dictionary<EnumBlockMaterial, float> miningSpeeds = MiningSpeed;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling bhHandling = EnumHandling.PassThrough;
+
+                var bhMiningSpeeds = behavior.GetMiningSpeeds(slot, ref bhHandling);
+                if (bhHandling != EnumHandling.PassThrough)
+                {
+                    miningSpeeds = bhMiningSpeeds;
+                }
+
+                if (bhHandling == EnumHandling.PreventSubsequent) return miningSpeeds;
+            }
+
+            return miningSpeeds;
+        }
+
+        /// <summary>
+        /// Returns tool type of the item
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns>Tool type</returns>
+        public virtual EnumTool? GetTool(ItemSlot slot)
+        {
+            return Tool;
+        }
+
+        /// <summary>
+        /// What tier this tool can mine when held in hands
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
+        public virtual int GetToolTier(ItemSlot slot)
+        {
+            return ToolTier;
+        }
+
+        /// <summary>
+        /// From which damage sources does the item take durability damage
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
+        public virtual EnumItemDamageSource[] GetDamagedBy(ItemSlot slot)
+        {
+            return DamagedBy;
+        }
 
         /// <summary>
         /// Not implemented yet
@@ -694,12 +872,11 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpHitAnimation(ItemSlot slot, Entity byEntity)
         {
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             string anim = null;
             WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    string bhanim = bh.GetHeldTpHitAnimation(slot, byEntity, ref bhHandling);
-                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    string bhanim = bh.GetHeldTpHitAnimation(slot, byEntity, ref handling);
+                    if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
                 () => { anim = HeldTpHitAnimation; }
             );
@@ -716,15 +893,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldReadyAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             string anim = null;
             WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    string bhanim = bh.GetHeldReadyAnimation(activeHotbarSlot, forEntity, hand, ref bhHandling);
-                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    string bhanim = bh.GetHeldReadyAnimation(activeHotbarSlot, forEntity, hand, ref handling);
+                    if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
                 () => { anim = hand == EnumHand.Left ? HeldLeftReadyAnimation : HeldRightReadyAnimation; }
             );
+
+            if (api is ICoreClientAPI capi)
+            {
+                var offhandstack = capi.World.Player.Entity.LeftHandItemSlot.Itemstack;
+                if (activeHotbarSlot.Itemstack.Collectible.GetTemperature(forEntity.World, activeHotbarSlot.Itemstack) > GlobalConstants.TooHotToTouchTemperature
+                    && offhandstack?.ItemAttributes?.IsTrue("heatResistant") == true)
+                {
+                    return null;
+                }
+            }
 
             return anim;
         }
@@ -739,12 +925,11 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpIdleAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             string anim = null;
             WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    string bhanim = bh.GetHeldTpIdleAnimation(activeHotbarSlot, forEntity, hand, ref bhHandling);
-                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    string bhanim = bh.GetHeldTpIdleAnimation(activeHotbarSlot, forEntity, hand, ref handling);
+                    if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
                 () => { anim = hand == EnumHand.Left ? HeldLeftTpIdleAnimation : HeldRightTpIdleAnimation; }
             );
@@ -760,12 +945,11 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpUseAnimation(ItemSlot activeHotbarSlot, Entity forEntity)
         {
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             string anim = null;
             WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    string bhanim = bh.GetHeldTpUseAnimation(activeHotbarSlot, forEntity, ref bhHandling);
-                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    string bhanim = bh.GetHeldTpUseAnimation(activeHotbarSlot, forEntity, ref handling);
+                    if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
                 () => {
                     if (GetNutritionProperties(forEntity.World, activeHotbarSlot.Itemstack, forEntity) == null)
@@ -787,23 +971,53 @@ namespace Vintagestory.API.Common
         /// <param name="itemslot"></param>
         public virtual void OnAttackingWith(IWorldAccessor world, Entity byEntity, Entity attackedEntity, ItemSlot itemslot)
         {
-            if (DamagedBy != null && DamagedBy.Contains(EnumItemDamageSource.Attacking) && attackedEntity?.Alive == true)
+            EnumItemDamageSource[] damagedBy = GetDamagedBy(itemslot);
+            if (damagedBy != null && damagedBy.Contains(EnumItemDamageSource.Attacking) && attackedEntity?.Alive == true)
             {
-                DamageItem(world, byEntity, itemslot);
+                DamageItem(world, byEntity, itemslot, 1, true);
             }
         }
 
 
         /// <summary>
-        /// Called when this collectible is attempted to being used as part of a crafting recipe and should get consumed now. Return false if it doesn't match the ingredient
+        /// Called when this collectible is attempted to being used as part of a grid crafting recipe and should get consumed now. Return false if it doesn't match the ingredient
         /// </summary>
         /// <param name="inputStack"></param>
         /// <param name="gridRecipe"></param>
         /// <param name="ingredient"></param>
         /// <returns></returns>
+        [Obsolete("Use 'MatchesForCrafting(ItemStack inputStack, IRecipeBase recipe, IRecipeIngredient ingredient)' instead")]
         public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)
         {
-            if (ingredient.IsTool && ingredient.ToolDurabilityCost > inputStack.Collectible.GetRemainingDurability(inputStack)) return false;
+            if (!ingredient.ConsumeProperties.Consume && ingredient.ConsumeProperties.DurabilityCost > inputStack.Collectible.GetRemainingDurability(inputStack))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Called when this collectible is attempted to being used as part of a crafting recipe and should get consumed now. Return false if it doesn't match the ingredient
+        /// </summary>
+        /// <param name="inputStack"></param>
+        /// <param name="recipe"></param>
+        /// <param name="ingredient"></param>
+        /// <returns></returns>
+        public virtual bool MatchesForCrafting(ItemStack inputStack, IRecipeBase recipe, IRecipeIngredient ingredient)
+        {
+            if (recipe is GridRecipe gridRecipe && ingredient is CraftingRecipeIngredient craftingIngredient)
+            {
+#pragma warning disable CS0618 // Left for compat reasons
+                return MatchesForCrafting(inputStack, gridRecipe, craftingIngredient);
+#pragma warning restore CS0618
+            }
+
+            if (!ingredient.ConsumeProperties.Consume && ingredient.ConsumeProperties.DurabilityCost > inputStack.Collectible.GetRemainingDurability(inputStack))
+            {
+                return false;
+            }
+
             return true;
         }
 
@@ -818,13 +1032,37 @@ namespace Vintagestory.API.Common
         /// <param name="fromIngredient"></param>
         /// <param name="byPlayer"></param>
         /// <param name="quantity"></param>
+        [Obsolete("Use 'OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, IRecipeBase recipe, IRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)' instead")]
         public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, GridRecipe gridRecipe, CraftingRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)
         {
-            if (Attributes?["noConsumeOnCrafting"].AsBool(false) == true) return;
+        }
 
-            if (fromIngredient.IsTool)
+        public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, IRecipeBase recipe, IRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)
+        {
+            if (recipe is GridRecipe gridRecipe)
             {
-                if (fromIngredient.ToolDurabilityCost > 0) stackInSlot.Itemstack.Collectible.DamageItem(byPlayer.Entity.World, byPlayer.Entity, stackInSlot, fromIngredient.ToolDurabilityCost);
+#pragma warning disable CS0618 // Left for compat reasons
+                OnConsumedByCrafting(allInputSlots, stackInSlot, gridRecipe, fromIngredient as CraftingRecipeIngredient, byPlayer, quantity);
+#pragma warning restore CS0618
+            }
+
+            if (Attributes?["noConsumeOnCrafting"].AsBool(false) == true)
+            {
+                string itemCode = stackInSlot?.Itemstack?.Collectible?.Code.ToString() ?? "";
+                if ((itemCode == "game:schematic-glider" || itemCode == "game:schematic-customtranslocator") && !fromIngredient.ConsumeProperties.Consume)
+                {
+                    return; // Vanilla schematics have this attribute left for compatibility reasons, so this is the only exception where we skip the warning.
+                }
+                byPlayer.Entity?.Api.Logger.Warning($"Collectible '{Code}' has 'noConsumeOnCrafting' set to true. This attribute is obsolete, use 'consume = false' in recipes instead.");
+                return;
+            }
+
+            if (!fromIngredient.ConsumeProperties.Consume)
+            {
+                if (fromIngredient.ConsumeProperties.DurabilityChange < 0)
+                {
+                    stackInSlot.Itemstack.Collectible.DamageItem(byPlayer.Entity.World, byPlayer.Entity, stackInSlot, fromIngredient.ConsumeProperties.DurabilityCost, fromIngredient.ConsumeProperties.BreakOnZeroDurability);
+                }
             }
             else
             {
@@ -854,12 +1092,30 @@ namespace Vintagestory.API.Common
         /// <param name="allInputslots"></param>
         /// <param name="outputSlot"></param>
         /// <param name="byRecipe"></param>
+        [Obsolete("Use 'OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe)' instead")]
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
         {
-            EnumHandling bhHandling = EnumHandling.PassThrough;
+
+        }
+
+        /// <summary>
+        /// Called when a matching recipe has been found and an item is placed into the crafting output slot (which is still before the player clicks on the output slot to actually craft the item and consume the ingredients)
+        /// </summary>
+        /// <param name="allInputslots"></param>
+        /// <param name="outputSlot"></param>
+        /// <param name="byRecipe"></param>
+        public virtual void OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe)
+        {
+            if (byRecipe is GridRecipe gridRecipe)
+            {
+#pragma warning disable CS0618 // Left for compat reasons
+                OnCreatedByCrafting(allInputSlots, outputSlot, gridRecipe);
+#pragma warning restore CS0618
+            }
+
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    bh.OnCreatedByCrafting(allInputslots, outputSlot, byRecipe, ref bhHandling);
+                    bh.OnCreatedByCrafting(allInputSlots, outputSlot, byRecipe, ref hd);
                 },
                 () => {
 
@@ -868,9 +1124,9 @@ namespace Vintagestory.API.Common
 
                     if (byRecipe.AverageDurability)
                     {
-                        var ingreds = byRecipe.resolvedIngredients;
+                        var ingreds = byRecipe.RecipeIngredients;
 
-                        foreach (ItemSlot slot in allInputslots)
+                        foreach (ItemSlot slot in allInputSlots)
                         {
                             if (slot.Empty) continue;
                             ItemStack stack = slot.Itemstack;
@@ -885,12 +1141,15 @@ namespace Vintagestory.API.Common
                             }
 
                             bool skip = false;
-                            foreach (var ingred in ingreds)
+                            foreach (IRecipeIngredient ingredient in ingreds)
                             {
-                                if (ingred != null && ingred.IsTool && ingred.SatisfiesAsIngredient(stack))
+                                if (ingredient != null)
                                 {
-                                    skip = true;
-                                    break;
+                                    if (!ingredient.ConsumeProperties.Consume && ingredient.SatisfiesAsIngredient(stack))
+                                    {
+                                        skip = true;
+                                        break;
+                                    }
                                 }
                             }
                             if (skip) continue;
@@ -904,7 +1163,7 @@ namespace Vintagestory.API.Common
                         float pFinal = pSum / q;
                         if (pFinal < 1)
                         {
-                            outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetMaxDurability(outputSlot.Itemstack)));
+                            outputSlot.Itemstack.Collectible.SetDurability(outputSlot.Itemstack, (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetMaxDurability(outputSlot.Itemstack)));
                         }
                     }
 
@@ -914,7 +1173,7 @@ namespace Vintagestory.API.Common
                     if (perishProps != null)
                     {
                         perishProps.TransitionedStack.Resolve(api.World, "oncrafted perished stack", Code);
-                        CarryOverFreshness(api, allInputslots, new ItemStack[] { outputSlot.Itemstack }, perishProps);
+                        CarryOverFreshness(api, allInputSlots, new ItemStack[] { outputSlot.Itemstack }, perishProps);
                     }
 
                 }
@@ -928,8 +1187,42 @@ namespace Vintagestory.API.Common
         /// <param name="outputSlot"></param>
         /// <param name="matchingRecipe"></param>
         /// <returns>true to prevent default ingredient consumption</returns>
+        [Obsolete("Use 'ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe)' instead")]
         public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, GridRecipe matchingRecipe)
         {
+            bool consumeIngredients = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool bhConsumeIngredients = behavior.ConsumeCraftingIngredients(slots, outputSlot, matchingRecipe, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    consumeIngredients = bhConsumeIngredients;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return consumeIngredients;
+            }
+
+            return consumeIngredients;
+        }
+
+        /// <summary>
+        /// Called after the player has taken out the item from the output slot
+        /// </summary>
+        /// <param name="slots"></param>
+        /// <param name="outputSlot"></param>
+        /// <param name="matchingRecipe"></param>
+        /// <returns>true to prevent default ingredient consumption</returns>
+        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe)
+        {
+            if (matchingRecipe is GridRecipe gridRecipe)
+            {
+#pragma warning disable CS0618 // Left for compat reasons
+                return ConsumeCraftingIngredients(slots, outputSlot, gridRecipe);
+#pragma warning restore CS0618
+            }
+
             return false;
         }
 
@@ -942,15 +1235,51 @@ namespace Vintagestory.API.Common
         /// <param name="amount"></param>
         public virtual void SetDurability(ItemStack itemstack, int amount)
         {
-            EnumHandling bhHandling = EnumHandling.PassThrough;
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    bh.OnSetDurability(itemstack, ref amount, ref bhHandling);
+                    bh.OnSetDurability(itemstack, ref amount, ref hd);
                 },
                 () => {
                     itemstack.Attributes.SetInt("durability", amount);
                 }
             );
+        }
+
+        /// <summary>
+        /// Causes the item to be damaged. If 'destroyOnZeroDurability == true' will play a breaking sound and remove the itemstack if no more durability is left
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="itemSlot"></param>
+        /// <param name="amount">Amount of damage</param>
+        public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemSlot, int amount, bool destroyOnZeroDurability)
+        {
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    bh.OnDamageItem(world, byEntity, itemSlot, ref amount, ref hd);
+                },
+                () => {
+                    ItemStack itemstack = itemSlot.Itemstack;
+
+                    int leftDurability = itemstack.Collectible.GetRemainingDurability(itemstack);
+                    leftDurability -= amount;
+                    itemstack.Collectible.SetDurability(itemstack, leftDurability);
+
+                    if (leftDurability <= 0)
+                    {
+                        if (!destroyOnZeroDurability)
+                        {
+                            itemstack.Collectible.SetDurability(itemstack, 0);
+                        }
+                        else
+                        {
+                            DestroyItem(world, byEntity, itemSlot);
+                        }
+                    }
+                }
+            );
+
+            itemSlot.MarkDirty();
         }
 
         /// <summary>
@@ -960,63 +1289,62 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="itemslot"></param>
         /// <param name="amount">Amount of damage</param>
+        [Obsolete("Use DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1, bool destroyOnZeroDurability = true) instead")]
         public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1)
         {
-            EnumHandling bhHandling = EnumHandling.PassThrough;
+            DamageItem(world, byEntity, itemslot, amount, true);
+        }
+
+        /// <summary>
+        /// Will play a breaking sound and remove the itemstack
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="itemSlot"></param>
+        public virtual void DestroyItem(IWorldAccessor world, Entity byEntity, ItemSlot itemSlot)
+        {
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling hd) => {
-                    bh.OnDamageItem(world, byEntity, itemslot, ref amount, ref bhHandling);
+                    bh.OnDestroyItem(world, byEntity, itemSlot, ref hd);
                 },
                 () => {
-                    ItemStack itemstack = itemslot.Itemstack;
+                    EnumTool? tool = itemSlot?.Itemstack?.Collectible?.GetTool(itemSlot);
+                    ItemStack itemStack = itemSlot.Itemstack;
 
-                    int leftDurability = itemstack.Collectible.GetRemainingDurability(itemstack);
-                    leftDurability -= amount;
-                    itemstack.Attributes.SetInt("durability", leftDurability);
+                    itemSlot.Itemstack = null;
 
-                    if (leftDurability <= 0)
+                    IPlayer player = (byEntity as EntityPlayer)?.Player;
+
+                    if (player != null)
                     {
-                        itemslot.Itemstack = null;
-
-                        IPlayer player = (byEntity as EntityPlayer)?.Player;
-
-                        if (player != null)
+                        if (tool != null)
                         {
-                            if (Tool != null)
+                            string ident = Attributes?["slotRefillIdentifier"].ToString();
+                            RefillSlotIfEmpty(itemSlot, byEntity as EntityAgent, (stack) => {
+                                return ident != null ? stack.ItemAttributes?["slotRefillIdentifier"]?.ToString() == ident : stack.Collectible.GetTool(new DummySlot(stack)) == tool;
+                            });
+
+                            if (!itemSlot.Empty && Attributes?.IsTrue("rememberToolModeWhenBroken") == true)
                             {
-                                string ident = Attributes?["slotRefillIdentifier"].ToString();
-                                RefillSlotIfEmpty(itemslot, byEntity as EntityAgent, (stack) => {
-                                    return ident != null ? stack.ItemAttributes?["slotRefillIdentifier"]?.ToString() == ident : stack.Collectible.Tool == Tool;
-                                });
-
-                                if (!itemslot.Empty && Attributes?.IsTrue("rememberToolModeWhenBroken") == true)
-                                {
-                                    itemslot.Itemstack.Collectible.SetToolMode(itemslot, player, null, GetToolMode(new DummySlot(itemstack), player, null));
-                                }
+                                itemSlot.Itemstack.Collectible.SetToolMode(itemSlot, player, null, GetToolMode(new DummySlot(itemStack), player, null));
                             }
-
-                            if (itemslot.Itemstack != null && !itemslot.Itemstack.Attributes.HasAttribute("durability"))
-                            {
-                                itemstack = itemslot.Itemstack;
-                                itemstack.Attributes.SetInt("durability", itemstack.Collectible.GetMaxDurability(itemstack));
-                                // This forces update of durability when slot is marked dirty (otherwise the durability attribute would be unset, therefore not updated, for a new item)
-                            }
-
-                            world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), player, null);
-                        }
-                        else
-                        {
-                            world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), byEntity.SidedPos.X, byEntity.SidedPos.Y, byEntity.SidedPos.Z, null, 1, 16);
                         }
 
-                        world.SpawnCubeParticles(byEntity.SidedPos.XYZ.Add(byEntity.SelectionBox.Y2 / 2), itemstack, 0.25f, 30, 1, player);
+                        if (itemSlot.Itemstack != null && !itemSlot.Itemstack.Attributes.HasAttribute("durability"))
+                        {
+                            itemStack = itemSlot.Itemstack;
+                            itemStack.Collectible.SetDurability(itemStack, itemStack.Collectible.GetMaxDurability(itemStack));
+                            // This forces update of durability when slot is marked dirty (otherwise the durability attribute would be unset, therefore not updated, for a new item)
+                        }
                     }
+
+                    world.PlaySoundAt(HeldSounds.ToolBreak, byEntity, null);
+                    world.SpawnCubeParticles(byEntity.Pos.XYZ.Add(byEntity.SelectionBox.Y2 / 2), itemStack, 0.25f, 30, 1, player);
                 }
             );
 
-            itemslot.MarkDirty();
+            itemSlot.MarkDirty();
         }
-
 
 
         public virtual void RefillSlotIfEmpty(ItemSlot slot, EntityAgent byEntity, ActionConsumable<ItemStack> matcher)
@@ -1146,13 +1474,13 @@ namespace Vintagestory.API.Common
             {
                 if (api.World.Rand.NextDouble() < 0.01)
                 {
-                    api.World.SpawnCubeParticles(entityItem.ServerPos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 80, 0.3f);
+                    api.World.SpawnCubeParticles(entityItem.Pos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 80, 0.3f);
                     entityItem.Die();
                 } else
                 {
                     if (api.World.Rand.NextDouble() < 0.2)
                     {
-                        api.World.SpawnCubeParticles(entityItem.ServerPos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 2, 0.2f + (float)api.World.Rand.NextDouble() / 5f);
+                        api.World.SpawnCubeParticles(entityItem.Pos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 2, 0.2f + (float)api.World.Rand.NextDouble() / 5f);
                     }
                 }
             }
@@ -1225,7 +1553,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// General using access. Override OnHeldAttackStep or OnHeldInteractStep to alter the behavior.
+        /// General using access. Override OnHeldAttackStep or OnHeldInteractStep to alter the behavior. Called every 20ms
         /// </summary>
         /// <param name="secondsPassed"></param>
         /// <param name="slot"></param>
@@ -1279,9 +1607,9 @@ namespace Vintagestory.API.Common
                 (CollectibleBehavior bh, ref EnumHandling hd) => bh.OnHeldAttackStart(slot, byEntity, blockSel, entitySel, ref bhHandHandling, ref hd),
                 () =>
                 {
-                    if (HeldSounds?.Attack != null && api.World.Side == EnumAppSide.Client)
+                    if (HeldSounds?.Attack.Location != null)
                     {
-                        api.World.PlaySoundAt(HeldSounds.Attack, 0, 0, 0, null, 0.9f + (float)api.World.Rand.NextDouble() * 0.2f);
+                        api.World.PlaySoundAt(HeldSounds.Attack, byEntity, (byEntity as EntityPlayer)?.Player);
                     }
                 }
             );
@@ -1313,7 +1641,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Called continously when a custom attack action is playing. Return false to stop the action.
+        /// Called continously when a custom attack action is playing. Return false to stop the action. Called every 20ms
         /// </summary>
         /// <param name="secondsPassed"></param>
         /// <param name="slot"></param>
@@ -1380,16 +1708,39 @@ namespace Vintagestory.API.Common
                 if (bhHandling == EnumHandling.PreventSubsequent) return;
             }
 
-            if (!preventDefault)
+            if (preventDefault) return;
+
+            if (blockSel != null)
             {
-                tryEatBegin(slot, byEntity, ref bhHandHandling);
-                handling = bhHandHandling;
+                ICoolingMedium coolingMedium = getCoolingMedium(blockSel);
+                if (coolingMedium != null && GetTemperature(api.World, slot.Itemstack) > GlobalConstants.TooHotToTouchTemperature)
+                {
+                    handling = EnumHandHandling.Handled;
+                    return;
+                }
             }
+            tryEatBegin(slot, byEntity, ref bhHandHandling);
+            handling = bhHandHandling;
+        }
+
+        protected ICoolingMedium getCoolingMedium(BlockSelection blockSel)
+        {
+            var block = api.World.BlockAccessor.GetBlock(blockSel.Position, BlockLayersAccess.Fluid);
+            var coolingMedium = block.GetInterface<ICoolingMedium>(api.World, blockSel.Position);
+            if (coolingMedium != null)
+            {
+                return coolingMedium;
+            }
+            var insideBlockPos = blockSel.Position.AddCopy(blockSel.Face.Normali);
+            var fluidBlock = api.World.BlockAccessor.GetBlock(insideBlockPos, BlockLayersAccess.Fluid);
+            coolingMedium = fluidBlock.GetInterface<ICoolingMedium>(api.World, insideBlockPos);
+
+            return coolingMedium;
         }
 
 
         /// <summary>
-        /// Called every frame while the player is using this collectible. Return false to stop the interaction.
+        /// Called every 20ms while the player is using this collectible. Return false to stop the interaction.
         /// </summary>
         /// <param name="secondsUsed"></param>
         /// <param name="slot"></param>
@@ -1417,6 +1768,17 @@ namespace Vintagestory.API.Common
             }
 
             if (preventDefault) return result;
+
+            if (!preventDefault && blockSel != null)
+            {
+                ICoolingMedium coolingMedium = getCoolingMedium(blockSel);
+                if (coolingMedium != null && GetTemperature(byEntity.World, slot.Itemstack) > GlobalConstants.CollectibleDefaultTemperature && coolingMedium.CanCool(slot, blockSel.FullPosition))
+                {
+                    coolingMedium.CoolNow(slot, blockSel.FullPosition, 0.02f, true);
+                    slot.MarkDirty();
+                    return true;
+                }
+            }
 
             return tryEatStep(secondsUsed, slot, byEntity);
         }
@@ -1489,11 +1851,6 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Tries to eat the contents in the slot, first call
         /// </summary>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="handling"></param>
-        /// <param name="eatSound"></param>
-        /// <param name="eatSoundRepeats"></param>
         protected virtual void tryEatBegin(ItemSlot slot, EntityAgent byEntity, ref EnumHandHandling handling, string eatSound = "eat", int eatSoundRepeats = 1)
         {
             if (!slot.Empty && GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity) != null)
@@ -1588,7 +1945,7 @@ namespace Vintagestory.API.Common
                     {
                         if (player == null || !player.InventoryManager.TryGiveItemstack(nutriProps.EatenStack.ResolvedItemstack.Clone(), true))
                         {
-                            byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack.Clone(), byEntity.SidedPos.XYZ);
+                            byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack.Clone(), byEntity.Pos.XYZ);
                         }
                     }
                 }
@@ -1597,6 +1954,9 @@ namespace Vintagestory.API.Common
 
                 float intox = byEntity.WatchedAttributes.GetFloat("intoxication");
                 byEntity.WatchedAttributes.SetFloat("intoxication", Math.Min(1.1f, intox + nutriProps.Intoxication));
+
+                float psyche = byEntity.WatchedAttributes.GetFloat("psychedelic");
+                byEntity.WatchedAttributes.SetFloat("psychedelic", Math.Min(2.0f, psyche + nutriProps.Psychedelic));
 
                 if (healthChange != 0)
                 {
@@ -1670,6 +2030,14 @@ namespace Vintagestory.API.Common
 
             string descText = GetItemDescText();
 
+            if (world.Api is ICoreClientAPI clientApi && clientApi.Settings.Bool["extendedDebugInfo"])
+            {
+                IEnumerable<string> tags = clientApi.TagsManager.GetTags(GetTags(inSlot.Itemstack)).Order();
+                if (tags.Any())
+                {
+                    dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
+                }
+            }
             if (withDebugInfo)
             {
                 dsc.AppendLine("<font color=\"#bbbbbb\">Id:" + Id + "</font>");
@@ -1688,13 +2056,14 @@ namespace Vintagestory.API.Common
             }
 
 
-            if (MiningSpeed != null && MiningSpeed.Count > 0)
+            var miningSpeeds = GetMiningSpeeds(inSlot);
+            if (miningSpeeds != null && miningSpeeds.Count > 0)
             {
-                dsc.AppendLine(Lang.Get("Tool Tier: {0}", ToolTier));
+                dsc.AppendLine(Lang.Get("Tool Tier: {0}", GetToolTier(inSlot)));
 
                 dsc.Append(Lang.Get("item-tooltip-miningspeed"));
                 int i = 0;
-                foreach (var val in MiningSpeed)
+                foreach (var val in miningSpeeds)
                 {
                     if (val.Value < 1.1) continue;
 
@@ -1759,22 +2128,24 @@ namespace Vintagestory.API.Common
 
 
 
-            if (GrindingProps?.GroundStack?.ResolvedItemstack != null)
+            GrindingProperties grindingProps = stack.Collectible.GetGrindingProperties(world, stack);
+            if (grindingProps?.GroundStack?.ResolvedItemstack != null)
             {
-                dsc.AppendLine(Lang.Get("When ground: Turns into {0}x {1}", GrindingProps.GroundStack.ResolvedItemstack.StackSize, GrindingProps.GroundStack.ResolvedItemstack.GetName()));
+                dsc.AppendLine(Lang.Get("When ground: Turns into {0}x {1}", grindingProps.GroundStack.ResolvedItemstack.StackSize, grindingProps.GroundStack.ResolvedItemstack.GetName()));
             }
 
-            if (CrushingProps != null)
+            CrushingProperties crushingProps = stack.Collectible.GetCrushingProperties(world, stack);
+            if (crushingProps != null)
             {
-                float quantity = CrushingProps.Quantity.avg * CrushingProps.CrushedStack.ResolvedItemstack.StackSize;
-                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0:0.#}x {1}", quantity, CrushingProps.CrushedStack.ResolvedItemstack.GetName()));
-                dsc.AppendLine(Lang.Get("Requires Pulverizer tier: {0}", CrushingProps.HardnessTier));
+                float quantity = crushingProps.Quantity.avg * crushingProps.CrushedStack.ResolvedItemstack.StackSize;
+                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0:0.#}x {1}", quantity, crushingProps.CrushedStack.ResolvedItemstack.GetName()));
+                dsc.AppendLine(Lang.Get("Requires Pulverizer tier: {0}", crushingProps.HardnessTier));
             }
 
             if (GetAttackPower(stack) > 0.5f)
             {
-                dsc.AppendLine(Lang.Get("Attack power: -{0} hp", GetAttackPower(stack).ToString("0.#")));
-                dsc.AppendLine(Lang.Get("Attack tier: {0}", ToolTier));
+                dsc.AppendLine(Lang.Get("Attack power: {0} damage", GetAttackPower(stack).ToString("0.#")));
+                dsc.AppendLine(Lang.Get("Attack tier: {0}", GetToolTier(inSlot)));
             }
 
             if (GetAttackRange(stack) > GlobalConstants.DefaultAttackRange)
@@ -1782,9 +2153,10 @@ namespace Vintagestory.API.Common
                 dsc.AppendLine(Lang.Get("Attack range: {0} m", GetAttackRange(stack).ToString("0.#")));
             }
 
-            if (CombustibleProps != null)
+            CombustibleProperties combustibleProps = stack.Collectible.GetCombustibleProperties(world, stack, null);
+            if (combustibleProps != null)
             {
-                string smelttype = CombustibleProps.SmeltingType.ToString().ToLowerInvariant();
+                string smelttype = combustibleProps.SmeltingType.ToString().ToLowerInvariant();
                 if (smelttype == "fire")
                 {
                     // Custom for clay items - do not show firing temperature as that is irrelevant to Pit kilns
@@ -1793,27 +2165,27 @@ namespace Vintagestory.API.Common
                 }
                 else
                 {
-                    if (CombustibleProps.BurnTemperature > 0)
+                    if (combustibleProps.BurnTemperature > 0)
                     {
-                        dsc.AppendLine(Lang.Get("Burn temperature: {0}°C", CombustibleProps.BurnTemperature));
-                        dsc.AppendLine(Lang.Get("Burn duration: {0}s", CombustibleProps.BurnDuration));
+                        dsc.AppendLine(Lang.Get("Burn temperature: {0}°C", combustibleProps.BurnTemperature));
+                        dsc.AppendLine(Lang.Get("Burn duration: {0}s", combustibleProps.BurnDuration));
                     }
 
-                    if (CombustibleProps.MeltingPoint > 0)
+                    if (combustibleProps.MeltingPoint > 0)
                     {
-                        dsc.AppendLine(Lang.Get("game:smeltpoint-" + smelttype, CombustibleProps.MeltingPoint));
+                        dsc.AppendLine(Lang.Get("game:smeltpoint-" + smelttype, combustibleProps.MeltingPoint));
                     }
                 }
 
-                if (CombustibleProps.SmeltedStack?.ResolvedItemstack != null)
+                if (combustibleProps.SmeltedStack?.ResolvedItemstack != null)
                 {
-                    int instacksize = CombustibleProps.SmeltedRatio;
-                    int outstacksize = CombustibleProps.SmeltedStack.ResolvedItemstack.StackSize;
+                    int instacksize = combustibleProps.SmeltedRatio;
+                    int outstacksize = combustibleProps.SmeltedStack.ResolvedItemstack.StackSize;
 
 
                     string str = instacksize == 1 ?
-                        Lang.Get("game:smeltdesc-" + smelttype + "-singular", outstacksize, CombustibleProps.SmeltedStack.ResolvedItemstack.GetName()) :
-                        Lang.Get("game:smeltdesc-" + smelttype + "-plural", instacksize, outstacksize, CombustibleProps.SmeltedStack.ResolvedItemstack.GetName())
+                        Lang.Get("game:smeltdesc-" + smelttype + "-singular", outstacksize, combustibleProps.SmeltedStack.ResolvedItemstack.GetName()) :
+                        Lang.Get("game:smeltdesc-" + smelttype + "-plural", instacksize, outstacksize, combustibleProps.SmeltedStack.ResolvedItemstack.GetName())
                     ;
 
                     dsc.AppendLine(str);
@@ -1909,7 +2281,7 @@ namespace Vintagestory.API.Common
             return spoilState;
         }
 
-        protected virtual float AppendPerishableInfoText(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, TransitionState state, bool nowSpoiling)
+        public virtual float AppendPerishableInfoText(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, TransitionState state, bool nowSpoiling)
         {
             TransitionableProperties prop = state.Props;
             float transitionRate = GetTransitionRateMul(world, inSlot, prop.Type);
@@ -2135,17 +2507,29 @@ namespace Vintagestory.API.Common
 
         public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
         {
-            capi.Render.RenderItemstackToGui(
-                slot,
-                x,
-                y,
-                z, (float)size * 0.58f, ColorUtil.WhiteArgb,
-                true, false, true
-            );
-
-            for (int i = 0; i < CollectibleBehaviors.Length; i++)
+            EnumHandling handling = EnumHandling.PassThrough;
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
             {
-                CollectibleBehaviors[i].OnHandbookRecipeRender(capi, recipe, slot, x, y, z, size);
+                EnumHandling bhHandling = EnumHandling.PassThrough;
+                behavior.OnHandbookRecipeRender(capi, recipe, slot, x, y, z, size, ref bhHandling);
+
+                if (bhHandling != EnumHandling.PassThrough)
+                {
+                    handling = bhHandling;
+                }
+
+                if (bhHandling == EnumHandling.PreventSubsequent) break;
+            }
+
+            if (handling == EnumHandling.PassThrough)
+            {
+                capi.Render.RenderItemstackToGui(
+                    slot,
+                    x,
+                    y,
+                    z, (float)size * 0.58f, ColorUtil.WhiteArgb,
+                    true, false, true
+                );
             }
         }
 
@@ -2156,7 +2540,7 @@ namespace Vintagestory.API.Common
             if (Code == null) return null;
             var handbookAttributes = Attributes?["handbook"];
             if (handbookAttributes?["exclude"].AsBool() == true) return null;
-
+             
             bool inCreativeTab = CreativeInventoryTabs != null && CreativeInventoryTabs.Length > 0;
             bool inCreativeTabStack = CreativeInventoryStacks != null && CreativeInventoryStacks.Length > 0;
             if (!inCreativeTab && !inCreativeTabStack)
@@ -2217,6 +2601,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetMergableQuantity(ItemStack sinkStack, ItemStack sourceStack, EnumMergePriority priority)
         {
+            int quantity = 0;
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                int bhQuantity = behavior.GetMergableQuantity(sinkStack, sourceStack, priority, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    quantity = bhQuantity;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return quantity;
+            }
+
+            if (preventDefault) return quantity;
+
             if (Equals(sinkStack, sourceStack, GlobalConstants.IgnoredStackAttributes) && sinkStack.StackSize < MaxStackSize)
             {
                 return Math.Min(MaxStackSize - sinkStack.StackSize, sourceStack.StackSize);
@@ -2231,6 +2633,22 @@ namespace Vintagestory.API.Common
         /// <param name="op"></param>
         public virtual void TryMergeStacks(ItemStackMergeOperation op)
         {
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                behavior.TryMergeStacks(op, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (preventDefault) return;
+
             op.MovableQuantity = GetMergableQuantity(op.SinkSlot.Itemstack, op.SourceSlot.Itemstack, op.CurrentPriority);
             if (op.MovableQuantity == 0) return;
             if (!op.SinkSlot.CanTakeFrom(op.SourceSlot, op.CurrentPriority)) return;
@@ -2367,7 +2785,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetMeltingDuration(IWorldAccessor world, ISlotProvider cookingSlotsProvider, ItemSlot inputSlot)
         {
-            return CombustibleProps == null ? 0 : CombustibleProps.MeltingDuration;
+            CombustibleProperties combustibleProps = GetCombustibleProperties(world, inputSlot.Itemstack, null);
+            return combustibleProps == null ? 0 : combustibleProps.MeltingDuration;
         }
 
         /// <summary>
@@ -2379,7 +2798,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetMeltingPoint(IWorldAccessor world, ISlotProvider cookingSlotsProvider, ItemSlot inputSlot)
         {
-            return CombustibleProps == null ? 0 : CombustibleProps.MeltingPoint;
+            CombustibleProperties combustibleProps = GetCombustibleProperties(world, inputSlot.Itemstack, null);
+            return combustibleProps == null ? 0 : combustibleProps.MeltingPoint;
         }
 
 
@@ -2393,13 +2813,14 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool CanSmelt(IWorldAccessor world, ISlotProvider cookingSlotsProvider, ItemStack inputStack, ItemStack outputStack)
         {
-            ItemStack smeltedStack = CombustibleProps?.SmeltedStack?.ResolvedItemstack;
+            CombustibleProperties combustibleProps = GetCombustibleProperties(world, inputStack, null);
+            ItemStack smeltedStack = combustibleProps?.SmeltedStack?.ResolvedItemstack;
 
             return
                 smeltedStack != null
-                && inputStack.StackSize >= CombustibleProps.SmeltedRatio
-                && CombustibleProps.MeltingPoint > 0
-                && (CombustibleProps.SmeltingType != EnumSmeltType.Fire || world.Config.GetString("allowOpenFireFiring").ToBool(false))
+                && inputStack.StackSize >= combustibleProps.SmeltedRatio
+                && combustibleProps.MeltingPoint > 0
+                && (combustibleProps.SmeltingType != EnumSmeltType.Fire || world.Config.GetString("allowOpenFireFiring").ToBool(false))
                 && (outputStack == null || outputStack.Collectible.GetMergableQuantity(outputStack, smeltedStack, EnumMergePriority.AutoMerge) >= smeltedStack.StackSize)
             ;
         }
@@ -2415,7 +2836,8 @@ namespace Vintagestory.API.Common
         {
             if (!CanSmelt(world, cookingSlotsProvider, inputSlot.Itemstack, outputSlot.Itemstack)) return;
 
-            ItemStack smeltedStack = CombustibleProps.SmeltedStack.ResolvedItemstack.Clone();
+            CombustibleProperties combustibleProps = inputSlot.Itemstack.Collectible.GetCombustibleProperties(world, inputSlot.Itemstack, null);
+            ItemStack smeltedStack = combustibleProps.SmeltedStack.ResolvedItemstack.Clone();
 
             // Copy over spoilage values but reduce them by a bit
             TransitionState state = UpdateAndGetTransitionState(world, new DummySlot(inputSlot.Itemstack), EnumTransitionType.Perish);
@@ -2448,7 +2870,7 @@ namespace Vintagestory.API.Common
                 outputSlot.Itemstack = op.SinkSlot.Itemstack;
             }
 
-            inputSlot.Itemstack.StackSize -= batchSize * CombustibleProps.SmeltedRatio;
+            inputSlot.Itemstack.StackSize -= batchSize * combustibleProps.SmeltedRatio;
 
             if (inputSlot.Itemstack.StackSize <= 0)
             {
@@ -2466,7 +2888,7 @@ namespace Vintagestory.API.Common
         public virtual bool CanSpoil(ItemStack itemstack)
         {
             if (itemstack == null || itemstack.Attributes == null) return false;
-            return itemstack.Collectible.NutritionProps != null && itemstack.Attributes.HasAttribute("spoilstate");
+            return itemstack.Collectible.GetNutritionProperties(api.World, itemstack, null) != null && itemstack.Attributes.HasAttribute("spoilstate");
         }
 
 
@@ -2479,6 +2901,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual TransitionState UpdateAndGetTransitionState(IWorldAccessor world, ItemSlot inslot, EnumTransitionType type)
         {
+            bool preventDefault = false;
+            TransitionState transitionState = null;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                TransitionState bhState = behavior.UpdateAndGetTransitionState(world, inslot, type, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                    transitionState = bhState;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return transitionState;
+            }
+
+            if (preventDefault) return transitionState;
+
             TransitionState[] states = UpdateAndGetTransitionStates(world, inslot);
             if (states == null) return null;
 
@@ -2539,6 +2979,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual TransitionState[] UpdateAndGetTransitionStates(IWorldAccessor world, ItemSlot inslot)
         {
+            bool preventDefault = false;
+            TransitionState[] transitionStates = null;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                TransitionState[] bhStates = behavior.UpdateAndGetTransitionStates(world, inslot, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                    transitionStates = bhStates;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return transitionStates;
+            }
+
+            if (preventDefault) return transitionStates;
+
             return UpdateAndGetTransitionStatesNative(world, inslot);
         }
 
@@ -2670,7 +3128,7 @@ namespace Vintagestory.API.Common
 
                 if (transitionLevel >= 1 && world.Side == EnumAppSide.Server)
                 {
-                    ItemStack newstack = OnTransitionNow(inslot, itemstack.Collectible.TransitionableProps[i]);
+                    ItemStack newstack = OnTransitionNow(inslot, propsm[i]);
 
                     if (newstack.StackSize <= 0)
                     {
@@ -2865,7 +3323,7 @@ namespace Vintagestory.API.Common
         {
             if (itemstack?.Attributes?["temperature"] is not ITreeAttribute)
             {
-                return 20;
+                return GlobalConstants.CollectibleDefaultTemperature;
             }
 
             var attr = (ITreeAttribute)itemstack.Attributes["temperature"];
@@ -2875,7 +3333,7 @@ namespace Vintagestory.API.Common
 
             var hourDiff = nowHours - (lastUpdateHours + didReceiveHeat);
 
-            var temp = attr.GetFloat("temperature", 20);
+            var temp = attr.GetFloat("temperature", GlobalConstants.CollectibleDefaultTemperature);
             // 1.5 deg per irl second
             // 1 game hour = irl 60 seconds
             if (hourDiff > 1 / 85f && temp > 0f)
@@ -2896,31 +3354,51 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetTemperature(IWorldAccessor world, ItemStack itemstack)
         {
-            if (itemstack?.Attributes?["temperature"] is not ITreeAttribute)
-            {
-                return 20;
-            }
+            float outTemp = GlobalConstants.CollectibleDefaultTemperature;
 
-            ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["temperature"];
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    float temp = bh.GetTemperature(world, itemstack, ref handling);
+                    if (handling != EnumHandling.PassThrough)
+                    {
+                        outTemp = temp;
+                    }
+                },
+                () => {
+                    if (itemstack?.Attributes?["temperature"] is not ITreeAttribute)
+                    {
+                        outTemp = GlobalConstants.CollectibleDefaultTemperature;
+                        return;
+                    }
 
-            double nowHours = world.Calendar.TotalHours;
-            double lastUpdateHours = attr.GetDecimal("temperatureLastUpdate");
+                    ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["temperature"];
 
-            double hourDiff = nowHours - lastUpdateHours;
-            float temp = (float)attr.GetDecimal("temperature", 20);
+                    double nowHours = world.Calendar.TotalHours;
+                    double lastUpdateHours = attr.GetDecimal("temperatureLastUpdate");
 
-            if (itemstack.Attributes.GetBool("timeFrozen")) return temp;
+                    double hourDiff = nowHours - lastUpdateHours;
+                    outTemp = (float)attr.GetDecimal("temperature", GlobalConstants.CollectibleDefaultTemperature);
 
-            // 1.5 deg per irl second
-            // 1 game hour = irl 60 seconds
-            if (hourDiff > 1/85f && temp > 0f)
-            {
-                temp = Math.Max(0, temp - Math.Max(0, (float)(nowHours - lastUpdateHours) * attr.GetFloat("cooldownSpeed", 90)));
-                attr.SetFloat("temperature", temp);
-                attr.SetDouble("temperatureLastUpdate", nowHours);
-            }
+                    if (itemstack.Attributes.GetBool("timeFrozen")) return;
 
-            return temp;
+                    if (hourDiff >= 1 / 150f && outTemp > 0f)
+                    {
+                        float velocity = attr.GetFloat("cooldownSpeed", 120) * Math.Max(1, outTemp / 200);
+                        outTemp = Math.Max(0, outTemp - Math.Max(0, (float)(nowHours - lastUpdateHours) * velocity));
+                        attr.SetFloat("temperature", outTemp);
+                        attr.SetDouble("temperatureLastUpdate", nowHours);
+                    }
+                }
+            );
+
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    bh.AfterGetTemperature(world, itemstack, outTemp, ref handling);
+                },
+                () => { }
+            );
+
+            return outTemp;
         }
 
         /// <summary>
@@ -2941,12 +3419,19 @@ namespace Vintagestory.API.Common
                 itemstack.Attributes["temperature"] = attr = new TreeAttribute();
             }
 
-            double nowHours = world.Calendar.TotalHours;
-            // If the colletible gets heated, retain the heat for 1 ingame hour
-            if (delayCooldown && attr.GetDecimal("temperature") < temperature) nowHours += 0.5f;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling handling) => {
+                    bh.SetTemperature(world, itemstack, temperature, delayCooldown, ref handling);
+                },
+                () => {
+                    double nowHours = world.Calendar.TotalHours;
+                    // If the colletible gets heated, retain the heat for 0.25 ingame hour
+                    if (delayCooldown && attr.GetDecimal("temperature") < temperature) nowHours += 0.25f;
 
-            attr.SetDouble("temperatureLastUpdate", nowHours);
-            attr.SetFloat("temperature", temperature);
+                    attr.SetDouble("temperatureLastUpdate", nowHours);
+                    attr.SetFloat("temperature", temperature);
+                }
+            );
         }
 
         /// <summary>
@@ -3281,9 +3766,9 @@ namespace Vintagestory.API.Common
         {
             if (!IsBackPack(itemstack)) return false;
 
-            ITreeAttribute backPackTree = itemstack.Attributes.GetTreeAttribute("backpack");
-            if (backPackTree == null) return true;
-            ITreeAttribute slotsTree = backPackTree.GetTreeAttribute("slots");
+            ITreeAttribute backpackTree = itemstack.Attributes.GetTreeAttribute("backpack");
+            if (backpackTree == null) return true;
+            ITreeAttribute slotsTree = backpackTree.GetTreeAttribute("slots");
 
             foreach (var val in slotsTree)
             {

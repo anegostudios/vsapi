@@ -10,7 +10,7 @@ public class PModulePlayerInLiquid : PModuleInLiquid
 {
     private long lastPush = 0;
     private readonly IPlayer player;
-    private BlockPos tmpPos = new BlockPos();
+    private readonly BlockPos tmpPos = new BlockPos(Config.Dimensions.WillSetLater);
 
     // Stores player attached.
     public PModulePlayerInLiquid(EntityPlayer entityPlayer)
@@ -31,7 +31,7 @@ public class PModulePlayerInLiquid : PModuleInLiquid
             Push = Math.Max(1f, Push - 0.1f * dt * 60f);
         }
 
-        tmpPos.dimension = pos.Dimension;
+        tmpPos.SetDimension(pos.Dimension);
         tmpPos.Set((int)pos.X, (int)pos.Y, (int)pos.Z);
         Block inBlock = entity.World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.Fluid);
         Block aboveBlock = entity.World.BlockAccessor.GetBlockAbove(tmpPos, 1, BlockLayersAccess.Fluid);

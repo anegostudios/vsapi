@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -10,6 +10,7 @@ public class PModuleInLiquid : PModule
 {
     public float Push;
     public float Swimspeed = 1f;
+    [ThreadStatic] private static BlockPos tmpPos;
 
     public override void Initialize(JsonObject config, Entity entity)
     {
@@ -30,13 +31,16 @@ public class PModuleInLiquid : PModule
         // If entity is alive and swimming.
         if (entity.Swimming && entity.Alive) HandleSwimming(dt, entity, pos, controls);
         // Move entity by push vector of block.
-        Block block = entity.World.BlockAccessor.GetBlockRaw((int)pos.X, (int)pos.InternalY, (int)pos.Z, BlockLayersAccess.Fluid);
-        if (block.PushVector != null)
+        tmpPos ??= new BlockPos(pos.Dimension);
+        tmpPos.Set(pos);
+        Block block = entity.World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.Fluid);
+        if (block is IBlockFlowing blockFlowing && !blockFlowing.IsStill)
         {
+            FastVec3f pushVector = blockFlowing.GetPushVector(tmpPos);
             // Fix for those unfair cases where there is downward flowing water in a 1 deep hole and you can't get out.
-            if (block.PushVector.Y >= 0 || !entity.World.BlockAccessor.IsSideSolid((int)pos.X, (int)pos.InternalY - 1, (int)pos.Z, BlockFacing.UP))
+            if (pushVector.Y >= 0 || !entity.World.BlockAccessor.IsSideSolid((int)pos.X, (int)pos.InternalY - 1, (int)pos.Z, BlockFacing.UP))
             {
-                pos.Motion.Add(block.PushVector);
+                pos.Motion.Add(pushVector);
             }
         }
     }

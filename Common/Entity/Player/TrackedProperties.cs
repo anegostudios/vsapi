@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.MathTools;
+using Vintagestory.API.MathTools;
 
 #nullable disable
 
@@ -18,9 +18,9 @@ namespace Vintagestory.API.Common.Entities
 
         public float MoonLight = 0;
         public double FallSpeed = 0;
-        public BlockPos PlayerChunkPos = new BlockPos();
+        public readonly BlockPos PlayerChunkPos = new BlockPos(Config.Dimensions.NormalWorld);   // not really a BlockPos; dimension will be given by the Y value
 
-        public BlockPos PlayerPosDiv8 = new BlockPos();
+        public readonly BlockPos PlayerPosDiv8 = new BlockPos(Config.Dimensions.NormalWorld);   // not really a BlockPos; dimension will be given by the Y value * 8
 
         /// <summary>
         /// Relative value. bottom 0...1 sealevel, 1 .... 2 max-y

@@ -305,7 +305,6 @@ namespace Vintagestory.API.Server
         /// <param name="onlyIfInRange">If true, the chunk will not be sent to connected players that are out of range from that chunk</param>
         void SendChunk(int chunkX, int chunkY, int chunkZ, IServerPlayer player, bool onlyIfInRange = true);
 
-
         /// <summary>
         /// Send or resent a loaded map chunk to all connected players. Has no effect when the map chunk is not loaded
         /// </summary>
@@ -314,7 +313,13 @@ namespace Vintagestory.API.Server
         /// <param name="onlyIfInRange"></param>
         void ResendMapChunk(int chunkX, int chunkZ, bool onlyIfInRange);
 
-
+        /// <summary>
+        /// Send or Resend a loaded MapRegion to all connected players. Has no effect when the MapRegion is not loaded
+        /// </summary>
+        /// <param name="regionX"></param>
+        /// <param name="regionZ"></param>
+        /// <param name="onlyIfInRange">If true, the chunk will not be sent to connected players that are out of range from that chunk</param>
+        void BroadcastMapRegion(int regionX, int regionZ, bool onlyIfInRange = true);
 
         /// <summary>
         /// Unloads a column of chunks at given coordinate independent of any nearby players and sends an appropriate unload packet to the player
@@ -387,9 +392,11 @@ namespace Vintagestory.API.Server
 
 
         /// <summary>
-        /// The current world filename
+        /// The current world filename including the full path
         /// </summary>
-        string CurrentWorldName { get; }
+        string CurrentWorldFilepath { get; }
+        [Obsolete("Use CurrentWorldFilepath instead")]
+        string CurrentWorldName => CurrentWorldFilepath;
 
 
         /// <summary>

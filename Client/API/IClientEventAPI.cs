@@ -155,6 +155,21 @@ namespace Vintagestory.API.Client
         event BlockChangedDelegate BlockChanged;
 
         /// <summary>
+        /// When a partially broken block reverted
+        /// </summary>
+        public event Action<BlockDamage> OnUnBreakingBlock;
+
+        /// <summary>
+        /// Handlers for callbacks in a regular interval while player is breaking a block in survival
+        /// </summary>
+        public event Action<BlockDamage> OnPlayerBreakingBlock;
+
+        /// <summary>
+        /// Handlers for when the player in survival has broken a block
+        /// </summary>
+        public event Action<BlockDamage> OnPlayerBrokenBlock;
+
+        /// <summary>
         /// When player tries to modify a block
         /// </summary>
         event TestBlockAccessDelegate TestBlockAccess;

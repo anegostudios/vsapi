@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,12 +97,12 @@ Class AssetLocationJsonParser
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Util/JsonUtil.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Util/JsonUtil.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AssetLocationJsonParser : JsonConverter</code></pre>
+    <pre><code class="lang-csharp hljs">public class AssetLocationJsonParser : JsonConverter&lt;AssetLocation&gt;</code></pre>
   </div>
 
 
@@ -113,6 +113,7 @@ Class AssetLocationJsonParser
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><span class="xref">JsonConverter</span></div>
+      <div><span class="xref">JsonConverter</span>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</div>
       <div><span class="xref">AssetLocationJsonParser</span></div>
     </dd>
   </dl>
@@ -123,10 +124,16 @@ Class AssetLocationJsonParser
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <span class="xref">JsonConverter.CanRead</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">JsonConverter&lt;AssetLocation&gt;.WriteJson(JsonWriter, object, JsonSerializer)</a>
     </div>
     <div>
-      <span class="xref">JsonConverter.CanWrite</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">JsonConverter&lt;AssetLocation&gt;.ReadJson(JsonReader, Type, object, JsonSerializer)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">JsonConverter&lt;AssetLocation&gt;.CanConvert(Type)</a>
+    </div>
+    <div>
+      <span class="xref">JsonConverter.CanRead</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -201,14 +208,13 @@ Class AssetLocationJsonParser
 
 
 
-  <h2 class="section" id="methods">Methods
+  <h2 class="section" id="fields">Fields
 </h2>
 
 
-  <a id="Vintagestory_API_Common_AssetLocationJsonParser_CanConvert_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.CanConvert*"></a>
 
-  <h3 id="Vintagestory_API_Common_AssetLocationJsonParser_CanConvert_System_Type_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.CanConvert(System.Type)">
-  CanConvert(Type)
+  <h3 id="Vintagestory_API_Common_AssetLocationJsonParser_domain" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.domain">
+  domain
   
   </h3>
 
@@ -216,16 +222,49 @@ Class AssetLocationJsonParser
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool CanConvert(Type objectType)</code></pre>
+    <pre><code class="lang-csharp hljs">protected string domain</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+
+
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><code>objectType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
-  <h4 class="section">Returns</h4>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AssetLocationJsonParser_CanWrite_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.CanWrite*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationJsonParser_CanWrite" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.CanWrite">
+  CanWrite
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool CanWrite { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
@@ -238,13 +277,14 @@ Class AssetLocationJsonParser
 
 
 
-
+  <h2 class="section" id="methods">Methods
+</h2>
 
 
   <a id="Vintagestory_API_Common_AssetLocationJsonParser_ReadJson_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.ReadJson*"></a>
 
-  <h3 id="Vintagestory_API_Common_AssetLocationJsonParser_ReadJson_Newtonsoft_Json_JsonReader_System_Type_System_Object_Newtonsoft_Json_JsonSerializer_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
-  ReadJson(JsonReader, Type, object, JsonSerializer)
+  <h3 id="Vintagestory_API_Common_AssetLocationJsonParser_ReadJson_Newtonsoft_Json_JsonReader_System_Type_Vintagestory_API_Common_AssetLocation_System_Boolean_Newtonsoft_Json_JsonSerializer_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.ReadJson(Newtonsoft.Json.JsonReader,System.Type,Vintagestory.API.Common.AssetLocation,System.Boolean,Newtonsoft.Json.JsonSerializer)">
+  ReadJson(JsonReader, Type, AssetLocation?, bool, JsonSerializer)
   
   </h3>
 
@@ -252,7 +292,7 @@ Class AssetLocationJsonParser
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)</code></pre>
+    <pre><code class="lang-csharp hljs">public override AssetLocation? ReadJson(JsonReader reader, Type objectType, AssetLocation? existingValue, bool hasExistingValue, JsonSerializer serializer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -261,7 +301,9 @@ Class AssetLocationJsonParser
     <dd></dd>
     <dt><code>objectType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
     <dd></dd>
-    <dt><code>existingValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dt><code>existingValue</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>hasExistingValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
     <dt><code>serializer</code> <span class="xref">JsonSerializer</span></dt>
     <dd></dd>
@@ -269,7 +311,7 @@ Class AssetLocationJsonParser
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
     <dd></dd>
   </dl>
 
@@ -285,8 +327,8 @@ Class AssetLocationJsonParser
 
   <a id="Vintagestory_API_Common_AssetLocationJsonParser_WriteJson_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.WriteJson*"></a>
 
-  <h3 id="Vintagestory_API_Common_AssetLocationJsonParser_WriteJson_Newtonsoft_Json_JsonWriter_System_Object_Newtonsoft_Json_JsonSerializer_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
-  WriteJson(JsonWriter, object, JsonSerializer)
+  <h3 id="Vintagestory_API_Common_AssetLocationJsonParser_WriteJson_Newtonsoft_Json_JsonWriter_Vintagestory_API_Common_AssetLocation_Newtonsoft_Json_JsonSerializer_" data-uid="Vintagestory.API.Common.AssetLocationJsonParser.WriteJson(Newtonsoft.Json.JsonWriter,Vintagestory.API.Common.AssetLocation,Newtonsoft.Json.JsonSerializer)">
+  WriteJson(JsonWriter, AssetLocation?, JsonSerializer)
   
   </h3>
 
@@ -294,14 +336,14 @@ Class AssetLocationJsonParser
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)</code></pre>
+    <pre><code class="lang-csharp hljs">public override void WriteJson(JsonWriter writer, AssetLocation? value, JsonSerializer serializer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>writer</code> <span class="xref">JsonWriter</span></dt>
     <dd></dd>
-    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dt><code>value</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
     <dd></dd>
     <dt><code>serializer</code> <span class="xref">JsonSerializer</span></dt>
     <dd></dd>

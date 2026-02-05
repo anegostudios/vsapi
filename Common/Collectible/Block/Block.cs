@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
@@ -46,8 +45,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         public override int Id { get { return BlockId; } }
 
-        public BlockTagArray Tags = BlockTagArray.Empty;
-
         /// <summary>
         /// Returns EnumItemClass.Block
         /// </summary>
@@ -59,7 +56,7 @@ namespace Vintagestory.API.Common
         public virtual bool ForFluidsLayer { get { return false; } }
 
         /// <summary>
-        /// Return non-null if this block should have water (or ice) placed in its position in the fluids layer when updating from 1.16 to 1.17
+        /// Return non-null if this block should have water (or ice) placed in its position in the fluids layer when updating from 1.16 to 1.17; irrelevant if not updating a chunk from a pre 1.17 savegame
         /// </summary>
         public virtual string RemapToLiquidsLayer { get { return null; } }
 
@@ -138,7 +135,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// 0 = nothing can grow, 10 = some tallgrass and small trees can be grow on it, 100 = all grass and trees can grow on it
+        /// 0 = nothing can grow, 10 = some tallgrass and small trees can grow on it, 100 = all grass and trees can grow on it
         /// </summary>
         public int Fertility;
 
@@ -361,6 +358,7 @@ namespace Vintagestory.API.Common
         /// Entity pushing while an entity is inside this block. Read from attributes because i'm lazy.
         /// </summary>
         public Vec3d PushVector { get; set; }
+        public float PushSpeed; // PushVector.Length cached
 
         public bool CanStep = true;
         public bool AllowStepWhenStuck = false;
@@ -408,6 +406,7 @@ namespace Vintagestory.API.Common
         {
             humanoidTraversalCost = Attributes?["humanoidTraversalCost"]?.AsFloat(1) ?? 1;
             PushVector = Attributes?["pushVector"]?.AsObject<Vec3d>();
+            PushSpeed = (float)(PushVector?.Length() ?? 0);
             AllowStepWhenStuck = Attributes?["allowStepWhenStuck"]?.AsBool(false) ?? false;
             CanStep = Attributes?["canStep"].AsBool(true) ?? true;
 
@@ -738,7 +737,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Should return if supplied entitytype is allowed to spawn on this block
+        /// Should return if supplied entitytype is allowed to spawn on this block. Might be called outside the main thread.
         /// </summary>
         /// <param name="blockAccessor"></param>
         /// <param name="pos"></param>
@@ -979,7 +978,8 @@ namespace Vintagestory.API.Common
         {
             IItemStack stack = player.InventoryManager.ActiveHotbarSlot.Itemstack;
             float resistance = remainingResistance;
-            if (RequiredMiningTier == 0)
+            int requiredMiningTier = GetRequiredMiningTier(api.World, blockSel.Position);
+            if (requiredMiningTier == 0)
             {
                 if (dt > 0)
                 {
@@ -1013,7 +1013,7 @@ namespace Vintagestory.API.Common
 
                 BlockSounds sounds = GetSounds(api.World.BlockAccessor, blockSel);
 
-                player.Entity.World.PlaySoundAt(resistance > 0 ? sounds.GetHitSound(player) : sounds.GetBreakSound(player), posx, posy, posz, player, RandomSoundPitch(api.World), 16, 1);
+                player.Entity.World.PlaySoundAt(resistance > 0 ? sounds.GetHitSound(player) : sounds.GetBreakSound(player), posx, posy, posz, blockSel.Position.dimension, player);
 
                 api.ObjectCache["totalMsBlockBreaking"] = nowMs;
             }
@@ -1021,6 +1021,7 @@ namespace Vintagestory.API.Common
             return resistance;
         }
 
+        [Obsolete("No longer used in 1.22. Set SoundAttributes.Pitch on the sound instead.")]
         public virtual float RandomSoundPitch(IWorldAccessor world)
         {
             return (float)world.Rand.NextDouble() * 0.5f + 0.75f;
@@ -1042,13 +1043,17 @@ namespace Vintagestory.API.Common
             {
                 EnumHandling handled = EnumHandling.PassThrough;
 
-                behavior.OnBlockBroken(world, pos, byPlayer, ref handled);
+                behavior.OnBlockBroken(world, pos, byPlayer, dropQuantityMultiplier, ref handled);
                 if (handled == EnumHandling.PreventDefault) preventDefault = true;
                 if (handled == EnumHandling.PreventSubsequent) return;
             }
 
             if (preventDefault) return;
+            SpawnDropsAndRemoveBlock(world, pos, byPlayer, dropQuantityMultiplier);
+        }
 
+        public void SpawnDropsAndRemoveBlock(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier)
+        {
             if (EntityClass != null)
             {
                 BlockEntity entity = world.BlockAccessor.GetBlockEntity(pos);
@@ -1074,7 +1079,8 @@ namespace Vintagestory.API.Common
                                 stack.StackSize = 1;
                                 world.SpawnItemEntity(stack, pos, null);
                             }
-                        } else
+                        }
+                        else
                         {
                             world.SpawnItemEntity(drops[i].Clone(), pos, null);
                         }
@@ -1082,7 +1088,7 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                world.PlaySoundAt(Sounds?.GetBreakSound(byPlayer), pos, 0, byPlayer);
+                if (Sounds != null) world.PlaySoundAt(Sounds.GetBreakSound(byPlayer), pos, 0, byPlayer);
             }
 
             SpawnBlockBrokenParticles(pos, byPlayer);
@@ -1136,7 +1142,7 @@ namespace Vintagestory.API.Common
 
 
 
-        public override void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
+        public override void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, IRecipeBase byRecipe)
         {
             bool preventDefault = false;
             foreach (BlockBehavior behavior in BlockBehaviors)
@@ -1546,15 +1552,15 @@ namespace Vintagestory.API.Common
                 bool? isSneaking = ea.Controls.Sneak;
                 if (isSneaking != true)
                 {
-                    ea.SidedPos.Motion.Y = 0.04;
+                    ea.Pos.Motion.Y = 0.04;
                 }
             }
 
             if (api is Server.ICoreServerAPI sapi)    // Do this check server-side only, as the rand.NextDouble() would be different on a client
             {
                 float triggerChance = entity.ImpactBlockUpdateChance;
-            if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < triggerChance)
-            {
+                if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < triggerChance)
+                {
                     BlockPos updatePos = pos.Copy();
                     sapi.Event.EnqueueMainThreadTask(() => OnNeighbourBlockChange(world, updatePos, updatePos.UpCopy()), "entityBlockImpact");
                 }
@@ -1883,7 +1889,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="newBlock">The block as returned by your GetSnowLevelUpdateBlock() method</param>
         /// <param name="snowLevel"></param>
-        public virtual void PerformSnowLevelUpdate(IBulkBlockAccessor ba, BlockPos pos, Block newBlock, float snowLevel)
+        public virtual void PerformSnowLevelUpdate(IBlockAccessor ba, BlockPos pos, Block newBlock, float snowLevel)
         {
             if (newBlock.Id != Id && (BlockMaterial == EnumBlockMaterial.Snow || BlockId == 0 || this.FirstCodePart() == newBlock.FirstCodePart()))
             {
@@ -1900,26 +1906,10 @@ namespace Vintagestory.API.Common
         public virtual Block GetSnowCoveredVariant(BlockPos pos, float snowLevel)
         {
             if (snowCovered1 == null) return null;
-
-            if (snowLevel >= 1)
-            {
-                if (snowLevel >= 3 && snowCovered3 != null)
-                {
-                    return snowCovered3;
-                }
-                if (snowLevel >= 2 && snowCovered2 != null) {
-                    return snowCovered2;
-                }
-
-                return snowCovered1;
-            }
-
-            if (snowLevel < 0.1)
-            {
-                return notSnowCovered;
-            }
-
-            return this;
+            if (snowLevel >= 3 && snowCovered3 != null) return snowCovered3;
+            if (snowLevel >= 2 && snowCovered2 != null) return snowCovered2;
+            if (snowLevel >= 1 && snowCovered1 != null) return snowCovered1;
+            return notSnowCovered;
         }
 
         public virtual float GetSnowLevel(BlockPos pos)
@@ -2003,7 +1993,7 @@ namespace Vintagestory.API.Common
             {
                 return humanoidTraversalCost;
             }
-            return (1 - WalkSpeedMultiplier) * (creatureType == EnumAICreatureType.Humanoid ? 5 : 2);
+            return (1 - WalkSpeedMultiplier) * 2;
         }
 
 
@@ -2157,18 +2147,7 @@ namespace Vintagestory.API.Common
                 {
                     ActionLangCode = "blockhelp-collect",
                     MouseButton = EnumMouseButton.Left,
-                    Itemstacks = ObjectCacheUtil.GetOrCreate<ItemStack[]>(api, "blockhelp-collect-withtool-" + tool, () =>
-                    {
-                        List<ItemStack> stacks = new List<ItemStack>();
-                        foreach (var obj in api.World.Collectibles)
-                        {
-                            if (obj.Tool == tool)
-                            {
-                                stacks.Add(new ItemStack(obj));
-                            }
-                        }
-                        return stacks.ToArray();
-                    })
+                    Itemstacks = ObjectCacheUtil.GetToolStacks(api, tool)
                 });
             }
 
@@ -2243,7 +2222,9 @@ namespace Vintagestory.API.Common
             desc = desc != descLangCode ? desc : "";
             sb.Append(desc);
 
+#pragma warning disable CS0618 // Type or member is obsolete - that's OK here. We want to get only 6 decors max, to avoid spamming the BlockInfo.  It's fine to report (e.g.) cave art as cave art without the subposition
             var decors = world.BlockAccessor.GetDecors(pos);
+#pragma warning restore CS0618
             List<string> decorLangLines = new List<string>();
             if (decors != null)
             {
@@ -2257,9 +2238,13 @@ namespace Vintagestory.API.Common
                     decorLangLines.Add(Lang.Get("block-with-decorname", decorBlockName));
                 }
             }
-            sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
+            if (decorLangLines.Count > 0)
+            {
+                sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
+            }
 
-            if (RequiredMiningTier > 0 && api.World.Claims.TestAccess(forPlayer, pos, EnumBlockAccessFlags.BuildOrBreak) == EnumWorldAccessResponse.Granted)
+            int requiredMiningTier = GetRequiredMiningTier(world, pos);
+            if (requiredMiningTier > 0 && api.World.Claims.TestAccess(forPlayer, pos, EnumBlockAccessFlags.BuildOrBreak) == EnumWorldAccessResponse.Granted)
             {
                 AddMiningTierInfo(sb);
             }
@@ -2272,7 +2257,7 @@ namespace Vintagestory.API.Common
             return sb.ToString().TrimEnd();
         }
 
-
+        [Obsolete("Use AddMiningTierInfo(StringBuilder sb, IWorldAccessor world, BlockPos pos) instead")]
         public virtual void AddMiningTierInfo(StringBuilder sb)
         {
             string tierName = "?";
@@ -2282,6 +2267,28 @@ namespace Vintagestory.API.Common
             }
 
             sb.AppendLine(Lang.Get("Requires tool tier {0} ({1}) to break", RequiredMiningTier, tierName == "?" ? tierName : Lang.Get(tierName)));
+        }
+
+        public virtual void AddMiningTierInfo(StringBuilder sb, IWorldAccessor world, BlockPos pos)
+        {
+            string tierName = "?";
+            int requiredMiningTier = GetRequiredMiningTier(world, pos);
+            if (requiredMiningTier < miningTierNames.Length)
+            {
+                tierName = miningTierNames[requiredMiningTier];
+            }
+
+            sb.AppendLine(Lang.Get("Requires tool tier {0} ({1}) to break", requiredMiningTier, tierName == "?" ? tierName : Lang.Get(tierName)));
+        }
+
+        /// <summary>
+        /// The mining tier required to break this block
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        public virtual int GetRequiredMiningTier(IWorldAccessor world, BlockPos pos)
+        {
+            return RequiredMiningTier;
         }
 
         /// <summary>
@@ -2315,15 +2322,6 @@ namespace Vintagestory.API.Common
                 dsc.Append(bh.GetHeldBlockInfo(world, inSlot));
             }
 
-            if (world.Api is ICoreClientAPI clientApi && clientApi.Settings.Bool["extendedDebugInfo"])
-            {
-                IEnumerable<string> tags = GetTags(inSlot.Itemstack).ToArray().Select(clientApi.TagRegistry.BlockTagIdToTag).Order();
-                if (tags.Any())
-                {
-                    dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
-                }
-            }
-
             base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
         }
 
@@ -2344,7 +2342,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public virtual bool DoParticalSelection(IWorldAccessor world, BlockPos pos)
+        public virtual bool DoPartialSelection(IWorldAccessor world, BlockPos pos)
         {
             return PartialSelection;
         }
@@ -2489,10 +2487,17 @@ namespace Vintagestory.API.Common
         public virtual int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing, int rndIndex = -1)
         {
             if (Textures == null || Textures.Count == 0) return 0;
-            if (!Textures.TryGetValue(facing.Code, out CompositeTexture tex))
+
+            CompositeTexture tex;
+            if (ParticlesTextureCode != null)
+            {
+                tex = Textures[ParticlesTextureCode];
+            }
+            else if (!Textures.TryGetValue(facing.Code, out tex))
             {
                 tex = Textures.First().Value;
             }
+
             if (tex?.Baked == null) return 0;
 
             int color = capi.BlockTextureAtlas.GetRandomColor(tex.Baked.TextureSubId, rndIndex);
@@ -2551,6 +2556,12 @@ namespace Vintagestory.API.Common
             return capi.BlockTextureAtlas.GetAverageColor(TextureSubIdForBlockColor);
         }
 
+        /// <summary>
+        /// Whether snow is allowed to fall on this block, by default it tests if the up face is a solid face
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="blockPos"></param>
+        /// <returns></returns>
         public virtual bool AllowSnowCoverage(IWorldAccessor world, BlockPos blockPos)
         {
             return SideSolid[BlockFacing.UP.Index];
@@ -2733,8 +2744,6 @@ namespace Vintagestory.API.Common
         {
             return GetBehavior(CollectibleBehaviors, type, withInheritance) != null || GetBehavior(BlockBehaviors, type, withInheritance) != null;
         }
-
-        public virtual BlockTagArray GetTags(ItemStack stack) => Tags;
 
         internal void EnsureValidTextures(ILogger logger)
         {

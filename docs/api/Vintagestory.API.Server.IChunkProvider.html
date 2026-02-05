@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -172,13 +172,12 @@ Interface IChunkProvider
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Index for a chunk coordinate - NOT DIMENSION AWARE</p>
+  <div class="markdown level1 summary"><p>Index for a chunk coordinate - NOT DIMENSION AWARE, for internal use only (normally where chunkY contains the dimension)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use dimension aware overloads instead&quot;)]
-long ChunkIndex3D(int chunkX, int chunkY, int chunkZ)</code></pre>
+    <pre><code class="lang-csharp hljs">long ChunkIndex3D(int chunkX, int chunkY, int chunkZ)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

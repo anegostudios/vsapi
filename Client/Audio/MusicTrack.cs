@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -15,6 +15,7 @@ namespace Vintagestory.API.Client
     {
         public AssetLocation Location;
 
+
         /// <summary>
         /// Is it loading?
         /// </summary>
@@ -30,13 +31,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Is the current song actively playing or is it loading? (False if neither action.
         /// </summary>
-        public bool IsActive
-        {
-            get
-            {
-                return ForceActive || loading || (Sound != null && Sound.IsPlaying);
-            }
-        }
+        public bool IsActive => ForceActive || loading || (Sound != null && Sound.IsPlaying);
+
+        /// <summary>
+        /// Is this track loaded and ready to play?
+        /// </summary>
+        public bool Loaded => !loading && Sound != null && !Sound.IsDisposed;
 
         /// <summary>
         /// The current song's priority.

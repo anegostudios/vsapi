@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class HeldSounds
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Defines a set of sounds for a collectible object. <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/HeldSounds.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>Defines a set of sounds for a collectible object. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/HeldSounds.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -170,6 +170,36 @@ public class HeldSounds</code></pre>
 
 
 
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Common_HeldSounds__ctor_" data-uid="Vintagestory.API.Common.HeldSounds.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_HeldSounds__ctor" data-uid="Vintagestory.API.Common.HeldSounds.#ctor">
+  HeldSounds()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HeldSounds()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="fields">Fields
 </h2>
 
@@ -180,14 +210,14 @@ public class HeldSounds</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The path to a sound played when this item is used to attack.</p>
+  <div class="markdown level1 summary"><p>The path to a sound played when this item is used to attack.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Attack</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { false })]
+public SoundAttributes Attack</code></pre>
   </div>
 
 
@@ -195,7 +225,7 @@ public AssetLocation Attack</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -213,14 +243,14 @@ public AssetLocation Attack</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The path to a sound played when this item is equipped.</p>
+  <div class="markdown level1 summary"><p>The path to a sound played when this item is equipped.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Equip</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { false })]
+public SoundAttributes Equip</code></pre>
   </div>
 
 
@@ -228,7 +258,7 @@ public AssetLocation Equip</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -246,14 +276,14 @@ public AssetLocation Equip</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The path to a sound played when this item is being held.</p>
+  <div class="markdown level1 summary"><p>The path to a sound played when this item is being held.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Idle</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { false })]
+public SoundAttributes Idle</code></pre>
   </div>
 
 
@@ -261,7 +291,7 @@ public AssetLocation Idle</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -283,7 +313,7 @@ public AssetLocation Idle</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AssetLocation InvPickUpDefault</code></pre>
+    <pre><code class="lang-csharp hljs">public static SoundAttributes InvPickUpDefault</code></pre>
   </div>
 
 
@@ -291,7 +321,7 @@ public AssetLocation Idle</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -309,14 +339,14 @@ public AssetLocation Idle</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>"player/clayformhi"</jsondefault>-->
-<p>The path to a sound played when this item is picked up in the inventory using the mouse.</p>
+  <div class="markdown level1 summary"><p>The path to a sound played when this item is picked up in the inventory using the mouse.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation InvPickup</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;player/clayformhi&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { false })]
+public SoundAttributes InvPickup</code></pre>
   </div>
 
 
@@ -324,7 +354,7 @@ public AssetLocation InvPickup</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -342,14 +372,14 @@ public AssetLocation InvPickup</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>"player/clayform"</jsondefault>-->
-<p>The path to a sound played when this item is placed in the inventory using the mouse.</p>
+  <div class="markdown level1 summary"><p>The path to a sound played when this item is placed in the inventory using the mouse.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation InvPlace</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;player/clayform&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { false })]
+public SoundAttributes InvPlace</code></pre>
   </div>
 
 
@@ -357,7 +387,7 @@ public AssetLocation InvPlace</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -379,7 +409,67 @@ public AssetLocation InvPlace</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AssetLocation InvPlaceDefault</code></pre>
+    <pre><code class="lang-csharp hljs">public static SoundAttributes InvPlaceDefault</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_HeldSounds_SemirandomPitchDefault" data-uid="Vintagestory.API.Common.HeldSounds.SemirandomPitchDefault">
+  SemirandomPitchDefault
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NatFloat SemirandomPitchDefault</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_HeldSounds_ToolBreak" data-uid="Vintagestory.API.Common.HeldSounds.ToolBreak">
+  ToolBreak
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AssetLocation ToolBreak</code></pre>
   </div>
 
 
@@ -405,14 +495,14 @@ public AssetLocation InvPlace</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
-<p>The path to a sound played when this item is unequipped.</p>
+  <div class="markdown level1 summary"><p>The path to a sound played when this item is unequipped.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Unequip</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+[JsonConverter(typeof(SoundAttributeConverter), new object[] { false })]
+public SoundAttributes Unequip</code></pre>
   </div>
 
 
@@ -420,7 +510,7 @@ public AssetLocation Unequip</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
     <dd></dd>
   </dl>
 
@@ -457,38 +547,6 @@ public AssetLocation Unequip</code></pre>
     <dt><a class="xref" href="Vintagestory.API.Common.HeldSounds.html">HeldSounds</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_HeldSounds_OnDeserializedMethod_" data-uid="Vintagestory.API.Common.HeldSounds.OnDeserializedMethod*"></a>
-
-  <h3 id="Vintagestory_API_Common_HeldSounds_OnDeserializedMethod_System_Runtime_Serialization_StreamingContext_" data-uid="Vintagestory.API.Common.HeldSounds.OnDeserializedMethod(System.Runtime.Serialization.StreamingContext)">
-  OnDeserializedMethod(StreamingContext)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[OnDeserialized]
-public void OnDeserializedMethod(StreamingContext context)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext">StreamingContext</a></dt>
-    <dd></dd>
-  </dl>
-
 
 
 

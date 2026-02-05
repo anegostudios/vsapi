@@ -227,7 +227,7 @@ namespace Vintagestory.API.Client
     ///
     /// If you need to get the character for the current Keyboard layout use <see cref="GlKeyNames.GetKeyName"/>
     /// </summary>
-     public enum GlKeys
+    public enum GlKeys
     {
         Unknown = 0,
         LShift = 1,

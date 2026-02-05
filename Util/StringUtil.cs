@@ -331,58 +331,5 @@ namespace Vintagestory.API.Util
 
             return (sb.ToString().Normalize(NormalizationForm.FormC));
         }
-
-
-        /// <summary>
-        /// Remove username from paths printed in log files
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static string SanitizePath(string path)
-        {
-            if (Environment.UserName == null || Environment.UserName.Length == 0) return path;
-
-            switch (RuntimeEnv.OS)
-            {
-                case OS.Windows:
-                {
-                    int j = path.IndexOf("\\Users\\");
-                    if (j >= 0)
-                    {
-                        int k = path.IndexOf("\\AppData\\Roaming\\");
-                        if (k > j)
-                        {
-                            path = "%appdata%" + path.Substring(k + 16);
-                        }
-                        else
-                        {
-                            path = path.Replace(Environment.UserName, "username");
-                        }
-
-                    }
-                    break;
-                }
-                case OS.Linux:
-                {
-                    int j = path.IndexOf("/home/");
-                    if (j >= 0)
-                    {
-                        path = path.Replace(Environment.UserName, "username");
-                    }
-                    break;
-                }
-                case OS.Mac:
-                {
-                    int j = path.IndexOf("/Users/");
-                    if (j >= 0)
-                    {
-                        path = path.Replace(Environment.UserName, "username");
-                    }
-                    break;
-                }
-            }
-
-            return path;
-        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class CraftingRecipeIngredient
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A crafting recipe ingredient <a href="https://github.com/anegostudios/vsapi/blob/master///Common/Crafting/CraftingRecipeIngredient.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A crafting recipe ingredient <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Crafting/CraftingRecipeIngredient.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -135,40 +135,6 @@ public class CraftingRecipeIngredient</code></pre>
 </h2>
 
 
-  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Code_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code*"></a>
-
-  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Code" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code">
-  Code (Required)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><!---->
-<p>The code of the item or block</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public AssetLocation Code { get; set; }</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Name_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Name*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Name" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Name">
@@ -182,8 +148,8 @@ public AssetLocation Code { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public string Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public string? Name { get; set; }</code></pre>
   </div>
 
 
@@ -203,6 +169,7 @@ public string Name { get; set; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Quantity_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Quantity*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Quantity" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Quantity">
   Quantity (Recommended) (Default: 1)
@@ -210,13 +177,13 @@ public string Name { get; set; }</code></pre>
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>The quantity of the itemstack required for the recipe.</p>
+<p>The quantity of the itemstack required for the recipe. Alias of <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_StackSize">StackSize</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public int Quantity</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;1&quot;, false)]
+public int Quantity { get; set; }</code></pre>
   </div>
 
 
@@ -236,6 +203,7 @@ public int Quantity</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Type_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Type*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Type" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Type">
   Type (Recommended) (Default: Block)
@@ -248,8 +216,8 @@ public int Quantity</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public EnumItemClass Type</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;Block&quot;, false)]
+public EnumItemClass Type { get; set; }</code></pre>
   </div>
 
 
@@ -269,6 +237,7 @@ public EnumItemClass Type</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_AllowedVariants_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.AllowedVariants*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_AllowedVariants" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.AllowedVariants">
   AllowedVariants (Optional) (Default: Allow All)
@@ -281,8 +250,8 @@ public EnumItemClass Type</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public string[] AllowedVariants</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Allow All&quot;, false)]
+public string[]? AllowedVariants { get; set; }</code></pre>
   </div>
 
 
@@ -302,6 +271,7 @@ public string[] AllowedVariants</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Attributes_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Attributes*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Attributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Attributes">
   Attributes (Optional) (Default: None)
@@ -316,7 +286,8 @@ public string[] AllowedVariants</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
-public JsonObject Attributes</code></pre>
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonObject? Attributes { get; set; }</code></pre>
   </div>
 
 
@@ -324,7 +295,7 @@ public JsonObject Attributes</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -336,21 +307,21 @@ public JsonObject Attributes</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Break_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Break*"></a>
 
-  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_IsTool" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.IsTool">
-  IsTool (Optional) (Default: False)
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Break" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Break">
+  Break (Optional) (Default: True)
   
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>Whether this crafting recipe ingredient should be regarded as a tool required to build this item.
-If true, the recipe will not consume the item but reduce its durability.</p>
+<p>Determines if and item will be destroyed when reaching zero durability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public bool IsTool</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
+public bool Break { get; set; }</code></pre>
   </div>
 
 
@@ -370,6 +341,180 @@ public bool IsTool</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Code_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Code" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Code">
+  Code (Optional) (Default: All)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The code of the item or block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;All&quot;, false)]
+public AssetLocation? Code { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Consume_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Consume*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Consume" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Consume">
+  Consume (Optional) (Default: True)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines if recipe ingredient should be consumed on crafting.<br>
+Is equal to 'not IsTool'. Use this property instead of 'IsTool'.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
+public bool Consume { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_DurabilityChange_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.DurabilityChange*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_DurabilityChange" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.DurabilityChange">
+  DurabilityChange (Optional) (Default: -1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines how item durability will be changed. Durability will be capped at maximum item durability, and wont reduce below 0, unless specific item class changes this behavior.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;-1&quot;, false)]
+public int DurabilityChange { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Id_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Id*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Id" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Id">
+  Id (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Is used to reference recipe ingredient in the recipe, for example to specify where to copy attributes from.<br>
+If not specified will be set to the index of this ingredient in the array (starting from 1), or key of this ingredient in the object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string Id { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_IsTool_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.IsTool*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_IsTool" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.IsTool">
+  IsTool (Optional) (Default: False)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether this crafting recipe ingredient should be regarded as a tool required to build this item.
+If true, the recipe will not consume the item but reduce its durability.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
+public bool IsTool { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_RecipeAttributes_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.RecipeAttributes*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_RecipeAttributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.RecipeAttributes">
   RecipeAttributes (Optional) (Default: None)
@@ -384,7 +529,8 @@ public bool IsTool</code></pre>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
 [JsonConverter(typeof(JsonAttributesConverter))]
-public JsonObject RecipeAttributes</code></pre>
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonObject? RecipeAttributes { get; set; }</code></pre>
   </div>
 
 
@@ -392,7 +538,7 @@ public JsonObject RecipeAttributes</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dt><span class="xref">JsonObject</span></dt>
     <dd></dd>
   </dl>
 
@@ -404,6 +550,7 @@ public JsonObject RecipeAttributes</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_ReturnedStack_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ReturnedStack*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_ReturnedStack" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ReturnedStack">
   ReturnedStack (Optional) (Default: None)
@@ -417,8 +564,8 @@ Can also be used to produce multiple outputs for a recipe.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public JsonItemStack ReturnedStack</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonItemStack? ReturnedStack { get; set; }</code></pre>
   </div>
 
 
@@ -438,6 +585,42 @@ public JsonItemStack ReturnedStack</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_ReverseTagsCheck_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ReverseTagsCheck*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_ReverseTagsCheck" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ReverseTagsCheck">
+  ReverseTagsCheck (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>When used with [] tags: matched item should contain at least on tag from the list
+When used with [[]] tags: matched item should contain at least one tag from each group</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public bool? ReverseTagsCheck { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_SkipVariants_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_SkipVariants" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants">
   SkipVariants (Optional) (Default: Skip None)
@@ -450,8 +633,8 @@ public JsonItemStack ReturnedStack</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public string[] SkipVariants</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Skip None&quot;, false)]
+public string[]? SkipVariants { get; set; }</code></pre>
   </div>
 
 
@@ -471,6 +654,88 @@ public string[] SkipVariants</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_StackSize_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.StackSize*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_StackSize" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.StackSize">
+  StackSize (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Amount of items in this stacks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+public int StackSize { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Tags_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Tags*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Tags" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Tags">
+  Tags (Optional) (Default: All)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If array of tags specified ([&quot;tag-1&quot;, &quot;tag-2&quot;, &quot;not-tag-3&quot;]):<br></p>
+<ul>
+<li>matched item has to have all these tags, and not have tags with 'not-' prefix;<br></li>
+<li>if 'ReverseTagsCheck: true' specified, matched item has to have at least one of these tags, or not contain any tag with 'not-' prefix.<br>
+<br>
+If array of tag groups specified ([[&quot;tag-1&quot;, &quot;tag-2&quot;], [&quot;not-tag-3&quot;, &quot;tag-4]]):<br></li>
+<li>matched item has to have all tags (and not have 'not-' tags) from at least of tag groups;<br></li>
+<li>if 'ReverseTagsCheck: true' specified, matched item has to have at least one of these tags, or not contain any tag with 'not-' prefix from each tag group.<br>
+<br>
+This tags check can be treated as logic expression where each tag means of matched item having this tag:<br></li>
+<li>[[&quot;tag-1&quot;, &quot;tag-2&quot;], [&quot;not-tag-3&quot;, &quot;tag-4]] == (tag-1 AND tag-2) OR (NOT tag-3 AND tag-4)<br></li>
+<li>if 'ReverseTagsCheck: true' specified: [[&quot;tag-1&quot;, &quot;tag-2&quot;], [&quot;not-tag-3&quot;, &quot;tag-4]] == (tag-1 OR tag-2) AND (NOT tag-3 OR tag-4)<br></li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;All&quot;, false)]
+public GeneralTagGroups? Tags { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">GeneralTagGroups</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_ToolDurabilityCost_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ToolDurabilityCost*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_ToolDurabilityCost" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ToolDurabilityCost">
   ToolDurabilityCost (Optional) (Default: 1)
@@ -478,13 +743,13 @@ public string[] SkipVariants</code></pre>
   </h3>
 
   <div class="markdown level1 summary"><!---->
-<p>If <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_IsTool">IsTool</a> is set, this is the durability cost when the recipe is created.</p>
+<p>If <a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html#Vintagestory_API_Common_CraftingRecipeIngredient_Consume">Consume</a> is set to False, this is the durability cost when the recipe is created.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public int ToolDurabilityCost</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+public int ToolDurabilityCost { get; set; }</code></pre>
   </div>
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Buffers.Binary;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -242,6 +242,17 @@ public class FastMemoryStream : Stream
         Span<byte> streamBuffer = new Span<byte>(this.buffer, (int)this.Position, 4);
         BinaryPrimitives.WriteSingleLittleEndian(streamBuffer, v);
         Position += 4;
+    }
+
+    public void Write(float[] vv)
+    {
+        CheckCapacity(4 * vv.Length);
+        foreach (float v in vv)
+        {
+            Span<byte> streamBuffer = new Span<byte>(this.buffer, (int)this.Position, 4);    // a Span is a struct so this is not very costly
+            BinaryPrimitives.WriteSingleLittleEndian(streamBuffer, v);
+            Position += 4;
+        }
     }
 
     public override void Write(ReadOnlySpan<byte> inputBuffer)

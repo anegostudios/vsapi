@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class RecipeBase | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class RecipeBase | VintageStory API ">
+      
+      <meta name="description" content="Creates a new base recipe type. Almost all recipe types extend from this. Open in GitHub">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Common.RecipeBase">
+
+
+
+  <h1 id="Vintagestory_API_Common_RecipeBase" data-uid="Vintagestory.API.Common.RecipeBase" class="text-break">
+Class RecipeBase  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Creates a new base recipe type. Almost all recipe types extend from this. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Crafting/RecipeBase.cs>Open in GitHub</a></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public abstract class RecipeBase : IRecipeBase, IByteSerializable, IConcreteCloneable&lt;RecipeBase&gt;, ICloneable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">RecipeBase</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.IByteSerializable.html">IByteSerializable</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.IConcreteCloneable-1.html">IConcreteCloneable</a>&lt;<a class="xref" href="Vintagestory.API.Common.RecipeBase.html">RecipeBase</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe.html">LayeredVoxelRecipe</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_CollectiblePreSearchResultsCache" data-uid="Vintagestory.API.Common.RecipeBase.CollectiblePreSearchResultsCache">
+  CollectiblePreSearchResultsCache
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly CollectiblePreSearchResultsCache CollectiblePreSearchResultsCache</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CollectiblePreSearchResultsCache.html">CollectiblePreSearchResultsCache</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_AllowedVariants_" data-uid="Vintagestory.API.Common.RecipeBase.AllowedVariants*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_AllowedVariants" data-uid="Vintagestory.API.Common.RecipeBase.AllowedVariants">
+  AllowedVariants
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If '{code}' is used in ingredient code, allowed variants for this code should be specified in this map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public Dictionary&lt;string, string[]&gt; AllowedVariants { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_Attributes_" data-uid="Vintagestory.API.Common.RecipeBase.Attributes*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_Attributes" data-uid="Vintagestory.API.Common.RecipeBase.Attributes">
+  Attributes
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Optional attribute data that you can attach any data to. Useful for code mods, but also required when using liquid ingredients.<br>
+See dough.json grid recipe file for example.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(JsonAttributesConverter))]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public JsonObject? Attributes { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_AverageDurability_" data-uid="Vintagestory.API.Common.RecipeBase.AverageDurability*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_AverageDurability" data-uid="Vintagestory.API.Common.RecipeBase.AverageDurability">
+  AverageDurability
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, the output item will have its durability averaged over the input items</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
+public bool AverageDurability { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_CopyAttributesFrom_" data-uid="Vintagestory.API.Common.RecipeBase.CopyAttributesFrom*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_CopyAttributesFrom" data-uid="Vintagestory.API.Common.RecipeBase.CopyAttributesFrom">
+  CopyAttributesFrom
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If set, it will copy over the itemstack attributes from given ingredient code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string? CopyAttributesFrom { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_Enabled_" data-uid="Vintagestory.API.Common.RecipeBase.Enabled*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_Enabled" data-uid="Vintagestory.API.Common.RecipeBase.Enabled">
+  Enabled
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If set to false, the recipe will never be loaded.
+If loaded, you can use this field to disable recipes during runtime.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
+public bool Enabled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MergeAttributesFrom_" data-uid="Vintagestory.API.Common.RecipeBase.MergeAttributesFrom*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MergeAttributesFrom" data-uid="Vintagestory.API.Common.RecipeBase.MergeAttributesFrom">
+  MergeAttributesFrom
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Attributes from these ingredients will be merged into output itemstack</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string[] MergeAttributesFrom { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_Name_" data-uid="Vintagestory.API.Common.RecipeBase.Name*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_Name" data-uid="Vintagestory.API.Common.RecipeBase.Name">
+  Name
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a name to this. Used for logging, and determining helve hammer workability for smithing recipes. Recipes for repairing objects must contain 'repair' in the name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Asset Path&quot;, false)]
+public AssetLocation? Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_RecipeId_" data-uid="Vintagestory.API.Common.RecipeBase.RecipeId*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_RecipeId" data-uid="Vintagestory.API.Common.RecipeBase.RecipeId">
+  RecipeId
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The ID of the  Automatically generated when the recipe is loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RecipeId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_RecipeIngredients_" data-uid="Vintagestory.API.Common.RecipeBase.RecipeIngredients*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_RecipeIngredients" data-uid="Vintagestory.API.Common.RecipeBase.RecipeIngredients">
+  RecipeIngredients
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract IEnumerable&lt;IRecipeIngredient&gt; RecipeIngredients { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_RecipeOutput_" data-uid="Vintagestory.API.Common.RecipeBase.RecipeOutput*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_RecipeOutput" data-uid="Vintagestory.API.Common.RecipeBase.RecipeOutput">
+  RecipeOutput
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract IRecipeOutput RecipeOutput { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IRecipeOutput.html">IRecipeOutput</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_RequiresTrait_" data-uid="Vintagestory.API.Common.RecipeBase.RequiresTrait*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_RequiresTrait" data-uid="Vintagestory.API.Common.RecipeBase.RequiresTrait">
+  RequiresTrait
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If set, only players with given trait can use this  See config/traits.json for a list of traits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string? RequiresTrait { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ShowInCreatedBy_" data-uid="Vintagestory.API.Common.RecipeBase.ShowInCreatedBy*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ShowInCreatedBy" data-uid="Vintagestory.API.Common.RecipeBase.ShowInCreatedBy">
+  ShowInCreatedBy
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used by the handbook. If false, will not appear in the &quot;Created by&quot; section</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;True&quot;, false)]
+public bool ShowInCreatedBy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_SkipVariants_" data-uid="Vintagestory.API.Common.RecipeBase.SkipVariants*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_SkipVariants" data-uid="Vintagestory.API.Common.RecipeBase.SkipVariants">
+  SkipVariants
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If '{code}' is used in ingredient code, skip variants for this code should be specified in this map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public Dictionary&lt;string, string[]&gt; SkipVariants { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_AddVariantCombination_" data-uid="Vintagestory.API.Common.RecipeBase.AddVariantCombination*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_AddVariantCombination_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Vintagestory.API.Common.RecipeBase.AddVariantCombination(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}},System.Collections.Generic.Dictionary{System.String,System.String})">
+  AddVariantCombination(Dictionary&lt;string, HashSet&lt;string&gt;&gt;, Dictionary&lt;string, string&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void AddVariantCombination(Dictionary&lt;string, HashSet&lt;string&gt;&gt; variantValues, Dictionary&lt;string, string&gt; combination)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>variantValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>combination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_AddVariantValuesToMapping_" data-uid="Vintagestory.API.Common.RecipeBase.AddVariantValuesToMapping*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_AddVariantValuesToMapping_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___" data-uid="Vintagestory.API.Common.RecipeBase.AddVariantValuesToMapping(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}})">
+  AddVariantValuesToMapping(Dictionary&lt;string, HashSet&lt;string&gt;&gt;, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void AddVariantValuesToMapping(Dictionary&lt;string, HashSet&lt;string&gt;&gt; mappings, Dictionary&lt;string, HashSet&lt;string&gt;&gt; variantValues)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mappings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>variantValues</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_Clone_" data-uid="Vintagestory.API.Common.RecipeBase.Clone*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_Clone" data-uid="Vintagestory.API.Common.RecipeBase.Clone">
+  Clone()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract RecipeBase Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.RecipeBase.html">RecipeBase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_CloneTo_" data-uid="Vintagestory.API.Common.RecipeBase.CloneTo*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_CloneTo_System_Object_" data-uid="Vintagestory.API.Common.RecipeBase.CloneTo(System.Object)">
+  CloneTo(object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void CloneTo(object recipe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>recipe</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_CollectVariantValues_" data-uid="Vintagestory.API.Common.RecipeBase.CollectVariantValues*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_CollectVariantValues_System_Text_RegularExpressions_Match_System_Collections_Generic_List_System_String__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___" data-uid="Vintagestory.API.Common.RecipeBase.CollectVariantValues(System.Text.RegularExpressions.Match,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}})">
+  CollectVariantValues(Match, List&lt;string&gt;, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void CollectVariantValues(Match match, List&lt;string&gt; variants, Dictionary&lt;string, HashSet&lt;string&gt;&gt; variantCodes)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>match</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.regularexpressions.match">Match</a></dt>
+    <dd></dd>
+    <dt><code>variants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>variantCodes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ConsumeExactMatchIngredient_" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeExactMatchIngredient*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ConsumeExactMatchIngredient_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeExactMatchIngredient(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.IRecipeIngredient},Vintagestory.API.Common.IPlayer)">
+  ConsumeExactMatchIngredient(ItemStack, ItemSlot, ItemSlot[], List&lt;IRecipeIngredient&gt;, IPlayer)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void ConsumeExactMatchIngredient(ItemStack inputStack, ItemSlot inputSlot, ItemSlot[] inputSlots, List&lt;IRecipeIngredient&gt; exactMatchIngredients, IPlayer byPlayer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>inputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>exactMatchIngredients</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ConsumeInputAt_" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeInputAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ConsumeInputAt_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_Common_IRecipeIngredient___" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeInputAt(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot[],System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.Common.IRecipeIngredient[])">
+  ConsumeInputAt(IPlayer, ItemSlot[], int, int, int, int, IRecipeIngredient?[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool ConsumeInputAt(IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth, int recipeWidth, int colStart, int rowStart, IRecipeIngredient?[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>gridWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>recipeWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>colStart</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>rowStart</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ConsumeInputAt_" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeInputAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ConsumeInputAt_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IRecipeIngredient___" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeInputAt(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.IRecipeIngredient[])">
+  ConsumeInputAt(IPlayer, ItemSlot[], IRecipeIngredient?[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool ConsumeInputAt(IPlayer byPlayer, ItemSlot[] inputSlots, IRecipeIngredient?[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ConsumeInputShapeLess_" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeInputShapeLess*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ConsumeInputShapeLess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IRecipeIngredient___" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeInputShapeLess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.IRecipeIngredient[])">
+  ConsumeInputShapeLess(IPlayer, ItemSlot[], IRecipeIngredient?[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool ConsumeInputShapeLess(IPlayer byPlayer, ItemSlot[] inputSlots, IRecipeIngredient?[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ConsumeWildcardMatchIngredient_" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeWildcardMatchIngredient*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ConsumeWildcardMatchIngredient_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.RecipeBase.ConsumeWildcardMatchIngredient(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.IRecipeIngredient},Vintagestory.API.Common.IPlayer)">
+  ConsumeWildcardMatchIngredient(ItemStack, ItemSlot, ItemSlot[], List&lt;IRecipeIngredient&gt;, IPlayer)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void ConsumeWildcardMatchIngredient(ItemStack inputStack, ItemSlot inputSlot, ItemSlot[] inputSlots, List&lt;IRecipeIngredient&gt; wildcardAndToolIngredients, IPlayer byPlayer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>inputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>wildcardAndToolIngredients</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_FillIngredientPlaceHolders_" data-uid="Vintagestory.API.Common.RecipeBase.FillIngredientPlaceHolders*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_FillIngredientPlaceHolders_Vintagestory_API_Common_IRecipeIngredient_System_String_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.FillIngredientPlaceHolders(Vintagestory.API.Common.IRecipeIngredient,System.String,System.String)">
+  FillIngredientPlaceHolders(IRecipeIngredient, string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void FillIngredientPlaceHolders(IRecipeIngredient ingredient, string variantCode, string variantValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>variantCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>variantValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_FilterOutRecipesWithExactIngredientsThatDontMatchTags_" data-uid="Vintagestory.API.Common.RecipeBase.FilterOutRecipesWithExactIngredientsThatDontMatchTags*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_FilterOutRecipesWithExactIngredientsThatDontMatchTags_System_Collections_Generic_IEnumerable_Vintagestory_API_Common_IRecipeBase__Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.RecipeBase.FilterOutRecipesWithExactIngredientsThatDontMatchTags(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.IRecipeBase},Vintagestory.API.Common.IWorldAccessor)">
+  FilterOutRecipesWithExactIngredientsThatDontMatchTags(IEnumerable&lt;IRecipeBase&gt;, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual IEnumerable&lt;IRecipeBase&gt; FilterOutRecipesWithExactIngredientsThatDontMatchTags(IEnumerable&lt;IRecipeBase&gt; recipes, IWorldAccessor world)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>recipes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_FromBytes_" data-uid="Vintagestory.API.Common.RecipeBase.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.RecipeBase.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)">
+  FromBytes(BinaryReader, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>resolver</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GenerateAllowedVariantsCombinations_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateAllowedVariantsCombinations*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GenerateAllowedVariantsCombinations_System_Collections_Generic_Dictionary_System_String_System_String____" data-uid="Vintagestory.API.Common.RecipeBase.GenerateAllowedVariantsCombinations(System.Collections.Generic.Dictionary{System.String,System.String[]})">
+  GenerateAllowedVariantsCombinations(Dictionary&lt;string, string[]&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual List&lt;Dictionary&lt;string, string&gt;&gt; GenerateAllowedVariantsCombinations(Dictionary&lt;string, string[]&gt; allowedVariants)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allowedVariants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GenerateAllowedVariantsCombinationsRecursive_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateAllowedVariantsCombinationsRecursive*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GenerateAllowedVariantsCombinationsRecursive_System_Int32_System_String___System_Collections_Generic_IEnumerable_System_ValueTuple_System_String_System_String___System_Collections_Generic_Dictionary_System_String_System_String____System_Collections_Generic_List_System_Collections_Generic_Dictionary_System_String_System_String___" data-uid="Vintagestory.API.Common.RecipeBase.GenerateAllowedVariantsCombinationsRecursive(System.Int32,System.String[],System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,System.String}},System.Collections.Generic.Dictionary{System.String,System.String[]},System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.String}})">
+  GenerateAllowedVariantsCombinationsRecursive(int, string[], IEnumerable&lt;(string variant, string value)&gt;, Dictionary&lt;string, string[]&gt;, List&lt;Dictionary&lt;string, string&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateAllowedVariantsCombinationsRecursive(int index, string[] variants, IEnumerable&lt;(string variant, string value)&gt; combination, Dictionary&lt;string, string[]&gt; allowedVariants, List&lt;Dictionary&lt;string, string&gt;&gt; combinations)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>variants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+    <dt><code>combination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.variant">variant</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.string,system.string-.value">value</a>)&gt;</dt>
+    <dd></dd>
+    <dt><code>allowedVariants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+    <dt><code>combinations</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GenerateOutputStack_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateOutputStack*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GenerateOutputStack_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateOutputStack(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot)">
+  GenerateOutputStack(ItemSlot[], ItemSlot)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void GenerateOutputStack(ItemSlot[] inputSlots, ItemSlot outputSlot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GenerateRecipesForAllIngredientCombinations_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateRecipesForAllIngredientCombinations*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GenerateRecipesForAllIngredientCombinations_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateRecipesForAllIngredientCombinations(Vintagestory.API.Common.IWorldAccessor)">
+  GenerateRecipesForAllIngredientCombinations(IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IEnumerable&lt;IRecipeBase&gt; GenerateRecipesForAllIngredientCombinations(IWorldAccessor world)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GenerateRecipesForTagOnlyIngredient_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateRecipesForTagOnlyIngredient*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GenerateRecipesForTagOnlyIngredient_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeBase_Vintagestory_API_Common_IRecipeIngredient_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateRecipesForTagOnlyIngredient(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IRecipeBase,Vintagestory.API.Common.IRecipeIngredient)">
+  GenerateRecipesForTagOnlyIngredient(IWorldAccessor, IRecipeBase, IRecipeIngredient)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual IEnumerable&lt;IRecipeBase&gt; GenerateRecipesForTagOnlyIngredient(IWorldAccessor world, IRecipeBase recipe, IRecipeIngredient ingredient)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>recipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
+    <dd></dd>
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GenerateRecipesForTagOnlyIngredients_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateRecipesForTagOnlyIngredients*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GenerateRecipesForTagOnlyIngredients_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeBase_" data-uid="Vintagestory.API.Common.RecipeBase.GenerateRecipesForTagOnlyIngredients(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IRecipeBase)">
+  GenerateRecipesForTagOnlyIngredients(IWorldAccessor, IRecipeBase)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual IEnumerable&lt;IRecipeBase&gt; GenerateRecipesForTagOnlyIngredients(IWorldAccessor world, IRecipeBase recipe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>recipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetElementInGrid_" data-uid="Vintagestory.API.Common.RecipeBase.GetElementInGrid*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetElementInGrid__1_System_Int32_System_Int32___0___System_Int32_" data-uid="Vintagestory.API.Common.RecipeBase.GetElementInGrid``1(System.Int32,System.Int32,``0[],System.Int32)">
+  GetElementInGrid&lt;TGridCellElement&gt;(int, int, TGridCellElement[], int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TGridCellElement? GetElementInGrid&lt;TGridCellElement&gt;(int row, int column, TGridCellElement[] cells, int gridWidth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>row</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>column</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>cells</code> TGridCellElement[]</dt>
+    <dd></dd>
+    <dt><code>gridWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TGridCellElement</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TGridCellElement</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetGridIndex_" data-uid="Vintagestory.API.Common.RecipeBase.GetGridIndex*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetGridIndex__1_System_Int32_System_Int32___0___System_Int32_" data-uid="Vintagestory.API.Common.RecipeBase.GetGridIndex``1(System.Int32,System.Int32,``0[],System.Int32)">
+  GetGridIndex&lt;TGridCellElement&gt;(int, int, TGridCellElement[], int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int GetGridIndex&lt;TGridCellElement&gt;(int row, int col, TGridCellElement[] cells, int gridWidth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>row</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>col</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>cells</code> TGridCellElement[]</dt>
+    <dd></dd>
+    <dt><code>gridWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TGridCellElement</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetIngredientById_" data-uid="Vintagestory.API.Common.RecipeBase.GetIngredientById*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetIngredientById_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.GetIngredientById(System.String)">
+  GetIngredientById(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual IRecipeIngredient? GetIngredientById(string id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetInputStackForIngredientId_" data-uid="Vintagestory.API.Common.RecipeBase.GetInputStackForIngredientId*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetInputStackForIngredientId_System_String_Vintagestory_API_Common_ItemSlot___" data-uid="Vintagestory.API.Common.RecipeBase.GetInputStackForIngredientId(System.String,Vintagestory.API.Common.ItemSlot[])">
+  GetInputStackForIngredientId(string, ItemSlot[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual ItemStack? GetInputStackForIngredientId(string id, ItemSlot[] inputSlots)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetMatchType_" data-uid="Vintagestory.API.Common.RecipeBase.GetMatchType*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetMatchType_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.RecipeBase.GetMatchType(System.String,System.Boolean)">
+  GetMatchType(string?, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EnumRecipeMatchType GetMatchType(string? code, bool named = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>named</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumRecipeMatchType.html">EnumRecipeMatchType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetNameToCodeMapping_" data-uid="Vintagestory.API.Common.RecipeBase.GetNameToCodeMapping*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.RecipeBase.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)">
+  GetNameToCodeMapping(IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Dictionary&lt;string, HashSet&lt;string&gt;&gt; GetNameToCodeMapping(IWorldAccessor world)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetNameToCodeMappingForAdvancedWildcard_" data-uid="Vintagestory.API.Common.RecipeBase.GetNameToCodeMappingForAdvancedWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetNameToCodeMappingForAdvancedWildcard_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeIngredient_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___" data-uid="Vintagestory.API.Common.RecipeBase.GetNameToCodeMappingForAdvancedWildcard(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IRecipeIngredient,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}})">
+  GetNameToCodeMappingForAdvancedWildcard(IWorldAccessor, IRecipeIngredient, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GetNameToCodeMappingForAdvancedWildcard(IWorldAccessor world, IRecipeIngredient ingredient, Dictionary&lt;string, HashSet&lt;string&gt;&gt; mappings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>mappings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetNameToCodeMappingForBasicWildcard_" data-uid="Vintagestory.API.Common.RecipeBase.GetNameToCodeMappingForBasicWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetNameToCodeMappingForBasicWildcard_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeIngredient_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_HashSet_System_String___" data-uid="Vintagestory.API.Common.RecipeBase.GetNameToCodeMappingForBasicWildcard(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IRecipeIngredient,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}})">
+  GetNameToCodeMappingForBasicWildcard(IWorldAccessor, IRecipeIngredient, Dictionary&lt;string, HashSet&lt;string&gt;&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GetNameToCodeMappingForBasicWildcard(IWorldAccessor world, IRecipeIngredient ingredient, Dictionary&lt;string, HashSet&lt;string&gt;&gt; mappings)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>mappings</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_GetVariantValuesFromAdvancedWildcard_" data-uid="Vintagestory.API.Common.RecipeBase.GetVariantValuesFromAdvancedWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_GetVariantValuesFromAdvancedWildcard_Vintagestory_API_Common_IRecipeIngredient_System_Collections_Generic_IEnumerable_Vintagestory_API_Common_CollectibleObject__System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Vintagestory.API.Common.RecipeBase.GetVariantValuesFromAdvancedWildcard(Vintagestory.API.Common.IRecipeIngredient,System.Collections.Generic.IEnumerable{Vintagestory.API.Common.CollectibleObject},System.Collections.Generic.Dictionary{System.String,System.String})">
+  GetVariantValuesFromAdvancedWildcard(IRecipeIngredient, IEnumerable&lt;CollectibleObject&gt;, Dictionary&lt;string, string&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Dictionary&lt;string, HashSet&lt;string&gt;&gt; GetVariantValuesFromAdvancedWildcard(IRecipeIngredient ingredient, IEnumerable&lt;CollectibleObject&gt; collectibles, Dictionary&lt;string, string&gt; allowedVariantsCombination)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>collectibles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>allowedVariantsCombination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_IsAdvancedWildcard_" data-uid="Vintagestory.API.Common.RecipeBase.IsAdvancedWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_IsAdvancedWildcard_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.IsAdvancedWildcard(System.String)">
+  IsAdvancedWildcard(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsAdvancedWildcard(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_IsBasicWildcard_" data-uid="Vintagestory.API.Common.RecipeBase.IsBasicWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_IsBasicWildcard_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.IsBasicWildcard(System.String)">
+  IsBasicWildcard(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsBasicWildcard(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_IsExactMatch_" data-uid="Vintagestory.API.Common.RecipeBase.IsExactMatch*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_IsExactMatch_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.IsExactMatch(System.String)">
+  IsExactMatch(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsExactMatch(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_IsRegex_" data-uid="Vintagestory.API.Common.RecipeBase.IsRegex*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_IsRegex_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.IsRegex(System.String)">
+  IsRegex(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsRegex(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MatchIngredientStacks_" data-uid="Vintagestory.API.Common.RecipeBase.MatchIngredientStacks*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MatchIngredientStacks_System_Collections_Generic_List_System_ValueTuple_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IRecipeIngredient___System_Collections_Generic_List_Vintagestory_API_Common_ItemStack__" data-uid="Vintagestory.API.Common.RecipeBase.MatchIngredientStacks(System.Collections.Generic.List{System.ValueTuple{Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IRecipeIngredient}},System.Collections.Generic.List{Vintagestory.API.Common.ItemStack})">
+  MatchIngredientStacks(List&lt;(ItemStack stack, IRecipeIngredient ingredient)&gt;, List&lt;ItemStack&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool MatchIngredientStacks(List&lt;(ItemStack stack, IRecipeIngredient ingredient)&gt; ingredientStacks, List&lt;ItemStack&gt; suppliedStacks)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ingredientStacks</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;(<a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-vintagestory.api.common.itemstack,vintagestory.api.common.irecipeingredient-.stack">stack</a>, <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-vintagestory.api.common.itemstack,vintagestory.api.common.irecipeingredient-.ingredient">ingredient</a>)&gt;</dt>
+    <dd></dd>
+    <dt><code>suppliedStacks</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MatchResolvedStackToIngredientTags_" data-uid="Vintagestory.API.Common.RecipeBase.MatchResolvedStackToIngredientTags*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MatchResolvedStackToIngredientTags_Vintagestory_API_Common_IRecipeIngredient_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.RecipeBase.MatchResolvedStackToIngredientTags(Vintagestory.API.Common.IRecipeIngredient,Vintagestory.API.Common.IWorldAccessor)">
+  MatchResolvedStackToIngredientTags(IRecipeIngredient, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool MatchResolvedStackToIngredientTags(IRecipeIngredient ingredient, IWorldAccessor world)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MatchStackToIngredient_" data-uid="Vintagestory.API.Common.RecipeBase.MatchStackToIngredient*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MatchStackToIngredient_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IRecipeIngredient_" data-uid="Vintagestory.API.Common.RecipeBase.MatchStackToIngredient(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IRecipeIngredient)">
+  MatchStackToIngredient(ItemStack?, IRecipeIngredient?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool MatchStackToIngredient(ItemStack? inputStack, IRecipeIngredient? ingredient)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>ingredient</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MatchWildcardIngredients_" data-uid="Vintagestory.API.Common.RecipeBase.MatchWildcardIngredients*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MatchWildcardIngredients_System_Collections_Generic_List_Vintagestory_API_Common_ItemStack__Vintagestory_API_Common_IRecipeIngredient___" data-uid="Vintagestory.API.Common.RecipeBase.MatchWildcardIngredients(System.Collections.Generic.List{Vintagestory.API.Common.ItemStack},Vintagestory.API.Common.IRecipeIngredient[])">
+  MatchWildcardIngredients(List&lt;ItemStack&gt;, IRecipeIngredient?[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool MatchWildcardIngredients(List&lt;ItemStack&gt; suppliedStacks, IRecipeIngredient?[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>suppliedStacks</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MatchesAtPosition_" data-uid="Vintagestory.API.Common.RecipeBase.MatchesAtPosition*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MatchesAtPosition_System_Int32_System_Int32_Vintagestory_API_Common_ItemSlot___System_Int32_System_Int32_Vintagestory_API_Common_IRecipeIngredient___" data-uid="Vintagestory.API.Common.RecipeBase.MatchesAtPosition(System.Int32,System.Int32,Vintagestory.API.Common.ItemSlot[],System.Int32,System.Int32,Vintagestory.API.Common.IRecipeIngredient[])">
+  MatchesAtPosition(int, int, ItemSlot[], int, int, IRecipeIngredient?[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool MatchesAtPosition(int colStart, int rowStart, ItemSlot[] inputSlots, int gridWidth, int recipeWidth, IRecipeIngredient?[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>colStart</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>rowStart</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>gridWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>recipeWidth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MatchesAtPosition_" data-uid="Vintagestory.API.Common.RecipeBase.MatchesAtPosition*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MatchesAtPosition_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IRecipeIngredient___" data-uid="Vintagestory.API.Common.RecipeBase.MatchesAtPosition(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.IRecipeIngredient[])">
+  MatchesAtPosition(ItemSlot[], IRecipeIngredient?[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool MatchesAtPosition(ItemSlot[] inputSlots, IRecipeIngredient?[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MatchesShapeLess_" data-uid="Vintagestory.API.Common.RecipeBase.MatchesShapeLess*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MatchesShapeLess_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IRecipeIngredient___" data-uid="Vintagestory.API.Common.RecipeBase.MatchesShapeLess(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IRecipeIngredient[])">
+  MatchesShapeLess(ItemSlot[], IWorldAccessor, IRecipeIngredient?[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool MatchesShapeLess(ItemSlot[] suppliedSlots, IWorldAccessor world, IRecipeIngredient?[] ingredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>suppliedSlots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MergeIngredientStacks_" data-uid="Vintagestory.API.Common.RecipeBase.MergeIngredientStacks*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MergeIngredientStacks_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_System_ValueTuple_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IRecipeIngredient___Vintagestory_API_Common_IRecipeIngredient___Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.RecipeBase.MergeIngredientStacks(Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{System.ValueTuple{Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IRecipeIngredient}},Vintagestory.API.Common.IRecipeIngredient[],Vintagestory.API.Common.IWorldAccessor)">
+  MergeIngredientStacks(ItemSlot[], List&lt;(ItemStack stack, IRecipeIngredient ingredient)&gt;, IRecipeIngredient?[], IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void MergeIngredientStacks(ItemSlot[] slots, List&lt;(ItemStack stack, IRecipeIngredient ingredient)&gt; stacks, IRecipeIngredient?[] ingredients, IWorldAccessor world)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>stacks</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;(<a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-vintagestory.api.common.itemstack,vintagestory.api.common.irecipeingredient-.stack">stack</a>, <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-vintagestory.api.common.itemstack,vintagestory.api.common.irecipeingredient-.ingredient">ingredient</a>)&gt;</dt>
+    <dd></dd>
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_MergeStacks_" data-uid="Vintagestory.API.Common.RecipeBase.MergeStacks*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_MergeStacks_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_ItemStack__" data-uid="Vintagestory.API.Common.RecipeBase.MergeStacks(Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.ItemStack})">
+  MergeStacks(ItemSlot[], List&lt;ItemStack&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void MergeStacks(ItemSlot[] slots, List&lt;ItemStack&gt; stacks)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>slots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>stacks</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_OnParsed_" data-uid="Vintagestory.API.Common.RecipeBase.OnParsed*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_OnParsed_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.RecipeBase.OnParsed(Vintagestory.API.Common.IWorldAccessor)">
+  OnParsed(IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnParsed(IWorldAccessor world)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ReplaceVariantsToRegex_" data-uid="Vintagestory.API.Common.RecipeBase.ReplaceVariantsToRegex*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ReplaceVariantsToRegex_System_String_System_Collections_Generic_List_System_String___System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Vintagestory.API.Common.RecipeBase.ReplaceVariantsToRegex(System.String,System.Collections.Generic.List{System.String}@,System.Collections.Generic.Dictionary{System.String,System.String})">
+  ReplaceVariantsToRegex(string, out List&lt;string&gt;, Dictionary&lt;string, string&gt;?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ReplaceVariantsToRegex(string value, out List&lt;string&gt; variants, Dictionary&lt;string, string&gt;? allowedVariants = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>variants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>allowedVariants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_Resolve_" data-uid="Vintagestory.API.Common.RecipeBase.Resolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)">
+  Resolve(IWorldAccessor, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool Resolve(IWorldAccessor world, string sourceForErrorLogging)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>sourceForErrorLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_SeparateAndMergeIngredients_" data-uid="Vintagestory.API.Common.RecipeBase.SeparateAndMergeIngredients*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_SeparateAndMergeIngredients_Vintagestory_API_Common_IRecipeIngredient___System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__System_Collections_Generic_List_Vintagestory_API_Common_IRecipeIngredient__" data-uid="Vintagestory.API.Common.RecipeBase.SeparateAndMergeIngredients(Vintagestory.API.Common.IRecipeIngredient[],System.Collections.Generic.List{Vintagestory.API.Common.IRecipeIngredient},System.Collections.Generic.List{Vintagestory.API.Common.IRecipeIngredient})">
+  SeparateAndMergeIngredients(IRecipeIngredient?[], List&lt;IRecipeIngredient&gt;, List&lt;IRecipeIngredient&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void SeparateAndMergeIngredients(IRecipeIngredient?[] ingredients, List&lt;IRecipeIngredient&gt; exactMatchIngredients, List&lt;IRecipeIngredient&gt; wildcardAndToolIngredients)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ingredients</code> <a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>[]</dt>
+    <dd></dd>
+    <dt><code>exactMatchIngredients</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>wildcardAndToolIngredients</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_ToBytes_" data-uid="Vintagestory.API.Common.RecipeBase.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Common.RecipeBase.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_RecipeBase_WildCardToRegex_" data-uid="Vintagestory.API.Common.RecipeBase.WildCardToRegex*"></a>
+
+  <h3 id="Vintagestory_API_Common_RecipeBase_WildCardToRegex_System_String_" data-uid="Vintagestory.API.Common.RecipeBase.WildCardToRegex(System.String)">
+  WildCardToRegex(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string WildCardToRegex(string value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -124,7 +124,13 @@ namespace Vintagestory.API.Client
         void SetBlocksPreviewDimension(int dimId);
 
         /// <summary>
-        /// Exactly like PlaySoundAt except that it returns the duration of the played sound.  (We don't want to change the method signature of PlaySoundAt for API mod breakage reasons)
+        /// Plays a sound at no particular location (out of both speakers equally)
+        /// Returns duration of the playing sound, in milliseconds, or 0 if it cannot be played for any reason
+        /// </summary>
+        int PlaySound(SoundAttributes sound);
+
+        /// <summary>
+        /// Exactly like PlaySoundAt except that it returns the duration of the played sound.  (We don't want to change the method signature of PlaySoundAt for API mod breakage reasons). Note if you pass in a SoundAttributes instead of an AssetLocation, the regular PlaySoundAt will return the duration as well.
         /// </summary>
         int PlaySoundAtAndGetDuration(AssetLocation sound, double x, double y, double z, IPlayer ignorePlayerUid = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 

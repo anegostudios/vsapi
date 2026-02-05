@@ -64,7 +64,7 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Register given dialog(s) to the gui/input event listening chain. You only need to call this if your dialog has to listen to events 
+        /// Register given dialog(s) to the gui/input event listening chain. You only need to call this if your dialog has to listen to events
         /// even while closed. The method GuiDialog.TryOpen() also does the register if not registered already.
         /// </summary>
         /// <param name="dialogs"></param>
@@ -88,11 +88,11 @@ namespace Vintagestory.API.Client
         /// <param name="height"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        LoadedTexture LoadSvg(AssetLocation loc, int textureWidth, int textureHeight, int width = 0, int height = 0, int? color = 0);
+        LoadedTexture LoadSvg(AssetLocation loc, int textureWidth, int textureHeight, int width = 0, int height = 0, int? color = null);
 
 
-        void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, int posx, int posy, int width = 0, int height = 0, int? color = 0);
-        void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, Matrix transform, int posx, int posy, int width = 0, int height = 0, int? color = 0);
+        void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, int posx, int posy, int width = 0, int height = 0, int? color = null);
+        void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, Matrix transform, int posx, int posy, int width = 0, int height = 0, int? color = null);
 
         /// <summary>
         /// Loads an external .svg file into a texture. Will return null if the file is not found
@@ -103,7 +103,7 @@ namespace Vintagestory.API.Client
         /// <param name="padding"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        LoadedTexture LoadSvgWithPadding(AssetLocation loc, int textureWidth, int textureHeight, int padding = 0, int? color = 0);
+        LoadedTexture LoadSvgWithPadding(AssetLocation loc, int textureWidth, int textureHeight, int padding = 0, int? color = null);
 
         /// <summary>
         /// Load the contents of a cairo surface into a opengl texture. Returns the texture id
@@ -140,6 +140,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Plays a sound, non location specific
         /// </summary>
+        /// <param name="sound">Provides the name and type of the sound and how (if at all) pitch and volume should be randomized</param>
+        void PlaySound(SoundAttributes sound);
+
+        /// <summary>
+        /// Plays a sound, non location specific
+        /// </summary>
         /// <param name="soundname">The name of the sound</param>
         /// <param name="randomizePitch">If true, the pitch is slightly randomized each time</param>
         /// <param name="volume"></param>
@@ -160,7 +166,7 @@ namespace Vintagestory.API.Client
         void RequestFocus(GuiDialog guiDialog);
 
         /// <summary>
-        /// Triggers the opening of a dialogue.  
+        /// Triggers the opening of a dialogue.
         /// </summary>
         /// <param name="guiDialog">The dialogue to be opened.</param>
         void TriggerDialogOpened(GuiDialog guiDialog);

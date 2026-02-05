@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using SkiaSharp;
 using System;
 using System.IO;
@@ -272,6 +272,32 @@ namespace Vintagestory.API.Common
             }
 
             return bmpPixels;
+        }
+
+        public override BitmapExternal CropTo(int newSize)
+        {
+            SKBitmap bmpPixels = new(newSize,newSize);
+            int width = bmp.Width;
+            int height = bmp.Height;
+            int centerOffsetX = (width - newSize);
+            int centerOffsetY = 0;
+            int brown = (29 << 16) + (11 << 8) + 1; 
+            for (int x = 0; x < newSize; x++)
+            {
+                for (int y = 0; y < newSize; y++)
+                {
+                    var color = bmp.GetPixel(x + centerOffsetX, y + centerOffsetY);
+                    int alpha = (int)((uint)color >> 24);
+                    if (alpha < 255)
+                    {
+                        int rgb = (int)((uint)color & 0xFFFFFFu);
+                        color = (uint)MathTools.ColorUtil.ColorOverlay(brown, rgb, alpha / 255f) | 0xFF000000u;
+                    }
+                    bmpPixels.SetPixel(x, y, color);
+                }
+            }
+
+            return new BitmapExternal(bmpPixels);
         }
     }
 }

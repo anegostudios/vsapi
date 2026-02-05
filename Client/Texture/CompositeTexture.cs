@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +17,16 @@ namespace Vintagestory.API.Client
     public class BlendedOverlayTexture
     {
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The path to the texture to use as an overlay.
         /// </summary>
-        [DocumentAsJson] public AssetLocation Base;
+        [DocumentAsJson("Required")]
+        public AssetLocation Base;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Normal</jsondefault>-->
         /// The type of blend for each pixel.
         /// </summary>
-        [DocumentAsJson] public EnumColorBlendMode BlendMode;
+        [DocumentAsJson("Optional", "Normal")]
+        public EnumColorBlendMode BlendMode;
 
         public BlendedOverlayTexture Clone()
         {
@@ -90,16 +90,16 @@ namespace Vintagestory.API.Client
         public const char BlendmodeSeparator = '~';
 
         /// <summary>
-        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The basic texture for this composite texture
         /// </summary>
-        [DocumentAsJson] public AssetLocation Base;
+        [DocumentAsJson("Required")]
+        public AssetLocation Base;
 
         /// <summary>
-        /// <!--<jsonoptional>Obsolete</jsonoptional>-->
         /// Obsolete. Use <see cref="BlendedOverlays"/> instead.
         /// </summary>
-        [DocumentAsJson] public AssetLocation[] Overlays
+        [DocumentAsJson("Obsolete")]
+        public AssetLocation[] Overlays
         {
             set
             {
@@ -108,32 +108,32 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A set of textures to overlay above this texture. The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation.
         /// </summary>
-        [DocumentAsJson] public BlendedOverlayTexture[] BlendedOverlays = null;
+        [DocumentAsJson("Optional", "None")]
+        public BlendedOverlayTexture[] BlendedOverlays = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
         /// </summary>
-        [DocumentAsJson] public CompositeTexture[] Alternates = null;
+        [DocumentAsJson("Optional", "None")]
+        public CompositeTexture[] Alternates = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A way of basic support for connected textures. Textures should be named numerically from 1 to <see cref="TilesWidth"/> squared.
         /// <br/>E.g., if <see cref="TilesWidth"/> is 3, the order follows the pattern of:<br/>
         /// 1 2 3 <br/>
         /// 4 5 6 <br/>
         /// 7 8 9
         /// </summary>
-        [DocumentAsJson] public CompositeTexture[] Tiles = null;
+        [DocumentAsJson("Optional", "None")]
+        public CompositeTexture[] Tiles = null;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The number of tiles in one direction that make up the full connected textures defined in <see cref="Tiles"/>.
         /// </summary>
-        [DocumentAsJson] public int TilesWidth;
+        [DocumentAsJson("Optional", "0")]
+        public int TilesWidth;
 
         /// <summary>
         /// BakedCompositeTexture is an expanded, atlas friendly version of CompositeTexture. Required during texture atlas generation.
@@ -141,16 +141,16 @@ namespace Vintagestory.API.Client
         public BakedCompositeTexture Baked;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// Rotation of the texture may only be a multiple of 90
         /// </summary>
-        [DocumentAsJson] public int Rotation = 0;
+        [DocumentAsJson("Optional", "0")]
+        public int Rotation = 0;
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>255</jsondefault>-->
         /// Can be used to modify the opacity of the texture. 255 is fully opaque, 0 is fully transparent.
         /// </summary>
-        [DocumentAsJson] public int Alpha = 255;
+        [DocumentAsJson("Optional", "255")]
+        public int Alpha = 255;
 
         [ThreadStatic]    // Lovely ThreadStatic will automatically dispose of any dictionary created on a separate thread (if the thread is disposed of)
         public static Dictionary<AssetLocation, CompositeTexture> basicTexturesCache;

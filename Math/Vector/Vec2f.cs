@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using ProtoBuf;
 using System;
 
@@ -34,20 +34,18 @@ namespace Vintagestory.API.MathTools
         public static readonly Vec2f Zero = new Vec2f(0, 0);
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The X element of the vector.
         /// </summary>
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         [JsonProperty]
         [ProtoMember(1)]
         public float X;
 
 
         /// <summary>
-        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The Y element of the vector.
         /// </summary>
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         [JsonProperty]
         [ProtoMember(2)]
         public float Y;

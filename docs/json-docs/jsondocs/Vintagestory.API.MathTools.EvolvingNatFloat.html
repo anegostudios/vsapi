@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class EvolvingNatFloat | VintageStory Json Docs </title>
+      <title>Struct EvolvingNatFloat | VintageStory Json Docs </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class EvolvingNatFloat | VintageStory Json Docs ">
+      <meta name="title" content="Struct EvolvingNatFloat | VintageStory Json Docs ">
       
-      <meta name="description" content="A number generator whose return value changes over time, parametrized by a transform function and some constants Open in GitHub">
+      <meta name="description" content="A number generator whose return value changes over time, parametrized by a transform function and some constants">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -89,7 +89,7 @@
 
 
   <h1 id="Vintagestory_API_MathTools_EvolvingNatFloat" data-uid="Vintagestory.API.MathTools.EvolvingNatFloat" class="text-break">
-Class EvolvingNatFloat  
+Struct EvolvingNatFloat  
   </h1>
 
   <div class="facts text-secondary">
@@ -97,26 +97,19 @@ Class EvolvingNatFloat
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A number generator whose return value changes over time, parametrized by a transform function and some constants <a href="https://github.com/anegostudios/vsapi/blob/master///Math/EvolvingNatFloat.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p>A number generator whose return value changes over time, parametrized by a transform function and some constants</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DocumentAsJson]
 [JsonObject(MemberSerialization.OptIn)]
-public class EvolvingNatFloat</code></pre>
+public struct EvolvingNatFloat</code></pre>
   </div>
 
 
 
 
-  <dl class="typelist inheritance">
-    <dt>Inheritance</dt>
-    <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><span class="xref">EvolvingNatFloat</span></div>
-    </dd>
-  </dl>
 
 
 
@@ -143,6 +136,7 @@ public class EvolvingNatFloat</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
 private float factor</code></pre>
   </div>
 
@@ -176,6 +170,7 @@ private float factor</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
 private float? maxvalue</code></pre>
   </div>
 
@@ -209,6 +204,7 @@ private float? maxvalue</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;IDENTICAL&quot;, false)]
 private EnumTransformFunction transform</code></pre>
   </div>
 

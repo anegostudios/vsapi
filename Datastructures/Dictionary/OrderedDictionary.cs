@@ -114,7 +114,7 @@ namespace Vintagestory.API.Datastructures
 			}
 		}
 
-	
+
 
 		public void Insert(int index, TKey key, TValue value)
 		{
@@ -136,7 +136,7 @@ namespace Vintagestory.API.Datastructures
                 }
             }
         }
-        
+
 
         public void RemoveAt(int index)
 		{
@@ -170,7 +170,7 @@ namespace Vintagestory.API.Datastructures
 			Dictionary[key] = value;
 		}
 
-        
+
 
 
         public int Add(TKey key, TValue value)
@@ -224,7 +224,7 @@ namespace Vintagestory.API.Datastructures
 			return -1;
 		}
 
-	
+
 		public bool Remove(TKey key)
 		{
             if (null == key)
@@ -245,7 +245,7 @@ namespace Vintagestory.API.Datastructures
 			return false;
 		}
 
-		
+
 		public TValue this[TKey key]
 		{
 			get
@@ -297,7 +297,7 @@ namespace Vintagestory.API.Datastructures
             }
         }
 
-	
+
 		public bool TryGetValue(TKey key, out TValue value)
 		{
 			return Dictionary.TryGetValue(key, out value);
@@ -339,7 +339,7 @@ namespace Vintagestory.API.Datastructures
 			((ICollection<KeyValuePair<TKey,TValue>>)Dictionary).CopyTo(array, arrayIndex);
 		}
 
-		
+
 		bool Remove(KeyValuePair<TKey, TValue> item)
 		{
 			return Remove(item.Key);

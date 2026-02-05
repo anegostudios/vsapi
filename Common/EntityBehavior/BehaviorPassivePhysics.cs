@@ -15,12 +15,12 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     public bool Ticking { get; set; } = true;
 
     // State info.
-    private readonly Vec3d prevPos = new();
-    private double motionBeforeY = 0;
-    private bool feetInLiquidBefore = false;
-    private bool onGroundBefore = false;
-    private bool swimmingBefore = false;
-    private bool collidedBefore = false;
+    protected readonly Vec3d prevPos = new();
+    protected double motionBeforeY = 0;
+    protected bool feetInLiquidBefore = false;
+    protected bool onGroundBefore = false;
+    protected bool swimmingBefore = false;
+    protected bool collidedBefore = false;
 
     // Output of collision tester.
     protected Vec3d newPos = new();
@@ -28,23 +28,30 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     /// <summary>
     /// The amount of drag while travelling through water.
     /// </summary>
-    private double waterDragValue = GlobalConstants.WaterDrag;
+    public double WaterDragValue = GlobalConstants.WaterDrag;
     /// <summary>
     /// The amount of drag while travelling through the air.
     /// </summary>
-    private double airDragValue = GlobalConstants.AirDragAlways;
+    public double AirDragValue = GlobalConstants.AirDragAlways;
     /// <summary>
     /// The amount of drag while travelling on the ground.
     /// </summary>
-    private double groundDragValue = 0.7f;
+    public double GroundDragValue = 0.7f;
+    /// <summary>
+    /// The amount of drag while travelling on the ground.
+    /// </summary>
+    public double BoyancyMul = 1f;
+
     /// <summary>
     /// The amount of gravity applied per tick to this entity.
     /// </summary>
-    private double gravityPerSecond = GlobalConstants.GravityPerSecond;
+    public double GravityPerSecond = GlobalConstants.GravityPerSecond;
     /// <summary>
     /// If set, will test for entity collision every tick (expensive)
     /// </summary>
     public Action<float> OnPhysicsTickCallback;
+
+    [ThreadStatic] private static BlockPos tmpPos;
 
     public EntityBehaviorPassivePhysics(Entity entity) : base(entity)
     {
@@ -63,23 +70,26 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
     public virtual void SetProperties(JsonObject attributes)
     {
-        waterDragValue = 1 - (1 - waterDragValue) * attributes["waterDragFactor"].AsDouble(1);
+        WaterDragValue = 1 - (1 - WaterDragValue) * attributes["waterDragFactor"].AsDouble(1);
 
         JsonObject airDragFactor = attributes["airDragFactor"];
         double airDrag = airDragFactor.Exists ? airDragFactor.AsDouble(1) : attributes["airDragFallingFactor"].AsDouble(1);
         // airDragFallingFactor is pre1.15
-        airDragValue = 1 - (1 - airDragValue) * airDrag;
+        AirDragValue = 1 - (1 - AirDragValue) * airDrag;
         if (entity.WatchedAttributes.HasAttribute("airDragFactor"))
         {
-            airDragValue = 1 - (1 - GlobalConstants.AirDragAlways) * (float)entity.WatchedAttributes.GetDouble("airDragFactor");
+            AirDragValue = 1 - (1 - GlobalConstants.AirDragAlways) * (float)entity.WatchedAttributes.GetDouble("airDragFactor");
         }
 
-        groundDragValue = 0.3 * attributes["groundDragFactor"].AsDouble(1);
+        GroundDragValue = 0.3 * attributes["groundDragFactor"].AsDouble(1);
 
-        gravityPerSecond *= attributes["gravityFactor"].AsDouble(1);
+        GravityPerSecond *= attributes["gravityFactor"].AsDouble(1);
+
+        BoyancyMul = attributes["boyancyMul"].AsDouble(1);
+
         if (entity.WatchedAttributes.HasAttribute("gravityFactor"))
         {
-            gravityPerSecond = GlobalConstants.GravityPerSecond * (float)entity.WatchedAttributes.GetDouble("gravityFactor");
+            GravityPerSecond = GlobalConstants.GravityPerSecond * (float)entity.WatchedAttributes.GetDouble("gravityFactor");
         }
     }
 
@@ -99,10 +109,6 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         }
     }
 
-    public override void OnReceivedServerPos(bool isTeleport, ref EnumHandling handled)
-    {
-    }
-
     public void OnReceivedClientPos(int version)
     {
         if (version > previousVersion)
@@ -120,14 +126,14 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         if (nPos == null)
         {
             nPos = new();
-            nPos.Set(entity.ServerPos);
+            nPos.Set(entity.Pos);
         }
 
         float dtFactor = dt * 60;
 
         var lPos = this.lPos;
         lPos.SetFrom(nPos);
-        nPos.Set(entity.ServerPos);
+        nPos.Set(entity.Pos);
         var lPosMotion = lPos.Motion;
 
         if (isTeleport) lPos.SetFrom(nPos);
@@ -140,12 +146,8 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
         // Set client motion.
         entity.Pos.Motion.Set(lPosMotion);
-        entity.ServerPos.Motion.Set(lPosMotion);
 
         collisionTester.NewTick(lPos);
-
-        // Set pos for triggering events (interpolation overrides this).
-        entity.Pos.SetFrom(entity.ServerPos);
 
         SetState(lPos);
         RemoteMotionAndCollision(lPos, dtFactor);
@@ -154,7 +156,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
     public void RemoteMotionAndCollision(EntityPos pos, float dtFactor)
     {
-        double gravityStrength = (gravityPerSecond / 60f * dtFactor) + Math.Max(0, -0.015f * pos.Motion.Y * dtFactor);
+        double gravityStrength = (GravityPerSecond / 60f * dtFactor) + Math.Max(0, -0.015f * pos.Motion.Y * dtFactor);
         pos.Motion.Y -= gravityStrength;
         collisionTester.ApplyTerrainCollision(entity, pos, dtFactor, ref newPos, 0, CollisionYExtra);
         bool falling = pos.Motion.Y < 0;
@@ -183,7 +185,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
             else if (!feetInLiquidBefore)
             {
                 Block belowBlock = blockAccessor.GetBlockRaw((int)pos.X, (int)(pos.InternalY - 0.05f), (int)pos.Z, BlockLayersAccess.Solid);
-                double friction = 1 - (groundDragValue * belowBlock.DragMultiplier);
+                double friction = 1 - (GroundDragValue * belowBlock.DragMultiplier);
                 motion.X *= friction;
                 motion.Z *= friction;
             }
@@ -193,34 +195,32 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         Block insideFluid = null;
         if (feetInLiquidBefore || swimmingBefore)
         {
-            motion.Scale(Math.Pow(waterDragValue, dt * 33));
+            motion.Scale(Math.Pow(WaterDragValue, dt * 33));
+            tmpPos ??= new BlockPos(pos.Dimension);
+            tmpPos.Set(pos);
 
-            insideFluid = blockAccessor.GetBlockRaw((int)pos.X, (int)pos.InternalY, (int)pos.Z, BlockLayersAccess.Fluid);
+            insideFluid = blockAccessor.GetBlock(tmpPos, BlockLayersAccess.Fluid);
 
             if (feetInLiquidBefore)
             {
-                Vec3d pushVector = insideFluid.PushVector;
-                if (pushVector != null)
+                if (insideFluid is IBlockFlowing blockFlowing && !blockFlowing.IsStill)
                 {
                     float pushStrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500) * dtFactor;
 
-                    motion.Add(
-                        pushVector.X * pushStrength,
-                        pushVector.Y * pushStrength,
-                        pushVector.Z * pushStrength
-                    );
+                    FastVec3f pushVector = blockFlowing.GetPushVector(tmpPos);
+                    motion.Add(pushVector * pushStrength);
                 }
             }
         }
         else
         {
-            motion.Scale((float)Math.Pow(airDragValue, dt * 33));    // We use .Scale() here because if instead we used *= it would replace the local variable, which destroys the reference held to the original pos.Motion
+            motion.Scale((float)Math.Pow(AirDragValue, dt * 33));    // We use .Scale() here because if instead we used *= it would replace the local variable, which destroys the reference held to the original pos.Motion
         }
 
         // Apply gravity.
         if (entity.ApplyGravity)
         {
-            double gravityStrength = (gravityPerSecond / 60f * dtFactor) + Math.Max(0, -0.015f * motion.Y * dtFactor);
+            double gravityStrength = (GravityPerSecond / 60f * dtFactor);
 
             if (entity.Swimming)
             {
@@ -240,7 +240,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
                 double waterDrag = GameMath.Clamp((10 * Math.Abs(motion.Length() * dtFactor)) - 0.02f, 1, 1.25f);
 
-                motion.Y += gravityStrength * boyancyStrength;
+                motion.Y += gravityStrength * boyancyStrength * BoyancyMul;
                 motion.Mul(1.0 / waterDrag);
             }
             else
@@ -263,7 +263,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
         // Finally set position.
         pos.SetPos(newPos);
-        
+
 
         // Stop motion if collided.
         if ((nextX < newPos.X && motion.X < 0) || (nextX > newPos.X && motion.X > 0)) motion.X = 0;
@@ -295,7 +295,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
             float swimlineSubmergedness = submergedLevel - (entity.SelectionBox.Y2 - (float)entity.SwimmingOffsetY);
             entity.Swimming = swimlineSubmergedness > 0;
 
-            if (!feetInLiquidBefore && !(entity is EntityAgent ea && ea.MountedOn != null) && !entity.IsFirstTick())
+            if (!feetInLiquidBefore && !(entity is EntityAgent ea && ea.MountedOn != null) && !IsFirstTick(entity))
             {
                 entity.OnCollideWithLiquid();
             }
@@ -342,7 +342,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
         int zMax = (int)entityBox.Z2;
         int zMin = (int)entityBox.Z1;
         var tmpPos = collisionTester.tmpPos;
-        tmpPos.dimension = entity.Pos.Dimension;
+        tmpPos.SetDimension(entity.Pos.Dimension);
         for (int y = (int)entityBox.Y1; y <= yMax; y++)
         {
             for (int x = (int)entityBox.X1; x <= xMax; x++)
@@ -367,7 +367,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
         if (mountableSupplier?.IsBeingControlled() == true && entity.World.Side == EnumAppSide.Server) return;
 
-        EntityPos pos = entity.SidedPos;
+        EntityPos pos = entity.Pos;
         collisionTester.AssignToEntity(this, pos.Dimension);
 
         // If entity is moving 6 blocks per second test 10 times. Needs dynamic adjustment this is overkill.
@@ -387,6 +387,12 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     public void AfterPhysicsTick(float dt)
     {
         entity.AfterPhysicsTick?.Invoke();
+    }
+
+    protected virtual bool IsFirstTick(Entity entity)
+    {
+        var prevServerPos = entity.PreviousServerPos;
+        return prevServerPos.X == 0 && prevServerPos.Y == 0 && prevServerPos.Z == 0 && prevPos.X == 0 && prevPos.Y == 0 && prevPos.Z == 0;
     }
 
     public override void OnEntityDespawn(EntityDespawnData despawn)

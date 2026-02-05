@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 #nullable disable
 
@@ -18,6 +20,12 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class ClientAnimator : AnimatorBase
     {
+        [ThreadStatic]
+        static float[] ReusableIdentityMatrix;
+        [ThreadStatic]
+        static float[] localTransformMatrix;
+        [ThreadStatic]
+        static float[] tmpMatrix;
         public Dictionary<int, AnimationJoint> jointsById;
         protected HashSet<int> jointsDone = new HashSet<int>();
 
@@ -27,10 +35,8 @@ namespace Vintagestory.API.Common
         List<ElementPose>[][] nextFrameTransformsByAnimation;
         ShapeElementWeights[][][] weightsByAnimationAndElement;
 
-        float[] localTransformMatrix = Mat4f.Create();
-        float[] tmpMatrix = Mat4f.Create();
 
-        Action<AnimationSound> onShouldPlaySoundListener = null;
+        Action<string, AnimationSound> onShouldPlaySoundListener = null;
 
         public static ClientAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
         {
@@ -92,7 +98,7 @@ namespace Vintagestory.API.Common
             WalkSpeedSupplierDelegate walkSpeedSupplier,
             Animation[] animations,
             Action<string> onAnimationStoppedListener = null,
-            Action<AnimationSound> onShouldPlaySoundListener = null
+            Action<string, AnimationSound> onShouldPlaySoundListener = null
         ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
             this.onShouldPlaySoundListener = onShouldPlaySoundListener;
@@ -106,7 +112,7 @@ namespace Vintagestory.API.Common
             ShapeElement[] rootElements,
             Dictionary<int, AnimationJoint> jointsById,
             Action<string> onAnimationStoppedListener = null,
-            Action<AnimationSound> onShouldPlaySoundListener = null
+            Action<string, AnimationSound> onShouldPlaySoundListener = null
         ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
             this.RootElements = rootElements;
@@ -124,7 +130,7 @@ namespace Vintagestory.API.Common
             ShapeElement[] rootElements,
             Dictionary<int, AnimationJoint> jointsById,
             Action<string> onAnimationStoppedListener = null,
-            Action<AnimationSound> onShouldPlaySoundListener = null
+            Action<string, AnimationSound> onShouldPlaySoundListener = null
         ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
             this.RootElements = rootElements;
@@ -285,6 +291,7 @@ namespace Vintagestory.API.Common
 
         public override int MaxJointId => jointsById.Count + 1;
 
+
         public override void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
         {
             for (int j = 0; j < activeAnimCount; j++)
@@ -295,12 +302,18 @@ namespace Vintagestory.API.Common
                     anim.Animation.GenerateAllFrames(RootElements, jointsById);
                 }
 
-                if (anim.meta.AnimationSound != null && onShouldPlaySoundListener != null)
+                if (anim.meta.AnimationSounds != null && anim.meta.AnimationSounds.Length > 0 && onShouldPlaySoundListener != null)
                 {
-                    if (anim.CurrentFrame >= anim.meta.AnimationSound.Frame && anim.SoundPlayedAtIteration != anim.Iterations && anim.Active)
+                    if (anim.SoundPlayedAtIteration == null) anim.SoundPlayedAtIteration = new int[anim.meta.AnimationSounds.Length].Fill(-1);
+
+                    for (int i = 0; i < anim.meta.AnimationSounds.Length; i++)
                     {
-                        onShouldPlaySoundListener(anim.meta.AnimationSound);
-                        anim.SoundPlayedAtIteration = anim.Iterations;
+                        var animsound = anim.meta.AnimationSounds[i];
+                        if (anim.CurrentFrame >= animsound.Frame && anim.SoundPlayedAtIteration[i] != anim.Iterations && anim.Active)
+                        {
+                            onShouldPlaySoundListener(anim.meta.Code, animsound);
+                            anim.SoundPlayedAtIteration[i] = anim.Iterations;
+                        }
                     }
                 }
             }
@@ -345,7 +358,7 @@ namespace Vintagestory.API.Common
                 dt,
                 RootPoses,
                 weightsByAnimationAndElement[0],
-                Mat4f.Create(),
+                ReusableIdentityMatrix ??= Mat4f.Create(),
                 frameByDepthByAnimation[0],
                 nextFrameTransformsByAnimation[0],
                 0
@@ -395,7 +408,7 @@ namespace Vintagestory.API.Common
             List<ElementPose>[] nextChildKeyFrameByAnimation = this.nextFrameTransformsByAnimation[depth];
             ShapeElementWeights[][] childWeightsByAnimationAndElement = this.weightsByAnimationAndElement[depth];
 
-
+            localTransformMatrix ??= Mat4f.Create();
             for (int childPoseIndex = 0; childPoseIndex < outFrame.Count; childPoseIndex++)
             {
                 ElementPose outFramePose = outFrame[childPoseIndex];
@@ -465,13 +478,13 @@ namespace Vintagestory.API.Common
 
                 if (TransformationMatrices != null)     // It is null on a server, non-null on a client
                 {
-                if (elem.JointId > 0 && !jointsDone.Contains(elem.JointId))
-                {
-                    Mat4f.Mul(tmpMatrix, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
+                    if (elem.JointId > 0 && !jointsDone.Contains(elem.JointId))
+                    {
+                        var tmpMatrixLocal = tmpMatrix ??= Mat4f.Create();
+                        Mat4f.Mul(tmpMatrixLocal, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
 
-                    int index = 16 * elem.JointId;
+                        int index = 16 * elem.JointId;
                         var transformationMatrices = TransformationMatrices;
-                        var tmpMatrixLocal = tmpMatrix;
                         if (index + 16 > transformationMatrices.Length)     // Check we have space for this joint: we normally should, if MaxJointId was correct, but a mod could have modified the shape or something
                         {
                             var transformationMatricesDefault = this.TransformationMatricesDefaultPose;
@@ -480,13 +493,13 @@ namespace Vintagestory.API.Common
                             Array.Copy(transformationMatricesDefault, this.TransformationMatricesDefaultPose, transformationMatricesDefault.Length);
                             transformationMatrices = this.TransformationMatrices;
                         }
-                    for (int i = 0; i < 16; i++)
-                    {
+                        for (int i = 0; i < 16; i++)
+                        {
                             transformationMatrices[index + i] = tmpMatrixLocal[i];
-                    }
+                        }
 
-                    jointsDone.Add(elem.JointId);
-                }
+                        jointsDone.Add(elem.JointId);
+                    }
                 }
 
                 if (outFramePose.ChildElementPoses != null)
@@ -505,15 +518,20 @@ namespace Vintagestory.API.Common
             }
         }
 
-
+#if DEBUG
         static bool EleWeightDebug=false;
+#endif
         Dictionary<string, string> eleWeights = new Dictionary<string, string>();
         public override string DumpCurrentState()
         {
+#if DEBUG
             EleWeightDebug = true;
+#endif
             eleWeights.Clear();
             calculateMatrices(1 / 60f);
+#if DEBUG
             EleWeightDebug = false;
+#endif
 
             return base.DumpCurrentState() + "\nElement weights:\n" + string.Join("\n", eleWeights.Select(x => x.Key + ": " + x.Value));
         }

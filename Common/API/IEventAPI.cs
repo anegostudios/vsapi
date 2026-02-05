@@ -80,6 +80,8 @@ namespace Vintagestory.API.Common
 
     public delegate bool MatchGridRecipeDelegate(IPlayer player, GridRecipe recipe, ItemSlot[] ingredients, int gridWidth);
 
+    public delegate bool MatchRecipeDelegate(IPlayer player, IRecipeBase recipe, ItemSlot[] ingredients);
+
 
     public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, ref string claimant, EnumWorldAccessResponse response);
     public delegate EnumWorldAccessResponse TestBlockAccessClaimDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, ref string claimant, LandClaim claim, EnumWorldAccessResponse response);
@@ -152,6 +154,11 @@ namespace Vintagestory.API.Common
         event MatchGridRecipeDelegate MatchesGridRecipe;
 
         /// <summary>
+        /// Called when a player tries to craft something
+        /// </summary>
+        event MatchRecipeDelegate MatchesRecipe;
+
+        /// <summary>
         /// There's 2 global event busses, 1 on the client and 1 on the server. This pushes an event onto the bus.
         /// </summary>
         /// <param name="eventName"></param>
@@ -166,6 +173,8 @@ namespace Vintagestory.API.Common
         /// <param name="priority">Set this to a different value if you want to catch an event before/after another mod catches it</param>
         /// <param name="filterByEventName">If set, events only with given eventName are received</param>
         void RegisterEventBusListener(EventBusListenerDelegate OnEvent, double priority = 0.5, string filterByEventName = null);
+
+        void UnregisterEventBusListener(EventBusListenerDelegate OnEvent);
 
 
         /// <summary>
@@ -200,6 +209,29 @@ namespace Vintagestory.API.Common
         /// <returns>listenerId</returns>
         long RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float> onGameTick, BlockPos pos, int millisecondInterval, int initialDelayOffsetMs = 0);
 
+        /// <summary>
+        /// Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+        /// This overload includes an ErrorHandler callback, triggered if calling onGameTick throws an exception
+        /// </summary>
+        /// <param name="onGameTick"></param>
+        /// <param name="pos"></param>
+        /// <param name="errorHandler"></param>
+        /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
+        /// <returns>listenerId</returns>
+        long RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float> onGameTick, BlockPos pos, Action<Exception> errorHandler, int millisecondInterval, int initialDelayOffsetMs = 0);
+
+        /// <summary>
+        /// Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+        /// This overload includes an ErrorHandler callback, triggered if calling onGameTick throws an exception
+        /// </summary>
+        /// <param name="onGameTick"></param>
+        /// <param name="pos"></param>
+        /// <param name="errorHandler"></param>
+        /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
+        /// <returns>listenerId</returns>
+        long RegisterGameTickListener(Action<float> onGameTick, BlockPos pos, Action<Exception> errorHandler, int millisecondInterval, int initialDelayOffsetMs = 0);
 
 
 
@@ -256,6 +288,7 @@ namespace Vintagestory.API.Common
         void TriggerPlayerDimensionChanged(IPlayer player);
         void TriggerEntityDeath(Entity entity, DamageSource damageSourceForDeath);
         bool TriggerMatchesRecipe(IPlayer forPlayer, GridRecipe gridRecipe, ItemSlot[] ingredients, int gridWidth);
+        bool TriggerMatchesRecipe(IPlayer forPlayer, IRecipeBase recipe, ItemSlot[] ingredients);
         void TriggerEntityMounted(EntityAgent entityAgent, IMountableSeat entityRideableSeat);
         void TriggerEntityUnmounted(EntityAgent entityAgent, IMountableSeat entityRideableSeat);
     }

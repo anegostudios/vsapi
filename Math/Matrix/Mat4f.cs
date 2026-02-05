@@ -1,4 +1,4 @@
-﻿//glMatrix license:
+//glMatrix license:
 //Copyright (c) 2013, Brandon Jones, Colin MacKenzie IV. All rights reserved.
 
 //Redistribution and use in source and binary forms, with or without modification,
@@ -22,6 +22,7 @@
 //SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+using Cairo;
 using System;
 
 #nullable disable
@@ -51,6 +52,17 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+        /// <summary>
+        /// Sets the specified matrix to the identity matrix, assuming the matrix is new and therefore all values currently zero (including a new stackalloc)
+        /// </summary>
+        /// <param name="output"></param>
+        public static void NewIdentity(Span<float> output)
+        {
+            output[0] = 1f;
+            output[5] = 1f;
+            output[10] = 1f;
+            output[15] = 1f;
+        }
 
         /// <summary>
         /// Creates a new mat4 initialized with values from an existing matrix
@@ -85,7 +97,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">{mat4} out the receiving matrix</param>
         /// <param name="a">{mat4} a the source matrix</param>
         /// <returns>{mat4} out</returns>
-        public static float[] Copy(float[] output, float[] a)
+        public static float[] Copy(float[] output, Span<float> a)
         {
             output[0] = a[0];
             output[1] = a[1];
@@ -245,8 +257,7 @@ namespace Vintagestory.API.MathTools
             {
                 return null;
             }
-            float one = 1;
-            det = one / det;
+            det = 1f / det;
 
             output[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
             output[1] = (a02 * b10 - a01 * b11 - a03 * b09) * det;
@@ -266,6 +277,53 @@ namespace Vintagestory.API.MathTools
             output[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
 
             return output;
+        }
+
+        public static void Invert(Span<float> a)
+        {
+            float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
+            float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
+            float a20 = a[8]; float a21 = a[9]; float a22 = a[10]; float a23 = a[11];
+            float a30 = a[12]; float a31 = a[13]; float a32 = a[14]; float a33 = a[15];
+
+            float b00 = a00 * a11 - a01 * a10;
+            float b01 = a00 * a12 - a02 * a10;
+            float b02 = a00 * a13 - a03 * a10;
+            float b03 = a01 * a12 - a02 * a11;
+            float b04 = a01 * a13 - a03 * a11;
+            float b05 = a02 * a13 - a03 * a12;
+            float b06 = a20 * a31 - a21 * a30;
+            float b07 = a20 * a32 - a22 * a30;
+            float b08 = a20 * a33 - a23 * a30;
+            float b09 = a21 * a32 - a22 * a31;
+            float b10 = a21 * a33 - a23 * a31;
+            float b11 = a22 * a33 - a23 * a32;
+
+            // Calculate the determinant
+            float det = b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
+
+            if (det == 0)
+            {
+                throw new DivideByZeroException("Determinant of the matrix is zero");
+            }
+            det = 1f / det;
+
+            a[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
+            a[1] = (a02 * b10 - a01 * b11 - a03 * b09) * det;
+            a[2] = (a31 * b05 - a32 * b04 + a33 * b03) * det;
+            a[3] = (a22 * b04 - a21 * b05 - a23 * b03) * det;
+            a[4] = (a12 * b08 - a10 * b11 - a13 * b07) * det;
+            a[5] = (a00 * b11 - a02 * b08 + a03 * b07) * det;
+            a[6] = (a32 * b02 - a30 * b05 - a33 * b01) * det;
+            a[7] = (a20 * b05 - a22 * b02 + a23 * b01) * det;
+            a[8] = (a10 * b10 - a11 * b08 + a13 * b06) * det;
+            a[9] = (a01 * b08 - a00 * b10 - a03 * b06) * det;
+            a[10] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
+            a[11] = (a21 * b02 - a20 * b04 - a23 * b00) * det;
+            a[12] = (a11 * b07 - a10 * b09 - a12 * b06) * det;
+            a[13] = (a00 * b09 - a01 * b07 + a02 * b06) * det;
+            a[14] = (a31 * b01 - a30 * b03 - a32 * b00) * det;
+            a[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
         }
 
         /// <summary>
@@ -309,8 +367,6 @@ namespace Vintagestory.API.MathTools
         {
             float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
             float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
-            float a20 = a[8]; float a21 = a[9]; float a22 = a[10]; float a23 = a[11];
-            float a30 = a[12]; float a31 = a[13]; float a32 = a[14]; float a33 = a[15];
 
             float b00 = a00 * a11 - a01 * a10;
             float b01 = a00 * a12 - a02 * a10;
@@ -318,6 +374,10 @@ namespace Vintagestory.API.MathTools
             float b03 = a01 * a12 - a02 * a11;
             float b04 = a01 * a13 - a03 * a11;
             float b05 = a02 * a13 - a03 * a12;
+
+            float a20 = a[8]; float a21 = a[9]; float a22 = a[10]; float a23 = a[11];
+            float a30 = a[12]; float a31 = a[13]; float a32 = a[14]; float a33 = a[15];
+
             float b06 = a20 * a31 - a21 * a30;
             float b07 = a20 * a32 - a22 * a30;
             float b08 = a20 * a33 - a23 * a30;
@@ -369,6 +429,39 @@ namespace Vintagestory.API.MathTools
             output[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
             output[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
             return output;
+        }
+
+        public static void Mul(Span<float> a, Span<float> b)
+        {
+            float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
+            float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
+            float a20 = a[8]; float a21 = a[9]; float a22 = a[10]; float a23 = a[11];
+            float a30 = a[12]; float a31 = a[13]; float a32 = a[14]; float a33 = a[15];
+
+            // Cache only the current line of the second matrix
+            float b0 = b[0]; float b1 = b[1]; float b2 = b[2]; float b3 = b[3];
+            a[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            a[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            a[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            a[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+            b0 = b[4]; b1 = b[5]; b2 = b[6]; b3 = b[7];
+            a[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            a[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            a[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            a[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+            b0 = b[8]; b1 = b[9]; b2 = b[10]; b3 = b[11];
+            a[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            a[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            a[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            a[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+            b0 = b[12]; b1 = b[13]; b2 = b[14]; b3 = b[15];
+            a[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            a[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            a[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            a[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
         }
 
         /// <summary>
@@ -423,6 +516,22 @@ namespace Vintagestory.API.MathTools
             }
 
             return output;
+        }
+
+
+        /// <summary>
+        /// Translate a Mat4x4 by the given x,y,z - Span version
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        public static void Translate(Span<float> matrix, float x, float y, float z)
+        {
+            matrix[12] += matrix[0] * x + matrix[4] * y + matrix[8] * z;
+            matrix[13] += matrix[1] * x + matrix[5] * y + matrix[9] * z;
+            matrix[14] += matrix[2] * x + matrix[6] * y + matrix[10] * z;
+            matrix[15] += matrix[3] * x + matrix[7] * y + matrix[11] * z;
         }
 
         /// <summary>
@@ -488,11 +597,37 @@ namespace Vintagestory.API.MathTools
             output[9] = a[9] * z;
             output[10] = a[10] * z;
             output[11] = a[11] * z;
-            output[12] = a[12];
-            output[13] = a[13];
-            output[14] = a[14];
-            output[15] = a[15];
+            if (output != a)
+            {
+                output[12] = a[12];
+                output[13] = a[13];
+                output[14] = a[14];
+                output[15] = a[15];
+            }
             return output;
+        }
+
+        /// <summary>
+        /// Scale by x, y, z - Span version
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        public static void Scale(Span<float> a, float x, float y, float z)
+        {
+            a[0] *= x;
+            a[1] *= x;
+            a[2] *= x;
+            a[3] *= x;
+            a[4] *= y;
+            a[5] *= y;
+            a[6] *= y;
+            a[7] *= y;
+            a[8] *= z;
+            a[9] *= z;
+            a[10] *= z;
+            a[11] *= z;
         }
 
         public static void SimpleScaleMatrix(Span<float> matrix, float x, float y, float z)
@@ -528,10 +663,13 @@ namespace Vintagestory.API.MathTools
             output[9] = a[9] * zScale;
             output[10] = a[10] * zScale;
             output[11] = a[11] * zScale;
-            output[12] = a[12];
-            output[13] = a[13];
-            output[14] = a[14];
-            output[15] = a[15];
+            if (output != a)
+            {
+                output[12] = a[12];
+                output[13] = a[13];
+                output[14] = a[14];
+                output[15] = a[15];
+            }
             return output;
         }
 
@@ -735,10 +873,40 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+        /// <summary>
+        /// Span version of RotateY, for performance
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="rad"></param>
+        public static void RotateY(Span<float> a, float rad)
+        {
+            float s = GameMath.Sin(rad);
+            float c = GameMath.Cos(rad);
+            float a00 = a[0];
+            float a01 = a[1];
+            float a02 = a[2];
+            float a03 = a[3];
+            float a20 = a[8];
+            float a21 = a[9];
+            float a22 = a[10];
+            float a23 = a[11];
+
+            // Perform axis-specific matrix multiplication
+            a[0] = a00 * c - a20 * s;
+            a[1] = a01 * c - a21 * s;
+            a[2] = a02 * c - a22 * s;
+            a[3] = a03 * c - a23 * s;
+
+            a[8] = a00 * s + a20 * c;
+            a[9] = a01 * s + a21 * c;
+            a[10] = a02 * s + a22 * c;
+            a[11] = a03 * s + a23 * c;
+        }
 
         /// <summary>
-        /// Provides a composite rotation matrix, equivalent to RotateX followed by RotateY followed by RotateZ
+        /// Provides a new composite rotation matrix, equivalent to RotateX followed by RotateY followed by RotateZ
         /// <br/>Here we work on a Span (which may be on the stack) for higher performance
+        /// <br/>Note this destroys all existing data in the supplied matrix, it doesn't rotate the existing matrix
         /// </summary>
         /// <param name="matrix"></param>
         /// <param name="radX"></param>
@@ -770,6 +938,61 @@ namespace Vintagestory.API.MathTools
             matrix[13] = 0f;
             matrix[14] = 0f;
             matrix[15] = 1f;
+        }
+
+        /// <summary>
+        /// Rotates an existing matrix, equivalent to RotateX followed by RotateY followed by RotateZ
+        /// <br/>Here we work on a Span (which may be on the stack) for higher performance
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="radX"></param>
+        /// <param name="radY"></param>
+        /// <param name="radZ"></param>
+        public static void RotateByXYZ(Span<float> matrix, float radX, float radY, float radZ)
+        {
+            if (radX == 0f && radY == 0f && radZ == 0f) return;
+            float sx = GameMath.Sin(radX);
+            float cx = GameMath.Cos(radX);
+            float sy = GameMath.Sin(radY);
+            float cy = GameMath.Cos(radY);
+            float sz = GameMath.Sin(radZ);
+            float cz = GameMath.Cos(radZ);
+            float a01 = sx * sy;
+            float a02 = -cx * sy;
+            float m00 = cy * cz;
+            float m01 = a01 * cz + cx * sz;
+            float m02 = a02 * cz + sx * sz;
+            float m10 = -cy * sz;
+            float m11 = cx * cz - a01 * sz;
+            float m12 = sx * cz - a02 * sz;
+            float m21 = -sx * cy;
+            float m22 = cx * cy;
+            float o00 = matrix[0];
+            float o01 = matrix[1];
+            float o02 = matrix[2];
+            float o03 = matrix[3];
+            float o10 = matrix[4];
+            float o11 = matrix[5];
+            float o12 = matrix[6];
+            float o13 = matrix[7];
+            float o20 = matrix[8];
+            float o21 = matrix[9];
+            float o22 = matrix[10];
+            float o23 = matrix[11];
+            matrix[0] = m00 * o00 + m01 * o10 + m02 * o20;
+            matrix[1] = m00 * o01 + m01 * o11 + m02 * o21;
+            matrix[2] = m00 * o02 + m01 * o12 + m02 * o22;
+            matrix[3] = m00 * o03 + m01 * o13 + m02 * o23;
+
+            matrix[4] = m10 * o00 + m11 * o10 + m12 * o20;
+            matrix[5] = m10 * o01 + m11 * o11 + m12 * o21;
+            matrix[6] = m10 * o02 + m11 * o12 + m12 * o22;
+            matrix[7] = m10 * o03 + m11 * o13 + m12 * o23;
+
+            matrix[8] =  sy * o00 + m21 * o10 + m22 * o20;
+            matrix[9] =  sy * o01 + m21 * o11 + m22 * o21;
+            matrix[10] = sy * o02 + m21 * o12 + m22 * o22;
+            matrix[11] = sy * o03 + m21 * o13 + m22 * o23;
         }
 
         /// <summary>
@@ -867,6 +1090,63 @@ namespace Vintagestory.API.MathTools
             output[15] = 1;
 
             return output;
+        }
+
+        /// <summary>
+        /// Constructs a matrix from the quaternions, and multiplies the output by that matrix
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="q"></param>
+        /// <returns></returns>
+        public static void MulQuat(Span<float> a, double[] q)
+        {
+            float x = (float)q[0]; float y = (float)q[1]; float z = (float)q[2]; float w = (float)q[3];
+            float x2 = x + x;
+            float y2 = y + y;
+            float z2 = z + z;
+
+            float xx = x * x2;
+            float xy = x * y2;
+            float xz = x * z2;
+            float yy = y * y2;
+            float yz = y * z2;
+            float zz = z * z2;
+            float wx = w * x2;
+            float wy = w * y2;
+            float wz = w * z2;
+
+            float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
+            float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
+            float a20 = a[8]; float a21 = a[9]; float a22 = a[10]; float a23 = a[11];
+
+            // Calc only the current line of the second matrix (the one constructed from the quaternions)
+            float b0 = 1 - (yy + zz);
+            float b1 = xy + wz;
+            float b2 = xz - wy;
+            // float b3 = 0;    // Always zero so we can ignore a[12]-a[15]
+
+            a[0] = b0 * a00 + b1 * a10 + b2 * a20;
+            a[1] = b0 * a01 + b1 * a11 + b2 * a21;
+            a[2] = b0 * a02 + b1 * a12 + b2 * a22;
+            a[3] = b0 * a03 + b1 * a13 + b2 * a23;
+
+            b0 = xy - wz;
+            b1 = 1 - (xx + zz);
+            b2 = yz + wx;
+
+            a[4] = b0 * a00 + b1 * a10 + b2 * a20;
+            a[5] = b0 * a01 + b1 * a11 + b2 * a21;
+            a[6] = b0 * a02 + b1 * a12 + b2 * a22;
+            a[7] = b0 * a03 + b1 * a13 + b2 * a23;
+
+            b0 = xz + wy;
+            b1 = yz - wx;
+            b2 = 1 - (xx + yy);
+
+            a[8] = b0 * a00 + b1 * a10 + b2 * a20;
+            a[9] = b0 * a01 + b1 * a11 + b2 * a21;
+            a[10] = b0 * a02 + b1 * a12 + b2 * a22;
+            a[11] = b0 * a03 + b1 * a13 + b2 * a23;
         }
 
         /// <summary>
@@ -1089,6 +1369,17 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        public static void MulWithVec4(Span<float> matrix, float[] vec4, Span<float> output)
+        {
+            for (int row = 0; row < output.Length; row++)
+            {
+                for (int col = 0; col < vec4.Length; col++)
+                {
+                    output[row] += matrix[4 * col + row] * vec4[col];
+                }
+            }
+        }
+
         public static float[] MulWithVec4(float[] matrix, float v1, float v2, float v3, float v4)
         {
             float[] output = new float[] { 0, 0, 0, 0 };
@@ -1104,6 +1395,16 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+        public static void MulWithVec4(Span<float> matrix, Span<float> output, float v1, float v2, float v3, float v4)
+        {
+            for (int row = 0; row < 4; row++)
+            {
+                output[row] += matrix[4 * 0 + row] * v1;
+                output[row] += matrix[4 * 1 + row] * v2;
+                output[row] += matrix[4 * 2 + row] * v3;
+                output[row] += matrix[4 * 3 + row] * v4;
+            }
+        }
 
         public static void MulWithVec4(float[] matrix, float[] vec, float[] output)
         {
@@ -1222,9 +1523,26 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public static void MulWithVec3(float[] matrix, Vec3f vec, Vec3f output)
         {
-            output.X = matrix[0] * vec.X + matrix[4] * vec.Y + matrix[8] * vec.Z;
-            output.Y = matrix[1] * vec.X + matrix[5] * vec.Y + matrix[9] * vec.Z;
-            output.Z = matrix[2] * vec.X + matrix[6] * vec.Y + matrix[10] * vec.Z;
+            float x = vec.X;
+            float y = vec.Y;
+            float z = vec.Z;
+            output.X = matrix[0] * x + matrix[4] * y + matrix[8] * z;
+            output.Y = matrix[1] * x + matrix[5] * y + matrix[9] * z;
+            output.Z = matrix[2] * x + matrix[6] * y + matrix[10] * z;
+        }
+
+
+        /// <summary>
+        /// Used for Vec3f representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
+        /// </summary>
+        public static void MulWithVec3(float[] matrix, FastVec3f vec, FastVec3f output)
+        {
+            float x = vec.X;
+            float y = vec.Y;
+            float z = vec.Z;
+            output.X = matrix[0] * x + matrix[4] * y + matrix[8] * z;
+            output.Y = matrix[1] * x + matrix[5] * y + matrix[9] * z;
+            output.Z = matrix[2] * x + matrix[6] * y + matrix[10] * z;
         }
 
 
@@ -1332,7 +1650,7 @@ namespace Vintagestory.API.MathTools
             }
         }
 
-        public static void ExtractEulerAngles(float[] m, ref float thetaX, ref float thetaY, ref float thetaZ)
+        public static void ExtractEulerAngles(Span<float> m, ref float thetaX, ref float thetaY, ref float thetaZ)
         {
             float sinY = m[8];
             if (Math.Abs(sinY) == 1f)

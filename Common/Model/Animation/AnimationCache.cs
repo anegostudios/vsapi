@@ -51,7 +51,9 @@ namespace Vintagestory.API.Common
 
         public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             return InitManager(api, manager, entity, entityShape, copyOverAnims, requirePosesOnServer, requireJointsForElements);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         /// <summary>

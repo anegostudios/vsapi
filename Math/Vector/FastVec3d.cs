@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 #nullable disable
@@ -35,6 +35,20 @@ namespace Vintagestory.API.MathTools
             this.X = x;
             this.Y = y;
             this.Z = z;
+        }
+
+        public FastVec3d(FastVec3d vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+        }
+
+        public FastVec3d(Vec3f vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
         }
 
         /// <summary>
@@ -182,6 +196,30 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public FastVec3d Add(FastVec3d vec)
+        {
+            this.X += vec.X;
+            this.Y += vec.Y;
+            this.Z += vec.Z;
+            return this;
+        }
+
+        public FastVec3d Add(Vec3f vec)
+        {
+            this.X += vec.X;
+            this.Y += vec.Y;
+            this.Z += vec.Z;
+            return this;
+        }
+
+        public FastVec3d Add(IVec3 vec)
+        {
+            this.X += vec.XAsDouble;
+            this.Y += vec.YAsDouble;
+            this.Z += vec.ZAsDouble;
+            return this;
+        }
+
         /// <summary>
         /// Adds given BlockPos's x/y/z coordinates to the vector
         /// </summary>
@@ -190,6 +228,43 @@ namespace Vintagestory.API.MathTools
             this.X += pos.X;
             this.Y += pos.Y;
             this.Z += pos.Z;
+            return this;
+        }
+
+        public FastVec3d Add(Vec3d vec)
+        {
+            this.X += vec.X;
+            this.Y += vec.Y;
+            this.Z += vec.Z;
+            return this;
+        }
+
+        public FastVec3d Sub(FastVec3d vec)
+        {
+            this.X -= vec.X;
+            this.Y -= vec.Y;
+            this.Z -= vec.Z;
+            return this;
+        }
+
+        public FastVec3d Sub(Vec3d vec)
+        {
+            this.X -= vec.X;
+            this.Y -= vec.Y;
+            this.Z -= vec.Z;
+            return this;
+        }
+
+        /// <summary>
+        /// Like .Sub() but subtracts this vec from the supplied parameter
+        /// </summary>
+        /// <param name="vec"></param>
+        /// <returns></returns>
+        public FastVec3d ReverseSub(Vec3d vec)
+        {
+            this.X = vec.X - this.X;
+            this.Y = vec.Y - this.Y;
+            this.Z = vec.Z - this.Z;
             return this;
         }
 
@@ -203,6 +278,21 @@ namespace Vintagestory.API.MathTools
             this.X *= multiplier;
             this.Y *= multiplier;
             this.Z *= multiplier;
+            return this;
+        }
+
+        /// <summary>
+        /// Multiply each individual component
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public FastVec3d Mul(double x, double y, double z)
+        {
+            X *= x;
+            Y *= y;
+            Z *= z;
             return this;
         }
 
@@ -251,13 +341,28 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Calculates the square distance the two endpoints
         /// </summary>
+        /// <param name="vec"></param>
+        /// <returns></returns>
+        public double DistanceSq(FastVec3d vec)
+        {
+            return
+                (X - vec.X) * (X - vec.X) +
+                (Y - vec.Y) * (Y - vec.Y) +
+                (Z - vec.Z) * (Z - vec.Z)
+                ;
+        }
+
+
+        /// <summary>
+        /// Calculates the square distance the two endpoints
+        /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
         public double DistanceSq(double x, double y, double z)
         {
-            return 
+            return
                 (X - x) * (X - x) +
                 (Y - y) * (Y - y) +
                 (Z - z) * (Z - z)
@@ -301,6 +406,17 @@ namespace Vintagestory.API.MathTools
             return new FastVec3d(X + vec.X, Y + vec.Y, Z + vec.Z);
         }
 
+        public FastVec3d AheadCopy(double offset, double Pitch, double Yaw)
+        {
+            double cosPitch = Math.Cos(Pitch);
+            double sinPitch = Math.Sin(Pitch);
+
+            double cosYaw = Math.Cos(Yaw);
+            double sinYaw = Math.Sin(Yaw);
+
+            return new FastVec3d(X - cosPitch * sinYaw * offset, Y + sinPitch * offset, Z - cosPitch * cosYaw * offset);
+        }
+
 
         /// <summary>
         /// Substracts val from each coordinate if the coordinate if positive, otherwise it is added. If 0, the value is unchanged. The value must be a positive number
@@ -315,7 +431,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a new vectors that is the normalized version of this vector. 
+        /// Creates a new vectors that is the normalized version of this vector.
         /// </summary>
         /// <returns></returns>
         public FastVec3d NormalizedCopy()
@@ -391,6 +507,104 @@ namespace Vintagestory.API.MathTools
             return "x=" + X + ", y=" + Y + ", z=" + Z;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is FastVec3d other) return this == other;
+            if (obj is Vec3d vec) return X == vec.X && Z == vec.Z && Y == vec.Y;
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ((17 * 23 + X.GetHashCode()) * 23 + Y.GetHashCode()) * 23 + Z.GetHashCode();
+        }
+
+        #region Operators
+        public static FastVec3d operator -(FastVec3d left, FastVec3d right)
+        {
+            return new FastVec3d(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+        }
+
+        public static FastVec3d operator +(FastVec3d left, FastVec3d right)
+        {
+            return new FastVec3d(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
+
+        public static FastVec3d operator +(FastVec3d left, Vec3i right)
+        {
+            return new FastVec3d(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
+
+        public static FastVec3d operator -(FastVec3d left, float right)
+        {
+            return new FastVec3d(left.X - right, left.Y - right, left.Z - right);
+        }
+
+
+        public static FastVec3d operator -(float left, FastVec3d right)
+        {
+            return new FastVec3d(left - right.X, left - right.Y, left - right.Z);
+        }
+
+        public static FastVec3d operator +(FastVec3d left, float right)
+        {
+            return new FastVec3d(left.X + right, left.Y + right, left.Z + right);
+        }
+
+
+        public static FastVec3d operator *(FastVec3d left, float right)
+        {
+            return new FastVec3d(left.X * right, left.Y * right, left.Z * right);
+        }
+
+        public static FastVec3d operator *(float left, FastVec3d right)
+        {
+            return new FastVec3d(left * right.X, left * right.Y, left * right.Z);
+        }
+
+        public static FastVec3d operator *(FastVec3d left, double right)
+        {
+            return new FastVec3d(left.X * right, left.Y * right, left.Z * right);
+        }
+
+
+        public static FastVec3d operator *(double left, FastVec3d right)
+        {
+            return new FastVec3d(left * right.X, left * right.Y, left * right.Z);
+        }
+
+
+        public static double operator *(FastVec3d left, FastVec3d right)
+        {
+            return left.X * right.X + left.Y * right.Y + left.Z * right.Z;
+        }
+
+        public static FastVec3d operator /(FastVec3d left, float right)
+        {
+            return new FastVec3d(left.X / right, left.Y / right, left.Z / right);
+        }
+
+        public static FastVec3d operator /(FastVec3d left, double right)
+        {
+            return new FastVec3d(left.X / right, left.Y / right, left.Z / right);
+        }
+
+
+        public static bool operator ==(FastVec3d left, FastVec3d right)
+        {
+            if (left.X != right.X) return false;
+            if (left.Z != right.Z) return false;
+            return left.Y == right.Y;
+        }
+
+        public static bool operator !=(FastVec3d left, FastVec3d right)
+        {
+            if (left.X != right.X) return true;
+            if (left.Z != right.Z) return true;
+            return left.Y != right.Y;
+        }
+
+        #endregion
 
         public void Write(BinaryWriter writer)
         {

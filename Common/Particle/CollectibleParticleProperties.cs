@@ -193,11 +193,11 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public virtual EvolvingNatFloat OpacityEvolve => null;
+        public virtual EvolvingNatFloat OpacityEvolve => EvolvingNatFloat.NoValueSet;
 
-        public virtual EvolvingNatFloat RedEvolve => null; public virtual EvolvingNatFloat GreenEvolve => null; public virtual EvolvingNatFloat BlueEvolve => null;
+        public virtual EvolvingNatFloat RedEvolve => EvolvingNatFloat.NoValueSet; public virtual EvolvingNatFloat GreenEvolve => EvolvingNatFloat.NoValueSet; public virtual EvolvingNatFloat BlueEvolve => EvolvingNatFloat.NoValueSet;
 
-        public virtual EvolvingNatFloat SizeEvolve => null;
+        public virtual EvolvingNatFloat SizeEvolve => EvolvingNatFloat.NoValueSet;
 
         public virtual Block ColorByBlock()
         {

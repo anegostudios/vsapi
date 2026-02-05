@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -35,7 +34,7 @@ namespace Vintagestory.API.Common
             if (useFpAnimSet)
             {
                 plrEntity.TpAnimManager.OnClientFrame(dt);
-            }
+            }            
         }
 
 

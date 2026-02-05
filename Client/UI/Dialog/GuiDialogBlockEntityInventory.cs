@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -13,16 +13,23 @@ namespace Vintagestory.API.Client
     {
         int cols;
         EnumPosFlag screenPos;
+        public int packetIdOffset;
 
         public override double DrawOrder => 0.2;
 
         public GuiDialogBlockEntityInventory(string dialogTitle, InventoryBase inventory, BlockPos blockEntityPos, int cols, ICoreClientAPI capi)
+            : this(dialogTitle, inventory, blockEntityPos, 0, cols, capi)
+        {
+            // Backwards compatible version for when the packetIdOffset is unnecessary
+        }
+
+        public GuiDialogBlockEntityInventory(string dialogTitle, InventoryBase inventory, BlockPos blockEntityPos, int packetIdOffset, int cols, ICoreClientAPI capi)
             : base(dialogTitle, inventory, blockEntityPos, capi)
         {
             if (IsDuplicate) return;
             this.cols = cols;
+            this.packetIdOffset = packetIdOffset;
 
-            
             double elemToDlgPad = GuiStyle.ElementToDialogPadding;
             double pad = GuiElementItemSlotGrid.unscaledSlotPadding;
             int rows = (int)Math.Ceiling(inventory.Count / (float)cols);
@@ -49,7 +56,7 @@ namespace Vintagestory.API.Client
                 ElementBounds dialogBounds = insetBounds
                     .ForkBoundingParent(elemToDlgPad, elemToDlgPad + 30, elemToDlgPad + 20, elemToDlgPad)
                     .WithFixedAlignmentOffset(IsRight(screenPos) ? -GuiStyle.DialogToScreenPadding : GuiStyle.DialogToScreenPadding, 0)
-                    .WithAlignment(IsRight(screenPos) ? EnumDialogArea.RightMiddle :EnumDialogArea.LeftMiddle)
+                    .WithAlignment(IsRight(screenPos) ? EnumDialogArea.RightMiddle : EnumDialogArea.LeftMiddle)
                 ;
 
                 if (!capi.Settings.Bool["immersiveMouseMode"])
@@ -62,13 +69,13 @@ namespace Vintagestory.API.Client
                 ElementBounds scrollbarBounds = ElementStdBounds.VerticalScrollbar(insetBounds).WithParent(dialogBounds);
 
                 SingleComposer = capi.Gui
-                    .CreateCompo("blockentityinventory" + blockEntityPos, dialogBounds)
+                    .CreateCompo("blockentityinventory" + blockEntityPos + packetIdOffset, dialogBounds)
                     .AddShadedDialogBG(ElementBounds.Fill)
                     .AddDialogTitleBar(dialogTitle, CloseIconPressed)
                     .AddInset(insetBounds)
                     .AddVerticalScrollbar(OnNewScrollbarvalue, scrollbarBounds, "scrollbar")
                     .BeginClip(clippingBounds)
-                    .AddItemSlotGrid(inventory, DoSendPacket, cols, fullGridBounds, "slotgrid")
+                    .AddItemSlotGrid(inventory, DoSendPacketWithOffset, cols, fullGridBounds, "slotgrid")
                     .EndClip()
                     .Compose();
 
@@ -94,21 +101,37 @@ namespace Vintagestory.API.Client
                 }
 
                 SingleComposer = capi.Gui
-                    .CreateCompo("blockentityinventory"+blockEntityPos, dialogBounds)
+                    .CreateCompo("blockentityinventory" + blockEntityPos + packetIdOffset, dialogBounds)
                     .AddShadedDialogBG(ElementBounds.Fill)
                     .AddDialogTitleBar(dialogTitle, CloseIconPressed)
                     .AddInset(insetBounds)
-                    .AddItemSlotGrid(inventory, DoSendPacket, cols, slotGridBounds, "slotgrid")
+                    .AddItemSlotGrid(inventory, DoSendPacketWithOffset, cols, slotGridBounds, "slotgrid")
                     .Compose();
             }
 
             SingleComposer.UnfocusOwnElements();
         }
 
+        /// <summary>
+        /// We tunnel our packet through a block entity packet so the block entity can handle all the network stuff
+        /// </summary>
+        /// <param name="p"></param>
+        protected void DoSendPacketWithOffset(object p)
+        {
+            capi.Network.SendBlockEntityPacketWithOffset(BlockEntityPosition.X, BlockEntityPosition.InternalY, BlockEntityPosition.Z, packetIdOffset, p);
+        }
 
         public override void OnGuiClosed()
         {
-            base.OnGuiClosed();
+            if (packetIdOffset == 0) base.OnGuiClosed();
+            else
+            {
+                if (Inventory != null) capi.World.Player.InventoryManager.CloseInventoryAndSync(Inventory);
+
+                capi.Network.SendBlockEntityPacket(BlockEntityPosition, (int)EnumBlockEntityPacketId.Close + packetIdOffset);
+
+                capi.Gui.PlaySound(CloseSound);
+            }
             FreePos("smallblockgui", screenPos);
         }
 

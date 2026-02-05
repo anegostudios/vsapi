@@ -6,8 +6,6 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
-#nullable disable
-
 namespace Vintagestory.API.Common
 {
     public enum EnumHighlightSlot
@@ -18,6 +16,7 @@ namespace Vintagestory.API.Common
         LandClaim = 3,
         SelectionStart = 4,
         SelectionEnd = 5,
+        TerrainVisualizer = 6
     }
 
 
@@ -230,21 +229,21 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="itemCode"></param>
         /// <returns></returns>
-        Item GetItem(AssetLocation itemCode);
+        Item? GetItem(AssetLocation? itemCode);
 
         /// <summary>
         /// Retrieve the block class from given block code. Will return null if the block does not exist. Logs a warning if block does not exist
         /// </summary>
         /// <param name="blockCode"></param>
         /// <returns></returns>
-        Block GetBlock(AssetLocation blockCode);
+        Block? GetBlock(AssetLocation? blockCode);
 
         /// <summary>
         /// Retrieve the entity class from given entity code. Will return null if the entity does not exist.
         /// </summary>
         /// <param name="entityCode"></param>
         /// <returns></returns>
-        EntityProperties GetEntityType(AssetLocation entityCode);
+        EntityProperties? GetEntityType(AssetLocation? entityCode);
 
         /// <summary>
         /// Spawns a dropped itemstack at given position. Will immediately disappear if stacksize==0
@@ -253,7 +252,7 @@ namespace Vintagestory.API.Common
         /// <param name="itemstack"></param>
         /// <param name="position"></param>
         /// <param name="velocity"></param>
-        Entity SpawnItemEntity(ItemStack itemstack, Vec3d position, Vec3d velocity = null);
+        Entity? SpawnItemEntity(ItemStack? itemstack, Vec3d position, Vec3d? velocity = null);
 
         /// <summary>
         /// Spawns a dropped itemstack at given position. Will immediately disappear if stacksize==0
@@ -262,7 +261,7 @@ namespace Vintagestory.API.Common
         /// <param name="itemstack"></param>
         /// <param name="pos"></param>
         /// <param name="velocity"></param>
-        Entity SpawnItemEntity(ItemStack itemstack, BlockPos pos, Vec3d velocity = null);
+        Entity? SpawnItemEntity(ItemStack? itemstack, BlockPos pos, Vec3d? velocity = null);
 
         /// <summary>
         /// Creates a new entity. It's the responsibility of the given Entity to call set its EntityType.
@@ -300,7 +299,7 @@ namespace Vintagestory.API.Common
         /// <param name="vertRange"></param>
         /// <param name="matches"></param>
         /// <returns></returns>
-        Entity[] GetEntitiesAround(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity> matches = null);
+        Entity[] GetEntitiesAround(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity>? matches = null);
 
         /// <summary>
         /// Retrieve all entities within a cuboid bound by startPos and endPos. If now matcher method is supplied, all entities are returned.
@@ -309,7 +308,7 @@ namespace Vintagestory.API.Common
         /// <param name="endPos"></param>
         /// <param name="matches"></param>
         /// <returns></returns>
-        Entity[] GetEntitiesInsideCuboid(BlockPos startPos, BlockPos endPos, ActionConsumable<Entity> matches = null);
+        Entity[] GetEntitiesInsideCuboid(BlockPos startPos, BlockPos endPos, ActionConsumable<Entity>? matches = null);
 
         /// <summary>
         /// Retrieve all players within given range and given matcher method. This method is faster than when using GetEntitiesAround with a matcher for players
@@ -319,7 +318,7 @@ namespace Vintagestory.API.Common
         /// <param name="vertRange"></param>
         /// <param name="matches"></param>
         /// <returns></returns>
-        IPlayer[] GetPlayersAround(Vec3d position, float horRange, float vertRange, ActionConsumable<IPlayer> matches = null);
+        IPlayer[] GetPlayersAround(Vec3d position, float horRange, float vertRange, ActionConsumable<IPlayer>? matches = null);
 
         /// <summary>
         /// Retrieve the nearest entity within given range and given matcher method
@@ -329,7 +328,7 @@ namespace Vintagestory.API.Common
         /// <param name="vertRange"></param>
         /// <param name="matches"></param>
         /// <returns></returns>
-        Entity GetNearestEntity(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity> matches = null);
+        Entity GetNearestEntity(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity>? matches = null);
 
         /// <summary>
         /// Retrieve an entity by its unique id, returns null if no such entity exists or hasn't been loaded
@@ -345,7 +344,7 @@ namespace Vintagestory.API.Common
         /// <param name="basePos"></param>
         /// <param name="matches"></param>
         /// <returns></returns>
-        Entity[] GetIntersectingEntities(BlockPos basePos, Cuboidf[] collisionBoxes, ActionConsumable<Entity> matches = null);
+        Entity[] GetIntersectingEntities(BlockPos basePos, Cuboidf[] collisionBoxes, ActionConsumable<Entity>? matches = null);
 
 
         /// <summary>
@@ -376,44 +375,79 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="playerUid"></param>
         /// <returns></returns>
-        IPlayer PlayerByUid(string playerUid);
+        IPlayer PlayerByUid(string? playerUid);
 
 
         /// <summary>
         /// Plays given sound at given position.
         /// </summary>
-        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
+        /// <param name="sound">The sound information, including file location, type, and how to choose volume and pitch</param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="dimension"></param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="volumeMultiplier"></param>
+        /// <returns>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</returns>
+        int PlaySoundAt(SoundAttributes sound, double x, double y, double z, int dimension, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1f);
+
+
+        /// <summary>
+        /// Plays given sound at given position.
+        /// </summary>
+        /// <param name="location">The sound path, with sounds/ prefix and without the .ogg ending</param>
         /// <param name="posx"></param>
         /// <param name="posy"></param>
         /// <param name="posz"></param>
-        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
         /// <param name="randomizePitch"></param>
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
-        void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation? location, double posx, double posy, double posz, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound at given position - dimension aware. Plays at the center of the BlockPos
         /// </summary>
-        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
+        /// <param name="sound">The sound information, including file location, type, and how to choose volume and pitch</param>
         /// <param name="pos"></param>
         /// <param name="yOffsetFromCenter">How much above or below the central Y position of the block to play</param>
-        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="volumeMultiplier"></param>
+        /// <returns>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</returns>
+        int PlaySoundAt(SoundAttributes sound, BlockPos pos, double yOffsetFromCenter, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1f);
+
+        /// <summary>
+        /// Plays given sound at given position - dimension aware. Plays at the center of the BlockPos
+        /// </summary>
+        /// <param name="location">The sound path, with sounds/ prefix and without the .ogg ending</param>
+        /// <param name="pos"></param>
+        /// <param name="yOffsetFromCenter">How much above or below the central Y position of the block to play</param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
         /// <param name="randomizePitch"></param>
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
-        void PlaySoundAt(AssetLocation location, BlockPos pos, double yOffsetFromCenter, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation? location, BlockPos pos, double yOffsetFromCenter, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound at given position.
         /// </summary>
-        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
+        /// <param name="sound">The sound information, including file location, type, and how to choose volume and pitch</param>
         /// <param name="atEntity"></param>
-        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="volumeMultiplier"></param>
+        /// <returns>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</returns>
+        int PlaySoundAt(SoundAttributes sound, Entity atEntity, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1f);
+
+        /// <summary>
+        /// Plays given sound at given position.
+        /// </summary>
+        /// <param name="location">The sound path, with sounds/ prefix and without the .ogg ending</param>
+        /// <param name="atEntity"></param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
         /// <param name="randomizePitch"></param>
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
-        void PlaySoundAt(AssetLocation location, Entity atEntity, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation? location, Entity atEntity, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound at given position.
@@ -424,7 +458,7 @@ namespace Vintagestory.API.Common
         /// <param name="pitch"></param>
         /// <param name="range"></param>
         /// <param name="volume"></param>
-        void PlaySoundAt(AssetLocation location, Entity atEntity, IPlayer dualCallByPlayer, float pitch, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation? location, Entity atEntity, IPlayer? dualCallByPlayer, float pitch, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound at given position.
@@ -437,31 +471,50 @@ namespace Vintagestory.API.Common
         /// <param name="pitch"></param>
         /// <param name="range"></param>
         /// <param name="volume"></param>
-        void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer, float pitch, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation? location, double posx, double posy, double posz, IPlayer? dualCallByPlayer, float pitch, float range = 32, float volume = 1f);
 
-        void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer, EnumSoundType soundType, float pitch, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation? location, double posx, double posy, double posz, IPlayer? dualCallByPlayer, EnumSoundType soundType, float pitch, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound at given player position.
         /// </summary>
-        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
+        /// <param name="sound">The sound information, including file location, type, and how to choose volume and pitch</param>
         /// <param name="atPlayer"></param>
-        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="volumeMultiplier"></param>
+        /// <returns>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</returns>
+        int PlaySoundAt(SoundAttributes sound, IPlayer atPlayer, IPlayer? dualCallByPlayer = null, float volumeMultiplier = 1f);
+
+        /// <summary>
+        /// Plays given sound at given player position.
+        /// </summary>
+        /// <param name="location">The sound path, with sounds/ prefix and without the .ogg ending</param>
+        /// <param name="atPlayer"></param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
         /// <param name="randomizePitch"></param>
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
-        void PlaySoundAt(AssetLocation location, IPlayer atPlayer, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation? location, IPlayer atPlayer, IPlayer? dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound only for given player. Useful when called server side, for the client side there is no difference over using PlaySoundAt or PlaySoundFor
         /// </summary>
-        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
+        /// <param name="sound">The sound information, including file location, type, and how to choose volume and pitch</param>
+        /// <param name="forPlayer"></param>
+        /// <param name="volumeMultiplier"></param>
+        /// <returns>On client, duration of the playing sound in milliseconds, or 0 if it could not be played. On server, 0.</returns>
+        int PlaySoundFor(SoundAttributes sound, IPlayer? forPlayer, float volumeMultiplier = 1f);
+
+        /// <summary>
+        /// Plays given sound only for given player. Useful when called server side, for the client side there is no difference over using PlaySoundAt or PlaySoundFor
+        /// </summary>
+        /// <param name="location">The sound path, with sounds/ prefix and without the .ogg ending</param>
         /// <param name="forPlayer"></param>
         /// <param name="randomizePitch"></param>
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
-        void PlaySoundFor(AssetLocation location, IPlayer forPlayer, bool randomizePitch = true, float range = 32, float volume = 1f);
-        void PlaySoundFor(AssetLocation location, IPlayer forPlayer, float pitch, float range = 32, float volume = 1f);
+        void PlaySoundFor(AssetLocation? location, IPlayer? forPlayer, bool randomizePitch = true, float range = 32, float volume = 1f);
+        void PlaySoundFor(AssetLocation? location, IPlayer? forPlayer, float pitch, float range = 32, float volume = 1f);
 
 
         /// <summary>
@@ -478,14 +531,14 @@ namespace Vintagestory.API.Common
         /// <param name="scale"></param>
         /// <param name="model"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
-        void SpawnParticles(float quantity, int color, Vec3d minPos, Vec3d maxPos, Vec3f minVelocity, Vec3f maxVelocity, float lifeLength, float gravityEffect, float scale = 1f, EnumParticleModel model = EnumParticleModel.Quad, IPlayer dualCallByPlayer = null);
+        void SpawnParticles(float quantity, int color, Vec3d minPos, Vec3d maxPos, Vec3f minVelocity, Vec3f maxVelocity, float lifeLength, float gravityEffect, float scale = 1f, EnumParticleModel model = EnumParticleModel.Quad, IPlayer? dualCallByPlayer = null);
 
         /// <summary>
         /// Spawn a bunch of particles
         /// </summary>
         /// <param name="particlePropertiesProvider"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
-        void SpawnParticles(IParticlePropertiesProvider particlePropertiesProvider, IPlayer dualCallByPlayer = null);
+        void SpawnParticles(IParticlePropertiesProvider particlePropertiesProvider, IPlayer? dualCallByPlayer = null);
 
 
         /// <summary>
@@ -498,7 +551,7 @@ namespace Vintagestory.API.Common
         /// <param name="scale"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
         /// <param name="velocity"></param>
-        void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
+        void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1f, IPlayer? dualCallByPlayer = null, Vec3f? velocity = null);
 
 
         /// <summary>
@@ -511,7 +564,7 @@ namespace Vintagestory.API.Common
         /// <param name="scale"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
         /// <param name="velocity"></param>
-        void SpawnCubeParticles(Vec3d pos, ItemStack item, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
+        void SpawnCubeParticles(Vec3d pos, ItemStack? item, float radius, int quantity, float scale = 1f, IPlayer? dualCallByPlayer = null, Vec3f? velocity = null);
 
 
 
@@ -525,7 +578,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySelection"></param>
         /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
         /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
-        void RayTraceForSelection(Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null);
+        void RayTraceForSelection(Vec3d fromPos, Vec3d toPos, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? bfilter = null, EntityFilter? efilter = null);
 
 
         /// <summary>
@@ -538,7 +591,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySelection"></param>
         /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
         /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
-        void RayTraceForSelection(IWorldIntersectionSupplier supplier, Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null);
+        void RayTraceForSelection(IWorldIntersectionSupplier supplier, Vec3d fromPos, Vec3d toPos, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? bfilter = null, EntityFilter? efilter = null);
 
 
         /// <summary>
@@ -552,7 +605,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySelection"></param>
         /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
         /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
-        void RayTraceForSelection(Vec3d fromPos, float pitch, float yaw, float range, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null);
+        void RayTraceForSelection(Vec3d fromPos, float pitch, float yaw, float range, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? bfilter = null, EntityFilter? efilter = null);
 
         /// <summary>
         /// Shoots out a given ray and stops when the ray hits a block or entity selection box. The block/entity it struck first is then returned by reference.
@@ -562,7 +615,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySelection"></param>
         /// <param name="filter"></param>
         /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
-        void RayTraceForSelection(Ray ray, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null, EntityFilter efilter = null);
+        void RayTraceForSelection(Ray ray, ref BlockSelection? blockSelection, ref EntitySelection? entitySelection, BlockFilter? filter = null, EntityFilter? efilter = null);
 
 
         /// <summary>

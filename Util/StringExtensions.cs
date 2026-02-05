@@ -1,7 +1,6 @@
-﻿using System;
+using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
-
-#nullable disable
 
 namespace Vintagestory.API.Util
 {
@@ -32,7 +31,7 @@ namespace Vintagestory.API.Util
         /// Prints a byte array in hexadecimal.  Potentially useful for logging issues relating to serialization, packets contents, etc
         /// </summary>
         /// <param name="sb"></param>
-        /// <param name="b"></param>
+        /// <param name="bb"></param>
         public static void AppendHex(this StringBuilder sb, byte[] bb)
         {
             foreach (byte b in bb) AppendHex(sb, b);
@@ -47,7 +46,8 @@ namespace Vintagestory.API.Util
             return text.IndexOf(value, stringComparison) >= 0;
         }
 
-        public static string DeDuplicate(this string str)
+        [return: NotNullIfNotNull(nameof(str))]
+        public static string? DeDuplicate(this string? str)
         {
             return str == null ? null : string.Intern(str);
         }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -97,7 +97,7 @@ Class AnimationManager
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href="https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationManager.cs">Open in GitHub</a></p>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationManager.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -229,6 +229,36 @@ Class AnimationManager
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationManager_RunWhilePaused" data-uid="Vintagestory.API.Common.AnimationManager.RunWhilePaused">
+  RunWhilePaused
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RunWhilePaused</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -472,7 +502,7 @@ Class AnimationManager
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityHeadController HeadController { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IHeadController HeadController { get; set; }</code></pre>
   </div>
 
 
@@ -481,7 +511,7 @@ Class AnimationManager
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.EntityHeadController.html">EntityHeadController</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.IHeadController.html">IHeadController</a></dt>
     <dd></dd>
   </dl>
 
@@ -942,8 +972,8 @@ Class AnimationManager
 
   <a id="Vintagestory_API_Common_AnimationManager_ShouldPlaySound_" data-uid="Vintagestory.API.Common.AnimationManager.ShouldPlaySound*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimationManager_ShouldPlaySound_Vintagestory_API_Common_AnimationSound_" data-uid="Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)">
-  ShouldPlaySound(AnimationSound)
+  <h3 id="Vintagestory_API_Common_AnimationManager_ShouldPlaySound_System_String_Vintagestory_API_Common_AnimationSound_" data-uid="Vintagestory.API.Common.AnimationManager.ShouldPlaySound(System.String,Vintagestory.API.Common.AnimationSound)">
+  ShouldPlaySound(string, AnimationSound)
   
   </h3>
 
@@ -951,11 +981,13 @@ Class AnimationManager
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ShouldPlaySound(AnimationSound sound)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ShouldPlaySound(string animationMetaCode, AnimationSound sound)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
+    <dt><code>animationMetaCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
     <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
     <dd></dd>
   </dl>

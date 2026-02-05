@@ -2,8 +2,6 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
-#nullable disable
-
 namespace Vintagestory.API.Client
 {
     /// <summary>
@@ -50,11 +48,11 @@ namespace Vintagestory.API.Client
 
         protected TextureAtlasPosition getOrCreateTexPos(AssetLocation texturePath)
         {
-            TextureAtlasPosition texpos = targetAtlas[texturePath];
+            TextureAtlasPosition? texpos = targetAtlas[texturePath];
 
             if (texpos == null)
             {
-                IAsset texAsset = capi.Assets.TryGet(texturePath.Clone().WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png"));
+                IAsset? texAsset = capi.Assets.TryGet(texturePath.Clone().WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png"));
                 if (texAsset != null)
                 {
                     targetAtlas.GetOrInsertTexture(texturePath, out _, out texpos, () => texAsset.ToBitmap(capi));
