@@ -479,6 +479,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
         {
             ingredient.Code = Code?.Clone();
             ingredient.Tags = Tags?.Clone();
+            ingredient.ReverseTagsCheck = ReverseTagsCheck;
             ingredient.Type = Type;
             ingredient.Name = Name;
             ingredient.Quantity = Quantity;

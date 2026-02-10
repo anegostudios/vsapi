@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -15,6 +16,7 @@ namespace Vintagestory.API.Datastructures
         public const int OnAllSides = 0x3F;
         int bits;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator int(SmallBoolArray a)     // For backwards compatibility and not too much change to API, we convert this to an (int) for use elsewhere
         {
             return a.bits;
@@ -57,6 +59,7 @@ namespace Vintagestory.API.Datastructures
         public static bool operator ==(SmallBoolArray left, int right) => right == left.bits;
         public static bool operator !=(SmallBoolArray left, int right) => right != left.bits;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Fill(bool b)
         {
             bits = b ? OnAllSides : 0;
@@ -70,11 +73,13 @@ namespace Vintagestory.API.Datastructures
             return result;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Opposite(int i)
         {
             return (bits & 1 << (i ^ (2 - i / 4))) != 0;   // radfast's magic formula to find the opposite of our NESWUD sides 0-5, without conditional branches or array lookup; if we don't want this, should have indexed the sides N=0 S=1 W=2 E=3 D=4 U=5 :p
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool OnSide(BlockFacing face)
         {
             return (bits & 1 << face.Index) != 0;
@@ -87,6 +92,7 @@ namespace Vintagestory.API.Datastructures
             set { bits = value ? OnAllSides : 0; }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int Value()
         {
             return bits;
@@ -98,16 +104,19 @@ namespace Vintagestory.API.Datastructures
 
         public bool Verticals => (bits & 0x30) == 0x30;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
             return 1537853281 + bits.GetHashCode();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly bool AnySet(int v)
         {
             return (bits & v) != 0;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly bool AllSet(int v)
         {
             return (bits & v) == v;

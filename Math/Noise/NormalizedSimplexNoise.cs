@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 
 #nullable disable
@@ -28,7 +28,7 @@ namespace Vintagestory.API.MathTools
             this.frequencies = frequencies;
             this.inputAmplitudes = inputAmplitudes;
 
-            octaves = new SimplexNoiseOctave[inputAmplitudes.Length];
+            var octaves = this.octaves = new SimplexNoiseOctave[inputAmplitudes.Length];
             for (int i = 0; i < octaves.Length; i++)
             {
                 octaves[i] = new SimplexNoiseOctave(seed * 65599 + i);
@@ -75,14 +75,14 @@ namespace Vintagestory.API.MathTools
             }
 
 
-            scaledAmplitudes2D = new double[inputAmplitudes.Length];
+            var scaledAmplitudes2D = this.scaledAmplitudes2D = new double[inputAmplitudes.Length];
             for (int i = 0; i < inputAmplitudes.Length; i++)
             {
                 scaledAmplitudes2D[i] = inputAmplitudes[i] / normalizationValue2D;
             }
 
 
-            scaledAmplitudes3D = new double[inputAmplitudes.Length];
+            var scaledAmplitudes3D = this.scaledAmplitudes3D = new double[inputAmplitudes.Length];
             for (int i = 0; i < inputAmplitudes.Length; i++)
             {
                 scaledAmplitudes3D[i] = inputAmplitudes[i] / normalizationValue3D;
@@ -100,6 +100,11 @@ namespace Vintagestory.API.MathTools
         {
             double value = 0;
 
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var scaledAmplitudes2D = this.scaledAmplitudes2D;
+            var octaves = this.octaves;
+
             for (int i = 0; i < scaledAmplitudes2D.Length; i++)
             {
                 value += VALUE_MULTIPLIER * octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * scaledAmplitudes2D[i];
@@ -111,6 +116,11 @@ namespace Vintagestory.API.MathTools
         public double Noise(double x, double y, double[] thresholds)
         {
             double value = 0;
+
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var scaledAmplitudes2D = this.scaledAmplitudes2D;
+            var octaves = this.octaves;
 
             for (int i = 0; i < scaledAmplitudes2D.Length; i++)
             {
@@ -132,6 +142,11 @@ namespace Vintagestory.API.MathTools
         public virtual double Noise(double x, double y, double z)
         {
             double value = 0;
+
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var scaledAmplitudes3D = this.scaledAmplitudes3D;
+            var octaves = this.octaves;
 
             for (int i = 0; i < scaledAmplitudes3D.Length; i++)
             {
@@ -155,6 +170,11 @@ namespace Vintagestory.API.MathTools
         {
             double value = 0;
 
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var scaledAmplitudes3D = this.scaledAmplitudes3D;
+            var octaves = this.octaves;
+
             for (int i = 0; i < scaledAmplitudes3D.Length; i++)
             {
                 value += VALUE_MULTIPLIER * octaves[i].Evaluate(x * frequencies[i], y * frequencies[i], z * frequencies[i]) * amplitudes[i];
@@ -166,6 +186,11 @@ namespace Vintagestory.API.MathTools
         public double Noise(double x, double y, double z, double[] amplitudes, double[] thresholds)
         {
             double value = 0;
+
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var scaledAmplitudes3D = this.scaledAmplitudes3D;
+            var octaves = this.octaves;
 
             for (int i = 0; i < scaledAmplitudes3D.Length; i++)
             {
@@ -255,7 +280,7 @@ namespace Vintagestory.API.MathTools
                 this.BoundMax = NoiseValueCurve(bound);
 
                 // Fill out noise generators in order
-                this.orderedOctaveEntries = new OctaveEntry[nUsedOctaves];
+                var orderedOctaveEntries = this.orderedOctaveEntries = new OctaveEntry[nUsedOctaves];
                 double uncertaintySum = 0;
                 for (int j = nUsedOctaves - 1; j >= 0; j--)
                 {
@@ -279,6 +304,7 @@ namespace Vintagestory.API.MathTools
             public double NoiseSign(double y, double inverseCurvedThresholder)
             {
                 double value = inverseCurvedThresholder;
+                var orderedOctaveEntries = this.orderedOctaveEntries;
                 for (int j = 0; j < orderedOctaveEntries.Length; j++)
                 {
                     ref readonly OctaveEntry octaveEntry = ref orderedOctaveEntries[j];
@@ -296,6 +322,7 @@ namespace Vintagestory.API.MathTools
             // But if you need the full noise value, you can use this!
             public double Noise(double y) {
                 double value = 0.0;
+                var orderedOctaveEntries = this.orderedOctaveEntries;
                 for (int j = 0; j < orderedOctaveEntries.Length; j++) {
                     ref readonly OctaveEntry octaveEntry = ref orderedOctaveEntries[j];
 

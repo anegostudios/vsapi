@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #nullable disable
 
@@ -21,7 +21,7 @@ namespace Vintagestory.API.MathTools
             this.frequencies = frequencies;
             this.seed = seed;
 
-            octaves = new SimplexNoiseOctave[amplitudes.Length];
+            var octaves = this.octaves = new SimplexNoiseOctave[amplitudes.Length];
 
             for (int i = 0; i < octaves.Length; i++)
             {
@@ -59,6 +59,11 @@ namespace Vintagestory.API.MathTools
         {
             double value = 0;
 
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var amplitudes = this.amplitudes;
+            var octaves = this.octaves;
+
             for (int i = 0; i < amplitudes.Length; i++)
             {
                 double f = frequencies[i];
@@ -69,16 +74,22 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        public static void NoiseFairWarpVector(SimplexNoise originalWarpX, SimplexNoise originalWarpY,
-                double x, double y, out double distX, out double distY) {
+        public static void NoiseFairWarpVector(SimplexNoise originalWarpX, SimplexNoise originalWarpY, double x, double y, out double distX, out double distY)
+        {
             distX = distY = 0;
 
-            for (int i = 0; i < originalWarpX.amplitudes.Length; i++) {
-                double f = originalWarpX.frequencies[i];
-                SimplexNoiseOctave.EvaluateFairWarpVector(originalWarpX.octaves[i], originalWarpY.octaves[i],
+            // Local array references for performance
+            var frequencies = originalWarpX.frequencies;
+            var amplitudes = originalWarpX.amplitudes;
+            var octavesX = originalWarpX.octaves;
+            var octavesY = originalWarpY.octaves;
+
+            for (int i = 0; i < amplitudes.Length; i++) {
+                double f = frequencies[i];
+                SimplexNoiseOctave.EvaluateFairWarpVector(octavesX[i], octavesY[i],
                     x * f, y * f, out double distXHere, out double distYHere);
-                distX += distXHere * originalWarpX.amplitudes[i];
-                distY += distYHere * originalWarpX.amplitudes[i];
+                distX += distXHere * amplitudes[i];
+                distY += distYHere * amplitudes[i];
             }
         }
 
@@ -86,6 +97,11 @@ namespace Vintagestory.API.MathTools
         public double Noise(double x, double y, double[] thresholds)
         {
             double value = 0;
+
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var amplitudes = this.amplitudes;
+            var octaves = this.octaves;
 
             for (int i = 0; i < amplitudes.Length; i++)
             {
@@ -101,6 +117,11 @@ namespace Vintagestory.API.MathTools
         public double NoiseWithThreshold(double x, double y, double threshold)
         {
             double value = 0;
+
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var amplitudes = this.amplitudes;
+            var octaves = this.octaves;
 
             for (int i = 0; i < amplitudes.Length; i++)
             {
@@ -118,6 +139,11 @@ namespace Vintagestory.API.MathTools
         {
             double value = 0;
 
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var amplitudes = this.amplitudes;
+            var octaves = this.octaves;
+
             for (int i = 0; i < amplitudes.Length; i++)
             {
                 double frequency = frequencies[i];
@@ -130,6 +156,11 @@ namespace Vintagestory.API.MathTools
         public virtual double AbsNoise(double x, double y, double z)
         {
             double value = 0;
+
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var amplitudes = this.amplitudes;
+            var octaves = this.octaves;
 
             for (int i = 0; i < amplitudes.Length; i++)
             {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 
 #nullable disable
@@ -267,7 +267,7 @@ namespace Vintagestory.API.MathTools
         private static readonly float[] Gradients3D;
         static NewSimplexNoiseLayer()
         {
-            Gradients3D = new float[NGrads3D * 4];
+            var Gradients3D = NewSimplexNoiseLayer.Gradients3D = new float[NGrads3D * 4];
             float[] grad3 = {
                  2.22474487139f,       2.22474487139f,      -1.0f,                 0.0f,
                  2.22474487139f,       2.22474487139f,       1.0f,                 0.0f,

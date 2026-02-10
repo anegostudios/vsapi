@@ -1225,7 +1225,6 @@ namespace Vintagestory.API.Common
 
         public override void Revive()
         {
-            Attributes.SetBool("noSatietyRestoreOnRevive", true);
             base.Revive();
 
             LastReviveTotalHours = Api.World.Calendar.TotalHours;

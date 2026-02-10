@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 
 #nullable disable
@@ -269,10 +269,10 @@ namespace Vintagestory.API.MathTools
 
         public SimplexNoiseOctave(long seed)
         {
-            perm = new byte[256];
-            perm2D = new byte[256];
-            perm3D = new byte[256];
-            perm4D = new byte[256];
+            this.perm = new byte[256];
+            this.perm2D = new byte[256];
+            this.perm3D = new byte[256];
+            this.perm4D = new byte[256];
             var source = new byte[256];
             for (int i = 0; i < 256; i++)
             {
@@ -281,6 +281,13 @@ namespace Vintagestory.API.MathTools
             seed = seed * 6364136223846793005L + 1442695040888963407L;
             seed = seed * 6364136223846793005L + 1442695040888963407L;
             seed = seed * 6364136223846793005L + 1442695040888963407L;
+
+            // Local array references for performance
+            var perm = this.perm;
+            var perm2D = this.perm2D;
+            var perm3D = this.perm3D;
+            var perm4D = this.perm4D;
+
             for (int i = 255; i >= 0; i--)
             {
                 seed = seed * 6364136223846793005L + 1442695040888963407L;
@@ -323,6 +330,11 @@ namespace Vintagestory.API.MathTools
 
             var c = lookup2D[hash];
 
+            // Local array references for performance
+            var gradients2D = SimplexNoiseOctave.gradients2D;
+            var perm2D = this.perm2D;
+            var perm = this.perm;
+
             var value = 0.0;
             while (c != null)
             {
@@ -345,40 +357,49 @@ namespace Vintagestory.API.MathTools
             return value * NORM_2D;
         }
 
-        public static void EvaluateFairWarpVector(SimplexNoiseOctave originalWarpX, SimplexNoiseOctave originalWarpZ, double x, double y, out double distX, out double distY) {
-            var stretchOffset = (x + y) * STRETCH_2D;
-            var xs = x + stretchOffset;
-            var ys = y + stretchOffset;
+        public static void EvaluateFairWarpVector(SimplexNoiseOctave originalWarpX, SimplexNoiseOctave originalWarpZ, double x, double y, out double distX, out double distY)
+        {
+            double stretchOffset = (x + y) * STRETCH_2D;
+            double xs = x + stretchOffset;
+            double ys = y + stretchOffset;
 
-            var xsb = (int)Math.Floor(xs);
-            var ysb = (int)Math.Floor(ys);
+            int xsb = (int)Math.Floor(xs);
+            int ysb = (int)Math.Floor(ys);
+            xs -= xsb;
+            ys -= ysb;
 
-            var squishOffset = (xsb + ysb) * SQUISH_2D;
-            var dx0 = x - (xsb + squishOffset);
-            var dy0 = y - (ysb + squishOffset);
+            double squishOffset = (xsb + ysb) * SQUISH_2D;
+            double dx0 = x - (xsb + squishOffset);
+            double dy0 = y - (ysb + squishOffset);
 
-            var xins = xs - xsb;
-            var yins = ys - ysb;
+            double inSum = xs + ys;
 
-            var inSum = xins + yins;
-
-            var hash =
-                (uint)(xins - yins + 1) |
+            uint hash =
+                (uint)(xs - ys + 1) |
                 (uint)(inSum) << 1 |
-                (uint)(inSum + yins) << 2 |
-                (uint)(inSum + xins) << 4;
+                (uint)(inSum + ys) << 2 |
+                (uint)(inSum + xs) << 4;
 
-            var c = lookup2D[hash];
+            Contribution2 c = lookup2D[hash];
+
+            // Local array references for performance
+            var warpUpgradeVectors2D = SimplexNoiseOctave.warpUpgradeVectors2D;
+            var originalWarpXperm = originalWarpX.perm;
+            var originalWarpZperm = originalWarpZ.perm;
+            var originalWarpXperm2D = originalWarpX.perm2D;
+            var originalWarpZperm2D = originalWarpZ.perm2D;
 
             distX = 0.0;
             distY = 0.0;
-            while (c != null) {
-                var dx = dx0 + c.dx;
-                var dy = dy0 + c.dy;
-                var attn = 2.0 - dx * dx - dy * dy;
-                if (attn > 0.0) {
-                    var px = xsb + c.xsb;
-                    var py = ysb + c.ysb;
+            while (c != null)
+            {
+                double dx = dx0 + c.dx;
+                double dy = dy0 + c.dy;
+                double attn = 2.0 - dx * dx - dy * dy;
+                if (attn > 0.0)
+                {
+                    int px = xsb + c.xsb;
+                    int py = ysb + c.ysb;
 
                     // The two "old" noise gradients are mapped to two new ones plus a contribution frame rotation.
                     // Domain-warping with independent noises only happens in the frame <1, 0>, <0, 1> (+/-).
@@ -388,17 +409,13 @@ namespace Vintagestory.API.MathTools
                     // while still somewhat preserving seed parity.
                     // Old warp: <1, 0> * contribution(<ax, ay>) + <0, 1> * contribution(<bx, by>)
                     // New warp: <rx, ry> * contribution(<ix, iy>) + <ry, -rx> * contribution(<jx, jy>)
-                    var i = originalWarpX.perm2D[(originalWarpX.perm[px & 0xFF] + py) & 0xFF];
-                    var j = originalWarpZ.perm2D[(originalWarpZ.perm[px & 0xFF] + py) & 0xFF];
-                    var k = (i * 8 + j) * 3;
-                    var rx = warpUpgradeVectors2D[k];
-                    var ry = warpUpgradeVectors2D[k + 1];
-                    var ix = warpUpgradeVectors2D[k + 2];
-                    var iy = warpUpgradeVectors2D[k + 3];
-                    var jx = warpUpgradeVectors2D[k + 4];
-                    var jy = warpUpgradeVectors2D[k + 5];
-                    var valuePartA = ix * dx + iy * dy;
-                    var valuePartB = jx * dx + jy * dy;
+                    byte i = originalWarpXperm2D[(originalWarpXperm[px & 0xFF] + py) & 0xFF];
+                    byte j = originalWarpZperm2D[(originalWarpZperm[px & 0xFF] + py) & 0xFF];
+                    int k = (i * 8 + j) * 3;
+                    double rx = warpUpgradeVectors2D[k];
+                    double ry = warpUpgradeVectors2D[k + 1];
+                    double valuePartA = warpUpgradeVectors2D[k + 2] * dx + warpUpgradeVectors2D[k + 3] * dy;
+                    double valuePartB = warpUpgradeVectors2D[k + 4] * dx + warpUpgradeVectors2D[k + 5] * dy;
 
                     attn *= attn;
                     attn *= attn;
@@ -410,6 +427,7 @@ namespace Vintagestory.API.MathTools
             distX *= NORM_2D_WARP;
             distY *= NORM_2D_WARP;
         }
+
 
         public double Evaluate(double x, double y, double z)
         {
@@ -443,6 +461,11 @@ namespace Vintagestory.API.MathTools
                 (int)(inSum + xins) << 9;
 
             var c = lookup3D[GameMath.Clamp(hash, 0, lookup3D.Length - 1)];
+
+            // Local array references for performance
+            var gradients3D = SimplexNoiseOctave.gradients3D;
+            var perm3D = this.perm3D;
+            var perm = this.perm;
 
             var value = 0.0;
             while (c != null)
@@ -509,6 +532,11 @@ namespace Vintagestory.API.MathTools
                 (int)(inSum + xins) << 17;
 
             var c = lookup4D[hash];
+
+            // Local array references for performance
+            var gradients4D = SimplexNoiseOctave.gradients4D;
+            var perm4D = this.perm4D;
+            var perm = this.perm;
 
             var value = 0.0;
             while (c != null)

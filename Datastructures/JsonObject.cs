@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -7,6 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -185,7 +186,7 @@ namespace Vintagestory.API.Datastructures
         [return: NotNullIfNotNull(nameof(defaultValue))]
         public string? AsString(string? defaultValue = null)
         {
-            return GetValue<string>(defaultValue);
+            return GetValue<string>(defaultValue).DeDuplicate();
         }
 
         [Obsolete("Use AsArray<string>() instead")]

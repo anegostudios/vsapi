@@ -109,7 +109,7 @@ public sealed class EntityTagGroups : TagGroups<EntityTagSet>, IConcreteCloneabl
         {
             resolved = resolved,
             conditions = conditions,
-            tagNames = tagNames,
+            tagNames = (string[][])tagNames.Clone(),
             ReverseCheck = ReverseCheck
         };
     }

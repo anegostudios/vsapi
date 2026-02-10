@@ -2785,7 +2785,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetMeltingDuration(IWorldAccessor world, ISlotProvider cookingSlotsProvider, ItemSlot inputSlot)
         {
-            CombustibleProperties combustibleProps = GetCombustibleProperties(world, inputSlot.Itemstack, null);
+            CombustibleProperties combustibleProps = GetCombustibleProperties(world, inputSlot?.Itemstack, null);
             return combustibleProps == null ? 0 : combustibleProps.MeltingDuration;
         }
 

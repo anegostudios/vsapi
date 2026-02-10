@@ -1,4 +1,4 @@
-﻿
+
 #nullable disable
 namespace Vintagestory.API.MathTools
 {
@@ -19,7 +19,7 @@ namespace Vintagestory.API.MathTools
             this.frequencies = frequencies;
             this.seed = seed;
 
-            octaves = new SimplexNoiseOctave[amplitudes.Length];
+            var octaves = this.octaves = new SimplexNoiseOctave[amplitudes.Length];
 
             for (int i = 0; i < octaves.Length; i++)
             {
@@ -32,6 +32,11 @@ namespace Vintagestory.API.MathTools
         public virtual double Noise(double x, double y, double offset = 0)
         {
             double value = 1;
+
+            // Local array references for performance
+            var frequencies = this.frequencies;
+            var amplitudes = this.amplitudes;
+            var octaves = this.octaves;
 
             for (int i = 0; i < amplitudes.Length; i++)
             {
