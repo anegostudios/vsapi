@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
@@ -329,6 +330,111 @@ namespace Vintagestory.API.Common
             string pattern = @"\{((" + search + @")|([^\{\}]*\|" + search + @")|(" + search + @"\|[^\{\}]*)|([^\{\}]*\|" + search + @"\|[^\{\}]*))\}";
 
             return Regex.Replace(input, pattern, replace);
+        }
+
+
+        /// <summary>
+        /// Fast variant of FillPlaceHolder that processes all replacements in a single pass
+        /// </summary>
+        public static string FillPlaceHolderOptimized(string input, OrderedDictionary<string, string> searchReplace)
+        {
+            if (string.IsNullOrEmpty(input) || searchReplace == null || searchReplace.Count == 0)
+                return input;
+
+            // Fast check without allocations
+            bool hasPlaceholders = false;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == '{')
+                {
+                    hasPlaceholders = true;
+                    break;
+                }
+            }
+            if (!hasPlaceholders) return input;
+
+            // Use a list of changes for batch replacements
+            var replacements = new List<(int start, int length, string value)>();
+
+            // Search for all placeholders
+            int pos = 0;
+            while (pos < input.Length)
+            {
+                if (input[pos] == '{')
+                {
+                    int start = pos;
+                    int end = -1;
+
+                    // Search for closing brace
+                    for (int i = pos + 1; i < input.Length; i++)
+                    {
+                        if (input[i] == '}')
+                        {
+                            end = i;
+                            break;
+                        }
+                    }
+
+                    if (end > 0)
+                    {
+                        string placeholder = input.Substring(start + 1, end - start - 1);
+                        var parts = placeholder.Split('|');
+
+                        // Search for the first matching key (in searchReplace order)
+                        foreach (var kvp in searchReplace)
+                        {
+                            bool found = false;
+                            foreach (var part in parts)
+                            {
+                                if (part == kvp.Key)
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (found)
+                            {
+                                replacements.Add((start, end - start + 1, kvp.Value));
+                                break;
+                            }
+                        }
+
+                        pos = end + 1;
+                    }
+                    else
+                    {
+                        pos++;
+                    }
+                }
+                else
+                {
+                    pos++;
+                }
+            }
+
+            // If there are no replacements, return the original string
+            if (replacements.Count == 0) return input;
+
+            // Assemble the result
+            var result = new StringBuilder(input.Length);
+            int currentIndex = 0;
+
+            foreach (var (start, length, value) in replacements.OrderBy(r => r.start))
+            {
+                // Add text before the replacement
+                result.Append(input, currentIndex, start - currentIndex);
+
+                // Add the replacement
+                result.Append(value);
+
+                currentIndex = start + length;
+            }
+
+            // Add the remaining text
+            result.Append(input, currentIndex, input.Length - currentIndex);
+
+            return result.ToString();
         }
     }
 
