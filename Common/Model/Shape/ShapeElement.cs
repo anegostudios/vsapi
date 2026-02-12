@@ -283,86 +283,267 @@ namespace Vintagestory.API.Common
         }
 
 
+        /// <summary>
+        /// Cached base matrices for different animation versions
+        /// </summary>
+        private float[] _cachedBaseMatrixV0;
+        private float[] _cachedBaseMatrixV1;
+
+
+        /// <summary>
+        /// Flag indicating that the cache is stale
+        /// </summary>
+        private bool _isCacheDirty = true;
+
+        /// <summary>
+        /// Static field for identity transformation
+        /// </summary>
         static ElementPose noTransform = new ElementPose();
 
+        /// <summary>
+        /// Gets the local transformation matrix with caching
+        /// </summary>
         public float[] GetLocalTransformMatrix(int animVersion, float[] output = null, ElementPose tf = null)
         {
             if (tf == null) tf = noTransform;
-
-            ShapeElement elem = this;
             output ??= Mat4f.Create();
-            Span<float> matrix = (Span<float>)output;
 
-            float origin0 = 0f;
-            float origin1 = 0f;
-            float origin2 = 0f;
-
-            if (elem.RotationOrigin != null)
+            // Check if cache needs to be updated
+            if (_isCacheDirty)
             {
-                origin0 = (float)elem.RotationOrigin[0] / 16;
-                origin1 = (float)elem.RotationOrigin[1] / 16;
-                origin2 = (float)elem.RotationOrigin[2] / 16;
+                RebuildCache();
             }
 
-            // R = rotate, S = scale, T = translate
-            // Version 0: R * S * T
-            // Version 1: T * S * R
+            // Check if tf is empty transformation
+            bool isTfEmpty = IsTfEmpty(tf);
 
             if (animVersion == 1)
             {
-                // ==================================================
-                // BASE ELEMENT TRANSLATE SCALE ROTATE
-                // ==================================================
-                Mat4f.Translate(matrix, origin0, origin1, origin2);
+                // For version 1 always use cached matrix
+                if (_cachedBaseMatrixV1 == null)
+                {
+                    RebuildCache();
+                }
 
-                Mat4f.Scale(matrix, (float)elem.ScaleX, (float)elem.ScaleY, (float)elem.ScaleZ);
+                // Copy cached matrix
+                Array.Copy(_cachedBaseMatrixV1, 0, output, 0, 16);
 
-                Mat4f.RotateByXYZ(matrix,
-                    (float)(elem.RotationX * GameMath.DEG2RAD),
-                    (float)(elem.RotationY * GameMath.DEG2RAD),
-                    (float)(elem.RotationZ * GameMath.DEG2RAD));
-
-                // note: lumped together with next translation
-                // Mat4f.Translate(output, output, -originX, -originY, -originZ);
-
-                // ==================================================
-                // KEYFRAME TRANSLATE SCALE ROTATE
-                // ==================================================
-
-                Mat4f.Translate(matrix,
-                    -origin0 + (float)elem.From[0] / 16 + tf.translateX,
-                    -origin1 + (float)elem.From[1] / 16 + tf.translateY,
-                    -origin2 + (float)elem.From[2] / 16 + tf.translateZ
-                );
-
-                Mat4f.Scale(matrix, tf.scaleX, tf.scaleY, tf.scaleZ);
-
-                Mat4f.RotateByXYZ(matrix,
-                    (float)(tf.degX + tf.degOffX) * GameMath.DEG2RAD,
-                    (float)(tf.degY + tf.degOffY) * GameMath.DEG2RAD,
-                    (float)(tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
+                // If tf is not empty, apply transformations
+                if (!isTfEmpty)
+                {
+                    ApplyTfToMatrixV1(output, tf);
+                }
             }
             else
             {
-                Mat4f.Translate(matrix, origin0, origin1, origin2);
-
-                Mat4f.RotateByXYZ(matrix,
-                    (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD,
-                    (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD,
-                    (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
-
-                Mat4f.Scale(matrix, (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ);
-
-                Mat4f.Translate(matrix,
-                    (float)elem.From[0] / 16 + tf.translateX - origin0,
-                    (float)elem.From[1] / 16 + tf.translateY - origin1,
-                    (float)elem.From[2] / 16 + tf.translateZ - origin2
-                );
+                // For version 0
+                if (isTfEmpty)
+                {
+                    // If tf is empty, use cached matrix
+                    if (_cachedBaseMatrixV0 == null)
+                    {
+                        RebuildCache();
+                    }
+                    Array.Copy(_cachedBaseMatrixV0, 0, output, 0, 16);
+                }
+                else
+                {
+                    // If tf is not empty, recalculate completely
+                    ComputeMatrixV0WithTf(output, tf);
+                }
             }
 
             return output;
         }
 
+        /// <summary>
+        /// Checks if transformation is empty
+        /// </summary>
+        private static bool IsTfEmpty(ElementPose tf)
+        {
+            return tf.translateX == 0 && tf.translateY == 0 && tf.translateZ == 0 &&
+                   tf.scaleX == 1 && tf.scaleY == 1 && tf.scaleZ == 1 &&
+                   tf.degX == 0 && tf.degY == 0 && tf.degZ == 0 &&
+                   tf.degOffX == 0 && tf.degOffY == 0 && tf.degOffZ == 0;
+        }
+
+
+        /// <summary>
+        /// Rebuilds cached matrices
+        /// </summary>
+        private void RebuildCache()
+        {
+            float origin0 = 0f, origin1 = 0f, origin2 = 0f;
+            if (RotationOrigin != null)
+            {
+                origin0 = (float)RotationOrigin[0] / 16f;
+                origin1 = (float)RotationOrigin[1] / 16f;
+                origin2 = (float)RotationOrigin[2] / 16f;
+            }
+
+            // Create matrices for caching
+            _cachedBaseMatrixV0 = Mat4f.Create();
+            _cachedBaseMatrixV1 = Mat4f.Create();
+
+            // Calculate base matrix for version 0
+            ComputeBaseMatrixV0(_cachedBaseMatrixV0, origin0, origin1, origin2);
+
+            // Calculate base matrix for version 1
+            ComputeBaseMatrixV1(_cachedBaseMatrixV1, origin0, origin1, origin2);
+
+            _isCacheDirty = false;
+        }
+
+        /// <summary>
+        /// Calculates base matrix for version 0
+        /// </summary>
+        private void ComputeBaseMatrixV0(float[] matrix, float origin0, float origin1, float origin2)
+        {
+            Mat4f.Identity(matrix);
+
+            if (origin0 != 0f || origin1 != 0f || origin2 != 0f)
+                Mat4f.Translate(matrix, matrix, origin0, origin1, origin2);
+
+            float rotX = (float)RotationX * GameMath.DEG2RAD;
+            if (rotX != 0)
+                Mat4f.RotateX(matrix, matrix, rotX);
+
+            float rotY = (float)RotationY * GameMath.DEG2RAD;
+            if (rotY != 0)
+                Mat4f.RotateY(matrix, matrix, rotY);
+
+            float rotZ = (float)RotationZ * GameMath.DEG2RAD;
+            if (rotZ != 0)
+                Mat4f.RotateZ(matrix, matrix, rotZ);
+
+            float scaleX = (float)ScaleX;
+            float scaleY = (float)ScaleY;
+            float scaleZ = (float)ScaleZ;
+
+            if (scaleX != 1f || scaleY != 1f || scaleZ != 1f)
+                Mat4f.Scale(matrix, matrix, scaleX, scaleY, scaleZ);
+
+            float tx = (float)From[0] / 16f - origin0;
+            float ty = (float)From[1] / 16f - origin1;
+            float tz = (float)From[2] / 16f - origin2;
+
+            if (tx != 0f || ty != 0f || tz != 0f)
+                Mat4f.Translate(matrix, matrix, tx, ty, tz);
+        }
+
+        /// <summary>
+        /// Calculates base matrix for version 1
+        /// </summary>
+        private void ComputeBaseMatrixV1(float[] matrix, float origin0, float origin1, float origin2)
+        {
+            Mat4f.Identity(matrix);
+
+            if (origin0 != 0f || origin1 != 0f || origin2 != 0f)
+                Mat4f.Translate(matrix, matrix, origin0, origin1, origin2);
+
+            float scaleX = (float)ScaleX;
+            float scaleY = (float)ScaleY;
+            float scaleZ = (float)ScaleZ;
+
+            if (scaleX != 1f || scaleY != 1f || scaleZ != 1f)
+                Mat4f.Scale(matrix, matrix, scaleX, scaleY, scaleZ);
+
+            float rotX = (float)RotationX * GameMath.DEG2RAD;
+            if (rotX != 0)
+                Mat4f.RotateX(matrix, matrix, rotX);
+
+            float rotY = (float)RotationY * GameMath.DEG2RAD;
+            if (rotY != 0)
+                Mat4f.RotateY(matrix, matrix, rotY);
+
+            float rotZ = (float)RotationZ * GameMath.DEG2RAD;
+            if (rotZ != 0)
+                Mat4f.RotateZ(matrix, matrix, rotZ);
+
+            float tx = -origin0 + (float)From[0] / 16f;
+            float ty = -origin1 + (float)From[1] / 16f;
+            float tz = -origin2 + (float)From[2] / 16f;
+
+            if (tx != 0f || ty != 0f || tz != 0f)
+                Mat4f.Translate(matrix, matrix, tx, ty, tz);
+        }
+
+        /// <summary>
+        /// Applies transformation tf to version 1 matrix
+        /// </summary>
+        private void ApplyTfToMatrixV1(float[] matrix, ElementPose tf)
+        {
+            // Apply translation
+            if (tf.translateX != 0f || tf.translateY != 0f || tf.translateZ != 0f)
+                Mat4f.Translate(matrix, matrix, tf.translateX, tf.translateY, tf.translateZ);
+
+            // Apply scaling
+            if (tf.scaleX != 1f || tf.scaleY != 1f || tf.scaleZ != 1f)
+                Mat4f.Scale(matrix, matrix, tf.scaleX, tf.scaleY, tf.scaleZ);
+
+            // Apply rotation
+            float rotX = (float)(tf.degX + tf.degOffX) * GameMath.DEG2RAD;
+            if (rotX != 0)
+                Mat4f.RotateX(matrix, matrix, rotX);
+
+            float rotY = (float)(tf.degY + tf.degOffY) * GameMath.DEG2RAD;
+            if (rotY != 0)
+                Mat4f.RotateY(matrix, matrix, rotY);
+
+            float rotZ = (float)(tf.degZ + tf.degOffZ) * GameMath.DEG2RAD;
+            if (rotZ != 0)
+                Mat4f.RotateZ(matrix, matrix, rotZ);
+        }
+
+        /// <summary>
+        /// Calculates version 0 matrix with tf transformations
+        /// </summary>
+        private void ComputeMatrixV0WithTf(float[] output, ElementPose tf)
+        {
+            float origin0 = 0f, origin1 = 0f, origin2 = 0f;
+            if (RotationOrigin != null)
+            {
+                origin0 = (float)RotationOrigin[0] / 16f;
+                origin1 = (float)RotationOrigin[1] / 16f;
+                origin2 = (float)RotationOrigin[2] / 16f;
+            }
+
+            Mat4f.Identity(output);
+
+            if (origin0 != 0f || origin1 != 0f || origin2 != 0f)
+                Mat4f.Translate(output, output, origin0, origin1, origin2);
+
+            float rotX = (float)(RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD;
+            if (rotX != 0)
+                Mat4f.RotateX(output, output, rotX);
+
+            float rotY = (float)(RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD;
+            if (rotY != 0)
+                Mat4f.RotateY(output, output, rotY);
+
+            float rotZ = (float)(RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD;
+            if (rotZ != 0)
+                Mat4f.RotateZ(output, output, rotZ);
+
+            float scaleX = (float)ScaleX * tf.scaleX;
+            float scaleY = (float)ScaleY * tf.scaleY;
+            float scaleZ = (float)ScaleZ * tf.scaleZ;
+
+            if (scaleX != 1f || scaleY != 1f || scaleZ != 1f)
+                Mat4f.Scale(output, output, scaleX, scaleY, scaleZ);
+
+            float tx = (float)From[0] / 16f + tf.translateX - origin0;
+            float ty = (float)From[1] / 16f + tf.translateY - origin1;
+            float tz = (float)From[2] / 16f + tf.translateZ - origin2;
+
+            if (tx != 0f || ty != 0f || tz != 0f)
+                Mat4f.Translate(output, output, tx, ty, tz);
+        }
+
+
+        /// <summary>
+        /// Clones the element while preserving cache
+        /// </summary>
         public ShapeElement Clone()
         {
             ShapeElement elem = new ShapeElement()
@@ -388,7 +569,13 @@ namespace Vintagestory.API.Common
                 ScaleX = ScaleX,
                 ScaleY = ScaleY,
                 ScaleZ = ScaleZ,
-                Name = Name
+                Name = Name,
+
+                // Copy cache
+                _cachedBaseMatrixV0 = (float[])_cachedBaseMatrixV0?.Clone(),
+                _cachedBaseMatrixV1 = (float[])_cachedBaseMatrixV1?.Clone(),
+
+                _isCacheDirty = _isCacheDirty
             };
 
             var Children = this.Children;
@@ -404,7 +591,6 @@ namespace Vintagestory.API.Common
             }
 
             return elem;
-
         }
 
         public void SetJointIdRecursive(int jointId)
