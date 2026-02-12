@@ -397,38 +397,50 @@ namespace Vintagestory.API.MathTools
         /// <param name="a">{mat4} a the first operand</param>
         /// <param name="b">{mat4} b the second operand</param>
         /// <returns>{mat4} out</returns>
-        public static float[] Multiply(float[] output, float[] a, float[] b)
+        public static unsafe float[] Multiply(float[] output, float[] a, float[] b)
         {
-            float a00 = a[0]; float a01 = a[1]; float a02 = a[2]; float a03 = a[3];
-            float a10 = a[4]; float a11 = a[5]; float a12 = a[6]; float a13 = a[7];
-            float a20 = a[8]; float a21 = a[9]; float a22 = a[10]; float a23 = a[11];
-            float a30 = a[12]; float a31 = a[13]; float a32 = a[14]; float a33 = a[15];
+        // Use unsafe for direct memory access
+        fixed (float* pa = a, pb = b, pout = output)
+          {
+          // Cache rows of matrix A
+          float a00 = pa[0], a01 = pa[1], a02 = pa[2], a03 = pa[3];
+         float a10 = pa[4], a11 = pa[5], a12 = pa[6], a13 = pa[7];
+         float a20 = pa[8], a21 = pa[9], a22 = pa[10], a23 = pa[11];
+         float a30 = pa[12], a31 = pa[13], a32 = pa[14], a33 = pa[15];
 
-            // Cache only the current line of the second matrix
-            float b0 = b[0]; float b1 = b[1]; float b2 = b[2]; float b3 = b[3];
-            output[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-            output[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-            output[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-            output[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+         // Optimized multiplication using pointers
+         float* bPtr = pb;
+         float* outPtr = pout;
 
-            b0 = b[4]; b1 = b[5]; b2 = b[6]; b3 = b[7];
-            output[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-            output[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-            output[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-            output[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+         // Row 0
+         float b0 = bPtr[0], b1 = bPtr[1], b2 = bPtr[2], b3 = bPtr[3];
+         outPtr[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+         outPtr[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+         outPtr[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+         outPtr[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
 
-            b0 = b[8]; b1 = b[9]; b2 = b[10]; b3 = b[11];
-            output[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-            output[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-            output[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-            output[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+         // Row 1
+         b0 = bPtr[4]; b1 = bPtr[5]; b2 = bPtr[6]; b3 = bPtr[7];
+         outPtr[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+         outPtr[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+         outPtr[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+         outPtr[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
 
-            b0 = b[12]; b1 = b[13]; b2 = b[14]; b3 = b[15];
-            output[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-            output[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-            output[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-            output[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
-            return output;
+         // Row 2
+         b0 = bPtr[8]; b1 = bPtr[9]; b2 = bPtr[10]; b3 = bPtr[11];
+         outPtr[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+         outPtr[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+         outPtr[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+         outPtr[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+         // Row 3
+         b0 = bPtr[12]; b1 = bPtr[13]; b2 = bPtr[14]; b3 = bPtr[15];
+         outPtr[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+         outPtr[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+         outPtr[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+         outPtr[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+         }
+        return output;
         }
 
         public static void Mul(Span<float> a, Span<float> b)
@@ -1698,3 +1710,4 @@ namespace Vintagestory.API.MathTools
         }
     }
 }
+
