@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using ProtoBuf;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
@@ -37,6 +38,21 @@ namespace Vintagestory.API.MathTools
         public int Y;
         public int dimension;
 
+        public const int SlotDontCare = -1;
+
+        /// <summary>
+        /// Performs a very fast hashing function on the positional (X, Y, Z, and dimension) parameters. Guaranteed to avoid collisions
+        /// only when the change in any given coordinate is less than 16; do not use it for a cryptographic hash.
+        /// </summary>
+        public ushort FastHash => (ushort)((dimension << 12) + (Y << 8) + (X << 4) + Z);
+
+        [ProtoMember(4), DefaultValue(SlotDontCare)]
+        public int Slot {
+            get => (slot & 0xFFFF) == FastHash ? (slot >> 16) : SlotDontCare;
+            set => slot = (value << 16) | FastHash;
+        }
+        private int slot = SlotDontCare;
+
         public const int DimensionBoundary = GlobalConstants.DimensionSizeInChunks * GlobalConstants.ChunkSize;
 
 
@@ -65,12 +81,14 @@ namespace Vintagestory.API.MathTools
             this.dimension = y / DimensionBoundary;
         }
 
-        public BlockPos(int x, int y, int z, int dim)
+        public BlockPos(int x, int y, int z, int dim) : this(x, y, z, dim, SlotDontCare) { }
+        public BlockPos(int x, int y, int z, int dim, int slot)
         {
             this.X = x;
             this.Y = y;
             this.Z = z;
             this.dimension = dim;
+            this.Slot = slot;
         }
 
         [Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")]
@@ -81,12 +99,14 @@ namespace Vintagestory.API.MathTools
             this.Z = vec.Z;
         }
 
-        public BlockPos(Vec3i vec, int dim)
+        public BlockPos(Vec3i vec, int dim) : this(vec, dim, SlotDontCare) { }
+        public BlockPos(Vec3i vec, int dim, int slot)
         {
             this.X = vec.X;
             this.Y = vec.Y;
             this.Z = vec.Z;
             this.dimension = dim;
+            this.Slot = slot;
         }
 
         /// <summary>
@@ -100,14 +120,14 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// 0 = x, 1 = y, 2 = z
+        /// 0 = x, 1 = y, 2 = z, 3 = dimension, 4 = slot
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
         public int this[int i]
         {
-            get { return i == 0 ? X : i == 1 ? Y : i == 2 ? Z : dimension; }
-            set { if (i == 0) X = value; else if (i == 1) Y = value; else if (i == 2) Z = value; else dimension = value; }
+            get { return i == 0 ? X : i == 1 ? Y : i == 2 ? Z : i == 3 ? dimension : Slot; }
+            set { if (i == 0) X = value; else if (i == 1) Y = value; else if (i == 2) Z = value; else if (i == 3) dimension = value; else Slot = value; }
         }
 
         /// <summary>
@@ -118,6 +138,7 @@ namespace Vintagestory.API.MathTools
         public BlockPos Up(int dy = 1)
         {
             Y += dy;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -129,6 +150,7 @@ namespace Vintagestory.API.MathTools
         public BlockPos Down(int dy = 1)
         {
             Y -= dy;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -142,6 +164,7 @@ namespace Vintagestory.API.MathTools
             X = (int)origin.X;
             Y = (int)origin.Y;
             Z = (int)origin.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -150,6 +173,7 @@ namespace Vintagestory.API.MathTools
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -158,6 +182,7 @@ namespace Vintagestory.API.MathTools
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -181,6 +206,7 @@ namespace Vintagestory.API.MathTools
             Y = (int)origin.Y % DimensionBoundary;
             Z = (int)origin.Z;
             dimension = (int)origin.Y / DimensionBoundary;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -197,6 +223,7 @@ namespace Vintagestory.API.MathTools
             Y = y % DimensionBoundary;
             Z = z;
             dimension = y / DimensionBoundary;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -214,6 +241,7 @@ namespace Vintagestory.API.MathTools
             X = x;
             Y = y;
             Z = z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -222,6 +250,7 @@ namespace Vintagestory.API.MathTools
             X = (int)x;
             Y = (int)y;
             Z = (int)z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -230,6 +259,7 @@ namespace Vintagestory.API.MathTools
             X = blockPos.X;
             Y = blockPos.Y;
             Z = blockPos.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -248,6 +278,12 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public BlockPos SetSlot(int slot)
+        {
+            this.slot = slot;
+            return this;
+        }
+
         /// <summary>
         /// Sets this BlockPos to the x,y,z values given, and returns a boolean stating if the existing values were already equal to x,y,z
         /// </summary>
@@ -261,9 +297,11 @@ namespace Vintagestory.API.MathTools
             X = x;
             Y = y;
             Z = z;
+            Slot = SlotDontCare;
             return false;
         }
 
+        // this does not preserve slot, as it's only used for particles
         public void ToBytes(BinaryWriter writer)
         {
             writer.Write(X);
@@ -285,6 +323,7 @@ namespace Vintagestory.API.MathTools
         public BlockPos West()
         {
             X -= 1;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -296,18 +335,21 @@ namespace Vintagestory.API.MathTools
         public BlockPos North()
         {
             Z -= 1;
+            Slot = SlotDontCare;
             return this;
         }
 
         public BlockPos East()
         {
             X += 1;
+            Slot = SlotDontCare;
             return this;
         }
 
         public BlockPos South()
         {
             Z += 1;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -410,7 +452,7 @@ namespace Vintagestory.API.MathTools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual BlockPos Copy()
         {
-            return new BlockPos(X, Y, Z, dimension);
+            return new BlockPos(X, Y, Z, dimension, Slot);
         }
 
 
@@ -421,7 +463,7 @@ namespace Vintagestory.API.MathTools
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual BlockPos CopyAndCorrectDimension()
         {
-            return new BlockPos(X, Y % DimensionBoundary, Z, dimension + Y / DimensionBoundary);
+            return new BlockPos(X, Y % DimensionBoundary, Z, dimension + Y / DimensionBoundary, Slot);
         }
 
 
@@ -440,6 +482,7 @@ namespace Vintagestory.API.MathTools
             X += (int)dx;
             Y += (int)dy;
             Z += (int)dz;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -457,6 +500,7 @@ namespace Vintagestory.API.MathTools
             X += dx;
             Y += dy;
             Z += dz;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -471,6 +515,7 @@ namespace Vintagestory.API.MathTools
             X += vector.X;
             Y += vector.Y;
             Z += vector.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -485,6 +530,7 @@ namespace Vintagestory.API.MathTools
             X += vector.X;
             Y += vector.Y;
             Z += vector.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -500,6 +546,7 @@ namespace Vintagestory.API.MathTools
             X += pos.X;
             Y += pos.Y;
             Z += pos.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -517,6 +564,7 @@ namespace Vintagestory.API.MathTools
             X += faceNormals.X * length;
             Y += faceNormals.Y * length;
             Z += faceNormals.Z * length;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -532,6 +580,7 @@ namespace Vintagestory.API.MathTools
             X += faceNormals.X;
             Y += faceNormals.Y;
             Z += faceNormals.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -618,6 +667,7 @@ namespace Vintagestory.API.MathTools
             X -= pos.X;
             Y -= pos.Y;
             Z -= pos.Z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -634,6 +684,7 @@ namespace Vintagestory.API.MathTools
             X -= x;
             Y -= y;
             Z -= z;
+            Slot = SlotDontCare;
             return this;
         }
 
@@ -865,22 +916,22 @@ namespace Vintagestory.API.MathTools
 
         public override string ToString()
         {
-            return X + ", " + Y + ", " + Z + (dimension > 0 ? " : " + dimension : "");
+            return X + ", " + Y + ", " + Z + (Slot != SlotDontCare ? " / " + Slot : "") + (dimension > 0 ? " : " + dimension : "");
         }
 
         public override bool Equals(object obj)
         {
-            return (obj is BlockPos pos) && X == pos.X && Y == pos.Y && Z == pos.Z && dimension == pos.dimension;
+            return (obj is BlockPos pos) && X == pos.X && Y == pos.Y && Z == pos.Z && dimension == pos.dimension && Slot == pos.Slot;
         }
 
         public override int GetHashCode()
         {
-            return ((17 * 23 + X) * 23 + Y) * 23 + Z + dimension * 269023;
+            return ((17 * 23 + X) * 23 + Y) * 23 + Z + dimension * 269023 + Slot * 613849;
         }
 
         public bool Equals(BlockPos other)
         {
-            return other != null && X == other.X && Y == other.Y && Z == other.Z && dimension == other.dimension;
+            return other != null && X == other.X && Y == other.Y && Z == other.Z && dimension == other.dimension && Slot == other.Slot;
         }
 
         public bool Equals(int x, int y, int z)
