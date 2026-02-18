@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Claims;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -241,9 +240,9 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         int variantCodeIndexDivider = 1;
         foreach ((string variantCode, HashSet<string> variantsSet) in nameToCodeMapping)
         {
-            string[] variants = variantsSet.ToArray();
+            if (variantsSet.Count == 0) continue;
 
-            if (variants.Length == 0) continue;
+            string[] variants = variantsSet.ToArray();
 
             for (int i = 0; i < variantsCombinations; i++)
             {
@@ -271,24 +270,12 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
             first = false;
         }
 
-        // Prevents from using Collectible.GetTags(ItemStack), but resolves all TagsOnly ingredients recuing amount of matching needed for recipes during gameplay
-        try
+        if (RecipeIngredients.Any(ingredient => ingredient.MatchingType == EnumRecipeMatchType.TagsOnly))
         {
-            if (RecipeIngredients.Any(ingredient => ingredient.MatchingType == EnumRecipeMatchType.TagsOnly))
-            {
-                IRecipeBase[] result = subRecipes.SelectMany(recipe => GenerateRecipesForTagOnlyIngredients(world, recipe)).ToArray();
-
-                return FilterOutRecipesWithExactIngredientsThatDontMatchTags(result, world);
-            }
-        }
-        catch (Exception exception)
-        {
-            //world.Logger.Warning($"Failed resolving tags for recipe '{Name}', will skip generating recipes for each tag match, and instead will match them during gameplay.");
-            world.Logger.VerboseDebug($"Failed resolving tags for recipe '{Name}', will skip generating recipes for each tag match, and instead will match them during gameplay.\nException: {exception}");
+            return subRecipes.SelectMany(recipe => GenerateRecipesForTagOnlyIngredients(world, recipe));
         }
 
-
-        return FilterOutRecipesWithExactIngredientsThatDontMatchTags(subRecipes, world);
+        return subRecipes;
     }
 
     public virtual void GenerateOutputStack(ItemSlot[] inputSlots, ItemSlot outputSlot)
@@ -349,47 +336,6 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
     }
 
 
-
-    static public bool IsAdvancedWildcard(string code)
-    {
-        return code.Contains('{') && code.Contains('}');
-    }
-
-    static public bool IsBasicWildcard(string code)
-    {
-        return code.Contains('*');
-    }
-
-    static public bool IsRegex(string code)
-    {
-        return code.StartsWith('@');
-    }
-
-    static public bool IsExactMatch(string code)
-    {
-        return !IsAdvancedWildcard(code) && !IsBasicWildcard(code) && !IsRegex(code);
-    }
-
-    static public EnumRecipeMatchType GetMatchType(string? code, bool named = false)
-    {
-        if (code == null || code == "*:*")
-        {
-            return EnumRecipeMatchType.TagsOnly;
-        }
-
-        bool regex = IsRegex(code);
-        bool advanced = IsAdvancedWildcard(code);
-        bool wildcard = IsBasicWildcard(code);
-
-        return (wildcard, advanced, regex, named) switch
-        {
-            (_, _, true, _) => EnumRecipeMatchType.Regex,
-            (_, true, false, _) => EnumRecipeMatchType.AdvancedWildcard,
-            (true, false, false, true) => EnumRecipeMatchType.NamedWildcard,
-            (true, false, false, false) => EnumRecipeMatchType.Wildcard,
-            _ => EnumRecipeMatchType.Exact
-        };
-    }
 
     static public string ReplaceVariantsToRegex(string value, out List<string> variants, Dictionary<string, string>? allowedVariants = null)
     {
@@ -454,7 +400,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
 
         foreach (IRecipeIngredient ingredient in RecipeIngredients)
         {
-            ingredient.MatchingType = GetMatchType(ingredient.Code?.ToString(), ingredient.Name != null);
+            ingredient.MatchingType = IRecipeIngredient.GetMatchType(ingredient.Code?.ToString(), ingredient.Name != null);
 
             switch (ingredient.MatchingType)
             {
@@ -684,12 +630,12 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
                 {
                     ingredient.FillPlaceHolder(variantCode, variantValue);
                     ingredient.Code.Path = ingredient.Code.Path.Replace("*", variantValue);
-                    ingredient.MatchingType = GetMatchType(ingredient.Code.ToString(), false);
+                    ingredient.MatchingType = IRecipeIngredient.GetMatchType(ingredient.Code.ToString(), false);
                 }
                 break;
             case EnumRecipeMatchType.AdvancedWildcard:
                 ingredient.FillPlaceHolder(variantCode, variantValue);
-                ingredient.MatchingType = GetMatchType(ingredient.Code.ToString(), false);
+                ingredient.MatchingType = IRecipeIngredient.GetMatchType(ingredient.Code.ToString(), false);
                 break;
             case EnumRecipeMatchType.Exact:
             case EnumRecipeMatchType.Wildcard:
@@ -876,7 +822,8 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
                 found =
                     ingredient.Type == inputStack.Class &&
                     WildcardUtil.Match(ingredient.Code, inputStack.Collectible.Code, ingredient.AllowedVariants) &&
-                    inputStack.StackSize >= ingredient.Quantity;
+                    inputStack.StackSize >= ingredient.Quantity &&
+                    ingredient.Tags.Matches(inputStack.Collectible.Tags);
 
                 found &= inputStack.Collectible.MatchesForCrafting(inputStack, this, ingredient);
             }
@@ -976,7 +923,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         IRecipeIngredient? ingredient = wildcardAndToolIngredients
             .Find(ingredient => ingredient.Type == inputStack.Class && WildcardUtil.Match(ingredient.Code, inputStack.Collectible.Code, ingredient.AllowedVariants));
 
-        if (ingredient == null || ingredient.ResolvedItemStack == null) return;
+        if (ingredient == null) return;
 
         int quantity = Math.Min(ingredient.Quantity, inputStack.StackSize);
 
@@ -999,92 +946,79 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
 
     protected virtual IEnumerable<IRecipeBase> GenerateRecipesForTagOnlyIngredients(IWorldAccessor world, IRecipeBase recipe)
     {
-        IEnumerable<IRecipeBase> result = [recipe];
-        IRecipeBase? recipeToProcess = result.FirstOrDefault(resultRecipe => resultRecipe.RecipeIngredients.Any(ingredient => ingredient.MatchingType == EnumRecipeMatchType.TagsOnly));
-        while (recipeToProcess != null)
+        var concreteIngredientsMap = new Dictionary<string, List<IRecipeIngredient>>();
+        foreach (IRecipeIngredient ingredient in recipe.RecipeIngredients.Where(ingredient => ingredient.MatchingType == EnumRecipeMatchType.TagsOnly))
         {
-            IRecipeIngredient? ingredientToProcess = recipeToProcess.RecipeIngredients.FirstOrDefault(ingredient => ingredient.MatchingType == EnumRecipeMatchType.TagsOnly);
+            var concreteIngredients = FindConcreteIngredientsForTagOnlyIngredient(world, ingredient).ToList();
+            concreteIngredientsMap.Add(ingredient.Id, concreteIngredients);
+        }
 
-            if (ingredientToProcess == null)
+        const int COMBINATORIAL_LIMIT = 100;
+        var totalCombinations = 1;
+        foreach (var (id, validIngredients) in concreteIngredientsMap)
+        {
+            if (validIngredients.Count == 0)
             {
-                break;
+                world.Logger.VerboseDebug("Ingredient {0} on {1} has no valid concrete ingredients, cannot generate permutations.", id, recipe.Name);
+                return [recipe];
             }
 
-            result = result.Except([recipeToProcess]).Concat(GenerateRecipesForTagOnlyIngredient(world, recipeToProcess, ingredientToProcess));
-            const int threshold = 100;
-            if (result.Count() > threshold)
+            totalCombinations *= validIngredients.Count;
+            if (totalCombinations > COMBINATORIAL_LIMIT)
             {
-                string message = $"When trying to resolve tag ingredients, number of resulting combinations exceeded a threshold of {threshold}.";
-                throw new InvalidOperationException(message);
+                world.Logger.VerboseDebug("Generating permutations for {0} would result in {1} concrete generated recipes, which is above the current threshold of {2}. Will match this recipe during gameplay instead.", recipe.Name, totalCombinations, COMBINATORIAL_LIMIT);
+                return [recipe];
+            }
+        }
+
+        world.Logger.VerboseDebug("Generating permutations for  {0} with {1} virtual ingredients into {2} concrete recipes...", recipe.Name, concreteIngredientsMap.Count, totalCombinations);
+        return GeneratePermutations(recipe, concreteIngredientsMap);
+
+        static IEnumerable<IRecipeBase> GeneratePermutations(IRecipeBase recipe, Dictionary<string, List<IRecipeIngredient>> concreteIngredientsMap)
+        {
+            bool hadTagIngredient = false;
+            foreach (IRecipeIngredient tagIngredient in recipe.RecipeIngredients.Where(ingredient => ingredient.MatchingType == EnumRecipeMatchType.TagsOnly))
+            {
+                hadTagIngredient = true;
+
+                var replacements = concreteIngredientsMap[tagIngredient.Id];
+                foreach (IRecipeIngredient concreteIngredient in replacements)
+                {
+                    // Replace the tag only ingred with a concrete version. This will happen repeatedly.
+                    tagIngredient.Code = concreteIngredient.Code;
+                    tagIngredient.Type = concreteIngredient.Type;
+                    tagIngredient.MatchingType = EnumRecipeMatchType.Exact;
+
+                    // Clone the recipe with this ingredient replaced by a concrete one:
+                    IRecipeBase partialRecipe = recipe.CloneAsInterface();
+
+                    // Recurse until all ingredients are de-virtualized:
+                    foreach(IRecipeBase finalRecipe in GeneratePermutations(partialRecipe, concreteIngredientsMap))
+                    {
+                        yield return finalRecipe;
+                    }
+                }
             }
 
-            recipeToProcess = result.FirstOrDefault(resultRecipe => resultRecipe.RecipeIngredients.Any(ingredient => ingredient.MatchingType == EnumRecipeMatchType.TagsOnly));
-        }
-
-        return result;
-    }
-
-    protected virtual IEnumerable<IRecipeBase> GenerateRecipesForTagOnlyIngredient(IWorldAccessor world, IRecipeBase recipe, IRecipeIngredient ingredient)
-    {
-        ingredient.ResolveTags(world);
-
-        IEnumerable<IRecipeIngredient> ingredientsByItems = world.Items
-            .Where(collectible => collectible?.Code != null)
-            .Where(collectible => ingredient.MatchTags(collectible.Tags))
-            .Select(collectible =>
+            if (!hadTagIngredient)
             {
-                IRecipeIngredient newIngredient = (IRecipeIngredient)ingredient.Clone();
-                newIngredient.Code = collectible.Code;
-                newIngredient.Type = collectible.ItemClass;
-                return newIngredient;
-            });
-
-        IEnumerable<IRecipeIngredient> ingredientsByBlocks = world.Items
-            .Where(collectible => collectible?.Code != null)
-            .Where(collectible => ingredient.MatchTags(collectible.Tags))
-            .Select(collectible =>
-            {
-                IRecipeIngredient newIngredient = (IRecipeIngredient)ingredient.Clone();
-                newIngredient.Code = collectible.Code;
-                newIngredient.Type = collectible.ItemClass;
-                return newIngredient;
-            });
-
-        return ingredientsByItems.Concat(ingredientsByBlocks).Select(newIngredient =>
-        {
-            IRecipeIngredient oldIngredient = recipe.RecipeIngredients.First(element => element.Id == ingredient.Id);
-            oldIngredient.Code = newIngredient.Code;
-            oldIngredient.Type = newIngredient.Type;
-            oldIngredient.MatchingType = EnumRecipeMatchType.Exact;
-            IRecipeBase newRecipe = recipe.CloneAsInterface();
-            return newRecipe;
-        });
-    }
-
-    protected virtual IEnumerable<IRecipeBase> FilterOutRecipesWithExactIngredientsThatDontMatchTags(IEnumerable<IRecipeBase> recipes, IWorldAccessor world)
-    {
-        return recipes.Where(recipe => !recipe.RecipeIngredients.Any(ingredient => !MatchResolvedStackToIngredientTags(ingredient, world)));
-    }
-
-    protected virtual bool MatchResolvedStackToIngredientTags(IRecipeIngredient ingredient, IWorldAccessor world)
-    {
-        if (ingredient.MatchingType != EnumRecipeMatchType.Exact)
-        {
-            return true;
+                // Fully de-virtualized, return this recipe:
+                yield return recipe;
+            }
         }
 
-        ingredient.Resolve(world, "ResipceBase.MatchResolvedStackToIngredientTags");
-
-        if (ingredient.ResolvedTags == null || !ingredient.ResolvedTags.Any())
+        static IEnumerable<IRecipeIngredient> FindConcreteIngredientsForTagOnlyIngredient(IWorldAccessor world, IRecipeIngredient ingredientSpecification)
         {
-            return true;
+            return world.Items
+                .Where(collectible => collectible?.Code != null)
+                .Where(collectible => ingredientSpecification.Tags.Matches(collectible.Tags))
+                .Select(collectible =>
+                {
+                    IRecipeIngredient newIngredient = (IRecipeIngredient)ingredientSpecification.Clone();
+                    newIngredient.Code = collectible.Code;
+                    newIngredient.Type = collectible.ItemClass;
+                    return newIngredient;
+                });
         }
-
-        if (ingredient.ResolvedItemStack?.Collectible == null)
-        {
-            return false;
-        }
-
-        return ingredient.MatchTags(ingredient.ResolvedItemStack.Collectible.GetTags(ingredient.ResolvedItemStack));
     }
 }

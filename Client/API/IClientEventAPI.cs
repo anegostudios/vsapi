@@ -7,6 +7,7 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
     public delegate void MouseEventDelegate(MouseEvent e);
+    public delegate void MouseWheelEventDelegate(MouseWheelEventArgs e); 
     public delegate void KeyEventDelegate(KeyEvent e);
     public delegate void PlayerEventDelegate(IClientPlayer byPlayer);
 
@@ -296,6 +297,10 @@ namespace Vintagestory.API.Client
         /// Provides low level access to the mouse move event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
         event MouseEventDelegate MouseMove;
+        /// <summary>
+        /// Provides low level access to the mouse wheel move event. If e.Handled is set to true, the event will not be handled by the game
+        /// </summary>
+        event MouseWheelEventDelegate MouseWheelMove;
         /// <summary>
         /// Provides low level access to the key down event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>

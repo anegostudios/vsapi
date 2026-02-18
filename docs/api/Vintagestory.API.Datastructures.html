@@ -147,6 +147,20 @@ otherwise the cache will be updated next time when one of those methods is used<
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.CollectibleTagSetConverter.html">CollectibleTagSetConverter</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/TagSet.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexConditionConverter-1.html">ComplexConditionConverter&lt;TTagSet&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexTagConditionExtensions.html">ComplexTagConditionExtensions</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ComplexTagCondition.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Datastructures.DictionaryExtensions.html">DictionaryExtensions</a></dt>
       <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Dictionary/DictionaryExtensions.cs>Open in GitHub</a></p>
 </dd>
@@ -162,8 +176,8 @@ otherwise the cache will be updated next time when one of those methods is used<
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagGroups.html">EntityTagGroups</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/TagGroups.cs>Open in GitHub</a></p>
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagSetConverter.html">EntityTagSetConverter</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/TagSetFast.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -219,8 +233,8 @@ Can be used to perfrom trilinear interpolation between individual values <a href
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.GeneralTagGroups.html">GeneralTagGroups</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/TagGroups.cs>Open in GitHub</a></p>
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.GenericComplexConditionConverter.html">GenericComplexConditionConverter</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ComplexTagCondition.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -360,7 +374,17 @@ If two elements return 0 from 'CompareTo' call, they are treated as equal.</p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html">TagGroups&lt;TTagSet&gt;</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagRegistry.html">TagRegistry</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ITagRegistry.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagRegistryException.html">TagRegistryException</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ITagRegistry.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSetConverter-1.html">TagSetConverter&lt;TTagSet&gt;</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
@@ -392,31 +416,23 @@ If two elements return 0 from 'CompareTo' call, they are treated as equal.</p>
 Structs
 </h3>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.CachedSortedSet-1.html">CachedSortedSet&lt;TElement&gt;</a></dt>
-      <dd><p>Collection of unique ordered elements sorted in ascending order.<br>
-Thread-safe.<br>
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition&lt;TTagSet&gt;</a></dt>
+      <dd><p>Holds a complex tag condition, either as a set of disjunctive entries ([a and b and c] or [d and e])
+or as a set of conjunctive entries ([a or b or c] and [d or e]).<br>
+In both cases each of the inner sets can also have a set of forbidden tags that is always disjunctive.<br>
 <br>
-Pros:<br></p>
-<ul>
-<li>no memory overhead<br></li>
-<li>fast to compare (O(1))<br></li>
-<li>fast to compare via set operations<br></li>
-<li>fast to iterate<br></li>
-<li>fast to check containment<br></li>
-<li>cheap to copy and pass around<br>
-<br>
-Cons:<br></li>
-<li>slow to construct<br></li>
-<li>slow to merge via set operations<br></li>
-</ul>
+The syntax for using these in json follows one simple rule: If no junction verb is specified, the group is treated as conjunctive (a and b and c)<br>
+[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;]<br>
+[[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;]]<br>
+[[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], (or) { allOf: [&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }]<br>
+{ allOf: [&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }<br>
+{ anyOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }<br>
+{ anyOf: [[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], { allOf: [&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }] }<br>
+{ allOf: [[&quot;anyOf&quot;, &quot;of&quot;, &quot;these&quot;], (and) { anyOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }] }<br></p>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagSet.html">EntityTagSet</a></dt>
-      <dd></dd>
-    </dl>
-    <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.FixedSizeBitSet.html">FixedSizeBitSet</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.Condition.html">ComplexTagCondition&lt;TTagSet&gt;.Condition</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
@@ -425,11 +441,11 @@ Cons:<br></li>
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition&lt;TTagSet&gt;</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSetFast.html">TagSetFast</a></dt>
       <dd></dd>
     </dl>
     <h3 id="interfaces">
@@ -450,6 +466,10 @@ Interfaces
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.ITagRegistry-1.html">ITagRegistry&lt;TTagSet&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></dt>
       <dd><p>Represents a List of nestable Attributes</p>
 </dd>
@@ -460,6 +480,16 @@ Enums
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Datastructures.EnumAttributeType.html">EnumAttributeType</a></dt>
       <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/AttributeTree/Other/EnumAttributeType.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagRegistryError.html">TagRegistryError</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ITagRegistry.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagValidationError.html">TagValidationError</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ITagRegistry.cs>Open in GitHub</a></p>
 </dd>
     </dl>
 

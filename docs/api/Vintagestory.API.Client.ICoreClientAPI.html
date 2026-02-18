@@ -136,7 +136,10 @@ Interface ICoreClientAPI
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ModLoader">ICoreAPI.ModLoader</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_TagsManager">ICoreAPI.TagsManager</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_CollectibleTagRegistry">ICoreAPI.CollectibleTagRegistry</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_EntityTagRegistry">ICoreAPI.EntityTagRegistry</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_">ICoreAPI.RegisterEntityClass(string, EntityProperties)</a>
@@ -756,6 +759,38 @@ Interface ICoreClientAPI
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Client.LinkTextComponent.html">LinkTextComponent</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_ICoreClientAPI_LoadedGuis_" data-uid="Vintagestory.API.Client.ICoreClientAPI.LoadedGuis*"></a>
+
+  <h3 id="Vintagestory_API_Client_ICoreClientAPI_LoadedGuis" data-uid="Vintagestory.API.Client.ICoreClientAPI.LoadedGuis">
+  LoadedGuis
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loaded GUI objects. Needed for hotkey replacement in hidden HUDs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;object&gt; LoadedGuis { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
     <dd></dd>
   </dl>
 

@@ -151,6 +151,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         IEnumerable<object> OpenedGuis { get; }
 
+        /// <summary>
+        /// Loaded GUI objects. Needed for hotkey replacement in hidden HUDs.
+        /// </summary>
+        IEnumerable<object> LoadedGuis { get; }
 
         /// <summary>
         /// Registers a chat command

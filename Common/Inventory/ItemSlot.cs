@@ -19,7 +19,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         public event ActionConsumable MarkedDirty;
 
-        public virtual IEnumerable<TagCondition<TagSet>> CanStoreTags { get; set; } = [];
+        /// <summary>
+        /// Restrictions on which items can be stored here.
+        /// An item with any of the provided tags is storable.
+        /// An empty set (default) means no restrictions.
+        /// </summary>
+        public virtual TagSet CanStoreTags { get; set; } = new();
 
 
         /// <summary>
@@ -110,11 +115,11 @@ namespace Vintagestory.API.Common
 
             bool flagsok = (sourceStack.Collectible.GetStorageFlags(sourceStack) & StorageType) > 0;
 
-            if (CanStoreTags.Any())
+            if (!CanStoreTags.IsEmpty)
             {
-                TagSet collectibleTags = sourceStack.Collectible.GetTags(sourceStack);
+                TagSet itemTags = sourceStack.Collectible.GetTags(sourceStack);
 
-                if (!TagCondition<TagSet>.SupersetOfAtLeastOne(collectibleTags, CanStoreTags))
+                if (!itemTags.Overlaps(CanStoreTags))
                 {
                     return false;
                 }
@@ -132,11 +137,11 @@ namespace Vintagestory.API.Common
         {
             if (inventory?.PutLocked == true) return false;
 
-            if (CanStoreTags.Any() && sourceSlot?.itemstack != null)
+            if (!CanStoreTags.IsEmpty && sourceSlot?.itemstack != null)
             {
-                TagSet collectibleTags = sourceSlot.itemstack.Collectible.GetTags(sourceSlot.itemstack);
+                TagSet itemTags = sourceSlot.itemstack.Collectible.GetTags(sourceSlot.itemstack);
 
-                if (!TagCondition<TagSet>.SupersetOfAtLeastOne(collectibleTags, CanStoreTags))
+                if (!itemTags.Overlaps(CanStoreTags))
                 {
                     return false;
                 }

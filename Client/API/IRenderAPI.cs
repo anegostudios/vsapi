@@ -325,6 +325,47 @@ namespace Vintagestory.API.Client
         /// <param name="enable"></param>
         void GlScissorFlag(bool enable);
 
+        /// <summary>
+        /// Enables stencil testing
+        /// </summary>
+        void GlEnableStencilTest();
+
+        /// <summary>
+        /// Disables stencil testing
+        /// </summary>
+        void GlDisableStencilTest();
+
+        /// <summary>
+        /// Controls which stencil bits can be written
+        /// </summary>
+        /// <param name="mask">Bitmask to enable/disable writing of stencil bits</param>
+        void GlStencilMask(int mask);
+
+        /// <summary>
+        /// Sets the stencil test function
+        /// </summary>
+        /// <param name="func">Stencil function (e.g. GL_ALWAYS=519, GL_EQUAL=514, GL_NOTEQUAL=517)</param>
+        /// <param name="refVal">Reference value for the stencil test</param>
+        /// <param name="mask">Mask that is ANDed with both the reference and stored stencil value</param>
+        void GlStencilFunc(int func, int refVal, int mask);
+
+        /// <summary>
+        /// Sets the stencil test actions
+        /// </summary>
+        /// <param name="sfail">Action when stencil test fails (e.g. GL_KEEP=7680, GL_REPLACE=7681)</param>
+        /// <param name="dpfail">Action when stencil passes but depth fails</param>
+        /// <param name="dppass">Action when both stencil and depth pass</param>
+        void GlStencilOp(int sfail, int dpfail, int dppass);
+
+        /// <summary>
+        /// Enable or disable writing to the color buffer channels
+        /// </summary>
+        void GlColorMask(bool r, bool g, bool b, bool a);
+
+        /// <summary>
+        /// Clears the stencil buffer
+        /// </summary>
+        void GlClearStencil();
 
 
         #endregion

@@ -71,11 +71,7 @@ public interface IRecipeIngredient : IByteSerializable, ICloneable
 
     ItemStack? ResolvedItemStack { get; set; }
 
-    void ResolveTags(IWorldAccessor world);
-
-    bool MatchTags(TagSet tags);
-
-    IEnumerable<TagCondition<TagSet>>? ResolvedTags { get; }
+    ComplexTagCondition<TagSet> Tags { get; set; }
 
     RecipeIngredientConsumeProperties ConsumeProperties { get; }
 
@@ -84,6 +80,44 @@ public interface IRecipeIngredient : IByteSerializable, ICloneable
     void FillPlaceHolder(string key, string value);
 
     bool Resolve(IWorldAccessor world, string sourceForErrorLogging);
+
+
+
+    static public bool IsAdvancedWildcard(string code)
+    {
+        return code.Contains('{') && code.Contains('}');
+    }
+
+    static public bool IsBasicWildcard(string code)
+    {
+        return code.Contains('*');
+    }
+
+    static public bool IsRegex(string code)
+    {
+        return code.StartsWith('@');
+    }
+
+    static public EnumRecipeMatchType GetMatchType(string? code, bool named = false)
+    {
+        if (code == null || code == "*:*")
+        {
+            return EnumRecipeMatchType.TagsOnly;
+        }
+
+        bool regex = IsRegex(code);
+        bool advanced = IsAdvancedWildcard(code);
+        bool wildcard = IsBasicWildcard(code);
+
+        return (wildcard, advanced, regex, named) switch
+        {
+            (_, _, true, _) => EnumRecipeMatchType.Regex,
+            (_, true, false, _) => EnumRecipeMatchType.AdvancedWildcard,
+            (true, false, false, true) => EnumRecipeMatchType.NamedWildcard,
+            (true, false, false, false) => EnumRecipeMatchType.Wildcard,
+            _ => EnumRecipeMatchType.Exact
+        };
+    }
 }
 
 public interface IRecipeOutput : IByteSerializable, ICloneable

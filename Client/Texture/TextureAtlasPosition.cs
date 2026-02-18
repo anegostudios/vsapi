@@ -50,7 +50,11 @@ namespace Vintagestory.API.Client
 
         public TextureAtlasPosition Clone()
         {
-            return new TextureAtlasPosition() { atlasTextureId = atlasTextureId, atlasNumber = atlasNumber, reloadIteration = reloadIteration, AvgColor = AvgColor, RndColors = RndColors, x1 = x1, y1 = y1, x2 = x2, y2 = y2 };
+            return new TextureAtlasPosition() {
+                atlasTextureId = atlasTextureId, atlasNumber = atlasNumber,
+                reloadIteration = reloadIteration, AvgColor = AvgColor, RndColors = RndColors,
+                x1 = x1, y1 = y1, x2 = x2, y2 = y2
+            };
         }
 
         /// <summary>

@@ -174,7 +174,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Needed for tongs
         /// </summary>
-        public static int TooHotToTouchTemperature = 100;
+        public static int TooHotToTouchTemperature = 250; // Don't put below 200 - that is the temperature of a cooking pot. 
 
         public static int CollectibleDefaultTemperature = 20;
 

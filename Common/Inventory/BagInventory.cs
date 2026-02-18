@@ -68,11 +68,10 @@ namespace Vintagestory.API.Common
         EnumItemStorageFlags GetStorageFlags(ItemStack bagstack);
 
         /// <summary>
-        /// The types of items that can be stored in this bag
+        /// The types of items that can be stored in this bag.
+        /// Items with any of the tags are storable.
         /// </summary>
-        /// <param name="bagstack"></param>
-        /// <returns></returns>
-        IEnumerable<TagCondition<TagSet>> GetStorageTags(ItemStack bagStack, ICoreAPI api);
+        TagSet GetStorageTags(ItemStack bagStack);
     }
 
     public class ItemSlotBagContent : ItemSlotSurvival

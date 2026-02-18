@@ -101,27 +101,21 @@ Struct TagSet
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly struct TagSet : ITagSet, IHasSetOperations&lt;TagSet&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(CollectibleTagSetConverter))]
+public readonly struct TagSet</code></pre>
   </div>
 
 
 
 
 
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="Vintagestory.API.Common.ITagSet.html">ITagSet</a></div>
-      <div><a class="xref" href="Vintagestory.API.Common.IHasSetOperations-1.html">IHasSetOperations</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</div>
-    </dd>
-  </dl>
 
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
@@ -155,8 +149,8 @@ Struct TagSet
 
   <a id="Vintagestory_API_Datastructures_TagSet__ctor_" data-uid="Vintagestory.API.Datastructures.TagSet.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Datastructures_TagSet__ctor_System_Collections_Generic_IEnumerable_System_UInt16__" data-uid="Vintagestory.API.Datastructures.TagSet.#ctor(System.Collections.Generic.IEnumerable{System.UInt16})">
-  TagSet(IEnumerable&lt;ushort&gt;)
+  <h3 id="Vintagestory_API_Datastructures_TagSet__ctor" data-uid="Vintagestory.API.Datastructures.TagSet.#ctor">
+  TagSet()
   
   </h3>
 
@@ -164,45 +158,9 @@ Struct TagSet
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TagSet(IEnumerable&lt;ushort&gt; indexes)</code></pre>
+    <pre><code class="lang-csharp hljs">public TagSet()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>indexes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet__ctor_" data-uid="Vintagestory.API.Datastructures.TagSet.#ctor*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet__ctor_Vintagestory_API_Datastructures_CachedSortedSet_System_UInt16__" data-uid="Vintagestory.API.Datastructures.TagSet.#ctor(Vintagestory.API.Datastructures.CachedSortedSet{System.UInt16})">
-  TagSet(CachedSortedSet&lt;ushort&gt;)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TagSet(CachedSortedSet&lt;ushort&gt; indexes)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>indexes</code> <a class="xref" href="Vintagestory.API.Datastructures.CachedSortedSet-1.html">CachedSortedSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
-    <dd></dd>
-  </dl>
 
 
 
@@ -249,9 +207,14 @@ Struct TagSet
 
 
 
+  <h2 class="section" id="properties">Properties
+</h2>
 
-  <h3 id="Vintagestory_API_Datastructures_TagSet_Value" data-uid="Vintagestory.API.Datastructures.TagSet.Value">
-  Value
+
+  <a id="Vintagestory_API_Datastructures_TagSet_IsEmpty_" data-uid="Vintagestory.API.Datastructures.TagSet.IsEmpty*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSet_IsEmpty" data-uid="Vintagestory.API.Datastructures.TagSet.IsEmpty">
+  IsEmpty
   
   </h3>
 
@@ -259,18 +222,18 @@ Struct TagSet
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly CachedSortedSet&lt;ushort&gt; Value</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsEmpty { get; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.CachedSortedSet-1.html">CachedSortedSet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
-
 
 
 
@@ -281,81 +244,6 @@ Struct TagSet
 
   <h2 class="section" id="methods">Methods
 </h2>
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_Equals_" data-uid="Vintagestory.API.Datastructures.TagSet.Equals*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_Equals_System_Object_" data-uid="Vintagestory.API.Datastructures.TagSet.Equals(System.Object)">
-  Equals(object?)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd><p>The object to compare with the current instance.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_Except_" data-uid="Vintagestory.API.Datastructures.TagSet.Except*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_Except_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.Except(Vintagestory.API.Datastructures.TagSet)">
-  Except(TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TagSet Except(TagSet array)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
 
 
   <a id="Vintagestory_API_Datastructures_TagSet_FromBytes_" data-uid="Vintagestory.API.Datastructures.TagSet.FromBytes*"></a>
@@ -394,37 +282,6 @@ Struct TagSet
 
 
 
-  <a id="Vintagestory_API_Datastructures_TagSet_GetEmpty_" data-uid="Vintagestory.API.Datastructures.TagSet.GetEmpty*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_GetEmpty" data-uid="Vintagestory.API.Datastructures.TagSet.GetEmpty">
-  GetEmpty()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TagSet GetEmpty()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Datastructures_TagSet_GetHashCode_" data-uid="Vintagestory.API.Datastructures.TagSet.GetHashCode*"></a>
 
   <h3 id="Vintagestory_API_Datastructures_TagSet_GetHashCode" data-uid="Vintagestory.API.Datastructures.TagSet.GetHashCode">
@@ -432,8 +289,7 @@ Struct TagSet
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -444,7 +300,43 @@ Struct TagSet
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagSet_IsFullyContainedIn_" data-uid="Vintagestory.API.Datastructures.TagSet.IsFullyContainedIn*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSet_IsFullyContainedIn_Vintagestory_API_Datastructures_TagSet__" data-uid="Vintagestory.API.Datastructures.TagSet.IsFullyContainedIn(Vintagestory.API.Datastructures.TagSet@)">
+  IsFullyContainedIn(in TagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFullyContainedIn(in TagSet other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if all tags that are active in this instance are also active in the <code class="paramref">other</code> instance, false otherwise.</p>
 </dd>
   </dl>
 
@@ -454,153 +346,17 @@ Struct TagSet
 
 
 
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_Intersect_" data-uid="Vintagestory.API.Datastructures.TagSet.Intersect*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_Intersect_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.Intersect(Vintagestory.API.Datastructures.TagSet)">
-  Intersect(TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TagSet Intersect(TagSet array)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_IsEmpty_" data-uid="Vintagestory.API.Datastructures.TagSet.IsEmpty*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_IsEmpty" data-uid="Vintagestory.API.Datastructures.TagSet.IsEmpty">
-  IsEmpty()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsEmpty()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_IsSubsetOf_" data-uid="Vintagestory.API.Datastructures.TagSet.IsSubsetOf*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_IsSubsetOf_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.IsSubsetOf(Vintagestory.API.Datastructures.TagSet)">
-  IsSubsetOf(TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsSubsetOf(TagSet array)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_IsSupersetOf_" data-uid="Vintagestory.API.Datastructures.TagSet.IsSupersetOf*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_IsSupersetOf_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.IsSupersetOf(Vintagestory.API.Datastructures.TagSet)">
-  IsSupersetOf(TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsSupersetOf(TagSet array)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
+  <h4 class="section" id="Vintagestory_API_Datastructures_TagSet_IsFullyContainedIn_Vintagestory_API_Datastructures_TagSet___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This is NOT symmetrical, meaning a.IsFullyContainedIn(b) != b.IsFullyContainedIn(a) !</p>
+</div>
 
 
 
 
   <a id="Vintagestory_API_Datastructures_TagSet_Overlaps_" data-uid="Vintagestory.API.Datastructures.TagSet.Overlaps*"></a>
 
-  <h3 id="Vintagestory_API_Datastructures_TagSet_Overlaps_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.Overlaps(Vintagestory.API.Datastructures.TagSet)">
-  Overlaps(TagSet)
+  <h3 id="Vintagestory_API_Datastructures_TagSet_Overlaps_Vintagestory_API_Datastructures_TagSet__" data-uid="Vintagestory.API.Datastructures.TagSet.Overlaps(Vintagestory.API.Datastructures.TagSet@)">
+  Overlaps(in TagSet)
   
   </h3>
 
@@ -608,19 +364,20 @@ Struct TagSet
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Overlaps(TagSet array)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Overlaps(in TagSet other)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
     <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p>True if all any of the tags that are active in this instance are also active in the <code class="paramref">other</code> instance, false otherwise.</p>
+</dd>
   </dl>
 
 
@@ -629,150 +386,9 @@ Struct TagSet
 
 
 
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_OverlapsWithEach_" data-uid="Vintagestory.API.Datastructures.TagSet.OverlapsWithEach*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_OverlapsWithEach_System_Collections_Generic_IEnumerable_Vintagestory_API_Datastructures_TagSet__" data-uid="Vintagestory.API.Datastructures.TagSet.OverlapsWithEach(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.TagSet})">
-  OverlapsWithEach(IEnumerable&lt;TagSet&gt;)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool OverlapsWithEach(IEnumerable&lt;TagSet&gt; arrays)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>arrays</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_SetEquals_" data-uid="Vintagestory.API.Datastructures.TagSet.SetEquals*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_SetEquals_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.SetEquals(Vintagestory.API.Datastructures.TagSet)">
-  SetEquals(TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool SetEquals(TagSet array)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_SupersetOfAtLeastOne_" data-uid="Vintagestory.API.Datastructures.TagSet.SupersetOfAtLeastOne*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_SupersetOfAtLeastOne_System_Collections_Generic_IEnumerable_Vintagestory_API_Datastructures_TagSet__" data-uid="Vintagestory.API.Datastructures.TagSet.SupersetOfAtLeastOne(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.TagSet})">
-  SupersetOfAtLeastOne(IEnumerable&lt;TagSet&gt;)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool SupersetOfAtLeastOne(IEnumerable&lt;TagSet&gt; arrays)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>arrays</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_SymmetricExcept_" data-uid="Vintagestory.API.Datastructures.TagSet.SymmetricExcept*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_SymmetricExcept_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.SymmetricExcept(Vintagestory.API.Datastructures.TagSet)">
-  SymmetricExcept(TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TagSet SymmetricExcept(TagSet array)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
+  <h4 class="section" id="Vintagestory_API_Datastructures_TagSet_Overlaps_Vintagestory_API_Datastructures_TagSet___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This is symmetrical, meaning a.Overlaps(b) == b.Overlaps(a) .</p>
+</div>
 
 
 
@@ -808,110 +424,27 @@ Struct TagSet
 
 
 
-  <a id="Vintagestory_API_Datastructures_TagSet_Union_" data-uid="Vintagestory.API.Datastructures.TagSet.Union*"></a>
+  <a id="Vintagestory_API_Datastructures_TagSet_ToString_" data-uid="Vintagestory.API.Datastructures.TagSet.ToString*"></a>
 
-  <h3 id="Vintagestory_API_Datastructures_TagSet_Union_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.Union(Vintagestory.API.Datastructures.TagSet)">
-  Union(TagSet)
+  <h3 id="Vintagestory_API_Datastructures_TagSet_ToString" data-uid="Vintagestory.API.Datastructures.TagSet.ToString">
+  ToString()
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns the fully qualified type name of this instance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TagSet Union(TagSet array)</code></pre>
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>array</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <h2 class="section" id="operators">Operators
-</h2>
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_op_Equality_" data-uid="Vintagestory.API.Datastructures.TagSet.op_Equality*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_op_Equality_Vintagestory_API_Datastructures_TagSet_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.op_Equality(Vintagestory.API.Datastructures.TagSet,Vintagestory.API.Datastructures.TagSet)">
-  operator ==(TagSet, TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator ==(TagSet first, TagSet second)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Datastructures_TagSet_op_Inequality_" data-uid="Vintagestory.API.Datastructures.TagSet.op_Inequality*"></a>
-
-  <h3 id="Vintagestory_API_Datastructures_TagSet_op_Inequality_Vintagestory_API_Datastructures_TagSet_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.op_Inequality(Vintagestory.API.Datastructures.TagSet,Vintagestory.API.Datastructures.TagSet)">
-  operator !=(TagSet, TagSet)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool operator !=(TagSet first, TagSet second)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>first</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-    <dt><code>second</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fully qualified type name.</p>
+</dd>
   </dl>
 
 

@@ -23,8 +23,8 @@ namespace Vintagestory.API.Client
 
         protected IInventory inventory;
 
-        internal Datastructures.OrderedDictionary<int, ItemSlot> availableSlots = new ();
-        internal Datastructures.OrderedDictionary<int, ItemSlot> renderedSlots = new ();
+        public Datastructures.OrderedDictionary<int, ItemSlot> availableSlots = new ();
+        public Datastructures.OrderedDictionary<int, ItemSlot> renderedSlots = new ();
 
         protected int cols;
         protected int rows;
@@ -39,14 +39,14 @@ namespace Vintagestory.API.Client
 
         public LoadedTexture HighlightSlotTexture => highlightSlotTexture;
 
-        protected LoadedTexture slotTexture, highlightSlotTexture;
-        protected LoadedTexture crossedOutTexture;
-        protected LoadedTexture[] slotQuantityTextures;
+        public LoadedTexture slotTexture, highlightSlotTexture;
+        public LoadedTexture crossedOutTexture;
+        public LoadedTexture[] slotQuantityTextures;
 
-        protected GuiElementStaticText textComposer;
+        public GuiElementTextBase textComposer;
 
-        protected int highlightSlotId = -1;
-        protected int hoverSlotId = -1;
+        public int highlightSlotId = -1;
+        public int hoverSlotId = -1;
 
         protected string searchText;
 
@@ -68,7 +68,7 @@ namespace Vintagestory.API.Client
 
         public CanClickSlotDelegate CanClickSlot;
 
-        IInventory hoverInv;
+        public IInventory hoverInv;
 
         public DrawIconDelegate DrawIconHandler;
         public bool AlwaysRenderIcon { get; set; } = false;
@@ -664,7 +664,7 @@ namespace Vintagestory.API.Client
 
         #region Keyboard, Mouse
 
-        int tabbedSlotId=-1;
+        public int tabbedSlotId=-1;
 
         public bool KeyboardControlEnabled = true;
 
@@ -1052,7 +1052,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        internal static void UpdateLastSlotGridFlag(GuiComposer composer)
+        public static void UpdateLastSlotGridFlag(GuiComposer composer)
         {
             Dictionary<IInventory, GuiElementItemSlotGridBase> lastelembyInventory = new Dictionary<IInventory, GuiElementItemSlotGridBase>();
 

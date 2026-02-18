@@ -308,29 +308,8 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-        [Obsolete("Use OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe, ref EnumHandling bhHandling) instead")]
-        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)
-        {
-        }
-
-        [Obsolete("Use OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe, ref EnumHandling bhHandling) instead")]
-        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling bhHandling)
-        {
-#pragma warning disable CS0618 // Type or member is obsolete
-            // Keep this to avoid breaking existing mods that override this method
-            OnCreatedByCrafting(allInputslots, outputSlot, ref bhHandling);
-#pragma warning restore CS0618 // Type or member is obsolete
-        }
-
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe, ref EnumHandling bhHandling)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            // Keep this to avoid breaking existing mods that override this method
-            if (byRecipe is GridRecipe gridRecipe)
-            {
-                OnCreatedByCrafting(allInputSlots, outputSlot, gridRecipe, ref bhHandling);
-            }
-#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         [Obsolete("Use GetMiningSpeed instead")]
@@ -434,7 +413,7 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size, ref EnumHandling handling)
+        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, IRecipeBase recipe, ItemSlot slot, double x, double y, double z, double size, ref EnumHandling handling)
         {
             
         }
@@ -478,7 +457,7 @@ namespace Vintagestory.API.Common
             return false;
         }
 
-        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, GridRecipe matchingRecipe, ref EnumHandling handling)
+        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
             return false;

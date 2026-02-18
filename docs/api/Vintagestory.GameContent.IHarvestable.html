@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ITagRegistry&lt;TTagSet&gt; | VintageStory API </title>
+      <title>Interface IHarvestable | VintageStory API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ITagRegistry&lt;TTagSet&gt; | VintageStory API ">
+      <meta name="title" content="Interface IHarvestable | VintageStory API ">
       
-      
+      <meta name="description" content="Currently only the knife looks for this interface">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,47 +84,33 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Vintagestory.API.Common.ITagRegistry`1">
+        <article data-uid="Vintagestory.GameContent.IHarvestable">
 
 
 
-  <h1 id="Vintagestory_API_Common_ITagRegistry_1" data-uid="Vintagestory.API.Common.ITagRegistry`1" class="text-break">
-Interface ITagRegistry&lt;TTagSet&gt;  
+  <h1 id="Vintagestory_GameContent_IHarvestable" data-uid="Vintagestory.GameContent.IHarvestable" class="text-break">
+Interface IHarvestable  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.GameContent.html">GameContent</a></dd></dl>
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Currently only the knife looks for this interface</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ITagRegistry&lt;TTagSet&gt; : ITagRegistry</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IHarvestable</code></pre>
   </div>
 
 
 
-  <h4 class="section">Type Parameters</h4>
-  <dl class="parameters">
-    <dt><code>TTagSet</code></dt>
-    <dd></dd>
-  </dl>
 
 
 
 
-  <dl class="typelist inheritedMembers">
-    <dt>Inherited Members</dt>
-    <dd>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.ITagRegistry.html#Vintagestory_API_Common_ITagRegistry_RegisterTags_System_String___">ITagRegistry.RegisterTags(params string[])</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.ITagRegistry.html#Vintagestory_API_Common_ITagRegistry_GetAllTags">ITagRegistry.GetAllTags()</a>
-    </div>
-  </dd></dl>
 
   <dl class="typelist extensionMethods">
     <dt>Extension Methods</dt>
@@ -141,14 +127,80 @@ Interface ITagRegistry&lt;TTagSet&gt;
 
 
 
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_GameContent_IHarvestable_HarvestAnimation_" data-uid="Vintagestory.GameContent.IHarvestable.HarvestAnimation*"></a>
+
+  <h3 id="Vintagestory_GameContent_IHarvestable_HarvestAnimation" data-uid="Vintagestory.GameContent.IHarvestable.HarvestAnimation">
+  HarvestAnimation
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string HarvestAnimation { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_GameContent_IHarvestable_HarvestableSound_" data-uid="Vintagestory.GameContent.IHarvestable.HarvestableSound*"></a>
+
+  <h3 id="Vintagestory_GameContent_IHarvestable_HarvestableSound" data-uid="Vintagestory.GameContent.IHarvestable.HarvestableSound">
+  HarvestableSound
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">AssetLocation HarvestableSound { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
 
-  <a id="Vintagestory_API_Common_ITagRegistry_1_GetTagSet_" data-uid="Vintagestory.API.Common.ITagRegistry`1.GetTagSet*"></a>
+  <a id="Vintagestory_GameContent_IHarvestable_GetHarvestDuration_" data-uid="Vintagestory.GameContent.IHarvestable.GetHarvestDuration*"></a>
 
-  <h3 id="Vintagestory_API_Common_ITagRegistry_1_GetTagSet_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry`1.GetTagSet(System.String[])">
-  GetTagSet(params string[])
+  <h3 id="Vintagestory_GameContent_IHarvestable_GetHarvestDuration_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.GameContent.IHarvestable.GetHarvestDuration(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.Entities.Entity)">
+  GetHarvestDuration(ItemSlot, Entity)
   
   </h3>
 
@@ -156,18 +208,20 @@ Interface ITagRegistry&lt;TTagSet&gt;
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">TTagSet GetTagSet(params string[] tags)</code></pre>
+    <pre><code class="lang-csharp hljs">float GetHarvestDuration(ItemSlot slot, Entity forEntity)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>forEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
     <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><span class="xref">TTagSet</span></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -181,10 +235,10 @@ Interface ITagRegistry&lt;TTagSet&gt;
 
 
 
-  <a id="Vintagestory_API_Common_ITagRegistry_1_GetTags_" data-uid="Vintagestory.API.Common.ITagRegistry`1.GetTags*"></a>
+  <a id="Vintagestory_GameContent_IHarvestable_IsHarvestable_" data-uid="Vintagestory.GameContent.IHarvestable.IsHarvestable*"></a>
 
-  <h3 id="Vintagestory_API_Common_ITagRegistry_1_GetTags__0_" data-uid="Vintagestory.API.Common.ITagRegistry`1.GetTags(`0)">
-  GetTags(TTagSet)
+  <h3 id="Vintagestory_GameContent_IHarvestable_IsHarvestable_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.GameContent.IHarvestable.IsHarvestable(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.Entities.Entity)">
+  IsHarvestable(ItemSlot, Entity)
   
   </h3>
 
@@ -192,20 +246,55 @@ Interface ITagRegistry&lt;TTagSet&gt;
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;string&gt; GetTags(TTagSet array)</code></pre>
+    <pre><code class="lang-csharp hljs">bool IsHarvestable(ItemSlot slot, Entity forEntity)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>array</code> <span class="xref">TTagSet</span></dt>
+    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>forEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
     <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_GameContent_IHarvestable_SetHarvested_" data-uid="Vintagestory.GameContent.IHarvestable.SetHarvested*"></a>
+
+  <h3 id="Vintagestory_GameContent_IHarvestable_SetHarvested_Vintagestory_API_Common_IPlayer_System_Single_" data-uid="Vintagestory.GameContent.IHarvestable.SetHarvested(Vintagestory.API.Common.IPlayer,System.Single)">
+  SetHarvested(IPlayer, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetHarvested(IPlayer byPlayer, float dropQuantityMultiplier = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>dropQuantityMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

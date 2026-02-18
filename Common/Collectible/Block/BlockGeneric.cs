@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
@@ -218,6 +218,59 @@ namespace Vintagestory.API.Common
 
 
             return base.DoPartialSelection(world, pos);
+        }
+
+
+        public override int GetColorWithoutTint(ICoreClientAPI capi, BlockPos pos)
+        {
+            var result = 0;
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                StrongBlockBehavior sbh = behavior as StrongBlockBehavior;
+                if (sbh == null) continue;
+                EnumHandling handled = EnumHandling.PassThrough;
+                var behaviorResult = sbh.GetColorWithoutTint(capi, pos, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result = behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            return base.GetColorWithoutTint(capi, pos);
+        }
+
+        public override int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing, int rndIndex = -1)
+        {
+            var result = 0;
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                StrongBlockBehavior sbh = behavior as StrongBlockBehavior;
+                if (sbh == null) continue;
+
+
+                EnumHandling handled = EnumHandling.PassThrough;
+                var behaviorResult = sbh.GetRandomColor(capi, pos, facing, rndIndex, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result = behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            return base.GetRandomColor(capi, pos, facing, rndIndex);
         }
     }
 }

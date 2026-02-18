@@ -157,8 +157,6 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns the dot product with given vector
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
         public float Dot(Vec3f a)
         {
             return X * a.X + Y * a.Y + Z * a.Z;
@@ -167,8 +165,14 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns the dot product with given vector
         /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+        public float Dot(FastVec3f a)
+        {
+            return X * a.X + Y * a.Y + Z * a.Z;
+        }
+
+        /// <summary>
+        /// Returns the dot product with given vector
+        /// </summary>
         public float Dot(Vec3d a)
         {
             return (float)(X * a.X + Y * a.Y + Z * a.Z);
@@ -177,8 +181,6 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns the dot product with given vector
         /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
         public double Dot(float[] pos)
         {
             return X * pos[0] + Y * pos[1] + Z * pos[2];

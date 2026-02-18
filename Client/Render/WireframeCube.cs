@@ -8,8 +8,8 @@ namespace Vintagestory.Client.NoObf
 {
     public class WireframeCube
     {
-        MeshRef modelRef;
-        Matrixf mvMat = new Matrixf();
+        public MeshRef modelRef;
+        public Matrixf mvMat = new Matrixf();
 
         /// <summary>
         /// Creates a cube mesh with edge points 0/0/0 and 1/1/1

@@ -181,6 +181,11 @@ namespace Vintagestory.API.MathTools
             return pos.X >= MinX && pos.X < MaxX && pos.Y >= MinY && pos.Y < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
         }
 
+        public bool Contains(FastVec3i pos)
+        {
+            return pos.X >= MinX && pos.X < MaxX && pos.Y >= MinY && pos.Y < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
+        }
+
         public bool Contains(IVec3 pos)
         {
             return pos.XAsInt >= MinX && pos.XAsInt < MaxX && pos.YAsInt >= MinY && pos.YAsInt < MaxY && pos.ZAsInt >= MinZ && pos.ZAsInt < MaxZ;

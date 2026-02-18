@@ -145,7 +145,7 @@ namespace Vintagestory.API.Common.Entities
         /// <br/>If set only on server side, 'MarkTagDirty()' should be called to sync value with clients. This will trigger full entity synchronization, which can be performance heavy.
         /// <br/>Tags are not saved into save file, and always loaded from entity type when entity is created. Indexes of tags are dynamically assigned on game start, and are not consistent between saves.
         /// </summary>
-        public EntityTagSet Tags = EntityTagSet.Empty;
+        public TagSetFast Tags = default;
 
         internal bool tagsDirty = false;
 
@@ -2034,7 +2034,7 @@ namespace Vintagestory.API.Common.Entities
 
             if (isSync)
             {
-                Tags = EntityTagSet.FromBytes(reader);
+                Tags = TagSetFast.FromBytes(reader);
 
                 var seatControls = SidedProperties != null ? GetInterface<IMountable>()?.ControllingControls : null;
                 int controlsSerialized = reader.ReadInt32();
@@ -2222,6 +2222,8 @@ namespace Vintagestory.API.Common.Entities
             if (Properties.Sounds != null && Properties.Sounds.TryGetValue(type, out SoundAttributes sound) && sound.Location != null)
             {
                 Properties.ResolvedSounds.TryGetValue(type, out AssetLocation[] locations);
+                if (locations.Length == 0) return;
+
                 sound.Location = locations[World.Rand.Next(locations.Length)]; // Note we can modify this struct with no effects outside this method
                 World.PlaySoundAt(sound, this, dualCallByPlayer);
             }
@@ -2433,16 +2435,16 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            var capi = Api as ICoreClientAPI;
-            if (capi != null && capi.Settings.Bool["extendedDebugInfo"])
+            if (Api is ICoreClientAPI capi && capi.Settings.Bool["extendedDebugInfo"])
             {
                 infotext.AppendLine("<font color=\"#bbbbbb\">Id:" + EntityId + "</font>");
                 infotext.AppendLine("<font color=\"#bbbbbb\">Code: " + Code + "</font>");
 
-                IEnumerable<string> tags = Api.TagsManager.GetEntityTags(Tags).Order();
-                if (tags.Any())
+                var sb = new StringBuilder(1024);
+                sb.AppendJoin(", ", Api.EntityTagRegistry.SlowEnumerateTagNames(this.Tags));
+                if(sb.Length > 0)
                 {
-                    infotext.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
+                    infotext.AppendLine($"<font color=\"#bbbbbb\">Tags: {sb}</font>");
                 }
             }
 
@@ -2534,10 +2536,11 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public void MarkTagsDirty() => tagsDirty = true;
 
+        [Obsolete("Avoid using in favor of matching directly against Tags.")]
         public virtual bool HasTags(params string[] tags)
         {
-            var needle = Api.TagsManager.GetEntityTagSet(tags);
-            return Tags.IsSubsetOf(needle);
+            Api.EntityTagRegistry.TryCreateTagSetAndLogIssues(out var set, tags.AsSpan());
+            return Tags.IsFullyContainedIn(set);
         }
 
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 #nullable disable
 
@@ -106,6 +107,31 @@ namespace Vintagestory.API.MathTools
             return X == other.X && Y == other.Y && Z == other.Z;
         }
 
+        public override bool Equals(object obj)
+        {
+            return (obj is FastVec3i vec) && X == vec.X && Y == vec.Y && Z == vec.Z;
+        }
+
+        public static FastVec3i operator +(FastVec3i left, FastVec3i right)
+        {
+            return new FastVec3i(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
+
+        public static FastVec3i operator +(FastVec3i left, BlockPos right)
+        {
+            return new FastVec3i(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
+
+        public static bool operator ==(FastVec3i left, FastVec3i right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(FastVec3i left, FastVec3i right)
+        {
+            return !(left == right);
+        }
+
         /// <summary>
         /// Returns the length of this vector
         /// </summary>
@@ -122,8 +148,6 @@ namespace Vintagestory.API.MathTools
             this.Z = -Z;
         }
 
-
-
         /// <summary>
         /// Adds given x/y/z coordinates to the vector
         /// </summary>
@@ -136,6 +160,76 @@ namespace Vintagestory.API.MathTools
             this.X += x;
             this.Y += y;
             this.Z += z;
+            return this;
+        }
+
+        /// <summary>
+        /// Offsets the position into the direction of given block face
+        /// </summary>
+        /// <param name="facing"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public FastVec3i Add(BlockFacing facing, int length = 1)
+        {
+            var faceNormals = facing.Normali;
+            X += faceNormals.X * length;
+            Y += faceNormals.Y * length;
+            Z += faceNormals.Z * length;
+            return this;
+        }
+
+        /// <summary>
+        /// Offsets the position by given xyz vector
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public FastVec3i Add(Vec3i vector)
+        {
+            X += vector.X;
+            Y += vector.Y;
+            Z += vector.Z;
+            return this;
+        }
+
+        /// <summary>
+        /// Offsets the position by given xyz vector
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public FastVec3i Add(FastVec3i vector)
+        {
+            X += vector.X;
+            Y += vector.Y;
+            Z += vector.Z;
+            return this;
+        }
+
+        /// <summary>
+        /// Creates a copy of this blocks position and offsets it in the direction of given block face
+        /// </summary>
+        /// <param name="facing"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public FastVec3i AddCopy(BlockFacing facing, int length = 1)
+        {
+            var normali = facing.Normali * length;
+            return new FastVec3i(X + normali.X, Y + normali.Y, Z + normali.Z);
+        }
+
+        /// <summary>
+        /// Subtract a position => you'll have the manhattan distance
+        /// </summary>
+        /// <param name="pos"></param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public FastVec3i Sub(FastVec3i pos)
+        {
+            X -= pos.X;
+            Y -= pos.Y;
+            Z -= pos.Z;
             return this;
         }
 
@@ -185,7 +279,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public double DistanceSq(double x, double y, double z)
         {
-            return 
+            return
                 (X - x) * (X - x) +
                 (Y - y) * (Y - y) +
                 (Z - z) * (Z - z)

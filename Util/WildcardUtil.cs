@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Common;
 
@@ -74,17 +74,23 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static bool Match(AssetLocation wildCard, AssetLocation inCode, string[] allowedVariants)
         {
+            if (wildCard.Domain == "*" && wildCard.Path == "*") return true;
+
             if (wildCard.Equals(inCode)) return true;
 
             int wildCardIndex;
-            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain)) || ((wildCardIndex = wildCard.Path.IndexOf('*')) == -1 && wildCard.Path.IndexOf('(') == -1)) return false;
+            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain)) || ((wildCardIndex = wildCard.Path.IndexOf('*')) == -1 && wildCard.Path.IndexOf('(') == -1))
+            {
+                return false;
+            }
             
 
             // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
             if (wildCardIndex == wildCard.Path.Length - 1)
             {
                 if (!StringUtil.FastStartsWith(inCode.Path, wildCard.Path, wildCardIndex)) return false;
-            } else
+            }
+            else
             {
                 if (!StringUtil.FastStartsWith(inCode.Path, wildCard.Path, wildCardIndex)) return false;
 

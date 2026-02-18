@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ITagRegistry | VintageStory API </title>
+      <title>Enum TagValidationError | VintageStory API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ITagRegistry | VintageStory API ">
+      <meta name="title" content="Enum TagValidationError | VintageStory API ">
       
-      
+      <meta name="description" content="Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,24 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Vintagestory.API.Common.ITagRegistry">
+        <article data-uid="Vintagestory.API.Datastructures.TagValidationError">
 
 
 
-  <h1 id="Vintagestory_API_Common_ITagRegistry" data-uid="Vintagestory.API.Common.ITagRegistry" class="text-break">
-Interface ITagRegistry  
+
+  <h1 id="Vintagestory_API_Datastructures_TagValidationError" data-uid="Vintagestory.API.Datastructures.TagValidationError" class="text-break">
+Enum TagValidationError  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Datastructures.html">Datastructures</a></dd></dl>
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ITagRegistry.cs>Open in GitHub</a></p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ITagRegistry</code></pre>
+    <pre><code class="lang-csharp hljs">public enum TagValidationError</code></pre>
   </div>
 
 
@@ -122,74 +124,29 @@ Interface ITagRegistry
   </div>
   </dd></dl>
 
-
-
-
-
-  <h2 class="section" id="methods">Methods
+  <h2 id="fields">Fields
 </h2>
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_GetAllTags_" data-uid="Vintagestory.API.Common.ITagRegistry.GetAllTags*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_GetAllTags" data-uid="Vintagestory.API.Common.ITagRegistry.GetAllTags">
-  GetAllTags()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string[] GetAllTags()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagRegistry_RegisterTags_" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterTags*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagRegistry_RegisterTags_System_String___" data-uid="Vintagestory.API.Common.ITagRegistry.RegisterTags(System.String[])">
-  RegisterTags(params string[])
+    <dt id="Vintagestory_API_Datastructures_TagValidationError_DoubleDash"><code>DoubleDash = 4</code></dt>
   
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void RegisterTags(params string[] tags)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
+  <dd></dd>
+    <dt id="Vintagestory_API_Datastructures_TagValidationError_InvalidCharacter"><code>InvalidCharacter = 5</code></dt>
+  <dd><p>Don't test for this directly. If the tag contains an invalid character, InvalidCharacter + index of that character will be returned from <a class="xref" href="Vintagestory.API.Datastructures.TagRegistry.html#Vintagestory_API_Datastructures_TagRegistry_ValidateTag_System_ReadOnlySpan_System_Char__">ValidateTag(ReadOnlySpan&lt;char&gt;)</a>.</p>
+</dd>
+  
+    <dt id="Vintagestory_API_Datastructures_TagValidationError_InvalidStart"><code>InvalidStart = 3</code></dt>
+  
+  <dd></dd>
+    <dt id="Vintagestory_API_Datastructures_TagValidationError_None"><code>None = 0</code></dt>
+  
+  <dd></dd>
+    <dt id="Vintagestory_API_Datastructures_TagValidationError_TagEmpty"><code>TagEmpty = 1</code></dt>
+  
+  <dd></dd>
+    <dt id="Vintagestory_API_Datastructures_TagValidationError_TooShort"><code>TooShort = 2</code></dt>
+  
+  <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ITagSet | VintageStory API </title>
+      <title>Delegate MouseWheelEventDelegate | VintageStory API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ITagSet | VintageStory API ">
+      <meta name="title" content="Delegate MouseWheelEventDelegate | VintageStory API ">
       
       
       <link rel="icon" href="../images/gameicon.ico">
@@ -84,16 +84,16 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Vintagestory.API.Common.ITagSet">
+        <article data-uid="Vintagestory.API.Client.MouseWheelEventDelegate">
 
 
 
-  <h1 id="Vintagestory_API_Common_ITagSet" data-uid="Vintagestory.API.Common.ITagSet" class="text-break">
-Interface ITagSet  
+  <h1 id="Vintagestory_API_Client_MouseWheelEventDelegate" data-uid="Vintagestory.API.Client.MouseWheelEventDelegate" class="text-break">
+Delegate MouseWheelEventDelegate  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Client.html">Client</a></dd></dl>
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
@@ -101,9 +101,14 @@ Interface ITagSet
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ITagSet</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate void MouseWheelEventDelegate(MouseWheelEventArgs e)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="Vintagestory.API.Client.MouseWheelEventArgs.html">MouseWheelEventArgs</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -121,143 +126,6 @@ Interface ITagSet
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
   </dd></dl>
-
-
-
-
-
-  <h2 class="section" id="properties">Properties
-</h2>
-
-
-  <a id="Vintagestory_API_Common_ITagSet_Empty_" data-uid="Vintagestory.API.Common.ITagSet.Empty*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagSet_Empty" data-uid="Vintagestory.API.Common.ITagSet.Empty">
-  Empty
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static abstract ITagSet Empty { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ITagSet.html">ITagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagSet_TypeCode_" data-uid="Vintagestory.API.Common.ITagSet.TypeCode*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagSet_TypeCode" data-uid="Vintagestory.API.Common.ITagSet.TypeCode">
-  TypeCode
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static abstract string TypeCode { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="Vintagestory_API_Common_ITagSet_GetArray_" data-uid="Vintagestory.API.Common.ITagSet.GetArray*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagSet_GetArray_System_Collections_Generic_IEnumerable_System_UInt16__" data-uid="Vintagestory.API.Common.ITagSet.GetArray(System.Collections.Generic.IEnumerable{System.UInt16})">
-  GetArray(IEnumerable&lt;ushort&gt;)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static abstract ITagSet GetArray(IEnumerable&lt;ushort&gt; indexes)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>indexes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ITagSet.html">ITagSet</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagSet_GetIndexes_" data-uid="Vintagestory.API.Common.ITagSet.GetIndexes*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagSet_GetIndexes" data-uid="Vintagestory.API.Common.ITagSet.GetIndexes">
-  GetIndexes()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;ushort&gt; GetIndexes()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
 
 
 

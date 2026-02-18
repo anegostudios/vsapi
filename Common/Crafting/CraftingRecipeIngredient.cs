@@ -2,7 +2,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
@@ -29,28 +28,8 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
     [DocumentAsJson("Optional", "All")]
     public AssetLocation? Code { get; set; } = new("*", "*");
 
-    /// <summary>
-    /// If array of tags specified (["tag-1", "tag-2", "not-tag-3"]):<br/>
-    /// - matched item has to have all these tags, and not have tags with 'not-' prefix;<br/>
-    /// - if 'ReverseTagsCheck: true' specified, matched item has to have at least one of these tags, or not contain any tag with 'not-' prefix.<br/>
-    /// <br/>
-    /// If array of tag groups specified ([["tag-1", "tag-2"], ["not-tag-3", "tag-4]]):<br/>
-    /// - matched item has to have all tags (and not have 'not-' tags) from at least of tag groups;<br/>
-    /// - if 'ReverseTagsCheck: true' specified, matched item has to have at least one of these tags, or not contain any tag with 'not-' prefix from each tag group.<br/>
-    /// <br/>
-    /// This tags check can be treated as logic expression where each tag means of matched item having this tag:<br/>
-    /// - [["tag-1", "tag-2"], ["not-tag-3", "tag-4]] == (tag-1 AND tag-2) OR (NOT tag-3 AND tag-4)<br/>
-    /// - if 'ReverseTagsCheck: true' specified: [["tag-1", "tag-2"], ["not-tag-3", "tag-4]] == (tag-1 OR tag-2) AND (NOT tag-3 OR tag-4)<br/>
-    /// </summary>
-    [DocumentAsJson("Optional", "All")]
-    public GeneralTagGroups? Tags { get; set; }
-
-    /// <summary>
-    /// When used with [] tags: matched item should contain at least on tag from the list
-    /// When used with [[]] tags: matched item should contain at least one tag from each group
-    /// </summary>
     [DocumentAsJson("Optional", "None")]
-    public bool? ReverseTagsCheck { get; set; }
+    public ComplexTagCondition<TagSet> Tags { get; set; }
 
     /// <summary>
     /// Attaches a name to a wildcard in an ingredient. This is used to substitute the value into the output. Only required if using a wildcard.
@@ -172,24 +151,10 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
     }
     #endregion
 
-    #region IRecipeIngredient
-    bool IRecipeIngredient.MatchTags(TagSet tags) => Tags?.Check(tags) == true;
-
-    void IRecipeIngredient.ResolveTags(IWorldAccessor world) => Tags?.Resolve(world);
-
-    IEnumerable<TagCondition<TagSet>>? IRecipeIngredient.ResolvedTags => Tags?.GetResolvedTags();
-    #endregion
-
-
-
     public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
     {
-        Tags?.Resolve(world);
-        if (ReverseTagsCheck != null && Tags != null)
-        {
-            Tags.ReverseCheck = ReverseTagsCheck.Value;
-        }
-
+        MatchingType = IRecipeIngredient.GetMatchType(Code?.ToString(), Name != null);
+        
         if (ReturnedStack != null)
         {
             ReturnedStack.Resolve(world, $"{sourceForErrorLogging} recipe with output {Code}");
@@ -264,12 +229,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
 
     public virtual bool CheckTags(ItemStack inputStack, CollectibleObject collectible)
     {
-        if (Tags == null)
-        {
-            return true;
-        }
-
-        return Tags.Check(collectible.GetTags(inputStack));
+        return Tags.Matches(collectible.GetTags(inputStack));
     }
 
     public virtual RecipeIngredientConsumeProperties GetConsumeProperties()
@@ -325,7 +285,8 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
 
     public override string ToString()
     {
-        return Type + " code " + Code;
+        // Unfortunately we don't have a registry reference here to resolve the tags.
+        return MatchingType != EnumRecipeMatchType.TagsOnly ? $"{Type} code {Code}" : $"{Type} tagged {Tags}";
     }
 
     /// <summary>
@@ -400,12 +361,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
 
         writer.Write(Id ?? "");
 
-        if (ReverseTagsCheck != null && Tags != null)
-        {
-            Tags.ReverseCheck = ReverseTagsCheck.Value;
-        }
-        writer.Write(Tags != null);
-        Tags?.ToBytes(writer);
+        Tags.ToBytes(writer);
     }
 
     public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -462,13 +418,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
 
         Id = reader.ReadString().DeDuplicate();
 
-        bool hasTags = reader.ReadBoolean();
-        if (hasTags)
-        {
-            Tags = new GeneralTagGroups();
-            Tags.FromBytes(reader, resolver);
-            Tags.Resolve(resolver);
-        }
+        Tags = ComplexTagConditionExtensions.FromBytes(reader);
     }
 
 
@@ -478,8 +428,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
         if (cloneTo is CraftingRecipeIngredient ingredient)
         {
             ingredient.Code = Code?.Clone();
-            ingredient.Tags = Tags?.Clone();
-            ingredient.ReverseTagsCheck = ReverseTagsCheck;
+            ingredient.Tags = Tags;
             ingredient.Type = Type;
             ingredient.Name = Name;
             ingredient.Quantity = Quantity;

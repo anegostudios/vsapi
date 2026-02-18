@@ -701,40 +701,6 @@ public JsonItemStack? ReturnedStack { get; set; }</code></pre>
 
 
 
-  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_ReverseTagsCheck_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ReverseTagsCheck*"></a>
-
-  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_ReverseTagsCheck" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ReverseTagsCheck">
-  ReverseTagsCheck
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>When used with [] tags: matched item should contain at least on tag from the list
-When used with [[]] tags: matched item should contain at least one tag from each group</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
-public bool? ReverseTagsCheck { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_CraftingRecipeIngredient_SkipVariants_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_SkipVariants" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.SkipVariants">
@@ -809,25 +775,12 @@ public int StackSize { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If array of tags specified ([&quot;tag-1&quot;, &quot;tag-2&quot;, &quot;not-tag-3&quot;]):<br></p>
-<ul>
-<li>matched item has to have all these tags, and not have tags with 'not-' prefix;<br></li>
-<li>if 'ReverseTagsCheck: true' specified, matched item has to have at least one of these tags, or not contain any tag with 'not-' prefix.<br>
-<br>
-If array of tag groups specified ([[&quot;tag-1&quot;, &quot;tag-2&quot;], [&quot;not-tag-3&quot;, &quot;tag-4]]):<br></li>
-<li>matched item has to have all tags (and not have 'not-' tags) from at least of tag groups;<br></li>
-<li>if 'ReverseTagsCheck: true' specified, matched item has to have at least one of these tags, or not contain any tag with 'not-' prefix from each tag group.<br>
-<br>
-This tags check can be treated as logic expression where each tag means of matched item having this tag:<br></li>
-<li>[[&quot;tag-1&quot;, &quot;tag-2&quot;], [&quot;not-tag-3&quot;, &quot;tag-4]] == (tag-1 AND tag-2) OR (NOT tag-3 AND tag-4)<br></li>
-<li>if 'ReverseTagsCheck: true' specified: [[&quot;tag-1&quot;, &quot;tag-2&quot;], [&quot;not-tag-3&quot;, &quot;tag-4]] == (tag-1 OR tag-2) AND (NOT tag-3 OR tag-4)<br></li>
-</ul>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;All&quot;, false)]
-public GeneralTagGroups? Tags { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public ComplexTagCondition&lt;TagSet&gt; Tags { get; set; }</code></pre>
   </div>
 
 
@@ -836,7 +789,7 @@ public GeneralTagGroups? Tags { get; set; }</code></pre>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.GeneralTagGroups.html">GeneralTagGroups</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</dt>
     <dd></dd>
   </dl>
 

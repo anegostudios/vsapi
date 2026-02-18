@@ -204,7 +204,7 @@ namespace Vintagestory.API.Common
                 shouldStop =
                     (onAnimationEnd == EnumEntityAnimationEndHandling.Stop) ||
                     (!anim.Active && (onActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd || onActivityStopped == EnumEntityActivityStoppedHandling.EaseOut) && anim.EasingFactor < 0.002f) ||
-                    (onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut && anim.EasingFactor < 0.002f)
+                    (onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut && anim.EasingFactor < 0.0005f)
                 ;
             }
             else if (anim.Iterations < 0)

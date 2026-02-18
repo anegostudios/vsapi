@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -90,11 +90,11 @@ namespace Vintagestory.API.Client
         /// <param name="inventory">The inventory attached to the slot.</param>
         /// <param name="slot">The internal slot of the slot.</param>
         /// <param name="drawBackground">Do we draw the background for this slot? (Default: true)</param>
-        public static GuiComposer AddPassiveItemSlot(this GuiComposer composer, ElementBounds bounds, IInventory inventory, ItemSlot slot, bool drawBackground = true)
+        public static GuiComposer AddPassiveItemSlot(this GuiComposer composer, ElementBounds bounds, IInventory inventory, ItemSlot slot, bool drawBackground = true, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementPassiveItemSlot(composer.Api, bounds, inventory, slot, drawBackground));
+                composer.AddInteractiveElement(new GuiElementPassiveItemSlot(composer.Api, bounds, inventory, slot, drawBackground), key);
             }
 
             return composer;

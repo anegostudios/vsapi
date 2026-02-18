@@ -1,0 +1,223 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+namespace Vintagestory.API.Datastructures;
+
+using HandleType = ushort;
+
+[JsonConverter(typeof(CollectibleTagSetConverter))]
+public readonly struct TagSet
+{
+    // Invariant: storage is always sorted ascending.
+    // Invariant: storage never contains duplicate handles.
+
+    /// <remarks> This is internal storage and should not be manipulated in any way unless you know exactly what you are doing. </remarks>
+    internal readonly ReadOnlyMemory<HandleType> storage;
+
+    public static readonly TagSet Empty = new(ReadOnlyMemory<HandleType>.Empty);
+
+    public TagSet() => this.storage = TagSet.Empty.storage;
+
+    /// <param name="storage">Must be <b>backed by an array</b> that <b>conforms to the invariants</b>.</param>
+    /// <remarks>If this is used incorrectly none of the operations on the resulting <see cref="TagSet"/> will work.</remarks>
+    internal TagSet(ReadOnlyMemory<HandleType> storage)
+    {
+        this.storage = storage;
+    }
+
+    public bool IsEmpty => this.storage.IsEmpty;
+
+    /// <returns> True if all any of the tags that are active in this instance are also active in the <paramref name="other"/> instance, false otherwise. </returns>
+    /// <remarks> This is symmetrical, meaning a.Overlaps(b) == b.Overlaps(a) .</remarks>
+    public readonly bool Overlaps(in TagSet other)
+    {
+        if (this.storage.IsEmpty || other.storage.IsEmpty) return false;
+
+        var thisFirstHandle = this.storage.Span[0];
+        var otherSpan = other.storage.Span;
+
+        // Fast rejection path: If this only starts after the end of other these cannot overlap:
+        if (thisFirstHandle > otherSpan[^1]) return false;
+        //NOTE(Rennorb): No need to check otherSpan[0] > thisFirstHandle, That will happen in the first iteration of the loop.
+
+        foreach (var otherHandle in otherSpan)
+        {
+            if (thisFirstHandle == otherHandle) return true;
+            if (otherHandle > thisFirstHandle) break;
+        }
+
+        return false;
+    }
+
+    /// <returns> True if all tags that are active in this instance are also active in the <paramref name="other"/> instance, false otherwise. </returns>
+    /// <remarks> This is NOT symmetrical, meaning a.IsFullyContainedIn(b) != b.IsFullyContainedIn(a) !</remarks>
+    public readonly bool IsFullyContainedIn(in TagSet other)
+    {
+        // The empty set is always fully contained in any other set:
+        if (this.storage.IsEmpty) return true;
+        // Any non empty set cannot be contained in an empty one:
+        if (other.storage.IsEmpty) return false;
+
+        var thisSpan = this.storage.Span;
+        var otherSpan = other.storage.Span;
+
+        var firstThis = thisSpan[0];
+
+        // Fast rejection path: If this only starts after the end of other these cannot overlap:
+        if (firstThis > otherSpan[^1]) return false;
+
+        var indexOther = 0;
+        // Since the storage has the sorted invariant handles that are smaller than our first one can never match.
+        // Fast forward past those handles:
+        while (indexOther < otherSpan.Length && otherSpan[indexOther] < firstThis) indexOther++;
+
+
+        foreach (var thisHandle in thisSpan)
+        {
+            for(; indexOther < otherSpan.Length; indexOther++)
+            {
+                var otherHandle = otherSpan[indexOther];
+                if (otherHandle == thisHandle)
+                {
+                    // Found our current handle in other.
+
+                    // Don't forget to skip the matched other handle.
+                    // handles are unique, so we cannot match the same one again.
+                    indexOther++;
+
+                    // Now find the remaining ones.
+                    goto next_this_handle;
+                }
+                if (otherHandle > thisHandle)
+                {
+                    // Since the storage has the sorted invariant it is not possible to find our current handle
+                    // once other has moved past that value -> we are not fully contained.
+                    return false;
+                }
+            }
+
+            // We ran out of other, but were have not found all of our handles -> we are not fully contained.
+            return false;
+
+            next_this_handle:;
+        }
+
+        // We did not exit out means all our handles were found in other -> we are fully contained.
+        return true;
+    }
+
+    public readonly void ToBytes(BinaryWriter writer)
+    {
+        var span = this.storage.Span;
+        // since this can never be more elements than HandleType.MaxValue we can just send that instead of a full int.
+        writer.Write((HandleType)span.Length);
+
+        foreach (var handle in span)
+        {
+            writer.Write(handle);
+        }
+    }
+
+    public static TagSet FromBytes(BinaryReader reader)
+    {
+        var length = reader.ReadUInt16();
+        var storage = new HandleType[length];
+
+        for (int i = 0; i < storage.Length; i++)
+        {
+            storage[i] = reader.ReadUInt16();
+        }
+
+        return new(storage);
+    }
+
+    // Debugging aid.
+    public override string ToString()
+    {
+        var sb = new StringBuilder(256);
+        var span = storage.Span;
+        for (int i = 0; i < span.Length; i++)
+        {
+            if (i > 0)  sb.Append(", ");
+            sb.Append(span[i]);
+        }
+        return sb.ToString();
+    }
+
+    /// <remark>
+    /// Do not try to compare these against each other.<br/>
+    /// This is implemented for the rare case where we want to generate distinct keys based on hashes.
+    /// </remark>
+    public override int GetHashCode()
+    {
+        int acc = 0;
+        foreach (var handle in this.storage.Span)
+        {
+            // Random prime, no real reason to pick this specific one.
+            acc = acc * 17 + handle;
+        }
+        return acc;
+    }
+}
+
+public sealed class CollectibleTagSetConverter : JsonConverter<TagSet>
+{
+    public static TagSetConverter<TagSet> ProxyInstance = null!;
+
+    /// <summary> Called from Main init as soon as the registries are available. </summary>
+    public static void StaticInit(ITagRegistry<TagSet> registry) => ProxyInstance = new(registry);
+
+    public override TagSet ReadJson(JsonReader reader, Type objectType, TagSet existingValue, bool hasExistingValue, JsonSerializer serializer) => ProxyInstance.ReadJson(reader, objectType, existingValue, hasExistingValue, serializer);
+    public override void WriteJson(JsonWriter writer, TagSet value, JsonSerializer serializer) => throw new NotImplementedException();
+}
+
+public sealed class TagSetConverter<TTagSet>(ITagRegistry<TTagSet> registry) : JsonConverter<TTagSet> where TTagSet : struct
+{
+    /// <summary> Initialized from Main init. </summary>
+    readonly ITagRegistry<TTagSet> registry = registry;
+
+    public override TTagSet ReadJson(JsonReader reader, Type objectType, TTagSet existingValue, bool hasExistingValue, JsonSerializer serializer)
+    {
+        return ReadJson(JToken.ReadFrom(reader));
+    }
+
+    public TTagSet ReadJson(JToken rootToken)
+    {
+        if (rootToken is JArray rootArray)
+        {
+            var firstType = rootArray.First?.Type;
+            if (firstType == JTokenType.String)
+            {
+                //  ["1", "2", "3"]
+                var tags = rootArray.Where(t =>
+                {
+                    if (t.Type != JTokenType.String) return false;
+                    var str = (string?)t;
+
+                    var error = TagRegistry.ValidateTag(str);
+                    if (error == TagValidationError.None) return true;
+
+                    registry.logger.Debug($"[{registry.debugName}] [{t.Path}] "+TagRegistry.FormatIssueMessage(error, str));
+                    return false;
+                })
+                .Select(e => (string)e!);
+                registry.TryRegisterAndCreateTagSetAndLogIssues(out var set, tags!);
+                return set;
+            }
+            else if (!firstType.HasValue)
+            {
+                //  []
+                return default;
+            }
+        }
+
+        throw new InvalidOperationException($"Error while parsing tag set, must be an array of strings. json:\n{rootToken?.ToString()}");
+    }
+
+
+    public override void WriteJson(JsonWriter writer, TTagSet value, JsonSerializer serializer) => throw new NotImplementedException();
+}

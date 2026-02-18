@@ -63,7 +63,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Currently unuseds
         /// </summary>
-        IntDataMap2D FlowerMap { get; set; }
+        IntDataMap2D BiomeMap { get; set; }
 
         /// <summary>
         /// Holds a shrub density map

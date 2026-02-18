@@ -227,9 +227,14 @@ namespace Vintagestory.API.Common
         IModLoader ModLoader { get; }
 
         /// <summary>
-        /// API for registering tags and tag types, converting between string tags and tag arrays
+        /// API component for registering item tags and resolving tags from strings.
         /// </summary>
-        ITagsManager TagsManager { get; }
+        ITagRegistry<TagSet> CollectibleTagRegistry { get; }
+
+        /// <summary>
+        /// API component for registering entity tags and resolving tags from strings.
+        /// </summary>
+        ITagRegistry<TagSetFast> EntityTagRegistry { get; }
 
 
         /// <summary>

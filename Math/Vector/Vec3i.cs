@@ -304,6 +304,11 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public float Length()
+        {
+            return GameMath.Sqrt(X * X + Y * Y + Z * Z);
+        }
+
         public static Vec3i operator *(Vec3i left, int right)
         {
             return new Vec3i(left.X * right, left.Y * right, left.Z * right);

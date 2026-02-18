@@ -103,6 +103,10 @@ namespace Vintagestory.API.Common
         /// Nomalized value between 0..1
         /// </summary>
         public float ShrubDensity;
+        /// <summary>
+        /// New biome stuff!  -1 means no biome
+        /// </summary>
+        public int Biome;
 
         public void SetLerped(ClimateCondition left, ClimateCondition right, float w)
         {
@@ -111,6 +115,7 @@ namespace Vintagestory.API.Common
             Fertility = left.Fertility * (1 - w) + right.Fertility * w;
             ForestDensity = left.ForestDensity * (1 - w) + right.ForestDensity * w;
             ShrubDensity = left.ShrubDensity * (1 - w) + right.ShrubDensity * w;
+            Biome = (int)(left.Biome * (1 - w) + right.Biome * w + 0.5f);
         }
 
 

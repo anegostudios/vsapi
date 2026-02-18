@@ -259,6 +259,9 @@ public class BlockType : CollectibleType</code></pre>
       <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_ParticlesTextureCode">CollectibleType.ParticlesTextureCode</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Tags">CollectibleType.Tags</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Enabled">RegistryObjectType.Enabled</a>
     </div>
     <div>
@@ -278,9 +281,6 @@ public class BlockType : CollectibleType</code></pre>
     </div>
     <div>
       <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Class">RegistryObjectType.Class</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Tags">RegistryObjectType.Tags</a>
     </div>
   </dd></dl>
 
@@ -446,6 +446,210 @@ public string[] AllowSpawnCreatureGroups</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_BleedGroup" data-uid="Vintagestory.ServerMods.NoObf.BlockType.BleedGroup">
+  BleedGroup (Optional) (Default: null)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Blocks only bleed to others with matching BleedGroup. Null = no restriction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;null&quot;, false)]
+public string BleedGroup</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_BleedOverlayTexture" data-uid="Vintagestory.ServerMods.NoObf.BlockType.BleedOverlayTexture">
+  BleedOverlayTexture (Optional) (Default: null)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>9-slice overlay texture path, e.g. &quot;game:block/sand_overlay&quot;. Null disables overlay blending.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;null&quot;, false)]
+public string BleedOverlayTexture</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_BleedPriority" data-uid="Vintagestory.ServerMods.NoObf.BlockType.BleedPriority">
+  BleedPriority (Optional) (Default: -1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>-1 = auto from BlockMaterial, 0+ = manual. Higher priority bleeds onto lower.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;-1&quot;, false)]
+public int BleedPriority</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_BleedTopFaceOnly" data-uid="Vintagestory.ServerMods.NoObf.BlockType.BleedTopFaceOnly">
+  BleedTopFaceOnly (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Only top face (UP) receives bleeding. For grass-type blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;false&quot;, false)]
+public bool BleedTopFaceOnly</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_BlocksTextureBleed" data-uid="Vintagestory.ServerMods.NoObf.BlockType.BlocksTextureBleed">
+  BlocksTextureBleed (Optional) (Default: true)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Occludes bleeding from neighbors behind. False for glass/transparent blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;true&quot;, false)]
+public bool BlocksTextureBleed</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_CanReceiveBleed" data-uid="Vintagestory.ServerMods.NoObf.BlockType.CanReceiveBleed">
+  CanReceiveBleed (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Can receive bleeding from higher priority neighbors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[DocumentAsJson(&quot;Optional&quot;, &quot;false&quot;, false)]
+public bool CanReceiveBleed</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

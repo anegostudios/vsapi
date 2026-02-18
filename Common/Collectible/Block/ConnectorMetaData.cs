@@ -11,14 +11,15 @@ public struct ConnectorMetaData : IEquatable<ConnectorMetaData>
     /// <summary>
     /// This is an offset when loaded from schematic, but an absolute position if its part of the OpenSet during dungeon generation
     /// </summary>
-    public BlockPos Position;
+    public FastVec3i Position;
+
     public BlockFacing Facing;
     public int Rotation;
     public string Name = string.Empty;
     public string[] Targets = Array.Empty<string>();
     public string[] TargetsForParent = Array.Empty<string>();
 
-    public ConnectorMetaData(BlockPos position, BlockFacing facing, int rot, string name, string targets, string[] targetsforparent)
+    public ConnectorMetaData(FastVec3i position, BlockFacing facing, int rot, string name, string targets, string[] targetsforparent)
     {
         Position = position;
         Facing = facing;
@@ -28,7 +29,7 @@ public struct ConnectorMetaData : IEquatable<ConnectorMetaData>
         TargetsForParent = targetsforparent;
     }
 
-    public ConnectorMetaData(BlockPos position, BlockFacing facing, int rot, string name, string[] targets, string[] targetsforparent)
+    public ConnectorMetaData(FastVec3i position, BlockFacing facing, int rot, string name, string[] targets, string[] targetsforparent)
     {
         Position = position;
         Facing = facing;
@@ -43,7 +44,7 @@ public struct ConnectorMetaData : IEquatable<ConnectorMetaData>
         return Valid && p.Valid && p.Facing.Opposite == Facing && ((Name.Length > 0 && p.Targets.Contains(Name)) || (p.Name.Length > 0 && Targets.Contains(p.Name)));
     }
 
-    public bool ConnectsTo(ConnectorMetaData p, BlockPos pos)
+    public bool ConnectsTo(ConnectorMetaData p, FastVec3i pos)
     {
         return ConnectsTo(p) && (Position + pos).Add(Facing) == p.Position;
     }
@@ -73,7 +74,7 @@ public struct ConnectorMetaData : IEquatable<ConnectorMetaData>
         return new ConnectorMetaData(Position, Facing, Rotation, Name, Targets, TargetsForParent);
     }
 
-    public ConnectorMetaData Offset(BlockPos startPos)
+    public ConnectorMetaData Offset(FastVec3i startPos)
     {
         Position += startPos;
         return this;

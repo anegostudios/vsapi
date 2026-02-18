@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -494,7 +494,7 @@ namespace Vintagestory.API.Common
         public static AssetLocation[] toLocations(string[] names)
         {
             AssetLocation[] locations = new AssetLocation[names.Length];
-            for(int i = 0; i < locations.Length; i++)
+            for (int i = 0; i < locations.Length; i++)
             {
                 locations[i] = new AssetLocation(names[i]);
             }

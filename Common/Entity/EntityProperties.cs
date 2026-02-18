@@ -36,10 +36,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public string Class;
 
-        /// <summary>
-        /// List of entity tags ids
-        /// </summary>
-        public EntityTagSet Tags = EntityTagSet.Empty;
+        public TagSetFast Tags;
 
         /// <summary>
         /// Natural habitat of the entity. Decides whether to apply gravity or not

@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Interface ITagLoader | VintageStory API </title>
+      <title>Enum TagRegistryError | VintageStory API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Interface ITagLoader | VintageStory API ">
+      <meta name="title" content="Enum TagRegistryError | VintageStory API ">
       
-      
+      <meta name="description" content="Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,24 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Vintagestory.API.Common.ITagLoader">
+        <article data-uid="Vintagestory.API.Datastructures.TagRegistryError">
 
 
 
-  <h1 id="Vintagestory_API_Common_ITagLoader" data-uid="Vintagestory.API.Common.ITagLoader" class="text-break">
-Interface ITagLoader  
+
+  <h1 id="Vintagestory_API_Datastructures_TagRegistryError" data-uid="Vintagestory.API.Datastructures.TagRegistryError" class="text-break">
+Enum TagRegistryError  
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Datastructures.html">Datastructures</a></dd></dl>
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/Tags/ITagRegistry.cs>Open in GitHub</a></p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ITagLoader</code></pre>
+    <pre><code class="lang-csharp hljs">public enum TagRegistryError</code></pre>
   </div>
 
 
@@ -122,131 +124,22 @@ Interface ITagLoader
   </div>
   </dd></dl>
 
-
-
-
-
-  <h2 class="section" id="methods">Methods
+  <h2 id="fields">Fields
 </h2>
-
-
-  <a id="Vintagestory_API_Common_ITagLoader_GetTagsForPacket_" data-uid="Vintagestory.API.Common.ITagLoader.GetTagsForPacket*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagLoader_GetTagsForPacket" data-uid="Vintagestory.API.Common.ITagLoader.GetTagsForPacket">
-  GetTagsForPacket()
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Dictionary&lt;string, string[]&gt; GetTagsForPacket()</code></pre>
-  </div>
-
-
-  <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagLoader_LoadTagsFromAssets_" data-uid="Vintagestory.API.Common.ITagLoader.LoadTagsFromAssets*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagLoader_LoadTagsFromAssets_Vintagestory_API_Server_ICoreServerAPI_" data-uid="Vintagestory.API.Common.ITagLoader.LoadTagsFromAssets(Vintagestory.API.Server.ICoreServerAPI)">
-  LoadTagsFromAssets(ICoreServerAPI)
+    <dt id="Vintagestory_API_Datastructures_TagRegistryError_None"><code>None = 0</code></dt>
   
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void LoadTagsFromAssets(ICoreServerAPI api)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Server.ICoreServerAPI.html">ICoreServerAPI</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagLoader_LoadTagsFromPacket_" data-uid="Vintagestory.API.Common.ITagLoader.LoadTagsFromPacket*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagLoader_LoadTagsFromPacket_System_Collections_Generic_Dictionary_System_String_System_String____" data-uid="Vintagestory.API.Common.ITagLoader.LoadTagsFromPacket(System.Collections.Generic.Dictionary{System.String,System.String[]})">
-  LoadTagsFromPacket(Dictionary&lt;string, string[]&gt;)
+  <dd></dd>
+    <dt id="Vintagestory_API_Datastructures_TagRegistryError_RegistryAtCapacity"><code>RegistryAtCapacity = 2</code></dt>
   
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void LoadTagsFromPacket(Dictionary&lt;string, string[]&gt; tags)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_ITagLoader_LockRegistry_" data-uid="Vintagestory.API.Common.ITagLoader.LockRegistry*"></a>
-
-  <h3 id="Vintagestory_API_Common_ITagLoader_LockRegistry" data-uid="Vintagestory.API.Common.ITagLoader.LockRegistry">
-  LockRegistry()
+  <dd></dd>
+    <dt id="Vintagestory_API_Datastructures_TagRegistryError_RegistryLocked"><code>RegistryLocked = 1</code></dt>
   
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void LockRegistry()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
+  <dd></dd>
+    <dt id="Vintagestory_API_Datastructures_TagRegistryError_SomeTagsNotFound"><code>SomeTagsNotFound = 3</code></dt>
+  
+  <dd></dd>
+  </dl>
 
 
 

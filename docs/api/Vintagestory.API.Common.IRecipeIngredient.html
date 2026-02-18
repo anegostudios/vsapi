@@ -424,37 +424,6 @@ Interface IRecipeIngredient
 
 
 
-  <a id="Vintagestory_API_Common_IRecipeIngredient_ResolvedTags_" data-uid="Vintagestory.API.Common.IRecipeIngredient.ResolvedTags*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_ResolvedTags" data-uid="Vintagestory.API.Common.IRecipeIngredient.ResolvedTags">
-  ResolvedTags
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;TagCondition&lt;TagSet&gt;&gt;? ResolvedTags { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_IRecipeIngredient_ReturnedStack_" data-uid="Vintagestory.API.Common.IRecipeIngredient.ReturnedStack*"></a>
 
   <h3 id="Vintagestory_API_Common_IRecipeIngredient_ReturnedStack" data-uid="Vintagestory.API.Common.IRecipeIngredient.ReturnedStack">
@@ -507,6 +476,37 @@ Interface IRecipeIngredient
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IRecipeIngredient_Tags_" data-uid="Vintagestory.API.Common.IRecipeIngredient.Tags*"></a>
+
+  <h3 id="Vintagestory_API_Common_IRecipeIngredient_Tags" data-uid="Vintagestory.API.Common.IRecipeIngredient.Tags">
+  Tags
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ComplexTagCondition&lt;TagSet&gt; Tags { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -585,10 +585,10 @@ Interface IRecipeIngredient
 
 
 
-  <a id="Vintagestory_API_Common_IRecipeIngredient_MatchTags_" data-uid="Vintagestory.API.Common.IRecipeIngredient.MatchTags*"></a>
+  <a id="Vintagestory_API_Common_IRecipeIngredient_GetMatchType_" data-uid="Vintagestory.API.Common.IRecipeIngredient.GetMatchType*"></a>
 
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_MatchTags_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Common.IRecipeIngredient.MatchTags(Vintagestory.API.Datastructures.TagSet)">
-  MatchTags(TagSet)
+  <h3 id="Vintagestory_API_Common_IRecipeIngredient_GetMatchType_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IRecipeIngredient.GetMatchType(System.String,System.Boolean)">
+  GetMatchType(string?, bool)
   
   </h3>
 
@@ -596,12 +596,122 @@ Interface IRecipeIngredient
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool MatchTags(TagSet tags)</code></pre>
+    <pre><code class="lang-csharp hljs">public static EnumRecipeMatchType GetMatchType(string? code, bool named = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>tags</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>named</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumRecipeMatchType.html">EnumRecipeMatchType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IRecipeIngredient_IsAdvancedWildcard_" data-uid="Vintagestory.API.Common.IRecipeIngredient.IsAdvancedWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_IRecipeIngredient_IsAdvancedWildcard_System_String_" data-uid="Vintagestory.API.Common.IRecipeIngredient.IsAdvancedWildcard(System.String)">
+  IsAdvancedWildcard(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsAdvancedWildcard(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IRecipeIngredient_IsBasicWildcard_" data-uid="Vintagestory.API.Common.IRecipeIngredient.IsBasicWildcard*"></a>
+
+  <h3 id="Vintagestory_API_Common_IRecipeIngredient_IsBasicWildcard_System_String_" data-uid="Vintagestory.API.Common.IRecipeIngredient.IsBasicWildcard(System.String)">
+  IsBasicWildcard(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsBasicWildcard(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IRecipeIngredient_IsRegex_" data-uid="Vintagestory.API.Common.IRecipeIngredient.IsRegex*"></a>
+
+  <h3 id="Vintagestory_API_Common_IRecipeIngredient_IsRegex_System_String_" data-uid="Vintagestory.API.Common.IRecipeIngredient.IsRegex(System.String)">
+  IsRegex(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsRegex(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -648,37 +758,6 @@ Interface IRecipeIngredient
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_ResolveTags_" data-uid="Vintagestory.API.Common.IRecipeIngredient.ResolveTags*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_ResolveTags_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.IRecipeIngredient.ResolveTags(Vintagestory.API.Common.IWorldAccessor)">
-  ResolveTags(IWorldAccessor)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ResolveTags(IWorldAccessor world)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
-    <dd></dd>
-  </dl>
-
 
 
 

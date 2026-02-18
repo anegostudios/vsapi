@@ -155,6 +155,57 @@ namespace Vintagestory.API.Common
         public EnumBlockMaterial BlockMaterial = EnumBlockMaterial.Stone;
 
         /// <summary>
+        /// -1 = auto from BlockMaterial, 0+ = manual. Higher priority bleeds onto lower.
+        /// </summary>
+        public int BleedPriority = -1;
+
+        /// <summary>
+        /// Can receive bleeding from higher priority neighbors.
+        /// </summary>
+        public bool CanReceiveBleed = false;
+
+        /// <summary>
+        /// 9-slice overlay texture path, e.g. "game:block/sand_overlay". Null disables overlay blending.
+        /// </summary>
+        public string BleedOverlayTexture = null;
+
+        /// <summary>
+        /// Only top face (UP) receives bleeding. For grass-type blocks.
+        /// </summary>
+        public bool BleedTopFaceOnly = false;
+
+        /// <summary>
+        /// Blocks only bleed to others with matching BleedGroup. Null = no restriction.
+        /// </summary>
+        public string BleedGroup = null;
+
+        /// <summary>
+        /// Baked overlay texture subId lookup. Set during texture collection.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public CompositeTexture BleedOverlayTextureBaked = null;
+
+        /// <summary>
+        /// Occludes bleeding from neighbors behind. False for glass/transparent blocks.
+        /// </summary>
+        public bool BlocksTextureBleed = true;
+
+        /// <summary>
+        /// Gets effective bleed priority (auto from material or manual override)
+        /// </summary>
+        public int EffectiveBleedPriority => BleedPriority >= 0 ? BleedPriority : GetMaterialBleedPriority(BlockMaterial);
+
+        private static int GetMaterialBleedPriority(EnumBlockMaterial material) => material switch
+        {
+            EnumBlockMaterial.Snow => 20,
+            EnumBlockMaterial.Sand => 40,
+            EnumBlockMaterial.Gravel => 50,
+            EnumBlockMaterial.Soil => 80,
+            EnumBlockMaterial.Stone => 200,
+            _ => 0
+        };
+
+        /// <summary>
         /// Random texture selection - whether or not to use the Y axis during randomization (for multiblock plants)
         /// </summary>
         public EnumRandomizeAxes RandomizeAxes = EnumRandomizeAxes.XYZ;
@@ -2368,6 +2419,22 @@ namespace Vintagestory.API.Common
         {
             (Textures as TextureDictionary).BakeAndCollect(api.Assets, textureDict, Code, "Baked variant of block ");
             (TexturesInventory as TextureDictionary).BakeAndCollect(api.Assets, textureDict, Code, "Baked inventory variant of block ");
+
+            // Bake and collect bleed overlay texture if specified
+            if (!string.IsNullOrEmpty(BleedOverlayTexture))
+            {
+                var overlayLoc = AssetLocation.Create(BleedOverlayTexture, Code?.Domain);
+                var overlayTex = new CompositeTexture(overlayLoc);
+                overlayTex.Bake(api.Assets);
+                if (overlayTex.Baked != null)
+                {
+                    if (!textureDict.ContainsKey(overlayTex.Baked.BakedName))
+                    {
+                        textureDict.SetTextureLocation(new AssetLocationAndSource(overlayTex.Baked.BakedName, "Bleed overlay for block ", Code));
+                    }
+                }
+                BleedOverlayTextureBaked = overlayTex;
+            }
 
             foreach (var val in Textures)
             {

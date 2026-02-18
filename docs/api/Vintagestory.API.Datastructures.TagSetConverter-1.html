@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Class EntityTagGroups | VintageStory API </title>
+      <title>Class TagSetConverter&lt;TTagSet&gt; | VintageStory API </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Class EntityTagGroups | VintageStory API ">
+      <meta name="title" content="Class TagSetConverter&lt;TTagSet&gt; | VintageStory API ">
       
-      <meta name="description" content="Open in GitHub">
+      
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -84,12 +84,12 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="Vintagestory.API.Datastructures.EntityTagGroups">
+        <article data-uid="Vintagestory.API.Datastructures.TagSetConverter`1">
 
 
 
-  <h1 id="Vintagestory_API_Datastructures_EntityTagGroups" data-uid="Vintagestory.API.Datastructures.EntityTagGroups" class="text-break">
-Class EntityTagGroups  
+  <h1 id="Vintagestory_API_Datastructures_TagSetConverter_1" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1" class="text-break">
+Class TagSetConverter&lt;TTagSet&gt;  
   </h1>
 
   <div class="facts text-secondary">
@@ -97,64 +97,50 @@ Class EntityTagGroups
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/TagGroups.cs>Open in GitHub</a></p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(EntityTagGroups.JsonEntityTagGroupsConverter))]
-public sealed class EntityTagGroups : TagGroups&lt;EntityTagSet&gt;, IConcreteCloneable&lt;TagGroups&lt;EntityTagSet&gt;&gt;, IByteSerializable, IConcreteCloneable&lt;EntityTagGroups&gt;, ICloneable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class TagSetConverter&lt;TTagSet&gt; : JsonConverter&lt;TTagSet&gt; where TTagSet : struct</code></pre>
   </div>
 
 
 
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TTagSet</code></dt>
+    <dd></dd>
+  </dl>
 
   <dl class="typelist inheritance">
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html">TagGroups</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.EntityTagSet.html">EntityTagSet</a>&gt;</div>
-      <div><span class="xref">EntityTagGroups</span></div>
+      <div><span class="xref">JsonConverter</span></div>
+      <div><span class="xref">JsonConverter</span>&lt;TTagSet&gt;</div>
+      <div><span class="xref">TagSetConverter&lt;TTagSet&gt;</span></div>
     </dd>
   </dl>
 
-  <dl class="typelist implements">
-    <dt>Implements</dt>
-    <dd>
-      <div><a class="xref" href="Vintagestory.API.Common.IConcreteCloneable-1.html">IConcreteCloneable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html">TagGroups</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.EntityTagSet.html">EntityTagSet</a>&gt;&gt;</div>
-      <div><a class="xref" href="Vintagestory.API.Common.IByteSerializable.html">IByteSerializable</a></div>
-      <div><a class="xref" href="Vintagestory.API.Common.IConcreteCloneable-1.html">IConcreteCloneable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.EntityTagGroups.html">EntityTagGroups</a>&gt;</div>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
-    </dd>
-  </dl>
 
 
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_ReverseCheck">TagGroups&lt;EntityTagSet&gt;.ReverseCheck</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">JsonConverter&lt;TTagSet&gt;.WriteJson(JsonWriter, object, JsonSerializer)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_Check__0_">TagGroups&lt;EntityTagSet&gt;.Check(EntityTagSet)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">JsonConverter&lt;TTagSet&gt;.ReadJson(JsonReader, Type, object, JsonSerializer)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_Resolve_Vintagestory_API_Common_IWorldAccessor_">TagGroups&lt;EntityTagSet&gt;.Resolve(IWorldAccessor)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">JsonConverter&lt;TTagSet&gt;.CanConvert(Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_ClearTagNames">TagGroups&lt;EntityTagSet&gt;.ClearTagNames()</a>
+      <span class="xref">JsonConverter.CanRead</span>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_ResolveTagNames_Vintagestory_API_Common_IWorldAccessor_">TagGroups&lt;EntityTagSet&gt;.ResolveTagNames(IWorldAccessor)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_ToBytes_System_IO_BinaryWriter_">TagGroups&lt;EntityTagSet&gt;.ToBytes(BinaryWriter)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_">TagGroups&lt;EntityTagSet&gt;.FromBytes(BinaryReader, IWorldAccessor)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Datastructures.TagGroups-1.html#Vintagestory_API_Datastructures_TagGroups_1_GetResolvedTags">TagGroups&lt;EntityTagSet&gt;.GetResolvedTags()</a>
+      <span class="xref">JsonConverter.CanWrite</span>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -191,14 +177,14 @@ public sealed class EntityTagGroups : TagGroups&lt;EntityTagSet&gt;, IConcreteCl
 
 
 
-  <h2 class="section" id="methods">Methods
+  <h2 class="section" id="constructors">Constructors
 </h2>
 
 
-  <a id="Vintagestory_API_Datastructures_EntityTagGroups_Clone_" data-uid="Vintagestory.API.Datastructures.EntityTagGroups.Clone*"></a>
+  <a id="Vintagestory_API_Datastructures_TagSetConverter_1__ctor_" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Datastructures_EntityTagGroups_Clone" data-uid="Vintagestory.API.Datastructures.EntityTagGroups.Clone">
-  Clone()
+  <h3 id="Vintagestory_API_Datastructures_TagSetConverter_1__ctor_Vintagestory_API_Datastructures_ITagRegistry__0__" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.#ctor(Vintagestory.API.Datastructures.ITagRegistry{`0})">
+  TagSetConverter(ITagRegistry&lt;TTagSet&gt;)
   
   </h3>
 
@@ -206,15 +192,134 @@ public sealed class EntityTagGroups : TagGroups&lt;EntityTagSet&gt;, IConcreteCl
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityTagGroups Clone()</code></pre>
+    <pre><code class="lang-csharp hljs">public TagSetConverter(ITagRegistry&lt;TTagSet&gt; registry)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>registry</code> <a class="xref" href="Vintagestory.API.Datastructures.ITagRegistry-1.html">ITagRegistry</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_TagSetConverter_1_ReadJson_" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.ReadJson*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSetConverter_1_ReadJson_Newtonsoft_Json_JsonReader_System_Type__0_System_Boolean_Newtonsoft_Json_JsonSerializer_" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.ReadJson(Newtonsoft.Json.JsonReader,System.Type,`0,System.Boolean,Newtonsoft.Json.JsonSerializer)">
+  ReadJson(JsonReader, Type, TTagSet, bool, JsonSerializer)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override TTagSet ReadJson(JsonReader reader, Type objectType, TTagSet existingValue, bool hasExistingValue, JsonSerializer serializer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <span class="xref">JsonReader</span></dt>
+    <dd></dd>
+    <dt><code>objectType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>existingValue</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+    <dt><code>hasExistingValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>serializer</code> <span class="xref">JsonSerializer</span></dt>
+    <dd></dd>
+  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.EntityTagGroups.html">EntityTagGroups</a></dt>
+    <dt><span class="xref">TTagSet</span></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagSetConverter_1_ReadJson_" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.ReadJson*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSetConverter_1_ReadJson_Newtonsoft_Json_Linq_JToken_" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.ReadJson(Newtonsoft.Json.Linq.JToken)">
+  ReadJson(JToken)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TTagSet ReadJson(JToken rootToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rootToken</code> <span class="xref">JToken</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagSetConverter_1_WriteJson_" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.WriteJson*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSetConverter_1_WriteJson_Newtonsoft_Json_JsonWriter__0_Newtonsoft_Json_JsonSerializer_" data-uid="Vintagestory.API.Datastructures.TagSetConverter`1.WriteJson(Newtonsoft.Json.JsonWriter,`0,Newtonsoft.Json.JsonSerializer)">
+  WriteJson(JsonWriter, TTagSet, JsonSerializer)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void WriteJson(JsonWriter writer, TTagSet value, JsonSerializer serializer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <span class="xref">JsonWriter</span></dt>
+    <dd></dd>
+    <dt><code>value</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+    <dt><code>serializer</code> <span class="xref">JsonSerializer</span></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

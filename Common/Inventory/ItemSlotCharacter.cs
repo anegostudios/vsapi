@@ -39,16 +39,18 @@ namespace Vintagestory.API.Common
 
         public override bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
-            if (!IsDressType(sourceSlot.Itemstack, Type)) return false;
+            if (!CheckDressType(sourceSlot.Itemstack, Type)) return false;
             return base.CanTakeFrom(sourceSlot, priority);
         }
 
         public override bool CanHold(ItemSlot itemstackFromSourceSlot)
         {
-            if (!IsDressType(itemstackFromSourceSlot.Itemstack, Type)) return false;
+            if (!CheckDressType(itemstackFromSourceSlot.Itemstack, Type)) return false;
 
             return base.CanHold(itemstackFromSourceSlot);
         }
+
+        protected virtual bool CheckDressType(IItemStack itemstack, EnumCharacterDressType dressType) => IsDressType(itemstack, dressType);
 
         /// <summary>
         /// Checks to see what dress type the given item is.

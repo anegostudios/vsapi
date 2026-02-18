@@ -313,14 +313,10 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
-        private string GenerateCacheKey(IRecipeIngredient ingredient)
+        private static string GenerateCacheKey(IRecipeIngredient ingredient)
         {
-            string tags = ingredient.ResolvedTags?.Any() == true ?
-                ingredient.ResolvedTags
-                    .Select(element => $"{element.Tags.GetHashCode()}-{element.InvertedTags.GetHashCode()}")
-                    .Aggregate((f, s) => $"{f}:{s}") :
-                "-";
-            return $"{ingredient.Code}:{tags}";
+            if(ingredient.Tags.IsEmpty) return $"{ingredient.Code}:-";
+            else return $"{ingredient.Code}:{ingredient.Tags.GetHashCode()}";
         }
 
         private ItemStack[] MatchIngredients(IWorldAccessor world, IRecipeIngredient ingredient, ItemStack[]? allStacks = null)

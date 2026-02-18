@@ -691,5 +691,14 @@ namespace Vintagestory.API.MathTools
             return "[" + X1 + ", " + Y1 + ", " + Z1 + " => " + X2 + ", " + Y2 + ", " + Z2 + "]";
         }
 
+        public void Offset(float x, float y, float z)
+        {
+            X1 += x;
+            X2 += x;
+            Y1 += y;
+            Y2 += y;
+            Z1 += z;
+            Z2 += z;
+        }
     }
 }

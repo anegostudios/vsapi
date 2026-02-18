@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Client;
+using System;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -59,6 +60,18 @@ namespace Vintagestory.API.Common
         {
             handled = EnumHandling.PassThrough;
             return false;
+        }
+
+        public virtual int GetColorWithoutTint(ICoreClientAPI capi, BlockPos pos, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return 0;
+        }
+
+        public virtual int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing, int rndIndex, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return 0;
         }
     }
 }

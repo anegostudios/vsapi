@@ -590,11 +590,13 @@ namespace Vintagestory.API.Common
 
             if (Connectors != null)
             {
-                foreach (var path in Connectors)
+                for (var i = 0; i < Connectors.Count; i++)
                 {
+                    var path = Connectors[i];
                     path.Position.X -= minX;
                     path.Position.Y -= minY;
                     path.Position.Z -= minZ;
+                    Connectors[i] = path;
                 }
             }
 

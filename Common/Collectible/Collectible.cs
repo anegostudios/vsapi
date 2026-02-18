@@ -978,25 +978,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-
-        /// <summary>
-        /// Called when this collectible is attempted to being used as part of a grid crafting recipe and should get consumed now. Return false if it doesn't match the ingredient
-        /// </summary>
-        /// <param name="inputStack"></param>
-        /// <param name="gridRecipe"></param>
-        /// <param name="ingredient"></param>
-        /// <returns></returns>
-        [Obsolete("Use 'MatchesForCrafting(ItemStack inputStack, IRecipeBase recipe, IRecipeIngredient ingredient)' instead")]
-        public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)
-        {
-            if (!ingredient.ConsumeProperties.Consume && ingredient.ConsumeProperties.DurabilityCost > inputStack.Collectible.GetRemainingDurability(inputStack))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         /// <summary>
         /// Called when this collectible is attempted to being used as part of a crafting recipe and should get consumed now. Return false if it doesn't match the ingredient
         /// </summary>
@@ -1006,13 +987,6 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool MatchesForCrafting(ItemStack inputStack, IRecipeBase recipe, IRecipeIngredient ingredient)
         {
-            if (recipe is GridRecipe gridRecipe && ingredient is CraftingRecipeIngredient craftingIngredient)
-            {
-#pragma warning disable CS0618 // Left for compat reasons
-                return MatchesForCrafting(inputStack, gridRecipe, craftingIngredient);
-#pragma warning restore CS0618
-            }
-
             if (!ingredient.ConsumeProperties.Consume && ingredient.ConsumeProperties.DurabilityCost > inputStack.Collectible.GetRemainingDurability(inputStack))
             {
                 return false;
@@ -1021,31 +995,8 @@ namespace Vintagestory.API.Common
             return true;
         }
 
-
-
-        /// <summary>
-        /// Called when this collectible is being used as part of a crafting recipe and should get consumed now
-        /// </summary>
-        /// <param name="allInputSlots"></param>
-        /// <param name="stackInSlot"></param>
-        /// <param name="gridRecipe"></param>
-        /// <param name="fromIngredient"></param>
-        /// <param name="byPlayer"></param>
-        /// <param name="quantity"></param>
-        [Obsolete("Use 'OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, IRecipeBase recipe, IRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)' instead")]
-        public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, GridRecipe gridRecipe, CraftingRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)
-        {
-        }
-
         public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, IRecipeBase recipe, IRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)
         {
-            if (recipe is GridRecipe gridRecipe)
-            {
-#pragma warning disable CS0618 // Left for compat reasons
-                OnConsumedByCrafting(allInputSlots, stackInSlot, gridRecipe, fromIngredient as CraftingRecipeIngredient, byPlayer, quantity);
-#pragma warning restore CS0618
-            }
-
             if (Attributes?["noConsumeOnCrafting"].AsBool(false) == true)
             {
                 string itemCode = stackInSlot?.Itemstack?.Collectible?.Code.ToString() ?? "";
@@ -1087,18 +1038,6 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Called when a matching grid recipe has been found and an item is placed into the crafting output slot (which is still before the player clicks on the output slot to actually craft the item and consume the ingredients)
-        /// </summary>
-        /// <param name="allInputslots"></param>
-        /// <param name="outputSlot"></param>
-        /// <param name="byRecipe"></param>
-        [Obsolete("Use 'OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe)' instead")]
-        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
-        {
-
-        }
-
-        /// <summary>
         /// Called when a matching recipe has been found and an item is placed into the crafting output slot (which is still before the player clicks on the output slot to actually craft the item and consume the ingredients)
         /// </summary>
         /// <param name="allInputslots"></param>
@@ -1106,13 +1045,6 @@ namespace Vintagestory.API.Common
         /// <param name="byRecipe"></param>
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputSlots, ItemSlot outputSlot, IRecipeBase byRecipe)
         {
-            if (byRecipe is GridRecipe gridRecipe)
-            {
-#pragma warning disable CS0618 // Left for compat reasons
-                OnCreatedByCrafting(allInputSlots, outputSlot, gridRecipe);
-#pragma warning restore CS0618
-            }
-
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling hd) => {
                     bh.OnCreatedByCrafting(allInputSlots, outputSlot, byRecipe, ref hd);
@@ -1187,8 +1119,7 @@ namespace Vintagestory.API.Common
         /// <param name="outputSlot"></param>
         /// <param name="matchingRecipe"></param>
         /// <returns>true to prevent default ingredient consumption</returns>
-        [Obsolete("Use 'ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe)' instead")]
-        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, GridRecipe matchingRecipe)
+        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe)
         {
             bool consumeIngredients = false;
 
@@ -1205,25 +1136,6 @@ namespace Vintagestory.API.Common
             }
 
             return consumeIngredients;
-        }
-
-        /// <summary>
-        /// Called after the player has taken out the item from the output slot
-        /// </summary>
-        /// <param name="slots"></param>
-        /// <param name="outputSlot"></param>
-        /// <param name="matchingRecipe"></param>
-        /// <returns>true to prevent default ingredient consumption</returns>
-        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, IRecipeBase matchingRecipe)
-        {
-            if (matchingRecipe is GridRecipe gridRecipe)
-            {
-#pragma warning disable CS0618 // Left for compat reasons
-                return ConsumeCraftingIngredients(slots, outputSlot, gridRecipe);
-#pragma warning restore CS0618
-            }
-
-            return false;
         }
 
 
@@ -1252,7 +1164,7 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="itemSlot"></param>
         /// <param name="amount">Amount of damage</param>
-        public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemSlot, int amount, bool destroyOnZeroDurability)
+        public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemSlot, int amount = 1, bool destroyOnZeroDurability = true)
         {
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling hd) => {
@@ -1280,19 +1192,6 @@ namespace Vintagestory.API.Common
             );
 
             itemSlot.MarkDirty();
-        }
-
-        /// <summary>
-        /// Causes the item to be damaged. Will play a breaking sound and removes the itemstack if no more durability is left
-        /// </summary>
-        /// <param name="world"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="itemslot"></param>
-        /// <param name="amount">Amount of damage</param>
-        [Obsolete("Use DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1, bool destroyOnZeroDurability = true) instead")]
-        public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1)
-        {
-            DamageItem(world, byEntity, itemslot, amount, true);
         }
 
         /// <summary>
@@ -2030,14 +1929,6 @@ namespace Vintagestory.API.Common
 
             string descText = GetItemDescText();
 
-            if (world.Api is ICoreClientAPI clientApi && clientApi.Settings.Bool["extendedDebugInfo"])
-            {
-                IEnumerable<string> tags = clientApi.TagsManager.GetTags(GetTags(inSlot.Itemstack)).Order();
-                if (tags.Any())
-                {
-                    dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {tags.Aggregate((first, second) => $"{first}, {second}")}</font>");
-                }
-            }
             if (withDebugInfo)
             {
                 dsc.AppendLine("<font color=\"#bbbbbb\">Id:" + Id + "</font>");
@@ -2045,6 +1936,15 @@ namespace Vintagestory.API.Common
                 if (api?.Side == EnumAppSide.Client && (api as ICoreClientAPI).Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft])
                 {
                     dsc.AppendLine("<font color=\"#bbbbbb\">Attributes: " + inSlot.Itemstack.Attributes.ToJsonToken() + "</font>\n");
+                }
+                if (world.Api is ICoreClientAPI clientApi)
+                {
+                    var sb = new StringBuilder(1024);
+                    sb.AppendJoin(", ", clientApi.CollectibleTagRegistry.SlowEnumerateTagNames(GetTags(inSlot.Itemstack)));
+                    if (sb.Length > 0)
+                    {
+                        dsc.AppendLine($"<font color=\"#bbbbbb\">Tags: {sb}</font>");
+                    }
                 }
             }
 
@@ -2505,7 +2405,7 @@ namespace Vintagestory.API.Common
             return 0;
         }
 
-        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
+        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, IRecipeBase recipe, ItemSlot slot, double x, double y, double z, double size)
         {
             EnumHandling handling = EnumHandling.PassThrough;
             foreach (CollectibleBehavior behavior in CollectibleBehaviors)
@@ -3612,7 +3512,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        void WalkBehaviors(CollectibleBehaviorDelegate onBehavior, Action defaultAction)
+        protected void WalkBehaviors(CollectibleBehaviorDelegate onBehavior, Action defaultAction)
         {
             bool executeDefault = true;
             foreach (CollectibleBehavior behavior in CollectibleBehaviors)

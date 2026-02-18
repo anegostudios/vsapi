@@ -344,11 +344,14 @@ Class ItemSlot
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Restrictions on which items can be stored here.
+An item with any of the provided tags is storable.
+An empty set (default) means no restrictions.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual IEnumerable&lt;TagCondition&lt;TagSet&gt;&gt; CanStoreTags { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual TagSet CanStoreTags { get; set; }</code></pre>
   </div>
 
 
@@ -357,7 +360,7 @@ Class ItemSlot
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;&gt;</dt>
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
     <dd></dd>
   </dl>
 

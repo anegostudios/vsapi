@@ -357,30 +357,29 @@ Interface IHeldBag
 
   <a id="Vintagestory_API_Common_IHeldBag_GetStorageTags_" data-uid="Vintagestory.API.Common.IHeldBag.GetStorageTags*"></a>
 
-  <h3 id="Vintagestory_API_Common_IHeldBag_GetStorageTags_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.IHeldBag.GetStorageTags(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ICoreAPI)">
-  GetStorageTags(ItemStack, ICoreAPI)
+  <h3 id="Vintagestory_API_Common_IHeldBag_GetStorageTags_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.IHeldBag.GetStorageTags(Vintagestory.API.Common.ItemStack)">
+  GetStorageTags(ItemStack)
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The types of items that can be stored in this bag</p>
+  <div class="markdown level1 summary"><p>The types of items that can be stored in this bag.
+Items with any of the tags are storable.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;TagCondition&lt;TagSet&gt;&gt; GetStorageTags(ItemStack bagStack, ICoreAPI api)</code></pre>
+    <pre><code class="lang-csharp hljs">TagSet GetStorageTags(ItemStack bagStack)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>bagStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
     <dd></dd>
-    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
-    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagCondition-1.html">TagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;&gt;</dt>
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
     <dd></dd>
   </dl>
 
