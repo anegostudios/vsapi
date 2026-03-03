@@ -101,7 +101,7 @@ Interface IRecipeIngredient
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IRecipeIngredient : IByteSerializable, ICloneable</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IRecipeIngredient : IRecipeIngredientBase, IByteSerializable, ICloneable</code></pre>
   </div>
 
 
@@ -113,6 +113,30 @@ Interface IRecipeIngredient
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_Type">IRecipeIngredientBase.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_Code">IRecipeIngredientBase.Code</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_AllowedVariants">IRecipeIngredientBase.AllowedVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_SkipVariants">IRecipeIngredientBase.SkipVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_Tags">IRecipeIngredientBase.Tags</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_MatchingType">IRecipeIngredientBase.MatchingType</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_ResolvedItemStack">IRecipeIngredientBase.ResolvedItemStack</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html#Vintagestory_API_Common_IRecipeIngredientBase_SatisfiesAsIngredient_Vintagestory_API_Common_ItemStack_System_Boolean_">IRecipeIngredientBase.SatisfiesAsIngredient(ItemStack, bool)</a>
+    </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IByteSerializable.html#Vintagestory_API_Common_IByteSerializable_ToBytes_System_IO_BinaryWriter_">IByteSerializable.ToBytes(BinaryWriter)</a>
     </div>
@@ -141,68 +165,6 @@ Interface IRecipeIngredient
 
   <h2 class="section" id="properties">Properties
 </h2>
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_AllowedVariants_" data-uid="Vintagestory.API.Common.IRecipeIngredient.AllowedVariants*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_AllowedVariants" data-uid="Vintagestory.API.Common.IRecipeIngredient.AllowedVariants">
-  AllowedVariants
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string[]? AllowedVariants { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_Code_" data-uid="Vintagestory.API.Common.IRecipeIngredient.Code*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_Code" data-uid="Vintagestory.API.Common.IRecipeIngredient.Code">
-  Code
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">AssetLocation? Code { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
 
 
   <a id="Vintagestory_API_Common_IRecipeIngredient_ConsumeProperties_" data-uid="Vintagestory.API.Common.IRecipeIngredient.ConsumeProperties*"></a>
@@ -258,37 +220,6 @@ Interface IRecipeIngredient
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_MatchingType_" data-uid="Vintagestory.API.Common.IRecipeIngredient.MatchingType*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_MatchingType" data-uid="Vintagestory.API.Common.IRecipeIngredient.MatchingType">
-  MatchingType
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EnumRecipeMatchType MatchingType { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.EnumRecipeMatchType.html">EnumRecipeMatchType</a></dt>
     <dd></dd>
   </dl>
 
@@ -393,37 +324,6 @@ Interface IRecipeIngredient
 
 
 
-  <a id="Vintagestory_API_Common_IRecipeIngredient_ResolvedItemStack_" data-uid="Vintagestory.API.Common.IRecipeIngredient.ResolvedItemStack*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_ResolvedItemStack" data-uid="Vintagestory.API.Common.IRecipeIngredient.ResolvedItemStack">
-  ResolvedItemStack
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ItemStack? ResolvedItemStack { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_IRecipeIngredient_ReturnedStack_" data-uid="Vintagestory.API.Common.IRecipeIngredient.ReturnedStack*"></a>
 
   <h3 id="Vintagestory_API_Common_IRecipeIngredient_ReturnedStack" data-uid="Vintagestory.API.Common.IRecipeIngredient.ReturnedStack">
@@ -445,99 +345,6 @@ Interface IRecipeIngredient
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_SkipVariants_" data-uid="Vintagestory.API.Common.IRecipeIngredient.SkipVariants*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_SkipVariants" data-uid="Vintagestory.API.Common.IRecipeIngredient.SkipVariants">
-  SkipVariants
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string[]? SkipVariants { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_Tags_" data-uid="Vintagestory.API.Common.IRecipeIngredient.Tags*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_Tags" data-uid="Vintagestory.API.Common.IRecipeIngredient.Tags">
-  Tags
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ComplexTagCondition&lt;TagSet&gt; Tags { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_Type_" data-uid="Vintagestory.API.Common.IRecipeIngredient.Type*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_Type" data-uid="Vintagestory.API.Common.IRecipeIngredient.Type">
-  Type
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EnumItemClass Type { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.EnumItemClass.html">EnumItemClass</a></dt>
     <dd></dd>
   </dl>
 
@@ -750,44 +557,6 @@ Interface IRecipeIngredient
     <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
     <dd></dd>
     <dt><code>sourceForErrorLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IRecipeIngredient_SatisfiesAsIngredient_" data-uid="Vintagestory.API.Common.IRecipeIngredient.SatisfiesAsIngredient*"></a>
-
-  <h3 id="Vintagestory_API_Common_IRecipeIngredient_SatisfiesAsIngredient_Vintagestory_API_Common_ItemStack_System_Boolean_" data-uid="Vintagestory.API.Common.IRecipeIngredient.SatisfiesAsIngredient(Vintagestory.API.Common.ItemStack,System.Boolean)">
-  SatisfiesAsIngredient(ItemStack, bool)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool SatisfiesAsIngredient(ItemStack inputStack, bool checkStackSize = true)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>inputStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
-    <dd></dd>
-    <dt><code>checkStackSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

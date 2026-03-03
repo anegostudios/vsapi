@@ -387,6 +387,15 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Gets the name of the asset, prefixed with domain if not in the default domain
+        /// </summary>
+        /// <returns></returns>
+        public virtual string GetNameWithDomain()
+        {
+            return Domain == GlobalConstants.DefaultDomain ? GetName() : $"{Domain}:{GetName()}";
+        }
+
+        /// <summary>
         /// Removes the file ending from the asset path.
         /// </summary>
         public virtual void RemoveEnding()

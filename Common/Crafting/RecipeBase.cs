@@ -170,24 +170,24 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
 
         if (reader.ReadBoolean())
         {
-            RequiresTrait = reader.ReadString();
+            RequiresTrait = reader.ReadString().DeDuplicate();
         }
 
         if (reader.ReadBoolean())
         {
-            CopyAttributesFrom = reader.ReadString();
+            CopyAttributesFrom = reader.ReadString().DeDuplicate();
         }
 
         int allowedVariantsCount = reader.ReadInt32();
         AllowedVariants = [];
         for (int i = 0; i < allowedVariantsCount; i++)
         {
-            string key = reader.ReadString();
+            string key = reader.ReadString().DeDuplicate();
             int len = reader.ReadInt32();
             string[] variants = new string[len];
             for (int j = 0; j < len; j++)
             {
-                variants[j] = reader.ReadString();
+                variants[j] = reader.ReadString().DeDuplicate();
             }
             AllowedVariants[key] = variants;
         }
@@ -196,12 +196,12 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         SkipVariants = [];
         for (int i = 0; i < skipVariantsCount; i++)
         {
-            string key = reader.ReadString();
+            string key = reader.ReadString().DeDuplicate();
             int len = reader.ReadInt32();
             string[] variants = new string[len];
             for (int j = 0; j < len; j++)
             {
-                variants[j] = reader.ReadString();
+                variants[j] = reader.ReadString().DeDuplicate();
             }
             SkipVariants[key] = variants;
         }
@@ -210,7 +210,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         MergeAttributesFrom = new string[mergedAttributesCount];
         for (int i = 0; i < mergedAttributesCount; i++)
         {
-            MergeAttributesFrom[i] = reader.ReadString();
+            MergeAttributesFrom[i] = reader.ReadString().DeDuplicate();
         }
     }
 
@@ -262,6 +262,8 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
                 foreach (IRecipeIngredient ingredient in currentRecipe.RecipeIngredients)
                 {
                     FillIngredientPlaceHolders(ingredient, variantCode, currentVariant);
+                    ingredient.SkipVariants = null;    // These can now be nullified, because we have expanded the wildcard successfully
+                    ingredient.AllowedVariants = null;
                 }
 
                 currentRecipe.RecipeOutput.FillPlaceHolder(variantCode, currentVariant);
@@ -465,19 +467,31 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         int wildcardStartLen = ingredient.Code.Path.IndexOf('*');
         int wildcardEndLen = ingredient.Code.Path.Length - wildcardStartLen - 1;
 
-        foreach (AssetLocation code in collectibles.Select(collectible => collectible.Code).OfType<AssetLocation>())
+        bool hasTagsFilter = !ingredient.Tags.IsEmpty;
+
+        foreach (CollectibleObject collectible in collectibles)
         {
+            var code = collectible.Code;
+            if (code == null) continue;
+
             if (ingredient.SkipVariants != null && WildcardUtil.MatchesVariants(ingredient.Code, code, ingredient.SkipVariants))
             {
                 continue;
             }
 
-            if (WildcardUtil.Match(ingredient.Code, code, ingredient.AllowedVariants))
+            if (!WildcardUtil.Match(ingredient.Code, code, ingredient.AllowedVariants))
             {
-                string path = code.Path[wildcardStartLen..];
-                string codePart = path[..^wildcardEndLen].DeDuplicate();
-                codes.Add(codePart);
+                continue;
             }
+
+            if (hasTagsFilter && !ingredient.Tags.Matches(in collectible.Tags))
+            {
+                continue;
+            }
+
+            string path = code.Path[wildcardStartLen..];  // abc-[*-def]
+            string codePart = path[..^wildcardEndLen].DeDuplicate(); // [*]-def
+            codes.Add(codePart);
         }
 
         ingredient.Name ??= ingredient.Code;
@@ -513,11 +527,18 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         string regexTemplate = ReplaceVariantsToRegex(ingredient.Code.Path, out List<string> variants, allowedVariantsCombination);
         Regex regex = new(regexTemplate);
 
+        bool hasTagsFilter = !ingredient.Tags.IsEmpty;
+
         foreach (CollectibleObject collectible in collectibles.Where(collectible => WildcardUtil.Match(ingredient.Code.Domain, collectible.Code.Domain)))
         {
             Match match = regex.Match(collectible.Code.Path);
 
             if (!match.Success)
+            {
+                continue;
+            }
+
+            if (hasTagsFilter && !ingredient.Tags.Matches(in collectible.Tags))
             {
                 continue;
             }
@@ -904,17 +925,18 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         IRecipeIngredient? ingredient = exactMatchIngredients
             .Find(ingredient => ingredient.ResolvedItemStack?.Satisfies(inputStack) == true);
 
-        if (ingredient == null || ingredient.ResolvedItemStack == null) return;
+        ItemStack? ingredientStack = ingredient?.ResolvedItemStack;
+        if (ingredientStack == null) return;
 
-        int quantity = Math.Min(ingredient.ResolvedItemStack.StackSize, inputStack.StackSize);
+        int quantity = Math.Min(ingredientStack.StackSize, inputStack.StackSize);
 
         inputStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlot, this, ingredient, byPlayer, quantity);
 
-        ingredient.ResolvedItemStack.StackSize -= quantity;
+        ingredientStack.StackSize -= quantity;
 
-        if (ingredient.ResolvedItemStack.StackSize <= 0)
+        if (ingredientStack.StackSize <= 0)
         {
-            exactMatchIngredients.Remove(ingredient);
+            exactMatchIngredients.Remove(ingredient!);    // We know this is not null if ingredient?.ResolvedItemStack is not null. Stupid compiler.
         }
     }
 
@@ -953,7 +975,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
             concreteIngredientsMap.Add(ingredient.Id, concreteIngredients);
         }
 
-        const int COMBINATORIAL_LIMIT = 100;
+        const int COMBINATORIAL_LIMIT = 10;     // With a higher combinatorial limit, many simple grid recipes which use tools (e.g. figurehead or debarked log) add e.g. 63 permutations (7x9 tool variants) for each different wood-typed output. This increases the number of grid recipes registered to very high levels like 40k, which then causes lag spikes when recipe matching. Better to match a smaller number of recipes even if that involves tag-matching at runtime
         var totalCombinations = 1;
         foreach (var (id, validIngredients) in concreteIngredientsMap)
         {

@@ -773,5 +773,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns></returns>
         IBlockAccessor GetLockFreeBlockAccessor();
+
+        /// <summary>
+        /// For performance, used to collate and de-duplicate recipe ingredients, for faster ingredient-matching
+        /// </summary>
+        System.Collections.Generic.OrderedDictionary<IRecipeIngredientBase, List<IRecipeBase>> FastSearchRecipesByIngredient { get; }
     }
 }

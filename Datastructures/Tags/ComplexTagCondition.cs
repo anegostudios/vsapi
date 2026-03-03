@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 
@@ -41,6 +42,28 @@ public struct ComplexTagCondition<TTagSet>
     {
         public TTagSet RequiredTags;
         public TTagSet ForbiddenTags;
+
+        public bool Equals(Condition other)
+        {
+            if (RequiredTags != null && other.RequiredTags != null)
+            {
+                if (!RequiredTags.Equals(other.RequiredTags)) return false;
+            }
+            else if (RequiredTags != null || other.RequiredTags != null) return false;
+
+            if (ForbiddenTags != null && other.ForbiddenTags != null)
+            {
+                if (!ForbiddenTags.Equals(other.ForbiddenTags)) return false;
+            }
+            else if (ForbiddenTags != null || other.ForbiddenTags != null) return false;
+
+            return true;
+        }
+
+        public override string ToString()
+        {
+            return RequiredTags?.ToString() ?? "null";    // Quick and dirty but good enough for debugging purposes
+        }
     }
 
     public readonly override int GetHashCode()
@@ -52,6 +75,25 @@ public struct ComplexTagCondition<TTagSet>
                 hash ^= condition.GetHashCode();
 
         return hash;
+    }
+
+    public override bool Equals([NotNullWhen(true)] object? obj)
+    {
+        if (obj is not ComplexTagCondition<TTagSet> other) return false;
+        if (conditions == null || other.conditions == null) return conditions == null && other.conditions == null;
+        if (conditions.Length != other.conditions.Length) return false;
+        if (isDisjunctive != other.isDisjunctive) return false;
+        for (int i = 0; i < conditions.Length; i++)
+        {
+            if (!conditions[i].Equals(other.conditions[i])) return false;
+        }
+        return true;
+    }
+
+    public override string ToString()
+    {
+        if (conditions == null || conditions.Length == 0) return "empty";
+        return conditions[0].ToString();   // Quick and dirty but good enough for debugging purposes
     }
 }
 
@@ -280,6 +322,8 @@ public sealed class ComplexConditionConverter<TTagSet>(ITagRegistry<TTagSet> reg
                             outerMode = OuterParseMode.Simple;
 
                             simpleCondition.RequiredTags = parseSet(valueArray);
+
+                            resultComplexCondition.isDisjunctive = true; // This is about the invisible outer set, so it _is_ disjunctive! (We are the inner, which is the conjunctive one).
                         }
                         else
                         {
@@ -291,9 +335,10 @@ public sealed class ComplexConditionConverter<TTagSet>(ITagRegistry<TTagSet> reg
                             outerMode = OuterParseMode.Complex;
 
                             resultComplexCondition.conditions = parseArrayOfConditions(valueArray, ConditionParsingMode.Disjunctive);
+
+                            resultComplexCondition.isDisjunctive = false; // If we are the outer set that set is conjunctive.
                         }
 
-                        resultComplexCondition.isDisjunctive = false;
                         break;
                     }
 
@@ -315,6 +360,8 @@ public sealed class ComplexConditionConverter<TTagSet>(ITagRegistry<TTagSet> reg
                             outerMode = OuterParseMode.Simple;
 
                             simpleCondition.RequiredTags = parseSet(valueArray);
+
+                            resultComplexCondition.isDisjunctive = false; // This is about the invisible outer set, so it is _not_ disjunctive! (We are the inner, which is the disjunctive one).
                         }
                         else
                         {
@@ -326,9 +373,10 @@ public sealed class ComplexConditionConverter<TTagSet>(ITagRegistry<TTagSet> reg
                             outerMode = OuterParseMode.Complex;
 
                             resultComplexCondition.conditions = parseArrayOfConditions(valueArray, ConditionParsingMode.Conjunctive);
+
+                            resultComplexCondition.isDisjunctive = true; // If we are the outer set that set is disjunctive.
                         }
 
-                        resultComplexCondition.isDisjunctive = true;
                         break;
                     }
 

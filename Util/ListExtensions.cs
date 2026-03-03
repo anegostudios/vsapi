@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -61,6 +61,35 @@ namespace Vintagestory.API.Util
             }
             return false;
         }
+
+        public static void AddIfNotPresent<T>(this List<T> list, T item)
+        {
+            int count = list.Count;
+            if (item != null)
+            {
+                // A-B tests show this code is faster than System List.Contains()
+                T[] listArray = ListAccess<T>.Items(list);
+                for (int i = 0; i < listArray.Length; i++)
+                {
+                    if (i >= count) break;
+                    if (item.Equals(listArray[i])) return;   // No need to .Add if already contained
+                }
+            }
+            else
+            {
+                if (list.Contains(item)) return;   // No need to .Add if already contained
+            }
+
+            list.Add(item);
+        }
     }
 
+
+    internal class ListAccess<T>    //Uses reflection, best kept for internal use only
+    {
+        [UnsafeAccessor(UnsafeAccessorKind.Field, Name = "_items")]
+        internal extern static ref T[] Items(List<T> list);
+        [UnsafeAccessor(UnsafeAccessorKind.Field, Name = "_size")]
+        public extern static ref int Size(List<T> list);
+    }
 }

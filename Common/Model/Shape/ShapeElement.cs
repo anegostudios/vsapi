@@ -4,8 +4,6 @@ using System;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
-#nullable disable
-
 namespace Vintagestory.API.Common
 {
     /// <summary>
@@ -24,13 +22,13 @@ namespace Vintagestory.API.Common
         /// The name of the ShapeElement
         /// </summary>
         [JsonProperty]
-        public string Name;
+        public string? Name;
 
 
         [JsonProperty]
-        public double[] From;
+        public double[]? From;
         [JsonProperty]
-        public double[] To;
+        public double[]? To;
 
         /// <summary>
         /// Whether or not the shape element is shaded.
@@ -46,18 +44,18 @@ namespace Vintagestory.API.Common
         /// </summary>
         [JsonProperty]
         [Obsolete("Use FacesResolved instead")]
-        public Dictionary<string, ShapeElementFace> Faces;
+        public Dictionary<string, ShapeElementFace>? Faces;
         /// <summary>
         /// An array holding the faces of this shape element in BlockFacing order: North, East, South, West, Up, Down.  May be null if not present or not enabled.
         /// <br/>Note: from game version 1.20.4, this is <b>null on server-side</b> (except during asset loading start-up stage)
         /// </summary>
-        public ShapeElementFace[] FacesResolved = new ShapeElementFace[6];
+        public ShapeElementFace[]? FacesResolved = new ShapeElementFace[6];
 
         /// <summary>
         /// The origin point for rotation.
         /// </summary>
         [JsonProperty]
-        public double[] RotationOrigin;
+        public double[]? RotationOrigin;
 
         /// <summary>
         /// The forward vertical rotation of the shape element.
@@ -96,9 +94,9 @@ namespace Vintagestory.API.Common
         public double ScaleZ = 1;
 
         [JsonProperty]
-        public string ClimateColorMap = null;
+        public string? ClimateColorMap = null;
         [JsonProperty]
-        public string SeasonColorMap = null;
+        public string? SeasonColorMap = null;
         [JsonProperty]
         public short RenderPass = -1;
         [JsonProperty]
@@ -113,24 +111,24 @@ namespace Vintagestory.API.Common
         /// The child shapes of this shape element
         /// </summary>
         [JsonProperty]
-        public ShapeElement[] Children;
+        public ShapeElement[]? Children;
 
         /// <summary>
         /// The attachment points for this shape.
         /// </summary>
         [JsonProperty]
-        public AttachmentPoint[] AttachmentPoints;
+        public AttachmentPoint[]? AttachmentPoints;
 
         /// <summary>
         /// The "remote" parent for this element
         /// </summary>
         [JsonProperty]
-        public string StepParentName;
+        public string? StepParentName;
 
         /// <summary>
         /// The parent element reference for this shape.
         /// </summary>
-        public ShapeElement ParentElement;
+        public ShapeElement? ParentElement;
 
         /// <summary>
         /// The id of the joint attached to the parent element.
@@ -144,7 +142,7 @@ namespace Vintagestory.API.Common
 
         public float DamageEffect;
 
-        public float[] inverseModelTransform;
+        public float[]? inverseModelTransform;
 
         /// <summary>
         /// Walks the element tree and collects all parents, starting with the root element
@@ -211,7 +209,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        internal void SetJointId(int jointId)
+        public void SetJointId(int jointId)
         {
             this.JointId = jointId;
 
@@ -223,7 +221,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        internal void ResolveReferences()
+        public void ResolveReferences()
         {
             var Children = this.Children;
             if (Children != null)
@@ -246,7 +244,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        internal void TrimTextureNamesAndResolveFaces()
+        public void TrimTextureNamesAndResolveFaces()
         {
 #pragma warning disable CS0618 // Type or member is obsolete
             if (Faces != null)
@@ -283,7 +281,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        static ElementPose noTransform = new ElementPose();
+        protected static ElementPose? noTransform = new ElementPose();
 
         public float[] GetLocalTransformMatrix(int animVersion, float[] output = null, ElementPose tf = null)
         {
@@ -447,7 +445,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        internal bool HasFaces()
+        public bool HasFaces()
         {
             for (int i = 0; i < 6; i++) if (FacesResolved[i] != null) return true;
             return false;
@@ -473,6 +471,18 @@ namespace Vintagestory.API.Common
             //To = null;
             //RotationOrigin = null;
             //inverseModelTransform = null;
+        }
+
+        public override string ToString()
+        {
+            if (StepParentName != null)
+            {
+                return ParentElement == null ? $"{Name}" : $"{Name}({ParentElement.Name})";
+            }
+            else
+            {
+                return ParentElement == null ? $"{Name} -> {StepParentName}" : $"{Name}({ParentElement.Name}) -> {StepParentName}";
+            }
         }
     }
 }

@@ -17,6 +17,8 @@ namespace Vintagestory.API.Common
         protected bool stopRenderTriggered = false;
         protected ICoreClientAPI capi;
         protected Vec3d position;
+        protected Vec3f soundPosition;
+        protected int dimension = 0;
 
         [Obsolete]
         protected virtual int RenderTextureId => capi.BlockTextureAtlas.AtlasTextures[0].TextureId;
@@ -24,10 +26,12 @@ namespace Vintagestory.API.Common
         public double RenderOrder => 1;
         public int RenderRange => 99;
 
-        public AnimationUtil(ICoreAPI api, Vec3d position)
+        public AnimationUtil(ICoreAPI api, Vec3d position, int dimension = 0)
         {
             this.api = api;
             this.position = position;
+            this.dimension = dimension;
+            soundPosition = position.ToVec3f().Add(0.5f, 0.5f, 0.5f);
             capi = api as ICoreClientAPI;
             (api as ICoreClientAPI)?.Event.RegisterRenderer(this, EnumRenderStage.Opaque, "beanimutil");
         }
@@ -60,7 +64,7 @@ namespace Vintagestory.API.Common
                 throw new ArgumentException("meshdata cannot be null");
             }
 
-            animator = GetAnimator(api, cacheDictKey, shape);
+            animator = GetAnimator(api, cacheDictKey, shape, ShouldPlaySound);
             renderer?.Dispose();
             renderer = new AnimatableRenderer(capi, position, rotation, animator, activeAnimationsByAnimCode, meshdata, renderStage);
         }
@@ -124,7 +128,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public static AnimatorBase GetAnimator(ICoreAPI api, string cacheDictKey, Shape shape)
+        public static AnimatorBase GetAnimator(ICoreAPI api, string cacheDictKey, Shape shape, Action<string, AnimationSound> onShouldPlaySoundListener = null)
         {
             if (shape == null)
             {
@@ -146,7 +150,7 @@ namespace Vintagestory.API.Common
             if (animCache.TryGetValue(cacheDictKey, out AnimCacheEntry cacheObj))
             {
                 animator = api.Side == EnumAppSide.Client ?
-                    new ClientAnimator(() => 1, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, shape.JointsById) :
+                    new ClientAnimator(() => 1, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, shape.JointsById, null, onShouldPlaySoundListener) :
                     new ServerAnimator(() => 1, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, shape.JointsById)
                 ;
             }
@@ -161,7 +165,7 @@ namespace Vintagestory.API.Common
                 }
 
                 animator = api.Side == EnumAppSide.Client ?
-                    new ClientAnimator(() => 1, shape.Animations, shape.Elements, shape.JointsById) :
+                    new ClientAnimator(() => 1, shape.Animations, shape.Elements, shape.JointsById, null, onShouldPlaySoundListener) :
                     new ServerAnimator(() => 1, shape.Animations, shape.Elements, shape.JointsById)
                 ;
 
@@ -183,6 +187,13 @@ namespace Vintagestory.API.Common
             (api as ICoreClientAPI)?.Event.UnregisterRenderer(this, EnumRenderStage.Opaque);
         }
 
+
+        Dictionary<string, ILoadedSound> loopingSounds = null;
+
+        public void ShouldPlaySound(string animationMetaCode, AnimationSound sound)
+        {
+            AnimationManager.ShouldPlaySound(api.World, soundPosition, dimension, loopingSounds, animationMetaCode, sound);
+        }
 
     }
 }

@@ -74,7 +74,7 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static bool Match(AssetLocation wildCard, AssetLocation inCode, string[] allowedVariants)
         {
-            if (wildCard.Domain == "*" && wildCard.Path == "*") return true;
+            if (wildCard.Domain.Length * wildCard.Path.Length == 1 && wildCard.Domain == "*" && wildCard.Path == "*") return true;
 
             if (wildCard.Equals(inCode)) return true;
 

@@ -100,7 +100,8 @@ public class InventoryPerPlayer : InventoryGeneric
         {
             for (int i = 0; i < Quantities.Length; i++)
             {
-                if (this[i].Itemstack != null)
+                var itemStack = this[i].Itemstack;
+                if (itemStack != null)
                 {
                     var remaining = GetPlayerRemaining(capi.World.Player.PlayerUID, i);
                     if (remaining == 0)
@@ -112,7 +113,7 @@ public class InventoryPerPlayer : InventoryGeneric
                     }
                     else
                     {
-                        this[i].Itemstack.StackSize = remaining;
+                        itemStack.StackSize = remaining;
                     }
                 }
             }

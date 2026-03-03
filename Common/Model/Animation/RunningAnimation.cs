@@ -29,6 +29,8 @@ namespace Vintagestory.API.Common
         public bool Running;
         public int Iterations;
 
+        public bool NowPlaying = false; // Needed by the animation sound system to determine whether to play sounds or not
+
         public bool ShouldRewind = false;
         public bool ShouldPlayTillEnd = false;
 
@@ -102,6 +104,8 @@ namespace Vintagestory.API.Common
         {
             if (meta.AnimationSpeed == 0) return;
 
+            NowPlaying = true;
+
             dt *= meta.GetCurrentAnimationSpeed(walkspeed);
 
             if ((Active && (Iterations == 0 || Animation.OnAnimationEnd != EnumEntityAnimationEndHandling.EaseOut)) || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
@@ -119,6 +123,7 @@ namespace Vintagestory.API.Common
             {
                 EasingFactor = 0;
                 CurrentFrame = Animation.QuantityFrames - 1;
+                NowPlaying = false;
                 Stop();
                 return;
             }
@@ -127,6 +132,7 @@ namespace Vintagestory.API.Common
             {
                 Iterations = 1;
                 CurrentFrame = Animation.QuantityFrames - 1;
+                NowPlaying = false;
                 return;
             }
 
@@ -134,6 +140,7 @@ namespace Vintagestory.API.Common
             {
                 Iterations = 1;
                 CurrentFrame = Animation.QuantityFrames - 1;
+                NowPlaying = false;
                 return;
             }
 
@@ -174,6 +181,7 @@ namespace Vintagestory.API.Common
             Iterations = 0;
             EasingFactor = 0;
             SoundPlayedAtIteration = null;
+            NowPlaying = false;
         }
 
         public void EaseOut(float dt)

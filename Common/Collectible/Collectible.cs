@@ -496,7 +496,7 @@ namespace Vintagestory.API.Common
                     }
                 },
                 () => {
-                    durability = Durability;
+                    //durability = Durability; - this overrides any changed values in the behaviors
                 }
             );
 
@@ -516,7 +516,7 @@ namespace Vintagestory.API.Common
                     }
                 },
                 () => {
-                    durability = (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack));
+                    //durability = (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack)); - this overrides any changed values in the behaviors
                 }
             );
 
@@ -541,7 +541,7 @@ namespace Vintagestory.API.Common
                     }
                 },
                 () => {
-                    atp = AttackPower;
+                    //atp = AttackPower;- this overrides any changed values in the behaviors
                 }
             );
 
@@ -601,7 +601,7 @@ namespace Vintagestory.API.Common
                     }
                 },
                 () => {
-                    atr = AttackRange;
+                    //atr = AttackRange; - this overrides any changed values in the behaviors
                 }
             );
 
@@ -872,13 +872,15 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpHitAnimation(ItemSlot slot, Entity byEntity)
         {
-            string anim = null;
+            string anim = HeldTpHitAnimation;
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling handling) => {
                     string bhanim = bh.GetHeldTpHitAnimation(slot, byEntity, ref handling);
                     if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
-                () => { anim = HeldTpHitAnimation; }
+                () => {
+                    //anim = HeldTpHitAnimation; - this overrides any changed values in the behaviors
+                }
             );
 
             return anim;
@@ -893,13 +895,15 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldReadyAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
-            string anim = null;
+            string anim = anim = hand == EnumHand.Left ? HeldLeftReadyAnimation : HeldRightReadyAnimation;
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling handling) => {
                     string bhanim = bh.GetHeldReadyAnimation(activeHotbarSlot, forEntity, hand, ref handling);
                     if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
-                () => { anim = hand == EnumHand.Left ? HeldLeftReadyAnimation : HeldRightReadyAnimation; }
+                () => {
+                    //anim = hand == EnumHand.Left ? HeldLeftReadyAnimation : HeldRightReadyAnimation;- this overrides any changed values in the behaviors
+                }
             );
 
             if (api is ICoreClientAPI capi)
@@ -925,13 +929,15 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpIdleAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
-            string anim = null;
+            string anim = anim = hand == EnumHand.Left ? HeldLeftTpIdleAnimation : HeldRightTpIdleAnimation;
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling handling) => {
                     string bhanim = bh.GetHeldTpIdleAnimation(activeHotbarSlot, forEntity, hand, ref handling);
                     if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
-                () => { anim = hand == EnumHand.Left ? HeldLeftTpIdleAnimation : HeldRightTpIdleAnimation; }
+                () => {
+                    //anim = hand == EnumHand.Left ? HeldLeftTpIdleAnimation : HeldRightTpIdleAnimation;- this overrides any changed values in the behaviors
+                }
             );
 
             return anim;
@@ -946,16 +952,21 @@ namespace Vintagestory.API.Common
         public virtual string GetHeldTpUseAnimation(ItemSlot activeHotbarSlot, Entity forEntity)
         {
             string anim = null;
+            if (GetNutritionProperties(forEntity.World, activeHotbarSlot.Itemstack, forEntity) == null)
+            {
+                anim = HeldTpUseAnimation;
+            }
+
             WalkBehaviors(
                 (CollectibleBehavior bh, ref EnumHandling handling) => {
                     string bhanim = bh.GetHeldTpUseAnimation(activeHotbarSlot, forEntity, ref handling);
                     if (handling != EnumHandling.PassThrough) anim = bhanim;
                 },
                 () => {
-                    if (GetNutritionProperties(forEntity.World, activeHotbarSlot.Itemstack, forEntity) == null)
+                    /*if (GetNutritionProperties(forEntity.World, activeHotbarSlot.Itemstack, forEntity) == null)
                     {
-                        anim = HeldTpUseAnimation;
-                    }
+                        anim = HeldTpUseAnimation;- this overrides any changed values in the behaviors
+                    }*/
                 }
             );
 

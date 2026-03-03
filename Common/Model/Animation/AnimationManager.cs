@@ -5,6 +5,7 @@ using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
 #nullable disable
@@ -542,13 +543,19 @@ namespace Vintagestory.API.Common
         }
 
         Dictionary<string, ILoadedSound> loopingSounds = null;
+
         public void ShouldPlaySound(string animationMetaCode, AnimationSound sound)
         {
-            if (sound.Chance < 1 && entity.World.Rand.NextSingle() >= sound.Chance) return;
+            ShouldPlaySound(entity.World, entity.Pos.XYZFloat, entity.Pos.Dimension, loopingSounds, animationMetaCode, sound);
+        }
+
+        public static void ShouldPlaySound(IWorldAccessor world, Vec3f pos, int dimension, Dictionary<string, ILoadedSound> loopingSounds, string animationMetaCode, AnimationSound sound, Entity entity = null)
+        {
+            if (sound.Chance < 1 && world.Rand.NextSingle() >= sound.Chance) return;
 
             if (sound.Looping)
             {
-                var cworld = entity.World as IClientWorldAccessor;
+                var cworld = world as IClientWorldAccessor;
                 if (cworld != null)
                 {
                     if (loopingSounds == null) loopingSounds = new Dictionary<string, ILoadedSound>();
@@ -561,11 +568,11 @@ namespace Vintagestory.API.Common
                             Location = sound.Attributes.Location,
                             DisposeOnFinish = false,
                             Range = sound.Attributes.Range,
-                            Position = entity.Pos.XYZFloat,
+                            Position = pos,
                             ShouldLoop = true,
                             SoundType = sound.Attributes.Type,
-                            Pitch = sound.Attributes.Pitch.nextFloat(1f, entity.World.Rand),
-                            Volume = sound.Attributes.Volume.nextFloat(1f, entity.World.Rand)
+                            Pitch = sound.Attributes.Pitch.nextFloat(1f, world.Rand),
+                            Volume = sound.Attributes.Volume.nextFloat(1f, world.Rand)
                         });
 
                         loopingSounds.Add(animationMetaCode, lsound);
@@ -576,7 +583,13 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                entity.World.PlaySoundAt(sound.Attributes, entity, null);
+                if (entity != null)
+                {
+                    world.PlaySoundAt(sound.Attributes, entity, null);
+                } else
+                {
+                    world.PlaySoundAt(sound.Attributes, pos.X, pos.Y, pos.Z, dimension, null);
+                }
             }
         }
     }

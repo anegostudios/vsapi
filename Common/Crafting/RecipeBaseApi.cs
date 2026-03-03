@@ -41,12 +41,30 @@ public struct RecipeIngredientConsumeProperties
     public bool BreakOnZeroDurability { get; set; }
 }
 
-public interface IRecipeIngredient : IByteSerializable, ICloneable
+/// <summary>
+/// A minimal set of data for ItemStack matching; may include the ResolvedItemStack
+/// </summary>
+public interface IRecipeIngredientBase
 {
-    AssetLocation? Code { get; set; }
-
     EnumItemClass Type { get; set; }
 
+    AssetLocation? Code { get; set; }
+
+    string[]? AllowedVariants { get; set; }
+
+    string[]? SkipVariants { get; set; }
+
+    ComplexTagCondition<TagSet> Tags { get; set; }
+
+    EnumRecipeMatchType MatchingType { get; set; }
+
+    ItemStack? ResolvedItemStack { get; set; }
+
+    bool SatisfiesAsIngredient(ItemStack inputStack, bool checkStackSize = true);
+}
+
+public interface IRecipeIngredient : IRecipeIngredientBase, IByteSerializable, ICloneable
+{
     int Quantity { get; set; }
 
     /// <summary>
@@ -59,23 +77,11 @@ public interface IRecipeIngredient : IByteSerializable, ICloneable
     /// </summary>
     string? Name { get; set; }
 
-    EnumRecipeMatchType MatchingType { get; set; }
-
-    string[]? AllowedVariants { get; set; }
-
-    string[]? SkipVariants { get; set; }
-
     JsonItemStack? ReturnedStack { get; set; }
 
     JsonObject? RecipeAttributes { get; set; }
 
-    ItemStack? ResolvedItemStack { get; set; }
-
-    ComplexTagCondition<TagSet> Tags { get; set; }
-
     RecipeIngredientConsumeProperties ConsumeProperties { get; }
-
-    bool SatisfiesAsIngredient(ItemStack inputStack, bool checkStackSize = true);
 
     void FillPlaceHolder(string key, string value);
 

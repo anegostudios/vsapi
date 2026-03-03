@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -78,7 +79,9 @@ namespace Vintagestory.API.Common
         public string SelectionBox;
         public string SeatId;
         public bool Controllable;
+        [Obsolete("Setting this triggers use of slightly incorrect math for backwards compatibility")]
         public Vec3f MountOffset;
+        public Vec3f RiderOffset;
         public Vec3f MountRotation = new Vec3f();
         public float? BodyYawLimit;
         public float EyeHeight = 1.5f;

@@ -2297,7 +2297,7 @@ namespace Vintagestory.API.Common
             int requiredMiningTier = GetRequiredMiningTier(world, pos);
             if (requiredMiningTier > 0 && api.World.Claims.TestAccess(forPlayer, pos, EnumBlockAccessFlags.BuildOrBreak) == EnumWorldAccessResponse.Granted)
             {
-                AddMiningTierInfo(sb);
+                AddMiningTierInfo(sb, world, pos);
             }
 
             foreach (BlockBehavior bh in BlockBehaviors)

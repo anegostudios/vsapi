@@ -75,8 +75,8 @@ namespace Vintagestory.API.Common
         {
             if (code == null) return null;
             animsByCode.TryGetValue(code.ToLowerInvariant(), out var anim);
-                    return anim;
-                }
+            return anim;
+        }
 
         public AnimatorBase(WalkSpeedSupplierDelegate WalkSpeedSupplier, Animation[] Animations, Action<string> onAnimationStoppedListener = null)
         {
@@ -212,24 +212,24 @@ namespace Vintagestory.API.Common
                 shouldStop = !anim.Active && onActivityStopped == EnumEntityActivityStoppedHandling.Rewind && anim.EasingFactor < 0.002f;
             }
 
-                if (shouldStop)
-                {
-                    anim.Stop();
+            if (shouldStop)
+            {
+                anim.Stop();
                 if (onAnimationEnd == EnumEntityAnimationEndHandling.Stop || onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut)
-                    {
+                {
                     return false;
-                    }
-                return true;
                 }
+                return true;
+            }
 
             CurAnims[activeAnimCount++] = anim;
 
             if (anim.Iterations != 0 && ((!anim.Active && onAnimationEnd == EnumEntityAnimationEndHandling.Hold) || (onAnimationEnd == EnumEntityAnimationEndHandling.EaseOut)))
-                {
-                    anim.EaseOut(dt);
-                }
+            {
+                anim.EaseOut(dt);
+            }
 
-                anim.Progress(dt, (float)walkSpeed);
+            anim.Progress(dt, (float)walkSpeed);
             return true;
         }
 

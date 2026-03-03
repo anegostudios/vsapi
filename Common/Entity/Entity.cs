@@ -11,7 +11,6 @@ using System.Text;
 
 #nullable disable
 using static Vintagestory.API.Common.EntityAgent;
-using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Vintagestory.API.Common.Entities

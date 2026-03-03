@@ -13,6 +13,7 @@ namespace Vintagestory.API.Common
     {
         /// <summary>
         /// The current model matrix for this attachment point for this entity for the current animation frame.
+        /// This is in the model's local space, not in world space.
         /// </summary>
         public float[] AnimModelMatrix;
 

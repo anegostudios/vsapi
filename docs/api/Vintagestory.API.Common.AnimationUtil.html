@@ -172,8 +172,8 @@ Class AnimationUtil
 
   <a id="Vintagestory_API_Common_AnimationUtil__ctor_" data-uid="Vintagestory.API.Common.AnimationUtil.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimationUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.AnimationUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d)">
-  AnimationUtil(ICoreAPI, Vec3d)
+  <h3 id="Vintagestory_API_Common_AnimationUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_MathTools_Vec3d_System_Int32_" data-uid="Vintagestory.API.Common.AnimationUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d,System.Int32)">
+  AnimationUtil(ICoreAPI, Vec3d, int)
   
   </h3>
 
@@ -181,7 +181,7 @@ Class AnimationUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimationUtil(ICoreAPI api, Vec3d position)</code></pre>
+    <pre><code class="lang-csharp hljs">public AnimationUtil(ICoreAPI api, Vec3d position, int dimension = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -189,6 +189,8 @@ Class AnimationUtil
     <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
     <dd></dd>
     <dt><code>position</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+    <dt><code>dimension</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -328,6 +330,36 @@ Class AnimationUtil
 
 
 
+  <h3 id="Vintagestory_API_Common_AnimationUtil_dimension" data-uid="Vintagestory.API.Common.AnimationUtil.dimension">
+  dimension
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int dimension</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_AnimationUtil_position" data-uid="Vintagestory.API.Common.AnimationUtil.position">
   position
   
@@ -376,6 +408,36 @@ Class AnimationUtil
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.AnimatableRenderer.html">AnimatableRenderer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_soundPosition" data-uid="Vintagestory.API.Common.AnimationUtil.soundPosition">
+  soundPosition
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Vec3f soundPosition</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
     <dd></dd>
   </dl>
 
@@ -642,8 +704,8 @@ protected virtual int RenderTextureId { get; }</code></pre>
 
   <a id="Vintagestory_API_Common_AnimationUtil_GetAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.GetAnimator*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimationUtil_GetAnimator_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Shape_" data-uid="Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape)">
-  GetAnimator(ICoreAPI, string, Shape)
+  <h3 id="Vintagestory_API_Common_AnimationUtil_GetAnimator_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Shape_System_Action_System_String_Vintagestory_API_Common_AnimationSound__" data-uid="Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape,System.Action{System.String,Vintagestory.API.Common.AnimationSound})">
+  GetAnimator(ICoreAPI, string, Shape, Action&lt;string, AnimationSound&gt;)
   
   </h3>
 
@@ -651,7 +713,7 @@ protected virtual int RenderTextureId { get; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AnimatorBase GetAnimator(ICoreAPI api, string cacheDictKey, Shape shape)</code></pre>
+    <pre><code class="lang-csharp hljs">public static AnimatorBase GetAnimator(ICoreAPI api, string cacheDictKey, Shape shape, Action&lt;string, AnimationSound&gt; onShouldPlaySoundListener = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -661,6 +723,8 @@ protected virtual int RenderTextureId { get; }</code></pre>
     <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>shape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>onShouldPlaySoundListener</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -842,6 +906,39 @@ protected virtual int RenderTextureId { get; }</code></pre>
     <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>stage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_ShouldPlaySound_" data-uid="Vintagestory.API.Common.AnimationUtil.ShouldPlaySound*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_ShouldPlaySound_System_String_Vintagestory_API_Common_AnimationSound_" data-uid="Vintagestory.API.Common.AnimationUtil.ShouldPlaySound(System.String,Vintagestory.API.Common.AnimationSound)">
+  ShouldPlaySound(string, AnimationSound)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ShouldPlaySound(string animationMetaCode, AnimationSound sound)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>animationMetaCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
     <dd></dd>
   </dl>
 

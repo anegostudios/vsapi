@@ -103,7 +103,7 @@ Class CraftingRecipeIngredient
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DocumentAsJson]
-public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput, IByteSerializable, ICloneable</code></pre>
+public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeIngredientBase, IRecipeOutput, IByteSerializable, ICloneable</code></pre>
   </div>
 
 
@@ -121,6 +121,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput, IByteS
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.IRecipeIngredientBase.html">IRecipeIngredientBase</a></div>
       <div><a class="xref" href="Vintagestory.API.Common.IRecipeOutput.html">IRecipeOutput</a></div>
       <div><a class="xref" href="Vintagestory.API.Common.IByteSerializable.html">IByteSerializable</a></div>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
@@ -161,6 +162,101 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput, IByteS
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
   </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_defaultEmptyAttributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.defaultEmptyAttributes">
+  defaultEmptyAttributes
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ITreeAttribute defaultEmptyAttributes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_resolvedAttributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.resolvedAttributes">
+  resolvedAttributes
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ITreeAttribute? resolvedAttributes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_resolvedItemStack" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.resolvedItemStack">
+  resolvedItemStack
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Only used if we have not de-duplicated this CraftingRecipeIngredient (e.g. for RightClickConstruction ingredients)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ItemStack? resolvedItemStack</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
 
 
 
@@ -908,6 +1004,46 @@ public EnumItemClass Type { get; set; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_CheckTags_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.CheckTags*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_CheckTags_Vintagestory_API_Datastructures_ComplexTagCondition_Vintagestory_API_Datastructures_TagSet__Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_CollectibleObject_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.CheckTags(Vintagestory.API.Datastructures.ComplexTagCondition{Vintagestory.API.Datastructures.TagSet},Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.CollectibleObject)">
+  CheckTags(ComplexTagCondition&lt;TagSet&gt;, ItemStack, CollectibleObject)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool CheckTags(ComplexTagCondition&lt;TagSet&gt; tags, ItemStack inputStack, CollectibleObject collectible)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tags</code> <a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>inputStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>collectible</code> <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Clone_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Clone*"></a>
 
   <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Clone" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Clone">
@@ -1112,7 +1248,9 @@ public TResult CloneTo&lt;TResult&gt;() where TResult : CraftingRecipeIngredient
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>For INPUT slots you should normally call the overload Resolve(IWorldAccessor world, string sourceForErrorLogging, IRecipeBase recipe) otherwise you risk this ingredient/recipe being missed in the Handbook and in grid crafting.
+<br>However, it's totally fine to use this overload for OUTPUT slots or for special situations (e.g. RightClickConstruction in the world)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1124,6 +1262,47 @@ public TResult CloneTo&lt;TResult&gt;() where TResult : CraftingRecipeIngredient
     <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
     <dd></dd>
     <dt><code>sourceForErrorLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CraftingRecipeIngredient_Resolve_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Resolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_Vintagestory_API_Common_IRecipeBase_" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String,Vintagestory.API.Common.IRecipeBase)">
+  Resolve(IWorldAccessor, string, IRecipeBase)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>For INPUT ingredients this should be used in place of the overload Resolve(IWorldAccessor world, string sourceForErrorLogging), to make use of the de-duplication / fast-search system for ingredients, essential for GridRecipes in the Handbook and in the Crafting Grid</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging, IRecipeBase recipe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>sourceForErrorLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>recipe</code> <a class="xref" href="Vintagestory.API.Common.IRecipeBase.html">IRecipeBase</a></dt>
     <dd></dd>
   </dl>
 

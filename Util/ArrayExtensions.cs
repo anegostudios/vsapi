@@ -401,5 +401,21 @@ namespace Vintagestory.API.Util
 
             return array;
         }
+
+        /// <summary>
+        /// Test whether every element of the array matches
+        /// </summary>
+        public static bool DeepEquals<T>(this T[] array, T[] other)
+        {
+            if (array == null || other == null) return array == null && other == null;
+            if (array.Length != other.Length) return false;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (!(array[i].Equals(other[i]))) return false;
+            }
+
+            return true;
+        }
     }
 }

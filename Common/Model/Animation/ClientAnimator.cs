@@ -309,7 +309,7 @@ namespace Vintagestory.API.Common
                     for (int i = 0; i < anim.meta.AnimationSounds.Length; i++)
                     {
                         var animsound = anim.meta.AnimationSounds[i];
-                        if (anim.CurrentFrame >= animsound.Frame && anim.SoundPlayedAtIteration[i] != anim.Iterations && anim.Active)
+                        if (anim.CurrentFrame >= animsound.Frame && anim.SoundPlayedAtIteration[i] != anim.Iterations && anim.Active && anim.NowPlaying)
                         {
                             onShouldPlaySoundListener(anim.meta.Code, animsound);
                             anim.SoundPlayedAtIteration[i] = anim.Iterations;

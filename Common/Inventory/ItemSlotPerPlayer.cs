@@ -62,7 +62,7 @@ public class ItemSlotPerPlayer : ItemSlot
 
     public override int TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
     {
-        if (!sinkSlot.CanTakeFrom(this) || itemstack == null)
+        if (!sinkSlot.CanTakeFrom(this) || Itemstack == null)
         {
             return 0;
         }
@@ -183,7 +183,7 @@ public class ItemSlotPerPlayer : ItemSlot
             var mergeop = op.ToMergeOperation(sinkSlot, this);
             op = mergeop;
 
-            var ownStack = Itemstack.Clone();
+            var ownStack = Itemstack?.Clone();
 
             sinkSlot.Itemstack.Collectible.TryMergeStacks(mergeop);
 

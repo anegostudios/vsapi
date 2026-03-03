@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
 #nullable disable
@@ -61,6 +62,24 @@ namespace Vintagestory.API.Common
         {
             this.ItemId = itemId;
             MaxStackSize = 1;
+        }
+
+        /// <summary>
+        /// Called by the inventory system when you hover over an item stack. This is the text that is getting displayed.
+        /// </summary>
+        /// <param name="inSlot"></param>
+        /// <param name="dsc"></param>
+        /// <param name="world"></param>
+        /// <param name="withDebugInfo"></param>
+        public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+        {
+            ItemStack stack = inSlot.Itemstack;
+
+            byte[] lightHsv = GetLightHsv(world.BlockAccessor, null, stack);
+            dsc.Append((withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-hsv") + lightHsv[0] + ", " + lightHsv[1] + ", " + lightHsv[2] + "\n" : "") : ""));
+            dsc.Append((!withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-level") + lightHsv[2] + "\n" : "") : ""));
+
+            base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
         }
 
         /// <summary>

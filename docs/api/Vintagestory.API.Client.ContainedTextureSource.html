@@ -220,7 +220,7 @@ Class ContainedTextureSource
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
   </div>
 
 
@@ -229,6 +229,96 @@ Class ContainedTextureSource
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_ContainedTextureSource_capi" data-uid="Vintagestory.API.Client.ContainedTextureSource.capi">
+  capi
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ICoreClientAPI capi</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_ContainedTextureSource_sourceForErrorLogging" data-uid="Vintagestory.API.Client.ContainedTextureSource.sourceForErrorLogging">
+  sourceForErrorLogging
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly string sourceForErrorLogging</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_ContainedTextureSource_targetAtlas" data-uid="Vintagestory.API.Client.ContainedTextureSource.targetAtlas">
+  targetAtlas
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected readonly ITextureAtlasAPI targetAtlas</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html">ITextureAtlasAPI</a></dt>
     <dd></dd>
   </dl>
 
@@ -327,7 +417,7 @@ Class ContainedTextureSource
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected TextureAtlasPosition getOrCreateTexPos(AssetLocation texturePath)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual TextureAtlasPosition getOrCreateTexPos(AssetLocation texturePath)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

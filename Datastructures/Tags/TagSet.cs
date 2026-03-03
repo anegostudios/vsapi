@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -161,6 +162,29 @@ public readonly struct TagSet
             acc = acc * 17 + handle;
         }
         return acc;
+    }
+
+    /// <summary>
+    /// A true equality test: are these exactly the same TagSet (e.g. when searching for duplicate grid recipe ingredients using the same tags)
+    /// </summary>
+    public override bool Equals([NotNullWhen(true)] object? obj)
+    {
+        if (obj is not TagSet other) return false;
+
+        if (this.storage.IsEmpty && other.storage.IsEmpty) return true;
+        if (this.storage.IsEmpty || other.storage.IsEmpty) return false;
+
+        var thisSpan = this.storage.Span;
+        var otherSpan = other.storage.Span;
+
+        if (thisSpan.Length != otherSpan.Length) return false;
+
+        for (int i = 0; i < thisSpan.Length; i++)
+        {
+            if (thisSpan[i] != otherSpan[i]) return false;
+        }
+
+        return true;
     }
 }
 

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -15,7 +15,7 @@ namespace Vintagestory.API.Common
     public class ItemSlot
     {
         /// <summary>
-        /// Can be used to interecept marked dirty calls. 
+        /// Can be used to interecept marked dirty calls.
         /// </summary>
         public event ActionConsumable MarkedDirty;
 
@@ -34,7 +34,7 @@ namespace Vintagestory.API.Common
 
         protected ItemStack itemstack;
         protected InventoryBase inventory;
-        
+
         /// <summary>
         /// Gets the inventory attached to this ItemSlot.
         /// </summary>
@@ -75,13 +75,14 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Whether or not the stack is empty.
         /// </summary>
-        public virtual bool Empty { get { return itemstack == null;  } }
+        [MemberNotNullWhen(false, nameof(itemstack), nameof(Itemstack))]
+        public virtual bool Empty => itemstack == null;
 
         /// <summary>
         /// The storage type of this slot.
         /// </summary>
         public virtual EnumItemStorageFlags StorageType { get; set; } = EnumItemStorageFlags.General | EnumItemStorageFlags.Agriculture | EnumItemStorageFlags.Alchemy | EnumItemStorageFlags.Jewellery | EnumItemStorageFlags.Metallurgy | EnumItemStorageFlags.Outfit;
-        
+
         /// <summary>
         /// Create a new instance of an item slot
         /// </summary>
@@ -92,7 +93,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Amount of space left, independent of item MaxStacksize 
+        /// Amount of space left, independent of item MaxStacksize
         /// </summary>
         public virtual int GetRemainingSlotSpace(ItemStack forItemstack)
         {
@@ -147,8 +148,8 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            return 
-                sourceSlot?.Itemstack?.Collectible != null 
+            return
+                sourceSlot?.Itemstack?.Collectible != null
                 && ((sourceSlot.Itemstack.Collectible.GetStorageFlags(sourceSlot.Itemstack) & StorageType) > 0)
                 && inventory.CanContain(this, sourceSlot)
             ;
@@ -164,7 +165,7 @@ namespace Vintagestory.API.Common
 
             return itemstack != null;
         }
-        
+
         /// <summary>
         /// Gets the entire contents of the stack, setting the base stack to null.
         /// </summary>
@@ -224,7 +225,7 @@ namespace Vintagestory.API.Common
             }
 
             if (sinkSlot.inventory?.CanContain(sinkSlot, this) == false) return 0;
-            
+
 
             // Fill the destination slot with as many items as we can
             if (sinkSlot.Itemstack == null)
@@ -235,7 +236,7 @@ namespace Vintagestory.API.Common
                 {
                     sinkSlot.Itemstack = TakeOut(q);
 
-                    // Has to be above the modified calls because e.g. when moving stuff into the ground slot this will eject the item 
+                    // Has to be above the modified calls because e.g. when moving stuff into the ground slot this will eject the item
                     // onto the ground and sinkSlot.StackSize is 0 right after
                     op.MovedQuantity = op.MovableQuantity = Math.Min(sinkSlot.StackSize, q);
 
@@ -350,7 +351,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="op"></param>
         protected virtual void ActivateSlotLeftClick(ItemSlot sourceSlot, ref ItemStackMoveOperation op)
-        { 
+        {
             // 1. Current slot empty: Take items
             if (Empty) {
                 if (!CanHold(sourceSlot)) return;
@@ -363,14 +364,14 @@ namespace Vintagestory.API.Common
                 OnItemSlotModified(itemstack);
                 return;
             }
-            
+
             // 2. Current slot non empty, source slot empty: Put items
             if (sourceSlot.Empty) {
                 op.RequestedQuantity = StackSize;
                 TryPutInto(sourceSlot, ref op);
                 return;
             }
-            
+
             // 3. Both slots not empty, and they are stackable: Fill slot
             int maxq = itemstack.Collectible.GetMergableQuantity(itemstack, sourceSlot.itemstack, op.CurrentPriority);
             if (maxq > 0) {
@@ -441,7 +442,7 @@ namespace Vintagestory.API.Common
             op.RequestedQuantity = 1;
             sourceSlot.TryPutInto(this, ref op);
             if (op.MovedQuantity > 0) return;
-            
+
 
             // 4. Both slots not empty and not stackable: Exchange items
             TryFlipWith(sourceSlot);
@@ -527,7 +528,7 @@ namespace Vintagestory.API.Common
 
         public virtual void OnBeforeRender(ItemRenderInfo renderInfo)
         {
-            // The default is to do nothing, but classes can override this to do something with the renderInfo.Transform            
+            // The default is to do nothing, but classes can override this to do something with the renderInfo.Transform
         }
     }
 }

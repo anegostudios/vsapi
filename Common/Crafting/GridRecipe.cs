@@ -155,7 +155,7 @@ public class GridRecipe : RecipeBase, IByteSerializable, IConcreteCloneable<Grid
                 return false;
             }
 
-            if (!craftingIngredient.Resolve(world, "Grid recipe"))
+            if (!craftingIngredient.Resolve(world, "Grid recipe", this))
             {
                 world.Logger.Error($"Grid Recipe with output '{Output.Code}' contains an ingredient that cannot be resolved: {craftingIngredient}");
                 return false;
@@ -300,13 +300,6 @@ public class GridRecipe : RecipeBase, IByteSerializable, IConcreteCloneable<Grid
 
         writer.Write(RecipeGroup);
 
-        writer.Write(Ingredients.Count);
-        foreach ((string key, CraftingRecipeIngredient value) in Ingredients)
-        {
-            writer.Write(key);
-            value.ToBytes(writer);
-        }
-
         writer.Write(IngredientPattern);
     }
 
@@ -334,22 +327,13 @@ public class GridRecipe : RecipeBase, IByteSerializable, IConcreteCloneable<Grid
 
             CraftingRecipeIngredient ingredient = new();
             ingredient.FromBytes(reader, resolver);
+            ingredient.Resolve(resolver, "Grid recipes deserialized", this);
             ResolvedIngredients[i] = ingredient;
         }
 
         RecipeGroup = reader.ReadInt32();
 
-        int ingredientsCount = reader.ReadInt32();
-        Ingredients = [];
-        for (int i = 0; i < ingredientsCount; i++)
-        {
-            string key = reader.ReadString();
-            CraftingRecipeIngredient ingredient = new();
-            ingredient.FromBytes(reader, resolver);
-            Ingredients[key] = ingredient;
-        }
-
-        IngredientPattern = reader.ReadString();
+        IngredientPattern = reader.ReadString().DeDuplicate();
     }
 
     /// <summary>

@@ -131,6 +131,8 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
     #endregion
 
     #region Resolved
+    public static ITreeAttribute defaultEmptyAttributes = new TreeAttribute();
+
     /// <summary>
     /// Defines how <see cref="Code"/> will be used to match
     /// </summary>
@@ -139,7 +141,41 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
     /// <summary>
     /// The itemstack made from Code, Quantity and Attributes, populated by the engine
     /// </summary>
-    public ItemStack? ResolvedItemStack { get; set; }
+    public ItemStack? ResolvedItemStack
+    {
+        get {
+            if (deduplicationIndex < 0) return resolvedItemStack;
+
+            var stack = world!.FastSearchRecipesByIngredient.GetAt(deduplicationIndex).Key.ResolvedItemStack;   // world cannot be null if deduplicationIndex >= 0
+            if (stack == null) return null;
+
+            // We populate the StackSize and Attributes of the ResolvedItemStack at the time of fetching it; these are normally simple assignments
+            stack.StackSize = StackSize;
+            if (resolvedAttributes != null)
+            {
+                stack.Attributes = resolvedAttributes;
+            }
+            else
+            {
+                if (defaultEmptyAttributes.Count != 0) defaultEmptyAttributes = new TreeAttribute();
+                stack.Attributes = defaultEmptyAttributes;
+            }
+            return stack;
+        }
+        set {
+            if (deduplicationIndex < 0)
+            {
+                resolvedItemStack = value;
+                return;
+            }
+            world!.FastSearchRecipesByIngredient.GetAt(deduplicationIndex).Key.ResolvedItemStack = value;
+        }
+    }
+    /// <summary>
+    /// Only used if we have not de-duplicated this CraftingRecipeIngredient (e.g. for RightClickConstruction ingredients)
+    /// </summary>
+    protected ItemStack? resolvedItemStack = null;
+    protected ITreeAttribute? resolvedAttributes = null;
 
     public RecipeIngredientConsumeProperties ConsumeProperties => GetConsumeProperties();
 
@@ -149,8 +185,30 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
         get => MatchingType != EnumRecipeMatchType.Exact;
         set => MatchingType = value ? MatchingType : EnumRecipeMatchType.Exact;
     }
+
+    private int deduplicationIndex = -1;
+    private IWorldAccessor? world;
     #endregion
 
+    /// <summary>
+    /// For INPUT ingredients this should be used in place of the overload Resolve(IWorldAccessor world, string sourceForErrorLogging), to make use of the de-duplication / fast-search system for ingredients, essential for GridRecipes in the Handbook and in the Crafting Grid
+    /// </summary>
+    public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging, IRecipeBase recipe)
+    {
+        if (deduplicationIndex == -1)
+        {
+            this.world = world;
+            deduplicationIndex = AddToFastSearchRecipes(world, recipe);
+        }
+        else return true;   // Some recipes include the same ingredient in multiple positions, in GridRecipe.Resolve() this gets called for each position: the only difference will be the Id
+
+        return Resolve(world, sourceForErrorLogging);
+    }
+
+    /// <summary>
+    /// For INPUT slots you should normally call the overload Resolve(IWorldAccessor world, string sourceForErrorLogging, IRecipeBase recipe) otherwise you risk this ingredient/recipe being missed in the Handbook and in grid crafting.
+    /// <br/>However, it's totally fine to use this overload for OUTPUT slots or for special situations (e.g. RightClickConstruction in the world)
+    /// </summary>
     public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
     {
         MatchingType = IRecipeIngredient.GetMatchType(Code?.ToString(), Name != null);
@@ -171,6 +229,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             return false;
         }
 
+        ItemStack resolvedItemStack;
         if (Type == EnumItemClass.Block)
         {
             Block? block = world.GetBlock(Code);
@@ -180,7 +239,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
                 return false;
             }
 
-            ResolvedItemStack = new ItemStack(block, Quantity);
+            resolvedItemStack = new ItemStack(block, Quantity);
         }
         else
         {
@@ -190,7 +249,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
                 world.Logger.Warning($"Failed resolving crafting recipe ingredient with code {Code} in {sourceForErrorLogging}");
                 return false;
             }
-            ResolvedItemStack = new ItemStack(item, Quantity);
+            resolvedItemStack = new ItemStack(item, Quantity);
         }
 
         if (Attributes != null)
@@ -198,11 +257,34 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             IAttribute? attributes = Attributes.ToAttribute();
             if (attributes is ITreeAttribute treeAttribute)
             {
-                ResolvedItemStack.Attributes = treeAttribute;
+                resolvedAttributes = treeAttribute;
+                if (deduplicationIndex < 0) resolvedItemStack.Attributes = treeAttribute;
             }
         }
 
+        ResolvedItemStack = resolvedItemStack;
+
         return true;
+    }
+
+    private int AddToFastSearchRecipes(IWorldAccessor world, IRecipeBase recipe)
+    {
+        var dict = world.FastSearchRecipesByIngredient;
+        var packed = new FastSearchCraftingRecipeIngredient(this);
+        int index = dict.IndexOf(packed);
+        if (index >= 0)
+        {
+            var existing = dict.GetAt(index);
+            this.Code = existing.Key.Code;  // De-duplicate objects held on heap, as these fields must be the same if we found a matching index
+            this.AllowedVariants = existing.Key.AllowedVariants;    
+            this.SkipVariants = existing.Key.SkipVariants;
+            existing.Value.AddIfNotPresent(recipe);   // Client-side a separate CraftingRecipeIngedient object can be deserialized several times per recipe, once for each unique position in the grid
+            return index;
+        }
+        index = dict.Count;
+        packed.MatchingType = IRecipeIngredient.GetMatchType(Code?.ToString(), Name != null);
+        dict.Add(packed, [recipe]);
+        return index;
     }
 
     public virtual bool SatisfiesAsIngredient(ItemStack inputStack, bool checkStackSize = true)
@@ -212,16 +294,17 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
         if (MatchingType != EnumRecipeMatchType.Exact)
         {
             if (Type != inputStack.Class) return false;
-            if (!CheckTags(inputStack, inputStack.Collectible)) return false;
-            if (checkStackSize && inputStack.StackSize < Quantity) return false;
             if (Code != null && !WildcardUtil.Match(Code, inputStack.Collectible.Code, AllowedVariants)) return false;
+            if (checkStackSize && inputStack.StackSize < Quantity) return false;
             if (SkipVariants != null && WildcardUtil.Match(Code, inputStack.Collectible.Code, SkipVariants)) return false;
+            if (!CheckTags(inputStack, inputStack.Collectible)) return false;
         }
         else
         {
-            if (ResolvedItemStack == null) return false;
-            if (!ResolvedItemStack.Satisfies(inputStack)) return false;
-            if (checkStackSize && inputStack.StackSize < ResolvedItemStack.StackSize) return false;
+            var resolvedItemStack = ResolvedItemStack;
+            if (resolvedItemStack == null) return false;
+            if (!resolvedItemStack.Satisfies(inputStack)) return false;
+            if (checkStackSize && inputStack.StackSize < Quantity) return false;
         }
 
         return true;
@@ -229,7 +312,12 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
 
     public virtual bool CheckTags(ItemStack inputStack, CollectibleObject collectible)
     {
-        return Tags.Matches(collectible.GetTags(inputStack));
+        return CraftingRecipeIngredient.CheckTags(Tags, inputStack, collectible);
+    }
+
+    public static bool CheckTags(ComplexTagCondition<TagSet> tags, ItemStack inputStack, CollectibleObject collectible)
+    {
+        return tags.Matches(collectible.GetTags(inputStack));
     }
 
     public virtual RecipeIngredientConsumeProperties GetConsumeProperties()
@@ -316,8 +404,9 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
         writer.Write(Quantity);
         if (MatchingType == EnumRecipeMatchType.Exact)
         {
-            writer.Write(ResolvedItemStack != null);
-            ResolvedItemStack?.ToBytes(writer);
+            var resolvedItemStack = this.resolvedItemStack;
+            writer.Write(resolvedItemStack != null);
+            resolvedItemStack?.ToBytes(writer);
         }
 
         writer.Write(Consume);
@@ -376,7 +465,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
         Quantity = reader.ReadInt32();
         if (MatchingType == EnumRecipeMatchType.Exact && reader.ReadBoolean())
         {
-            ResolvedItemStack = new ItemStack(reader, resolver);
+            resolvedItemStack = new ItemStack(reader, resolver);
         }
 
         Consume = reader.ReadBoolean();
@@ -388,7 +477,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             AllowedVariants = new string[reader.ReadInt32()];
             for (int i = 0; i < AllowedVariants.Length; i++)
             {
-                AllowedVariants[i] = reader.ReadString();
+                AllowedVariants[i] = reader.ReadString().DeDuplicate();
             }
         }
 
@@ -398,7 +487,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             SkipVariants = new string[reader.ReadInt32()];
             for (int i = 0; i < SkipVariants.Length; i++)
             {
-                SkipVariants[i] = reader.ReadString();
+                SkipVariants[i] = reader.ReadString().DeDuplicate();
             }
         }
 
@@ -438,19 +527,100 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             ingredient.Consume = Consume;
             ingredient.DurabilityChange = DurabilityChange;
             ingredient.Break = Break;
-            ingredient.AllowedVariants = AllowedVariants == null ? null : (string[])AllowedVariants.Clone();
-            ingredient.SkipVariants = SkipVariants == null ? null : (string[])SkipVariants.Clone();
-            ingredient.ResolvedItemStack = ResolvedItemStack?.Clone();
+            ingredient.AllowedVariants = AllowedVariants;   // These do not need a deep clone, they are never written to [except originally when deserializing or parsing JSON]
+            ingredient.SkipVariants = SkipVariants;   // These do not need a deep clone, they are never written to [except originally when deserializing or parsing JSON]
+            ingredient.resolvedItemStack = ResolvedItemStack?.Clone();   // Subtle, but this ensures any clone holds a proper clone of the de-duplicated FastSearchRecipesByIngredient itemstack (if one exists)
             ingredient.ReturnedStack = ReturnedStack?.Clone();
             ingredient.RecipeAttributes = RecipeAttributes?.Clone();
             ingredient.Id = Id;
             ingredient.Attributes = Attributes?.Clone();
             ingredient.RecipeAttributes = RecipeAttributes?.Clone();
+            ingredient.world = world;
+            ingredient.deduplicationIndex = deduplicationIndex;
+            ingredient.resolvedAttributes = resolvedAttributes?.Clone();
         }
     }
-
-
 
     object ICloneable.Clone() => Clone();
 }
 
+/// <summary>
+/// A simplified version of a CraftingRecipeIngredient, for faster searching and ingredient matching; note this object stores the actual ResolvedItemStack object (if any - there may be none for a Tags based ingredient)
+/// </summary>
+public class FastSearchCraftingRecipeIngredient : IRecipeIngredientBase
+{
+    public EnumItemClass Type { get; set; }
+    public AssetLocation? Code { get; set; }
+    public ComplexTagCondition<TagSet> Tags { get; set; }
+    public string[]? AllowedVariants { get; set; }
+    public string[]? SkipVariants { get; set; }
+    public EnumRecipeMatchType MatchingType { get; set; }
+
+    public ItemStack? ResolvedItemStack { get; set; }
+
+    public FastSearchCraftingRecipeIngredient(CraftingRecipeIngredient parent)
+    {
+        Type = parent.Type;
+        Code = parent.Code;
+        Tags = parent.Tags;
+        AllowedVariants = parent.AllowedVariants;
+        SkipVariants = parent.SkipVariants;
+    }
+
+    public override int GetHashCode()           // Important because these will be Key in an OrderedDictionary
+    {
+        return Code == null ? 0 : Code.Path.GetHashCode();
+    }
+
+    public override bool Equals(Object? obj)
+    {
+        if (obj is not FastSearchCraftingRecipeIngredient other) return false;
+
+        if (!Tags.Equals(other.Tags)) return false;   // Test this first, because if hashcodes match then Code is likely to match; if Tags are not specified then this will return true quickly
+
+        if (Code == null)
+        {
+            if (other.Code != null) return false;
+        }
+        else if (!Code.Equals(other.Code)) return false;
+        
+        if (!Type.Equals(other.Type)) return false;
+
+        if (AllowedVariants == null)
+        {
+            if (other.AllowedVariants != null) return false;
+        }
+        else if (!AllowedVariants.DeepEquals(other.AllowedVariants)) return false;
+
+        if (SkipVariants == null)
+        {
+            if (other.SkipVariants != null) return false;
+        }
+        else if (!SkipVariants.DeepEquals(other.SkipVariants)) return false;
+
+        return true;
+    }
+
+    public bool SatisfiesAsIngredient(ItemStack inputStack, bool unused = default)
+    {
+        if (inputStack == null || inputStack.Collectible == null) return false;
+
+        if (MatchingType != EnumRecipeMatchType.Exact)
+        {
+            if (Type != inputStack.Class) return false;
+            if (Code != null && !WildcardUtil.Match(Code, inputStack.Collectible.Code, AllowedVariants)) return false;
+            if (SkipVariants != null && WildcardUtil.Match(Code, inputStack.Collectible.Code, SkipVariants)) return false;
+            if (!CraftingRecipeIngredient.CheckTags(Tags, inputStack, inputStack.Collectible)) return false;
+        }
+        else
+        {
+            var resolvedItemStack = ResolvedItemStack;
+            if (resolvedItemStack == null) return false;
+            if (CraftingRecipeIngredient.defaultEmptyAttributes.Count != 0) CraftingRecipeIngredient.defaultEmptyAttributes = new TreeAttribute();
+            resolvedItemStack.Attributes = CraftingRecipeIngredient.defaultEmptyAttributes;
+            if (!resolvedItemStack.Satisfies(inputStack)) return false;
+        }
+
+        return true;
+    }
+}

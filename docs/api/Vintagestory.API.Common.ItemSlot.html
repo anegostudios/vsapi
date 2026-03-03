@@ -414,7 +414,8 @@ An empty set (default) means no restrictions.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Empty { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[MemberNotNullWhen(false, new string[] { &quot;itemstack&quot;, &quot;Itemstack&quot; })]
+public virtual bool Empty { get; }</code></pre>
   </div>
 
 

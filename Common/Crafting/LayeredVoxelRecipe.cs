@@ -163,7 +163,7 @@ public abstract class LayeredVoxelRecipe : RecipeBase
             return false;
         }
 
-        if (!Ingredient.Resolve(world, RecipeCategoryCode + " recipe"))
+        if (!Ingredient.Resolve(world, RecipeCategoryCode + " recipe", this))
         {
             world.Logger.Error("{2} Recipe with output {0}: Cannot resolve ingredient in {1}.", RecipeOutput, sourceForErrorLogging, RecipeCategoryCode);
             return false;
@@ -220,8 +220,10 @@ public abstract class LayeredVoxelRecipe : RecipeBase
         Ingredients = new CraftingRecipeIngredient[ingredientsCount];
         for (int i = 0; i < ingredientsCount; i++)
         {
-            Ingredients[i] = new CraftingRecipeIngredient();
-            Ingredients[i].FromBytes(reader, resolver);
+            CraftingRecipeIngredient ingredient = new();
+            ingredient.FromBytes(reader, resolver);
+            ingredient.Resolve(resolver, "Voxel recipes FromBytes", this);
+            Ingredients[i] = ingredient;
         }
 
         int len = reader.ReadInt32();

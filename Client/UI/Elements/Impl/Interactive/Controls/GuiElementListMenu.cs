@@ -168,16 +168,18 @@ namespace Vintagestory.API.Client
                 switches = new GuiElementSwitch[Names.Length];
             }
 
-            for (int i = 0; i < richtTextElem.Length; i++)
+            var richTextElem = this.richtTextElem;
+            for (int i = 0; i < richTextElem.Length; i++)
             {
-                richtTextElem[i].Dispose();
+                richTextElem[i].Dispose();
             }
 
-            richtTextElem = new GuiElementRichtext[Values.Length];
-            for (int i = 0; i < Values.Length; i++)
+            richTextElem = new GuiElementRichtext[Values.Length];
+            this.richtTextElem = richTextElem;
+            for (int i = 0; i < richTextElem.Length; i++)
             {
                 ElementBounds textBounds = ElementBounds.Fixed(0, 0, 700, 100).WithEmptyParent();
-                richtTextElem[i] = new GuiElementRichtext(api, Array.Empty<RichTextComponentBase>(), textBounds);
+                richTextElem[i] = new GuiElementRichtext(api, Array.Empty<RichTextComponentBase>(), textBounds);
             }
 
 
@@ -186,13 +188,13 @@ namespace Vintagestory.API.Client
 
             // Expandable box with list of names
             expandedBoxWidth = Bounds.InnerWidth;
-            expandedBoxHeight = Values.Length * lineHeight;
+            expandedBoxHeight = richTextElem.Length * lineHeight;
 
             double scrollbarWidth = 10;
 
-            for (int i = 0; i < Values.Length; i++)
+            for (int i = 0; i < richTextElem.Length; i++)
             {
-                GuiElementRichtext elem = richtTextElem[i];
+                GuiElementRichtext elem = richTextElem[i];
                 elem.SetNewTextWithoutRecompose(Names[i], Font);
                 elem.BeforeCalcBounds();
                 
@@ -231,7 +233,7 @@ namespace Vintagestory.API.Client
             switchParentBounds.IsDrawingSurface = true;
             switchParentBounds.CalcWorldBounds();
 
-            for (int i = 0; i < Values.Length; i++)
+            for (int i = 0; i < richTextElem.Length; i++)
             {
                 int num = i;
                 double y = ((int)unscaledOffY + i * unscaledLineHeight) * scaleMul;
@@ -259,7 +261,7 @@ namespace Vintagestory.API.Client
                     ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
                 }
 
-                GuiElementRichtext elem = richtTextElem[i];
+                GuiElementRichtext elem = richTextElem[i];
 
                 elem.Bounds.fixedX = x;
                 elem.Bounds.fixedY = (y + offy) / RuntimeEnv.GUIScale;

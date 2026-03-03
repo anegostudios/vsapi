@@ -839,6 +839,13 @@ namespace Vintagestory.API.Common
         /// Used by World Edit to create previews, ships etc.
         /// </summary>
         IMiniDimension CreateMiniDimension(Vec3d position);
+
+        /// <summary>
+        /// Used to ensure correct lighting after certain in-game actions which are not SetBlock actions but may still change ambient occlusion onto neighbours (e.g. rotating a block with a wrench, chiselling a block)
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="side"></param>
+        void RedrawNeighbouringChunk(BlockPos pos, BlockFacing side = null);
     }
 
     /// <summary>
