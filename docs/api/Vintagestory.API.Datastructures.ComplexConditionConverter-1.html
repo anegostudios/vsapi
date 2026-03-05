@@ -101,7 +101,7 @@ Class ComplexConditionConverter&lt;TTagSet&gt;
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class ComplexConditionConverter&lt;TTagSet&gt; : JsonConverter&lt;ComplexTagCondition&lt;TTagSet&gt;&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class ComplexConditionConverter&lt;TTagSet&gt; : JsonConverter&lt;ComplexTagCondition&lt;TTagSet&gt;&gt; where TTagSet : IEquatable&lt;TTagSet&gt;</code></pre>
   </div>
 
 

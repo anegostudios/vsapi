@@ -102,13 +102,19 @@ Struct TagSet
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConverter(typeof(CollectibleTagSetConverter))]
-public readonly struct TagSet</code></pre>
+public readonly struct TagSet : IEquatable&lt;TagSet&gt;</code></pre>
   </div>
 
 
 
 
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a>&gt;</div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -261,6 +267,43 @@ public readonly struct TagSet</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagSet_Equals_" data-uid="Vintagestory.API.Datastructures.TagSet.Equals*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSet_Equals_Vintagestory_API_Datastructures_TagSet_" data-uid="Vintagestory.API.Datastructures.TagSet.Equals(Vintagestory.API.Datastructures.TagSet)">
+  Equals(TagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A true equality test: are these exactly the same TagSet (e.g. when searching for duplicate grid recipe ingredients using the same tags)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(TagSet other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
     <dd></dd>
   </dl>
 
@@ -479,6 +522,86 @@ public readonly struct TagSet</code></pre>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>The fully qualified type name.</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_TagSet_op_Equality_" data-uid="Vintagestory.API.Datastructures.TagSet.op_Equality*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSet_op_Equality_Vintagestory_API_Datastructures_TagSet__Vintagestory_API_Datastructures_TagSet__" data-uid="Vintagestory.API.Datastructures.TagSet.op_Equality(Vintagestory.API.Datastructures.TagSet@,Vintagestory.API.Datastructures.TagSet@)">
+  operator ==(in TagSet, in TagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(in TagSet self, in TagSet other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dd></dd>
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_TagSet_op_Inequality_" data-uid="Vintagestory.API.Datastructures.TagSet.op_Inequality*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_TagSet_op_Inequality_Vintagestory_API_Datastructures_TagSet__Vintagestory_API_Datastructures_TagSet__" data-uid="Vintagestory.API.Datastructures.TagSet.op_Inequality(Vintagestory.API.Datastructures.TagSet@,Vintagestory.API.Datastructures.TagSet@)">
+  operator !=(in TagSet, in TagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(in TagSet self, in TagSet other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dd></dd>
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
   </dl>
 
 

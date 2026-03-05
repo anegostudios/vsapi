@@ -102,7 +102,8 @@ Struct FastVec3i
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct FastVec3i : IEquatable&lt;FastVec3i&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoContract]
+public struct FastVec3i : IEquatable&lt;FastVec3i&gt;, IEquatable&lt;BlockPos&gt;</code></pre>
   </div>
 
 
@@ -113,6 +114,7 @@ Struct FastVec3i
     <dt>Implements</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.FastVec3i.html">FastVec3i</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>&gt;</div>
     </dd>
   </dl>
 
@@ -296,7 +298,8 @@ Struct FastVec3i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int X</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+public int X</code></pre>
   </div>
 
 
@@ -327,7 +330,8 @@ Struct FastVec3i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Y</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+public int Y</code></pre>
   </div>
 
 
@@ -358,7 +362,8 @@ Struct FastVec3i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Z</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+public int Z</code></pre>
   </div>
 
 
@@ -944,7 +949,7 @@ Struct FastVec3i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public override readonly bool Equals(object obj)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -978,23 +983,26 @@ Struct FastVec3i
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(BlockPos other)</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(BlockPos other)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>other</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
-    <dd></dd>
+    <dd><p>An object to compare with this object.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
   </dl>
 
 
@@ -1019,7 +1027,7 @@ Struct FastVec3i
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Equals(FastVec3i other)</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(FastVec3i other)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

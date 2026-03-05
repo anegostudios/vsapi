@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Vintagestory.API.Datastructures;
 
@@ -23,7 +24,7 @@ namespace Vintagestory.API.Datastructures;
 /// </summary>
 /// <remarks> You cannot mix junction verbs on the same layer. </remarks>
 [JsonConverter(typeof(GenericComplexConditionConverter))]
-public struct ComplexTagCondition<TTagSet>
+public struct ComplexTagCondition<TTagSet> : IEquatable<ComplexTagCondition<TTagSet>> where TTagSet : IEquatable<TTagSet>
 {
     // @perf: The conditions could be stored in a uniform way to get rid of the branch during evaluation.
     // Generally, storing them as [all of [any of], [any of], [any of]] should be more performant, as you would expect most
@@ -36,6 +37,7 @@ public struct ComplexTagCondition<TTagSet>
     public Condition[]? conditions;
     public bool isDisjunctive;
 
+    [MemberNotNullWhen(false, nameof(conditions))]
     public readonly bool IsEmpty => conditions == null || conditions.Length == 0;
 
     public struct Condition
@@ -43,7 +45,7 @@ public struct ComplexTagCondition<TTagSet>
         public TTagSet RequiredTags;
         public TTagSet ForbiddenTags;
 
-        public bool Equals(Condition other)
+        public readonly bool Equals(Condition other)
         {
             if (RequiredTags != null && other.RequiredTags != null)
             {
@@ -60,9 +62,9 @@ public struct ComplexTagCondition<TTagSet>
             return true;
         }
 
-        public override string ToString()
+        public readonly override string ToString()
         {
-            return RequiredTags?.ToString() ?? "null";    // Quick and dirty but good enough for debugging purposes
+            return (new StringBuilder(64)).Append("Required: ").Append(RequiredTags).Append(", Forbidden: ").Append(ForbiddenTags).ToString();
         }
     }
 
@@ -77,9 +79,14 @@ public struct ComplexTagCondition<TTagSet>
         return hash;
     }
 
-    public override bool Equals([NotNullWhen(true)] object? obj)
+    public static bool operator ==(in ComplexTagCondition<TTagSet> self, in ComplexTagCondition<TTagSet> other) => self.Equals(other);
+    public static bool operator !=(in ComplexTagCondition<TTagSet> self, in ComplexTagCondition<TTagSet> other) => !self.Equals(other);
+    public readonly override bool Equals([NotNullWhen(true)] object? obj)
     {
-        if (obj is not ComplexTagCondition<TTagSet> other) return false;
+        return (obj is ComplexTagCondition<TTagSet> other) && this.Equals(other);
+    }
+    public readonly bool Equals(ComplexTagCondition<TTagSet> other)
+    {
         if (conditions == null || other.conditions == null) return conditions == null && other.conditions == null;
         if (conditions.Length != other.conditions.Length) return false;
         if (isDisjunctive != other.isDisjunctive) return false;
@@ -90,10 +97,10 @@ public struct ComplexTagCondition<TTagSet>
         return true;
     }
 
-    public override string ToString()
+    public readonly override string ToString()
     {
-        if (conditions == null || conditions.Length == 0) return "empty";
-        return conditions[0].ToString();   // Quick and dirty but good enough for debugging purposes
+        if (this.IsEmpty) return "empty";
+        return (new StringBuilder(128)).AppendJoin(";", this.conditions).ToString();
     }
 }
 
@@ -253,7 +260,7 @@ public sealed class GenericComplexConditionConverter : JsonConverter
 }
 
 
-public sealed class ComplexConditionConverter<TTagSet>(ITagRegistry<TTagSet> registry) : JsonConverter<ComplexTagCondition<TTagSet>>
+public sealed class ComplexConditionConverter<TTagSet>(ITagRegistry<TTagSet> registry) : JsonConverter<ComplexTagCondition<TTagSet>> where TTagSet : IEquatable<TTagSet>
 {
     readonly ITagRegistry<TTagSet> registry = registry;
 

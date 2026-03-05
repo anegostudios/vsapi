@@ -547,7 +547,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
 /// <summary>
 /// A simplified version of a CraftingRecipeIngredient, for faster searching and ingredient matching; note this object stores the actual ResolvedItemStack object (if any - there may be none for a Tags based ingredient)
 /// </summary>
-public class FastSearchCraftingRecipeIngredient : IRecipeIngredientBase
+public class FastSearchCraftingRecipeIngredient : IRecipeIngredientBase, IEquatable<FastSearchCraftingRecipeIngredient>
 {
     public EnumItemClass Type { get; set; }
     public AssetLocation? Code { get; set; }
@@ -574,8 +574,12 @@ public class FastSearchCraftingRecipeIngredient : IRecipeIngredientBase
 
     public override bool Equals(Object? obj)
     {
-        if (obj is not FastSearchCraftingRecipeIngredient other) return false;
+        return (obj is FastSearchCraftingRecipeIngredient other) && this.Equals(other);
+    }
 
+    public virtual bool Equals(FastSearchCraftingRecipeIngredient? other)
+    {
+        if (other == null) return false;
         if (!Tags.Equals(other.Tags)) return false;   // Test this first, because if hashcodes match then Code is likely to match; if Tags are not specified then this will return true quickly
 
         if (Code == null)

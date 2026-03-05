@@ -8,7 +8,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 doubles
     /// </summary>
-    public struct FastVec3d
+    public struct FastVec3d : IEquatable<FastVec3d>
     {
         /// <summary>
         /// The X-Component of the vector
@@ -507,14 +507,19 @@ namespace Vintagestory.API.MathTools
             return "x=" + X + ", y=" + Y + ", z=" + Z;
         }
 
-        public override bool Equals(object obj)
+        public readonly override bool Equals(object obj)
         {
             if (obj is FastVec3d other) return this == other;
             if (obj is Vec3d vec) return X == vec.X && Z == vec.Z && Y == vec.Y;
             return false;
         }
 
-        public override int GetHashCode()
+        public readonly bool Equals(FastVec3d other)
+        {
+            return this == other;
+        }
+
+        public readonly override int GetHashCode()
         {
             return ((17 * 23 + X.GetHashCode()) * 23 + Y.GetHashCode()) * 23 + Z.GetHashCode();
         }

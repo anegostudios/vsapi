@@ -10,7 +10,7 @@ namespace Vintagestory.API.Datastructures;
 
 [JsonConverter(typeof(EntityTagSetConverter))]
 [method: MethodImpl(MethodImplOptions.AggressiveInlining)]
-public struct TagSetFast(Vector256<UInt64> storage)
+public struct TagSetFast(Vector256<UInt64> storage) : IEquatable<TagSetFast>
 {
 #pragma warning disable IDE0044 // Add readonly modifier. Disabled to avoid wired compiler optimizations, the value is manipulated via ref.
     internal Vector256<UInt64> storage = storage;
@@ -52,6 +52,7 @@ public struct TagSetFast(Vector256<UInt64> storage)
 
     public override readonly int GetHashCode() => storage.GetHashCode();
     public override readonly bool Equals([NotNullWhen(true)] object? obj) => storage.Equals(obj);
+    public readonly bool Equals(TagSetFast other) => storage.Equals(other);
 
     public readonly void ToBytes(BinaryWriter writer)
     {

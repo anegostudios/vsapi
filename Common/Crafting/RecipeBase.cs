@@ -943,7 +943,11 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
     protected virtual void ConsumeWildcardMatchIngredient(ItemStack inputStack, ItemSlot inputSlot, ItemSlot[] inputSlots, List<IRecipeIngredient> wildcardAndToolIngredients, IPlayer byPlayer)
     {
         IRecipeIngredient? ingredient = wildcardAndToolIngredients
-            .Find(ingredient => ingredient.Type == inputStack.Class && WildcardUtil.Match(ingredient.Code, inputStack.Collectible.Code, ingredient.AllowedVariants));
+            .Find(ingredient =>
+                   ingredient.Type == inputStack.Class
+                && WildcardUtil.Match(ingredient.Code, inputStack.Collectible.Code, ingredient.AllowedVariants)
+                && ingredient.Tags.Matches(inputStack.Collectible.GetTags(inputStack))
+             );
 
         if (ingredient == null) return;
 

@@ -11,7 +11,7 @@ namespace Vintagestory.API.Datastructures;
 using HandleType = ushort;
 
 [JsonConverter(typeof(CollectibleTagSetConverter))]
-public readonly struct TagSet
+public readonly struct TagSet : IEquatable<TagSet>
 {
     // Invariant: storage is always sorted ascending.
     // Invariant: storage never contains duplicate handles.
@@ -164,13 +164,21 @@ public readonly struct TagSet
         return acc;
     }
 
+    public static bool operator ==(in TagSet self, in TagSet other) => self.Equals(other);
+    public static bool operator !=(in TagSet self, in TagSet other) => !self.Equals(other);
     /// <summary>
     /// A true equality test: are these exactly the same TagSet (e.g. when searching for duplicate grid recipe ingredients using the same tags)
     /// </summary>
-    public override bool Equals([NotNullWhen(true)] object? obj)
+    public readonly override bool Equals([NotNullWhen(true)] object? obj)
     {
         if (obj is not TagSet other) return false;
-
+        return this.Equals(other);        
+    }
+    /// <summary>
+    /// A true equality test: are these exactly the same TagSet (e.g. when searching for duplicate grid recipe ingredients using the same tags)
+    /// </summary>
+    public readonly bool Equals(TagSet other)
+    {
         if (this.storage.IsEmpty && other.storage.IsEmpty) return true;
         if (this.storage.IsEmpty || other.storage.IsEmpty) return false;
 

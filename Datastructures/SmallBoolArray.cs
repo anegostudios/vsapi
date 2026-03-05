@@ -11,7 +11,7 @@ namespace Vintagestory.API.Datastructures
     /// <summary>
     /// Suitable for up to 32 bool values, though normally used only for 6.  Offers most of the methods available for a bool[], so can be dropped in to existing code
     /// </summary>
-    public struct SmallBoolArray : IEquatable<int>
+    public struct SmallBoolArray : IEquatable<int>, IEquatable<SmallBoolArray>
     {
         public const int OnAllSides = 0x3F;
         int bits;
@@ -53,8 +53,9 @@ namespace Vintagestory.API.Datastructures
             }
         }
 
-        public bool Equals(int other) { return bits == other; }
-        public override bool Equals(Object o) { if (o is int other) return bits == other; return (o is SmallBoolArray ob) && bits == ob.bits; }
+        public readonly bool Equals(int other) { return bits == other; }
+        public readonly bool Equals(SmallBoolArray other) { return bits == other.bits; }
+        public readonly override bool Equals(Object o) { if (o is int other) return bits == other; return (o is SmallBoolArray ob) && bits == ob.bits; }
 
         public static bool operator ==(SmallBoolArray left, int right) => right == left.bits;
         public static bool operator !=(SmallBoolArray left, int right) => right != left.bits;

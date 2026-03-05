@@ -114,7 +114,7 @@ The syntax for using these in json follows one simple rule: If no junction verb 
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonConverter(typeof(GenericComplexConditionConverter))]
-public struct ComplexTagCondition&lt;TTagSet&gt;</code></pre>
+public struct ComplexTagCondition&lt;TTagSet&gt; : IEquatable&lt;ComplexTagCondition&lt;TTagSet&gt;&gt; where TTagSet : IEquatable&lt;TTagSet&gt;</code></pre>
   </div>
 
 
@@ -126,6 +126,12 @@ public struct ComplexTagCondition&lt;TTagSet&gt;</code></pre>
   </dl>
 
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;TTagSet&gt;&gt;</div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -239,7 +245,8 @@ public struct ComplexTagCondition&lt;TTagSet&gt;</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly bool IsEmpty { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[MemberNotNullWhen(false, &quot;conditions&quot;)]
+public readonly bool IsEmpty { get; }</code></pre>
   </div>
 
 
@@ -275,7 +282,7 @@ public struct ComplexTagCondition&lt;TTagSet&gt;</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
+    <pre><code class="lang-csharp hljs">public override readonly bool Equals(object? obj)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -289,6 +296,45 @@ public struct ComplexTagCondition&lt;TTagSet&gt;</code></pre>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_ComplexTagCondition_1_Equals_" data-uid="Vintagestory.API.Datastructures.ComplexTagCondition`1.Equals*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_ComplexTagCondition_1_Equals_Vintagestory_API_Datastructures_ComplexTagCondition__0__" data-uid="Vintagestory.API.Datastructures.ComplexTagCondition`1.Equals(Vintagestory.API.Datastructures.ComplexTagCondition{`0})">
+  Equals(ComplexTagCondition&lt;TTagSet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly bool Equals(ComplexTagCondition&lt;TTagSet&gt; other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
 </dd>
   </dl>
 
@@ -347,7 +393,7 @@ public struct ComplexTagCondition&lt;TTagSet&gt;</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+    <pre><code class="lang-csharp hljs">public override readonly string ToString()</code></pre>
   </div>
 
 
@@ -356,6 +402,86 @@ public struct ComplexTagCondition&lt;TTagSet&gt;</code></pre>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd><p>The fully qualified type name.</p>
 </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
+  <a id="Vintagestory_API_Datastructures_ComplexTagCondition_1_op_Equality_" data-uid="Vintagestory.API.Datastructures.ComplexTagCondition`1.op_Equality*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_ComplexTagCondition_1_op_Equality_Vintagestory_API_Datastructures_ComplexTagCondition__0___Vintagestory_API_Datastructures_ComplexTagCondition__0___" data-uid="Vintagestory.API.Datastructures.ComplexTagCondition`1.op_Equality(Vintagestory.API.Datastructures.ComplexTagCondition{`0}@,Vintagestory.API.Datastructures.ComplexTagCondition{`0}@)">
+  operator ==(in ComplexTagCondition&lt;TTagSet&gt;, in ComplexTagCondition&lt;TTagSet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(in ComplexTagCondition&lt;TTagSet&gt; self, in ComplexTagCondition&lt;TTagSet&gt; other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_ComplexTagCondition_1_op_Inequality_" data-uid="Vintagestory.API.Datastructures.ComplexTagCondition`1.op_Inequality*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_ComplexTagCondition_1_op_Inequality_Vintagestory_API_Datastructures_ComplexTagCondition__0___Vintagestory_API_Datastructures_ComplexTagCondition__0___" data-uid="Vintagestory.API.Datastructures.ComplexTagCondition`1.op_Inequality(Vintagestory.API.Datastructures.ComplexTagCondition{`0}@,Vintagestory.API.Datastructures.ComplexTagCondition{`0}@)">
+  operator !=(in ComplexTagCondition&lt;TTagSet&gt;, in ComplexTagCondition&lt;TTagSet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(in ComplexTagCondition&lt;TTagSet&gt; self, in ComplexTagCondition&lt;TTagSet&gt; other)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>self</code> <a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+    <dt><code>other</code> <a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition</a>&lt;TTagSet&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
   </dl>
 
 

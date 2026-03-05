@@ -4,7 +4,7 @@ using System;
 
 namespace Vintagestory.API.MathTools
 {
-    public struct FastVec2f
+    public struct FastVec2f : IEquatable<FastVec2f>
     {
         const float tinyEpsilon = 1e-20f;
         public static readonly FastVec2f Zero = new FastVec2f(0, 0);
@@ -103,14 +103,18 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        public override bool Equals(object obj)
+        public readonly override bool Equals(object obj)
         {
-            return obj is FastVec2f f &&
-                   X == f.X &&
+            return (obj is FastVec2f f) && this.Equals(f);
+        }
+
+        public readonly bool Equals(FastVec2f f)
+        {
+            return X == f.X &&
                    Y == f.Y;
         }
 
-        public override int GetHashCode()
+        public readonly override int GetHashCode()
         {
             return HashCode.Combine(X, Y);
         }

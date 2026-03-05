@@ -1,4 +1,5 @@
 using System;
+using ProtoBuf;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
@@ -6,17 +7,30 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.Common.Collectible.Block;
 
+[ProtoContract]
 public struct ConnectorMetaData : IEquatable<ConnectorMetaData>
 {
     /// <summary>
     /// This is an offset when loaded from schematic, but an absolute position if its part of the OpenSet during dungeon generation
     /// </summary>
+    [ProtoMember(1)]
     public FastVec3i Position;
 
+    [ProtoMember(2)]
+    public int FacingInt;
+
     public BlockFacing Facing;
+
+    [ProtoMember(3)]
     public int Rotation;
+
+    [ProtoMember(4)]
     public string Name = string.Empty;
+
+    [ProtoMember(5)]
     public string[] Targets = Array.Empty<string>();
+
+    [ProtoMember(6)]
     public string[] TargetsForParent = Array.Empty<string>();
 
     public string FromSchematicForDebug = null;

@@ -101,7 +101,8 @@ Struct ConnectorMetaData
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct ConnectorMetaData : IEquatable&lt;ConnectorMetaData&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoContract]
+public struct ConnectorMetaData : IEquatable&lt;ConnectorMetaData&gt;</code></pre>
   </div>
 
 
@@ -266,6 +267,37 @@ Struct ConnectorMetaData
 
 
 
+  <h3 id="Vintagestory_Common_Collectible_Block_ConnectorMetaData_FacingInt" data-uid="Vintagestory.Common.Collectible.Block.ConnectorMetaData.FacingInt">
+  FacingInt
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+public int FacingInt</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_Common_Collectible_Block_ConnectorMetaData_FromSchematicForDebug" data-uid="Vintagestory.Common.Collectible.Block.ConnectorMetaData.FromSchematicForDebug">
   FromSchematicForDebug
   
@@ -305,7 +337,8 @@ Struct ConnectorMetaData
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(4)]
+public string Name</code></pre>
   </div>
 
 
@@ -336,7 +369,8 @@ Struct ConnectorMetaData
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3i Position</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+public FastVec3i Position</code></pre>
   </div>
 
 
@@ -366,7 +400,8 @@ Struct ConnectorMetaData
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Rotation</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+public int Rotation</code></pre>
   </div>
 
 
@@ -396,7 +431,8 @@ Struct ConnectorMetaData
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] Targets</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(5)]
+public string[] Targets</code></pre>
   </div>
 
 
@@ -426,7 +462,8 @@ Struct ConnectorMetaData
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] TargetsForParent</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(6)]
+public string[] TargetsForParent</code></pre>
   </div>
 
 

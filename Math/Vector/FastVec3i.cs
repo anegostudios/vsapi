@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
+using ProtoBuf;
 
 #nullable disable
 
@@ -10,19 +11,23 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 ints, similar to a Vec3i or a BlockPos but this is a struct
     /// </summary>
-    public struct FastVec3i : IEquatable<FastVec3i>
+    [ProtoContract]
+    public struct FastVec3i : IEquatable<FastVec3i>, IEquatable<BlockPos>
     {
         /// <summary>
         /// The X-Component of the vector
         /// </summary>
+        [ProtoMember(1)]
         public int X;
         /// <summary>
         /// The Y-Component of the vector
         /// </summary>
+        [ProtoMember(2)]
         public int Y;
         /// <summary>
         /// The Z-Component of the vector
         /// </summary>
+        [ProtoMember(3)]
         public int Z;
 
 
@@ -97,17 +102,17 @@ namespace Vintagestory.API.MathTools
             return other != null && X == other.X && Y == other.Y && Z == other.Z;
         }
 
-        public bool Equals(BlockPos other)
+        public readonly bool Equals(BlockPos other)
         {
-            return other != null && X == other.X && Y == other.Y && Z == other.Z;
+            return other != null && X == other.X && Y == other.InternalY && Z == other.Z;
         }
 
-        public bool Equals(FastVec3i other)
+        public readonly bool Equals(FastVec3i other)
         {
             return X == other.X && Y == other.Y && Z == other.Z;
         }
 
-        public override bool Equals(object obj)
+        public readonly override bool Equals(object obj)
         {
             return (obj is FastVec3i vec) && X == vec.X && Y == vec.Y && Z == vec.Z;
         }

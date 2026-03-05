@@ -39,14 +39,7 @@ namespace Vintagestory.API.MathTools
 
         public override bool Equals(object? obj)
         {
-            if (obj is FastVec2i other)
-            {
-                return val == other.val;
-            }
-            else
-            {
-                return false;
-            }
+            return (obj is FastVec2i other) && val == other.val;
         }
 
         public override int GetHashCode()
