@@ -1,3 +1,7 @@
+using ProtoBuf;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Xml.Linq;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -7,12 +11,17 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Contains all the information for a players block selection event
     /// </summary>
+    [ProtoContract]
     public class BlockSelection
     {
         /// <summary>
         /// The position the player wants to place/break something at
         /// </summary>
+        [ProtoMember(1)]
         public BlockPos Position;
+
+        [ProtoMember(2)]
+        protected int FaceIndex;
 
         /// <summary>
         /// The face the player aimed at
@@ -22,16 +31,19 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The coordinate of the exact aimed position, relative to the Block Position
         /// </summary>
+        [ProtoMember(3)]
         public Vec3d HitPosition;
 
         /// <summary>
         /// Which selection box was aimed at. The index corresponds to the array returned by Block.GetSelectionBoxes()
         /// </summary>
+        [ProtoMember(4)]
         public int SelectionBoxIndex;
 
         /// <summary>
         /// Which selection box was aimed at. The id corresponds to CuboidfWithId.Id, if the selection box cuboid is of that type
         /// </summary>
+        [ProtoMember(5)]
         public string SelectionBoxId;
 
 
@@ -40,12 +52,15 @@ namespace Vintagestory.API.Common
         /// - When trying to place planks while aiming at rock, the Position is the one in front of the Rock and DidOffset is True
         /// - When trying to place planks while aiming at tallgrass, the Position is where the tall grass is and DidOffset is false (because tallgrass is replacable)
         /// </summary>
+        [ProtoMember(6)]
         public bool DidOffset;
 
         /// <summary>
         /// The block actually being looked at!
         /// </summary>
         public Block Block;
+
+
 
         public BlockSelection()
         {
@@ -124,6 +139,20 @@ namespace Vintagestory.API.Common
         {
             return new DecorBits(face);
         }
+
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext ctx)
+        {
+            Face = BlockFacing.ALLFACES[FaceIndex];
+        }
+
+        [ProtoBeforeSerialization]
+        protected void BeforeSerialization()
+        {
+            FaceIndex = Face?.Index ?? 0;
+        }
+
     }
 
 }

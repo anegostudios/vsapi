@@ -343,6 +343,7 @@ namespace Vintagestory.API.Client
                 for (int rz = minrz; rz <= maxrz; rz++)
                 {
                     var mr = capi.World.BlockAccessor.GetMapRegion(rx, rz);
+                    if (mr == null) continue;
                     foreach (var val in mr.GeneratedStructures)
                     {
                         if (val.Code.Equals(nearStructureCode)) {

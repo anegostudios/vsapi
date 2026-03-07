@@ -139,27 +139,36 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
     public EnumRecipeMatchType MatchingType { get; set; } = EnumRecipeMatchType.Exact;
 
     /// <summary>
-    /// The itemstack made from Code, Quantity and Attributes, populated by the engine
+    /// The itemstack made from Code, Quantity and Attributes, populated by the engine.  For performance, consider referencing the ResolvedAttributes or Quantity of this CraftingRecipeIngredient instead of the Attributes or StackSize of the ResolvedItemStack, it may save having to clone the ResolvedItemStack
     /// </summary>
     public ItemStack? ResolvedItemStack
     {
         get {
-            if (deduplicationIndex < 0) return resolvedItemStack;
+            if (deduplicationIndex < 0 || resolvedItemStack != null) return resolvedItemStack;   // Subtle point: resolvedItemStack will be non-null for a deduplicationIndex >= 0 if-and-only-if this is a clone of a recipe's ingredient: see also CloneTo() method below.  This results in the expected behaviour from a cloned CraftingRecipeIngredient, e.g. the StackSize and Attributes of the ResolvedItemStack can then be safely modified
+
+            // The following code is necessary if we need to construct a ResolvedItemStack from the ingredient in the de-duplicated list, where only one ResolvedItemStack is stored for each ingredient; for the stored ResolvedItemStack, we generally assume (and here, enforce) that .StackSize should be 1 and .Attributes should be empty.
 
             var stack = world!.FastSearchRecipesByIngredient.GetAt(deduplicationIndex).Key.ResolvedItemStack;   // world cannot be null if deduplicationIndex >= 0
             if (stack == null) return null;
 
-            // We populate the StackSize and Attributes of the ResolvedItemStack at the time of fetching it; these are normally simple assignments
-            stack.StackSize = StackSize;
-            if (resolvedAttributes != null)
+            // We populate the StackSize and Attributes of the ResolvedItemStack correctly at the time of fetching it
+
+            stack.StackSize = 1;
+            if (StackSize != 1 || ResolvedAttributes != null)
             {
-                stack.Attributes = resolvedAttributes;
+                stack = stack.Clone();   // We clone it only if we will change the StackSize or Attributes to non-defaults - not too much performance impact, both are uncommon in most recipes
+                stack.StackSize = StackSize;
+            }
+            if (ResolvedAttributes != null)
+            {
+                stack.Attributes = ResolvedAttributes;
             }
             else
             {
-                if (defaultEmptyAttributes.Count != 0) defaultEmptyAttributes = new TreeAttribute();
+                if (defaultEmptyAttributes.Count != 0) defaultEmptyAttributes = new TreeAttribute();    // Protective just in case a mod directly modified the Attributes of a ResolvedItemStack without cloning it first
                 stack.Attributes = defaultEmptyAttributes;
             }
+
             return stack;
         }
         set {
@@ -175,7 +184,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
     /// Only used if we have not de-duplicated this CraftingRecipeIngredient (e.g. for RightClickConstruction ingredients)
     /// </summary>
     protected ItemStack? resolvedItemStack = null;
-    protected ITreeAttribute? resolvedAttributes = null;
+    public ITreeAttribute? ResolvedAttributes = null;
 
     public RecipeIngredientConsumeProperties ConsumeProperties => GetConsumeProperties();
 
@@ -257,7 +266,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             IAttribute? attributes = Attributes.ToAttribute();
             if (attributes is ITreeAttribute treeAttribute)
             {
-                resolvedAttributes = treeAttribute;
+                ResolvedAttributes = treeAttribute;
                 if (deduplicationIndex < 0) resolvedItemStack.Attributes = treeAttribute;
             }
         }
@@ -529,7 +538,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             ingredient.Break = Break;
             ingredient.AllowedVariants = AllowedVariants;   // These do not need a deep clone, they are never written to [except originally when deserializing or parsing JSON]
             ingredient.SkipVariants = SkipVariants;   // These do not need a deep clone, they are never written to [except originally when deserializing or parsing JSON]
-            ingredient.resolvedItemStack = ResolvedItemStack?.Clone();   // Subtle, but this ensures any clone holds a proper clone of the de-duplicated FastSearchRecipesByIngredient itemstack (if one exists)
+            ingredient.resolvedItemStack = (deduplicationIndex >= 0 && (StackSize != 1 || ResolvedAttributes != null)) ? ResolvedItemStack : ResolvedItemStack?.Clone();   // Subtle, but this ensures any clone of the CraftingRecipeIngredient holds a genuine clone of the de-duplicated FastSearchRecipesByIngredient itemstack (if one exists); that's why we write to resolvedItemStack not ResolvedItemStack.  Subtler still: we don't need to .Clone() the ResolvedItemStack again if it was already a clone, see ResolvedItemStack code for the cloning
             ingredient.ReturnedStack = ReturnedStack?.Clone();
             ingredient.RecipeAttributes = RecipeAttributes?.Clone();
             ingredient.Id = Id;
@@ -537,7 +546,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             ingredient.RecipeAttributes = RecipeAttributes?.Clone();
             ingredient.world = world;
             ingredient.deduplicationIndex = deduplicationIndex;
-            ingredient.resolvedAttributes = resolvedAttributes?.Clone();
+            ingredient.ResolvedAttributes = ResolvedAttributes?.Clone();
         }
     }
 

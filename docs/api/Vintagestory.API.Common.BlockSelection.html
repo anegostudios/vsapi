@@ -102,7 +102,8 @@ Class BlockSelection
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BlockSelection</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoContract]
+public class BlockSelection</code></pre>
   </div>
 
 
@@ -275,7 +276,8 @@ Class BlockSelection
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DidOffset</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(6)]
+public bool DidOffset</code></pre>
   </div>
 
 
@@ -327,6 +329,37 @@ Class BlockSelection
 
 
 
+  <h3 id="Vintagestory_API_Common_BlockSelection_FaceIndex" data-uid="Vintagestory.API.Common.BlockSelection.FaceIndex">
+  FaceIndex
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+protected int FaceIndex</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_BlockSelection_HitPosition" data-uid="Vintagestory.API.Common.BlockSelection.HitPosition">
   HitPosition
   
@@ -337,7 +370,8 @@ Class BlockSelection
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d HitPosition</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+public Vec3d HitPosition</code></pre>
   </div>
 
 
@@ -368,7 +402,8 @@ Class BlockSelection
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockPos Position</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+public BlockPos Position</code></pre>
   </div>
 
 
@@ -399,7 +434,8 @@ Class BlockSelection
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SelectionBoxId</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(5)]
+public string SelectionBoxId</code></pre>
   </div>
 
 
@@ -430,7 +466,8 @@ Class BlockSelection
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int SelectionBoxIndex</code></pre>
+    <pre><code class="lang-csharp hljs">[ProtoMember(4)]
+public int SelectionBoxIndex</code></pre>
   </div>
 
 
@@ -554,6 +591,33 @@ Class BlockSelection
     <dt><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockSelection_BeforeSerialization_" data-uid="Vintagestory.API.Common.BlockSelection.BeforeSerialization*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockSelection_BeforeSerialization" data-uid="Vintagestory.API.Common.BlockSelection.BeforeSerialization">
+  BeforeSerialization()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ProtoBeforeSerialization]
+protected void BeforeSerialization()</code></pre>
+  </div>
+
+
 
 
 

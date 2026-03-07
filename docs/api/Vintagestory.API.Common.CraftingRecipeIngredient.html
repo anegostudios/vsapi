@@ -172,8 +172,8 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeIngredientBase
 
 
 
-  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_defaultEmptyAttributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.defaultEmptyAttributes">
-  defaultEmptyAttributes
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_ResolvedAttributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.ResolvedAttributes">
+  ResolvedAttributes
   
   </h3>
 
@@ -181,7 +181,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeIngredientBase
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ITreeAttribute defaultEmptyAttributes</code></pre>
+    <pre><code class="lang-csharp hljs">public ITreeAttribute? ResolvedAttributes</code></pre>
   </div>
 
 
@@ -202,8 +202,8 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeIngredientBase
 
 
 
-  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_resolvedAttributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.resolvedAttributes">
-  resolvedAttributes
+  <h3 id="Vintagestory_API_Common_CraftingRecipeIngredient_defaultEmptyAttributes" data-uid="Vintagestory.API.Common.CraftingRecipeIngredient.defaultEmptyAttributes">
+  defaultEmptyAttributes
   
   </h3>
 
@@ -211,7 +211,7 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeIngredientBase
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ITreeAttribute? resolvedAttributes</code></pre>
+    <pre><code class="lang-csharp hljs">public static ITreeAttribute defaultEmptyAttributes</code></pre>
   </div>
 
 
@@ -738,7 +738,7 @@ public JsonObject? RecipeAttributes { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The itemstack made from Code, Quantity and Attributes, populated by the engine</p>
+  <div class="markdown level1 summary"><p>The itemstack made from Code, Quantity and Attributes, populated by the engine.  For performance, consider referencing the ResolvedAttributes or Quantity of this CraftingRecipeIngredient instead of the Attributes or StackSize of the ResolvedItemStack, it may save having to clone the ResolvedItemStack</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
