@@ -272,5 +272,59 @@ namespace Vintagestory.API.Common
 
             return base.GetRandomColor(capi, pos, facing, rndIndex);
         }
+
+        public override bool SideIsSolid(BlockPos pos, int faceIndex)
+        {
+            bool result = true;
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                StrongBlockBehavior sbh = behavior as StrongBlockBehavior;
+                if (sbh == null) continue;
+
+
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool behaviorResult = sbh.SideIsSolid(pos, faceIndex, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            return base.SideIsSolid(pos, faceIndex);
+        }
+
+        public override bool SideIsSolid(IBlockAccessor blockAccess, BlockPos pos, int faceIndex)
+        {
+            bool result = true;
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                StrongBlockBehavior sbh = behavior as StrongBlockBehavior;
+                if (sbh == null) continue;
+
+
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool behaviorResult = sbh.SideIsSolid(blockAccess, pos, faceIndex, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            return base.SideIsSolid(blockAccess, pos, faceIndex);
+        }
     }
 }

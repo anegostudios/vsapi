@@ -43,6 +43,7 @@ public class GridRecipe : RecipeBase, IByteSerializable, IConcreteCloneable<Grid
     /// <summary>
     /// The recipes ingredients in any order, including the code used in the ingredient pattern.
     /// <br/>Note: from game version 1.20.4, this becomes <b>null on server-side</b> after completion of recipe resolving during server start-up phase
+    /// <br/>From game version 1.22.0, this is always null client-side. Use GridRecipe.GetIngredientById() if you need to find ingredients by their id-code (which should normally match the code used in the ingredient pattern)
     /// </summary>
     [DocumentAsJson("Required")]
     public Dictionary<string, CraftingRecipeIngredient>? Ingredients { get; set; }

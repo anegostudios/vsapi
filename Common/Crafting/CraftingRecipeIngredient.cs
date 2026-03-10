@@ -211,6 +211,12 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
         }
         else return true;   // Some recipes include the same ingredient in multiple positions, in GridRecipe.Resolve() this gets called for each position: the only difference will be the Id
 
+        if (resolvedItemStack != null)
+        {
+            if (resolvedItemStack.Attributes is { } attr && attr.Count > 0) ResolvedAttributes = resolvedItemStack.Attributes;
+            return true;    // No need to re-resolve the ResolvedItemStack if it is already present (for example, client-side in FromBytes())
+        }
+
         return Resolve(world, sourceForErrorLogging);
     }
 

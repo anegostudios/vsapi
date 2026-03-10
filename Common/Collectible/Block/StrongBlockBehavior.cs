@@ -73,5 +73,17 @@ namespace Vintagestory.API.Common
             handled = EnumHandling.PassThrough;
             return 0;
         }
+
+        public virtual bool SideIsSolid(BlockPos pos, int faceIndex, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return false;
+        }
+
+        public virtual bool SideIsSolid(IBlockAccessor blockAccess, BlockPos pos, int faceIndex, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return false;
+        }
     }
 }

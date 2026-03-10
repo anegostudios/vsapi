@@ -995,7 +995,9 @@ namespace Vintagestory.API.Datastructures
             if (sourceTree is TreeAttribute srcTree)
             {
                 MergeTree(this, srcTree);
-            } else
+            }
+            else if (sourceTree == null) return;
+            else
             {
                 throw new ArgumentException("Expected TreeAttribute but got " + sourceTree.GetType().Name + "! " + sourceTree.ToString() + "");
             }

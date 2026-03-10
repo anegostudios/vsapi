@@ -391,7 +391,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         recipeBase.ShowInCreatedBy = ShowInCreatedBy;
     }
 
-    protected virtual IRecipeIngredient? GetIngredientById(string id)
+    public virtual IRecipeIngredient? GetIngredientById(string id)
     {
         return RecipeIngredients.FirstOrDefault(ingredient => ingredient.Id == id);
     }

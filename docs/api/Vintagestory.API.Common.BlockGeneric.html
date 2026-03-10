@@ -428,12 +428,6 @@ Class BlockGeneric
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DisplacesLiquids_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_">Block.DisplacesLiquids(IBlockAccessor, BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_SideIsSolid_Vintagestory_API_MathTools_BlockPos_System_Int32_">Block.SideIsSolid(BlockPos, int)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_SideIsSolid_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_">Block.SideIsSolid(IBlockAccessor, BlockPos, int)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldMergeFace_System_Int32_Vintagestory_API_Common_Block_System_Int32_">Block.ShouldMergeFace(int, Block, int)</a>
     </div>
     <div>
@@ -1639,6 +1633,87 @@ Class BlockGeneric
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockGeneric_SideIsSolid_" data-uid="Vintagestory.API.Common.BlockGeneric.SideIsSolid*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_SideIsSolid_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.BlockGeneric.SideIsSolid(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32)">
+  SideIsSolid(IBlockAccessor, BlockPos, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Is the side solid or almost fully solid (in the case of chiselled blocks)?  Called for example when deciding to place loose stones or boulders above this during worldgen</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool SideIsSolid(IBlockAccessor blockAccess, BlockPos pos, int faceIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccess</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>faceIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockGeneric_SideIsSolid_" data-uid="Vintagestory.API.Common.BlockGeneric.SideIsSolid*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_SideIsSolid_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.BlockGeneric.SideIsSolid(Vintagestory.API.MathTools.BlockPos,System.Int32)">
+  SideIsSolid(BlockPos, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Does the side APPEAR fully solid?  Called for example when deciding to render water edges at a position, or not
+Note: Worldgen code uses the blockAccessor-aware overload of this method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool SideIsSolid(BlockPos pos, int faceIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>faceIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
