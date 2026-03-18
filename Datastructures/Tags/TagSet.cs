@@ -38,17 +38,31 @@ public readonly struct TagSet : IEquatable<TagSet>
     {
         if (this.storage.IsEmpty || other.storage.IsEmpty) return false;
 
-        var thisFirstHandle = this.storage.Span[0];
+        var thisSpan = this.storage.Span;
         var otherSpan = other.storage.Span;
 
-        // Fast rejection path: If this only starts after the end of other these cannot overlap:
-        if (thisFirstHandle > otherSpan[^1]) return false;
-        //NOTE(Rennorb): No need to check otherSpan[0] > thisFirstHandle, That will happen in the first iteration of the loop.
+        // Fast rejection path: If this only starts after the end of other these cannot overlap, same for the other way round:
+        // if (thisSpan[0] > otherSpan[^1]) return false; //NOTE(Rennorb): this check already happens in the first iteration of the loop.
+        if (otherSpan[0] > thisSpan[^1]) return false;
 
-        foreach (var otherHandle in otherSpan)
+        //NOTE(Rennorb) @perf: The check above could be further "improved" by first trimming the section to be looped over to only the
+        // [max(minThis, minOther), min(maxThis, maxOther)], e.g. cutting of the parts that can never overlap.
+        // We early out if it cannot overlap, and we stop once this reaches the end of other, but we still loop over sections that can never match.
+        // In reality however, this compares between 0 and 5 tags to other 0 to 5 tags and it simply is not worth the overhead of even figuring out how long the tails are,
+        // as that also requires looping over the tags, meaning loading the memory which is the slow part.
+        // Doing 5x5 = 25 integer comparisons is simply not the bottleneck at the moment.
+
+        var lastOtherHandle = otherSpan[^1];
+
+        foreach (var thisHandle in thisSpan)
         {
-            if (thisFirstHandle == otherHandle) return true;
-            if (otherHandle > thisFirstHandle) break;
+            if (thisHandle > lastOtherHandle) break;
+
+            foreach (var otherHandle in otherSpan)
+            {
+                if (thisHandle == otherHandle) return true;
+                if (otherHandle > thisHandle) break;
+            }
         }
 
         return false;

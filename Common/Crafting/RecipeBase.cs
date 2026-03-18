@@ -726,6 +726,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         List<IRecipeIngredient> exactMatchIngredients = [];
         List<IRecipeIngredient> wildcardAndToolIngredients = [];
 
+        // This can modify the stacksize of each ingredient's resolvedItemStack within exactMatchIngredients  (e.g. sets it to stacksize 2 if there are two ingredients the same in the recipe grid)
         SeparateAndMergeIngredients(ingredients, exactMatchIngredients: exactMatchIngredients, wildcardAndToolIngredients: wildcardAndToolIngredients);
 
         foreach ((ItemStack? inputStack, ItemSlot inputSlot) in inputSlots.Select(slot => (slot.Itemstack, slot)))
@@ -772,7 +773,6 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
 
     protected virtual bool MatchesShapeLess(ItemSlot[] suppliedSlots, IWorldAccessor world, IRecipeIngredient?[] ingredients)
     {
-        List<(ItemStack stack, IRecipeIngredient ingredient)> ingredientStacks = [];
         List<ItemStack> suppliedStacks = [];
 
         MergeStacks(suppliedSlots, suppliedStacks);
@@ -782,6 +782,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
             return false;
         }
 
+        List<(ItemStack stack, IRecipeIngredient ingredient)> ingredientStacks = [];
         MergeIngredientStacks(suppliedSlots, ingredientStacks, ingredients, world);
 
         if (ingredientStacks.Count != suppliedStacks.Count) return false;
@@ -807,17 +808,24 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
 
     protected virtual void MergeIngredientStacks(ItemSlot[] slots, List<(ItemStack stack, IRecipeIngredient ingredient)> stacks, IRecipeIngredient?[] ingredients, IWorldAccessor world)
     {
-        foreach (IRecipeIngredient ingredient in ingredients.OfType<IRecipeIngredient>().Where(ingredient => ingredient.MatchingType == EnumRecipeMatchType.Exact))
+        foreach (IRecipeIngredient? ingredient in ingredients)
         {
+            if (ingredient == null || ingredient.MatchingType != EnumRecipeMatchType.Exact) continue;
             ItemStack? ingredientStack = ingredient.ResolvedItemStack;
             if (ingredientStack == null)
             {
                 continue;
             }
 
-            ItemStack? similarStack = stacks
-                .Select(entry => entry.stack)
-                .FirstOrDefault(stack => stack.Equals(world, ingredientStack, GlobalConstants.IgnoredStackAttributes) && ingredient.RecipeAttributes == null);
+            ItemStack? similarStack = null;
+            foreach (var entry in stacks)
+            {
+                if (entry.stack.Equals(world, ingredientStack, GlobalConstants.IgnoredStackAttributes) && ingredient.RecipeAttributes == null)
+                {
+                    similarStack = entry.stack;
+                    break;
+                }
+            }
 
             if (similarStack != null)
             {
@@ -927,14 +935,15 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
 
         ItemStack? ingredientStack = ingredient?.ResolvedItemStack;
         if (ingredientStack == null) return;
+        int ingredientStackSize = ingredientStack.StackSize;  // Do not alter the .StackSize of the original ingredient
 
-        int quantity = Math.Min(ingredientStack.StackSize, inputStack.StackSize);
+        int quantity = Math.Min(ingredientStackSize, inputStack.StackSize);
 
         inputStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlot, this, ingredient, byPlayer, quantity);
 
-        ingredientStack.StackSize -= quantity;
+        ingredientStackSize -= quantity;
 
-        if (ingredientStack.StackSize <= 0)
+        if (ingredientStackSize <= 0)
         {
             exactMatchIngredients.Remove(ingredient!);    // We know this is not null if ingredient?.ResolvedItemStack is not null. Stupid compiler.
         }

@@ -443,8 +443,14 @@ namespace Vintagestory.API.Common
             }
         }
 
-
-        public virtual bool Pack(IWorldAccessor world, BlockPos startPos)
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="startPos"></param>
+        /// <param name="skipImportExportForEntities">when true WillExport and DidImportOrExport will not be called</param>
+        /// <returns></returns>
+        public virtual bool Pack(IWorldAccessor world, BlockPos startPos, bool skipImportExportForEntities = false)
         {
             Indices.Clear();
             BlockIds.Clear();
@@ -580,9 +586,9 @@ namespace Vintagestory.API.Common
 
                     writer.Write(world.ClassRegistry.GetEntityClassName(e.GetType()));
 
-                    e.WillExport(minPos);
+                    if(!skipImportExportForEntities) e.WillExport(minPos);
                     e.ToBytes(writer, false);
-                    e.DidImportOrExport(minPos);
+                    if(!skipImportExportForEntities) e.DidImportOrExport(minPos);
 
                     Entities.Add(Ascii85.Encode(ms.ToArray()));
                 }
@@ -764,7 +770,6 @@ namespace Vintagestory.API.Common
         /// <param name="flipAxis"></param>
         public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)
         {
-            BlockPos startPos = new BlockPos(1024, 1024, 1024);
 
             BlocksUnpacked.Clear();
             FluidsLayerUnpacked.Clear();
@@ -988,7 +993,7 @@ namespace Vintagestory.API.Common
                     switch (angle)
                     {
                         case 90:
-                            pos.X = -z; // I have no idea why i need to add offz/offx flipped here for entities, but not for blocks (－‸ლ)
+                            pos.X = -z;
                             pos.Z = x;
                             break;
                         case 180:
@@ -1008,7 +1013,6 @@ namespace Vintagestory.API.Common
 
                     pos.Yaw -= angle * GameMath.DEG2RAD;
 
-                    entity.Pos.SetPos(pos);
                     entity.PositionBeforeFalling.X = pos.X;
                     entity.PositionBeforeFalling.Z = pos.Z;
 
@@ -1016,7 +1020,8 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            Pack(worldForResolve, startPos);
+            BlockPos startPos = new BlockPos(1024, 1024, 1024);
+            Pack(worldForResolve, startPos, true);
         }
 
         public BlockPos GetRotatedPos(EnumOrigin aroundOrigin, int angle, int dx, int dy, int dz)

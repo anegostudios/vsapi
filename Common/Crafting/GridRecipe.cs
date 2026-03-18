@@ -197,9 +197,16 @@ public class GridRecipe : RecipeBase, IByteSerializable, IConcreteCloneable<Grid
             return false;
         }
 
+        // Don't make changes to the stacksize of the original ResolvedIngredients - various methods e.g. SeparateAndMergeIngredients() might do this
+        var resolvedIngredients = new CraftingRecipeIngredient?[ResolvedIngredients.Length];
+        for (int i = 0; i < resolvedIngredients.Length; i++)
+        {
+            resolvedIngredients[i] = ResolvedIngredients[i]?.Clone();
+        }
+
         if (Shapeless)
         {
-            return ConsumeInputShapeLess(byPlayer, inputSlots, ResolvedIngredients);
+            return ConsumeInputShapeLess(byPlayer, inputSlots, resolvedIngredients);
         }
 
         int gridHeight = inputSlots.Length / gridWidth;
@@ -212,7 +219,7 @@ public class GridRecipe : RecipeBase, IByteSerializable, IConcreteCloneable<Grid
         {
             for (int row = 0; row <= gridHeight - Height; row++)
             {
-                if (MatchesAtPosition(column, row, inputSlots, gridWidth, Width, ResolvedIngredients) && !ConsumeInputAt(byPlayer, inputSlots, gridWidth, Width, column, row, ResolvedIngredients))
+                if (MatchesAtPosition(column, row, inputSlots, gridWidth, Width, resolvedIngredients) && !ConsumeInputAt(byPlayer, inputSlots, gridWidth, Width, column, row, ResolvedIngredients))
                 {
                     return false;
                 }

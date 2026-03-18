@@ -1977,8 +1977,8 @@ public int SizeZ</code></pre>
 
   <a id="Vintagestory_API_Common_BlockSchematic_Pack_" data-uid="Vintagestory.API.Common.BlockSchematic.Pack*"></a>
 
-  <h3 id="Vintagestory_API_Common_BlockSchematic_Pack_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockSchematic.Pack(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">
-  Pack(IWorldAccessor, BlockPos)
+  <h3 id="Vintagestory_API_Common_BlockSchematic_Pack_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Boolean_" data-uid="Vintagestory.API.Common.BlockSchematic.Pack(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Boolean)">
+  Pack(IWorldAccessor, BlockPos, bool)
   
   </h3>
 
@@ -1986,7 +1986,7 @@ public int SizeZ</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Pack(IWorldAccessor world, BlockPos startPos)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool Pack(IWorldAccessor world, BlockPos startPos, bool skipImportExportForEntities = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -1995,6 +1995,9 @@ public int SizeZ</code></pre>
     <dd></dd>
     <dt><code>startPos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
     <dd></dd>
+    <dt><code>skipImportExportForEntities</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>when true WillExport and DidImportOrExport will not be called</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>

@@ -337,7 +337,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Multiplies each coordinate with given multiplier
+        /// Multiplies each coordinate with given multiplier (AKA, scales the vector by the given scalar)
         /// </summary>
         /// <param name="multiplier"></param>
         /// <returns></returns>
