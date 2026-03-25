@@ -58,7 +58,7 @@ namespace Vintagestory.API.Common
 
         public AnimationManager()
         {
-            
+
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Vintagestory.API.Common
             capi = api as ICoreClientAPI;
         }
 
-        public IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
+        public IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, string[] disableElements, params string[] requireJointsForElements)
         {
             Init(entity.Api, entity);
 
@@ -85,7 +85,7 @@ namespace Vintagestory.API.Common
                 requireJointsForElements = requireJointsForElements.Append(entity.Properties.Attributes["requireJointsForElements"].AsArray<string>());
             }
 
-            entityShape.InitForAnimations(api.Logger, entity.Properties.Client.ShapeForEntity.Base.ToString(), requireJointsForElements);
+            entityShape.InitForAnimations(api.Logger, entity.Properties.Client.ShapeForEntity.Base.ToString(), disableElements, requireJointsForElements);
 
 
             Animator = animator = api.Side == EnumAppSide.Client ?
@@ -232,7 +232,7 @@ namespace Vintagestory.API.Common
         public virtual void StopAnimation(string code)
         {
             if (code == null || entity == null) return;
-            
+
             if (entity.World.Side == EnumAppSide.Server)
             {
                 AnimationsDirty = true;
@@ -279,7 +279,7 @@ namespace Vintagestory.API.Common
         public virtual void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
         {
             HashSet<string> toKeep = new HashSet<string>();
-            
+
             string active = "";
 
             for (int i = 0; i < activeAnimationsCount; i++)
@@ -454,7 +454,7 @@ namespace Vintagestory.API.Common
                 Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
                 AdjustCollisionBoxToAnimation = ActiveAnimationsByAnimCode.Any(anim => anim.Value.AdjustCollisionBox);
             }
-            
+
             runTriggers();
         }
 
@@ -519,7 +519,7 @@ namespace Vintagestory.API.Common
                     }
                 }
             }
-                
+
         }
 
         /// <summary>
@@ -578,7 +578,7 @@ namespace Vintagestory.API.Common
                         loopingSounds.Add(animationMetaCode, lsound);
                     }
 
-                    lsound.Start();                    
+                    lsound.Start();
                 }
             }
             else

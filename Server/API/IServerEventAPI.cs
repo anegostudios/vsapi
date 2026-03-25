@@ -239,11 +239,12 @@ namespace Vintagestory.API.Server
         void ServerRunPhase(EnumServerRunPhase runPhase, Action handler);
 
         /// <summary>
-        /// Registers a method to be called every given interval
+        /// Registers a low level method to be called every given interval. This runs independent of server state.
         /// </summary>
         /// <param name="handler"></param>
         /// <param name="interval"></param>
         void Timer(Action handler, double interval);
+
         object TriggerInitWorldGen();
 
         /// <summary>

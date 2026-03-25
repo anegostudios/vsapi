@@ -38,7 +38,7 @@ namespace Vintagestory.API.Common
             m.Mul(AnimModelMatrix);
 
             m.Translate(ap.PosX / 16f, ap.PosY / 16f, ap.PosZ / 16f);
-            m.Translate(-0.5f, -0.5f, -0.5f); 
+            m.Translate(-0.5f, -0.5f, -0.5f);
             m.RotateX((float)ap.RotationX * GameMath.DEG2RAD);
             m.RotateY((float)ap.RotationY * GameMath.DEG2RAD);
             m.RotateZ((float)ap.RotationZ * GameMath.DEG2RAD);
@@ -107,7 +107,7 @@ namespace Vintagestory.API.Common
     }
 
     /// <summary>
-    /// Everything needed for allowing animations the <see cref="Entity"/> class holds a reference to an IAnimator. 
+    /// Everything needed for allowing animations the <see cref="Entity"/> class holds a reference to an IAnimator.
     /// Currently implemented by <see cref="ServerAnimator"/>
     /// </summary>
     public interface IAnimationManager : IDisposable
@@ -224,7 +224,7 @@ namespace Vintagestory.API.Common
 
         void RegisterFrameCallback(AnimFrameCallback trigger);
 
-        IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements);
+        IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, string[] disableElements, params string[] requireJointsForElements);
         void CopyOverAnimStates(RunningAnimation[] copyOverAnims, IAnimator animator);
     }
 }

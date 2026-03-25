@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
-using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 #nullable disable

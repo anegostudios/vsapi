@@ -235,11 +235,10 @@ namespace Vintagestory.API.Config
             { "vscontributor", new double[] { 135 / 255.0, 179 / 255.0, 148 / 255.0, 1 } },
             { "vssupporter", new double[] { 254/255.0, 197/255.0, 0, 1 } },
 
-            { "securityresearcher", new double[] { 49/255.0, 159/255.0, 174/255.0, 1 } },
+            { "staff", new double[] { 49/255.0, 159/255.0, 174/255.0, 1 } },
             { "bughunter", new double[] { 174 / 255.0, 96/255.0, 49/255.0, 1 } },
             { "chiselmaster", new double[] { 242 / 255.0, 244 / 255.0, 187 / 255.0, 1 } },
         };
-
 
         public static Dictionary<string, TextBackground> playerTagBackgroundByEntitlement = new Dictionary<string, TextBackground>()
         {
@@ -270,7 +269,7 @@ namespace Vintagestory.API.Config
                         BorderColor = GuiStyle.DialogBorderColor,
                         BorderWidth = 3,
                     } },
-            { "securityresearcher", new TextBackground()
+            { "staff", new TextBackground()
                     {
                         FillColor = GuiStyle.DialogLightBgColor,
                         Padding = 3,

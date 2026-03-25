@@ -4,8 +4,6 @@ using System;
 using System.Linq;
 using Vintagestory.API.Util;
 using System.Runtime.Serialization;
-using System.Xml.Linq;
-using Vintagestory.API.Datastructures;
 
 #nullable disable
 
@@ -71,6 +69,11 @@ namespace Vintagestory.API.Common
             CollectAndResolveReferences(errorLogger, shapeNameForLogging);
         }
 
+        public void ResolveReferences(ILogger errorLogger, string shapeNameForLogging, string[] disableElements)
+        {
+            CollectAndResolveReferences(errorLogger, shapeNameForLogging, disableElements);
+        }
+
         /// <summary>
         /// Only relevant for UnloadableShape
         /// </summary>
@@ -78,12 +81,18 @@ namespace Vintagestory.API.Common
         {
         }
 
+        public Dictionary<string, ShapeElement> CollectAndResolveReferences(ILogger errorLogger, string shapeNameForLogging)
+        {
+            return CollectAndResolveReferences(errorLogger, shapeNameForLogging, null);
+        }
+
         /// <summary>
         /// Attempts to resolve all references within the shape. Logs missing references them to the errorLogger
         /// </summary>
         /// <param name="errorLogger"></param>
         /// <param name="shapeNameForLogging"></param>
-        public Dictionary<string, ShapeElement> CollectAndResolveReferences(ILogger errorLogger, string shapeNameForLogging)
+        /// <param name="disableElements"></param>
+        public Dictionary<string, ShapeElement> CollectAndResolveReferences(ILogger errorLogger, string shapeNameForLogging, string[] disableElements)
         {
             Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>();
             var Elements = this.Elements;
@@ -99,7 +108,7 @@ namespace Vintagestory.API.Common
                     for (int j = 0; j < KeyFrames.Length; j++)
                     {
                         AnimationKeyFrame keyframe = KeyFrames[j];
-                        ResolveReferences(errorLogger, shapeNameForLogging, elementsByName, keyframe);
+                        ResolveReferences(errorLogger, shapeNameForLogging, elementsByName, keyframe, disableElements);
 
                         foreach (AnimationKeyFrameElement kelem in keyframe.Elements.Values)
                         {
@@ -728,12 +737,17 @@ namespace Vintagestory.API.Common
 
         public void InitForAnimations(ILogger logger, string shapeNameForLogging, params string[] requireJointsForElements)
         {
+            InitForAnimations(logger, shapeNameForLogging, null, requireJointsForElements);
+        }
+
+        public void InitForAnimations(ILogger logger, string shapeNameForLogging, string[] disableElements, params string[] requireJointsForElements)
+        {
             CacheInvTransforms();
-            Dictionary<string, ShapeElement> elementsByName = CollectAndResolveReferences(logger, shapeNameForLogging);
+            Dictionary<string, ShapeElement> elementsByName = CollectAndResolveReferences(logger, shapeNameForLogging, disableElements);
             ResolveAndFindJoints(logger, shapeNameForLogging, elementsByName, requireJointsForElements);
         }
 
-        private void ResolveReferences(ILogger errorLogger, string shapeName, Dictionary<string, ShapeElement> elementsByName, AnimationKeyFrame kf)
+        private void ResolveReferences(ILogger errorLogger, string shapeName, Dictionary<string, ShapeElement> elementsByName, AnimationKeyFrame kf, string[] disableElements)
         {
             if (kf?.Elements == null) return;
 
@@ -743,9 +757,9 @@ namespace Vintagestory.API.Common
                 {
                     val.Value.ForElement = elem;
                 }
-                else
+                else if(disableElements != null && !disableElements.Contains(val.Key))
                 {
-                    errorLogger.Error("Shape {0} has a key frame element for which the referencing shape element {1} cannot be found.", shapeName, val.Key);
+                    errorLogger.Warning("Shape {0} has a key frame element for which the referencing shape element {1} cannot be found.", shapeName, val.Key);
 
                     val.Value.ForElement = new ShapeElement();
                 }

@@ -64,7 +64,7 @@ namespace Vintagestory.API.Common
 
         public void ReloadAttachmentPoints()
         {
-            
+
         }
     }
 
@@ -103,12 +103,12 @@ namespace Vintagestory.API.Common
 
         public void Dispose()
         {
-            
+
         }
 
         public void FromAttributes(ITreeAttribute tree, string version)
         {
-            
+
         }
 
         public RunningAnimation GetAnimationState(string anim)
@@ -118,7 +118,7 @@ namespace Vintagestory.API.Common
 
         public void Init(ICoreAPI api, Entity entity)
         {
-            
+
         }
 
         public bool IsAnimationActive(params string[] anims)
@@ -126,29 +126,29 @@ namespace Vintagestory.API.Common
             return false;
         }
 
-        public IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
+        public IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, string[] disableElements, params string[] requireJointsForElements)
         {
             throw new NotImplementedException();
         }
 
         public void TriggerAnimationStopped(string code)
         {
-            
+
         }
 
         public void OnClientFrame(float dt)
         {
-            
+
         }
 
         public void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
         {
-            
+
         }
 
         public void OnServerTick(float dt)
         {
-            
+
         }
 
         public void RegisterFrameCallback(AnimFrameCallback trigger)
@@ -177,7 +177,7 @@ namespace Vintagestory.API.Common
 
         public void StopAnimation(string code)
         {
-            
+
         }
 
         public void StopAllAnimations()
@@ -187,12 +187,12 @@ namespace Vintagestory.API.Common
 
         public void ToAttributes(ITreeAttribute tree, bool forClient)
         {
-            
+
         }
 
         public void ShouldPlaySound(string animMetaCode, AnimationSound sound)
         {
-            
+
         }
     }
 }

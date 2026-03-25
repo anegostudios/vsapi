@@ -566,7 +566,7 @@ namespace Vintagestory.API.Common.Entities
 
             Stats.Initialize(api);
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
-            
+
             WatchedAttributes.RegisterModifiedListener("onFire", updateOnFire);
             WatchedAttributes.RegisterModifiedListener("entityDead", updateColSelBoxes);
 
@@ -617,7 +617,7 @@ namespace Vintagestory.API.Common.Entities
 
             if (api.Side == EnumAppSide.Server)
             {
-                AnimManager.LoadAnimator(api, this, properties.Client.LoadedShapeForEntity, null, requirePosesOnServer, "head");
+                AnimManager.LoadAnimator(api, this, properties.Client.LoadedShapeForEntity, null, requirePosesOnServer, null, "head");
                 AnimManager.OnServerTick(0);
             } else
             {
@@ -994,7 +994,7 @@ namespace Vintagestory.API.Common.Entities
                 DebugAttributes.MarkAllDirty();
             }
 
-            if (World.Side == EnumAppSide.Client)
+            if (Api is ICoreClientAPI)
             {
                 int val = RemainingActivityTime("invulnerable");
                 if (prevInvulnerableTime != val)
@@ -1109,7 +1109,7 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            if (World.Side == EnumAppSide.Server && State == EnumEntityState.Active)
+            if (State == EnumEntityState.Active && World.Side == EnumAppSide.Server)
             {
                 try
                 {
@@ -1121,8 +1121,8 @@ namespace Vintagestory.API.Common.Entities
                     throw;
                 }
 
-            World.FrameProfiler.Mark("entity-animation-ticking");
-        }
+                World.FrameProfiler.Mark("entity-animation-ticking");
+            }
         }
 
         protected void ApplyFireDamage(float dt)
@@ -1307,11 +1307,11 @@ namespace Vintagestory.API.Common.Entities
 
             if (shapeIsCloned)
             {
-                AnimManager.LoadAnimator(World.Api, this, entityShape, AnimManager.Animator?.Animations, requirePosesOnServer, "head");
+                AnimManager.LoadAnimator(World.Api, this, entityShape, AnimManager.Animator?.Animations, requirePosesOnServer, willDisableElements, "head");
             }
             else
             {
-                AnimManager.LoadAnimatorCached(World.Api, this, entityShape, AnimManager.Animator?.Animations, requirePosesOnServer, "head");
+                AnimManager.LoadAnimatorCached(World.Api, this, entityShape, AnimManager.Animator?.Animations, requirePosesOnServer, willDisableElements, "head");
             }
         }
 

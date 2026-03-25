@@ -221,8 +221,8 @@ Class AnimationCache
 
   <a id="Vintagestory_API_Common_AnimationCache_InitManager_" data-uid="Vintagestory.API.Common.AnimationCache.InitManager*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimationCache_InitManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___" data-uid="Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])">
-  InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], bool, params string[])
+  <h3 id="Vintagestory_API_Common_AnimationCache_InitManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___System_String___" data-uid="Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[],System.String[])">
+  InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], bool, string[], params string[])
   
   </h3>
 
@@ -232,7 +232,7 @@ Class AnimationCache
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead&quot;)]
-public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)</code></pre>
+public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, string[] disableElements, params string[] requireJointsForElements)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -248,6 +248,8 @@ public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager mana
     <dt><code>copyOverAnims</code> <a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
     <dd></dd>
     <dt><code>requirePosesOnServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>disableElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
     <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
@@ -271,8 +273,8 @@ public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager mana
 
   <a id="Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_" data-uid="Vintagestory.API.Common.AnimationCache.LoadAnimatorCached*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___" data-uid="Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])">
-  LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  <h3 id="Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___System_String___" data-uid="Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[],System.String[])">
+  LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, string[], params string[])
   
   </h3>
 
@@ -280,7 +282,7 @@ public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager mana
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, string[] disableElements, params string[] requireJointsForElements)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -296,6 +298,8 @@ public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager mana
     <dt><code>copyOverAnims</code> <a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
     <dd></dd>
     <dt><code>requirePosesOnServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>disableElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
     <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>

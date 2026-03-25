@@ -122,26 +122,40 @@ Enum EnumClientState
   <div>
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Server.EnumClientStateExtensions.html#Vintagestory_API_Server_EnumClientStateExtensions_ConnectedOrPlaying_Vintagestory_API_Server_EnumClientState_">EnumClientStateExtensions.ConnectedOrPlaying(EnumClientState)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Server.EnumClientStateExtensions.html#Vintagestory_API_Server_EnumClientStateExtensions_IsAdmitted_Vintagestory_API_Server_EnumClientState_">EnumClientStateExtensions.IsAdmitted(EnumClientState)</a>
+  </div>
   </dd></dl>
 
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="Vintagestory_API_Server_EnumClientState_Connected"><code>Connected = 2</code></dt>
+    <dt id="Vintagestory_API_Server_EnumClientState_Admitted"><code>Admitted = 2</code></dt>
   
-  <dd></dd>
+  <dd><p>Has passed the MaxClients Test</p>
+</dd>
+    <dt id="Vintagestory_API_Server_EnumClientState_Connected"><code>Connected = 3</code></dt>
+  
+  <dd><p>The players client sent us a packet that it loaded</p>
+</dd>
     <dt id="Vintagestory_API_Server_EnumClientState_Connecting"><code>Connecting = 1</code></dt>
   
-  <dd></dd>
+  <dd><p>Is a newly opened connection, subject to verfication</p>
+</dd>
     <dt id="Vintagestory_API_Server_EnumClientState_Offline"><code>Offline = 0</code></dt>
   
   <dd></dd>
-    <dt id="Vintagestory_API_Server_EnumClientState_Playing"><code>Playing = 3</code></dt>
+    <dt id="Vintagestory_API_Server_EnumClientState_Playing"><code>Playing = 4</code></dt>
   
-  <dd></dd>
-    <dt id="Vintagestory_API_Server_EnumClientState_Queued"><code>Queued = 4</code></dt>
+  <dd><p>The players client sent us a packet that this player is now actually playing (after character selection)</p>
+</dd>
+    <dt id="Vintagestory_API_Server_EnumClientState_Queued"><code>Queued = 5</code></dt>
   
-  <dd></dd>
+  <dd><p>Is in the connection queue without initialized player data</p>
+</dd>
   </dl>
 
 

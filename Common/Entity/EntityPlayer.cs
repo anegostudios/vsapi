@@ -428,7 +428,7 @@ namespace Vintagestory.API.Common
 
             if (IsSelf)
             {
-                OtherAnimManager.LoadAnimator(World.Api, this, entityShape, OtherAnimManager.Animator?.Animations, true, "head");
+                OtherAnimManager.LoadAnimator(World.Api, this, entityShape, OtherAnimManager.Animator?.Animations, true, null, "head");
 
                 if (Api?.Side == EnumAppSide.Client)
                 {
@@ -700,7 +700,7 @@ namespace Vintagestory.API.Common
 
             World.FrameProfiler.Mark("entityPlayer-ticking");
 
-            if (!servercontrols.Sneak && !PrevFrameCanStandUp)
+            if (!PrevFrameCanStandUp && !servercontrols.Sneak)
             {
                 // So the sneak animation plays still
                 servercontrols.Sneak = true;

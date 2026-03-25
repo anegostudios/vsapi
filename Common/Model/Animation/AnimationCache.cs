@@ -49,10 +49,10 @@ namespace Vintagestory.API.Common
             animCache.Remove(dictKey);
         }
 
-        public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
+        public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, string[] disableElements, params string[] requireJointsForElements)
         {
 #pragma warning disable CS0618 // Type or member is obsolete
-            return InitManager(api, manager, entity, entityShape, copyOverAnims, requirePosesOnServer, requireJointsForElements);
+            return InitManager(api, manager, entity, entityShape, copyOverAnims, requirePosesOnServer, disableElements, requireJointsForElements);
 #pragma warning restore CS0618 // Type or member is obsolete
         }
 
@@ -65,10 +65,11 @@ namespace Vintagestory.API.Common
         /// <param name="entityShape"></param>
         /// <param name="copyOverAnims"></param>
         /// <param name="requirePosesOnServer"></param>
+        /// <param name="disableElements"></param>
         /// <param name="requireJointsForElements"></param>
         /// <returns></returns>
         [Obsolete("Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead")]
-        public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
+        public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, string[] disableElements, params string[] requireJointsForElements)
         {
             if (entityShape == null)
             {
@@ -96,8 +97,7 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                animator = manager.LoadAnimator(api, entity, entityShape, copyOverAnims, requirePosesOnServer, requireJointsForElements);
-
+                animator = manager.LoadAnimator(api, entity, entityShape, copyOverAnims, requirePosesOnServer, disableElements, requireJointsForElements);
                 animCache[dictKey] = new AnimCacheEntry()
                 {
                     Animations = entityShape.Animations,
@@ -108,8 +108,5 @@ namespace Vintagestory.API.Common
 
             return manager;
         }
-
-
-
     }
 }

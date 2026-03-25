@@ -6,6 +6,7 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 #nullable disable
 
@@ -148,7 +149,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool AllowDespawn = true;
 
-
+        protected bool RotateModelOnClimb;
 
 
         public EntityAgent() : base()
@@ -161,6 +162,7 @@ namespace Vintagestory.API.Common
         public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
             base.Initialize(properties, api, InChunkIndex3d);
+            RotateModelOnClimb = properties.RotateModelOnClimb;
 
             if (World.Side == EnumAppSide.Server)
             {
@@ -618,7 +620,7 @@ namespace Vintagestory.API.Common
             }
 
 
-            if (World.Side == EnumAppSide.Client)
+            if (Api is ICoreClientAPI)
             {
                 bool alive = Alive;
 
@@ -649,7 +651,7 @@ namespace Vintagestory.API.Common
                     CurrentControls &= ~EnumEntityActivity.Idle;
                 }
 
-            HandleHandAnimations(dt);
+                HandleHandAnimations(dt);
 
                 AnimationMetaData defaultAnim = null;
                 bool anyAverageAnimActive = false;
@@ -720,17 +722,17 @@ namespace Vintagestory.API.Common
             {
                 HandleHandAnimations(dt);
 
-                if (Properties.RotateModelOnClimb)
-            {
-                if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
+                if (RotateModelOnClimb)
                 {
-                    Pos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
+                    if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
+                    {
+                        Pos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
+                    }
+                    else
+                    {
+                        Pos.Pitch = 0;
+                    }
                 }
-                else
-                {
-                    Pos.Pitch = 0;
-                }
-            }
             }
 
             World.FrameProfiler.Mark("entityAgent-ticking");

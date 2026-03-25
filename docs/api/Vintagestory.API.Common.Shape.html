@@ -578,8 +578,7 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Attempts to resolve all references within the shape. Logs missing references them to the errorLogger</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -591,6 +590,47 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
     <dt><code>errorLogger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
     <dd></dd>
     <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Shape_CollectAndResolveReferences_" data-uid="Vintagestory.API.Common.Shape.CollectAndResolveReferences*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_CollectAndResolveReferences_Vintagestory_API_Common_ILogger_System_String_System_String___" data-uid="Vintagestory.API.Common.Shape.CollectAndResolveReferences(Vintagestory.API.Common.ILogger,System.String,System.String[])">
+  CollectAndResolveReferences(ILogger, string, string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Attempts to resolve all references within the shape. Logs missing references them to the errorLogger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, ShapeElement&gt; CollectAndResolveReferences(ILogger errorLogger, string shapeNameForLogging, string[] disableElements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>errorLogger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+    <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>disableElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -775,6 +815,43 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
     <dt><code>logger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
     <dd></dd>
     <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Shape_InitForAnimations_" data-uid="Vintagestory.API.Common.Shape.InitForAnimations*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_InitForAnimations_Vintagestory_API_Common_ILogger_System_String_System_String___System_String___" data-uid="Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger,System.String,System.String[],System.String[])">
+  InitForAnimations(ILogger, string, string[], params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitForAnimations(ILogger logger, string shapeNameForLogging, string[] disableElements, params string[] requireJointsForElements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+    <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>disableElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
     <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
@@ -980,6 +1057,41 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
     <dt><code>errorLogger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
     <dd></dd>
     <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Shape_ResolveReferences_" data-uid="Vintagestory.API.Common.Shape.ResolveReferences*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_ResolveReferences_Vintagestory_API_Common_ILogger_System_String_System_String___" data-uid="Vintagestory.API.Common.Shape.ResolveReferences(Vintagestory.API.Common.ILogger,System.String,System.String[])">
+  ResolveReferences(ILogger, string, string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResolveReferences(ILogger errorLogger, string shapeNameForLogging, string[] disableElements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>errorLogger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+    <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>disableElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>
   </dl>
 
