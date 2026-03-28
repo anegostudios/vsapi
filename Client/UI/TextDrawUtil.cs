@@ -101,6 +101,16 @@ namespace Vintagestory.API.Client
         bool gotLinebreak = false;
         bool gotSpace = false;
 
+        static double GetRenderedTextWidth(Context ctx, string text)
+        {
+            if (CairoGlyphLayout.TryCreateGlyphs(ctx, text, 0, 0, out Glyph[] glyphs))
+            {
+                return ctx.GlyphExtents(glyphs).Width;
+            }
+
+            return ctx.TextExtents(ComplexTextLayout.PrepareForRendering(text)).Width;
+        }
+
         #region Shorthand methods for simple box constrained multiline text
 
         public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = 1f, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default, bool keepLinebreakChar = false)
@@ -204,7 +214,7 @@ namespace Vintagestory.API.Client
 
             ImageSurface surface = new ImageSurface(Format.Argb32, 1, 1);
             Context ctx = new Context(surface);
-            font.SetupContext(ctx);
+            font.SetupContext(ctx, text);
 
             int quantityLines = Lineize(ctx, text, linebreak, flowPath, 0, lineY, font.LineHeightMultiplier).Length;
 
@@ -246,7 +256,7 @@ namespace Vintagestory.API.Client
 
             ImageSurface surface = new ImageSurface(Format.Argb32, 1, 1);
             Context ctx = new Context(surface);
-            font.SetupContext(ctx);
+            font.SetupContext(ctx, fulltext);
 
             TextLine[] textlines = Lineize(ctx, fulltext, linebreak, flowPath, startOffsetX, startY, font.LineHeightMultiplier, keepLinebreakChar);
             
@@ -296,7 +306,7 @@ namespace Vintagestory.API.Client
             {
                 string spc = (gotLinebreak || caretPos >= text.Length || !gotSpace ? "" : " ");
 
-                double nextWidth = ctx.TextExtents(lineTextBldr + word + spc).Width;
+                double nextWidth = GetRenderedTextWidth(ctx, lineTextBldr + word + spc);
 
                 currentSection = GetCurrentFlowPathSection(flowPath, curY);
 
@@ -321,7 +331,7 @@ namespace Vintagestory.API.Client
                         while (word.Length > 0 && nextWidth >= usableWidth && tries-- > 0)
                         {
                             word = word.Substring(0, word.Length - 1);
-                            nextWidth = ctx.TextExtents(lineTextBldr + word + spc).Width;
+                            nextWidth = GetRenderedTextWidth(ctx, lineTextBldr + word + spc);
                             caretPos--;
                         }
 
@@ -331,7 +341,7 @@ namespace Vintagestory.API.Client
                     }
 
                     string linetext = lineTextBldr.ToString();
-                    double withoutWidth = ctx.TextExtents(linetext).Width;
+                    double withoutWidth = GetRenderedTextWidth(ctx, linetext);
 
                     lines.Add(new TextLine()
                     {
@@ -361,7 +371,7 @@ namespace Vintagestory.API.Client
                 {
                     if (keepLinebreakChar) lineTextBldr.Append("\n");
                     string linetext = lineTextBldr.ToString();
-                    double withoutWidth = ctx.TextExtents(linetext).Width;
+                    double withoutWidth = GetRenderedTextWidth(ctx, linetext);
 
                     lines.Add(new TextLine()
                     {
@@ -384,7 +394,7 @@ namespace Vintagestory.API.Client
             if (currentSection == null) currentSection = new TextFlowPath();
             usableWidth = currentSection.X2 - currentSection.X1 - curX;
             string lineTextStr = lineTextBldr.ToString();
-            double endWidth = ctx.TextExtents(lineTextStr).Width;
+            double endWidth = GetRenderedTextWidth(ctx, lineTextStr);
 
             lines.Add(new TextLine()
             {
@@ -488,8 +498,6 @@ namespace Vintagestory.API.Client
         /// <param name="orientation">The orientation of text (Default: Left)</param>
         public void DrawMultilineText(Context ctx, CairoFont font, TextLine[] lines, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
-            font.SetupContext(ctx);
-
             double offsetX = 0;
             
             for (int i = 0; i < lines.Length; i++)
@@ -522,19 +530,23 @@ namespace Vintagestory.API.Client
         /// <param name="textPathMode">Whether or not to use TextPathMode.</param>
         public void DrawTextLine(Context ctx, CairoFont font, string text, double offsetX = 0, double offsetY = 0, bool textPathMode = false)
         {
-            if (text == null || text.Length == 0) return;
+            font.SetupContext(ctx, text);
+            string renderedText = ComplexTextLayout.PrepareForRendering(text);
+            if (renderedText == null || renderedText.Length == 0) return;
 
-            ctx.MoveTo((int)(offsetX), (int)(offsetY + ctx.FontExtents.Ascent));
+            double baselineY = offsetY + ctx.FontExtents.Ascent;
 
-            if (textPathMode)
+            if (CairoGlyphLayout.TryCreateGlyphs(ctx, text, offsetX, baselineY, out Glyph[] glyphs))
             {
-                ctx.TextPath(text);
-            }
-            else
-            {
+                if (textPathMode)
+                {
+                    ctx.GlyphPath(glyphs);
+                    return;
+                }
+
                 if (font.StrokeWidth > 0)
                 {
-                    ctx.TextPath(text);
+                    ctx.GlyphPath(glyphs);
                     ctx.LineWidth = font.StrokeWidth;
                     ctx.SetSourceRGBA(font.StrokeColor);
                     ctx.StrokePreserve();
@@ -544,11 +556,42 @@ namespace Vintagestory.API.Client
                 }
                 else
                 {
-                    ctx.ShowText(text);
+                    ctx.ShowGlyphs(glyphs);
 
                     if (font.RenderTwice)
                     {
-                        ctx.ShowText(text);
+                        ctx.ShowGlyphs(glyphs);
+                    }
+                }
+
+                return;
+            }
+
+            ctx.MoveTo((int)(offsetX), (int)baselineY);
+
+            if (textPathMode)
+            {
+                ctx.TextPath(renderedText);
+            }
+            else
+            {
+                if (font.StrokeWidth > 0)
+                {
+                    ctx.TextPath(renderedText);
+                    ctx.LineWidth = font.StrokeWidth;
+                    ctx.SetSourceRGBA(font.StrokeColor);
+                    ctx.StrokePreserve();
+
+                    ctx.SetSourceRGBA(font.Color);
+                    ctx.Fill();
+                }
+                else
+                {
+                    ctx.ShowText(renderedText);
+
+                    if (font.RenderTwice)
+                    {
+                        ctx.ShowText(renderedText);
                     }
 
                 }
