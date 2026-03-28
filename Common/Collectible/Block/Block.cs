@@ -2178,9 +2178,6 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
         {
-            EnumHandling handled = EnumHandling.PassThrough;
-            WorldInteraction[] interactions = Array.Empty<WorldInteraction>();
-
             bool notProtected = true;
 
             if (world.Claims != null && world is IClientWorldAccessor clientWorld && clientWorld.Player?.WorldData.CurrentGameMode == EnumGameMode.Survival)
@@ -2189,24 +2186,52 @@ namespace Vintagestory.API.Common
                 if (resp != EnumWorldAccessResponse.Granted) notProtected = false;
             }
 
-            if (notProtected) for (int i = 0; Drops != null && i < Drops.Length; i++)
-            {
-                if (Drops[i].Tool == null) continue;
-                EnumTool tool = (EnumTool)Drops[i].Tool;
+            WorldInteraction[] interactions;
+            int interactionsIndex = 0;
 
-                interactions = interactions.Append(new WorldInteraction()
-                {
-                    ActionLangCode = "blockhelp-collect",
-                    MouseButton = EnumMouseButton.Left,
-                    Itemstacks = ObjectCacheUtil.GetToolStacks(api, tool)
-                });
+            EnumHandling handled = EnumHandling.PassThrough;
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                interactionsIndex += behavior.GetPlacedBlockInteractionHelpCount(world, selection, forPlayer, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) break;
             }
 
+            if (notProtected && Drops != null)
+            {
+                for (int i = 0; i < Drops.Length; i++)
+                {
+                    if (Drops[i].Tool == null) continue;
+                    interactionsIndex++;
+                }
+
+                interactions = GC.AllocateUninitializedArray<WorldInteraction>(interactionsIndex);
+                interactionsIndex = 0;
+
+                for (int i = 0; i < Drops.Length; i++)
+                {
+                    if (Drops[i].Tool == null) continue;
+                    EnumTool tool = (EnumTool)Drops[i].Tool;
+                    interactions[interactionsIndex++] = new WorldInteraction()
+                    {
+                        ActionLangCode = "blockhelp-collect",
+                        MouseButton = EnumMouseButton.Left,
+                        Itemstacks = ObjectCacheUtil.GetToolStacks(api, tool)
+                    };
+                }
+            }
+            else
+            {
+                interactions = GC.AllocateUninitializedArray<WorldInteraction>(interactionsIndex);
+                interactionsIndex = 0;
+            }
+
+            handled = EnumHandling.PassThrough;
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 WorldInteraction[] bhi = behavior.GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handled);
 
-                interactions = interactions.Append(bhi);
+                interactions.InsertAt(interactionsIndex, bhi);
+                interactionsIndex += bhi.Length;
 
                 if (handled == EnumHandling.PreventSubsequent) break;
             }

@@ -259,6 +259,13 @@ namespace Vintagestory.API.Common
             return Array.Empty<WorldInteraction>();
         }
 
+        /// <summary>
+        /// Return only the count of BlockInteractionHelp - in the base class this will return 0 cheaply; if GetPlacedBlockInteractionHelp is overridden then overrides should also be cheap
+        /// </summary>
+        public virtual int GetPlacedBlockInteractionHelpCount(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)
+        {
+            return GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handling).Length;
+        }
 
         public virtual void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
         {

@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Common;
 
@@ -9,7 +10,7 @@ namespace Vintagestory.API.Util
     public static class WildcardUtil
     {
         /// <summary>
-        /// Returns a new AssetLocation with the wildcards (*) being filled with the blocks other Code parts, if the wildcard matches. 
+        /// Returns a new AssetLocation with the wildcards (*) being filled with the blocks other Code parts, if the wildcard matches.
         /// Example this block is trapdoor-up-north. search is *-up-*, replace is *-down-*, in this case this method will return trapdoor-down-north.
         /// </summary>
         /// <param name="code"></param>
@@ -83,7 +84,7 @@ namespace Vintagestory.API.Util
             {
                 return false;
             }
-            
+
 
             // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
             if (wildCardIndex == wildCard.Path.Length - 1)
@@ -115,7 +116,7 @@ namespace Vintagestory.API.Util
             string code = inCode.Path.Substring(wildcardStartLen);
             if (code.Length - wildcardEndLen <= 0) return false;
             string codepart = code.Substring(0, code.Length - wildcardEndLen);
-            
+
             return allowedVariants.Contains(codepart);
         }
 
@@ -143,61 +144,128 @@ namespace Vintagestory.API.Util
 
         private static bool fastMatch(string needle, string haystack)
         {
-            if (haystack == null) throw new ArgumentNullException("Text cannot be null");
-            if (needle.Length == 0) return false;
+            if (haystack == null) throw new ArgumentNullException(nameof(haystack));
+            if (string.IsNullOrEmpty(needle)) return false;
 
+            // Special case: regular expression
             if (needle[0] == '@')
             {
-                return Regex.IsMatch(haystack, @"^" + needle.Substring(1) + @"$", RegexOptions.None);
+                // Cache compiled regular expressions for better performance
+                return RegexCache.IsMatch(needle, haystack);
             }
 
-            int needleLength = needle.Length;
-            for (int i = 0; i < needleLength; i++)
+            // Use indices instead of Substring
+            int needlePos = 0;
+            int haystackPos = 0;
+            int needleLen = needle.Length;
+            int haystackLen = haystack.Length;
+            int lastWildcardPos = -1;
+            int lastHaystackPos = -1;
+
+            while (haystackPos < haystackLen)
             {
-                char ch = needle[i];
-                if (ch == '*')
+                if (needlePos < needleLen)
                 {
-                    // Oh, * was at the end of the pattern? We no longer need to match the rest of the text
-                    int remainingChars = needleLength - 1 - i;
-                    if (remainingChars == 0) return true;
-
-                    int secondAsterisk = needle.IndexOf('*', i + 1);
-                    if (secondAsterisk >= 0)
+                    char n = needle[needlePos];
+                    if (n == '*')
                     {
-                        if (needle.IndexOf('*', secondAsterisk + 1) >= 0)
-                        {
-                            // Three *? Ok, that really does need a regex!!
-                            needle = Regex.Escape(needle).Replace(@"\*", @".*");
-                            return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.IgnoreCase);
-                        }
-                        if (haystack.Length < needle.Length - 2) return false;
-                        int countTailpiece = needleLength - (secondAsterisk + 1);
-                        if (!EndsWith(haystack, needle, countTailpiece)) return false;
+                        // Found wildcard
+                        lastWildcardPos = needlePos;
+                        lastHaystackPos = haystackPos;
+                        needlePos++;
 
-                        // First part and last part of haystack matched, middle section of haystack needs to contain the needle section between the two wildcards
-                        string needleCentreSection = needle.Substring(i + 1, secondAsterisk - (i + 1)).ToLowerInvariant();
-                        if (i == 0 && countTailpiece == 0)
+                        // If wildcard at end of needle, return true immediately
+                        if (needlePos == needleLen) return true;
+
+                        // Skip consecutive wildcards, and here also return true if our needle ends with a wildcard
+                        // radfast note: we omit an initial needlePos < needleLen safety check, because we literally just tested that in the line above
+                        while (needle[needlePos] == '*')
                         {
-                            return haystack.ToLowerInvariant().Contains(needleCentreSection);
+                            if (++needlePos == needleLen) return true;
                         }
-                        return haystack.Substring(i, haystack.Length - i - countTailpiece).ToLowerInvariant().Contains(needleCentreSection);
+
+                        continue;
                     }
+                    else if (SameCharIgnoreCase(n, haystack[haystackPos]))
+                    {
+                        // Characters match
+                        needlePos++;
+                        haystackPos++;
+                        continue;
+                    }
+                }
 
-                    // Otherwise see if pattern matches after the *
-                    return haystack.Length >= needle.Length - 1 && EndsWith(haystack, needle, remainingChars);
+                // Now either needlePos == needleLen, or we don't have a wildcard at the end of the needle and we don't have the same character
+
+                // Code path if there was a wildcard in the middle of the needle
+                if (lastWildcardPos >= 0)
+                {
+                    // Backtrack to last wildcard in the needle, so that we try again to match the rest against the haystack
+                    needlePos = lastWildcardPos + 1;
+                    haystackPos = ++lastHaystackPos;                      // In effect if the needle is aaa*bbb, and the haystack is aaaZZZbbb, we skip one of the Z here
                 }
                 else
                 {
-                    // No * yet? Lets make sure the string starts with all those chars
-                    if (haystack.Length <= i) return false;
-                    char h = haystack[i];
-                    if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
+                    // No match and no wildcard to backtrack
+                    return false;
                 }
             }
 
-            // No * wildcard? Then we're good if needle is of equal length than haystack
-            return needle.Length == haystack.Length;
+            // Skip remaining wildcards
+            while (needlePos < needleLen)
+            {
+                if (needle[needlePos++] != '*') return false;
+            }
+
+            // If reached end of both strings - match
+            return true;
         }
+
+        /// <summary>
+        /// This returns true if the characters compare as equal apart from the case, using a similar rule to string comparison with OrdinalIgnoreCase
+        /// Intended for matching AssetLocation, attributes and other JSON-type data, not full language strings or user input
+        /// Note: not guaranteed to match full string OrdinalIgnoreCase comparison for Unicode surrogate pairs etc. (as this method only sees single characters at a time)
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool SameCharIgnoreCase(char a, char b)
+        {
+            if (a == b) return true;
+
+            // Fast "ignorecase" check for standard ASCII characters, e.g. letters a-zA-Z, numerals, punctuation like '-' or '_'
+            if ((a | b) < 0x80)
+            {
+                uint diff = (uint)(a ^ b);              // Case-only letter differences produce diff == 0x20
+                return diff == 0x20 && (uint)((a & 0x5F) - 'A') < 26;
+                // radfast note: "(uint)((a & 0x5F) - 'A') < 26" is a fast single-branching check for whether char a is in the range A-Z or a-z.
+            }
+
+            // Non-ASCII fallback for accented characters, foreign languages etc - Microsoft says OrdinalIgnoreCase converts to UpperInvariant
+            return char.ToUpperInvariant(a) == char.ToUpperInvariant(b);
+        }
+
+        // Class for caching regular expressions
+        private static class RegexCache
+        {
+            private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, Regex> cache = new();
+            private static readonly TimeSpan timeout = TimeSpan.FromSeconds(1);
+
+            public static bool IsMatch(string pattern, string input)
+            {
+                // Note, the Dictionary keys are the pattern starting with the @ characters
+                var regex = cache.GetOrAdd(pattern, p => new Regex(string.Concat("^", p.AsSpan(1), "$"), RegexOptions.CultureInvariant, timeout));
+                return regex.IsMatch(input);
+            }
+
+            public static void Clear() => cache.Clear();
+        }
+
+
+        /// <summary>
+        /// Clears the regex cache
+        /// Best to clean it up when exiting the world
+        /// </summary>
+        public static void ClearRegexCache() => RegexCache.Clear();
+
 
         private static bool EndsWith(string haystack, string needle, int endCharsCount)
         {
@@ -207,9 +275,7 @@ namespace Vintagestory.API.Util
             // Length of haystack has been pre-checked
             for (int i = 0; i < endCharsCount; i++)
             {
-                char h = haystack[hEnd - i];
-                char ch = needle[nEnd - i];
-                if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
+                if (!SameCharIgnoreCase(needle[nEnd - i], haystack[hEnd - i])) return false;
             }
 
             return true;
@@ -224,9 +290,7 @@ namespace Vintagestory.API.Util
             int lastChar = needle.Length - 1;
             for (int i = lastChar; i >= 0; i--)
             {
-                char ch = needle[i];
-                char h = haystack[i];
-                if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
+                if (!SameCharIgnoreCase(needle[i], haystack[i])) return false;
             }
 
             // Everything matched
@@ -259,9 +323,7 @@ namespace Vintagestory.API.Util
             int lengthFirstPart = needle.Length - tailPieceLength - 1;
             for (int i = 0; i < lengthFirstPart; i++)
             {
-                char ch = needle[i];
-                char h = haystack[i];
-                if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
+                if (!SameCharIgnoreCase(needle[i], haystack[i])) return false;
             }
 
             // Everything matched
@@ -295,5 +357,6 @@ namespace Vintagestory.API.Util
             return @"^" + needle + @"$";
         }
     }
-    
+
 }
+

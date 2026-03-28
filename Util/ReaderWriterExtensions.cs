@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System;
+using System.IO;
 
 #nullable disable
 
@@ -42,7 +43,7 @@ namespace Vintagestory.API.Util
         public static int[] ReadIntArray(this BinaryReader reader)
         {
             int length = reader.ReadInt32();
-            int[] values = new int[length];
+            int[] values = GC.AllocateUninitializedArray<int>(length); ;
 
             for (int i = 0; i < values.Length; i++)
             {

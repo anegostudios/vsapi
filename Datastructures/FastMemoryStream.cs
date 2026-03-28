@@ -3,6 +3,7 @@ using System.Buffers.Binary;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 #nullable disable
 
@@ -270,31 +271,16 @@ public class FastMemoryStream : Stream
     {
         if (newSize < oldLength) oldLength = newSize;    // If this condition is met, we are making a partial copy of the old buffer, up to newSize only - for example on ToArray() method
 
-        byte[] bufferCopy = new byte[newSize];
-        if (oldLength >= 128)
+        byte[] bufferCopy = GC.AllocateUninitializedArray<byte>(newSize);
+        unsafe
         {
-            Array.Copy(buffer, 0, bufferCopy, 0, oldLength);
-        }
-        else
-        {
-            uint i = 0;
-            if (oldLength > 15)    // 15 is arbitrary but we don't need this faff for very small arrays, and (uint)srcLimit will be calculated wrong if oldLength is less than 3
+            fixed (byte* pSrc = buffer)
+            fixed (byte* pDst = bufferCopy)
             {
-                uint srcLimit = (uint)(oldLength - 3);
-                for (; i < buffer.Length; i += 4)
-                {
-                    if (i >= srcLimit) break;
-                    bufferCopy[i] = buffer[i];
-                    bufferCopy[i + 1] = buffer[i + 1];
-                    bufferCopy[i + 2] = buffer[i + 2];
-                    bufferCopy[i + 3] = buffer[i + 3];
-                }
-            }
-            for (; i < oldLength; i++)
-            {
-                bufferCopy[i] = buffer[i];
+                Buffer.MemoryCopy(pSrc, pDst, oldLength, oldLength);
             }
         }
+        // Note the bufferCopy will be filled with random junk data above oldLength - not 0
 
         return bufferCopy;
     }
@@ -314,6 +300,10 @@ public class FastMemoryStream : Stream
         return -1;
     }
 
+    /// <summary>
+    /// Note this moves bytes within the current buffer, without allocating any new byte[] array
+    /// </summary>
+    /// <param name="newStart"></param>
     public void RemoveFromStart(int newStart)
     {
         int oldLength = (int)Position;

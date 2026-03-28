@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Vintagestory.API.MathTools;
 
@@ -89,15 +89,16 @@ namespace Vintagestory.API.Datastructures
         /// <param name="size"></param>
         public void ResizeTo(int size)
         {
-            T[] elements = new T[size];
-            for (int i = 0; i < this.elements.Length; i++)
+            T[] newElements = new T[size];
+            T[] oldElements = this.elements;
+            for (int i = 0; i < oldElements.Length; i++)
             {
-                elements[size - 1] = this.elements[GameMath.Mod((EndPosition - i), this.elements.Length)];
+                newElements[size - 1] = oldElements[GameMath.Mod((EndPosition - i), oldElements.Length)];
                 size--;
                 if (size <= 0) break;
             }
 
-            this.elements = elements;
+            this.elements = newElements;
         }
     }
 }

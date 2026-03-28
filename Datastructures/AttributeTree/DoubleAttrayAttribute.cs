@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System;
+using System.IO;
 using System.Text;
 using Vintagestory.API.Config;
 
@@ -20,23 +21,23 @@ namespace Vintagestory.API.Datastructures
 
         public void ToBytes(BinaryWriter stream)
         {
-            stream.Write(value.Length);
-            for (int i = 0; i < value.Length; i++)
+            var values = this.value;
+            stream.Write(values.Length);
+            for (int i = 0; i < values.Length; i++)
             {
-                stream.Write(value[i]);
+                stream.Write(values[i]);
             }
-
         }
 
         public void FromBytes(BinaryReader stream)
         {
             int quantity = stream.ReadInt32();
-            value = new double[quantity];
+            double[] values = GC.AllocateUninitializedArray<double>(quantity);
             for (int i = 0; i < quantity; i++)
             {
-                value[i] = stream.ReadDouble();
+                values[i] = stream.ReadDouble();
             }
-
+            this.value = values;
         }
 
         public int GetAttributeId()
@@ -47,7 +48,7 @@ namespace Vintagestory.API.Datastructures
         public override string ToJsonToken()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("[");
+            sb.Append('[');
 
             for (int i = 0; i < value.Length; i++)
             {
@@ -55,7 +56,7 @@ namespace Vintagestory.API.Datastructures
 
                 sb.Append(value[i].ToString(GlobalConstants.DefaultCultureInfo));
             }
-            sb.Append("]");
+            sb.Append(']');
 
             return sb.ToString();
         }

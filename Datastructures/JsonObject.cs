@@ -66,12 +66,12 @@ namespace Vintagestory.API.Datastructures
             get { return token != null; }
         }
 
-        public virtual JToken? Token { 
-            get { return token; } 
-            set { token = value; } 
+        public virtual JToken? Token {
+            get { return token; }
+            set { token = value; }
         }
 
-        
+
 
         /// <summary>
         /// True if the token has an element with given key
@@ -177,7 +177,7 @@ namespace Vintagestory.API.Datastructures
 
             return objs;
         }
-        
+
         /// <summary>
         /// Turn the token into a string
         /// </summary>
@@ -224,7 +224,7 @@ namespace Vintagestory.API.Datastructures
                 {
                     return defaultValue;
                 }
-                
+
             }
 
             return objs;
@@ -313,7 +313,7 @@ namespace Vintagestory.API.Datastructures
             return defaultValue;
         }
 
-        
+
         /// <summary>
         /// Turn the token into a double
         /// </summary>
@@ -339,7 +339,7 @@ namespace Vintagestory.API.Datastructures
             }
             return defaultValue;
         }
-        
+
         T? GetValue<T>(T? defaultValue = default(T))
         {
             JValue? jvalue = token as JValue;
@@ -430,7 +430,7 @@ namespace Vintagestory.API.Datastructures
                 if (jval.Value is string) return new StringAttribute((string)jval.Value);
             }
 
-            // Object 
+            // Object
 
             JObject? jobj = token as JObject;
             if (jobj != null)
@@ -489,15 +489,15 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public static T[] ToPrimitiveArray<T>(JArray array)
         {
-            T[] values = new T[array.Count];
+            T[] values = GC.AllocateUninitializedArray<T>(array.Count);
             for (int i = 0; i < values.Length; i++)
             {
                 values[i] = array[i].ToObject<T>()!;
             }
             return values;
         }
-        
-        
+
+
         /// <summary>
         /// Returns a deep clone
         /// </summary>

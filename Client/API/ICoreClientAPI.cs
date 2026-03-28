@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 
 #nullable disable
 
@@ -255,5 +256,10 @@ namespace Vintagestory.API.Client
         IMusicTrack CurrentMusicTrack { get; }
 
         void PauseGame(bool paused);
+
+        /// <summary>
+        /// Is the chunk rendered for this Entity position?
+        /// </summary>
+        bool IsChunkRendered(EntityPos entityPos);
     }
 }

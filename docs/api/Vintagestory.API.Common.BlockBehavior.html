@@ -943,6 +943,49 @@ public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing, ref EnumHa
 
 
 
+  <a id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInteractionHelpCount_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInteractionHelpCount*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInteractionHelpCount_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInteractionHelpCount(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)">
+  GetPlacedBlockInteractionHelpCount(IWorldAccessor, BlockSelection, IPlayer, ref EnumHandling)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return only the count of BlockInteractionHelp - in the base class this will return 0 cheaply; if GetPlacedBlockInteractionHelp is overridden then overrides should also be cheap</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int GetPlacedBlockInteractionHelpCount(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>selection</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>forPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockName_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockName*"></a>
 
   <h3 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockName_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockName(System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">

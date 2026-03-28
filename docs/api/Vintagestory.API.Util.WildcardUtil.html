@@ -153,6 +153,34 @@ Class WildcardUtil
 </h2>
 
 
+  <a id="Vintagestory_API_Util_WildcardUtil_ClearRegexCache_" data-uid="Vintagestory.API.Util.WildcardUtil.ClearRegexCache*"></a>
+
+  <h3 id="Vintagestory_API_Util_WildcardUtil_ClearRegexCache" data-uid="Vintagestory.API.Util.WildcardUtil.ClearRegexCache">
+  ClearRegexCache()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears the regex cache
+Best to clean it up when exiting the world</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ClearRegexCache()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Util_WildcardUtil_GetWildcardValue_" data-uid="Vintagestory.API.Util.WildcardUtil.GetWildcardValue*"></a>
 
   <h3 id="Vintagestory_API_Util_WildcardUtil_GetWildcardValue_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Util.WildcardUtil.GetWildcardValue(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)">
@@ -369,6 +397,47 @@ Returns null if the wildcard does not match</p>
     <dt><code>inCode</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
     <dd></dd>
     <dt><code>allowedVariants</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_WildcardUtil_SameCharIgnoreCase_" data-uid="Vintagestory.API.Util.WildcardUtil.SameCharIgnoreCase*"></a>
+
+  <h3 id="Vintagestory_API_Util_WildcardUtil_SameCharIgnoreCase_System_Char_System_Char_" data-uid="Vintagestory.API.Util.WildcardUtil.SameCharIgnoreCase(System.Char,System.Char)">
+  SameCharIgnoreCase(char, char)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This returns true if the characters compare as equal apart from the case, using a similar rule to string comparison with OrdinalIgnoreCase
+Intended for matching AssetLocation, attributes and other JSON-type data, not full language strings or user input
+Note: not guaranteed to match full string OrdinalIgnoreCase comparison for Unicode surrogate pairs etc. (as this method only sees single characters at a time)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool SameCharIgnoreCase(char a, char b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
     <dd></dd>
   </dl>
 

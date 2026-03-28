@@ -206,6 +206,12 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
     /// </summary>
     public virtual bool Resolve(IWorldAccessor world, string sourceForErrorLogging, IRecipeBase recipe)
     {
+        if (IsTool)
+        {
+            Consume = false;        // Ensure Consume is correctly set to false for ingredients using the legacy approach (IsTool: true) in JSON
+            DurabilityChange = -ToolDurabilityCost;
+        }
+
         if (deduplicationIndex == -1)
         {
             this.world = world;
@@ -456,10 +462,11 @@ public class CraftingRecipeIngredient : IRecipeIngredient, IRecipeOutput
             ReturnedStack.ToBytes(writer);
         }
 
-        if (RecipeAttributes != null)
+        string? attributeString = RecipeAttributes?.ToString();
+        if (attributeString != null)
         {
             writer.Write(true);
-            writer.Write(RecipeAttributes.ToString());
+            writer.Write(attributeString);
         }
         else
         {

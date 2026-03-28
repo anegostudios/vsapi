@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System;
+using System.IO;
 
 #nullable disable
 
@@ -18,23 +19,23 @@ namespace Vintagestory.API.Datastructures
 
         public void ToBytes(BinaryWriter stream)
         {
-            stream.Write(value.Length);
-            for (int i = 0; i < value.Length; i++)
+            var values = this.value;
+            stream.Write(values.Length);
+            for (int i = 0; i < values.Length; i++)
             {
-                stream.Write(value[i]);
+                stream.Write(values[i]);
             }
-
         }
 
         public void FromBytes(BinaryReader stream)
         {
             int quantity = stream.ReadInt32();
-            value = new bool[quantity];
+            bool[] values = GC.AllocateUninitializedArray<bool>(quantity);
             for (int i = 0; i < quantity; i++)
             {
-                value[i] = stream.ReadBoolean();
+                values[i] = stream.ReadBoolean();
             }
-
+            this.value = values;
         }
 
         public int GetAttributeId()

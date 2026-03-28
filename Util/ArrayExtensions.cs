@@ -16,7 +16,7 @@ namespace Vintagestory.API.Util
 
         public static T[] CreateFilled<T>(int quantity, fillCallback<T> fillCallback)
         {
-            T[] array = new T[quantity];
+            T[] array = GC.AllocateUninitializedArray<T>(quantity);
             for (int i = 0; i < quantity; i++)
             {
                 array[i] = fillCallback(i);
@@ -27,7 +27,7 @@ namespace Vintagestory.API.Util
 
         public static T[] CreateFilled<T>(int quantity, T with)
         {
-            T[] array = new T[quantity];
+            T[] array = GC.AllocateUninitializedArray<T>(quantity);
             for (int i = 0; i < quantity; i++)
             {
                 array[i] = with;
@@ -40,8 +40,8 @@ namespace Vintagestory.API.Util
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T[] FastCopy<T>(this T[] src, int count)
         {
-            T[] dest = new T[count];
-            if (count > 127) Array.Copy(src, 0, dest, 0, count);
+            T[] dest = GC.AllocateUninitializedArray<T>(count);
+            if (count > 31) Array.Copy(src, 0, dest, 0, count);
             else
             {
                 for (int i = 0; i < dest.Length; i++)
@@ -56,7 +56,7 @@ namespace Vintagestory.API.Util
 
         public static T[] Slice<T>(this T[] src, int index, int count)
         {
-            T[] dest = new T[count];
+            T[] dest = GC.AllocateUninitializedArray<T>(count);
 
             for (int i = 0; i < count; i++)
             {
@@ -234,7 +234,7 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static T[] RemoveAt<T>(this T[] array, int index)
         {
-            T[] cut = new T[array.Length - 1];
+            T[] cut = GC.AllocateUninitializedArray<T>(array.Length - 1);
 
             if (index == 0)
             {
@@ -263,7 +263,7 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static T[] Append<T>(this T[] array, T value)
         {
-            T[] grown = new T[array.Length + 1];
+            T[] grown = GC.AllocateUninitializedArray<T>(array.Length + 1);
             Array.Copy(array, grown, array.Length);
 
             grown[array.Length] = value;
@@ -281,7 +281,7 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static T[] InsertAt<T>(this T[] array, T value, int index)
         {
-            T[] grown = new T[array.Length + 1];
+            T[] grown = GC.AllocateUninitializedArray<T>(array.Length + 1);
             if (index > 0) Array.Copy(array, grown, index);
 
             grown[index] = value;
@@ -302,12 +302,13 @@ namespace Vintagestory.API.Util
             if (array == null) return null;
             if (value == null || value.Length == 0) return array;
 
-            T[] grown = new T[array.Length + value.Length];
-            Array.Copy(array, grown, array.Length);
+            int oldLength = array.Length;
+            T[] grown = GC.AllocateUninitializedArray<T>(oldLength + value.Length);
+            Array.Copy(array, grown, oldLength);
 
             for (int i = 0; i < value.Length; i++)
             {
-                grown[array.Length + i] = value[i];
+                grown[oldLength + i] = value[i];
             }
 
             return grown;
@@ -325,16 +326,34 @@ namespace Vintagestory.API.Util
             if (array == null) return null;
             if (values == null) return array;
 
-            T[] grown = new T[array.Length + values.Count()];
-            Array.Copy(array, grown, array.Length);
+            int oldLength = array.Length;
+            T[] grown = GC.AllocateUninitializedArray<T>(oldLength + values.Count());
+            Array.Copy(array, grown, oldLength);
 
             int i = 0;
             foreach (var val in values) 
             {
-                grown[array.Length + i] = val;
+                grown[oldLength + i] = val;
             }
 
             return grown;
+        }
+
+        /// <summary>
+        /// Adds the values to this array starting at the specified index
+        /// </summary>
+        public static T[] InsertAt<T>(this T[] array, int index, params T[] values)
+        {
+            if (array == null) return null;
+            if (values == null || values.Length == 0) return array;
+            if (index + values.Length > array.Length) return Append(array, values);
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                array[index + i] = values[i];
+            }
+
+            return array;
         }
 
 
