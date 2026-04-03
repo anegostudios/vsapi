@@ -8,19 +8,23 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 doubles
     /// </summary>
+    [DocumentAsJson]
     public struct FastVec3d : IEquatable<FastVec3d>
     {
         /// <summary>
         /// The X-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         public double X;
         /// <summary>
         /// The Y-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         public double Y;
         /// <summary>
         /// The Z-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         public double Z;
 
 

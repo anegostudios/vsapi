@@ -8,12 +8,23 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 2 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson]
     [ProtoContract]
     public struct Vec2iStruct : IEquatable<Vec2iStruct>
     {
+
+        /// <summary>
+        /// The X element of the vector.
+        /// </summary>
         [ProtoMember(1)]
+        [DocumentAsJson("Optional", "0")]
         public int X;
+
+        /// <summary>
+        /// The Y element of the vector.
+        /// </summary>
         [ProtoMember(2)]
+        [DocumentAsJson("Optional", "0")]
         public int Y;
 
         /// <summary>

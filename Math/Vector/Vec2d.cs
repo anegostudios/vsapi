@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #nullable disable
 
@@ -7,9 +7,19 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson]
     public class Vec2d
     {
+        /// <summary>
+        /// The X-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         public double X;
+
+        /// <summary>
+        /// The Y-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         public double Y;
         
 

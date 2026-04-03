@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Struct TagSetFast | VintageStory API ">
       
-      
+      <meta name="description" content="A set of tags. When using JSON, this is stored as a string array.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,11 +97,13 @@ Struct TagSetFast
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>A set of tags. When using JSON, this is stored as a string array.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(EntityTagSetConverter))]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonConverter(typeof(EntityTagSetConverter))]
 public struct TagSetFast : IEquatable&lt;TagSetFast&gt;</code></pre>
   </div>
 
@@ -146,6 +148,9 @@ public struct TagSetFast : IEquatable&lt;TagSetFast&gt;</code></pre>
   </dd></dl>
 
 
+  <h2 id="Vintagestory_API_Datastructures_TagSetFast_examples">Examples</h2>
+  <pre><code class="lang-csharp">"tags": ["humanoid", "player", "seraph", "huntable", "habitat-land"],</code></pre>
+
 
 
 
@@ -160,7 +165,8 @@ public struct TagSetFast : IEquatable&lt;TagSetFast&gt;</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>A set of tags. When using JSON, this is stored as a string array.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -178,6 +184,9 @@ public struct TagSetFast : IEquatable&lt;TagSetFast&gt;</code></pre>
 
 
 
+
+  <h4 class="section" id="Vintagestory_API_Datastructures_TagSetFast__ctor_System_Runtime_Intrinsics_Vector256_System_UInt64___examples">Examples</h4>
+  <pre><code class="lang-csharp">"tags": ["humanoid", "player", "seraph", "huntable", "habitat-land"],</code></pre>
 
 
 

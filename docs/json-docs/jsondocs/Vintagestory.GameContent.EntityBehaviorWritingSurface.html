@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EntityBehaviorWritingSurface | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EntityBehaviorWritingSurface | VintageStory Json Docs ">
+      
+      <meta name="description" content="Adds writeable surface to entity. Uses the &amp;quot;writingsurface&amp;quot; code Open in GitHub">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.GameContent.EntityBehaviorWritingSurface">
+
+
+
+  <h1 id="Vintagestory_GameContent_EntityBehaviorWritingSurface" data-uid="Vintagestory.GameContent.EntityBehaviorWritingSurface" class="text-break">
+Class EntityBehaviorWritingSurface  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.GameContent.html">GameContent</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSSurvivalMod.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Adds writeable surface to entity.
+<br>Uses the &quot;writingsurface&quot; code <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Entity/Behavior/BehaviorWritingSurface.cs>Open in GitHub</a></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[AddDocumentationProperty(&quot;pigment&quot;, &quot;Use on a collectible type. If set and the collectible is used to write on a writing surface with this behavior, its pigment color will be used for text color.&quot;, &quot;Vintagestory.API.Datastructures.JsonObject&quot;, &quot;Optional&quot;, &quot;None&quot;, true)]
+public class EntityBehaviorWritingSurface : EntityBehavior</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html">EntityBehavior</a></div>
+      <div><span class="xref">EntityBehaviorWritingSurface</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+  <h2 id="Vintagestory_GameContent_EntityBehaviorWritingSurface_examples">Examples</h2>
+  <pre><code class="lang-csharp">"behaviors": [
+ "writingsurface": {
+    "fontConfig": {
+        "maxWidth": 208,
+        "maxHeight": 96,
+        "fontSize": 20,
+        "textVoxelOffsetY": -1,
+        "textVoxelOffsetZ": 0.25,
+        "textVoxelHeight": 6,
+        "fontName": "Almendra",
+        "verticalAlign": "Middle",
+        "boldFont": true
+    },
+    "writingSurfaces": [ "LPlaqueAP", "RPlaqueAP" ]
+ },
+],</code></pre>
+
+  <p>Inside a collectible used as a pigment...</p>
+<pre><code class="lang-csharp">"attributes": {
+    "pigment": {
+        "name": "Carbon black",
+        "color": { "red": 25, "green": 24, "blue": 22 }
+    }
+    ...
+},</code></pre>
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorWritingSurface_signTextConfig" data-uid="Vintagestory.GameContent.EntityBehaviorWritingSurface.signTextConfig">
+  FontConfig (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<!---->
+<p>Font settings of writeable surface, such as text position, font type and others</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+protected TextAreaConfig signTextConfig</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.GameContent.TextAreaConfig.html">TextAreaConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorWritingSurface_writingSurfaces" data-uid="Vintagestory.GameContent.EntityBehaviorWritingSurface.writingSurfaces">
+  writingSurfaces (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A list of shape element codes that can be written on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+protected string[] writingSurfaces</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorWritingSurface_pigment" data-uid="Vintagestory.GameContent.EntityBehaviorWritingSurface.pigment">
+  pigment (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Use on a collectible type. If set and the collectible is used to write on a writing surface with this behavior, its pigment color will be used for text color.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs"></code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">JsonObject</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

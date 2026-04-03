@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using ProtoBuf;
 using System;
 using System.IO;
@@ -226,7 +227,11 @@ namespace Vintagestory.API.Common
             {
                 ResolvedItemStack = new ItemStack(reader);
             }
-            
+
+            if (reader.ReadBoolean())
+            {
+                Attributes = new JsonObject(JToken.Parse(reader.ReadString()));
+            }
         }
 
         /// <summary>
@@ -248,6 +253,13 @@ namespace Vintagestory.API.Common
             writer.Write(StackSize);
             writer.Write(ResolvedItemStack != null);
             ResolvedItemStack?.ToBytes(writer);
+
+            string? jsonAttruibutes = Attributes?.ToString();
+            writer.Write(jsonAttruibutes != null);
+            if (jsonAttruibutes != null)
+            {
+                writer.Write(jsonAttruibutes);
+            }
         }
 
         public virtual void FillPlaceHolder(string key, string value)

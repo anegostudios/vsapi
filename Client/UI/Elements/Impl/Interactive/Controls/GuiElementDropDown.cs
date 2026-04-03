@@ -357,8 +357,13 @@ namespace Vintagestory.API.Client
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
             if (!HasFocus) return;
-
             listMenu.OnKeyDown(api, args);
+        }
+
+        public override void OnKeyPress(ICoreClientAPI api, KeyEvent args)
+        {
+            if (!HasFocus) return;
+            listMenu.OnKeyPress(api, args);
         }
 
 

@@ -16,17 +16,17 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// (Recommended) Imports a shape using the default JSON system.
         /// </summary>
-        [DocumentAsJson] VintageStory,
+        VintageStory,
 
         /// <summary>
         /// Imports a shape using an Obj file.
         /// </summary>
-        [DocumentAsJson] Obj,
+        Obj,
 
         /// <summary>
         /// Imports a shape using a Gltf file.
         /// </summary>
-        [DocumentAsJson] GltfEmbedded
+        GltfEmbedded
     }
 
     /// <summary>

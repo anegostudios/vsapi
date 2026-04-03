@@ -201,8 +201,8 @@ namespace Vintagestory.API.Client
                 expandedBoxWidth = Math.Max(expandedBoxWidth, elem.MaxLineWidth + 5 * scaleMul + scaled(scrollbarWidth + 5));
             }
 
-            double maximumHeightAvailable = api.Render.FrameHeight - Bounds.absY - Bounds.InnerHeight;
-
+            double maximumHeightAvailable = api.Render.FrameHeight - Bounds.absY + Bounds.ParentBounds.absFixedY - Bounds.InnerHeight;      // We want only the maximum height of this element itself; Bounds.absY includes the ParentBounds.absFixedY as an offset; if we don't correct for that then maximumHeightAvailable can be negative in some situations (second click on the Survival Challenges tab in Customize World screen)
+            
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)expandedBoxHeight);
             Context ctx = genContext(surface);
 
@@ -421,26 +421,65 @@ namespace Vintagestory.API.Client
                 return;
             }
 
-            if (args.KeyCode == (int)GlKeys.Up || args.KeyCode == (int)GlKeys.Down)
+            if (args.KeyCode == (int)GlKeys.Up || args.KeyCode == (int)GlKeys.Down || args.KeyCode == (int)GlKeys.Home || args.KeyCode == (int)GlKeys.End)
             {
                 args.Handled = true;
 
                 if (!expanded)
                 {
-                    Open();
-                    HoveredIndex = SelectedIndex;
+                    switch (args.KeyCode)
+                    {
+                        case (int)GlKeys.Up: SelectedIndex = GameMath.Mod((SelectedIndex - 1), Values.Length); break;
+                        case (int)GlKeys.Down: SelectedIndex = GameMath.Mod((SelectedIndex + 1), Values.Length); break;
+                        case (int)GlKeys.Home: SelectedIndex = 0; break;
+                        case (int)GlKeys.End: SelectedIndex = Values.Length - 1; break;
+                    }
+                    onSelectionChanged?.Invoke(Values[SelectedIndex], true);
+                    EnsureItemVisible(SelectedIndex);
                     return;
                 }
 
-                if (args.KeyCode == (int)GlKeys.Up)
+                switch (args.KeyCode)
                 {
-                    HoveredIndex = GameMath.Mod((HoveredIndex - 1), Values.Length);
+                    case (int)GlKeys.Up: HoveredIndex = GameMath.Mod((HoveredIndex - 1), Values.Length); break;
+                    case (int)GlKeys.Down: HoveredIndex = GameMath.Mod((HoveredIndex + 1), Values.Length); break;
+                    case (int)GlKeys.Home: HoveredIndex = 0; break;
+                    case (int)GlKeys.End: HoveredIndex = Values.Length - 1; break;
                 }
-                else
+                EnsureItemVisible(HoveredIndex);
+                return;
+            }
+
+        }
+
+        public override void OnKeyPress(ICoreClientAPI api, KeyEvent args)
+        {
+            if (expanded)
+            {
+                for (int i = 0; i < Names.Length; i++)
                 {
-                    HoveredIndex = GameMath.Mod((HoveredIndex + 1), Values.Length);
+                    int pos = (HoveredIndex + 1 + i) % Names.Length;
+
+                    if (Names[pos].ToLowerInvariant()[0] == ((char)args.KeyCode + "").ToLowerInvariant()[0])
+                    {
+                        HoveredIndex = pos;
+                        EnsureItemVisible(pos);
+                        return;
+                    }
                 }
             }
+
+            base.OnKeyPress(api, args);
+        }
+
+        protected void EnsureItemVisible(int index)
+        {
+            var lineheight = unscaledLineHeight * Scale * RuntimeEnv.GUIScale;
+            var posY = index * lineheight;
+
+            var curIndex = scrollOffY / lineheight;
+
+            scrollbar.EnsureVisible(0, posY + (curIndex < index ? lineheight : 0));
         }
 
 

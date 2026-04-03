@@ -1,4 +1,4 @@
-﻿using Cairo;
+using Cairo;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -13,6 +13,10 @@ namespace Vintagestory.API.Client
         Right
     }
 
+    /// <summary>
+    /// Defines how a UI element is aligned vertically
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumVerticalAlign
     {
         Top,

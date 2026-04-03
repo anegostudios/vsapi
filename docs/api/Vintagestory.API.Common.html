@@ -187,7 +187,7 @@ Process</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
+      <dd><p>A sound that should play alongside an animation. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -324,12 +324,14 @@ See the derived types for a list of all documented block behaviors. <a href=http
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehavior.html">BlockEntityBehavior</a></dt>
-      <dd><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
+      <dd><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents.<br>
+See the derived types for all block entity behaviors. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehaviorType.html">BlockEntityBehaviorType</a></dt>
-      <dd><p>Allows adding behaviors for block entities. Remember, block entities are specific instances of blocks placed within the world. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
+      <dd><p>Allows adding behaviors for block entities. Remember, block entities are specific instances of blocks placed within the world.
+See <a class="xref" href="Vintagestory.API.Common.BlockEntityBehavior.html">BlockEntityBehavior</a> and its derived types for all block entities. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -574,7 +576,8 @@ Use it to get list of collectibles before applying wildcard search, to reduce nu
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EntityBehaviorPassivePhysics.html">EntityBehaviorPassivePhysics</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/EntityBehavior/BehaviorPassivePhysics.cs>Open in GitHub</a></p>
+      <dd><p>Passive physics system for entities.
+<br>Uses the &quot;passivephysics&quot; code <a href=https://github.com/anegostudios/vsapi/blob/master///Common/EntityBehavior/BehaviorPassivePhysics.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -615,6 +618,11 @@ Use it to get list of collectibles before applying wildcard search, to reduce nu
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EntityItemSlot.html">EntityItemSlot</a></dt>
       <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Entity/EntityItem.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityMatchConditions.html">EntityMatchConditions</a></dt>
+      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/API/ChatCommand/CommandArgumentParsers.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1097,7 +1105,7 @@ also be just one. <a href=https://github.com/anegostudios/vsapi/blob/master///Co
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.SeatConfig.html">SeatConfig</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/IMountableSeat.cs>Open in GitHub</a></p>
+      <dd><p>Seat properties <a href=https://github.com/anegostudios/vsapi/blob/master///Common/IMountableSeat.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1329,7 +1337,11 @@ Structs
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
-      <dd></dd>
+      <dd><p>Properties that control how a sound is played. There are two forms of this that might be used in JSON files:
+Form 1 is simply stored as an <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a> that points to the sound file path. There are no extra proprties. This is what most JSON objects use.
+Form 2 is more complex, and uses the properties below to fully configure the sound. Only certain JSON objects use this, such as entity sounds.
+You can mix and match in a single sound array.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></dt>
@@ -1975,7 +1987,7 @@ what any particular mod can do. <a href=https://github.com/anegostudios/vsapi/bl
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumMountAngleMode.html">EnumMountAngleMode</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/IMountableSeat.cs>Open in GitHub</a></p>
+      <dd><p>Defines how the mounted entity rotates relative to the mount <a href=https://github.com/anegostudios/vsapi/blob/master///Common/IMountableSeat.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -2100,7 +2112,7 @@ what any particular mod can do. <a href=https://github.com/anegostudios/vsapi/bl
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumWindBitMode.html">EnumWindBitMode</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/VertexFlags.cs>Open in GitHub</a></p>
+      <dd><p>The wind data for an object. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/VertexFlags.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">

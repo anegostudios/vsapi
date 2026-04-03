@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AnimationSound | VintageStory Json Docs ">
       
-      <meta name="description" content="Open in GitHub">
+      <meta name="description" content="A sound that should play alongside an animation. Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class AnimationSound
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>A sound that should play alongside an animation. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -132,15 +132,18 @@ public class AnimationSound</code></pre>
   <a id="Vintagestory_API_Common_AnimationSound_Location_" data-uid="Vintagestory.API.Common.AnimationSound.Location*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimationSound_Location" data-uid="Vintagestory.API.Common.AnimationSound.Location">
-  Location
+  Location (Required)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<p>The location of the sound file.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+[JsonProperty]
 private AssetLocation Location { set; }</code></pre>
   </div>
 
@@ -161,18 +164,120 @@ private AssetLocation Location { set; }</code></pre>
 
 
 
-  <a id="Vintagestory_API_Common_AnimationSound_Path_" data-uid="Vintagestory.API.Common.AnimationSound.Path*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimationSound_Path" data-uid="Vintagestory.API.Common.AnimationSound.Path">
-  Path
+  <h3 id="Vintagestory_API_Common_AnimationSound_Frame" data-uid="Vintagestory.API.Common.AnimationSound.Frame">
+  Frame (Recommended) (Default: 0)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<p>The sound will play when this frame is reached. Should be set if <a class="xref" href="Vintagestory.API.Common.AnimationSound.html#Vintagestory_API_Common_AnimationSound_Looping">Looping</a> is false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+public int Frame</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationSound_Chance" data-uid="Vintagestory.API.Common.AnimationSound.Chance">
+  Chance (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The chance to play this sound.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+public float Chance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationSound_Looping" data-uid="Vintagestory.API.Common.AnimationSound.Looping">
+  Looping (Optional) (Default: False)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Should this sound loop whilst the animation is playing?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
+public bool Looping</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationSound_Path_" data-uid="Vintagestory.API.Common.AnimationSound.Path*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationSound_Path" data-uid="Vintagestory.API.Common.AnimationSound.Path">
+  Path (Optional)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Alternative form for <a class="xref" href="Vintagestory.API.Common.AnimationSound.html#Vintagestory_API_Common_AnimationSound_Location">Location</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;&quot;, false)]
+[JsonProperty]
 private AssetLocation Path { set; }</code></pre>
   </div>
 
@@ -196,15 +301,18 @@ private AssetLocation Path { set; }</code></pre>
   <a id="Vintagestory_API_Common_AnimationSound_Pitch_" data-uid="Vintagestory.API.Common.AnimationSound.Pitch*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimationSound_Pitch" data-uid="Vintagestory.API.Common.AnimationSound.Pitch">
-  Pitch
+  Pitch (Optional) (Default: 1)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<p>Controls a random pitch for the sound.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+[JsonProperty]
 private NatFloat Pitch { set; }</code></pre>
   </div>
 
@@ -228,15 +336,18 @@ private NatFloat Pitch { set; }</code></pre>
   <a id="Vintagestory_API_Common_AnimationSound_RandomizePitch_" data-uid="Vintagestory.API.Common.AnimationSound.RandomizePitch*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimationSound_RandomizePitch" data-uid="Vintagestory.API.Common.AnimationSound.RandomizePitch">
-  RandomizePitch
+  RandomizePitch (Optional) (Default: False)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<p>If true, sets the pitch to be randomized on sound play between 0.75 and 1.25. If false, the pitch will be 1. If not set, then the pitch is provided by <a class="xref" href="Vintagestory.API.Common.AnimationSound.html#Vintagestory_API_Common_AnimationSound_Pitch">Pitch</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
+[JsonProperty]
 private bool RandomizePitch { set; }</code></pre>
   </div>
 
@@ -260,15 +371,18 @@ private bool RandomizePitch { set; }</code></pre>
   <a id="Vintagestory_API_Common_AnimationSound_Range_" data-uid="Vintagestory.API.Common.AnimationSound.Range*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimationSound_Range" data-uid="Vintagestory.API.Common.AnimationSound.Range">
-  Range
+  Range (Optional) (Default: 32)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<p>At this many meters away, the sound will be 1% of the volume.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;32&quot;, false)]
+[JsonProperty]
 private float Range { set; }</code></pre>
   </div>
 
@@ -292,15 +406,18 @@ private float Range { set; }</code></pre>
   <a id="Vintagestory_API_Common_AnimationSound_Volume_" data-uid="Vintagestory.API.Common.AnimationSound.Volume*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimationSound_Volume" data-uid="Vintagestory.API.Common.AnimationSound.Volume">
-  Volume
+  Volume (Optional) (Default: 1)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<p>Controls a random volume for the sound.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+[JsonProperty]
 private NatFloat Volume { set; }</code></pre>
   </div>
 

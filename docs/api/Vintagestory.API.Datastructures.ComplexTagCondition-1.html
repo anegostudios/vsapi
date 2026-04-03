@@ -113,7 +113,8 @@ The syntax for using these in json follows one simple rule: If no junction verb 
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(GenericComplexConditionConverter))]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonConverter(typeof(GenericComplexConditionConverter))]
 public struct ComplexTagCondition&lt;TTagSet&gt; : IEquatable&lt;ComplexTagCondition&lt;TTagSet&gt;&gt; where TTagSet : IEquatable&lt;TTagSet&gt;</code></pre>
   </div>
 

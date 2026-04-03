@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AnimationSound | VintageStory API ">
       
-      <meta name="description" content="Open in GitHub">
+      <meta name="description" content="A sound that should play alongside an animation. Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,7 @@ Class AnimationSound
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>A sound that should play alongside an animation. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -201,11 +201,13 @@ public SoundAttributes Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The chance to play this sound.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Chance</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+public float Chance</code></pre>
   </div>
 
 
@@ -231,11 +233,13 @@ public SoundAttributes Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The sound will play when this frame is reached. Should be set if <a class="xref" href="Vintagestory.API.Common.AnimationSound.html#Vintagestory_API_Common_AnimationSound_Looping">Looping</a> is false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Frame</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+public int Frame</code></pre>
   </div>
 
 
@@ -261,11 +265,13 @@ public SoundAttributes Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Should this sound loop whilst the animation is playing?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Looping</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
+public bool Looping</code></pre>
   </div>
 
 

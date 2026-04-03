@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Struct SoundAttributes | VintageStory Json Docs ">
       
-      
+      <meta name="description" content="Properties that control how a sound is played. There are two forms of this that might be used in JSON files: Form 1 is simply stored as an  that points to the sound file path. There are no extra proprties. This is what most JSON objects use. Form 2 is more complex, and uses the properties below to fully configure the sound. Only certain JSON objects use this, such as entity sounds. You can mix and match in a single sound array.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,11 @@ Struct SoundAttributes
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Properties that control how a sound is played. There are two forms of this that might be used in JSON files:
+Form 1 is simply stored as an <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a> that points to the sound file path. There are no extra proprties. This is what most JSON objects use.
+Form 2 is more complex, and uses the properties below to fully configure the sound. Only certain JSON objects use this, such as entity sounds.
+You can mix and match in a single sound array.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -114,6 +118,25 @@ public struct SoundAttributes</code></pre>
 
 
 
+  <h2 id="Vintagestory_API_Common_SoundAttributes_examples">Examples</h2>
+  <p>Form 1: <pre><code class="lang-csharp">&quot;sounds&quot;: {
+&quot;place&quot;: &quot;block/plant&quot;,
+&quot;break&quot;: &quot;block/plant&quot;,
+&quot;hit&quot;: &quot;block/plant&quot;
+},</code></pre>
+Form 2. Note that entity sounds can include * at the end for multiple sound files: <pre><code class="lang-csharp">&quot;sounds&quot;: {
+&quot;hurt&quot;: &quot;creature/chicken/chick*&quot;,
+&quot;death&quot;: &quot;creature/chicken/chick*&quot;,
+&quot;idle&quot;: {
+&quot;path&quot;: &quot;creature/chicken/chick*&quot;,
+&quot;range&quot;: 14,
+&quot;pitch&quot;: {
+&quot;avg&quot;: 1,
+&quot;var&quot;: 0.25
+}
+}
+},</code></pre>
+
 
 
 
@@ -123,15 +146,19 @@ public struct SoundAttributes</code></pre>
 
 
   <h3 id="Vintagestory_API_Common_SoundAttributes_Location" data-uid="Vintagestory.API.Common.SoundAttributes.Location">
-  Location
+  path (Required)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<!---->
+<p>The location of the sound file.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;path&quot;)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+[JsonProperty(&quot;path&quot;)]
 public AssetLocation? Location</code></pre>
   </div>
 
@@ -153,16 +180,85 @@ public AssetLocation? Location</code></pre>
 
 
 
-  <h3 id="Vintagestory_API_Common_SoundAttributes_Type" data-uid="Vintagestory.API.Common.SoundAttributes.Type">
-  Type
+  <h3 id="Vintagestory_API_Common_SoundAttributes_Pitch" data-uid="Vintagestory.API.Common.SoundAttributes.Pitch">
+  Pitch (Optional) (Default: 1)
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!---->
+<p>Controls a random pitch for when the sound is played.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;soundType&quot;)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+public NatFloat Pitch</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_SoundAttributes_Range" data-uid="Vintagestory.API.Common.SoundAttributes.Range">
+  Range (Optional) (Default: 32)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The range at which the gain will be attenuated to 1% of the supplied volume. (i.e. the maximum range that the player will hear the sound)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;32&quot;, false)]
+public float Range</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_SoundAttributes_Type" data-uid="Vintagestory.API.Common.SoundAttributes.Type">
+  Type (Optional) (Default: Sound)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The type of sound, used for volume control in the settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;Sound&quot;, false)]
+[JsonProperty(&quot;soundType&quot;)]
 public EnumSoundType Type</code></pre>
   </div>
 
@@ -171,7 +267,40 @@ public EnumSoundType Type</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">EnumSoundType</span></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumSoundType.html">EnumSoundType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_SoundAttributes_Volume" data-uid="Vintagestory.API.Common.SoundAttributes.Volume">
+  Volume (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Controls a random volume for when the sound is played.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;1&quot;, false)]
+public NatFloat Volume</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
     <dd></dd>
   </dl>
 

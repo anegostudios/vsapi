@@ -23,6 +23,7 @@ namespace Vintagestory.API.Datastructures;
 /// { allOf: [["anyOf", "of", "these"], (and) { anyOf: ["any", "of", "these"], noneOf: ["any", "of", "these"] }] }<br/>
 /// </summary>
 /// <remarks> You cannot mix junction verbs on the same layer. </remarks>
+[DocumentAsJson]
 [JsonConverter(typeof(GenericComplexConditionConverter))]
 public struct ComplexTagCondition<TTagSet> : IEquatable<ComplexTagCondition<TTagSet>> where TTagSet : IEquatable<TTagSet>
 {

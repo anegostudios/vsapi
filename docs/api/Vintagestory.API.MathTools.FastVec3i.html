@@ -102,7 +102,8 @@ Struct FastVec3i
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoContract]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[ProtoContract]
 public struct FastVec3i : IEquatable&lt;FastVec3i&gt;, IEquatable&lt;BlockPos&gt;</code></pre>
   </div>
 
@@ -298,7 +299,8 @@ public struct FastVec3i : IEquatable&lt;FastVec3i&gt;, IEquatable&lt;BlockPos&gt
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+[ProtoMember(1)]
 public int X</code></pre>
   </div>
 
@@ -330,7 +332,8 @@ public int X</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+[ProtoMember(2)]
 public int Y</code></pre>
   </div>
 
@@ -362,7 +365,8 @@ public int Y</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+[ProtoMember(3)]
 public int Z</code></pre>
   </div>
 

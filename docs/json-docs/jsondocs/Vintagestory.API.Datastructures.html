@@ -99,6 +99,35 @@ Classes
       <dd><p>A rotatable version of a cuboid. <a href=https://github.com/anegostudios/vsapi/blob/master///Datastructures/RotatableCube.cs>Open in GitHub</a></p>
 </dd>
     </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.ComplexTagCondition-1.html">ComplexTagCondition&lt;TTagSet&gt;</a></dt>
+      <dd><p>Holds a complex tag condition, either as a set of disjunctive entries ([a and b and c] or [d and e])
+or as a set of conjunctive entries ([a or b or c] and [d or e]).<br>
+In both cases each of the inner sets can also have a set of forbidden tags that is always disjunctive.<br>
+<br>
+The syntax for using these in json follows one simple rule: If no junction verb is specified, the group is treated as conjunctive (a and b and c)<br>
+[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;]<br>
+[[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;]]<br>
+[[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], (or) { allOf: [&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }]<br>
+{ allOf: [&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }<br>
+{ anyOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }<br>
+{ anyOf: [[&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], { allOf: [&quot;all&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }] }<br>
+{ allOf: [[&quot;anyOf&quot;, &quot;of&quot;, &quot;these&quot;], (and) { anyOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;], noneOf: [&quot;any&quot;, &quot;of&quot;, &quot;these&quot;] }] }<br></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSet.html">TagSet</a></dt>
+      <dd><p>A set of tags. When using JSON, this is stored as a string array.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Datastructures.TagSetFast.html">TagSetFast</a></dt>
+      <dd><p>A set of tags. When using JSON, this is stored as a string array.</p>
+</dd>
+    </dl>
 
 
 </article>

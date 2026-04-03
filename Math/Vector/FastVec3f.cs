@@ -10,22 +10,26 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 floats. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson()]
     [JsonObject(MemberSerialization.OptIn)]
     public struct FastVec3f
     {
         /// <summary>
         /// The X-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [JsonProperty]
         public float X;
         /// <summary>
         /// The Y-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [JsonProperty]
         public float Y;
         /// <summary>
         /// The Z-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [JsonProperty]
         public float Z;
 

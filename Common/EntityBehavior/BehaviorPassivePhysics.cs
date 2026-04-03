@@ -9,6 +9,26 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common;
 
+/// <summary>
+/// Passive physics system for entities.
+/// <br/>Uses the "passivephysics" code
+/// </summary>
+/// <example><code lang="json">
+/// "behaviors": [
+///  {
+///     "code": "passivephysics"
+///     "groundDragFactor": 1,
+///     "airDragFactor": 0.25,
+///     "gravityFactor": 0.75
+///  }
+/// ]
+/// </code></example>
+[DocumentAsJson]
+[AddDocumentationProperty("waterDragFactor", "Gravity drag factor when in water", "System.Double", "Optional", "1", false)]
+[AddDocumentationProperty("airDragFactor", "Gravity drag factor when falling. Overrides airDragFallingFactor when present", "System.Double", "Optional", "1", false)]
+[AddDocumentationProperty("airDragFallingFactor", "Gravity drag factor when falling", "System.Double", "Optional", "1", false)]
+[AddDocumentationProperty("groundDragFactor", "Horizontal drag factor when on the ground", "System.Double", "Optional", "1", false)]
+[AddDocumentationProperty("gravityFactor", "Multiplier for gravity strength", "System.Double", "Optional", "1", false)]
 public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickable, IRemotePhysics
 {
     public Entity Entity { get { return entity; } }

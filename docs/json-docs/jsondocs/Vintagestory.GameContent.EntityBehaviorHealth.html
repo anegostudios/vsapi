@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EntityBehaviorHealth | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EntityBehaviorHealth | VintageStory Json Docs ">
+      
+      <meta name="description" content="Adds health calculations to entity so that it can receive damage, die, get revived and get healed. Uses the &amp;quot;health&amp;quot; code Open in GitHub">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.GameContent.EntityBehaviorHealth">
+
+
+
+  <h1 id="Vintagestory_GameContent_EntityBehaviorHealth" data-uid="Vintagestory.GameContent.EntityBehaviorHealth" class="text-break">
+Class EntityBehaviorHealth  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.GameContent.html">GameContent</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Adds health calculations to entity so that it can receive damage, die, get revived and get healed.
+<br>Uses the &quot;health&quot; code <a href=https://github.com/anegostudios/vsessentialsmod/blob/master///Entity/Behavior/BehaviorHealth.cs>Open in GitHub</a></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[AddDocumentationProperty(&quot;minGenerationToAllowHealing&quot;, &quot;If this is an animal, specifies the minimum generation required to be healed by player. Ignored if -1&quot;, &quot;System.Int32&quot;, &quot;Optional&quot;, &quot;-1&quot;, true)]
+public class EntityBehaviorHealth : EntityBehavior</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.EntityBehavior.html">EntityBehavior</a></div>
+      <div><span class="xref">EntityBehaviorHealth</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+  <h2 id="Vintagestory_GameContent_EntityBehaviorHealth_examples">Examples</h2>
+  <pre><code class="lang-csharp">"behaviors": [
+ {
+     "code": "health",
+     "currenthealth": 15.0,
+     "maxhealth": 15.0
+ },
+],
+...
+"attributes": {
+  "minGenerationToAllowHealing": 1
+}</code></pre>
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+  <a id="Vintagestory_GameContent_EntityBehaviorHealth_MaxHealth_" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.MaxHealth*"></a>
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_MaxHealth" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.MaxHealth">
+  MaxHealth (Recommended) (Default: 20)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Max possible health points the entity can have. Can be affected by &quot;maxhealthExtraPoints&quot; character's trait</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;20&quot;, false)]
+public float MaxHealth { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_GameContent_EntityBehaviorHealth_AutoRegenSaturationThreshold_" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.AutoRegenSaturationThreshold*"></a>
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_AutoRegenSaturationThreshold" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.AutoRegenSaturationThreshold">
+  AutoRegenSaturationThreshold (Optional) (Default: 0.75)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Health regeneration speed will be slowed down when saturation is below this fraction of total saturation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0.75&quot;, false)]
+protected virtual float AutoRegenSaturationThreshold { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_GameContent_EntityBehaviorHealth_Health_" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.Health*"></a>
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_Health" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.Health">
+  CurrentHealth (Optional) (Default: MaxHealth)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<!---->
+<p>The entity will have this much health points upon spawn if this is set in JSON. Otherwise, these are the health points of the entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;MaxHealth&quot;, false)]
+public float Health { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_HurtAnimationCode" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.HurtAnimationCode">
+  HurtAnimationCode (Optional) (Default: hurt)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>This animation will be played if entity received more than 1hp damage. If set to 'null', animation wont be played.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;hurt&quot;, false)]
+protected string? HurtAnimationCode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_GameContent_EntityBehaviorHealth_ReceiveHailDamage_" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.ReceiveHailDamage*"></a>
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_ReceiveHailDamage" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.ReceiveHailDamage">
+  ReceiveHailDamage (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Should entity receive hail damage. By default only players receive hail damage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;false&quot;, false)]
+protected virtual bool ReceiveHailDamage { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_GameContent_EntityBehaviorHealth_SaturationPerHealthPoint_" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.SaturationPerHealthPoint*"></a>
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_SaturationPerHealthPoint" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.SaturationPerHealthPoint">
+  SaturationPerHealthPoint (Optional) (Default: 150)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How many saturation points will be consumed per health point restored.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;150&quot;, false)]
+protected virtual float SaturationPerHealthPoint { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_timeBetweenDoTTicksSec" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.timeBetweenDoTTicksSec">
+  timeBetweenDoTTicksSec (Optional) (Default: 0.5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The amount of time between each damage-over-time tick.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0.5&quot;, false)]
+protected float timeBetweenDoTTicksSec</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+
+  <h3 id="Vintagestory_GameContent_EntityBehaviorHealth_minGenerationToAllowHealing" data-uid="Vintagestory.GameContent.EntityBehaviorHealth.minGenerationToAllowHealing">
+  minGenerationToAllowHealing (Optional) (Default: -1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If this is an animal, specifies the minimum generation required to be healed by player. Ignored if -1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs"></code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

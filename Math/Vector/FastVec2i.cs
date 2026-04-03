@@ -6,12 +6,23 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 2 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson()]
     [ProtoContract]
     public struct FastVec2i : IEquatable<FastVec2i>
     {
         [ProtoMember(1)]
         public ulong val;
+
+        /// <summary>
+        /// The X-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         public int X { get { return (int)val; } set { val = (val & 0xFFFF_FFFF_0000_0000) + (uint)value; } }
+
+        /// <summary>
+        /// The Y-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         public int Y { get { return (int)(val >>> 32); } set { val = (uint)val + ((ulong)value << 32); } }
         /// <summary>Identical to .Y - optionally, you can use .Z instead for code readability if the vector represents X,Z values</summary>
         public int Z { get { return (int)(val >>> 32); } set { val = (uint)val + ((ulong)value << 32); } }    // Intentionally the same as Y

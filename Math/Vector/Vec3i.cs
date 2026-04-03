@@ -10,16 +10,32 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson]
     [ProtoContract]
     [JsonObject(MemberSerialization.OptIn)]
     public class Vec3i : IEquatable<Vec3i>, IVec3
     {
+
+        /// <summary>
+        /// The X-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(1)]
         [JsonProperty]
         public int X;
+
+        /// <summary>
+        /// The Y-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(2)]
         [JsonProperty]
         public int Y;
+
+        /// <summary>
+        /// The Z-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(3)]
         [JsonProperty]
         public int Z;

@@ -291,25 +291,9 @@ namespace Vintagestory.API.Common
             Vec3d sourcePos = args.Caller.Pos;
             Entity callingEntity = args.Caller.Entity;
 
-            float? range = null;
-            if (subargs.TryGetValue("range", out string strrange)) range = strrange.ToFloat();
+            var conds = EntityMatchConditions.FromArgs(subargs);
 
-            AssetLocation type = null;
-            if (subargs.TryGetValue("type", out string typestr))
-            {
-                type = new AssetLocation(typestr);
-            }
-
-            subargs.TryGetValue("name", out string name);
-
-            bool? alive = null;
-            if (subargs.TryGetValue("alive", out var stralive))
-            {
-                alive = stralive.ToBool();
-            }
-
-
-            if (range != null && sourcePos == null)
+            if (conds.Range != null && sourcePos == null)
             {
                 lastErrorMessage = "Can't use range argument without source position";
                 return EnumParseResult.Bad;
@@ -323,9 +307,7 @@ namespace Vintagestory.API.Common
 
                     foreach (var plr in api.World.AllOnlinePlayers)
                     {
-                        if (range != null && plr.Entity.Pos.DistanceTo(sourcePos) > range) continue;
-                        if (name != null && !WildcardUtil.Match(name, plr.PlayerName)) continue;
-                        if (alive != null && plr.Entity.Alive != alive) continue;
+                        if (!EntitiesArgParser.entityMatches(plr.Entity, sourcePos, conds)) continue;
 
                         if (nearestPlr == null) nearestPlr = plr;
                         else
@@ -354,7 +336,7 @@ namespace Vintagestory.API.Common
 
                     Entity nearestEntity = null;
 
-                    if (range == null && type == null && alive == null && name == null && !subargsstr.Equals("[!]"))
+                    if (conds.ConditionCount == 0 && v == 'e')
                     {
                         lastErrorMessage = "No selector defined, use e[!] to select all entities";
                         return EnumParseResult.Bad;
@@ -362,10 +344,7 @@ namespace Vintagestory.API.Common
 
                     foreach (Entity e in entities)
                     {
-                        if (range != null && e.Pos.DistanceTo(sourcePos) > range) continue;
-                        if (type != null && !WildcardUtil.Match(type, e.Code)) continue;
-                        if (alive != null && e.Alive != alive) continue;
-                        if (name != null && !WildcardUtil.Match(name, e.GetName())) continue;
+                        if (!EntitiesArgParser.entityMatches(e, sourcePos, conds)) continue;
 
                         if (nearestEntity == null) nearestEntity = e;
                         else
@@ -635,50 +614,7 @@ namespace Vintagestory.API.Common
                 return EnumParseResult.Bad;
             }
 
-            float? range = null;
-            if (subargs.TryGetValue("range", out string strrange))
-            {
-                range = strrange.ToFloat();
-                subargs.Remove("range");
-            }
-
-            AssetLocation type = null;
-            if (subargs.TryGetValue("type", out string typestr))
-            {
-                type = new AssetLocation(typestr);
-                subargs.Remove("type");
-            }
-
-            if (subargs.TryGetValue("class", out string classstr))
-            {
-                classstr = classstr.ToLowerInvariant();
-                subargs.Remove("class");
-            }
-
-            if (subargs.TryGetValue("tag", out string tagstr))
-            {
-                tagstr = tagstr.ToLowerInvariant();
-                subargs.Remove("tag");
-            }
-
-            if (subargs.TryGetValue("name", out string name))
-            {
-                subargs.Remove("name");
-            }
-
-            bool? alive = null;
-            if (subargs.TryGetValue("alive", out var stralive))
-            {
-                alive = stralive.ToBool();
-                subargs.Remove("alive");
-            }
-
-            long? id = null;
-            if (subargs.TryGetValue("id", out var strid))
-            {
-                id = strid.ToLong();
-                subargs.Remove("id");
-            }
+            var conds = EntityMatchConditions.FromArgs(subargs);
 
             Cuboidi box = null;
             if (sourcePos != null)
@@ -711,7 +647,7 @@ namespace Vintagestory.API.Common
 
             List<Entity> foundEntities = new List<Entity>();
 
-            if (range != null && sourcePos == null)
+            if (conds.Range != null && sourcePos == null)
             {
                 lastErrorMessage = "Can't use range argument without source pos";
                 return EnumParseResult.Bad;
@@ -723,7 +659,7 @@ namespace Vintagestory.API.Common
                 case 'p':
                     foreach (var plr in api.World.AllOnlinePlayers)
                     {
-                        if (entityMatches(plr.Entity, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
+                        if (entityMatches(plr.Entity, sourcePos, conds))
                         {
                             foundEntities.Add(plr.Entity);
                         }
@@ -734,7 +670,7 @@ namespace Vintagestory.API.Common
 
                 // Entities
                 case 'e':
-                    if (range == null)
+                    if (conds.Range == null)
                     {
                         ICollection<Entity> entities;
                         if (api.Side == EnumAppSide.Server) entities = (api as ICoreServerAPI).World.LoadedEntities.Values;
@@ -742,7 +678,7 @@ namespace Vintagestory.API.Common
 
                         foreach (Entity e in entities)
                         {
-                            if (entityMatches(e, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
+                            if (entityMatches(e, sourcePos, conds))
                             {
                                 foundEntities.Add(e);
                             }
@@ -752,10 +688,10 @@ namespace Vintagestory.API.Common
                     }
                     else
                     {
-                        float r = (float)range;
+                        float r = (float)conds.Range;
                         entities = api.World.GetEntitiesAround(sourcePos, r, r, (e) =>
                         {
-                            return entityMatches(e, sourcePos, type, classstr, tagstr, range, box, name, alive, id);
+                            return entityMatches(e, sourcePos, conds);
                         });
 
                     }
@@ -777,7 +713,7 @@ namespace Vintagestory.API.Common
                     }
 
                     var lookedAtEntity = eplr.Player.CurrentEntitySelection.Entity;
-                    if (entityMatches(lookedAtEntity, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
+                    if (entityMatches(lookedAtEntity, sourcePos, conds))
                     {
                         this.entities = new Entity[] { lookedAtEntity };
                     }
@@ -789,7 +725,7 @@ namespace Vintagestory.API.Common
 
                 // Executing entity
                 case 's':
-                    if (entityMatches(callingEntity, sourcePos, type, classstr, tagstr, range, box, name, alive, id))
+                    if (entityMatches(callingEntity, sourcePos, conds))
                     {
                         this.entities = new Entity[] { callingEntity };
                     }
@@ -805,18 +741,91 @@ namespace Vintagestory.API.Common
             }
         }
 
-        private bool entityMatches(Entity e, Vec3d sourcePos, AssetLocation type, string classstr, string tagstr, float? range, Cuboidi box, string name, bool? alive, long? id)
+        public static bool entityMatches(Entity e, Vec3d sourcePos, EntityMatchConditions conds)
         {
-            if (id != null && e.EntityId != id) return false;
-            if (range != null && e.Pos.DistanceTo(sourcePos) > range) return false;
-            if (box != null && !box.ContainsOrTouches(e.Pos)) return false;
-            if (classstr != null && classstr != e.Class.ToLowerInvariant()) return false;
-            if (type != null && !WildcardUtil.Match(type, e.Code)) return false;
-            if (alive != null && e.Alive != alive) return false;
-            if (name != null && !WildcardUtil.Match(name, e.GetName())) return false;
-            if (tagstr != null && !e.HasTags(tagstr)) return false;
+            if (conds.Id != null && e.EntityId != conds.Id) return false;
+            if (conds.Range != null && e.Pos.DistanceTo(sourcePos) > conds.Range) return false;
+            if (conds.Box != null && !conds.Box.ContainsOrTouches(e.Pos)) return false;
+            if (conds.Classstr != null && conds.Classstr != e.Class.ToLowerInvariant()) return false;
+            if (conds.Type != null && !WildcardUtil.Match(conds.Type, e.Code)) return false;
+            if (conds.Alive != null && e.Alive != conds.Alive) return false;
+            if (conds.Name != null && !WildcardUtil.Match(conds.Name, e.GetName())) return false;
+            if (conds.Tagstr != null && !e.HasTags(conds.Tagstr)) return false;
 
             return true;
+        }
+    }
+
+    public class EntityMatchConditions
+    {
+        public AssetLocation Type;
+        public string Classstr;
+        public string Tagstr;
+        public float? Range;
+        public Cuboidi Box;
+        public string Name;
+        public bool? Alive;
+        public long? Id;
+
+        public int ConditionCount = 0;
+
+        public static EntityMatchConditions FromArgs(Dictionary<string, string> subargs)
+        {
+            return new EntityMatchConditions().LoadFromArgs(subargs);
+        }
+
+        public EntityMatchConditions LoadFromArgs(Dictionary<string, string> subargs)
+        {
+            if (subargs.TryGetValue("range", out string strrange))
+            {
+                Range = strrange.ToFloat();
+                subargs.Remove("range");
+                ConditionCount++;
+            }
+
+            if (subargs.TryGetValue("type", out string typestr))
+            {
+                Type = new AssetLocation(typestr);
+                subargs.Remove("type");
+                ConditionCount++;
+            }
+
+            if (subargs.TryGetValue("class", out string classstr))
+            {
+                Classstr = classstr.ToLowerInvariant();
+                subargs.Remove("class");
+                ConditionCount++;
+            }
+
+            if (subargs.TryGetValue("tag", out string tagstr))
+            {
+                Tagstr = tagstr.ToLowerInvariant();
+                subargs.Remove("tag");
+                ConditionCount++;
+            }
+
+            if (subargs.TryGetValue("name", out string name))
+            {
+                Name = name;
+                subargs.Remove("name");
+                ConditionCount++;
+            }
+
+            if (subargs.TryGetValue("alive", out var stralive))
+            {
+                Alive = stralive.ToBool();
+                subargs.Remove("alive");
+                ConditionCount++;
+            }
+
+            if (subargs.TryGetValue("id", out var strid))
+            {
+                Id = strid.ToLong();
+                subargs.Remove("id");
+                ConditionCount++;
+            }
+
+            return this;
         }
     }
 

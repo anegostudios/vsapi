@@ -243,7 +243,7 @@ namespace Vintagestory.API.Client
                 SlotBounds[slotIndex] = ElementBounds.Fixed(x, y, unscaledSlotWidth, unscaledSlotHeight).WithParent(Bounds);
                 SlotBounds[slotIndex].CalcWorldBounds();
 
-                scissorBounds[slotIndex] = ElementBounds.Fixed(x + 2, y + 2, unscaledSlotWidth - 4, unscaledSlotHeight - 4).WithParent(Bounds);
+                scissorBounds[slotIndex] = ElementBounds.Fixed(x + 1.75, y + 1.5, unscaledSlotWidth - 4, unscaledSlotHeight - 4).WithParent(Bounds);
                 scissorBounds[slotIndex].CalcWorldBounds();
 
                 ComposeSlotOverlays(slot, val.Key, slotIndex);
@@ -500,7 +500,7 @@ namespace Vintagestory.API.Client
                         SlotBounds[i].renderX + offset + dy,
                         SlotBounds[i].renderY + offset + dx,
                         90,
-                        (float)(absItemstackSize),
+                        (float)absItemstackSize,
                         ColorUtil.WhiteArgb,
                         deltaTime
                     );

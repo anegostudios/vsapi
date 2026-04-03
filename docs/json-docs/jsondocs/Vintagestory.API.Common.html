@@ -106,7 +106,7 @@ Classes
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
-      <dd><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
+      <dd><p>A sound that should play alongside an animation. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Model/Animation/AnimationSound.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -137,8 +137,15 @@ See the derived types for a list of all documented block behaviors. <a href=http
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehavior.html">BlockEntityBehavior</a></dt>
+      <dd><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents.<br>
+See the derived types for all block entity behaviors. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehaviorType.html">BlockEntityBehaviorType</a></dt>
-      <dd><p>Allows adding behaviors for block entities. Remember, block entities are specific instances of blocks placed within the world. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
+      <dd><p>Allows adding behaviors for block entities. Remember, block entities are specific instances of blocks placed within the world.
+See <a class="xref" href="Vintagestory.API.Common.BlockEntityBehavior.html">BlockEntityBehavior</a> and its derived types for all block entities. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/BlockEntityBehavior.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -175,6 +182,18 @@ See the derived types for a list of documented collectible behaviors. <a href=ht
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CrushingProperties.html">CrushingProperties</a></dt>
       <dd><p>Defines a set of properties that allow an object to be ground in a quern. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/CrushingProperties.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityBehaviorPassivePhysics.html">EntityBehaviorPassivePhysics</a></dt>
+      <dd><p>Passive physics system for entities.
+<br>Uses the &quot;passivephysics&quot; code <a href=https://github.com/anegostudios/vsapi/blob/master///Common/EntityBehavior/BehaviorPassivePhysics.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityBehaviorPassivePhysicsMultiBox.html">EntityBehaviorPassivePhysicsMultiBox</a></dt>
+      <dd><p>Passive physics system for entities with support for multiple collision boxes.
+<br>Uses the &quot;passivephysicsmultibox&quot; code <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Entity/Behavior/BehaviorPassivePhysicsMultiBox.cs>Open in GitHub</a></p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -224,6 +243,11 @@ It resembles a standard in-game item stack but can be stored before the game is 
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SeatConfig.html">SeatConfig</a></dt>
+      <dd><p>Seat properties <a href=https://github.com/anegostudios/vsapi/blob/master///Common/IMountableSeat.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.TransitionableProperties.html">TransitionableProperties</a></dt>
       <dd><p>This is a versatile way of allowing a collectible to change to another after a certain time in the inventory. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/TransitionableProperties.cs>Open in GitHub</a></p>
 </dd>
@@ -250,7 +274,11 @@ Structs
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.SoundAttributes.html">SoundAttributes</a></dt>
-      <dd></dd>
+      <dd><p>Properties that control how a sound is played. There are two forms of this that might be used in JSON files:
+Form 1 is simply stored as an <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a> that points to the sound file path. There are no extra proprties. This is what most JSON objects use.
+Form 2 is more complex, and uses the properties below to fully configure the sound. Only certain JSON objects use this, such as entity sounds.
+You can mix and match in a single sound array.</p>
+</dd>
     </dl>
     <h3 id="enums">
 Enums
@@ -312,6 +340,11 @@ Currently only used for mining speed for tools and blast resistance. <a href=htt
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumMountAngleMode.html">EnumMountAngleMode</a></dt>
+      <dd><p>Defines how the mounted entity rotates relative to the mount <a href=https://github.com/anegostudios/vsapi/blob/master///Common/IMountableSeat.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumMouseButton.html">EnumMouseButton</a></dt>
       <dd><p>A list of mouse buttons. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Controls/EnumMouseButton.cs>Open in GitHub</a></p>
 </dd>
@@ -342,6 +375,11 @@ Currently only used for mining speed for tools and blast resistance. <a href=htt
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumSoundType.html">EnumSoundType</a></dt>
+      <dd><p>Sound types, often used to determine specific volume controls. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/SoundAttributes.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a></dt>
       <dd><p>Types for each tool in the game. Some of these are unused. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/EnumTool.cs>Open in GitHub</a></p>
 </dd>
@@ -349,6 +387,11 @@ Currently only used for mining speed for tools and blast resistance. <a href=htt
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumTransitionType.html">EnumTransitionType</a></dt>
       <dd><p>Types of transition for items. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/TransitionableProperties.cs>Open in GitHub</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumWindBitMode.html">EnumWindBitMode</a></dt>
+      <dd><p>The wind data for an object. <a href=https://github.com/anegostudios/vsapi/blob/master///Common/Collectible/Block/VertexFlags.cs>Open in GitHub</a></p>
 </dd>
     </dl>
 

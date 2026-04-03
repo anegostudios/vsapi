@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class WearableSlotConfig | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class WearableSlotConfig | VintageStory Json Docs ">
+      
+      <meta name="description" content="An entity can provide seats and slots A slot however if filled with a chair can also provide a seat Or a slot can also be configured to be usable as a seat if empty Open in GitHub">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.GameContent.WearableSlotConfig">
+
+
+
+  <h1 id="Vintagestory_GameContent_WearableSlotConfig" data-uid="Vintagestory.GameContent.WearableSlotConfig" class="text-break">
+Class WearableSlotConfig  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.GameContent.html">GameContent</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSSurvivalMod.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>An entity can provide seats and slots
+<br>A slot however if filled with a chair can also provide a seat
+<br>Or a slot can also be configured to be usable as a seat if empty <a href=https://github.com/anegostudios/vssurvivalmod/blob/master///Entity/Behavior/BehaviorAttachable.cs>Open in GitHub</a></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+public class WearableSlotConfig</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">WearableSlotConfig</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+  <h2 id="Vintagestory_GameContent_WearableSlotConfig_examples">Examples</h2>
+  <pre><code class="lang-csharp">"wearableSlots": [
+    {
+        "code": "head",
+        "forCategoryCodes": [ "bridle" ],
+        "attachmentPointCode": "HeadAP"
+    },
+    {
+        "code": "face",
+        "forCategoryCodes": [ "face" ],
+        "attachmentPointCode": "FaceAP"
+    },
+    {
+        "code": "neck",
+        "forCategoryCodes": [ "lantern" ],
+        "attachmentPointCode": "NeckAP"
+    },
+ ...
+ ]</code></pre>
+
+  <p>Inside a collectible to be worn...</p>
+<pre><code class="lang-csharp">"attributes": {
+    "attachableToEntity": {
+        "categoryCode": "pillion",
+        "attachedShape": { "base": "item/wearable/hooved/pillion1" },
+        "seatConfig": {
+            "bodyYawLimit": 0,
+            "controllable": false,
+            "mountOffset": {
+                "x": -0.25,
+                "y": -0.45,
+                "z": -0.25
+            },
+            "MountRotation": { "y": 0.0 },
+            "eyeOffsetX": 0.2
+        }
+    },
+    ...
+},</code></pre>
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_GameContent_WearableSlotConfig_AttachmentPointCode" data-uid="Vintagestory.GameContent.WearableSlotConfig.AttachmentPointCode">
+  AttachmentPointCode (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Attachment point code of the shape element to attach to</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public string AttachmentPointCode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_WearableSlotConfig_Code" data-uid="Vintagestory.GameContent.WearableSlotConfig.Code">
+  Code (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Unique identifier for this slot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, false)]
+public string Code</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_WearableSlotConfig_ForCategoryCodes" data-uid="Vintagestory.GameContent.WearableSlotConfig.ForCategoryCodes">
+  ForCategoryCodes (Recommended)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Allows items with specified category codes to be placed in this slot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;&quot;, false)]
+public string[] ForCategoryCodes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_WearableSlotConfig_BehindSlots" data-uid="Vintagestory.GameContent.WearableSlotConfig.BehindSlots">
+  BehindSlots (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Allows to combine multiple slots into one bigger slot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public string[] BehindSlots</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_GameContent_WearableSlotConfig_EmptyInteractPassThrough_" data-uid="Vintagestory.GameContent.WearableSlotConfig.EmptyInteractPassThrough*"></a>
+
+  <h3 id="Vintagestory_GameContent_WearableSlotConfig_EmptyInteractPassThrough" data-uid="Vintagestory.GameContent.WearableSlotConfig.EmptyInteractPassThrough">
+  EmptyInteractPassThrough (Optional) (Default: False)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Skips the attach interaction if set to True and the slot is empty when the attach key is not pressed, allowing mount and other interactions to trigger instead</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;False&quot;, false)]
+public bool EmptyInteractPassThrough { get; set; }</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_GameContent_WearableSlotConfig_StepParentTo" data-uid="Vintagestory.GameContent.WearableSlotConfig.StepParentTo">
+  StepParentTo (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;None&quot;, false)]
+public Dictionary&lt;string, StepParentElementTo&gt; StepParentTo</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.GameContent.StepParentElementTo.html">StepParentElementTo</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+
+  <h3 id="Vintagestory_GameContent_WearableSlotConfig_SeatConfig" data-uid="Vintagestory.GameContent.WearableSlotConfig.SeatConfig">
+  SeatConfig (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The config for the seat, stored in the attached collectible's JSON.
+<br>Requires a specific setup, see the example.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Required&quot;, &quot;&quot;, true)]
+public SeatConfig SeatConfig</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.SeatConfig.html">SeatConfig</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

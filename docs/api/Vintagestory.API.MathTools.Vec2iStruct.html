@@ -102,7 +102,8 @@ Struct Vec2iStruct
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoContract]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[ProtoContract]
 public struct Vec2iStruct : IEquatable&lt;Vec2iStruct&gt;</code></pre>
   </div>
 
@@ -251,11 +252,13 @@ public struct Vec2iStruct : IEquatable&lt;Vec2iStruct&gt;</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The X element of the vector.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int X</code></pre>
   </div>
 
@@ -282,11 +285,13 @@ public int X</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The Y element of the vector.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
 public int Y</code></pre>
   </div>
 

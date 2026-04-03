@@ -9,6 +9,10 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common.Entities;
 
+/// <summary>
+/// This provides functionality for physics-based entity behaviors. It is not an entity behavior on its own.
+/// </summary>
+[DocumentAsJson]
 public abstract class PhysicsBehaviorBase : EntityBehavior
 {
     protected ICoreClientAPI capi;

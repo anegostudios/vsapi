@@ -8,6 +8,14 @@ using System.Runtime.Intrinsics;
 
 namespace Vintagestory.API.Datastructures;
 
+/// <summary>
+/// A set of tags. When using JSON, this is stored as a string array.
+/// </summary>
+/// <example> <code lang="json">
+/// "tags": ["humanoid", "player", "seraph", "huntable", "habitat-land"],
+/// </code>
+/// </example>
+[DocumentAsJson()]
 [JsonConverter(typeof(EntityTagSetConverter))]
 [method: MethodImpl(MethodImplOptions.AggressiveInlining)]
 public struct TagSetFast(Vector256<UInt64> storage) : IEquatable<TagSetFast>

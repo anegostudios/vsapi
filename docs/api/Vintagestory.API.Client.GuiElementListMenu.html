@@ -326,9 +326,6 @@ Class GuiElementListMenu
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyUp(ICoreClientAPI, KeyEvent)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyPress(ICoreClientAPI, KeyEvent)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_MouseOverCursor">GuiElement.MouseOverCursor</a>
     </div>
     <div>
@@ -1213,6 +1210,37 @@ Class GuiElementListMenu
 
 
 
+  <a id="Vintagestory_API_Client_GuiElementListMenu_EnsureItemVisible_" data-uid="Vintagestory.API.Client.GuiElementListMenu.EnsureItemVisible*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementListMenu_EnsureItemVisible_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementListMenu.EnsureItemVisible(System.Int32)">
+  EnsureItemVisible(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void EnsureItemVisible(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementListMenu_IsPositionInside_" data-uid="Vintagestory.API.Client.GuiElementListMenu.IsPositionInside*"></a>
 
   <h3 id="Vintagestory_API_Client_GuiElementListMenu_IsPositionInside_System_Int32_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementListMenu.IsPositionInside(System.Int32,System.Int32)">
@@ -1303,6 +1331,42 @@ Class GuiElementListMenu
 </dd>
     <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></dt>
     <dd><p>The key event arguments.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiElementListMenu_OnKeyPress_" data-uid="Vintagestory.API.Client.GuiElementListMenu.OnKeyPress*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiElementListMenu_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementListMenu.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">
+  OnKeyPress(ICoreClientAPI, KeyEvent)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired the moment a key is pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnKeyPress(ICoreClientAPI api, KeyEvent args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The Client API.</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></dt>
+    <dd><p>The keyboard state when the key was pressed.</p>
 </dd>
   </dl>
 

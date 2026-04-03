@@ -11,22 +11,26 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 ints, similar to a Vec3i or a BlockPos but this is a struct
     /// </summary>
+    [DocumentAsJson]
     [ProtoContract]
     public struct FastVec3i : IEquatable<FastVec3i>, IEquatable<BlockPos>
     {
         /// <summary>
         /// The X-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(1)]
         public int X;
         /// <summary>
         /// The Y-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(2)]
         public int Y;
         /// <summary>
         /// The Z-Component of the vector
         /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(3)]
         public int Z;
 

@@ -12,6 +12,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson]
     [JsonObject(MemberSerialization.OptIn)]
     [ProtoContract]
     public class Vec3f : IVec3, IEquatable<Vec3f>

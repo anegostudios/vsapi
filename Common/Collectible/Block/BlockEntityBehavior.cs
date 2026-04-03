@@ -11,6 +11,7 @@ namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Allows adding behaviors for block entities. Remember, block entities are specific instances of blocks placed within the world.
+    /// See <see cref="BlockEntityBehavior"/> and its derived types for all block entities.
     /// </summary>
     /// <example>
     /// <code language="json">
@@ -40,8 +41,10 @@ namespace Vintagestory.API.Common
     }
 
     /// <summary>
-    /// Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents
+    /// Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents.<br/>
+    /// See the derived types for all block entity behaviors.
     /// </summary>
+    [DocumentAsJson()]
     public abstract class BlockEntityBehavior
     {
         /// <summary>

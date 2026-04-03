@@ -199,7 +199,7 @@ namespace Vintagestory.API.Client
                     surface.Dispose();
 
                     double offset = (int)(30 + ItemStackSize / 2);
-                    scissorBounds = ElementBounds.Fixed(4 + offset - ItemStackSize, 2 + offset + MarginTop - ItemStackSize, ItemStackSize + 38, ItemStackSize + 38).WithParent(Bounds);
+                    scissorBounds = ElementBounds.Fixed(2.75 + offset - ItemStackSize, 2.75 + offset + MarginTop - ItemStackSize, ItemStackSize + 38, ItemStackSize + 38).WithParent(Bounds);
                     scissorBounds.CalcWorldBounds();
 
                     Dirty = false;

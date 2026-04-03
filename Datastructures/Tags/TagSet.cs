@@ -10,6 +10,14 @@ namespace Vintagestory.API.Datastructures;
 
 using HandleType = ushort;
 
+/// <summary>
+/// A set of tags. When using JSON, this is stored as a string array.
+/// </summary>
+/// <example> <code lang="json">
+/// "tags": ["humanoid", "player", "seraph", "huntable", "habitat-land"],
+/// </code>
+/// </example>
+[DocumentAsJson()]
 [JsonConverter(typeof(CollectibleTagSetConverter))]
 public readonly struct TagSet : IEquatable<TagSet>
 {

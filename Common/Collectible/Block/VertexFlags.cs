@@ -36,6 +36,10 @@ namespace Vintagestory.API.Common
 
     }
 
+    /// <summary>
+    /// The wind data for an object.
+    /// </summary>
+    [DocumentAsJson()]
     public enum EnumWindBitMode
     {
         /// <summary>
@@ -65,7 +69,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Vertical wiggle
         /// </summary>
-        Water = 6,
+        Water = 6,  
         ExtraWeakWind = 7,
         Fruit = 8,
         WeakWindNoBend = 9,

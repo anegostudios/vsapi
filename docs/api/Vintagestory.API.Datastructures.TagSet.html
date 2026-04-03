@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Struct TagSet | VintageStory API ">
       
-      
+      <meta name="description" content="A set of tags. When using JSON, this is stored as a string array.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,11 +97,13 @@ Struct TagSet
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>A set of tags. When using JSON, this is stored as a string array.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(CollectibleTagSetConverter))]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[JsonConverter(typeof(CollectibleTagSetConverter))]
 public readonly struct TagSet : IEquatable&lt;TagSet&gt;</code></pre>
   </div>
 
@@ -142,6 +144,9 @@ public readonly struct TagSet : IEquatable&lt;TagSet&gt;</code></pre>
   </div>
   </dd></dl>
 
+
+  <h2 id="Vintagestory_API_Datastructures_TagSet_examples">Examples</h2>
+  <pre><code class="lang-csharp">"tags": ["humanoid", "player", "seraph", "huntable", "habitat-land"],</code></pre>
 
 
 

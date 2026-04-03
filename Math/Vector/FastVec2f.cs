@@ -4,12 +4,25 @@ using System;
 
 namespace Vintagestory.API.MathTools
 {
+    /// <summary>
+    /// A fast version of <see cref="Vec2f"/>
+    /// </summary>
+    [DocumentAsJson()]
     public struct FastVec2f : IEquatable<FastVec2f>
     {
         const float tinyEpsilon = 1e-20f;
         public static readonly FastVec2f Zero = new FastVec2f(0, 0);
 
+        /// <summary>
+        /// The X-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         public float X;
+
+        /// <summary>
+        /// The Y-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         public float Y;
 
         public float A => X;

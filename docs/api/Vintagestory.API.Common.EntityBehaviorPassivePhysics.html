@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class EntityBehaviorPassivePhysics | VintageStory API ">
       
-      <meta name="description" content="Open in GitHub">
+      <meta name="description" content="Passive physics system for entities. Uses the &amp;quot;passivephysics&amp;quot; code Open in GitHub">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,12 +97,19 @@ Class EntityBehaviorPassivePhysics
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p><a href=https://github.com/anegostudios/vsapi/blob/master///Common/EntityBehavior/BehaviorPassivePhysics.cs>Open in GitHub</a></p>
+  <div class="markdown summary"><p>Passive physics system for entities.
+<br>Uses the &quot;passivephysics&quot; code <a href=https://github.com/anegostudios/vsapi/blob/master///Common/EntityBehavior/BehaviorPassivePhysics.cs>Open in GitHub</a></p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickable, IRemotePhysics</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[AddDocumentationProperty(&quot;waterDragFactor&quot;, &quot;Gravity drag factor when in water&quot;, &quot;System.Double&quot;, &quot;Optional&quot;, &quot;1&quot;, false)]
+[AddDocumentationProperty(&quot;airDragFactor&quot;, &quot;Gravity drag factor when falling. Overrides airDragFallingFactor when present&quot;, &quot;System.Double&quot;, &quot;Optional&quot;, &quot;1&quot;, false)]
+[AddDocumentationProperty(&quot;airDragFallingFactor&quot;, &quot;Gravity drag factor when falling&quot;, &quot;System.Double&quot;, &quot;Optional&quot;, &quot;1&quot;, false)]
+[AddDocumentationProperty(&quot;groundDragFactor&quot;, &quot;Horizontal drag factor when on the ground&quot;, &quot;System.Double&quot;, &quot;Optional&quot;, &quot;1&quot;, false)]
+[AddDocumentationProperty(&quot;gravityFactor&quot;, &quot;Multiplier for gravity strength&quot;, &quot;System.Double&quot;, &quot;Optional&quot;, &quot;1&quot;, false)]
+public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickable, IRemotePhysics</code></pre>
   </div>
 
 
@@ -311,6 +318,16 @@ Class EntityBehaviorPassivePhysics
   </div>
   </dd></dl>
 
+
+  <h2 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_examples">Examples</h2>
+  <pre><code class="lang-csharp">"behaviors": [
+ {
+    "code": "passivephysics"
+    "groundDragFactor": 1,
+    "airDragFactor": 0.25,
+    "gravityFactor": 0.75
+ }
+]</code></pre>
 
 
 

@@ -12,14 +12,28 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
-
+    [DocumentAsJson]
     [ProtoContract]
     public class Vec3d : IVec3, IEquatable<Vec3d>
     {
+        /// <summary>
+        /// The X-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(1)]
         public double X;
+
+        /// <summary>
+        /// The Y-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(2)]
         public double Y;
+
+        /// <summary>
+        /// The Z-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Recommended", "0")]
         [ProtoMember(3)]
         public double Z;
 

@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+using ProtoBuf;
 using System;
 
 #nullable disable
@@ -8,11 +8,21 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 2 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson]
     [ProtoContract]
     public class Vec2i : IEquatable<Vec2i>
     {
+        /// <summary>
+        /// The X-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         [ProtoMember(1)]
         public int X;
+
+        /// <summary>
+        /// The Y-Component of the vector
+        /// </summary>
+        [DocumentAsJson("Optional", "0")]
         [ProtoMember(2)]
         public int Y;
 

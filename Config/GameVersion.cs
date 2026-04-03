@@ -43,7 +43,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision-[rc/pre.subrevision]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-rc.6";
+        public const string ShortGameVersion = OverallVersion + "-rc.7";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
@@ -97,7 +97,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Copyright notice
         /// </summary>
-        public const string CopyRight = "Copyright © 2016-2024 Anego Studios";
+        public const string CopyRight = "Copyright © 2016-2026 Anego Studios";
 
 
         static string[] separators = new string[] { ".", "-" };

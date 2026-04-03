@@ -9,8 +9,10 @@ using Vintagestory.API.Util;
 namespace Vintagestory.API.Common.Entities
 {
     /// <summary>
-    /// Defines a basic entity behavior that can be attached to entities
+    /// Defines a basic entity behavior that can be attached to entities. <br/>
+    /// Check the derived types for all entity behaviors.
     /// </summary>
+    [DocumentAsJson]
     public abstract class EntityBehavior
     {
         public Entity entity;

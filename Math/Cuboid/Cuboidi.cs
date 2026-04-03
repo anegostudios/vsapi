@@ -12,28 +12,46 @@ namespace Vintagestory.API.MathTools
     [ProtoContract]
     public class Cuboidi : ICuboid<int,Cuboidi>, IEquatable<Cuboidi>
     {
+        /// <summary>
+        /// Start X Pos
+        /// </summary>
         [ProtoMember(1)]
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         public int X1;
 
+        /// <summary>
+        /// Start Y Pos
+        /// </summary>
         [ProtoMember(2)]
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         public int Y1;
 
+        /// <summary>
+        /// Start Z Pos
+        /// </summary>
         [ProtoMember(3)]
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         public int Z1;
 
+        /// <summary>
+        /// End X Pos
+        /// </summary>
         [ProtoMember(4)]
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         public int X2;
 
+        /// <summary>
+        /// End Y Pos
+        /// </summary>
         [ProtoMember(5)]
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         public int Y2;
 
+        /// <summary>
+        /// End Z Pos
+        /// </summary>
         [ProtoMember(6)]
-        [DocumentAsJson]
+        [DocumentAsJson("Optional", "0")]
         public int Z2;
 
         public int[] Coordinates => new int[] { X1, Y1, Z1, X2, Y2, Z2 };

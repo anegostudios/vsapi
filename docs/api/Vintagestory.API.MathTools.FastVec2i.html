@@ -102,7 +102,8 @@ Struct FastVec2i
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoContract]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[ProtoContract]
 public struct FastVec2i : IEquatable&lt;FastVec2i&gt;</code></pre>
   </div>
 
@@ -323,11 +324,13 @@ public ulong val</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The X-Component of the vector</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int X { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
+public int X { get; set; }</code></pre>
   </div>
 
 
@@ -354,11 +357,13 @@ public ulong val</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The Y-Component of the vector</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Y { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Optional&quot;, &quot;0&quot;, false)]
+public int Y { get; set; }</code></pre>
   </div>
 
 

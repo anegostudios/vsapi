@@ -12,6 +12,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Sound types, often used to determine specific volume controls.
     /// </summary>
+    [DocumentAsJson]
     public enum EnumSoundType
     {
         Sound, 
@@ -24,17 +25,69 @@ namespace Vintagestory.API.Common
         SoundGlitchunaffected
     }
 
+    /// <summary>
+    /// Properties that control how a sound is played. There are two forms of this that might be used in JSON files:
+    /// Form 1 is simply stored as an <see cref="AssetLocation"/> that points to the sound file path. There are no extra proprties. This is what most JSON objects use.
+    /// Form 2 is more complex, and uses the properties below to fully configure the sound. Only certain JSON objects use this, such as entity sounds.
+    /// You can mix and match in a single sound array.
+    /// </summary>
+    /// <example>
+    /// Form 1: <code lang="json">
+    ///"sounds": {
+    ///    "place": "block/plant",
+    ///    "break": "block/plant",
+    ///    "hit": "block/plant"
+    ///},
+    /// </code>
+    /// Form 2. Note that entity sounds can include * at the end for multiple sound files: <code lang="json">
+    ///"sounds": {
+    ///    "hurt": "creature/chicken/chick*",
+    ///    "death": "creature/chicken/chick*",
+    ///    "idle": {
+    ///        "path": "creature/chicken/chick*",
+    ///        "range": 14,
+    ///        "pitch": {
+    ///            "avg": 1,
+    ///            "var": 0.25
+    ///        }
+    ///    }
+    ///},
+    /// </code>
+    /// </example>
     [DocumentAsJson]
     public struct SoundAttributes
     {
+        /// <summary>
+        /// <!--<jsonalias>path</jsonalias>-->
+        /// The location of the sound file.
+        /// </summary>
+        [DocumentAsJson("Required")]
         [JsonProperty("path")]
         public AssetLocation? Location;
+
+        /// <summary>
+        /// Controls a random pitch for when the sound is played.
+        /// </summary>
+        [DocumentAsJson("Optional", "1")]
         public NatFloat Pitch = NatFloatOne;
+
+        /// <summary>
+        /// Controls a random volume for when the sound is played.
+        /// </summary>
+        [DocumentAsJson("Optional", "1")]
         public NatFloat Volume = NatFloatOne;
+
+        /// <summary>
+        /// The type of sound, used for volume control in the settings.
+        /// </summary>
+        [DocumentAsJson("Optional", "Sound")]
         [JsonProperty("soundType")]
         public EnumSoundType Type = EnumSoundType.Sound;
 
-        /// The range at which the gain will be attenuated to 1% of the supplied volume
+        /// <summary>
+        /// The range at which the gain will be attenuated to 1% of the supplied volume. (i.e. the maximum range that the player will hear the sound)
+        /// </summary>
+        [DocumentAsJson("Optional", "32")]
         public float Range = 32f;
 
         public static NatFloat NatFloatOne = NatFloat.One; // Cache for reuse

@@ -102,7 +102,8 @@ Class Vec3d
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoContract]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson]
+[ProtoContract]
 public class Vec3d : IVec3, IEquatable&lt;Vec3d&gt;</code></pre>
   </div>
 
@@ -296,11 +297,13 @@ public class Vec3d : IVec3, IEquatable&lt;Vec3d&gt;</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The X-Component of the vector</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+[ProtoMember(1)]
 public double X</code></pre>
   </div>
 
@@ -327,11 +330,13 @@ public double X</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The Y-Component of the vector</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+[ProtoMember(2)]
 public double Y</code></pre>
   </div>
 
@@ -358,11 +363,13 @@ public double Y</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The Z-Component of the vector</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+    <pre><code class="lang-csharp hljs">[DocumentAsJson(&quot;Recommended&quot;, &quot;0&quot;, false)]
+[ProtoMember(3)]
 public double Z</code></pre>
   </div>
 

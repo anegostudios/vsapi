@@ -236,8 +236,8 @@ public abstract class LayeredVoxelRecipe : RecipeBase
         Name = new AssetLocation(reader.ReadString());
 
         Output = new JsonItemStack();
-        RecipeOutput.FromBytes(reader, resolver);
-        RecipeOutput.Resolve(resolver, "[Voxel recipe FromBytes] " + Ingredient.Code);
+        Output.FromBytes(reader, resolver.ClassRegistry);
+        Output.Resolve(resolver, "[Voxel recipe FromBytes] " + Ingredient.Code);
         GenVoxels();
     }
 
