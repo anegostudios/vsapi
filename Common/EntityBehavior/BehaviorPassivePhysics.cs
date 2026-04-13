@@ -71,6 +71,16 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     /// </summary>
     public Action<float> OnPhysicsTickCallback;
 
+    /// <summary>
+    /// True when theres 1000 currently loaded entities. This will cause dropped items to enter a physics dormancy state if the conditions are right. Set by ModSystemDormancyStateChecker in EntityItemRenderer.cs
+    /// </summary>
+    public static bool UsePhysicsDormancyStateServer;
+
+    /// <summary>
+    /// Used for performance, to put near-stationary passive entities (eg. EntityItem) into a low update state
+    /// </summary>
+    protected int restingCounter;
+
     [ThreadStatic] private static BlockPos tmpPos;
 
     public EntityBehaviorPassivePhysics(Entity entity) : base(entity)
@@ -384,10 +394,19 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
     {
         var entity = this.entity;
         if (entity.State != EnumEntityState.Active || !Ticking) return;
+        EntityPos pos = entity.Pos;
+        if (UsePhysicsDormancyStateServer)
+        {
+            if (entity.OnGround && entity.NearestPlayerDistance > 7 && pos.Motion.LengthSq() < 0.0001)
+            {
+                restingCounter++;
+                if (restingCounter > 90 && restingCounter % 15 != 0) return;
+            }
+            else restingCounter = 0;
+        }
 
         if (mountableSupplier?.IsBeingControlled() == true && entity.World.Side == EnumAppSide.Server) return;
 
-        EntityPos pos = entity.Pos;
         collisionTester.AssignToEntity(this, pos.Dimension);
 
         // If entity is moving 6 blocks per second test 10 times. Needs dynamic adjustment this is overkill.

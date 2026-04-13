@@ -553,6 +553,55 @@ namespace Vintagestory.API.MathTools
             return result;
         }
 
+        /// <summary>
+        /// Does linear interpolation on a 2d map for each of the 4 bytes individually (e.g. RGBA color). It's basically a bilinear zoom of an image like you know it from common image editing software. Only intended for square images.
+        /// The resulting map will be without any paddding (also requires at least 1 padding at bottom and left side)
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="zoom"></param>
+        /// <returns></returns>
+        public static byte[] BiLerpColorMap(ByteDataMap2D map, int zoom)
+        {
+            int innerSize = map.InnerSize;
+            int outSize = innerSize * zoom;
+            byte[] result = new byte[outSize * outSize];
+
+            int x, z;
+            int pad = map.TopLeftPadding;
+
+            for (int inX = 0; inX < innerSize; inX++)
+            {
+                for (int inZ = 0; inZ < innerSize; inZ++)
+                {
+                    byte leftTop = map.Data[(inZ + pad) * map.Size + inX + pad];
+                    byte rightTop = map.Data[(inZ + pad) * map.Size + inX + 1 + pad];
+                    byte leftBottom = map.Data[(inZ + 1 + pad) * map.Size + inX + pad];
+                    byte rightBottom = map.Data[(inZ + 1 + pad) * map.Size + inX + 1 + pad];
+
+                    for (int dz = 0; dz < zoom; dz++)
+                    {
+                        z = inZ * zoom + dz;
+
+                        for (int dx = 0; dx < zoom; dx++)
+                        {
+                            x = inX * zoom + dx;
+
+                            result[z * outSize + x] = BiLerp(
+                                leftTop,
+                                rightTop,
+                                leftBottom,
+                                rightBottom,
+                                (float)dx / zoom,
+                                (float)dz / zoom
+                            );
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
 
         /// <summary>
         /// Linear Interpolates one selected bytes of the 4 ints
@@ -714,6 +763,25 @@ namespace Vintagestory.API.MathTools
             float top = topleft + (topright - topleft) * x;
             float bot = botleft + (botright - botleft) * x;
             return top + (bot - top) * z;
+        }
+
+
+
+        /// <summary>
+        /// Basic Bilinear Lerp
+        /// </summary>
+        /// <param name="topleft"></param>
+        /// <param name="topright"></param>
+        /// <param name="botleft"></param>
+        /// <param name="botright"></param>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static byte BiLerp(byte topleft, byte topright, byte botleft, byte botright, float x, float z)
+        {
+            float top = topleft + (topright - topleft) * x;
+            float bot = botleft + (botright - botleft) * x;
+            return (byte)(top + (bot - top) * z);
         }
 
 

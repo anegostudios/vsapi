@@ -527,6 +527,37 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
 
 
 
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_UsePhysicsDormancyStateServer" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateServer">
+  UsePhysicsDormancyStateServer
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>True when theres 1000 currently loaded entities. This will cause dropped items to enter a physics dormancy state if the conditions are right. Set by ModSystemDormancyStateChecker in EntityItemRenderer.cs</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool UsePhysicsDormancyStateServer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_WaterDragValue" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.WaterDragValue">
   WaterDragValue
   
@@ -726,6 +757,37 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityBehaviorPassivePhysics_restingCounter" data-uid="Vintagestory.API.Common.EntityBehaviorPassivePhysics.restingCounter">
+  restingCounter
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used for performance, to put near-stationary passive entities (eg. EntityItem) into a low update state</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int restingCounter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

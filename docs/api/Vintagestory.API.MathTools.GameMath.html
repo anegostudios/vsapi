@@ -597,6 +597,53 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
 
   <a id="Vintagestory_API_MathTools_GameMath_BiLerp_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp*"></a>
 
+  <h3 id="Vintagestory_API_MathTools_GameMath_BiLerp_System_Byte_System_Byte_System_Byte_System_Byte_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp(System.Byte,System.Byte,System.Byte,System.Byte,System.Single,System.Single)">
+  BiLerp(byte, byte, byte, byte, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Basic Bilinear Lerp</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte BiLerp(byte topleft, byte topright, byte botleft, byte botright, float x, float z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>topleft</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+    <dt><code>topright</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+    <dt><code>botleft</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+    <dt><code>botright</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_GameMath_BiLerp_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp*"></a>
+
   <h3 id="Vintagestory_API_MathTools_GameMath_BiLerp_System_Double_System_Double_System_Double_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
   BiLerp(double, double, double, double, double, double)
   
@@ -726,6 +773,46 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_GameMath_BiLerpColorMap_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpColorMap*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_GameMath_BiLerpColorMap_Vintagestory_API_Datastructures_ByteDataMap2D_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpColorMap(Vintagestory.API.Datastructures.ByteDataMap2D,System.Int32)">
+  BiLerpColorMap(ByteDataMap2D, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Does linear interpolation on a 2d map for each of the 4 bytes individually (e.g. RGBA color). It's basically a bilinear zoom of an image like you know it from common image editing software. Only intended for square images.
+The resulting map will be without any paddding (also requires at least 1 padding at bottom and left side)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] BiLerpColorMap(ByteDataMap2D map, int zoom)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>map</code> <a class="xref" href="Vintagestory.API.Datastructures.ByteDataMap2D.html">ByteDataMap2D</a></dt>
+    <dd></dd>
+    <dt><code>zoom</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
     <dd></dd>
   </dl>
 

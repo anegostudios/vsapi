@@ -721,6 +721,8 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns the position's climate conditions at specified date, making use of previously obtained worldgen climate conditions
+        /// <br/>This will update .Temperature and .Rainfall values in the supplied baseClimate (the returned value will be the baseClimate object)
+        /// <br/>In contrast, .WorldgenTemperature and .WorldgenRainfall in the supplied baseClimate are unchanged
         /// </summary>
         ClimateCondition GetClimateAt(BlockPos pos, ClimateCondition baseClimate, EnumGetClimateMode mode, double totalDays);
 

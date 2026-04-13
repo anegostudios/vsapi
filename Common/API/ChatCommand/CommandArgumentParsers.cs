@@ -616,7 +616,6 @@ namespace Vintagestory.API.Common
 
             var conds = EntityMatchConditions.FromArgs(subargs);
 
-            Cuboidi box = null;
             if (sourcePos != null)
             {
                 bool hasBox = false;
@@ -634,7 +633,7 @@ namespace Vintagestory.API.Common
                 if (hasBox)
                 {
                     var center = sourcePos.AsBlockPos;
-                    box = new Cuboidi(values).Translate(center.X, center.Y, center.Z);
+                    conds.Box = new Cuboidi(values).Translate(center.X, center.Y, center.Z);
                 }
             }
 

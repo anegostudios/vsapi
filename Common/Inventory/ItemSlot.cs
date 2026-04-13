@@ -112,7 +112,7 @@ namespace Vintagestory.API.Common
             if (inventory?.PutLocked == true) return false;
 
             ItemStack sourceStack = sourceSlot.Itemstack;
-            if (sourceStack == null) return false;
+            if (sourceStack?.Collectible == null) return false;
 
             bool flagsok = (sourceStack.Collectible.GetStorageFlags(sourceStack) & StorageType) > 0;
 
