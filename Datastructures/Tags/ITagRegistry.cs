@@ -100,7 +100,7 @@ public interface ITagRegistry<TTagSet> {
     /// <exception cref="TagRegistryException"> If any of the the requested tags cannot be found and the registry is full or locked. </exception>
     public TTagSet RegisterAndCreateTagSet(params ReadOnlySpan<string> tags)
     {
-        var err = this.TryCreateTagSet(out var set, tags);
+        var err = this.TryRegisterAndCreateTagSet(out var set, tags);
         if (err != TagRegistryError.None) throw new TagRegistryException(this.debugName, err, tags);
         return set;
     }
@@ -123,7 +123,7 @@ public interface ITagRegistry<TTagSet> {
     /// <exception cref="TagRegistryException"> If any of the the requested tags cannot be found and the registry is full or locked. </exception>
     public TTagSet RegisterAndCreateTagSet(IEnumerable<string> tags)
     {
-        var err = this.TryCreateTagSet(out var set, tags);
+        var err = this.TryRegisterAndCreateTagSet(out var set, tags);
         if (err != TagRegistryError.None) throw new TagRegistryException(this.debugName, err, tags.ToArray()); // :ErrorPathDoubleIterate
         return set;
     }
@@ -141,6 +141,13 @@ public interface ITagRegistry<TTagSet> {
         return err;
     }
     #endregion
+
+    /// <summary>Create a new <typeparamref name="TTagSet"/> where all of the tags from both of the input sets are set.</summary>
+    /// <remarks>
+    /// This method does not check whether the tags in the given sets are actually registered with this registry.
+    /// It has to assume you are using it with the registry the set actually came from.
+    /// </remarks>
+    public TTagSet CreateMergedTagSet(TTagSet set1, TTagSet set2);
 
     public IEnumerable<string> SlowEnumerateTagNames(TTagSet set);
 

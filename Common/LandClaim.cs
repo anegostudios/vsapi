@@ -80,25 +80,23 @@ namespace Vintagestory.API.Common
                 }
 
                 Vec3d centerSum = new Vec3d();
-                int sizeSum = 0;
+                long sizeSum = 0;
 
                 foreach (Cuboidi area in Areas)
                 {
                     Vec3i center = area.Center;
-                    sizeSum += area.SizeXYZ;
-                }
+                    long size = area.SizeXYZ;
 
-                foreach (Cuboidi area in Areas)
-                {
-                    Vec3i centeri = area.Center;
-                    Vec3d center = new Vec3d(centeri.X, centeri.Y, centeri.Z);
-                    centerSum += center * ((double)area.SizeXYZ / sizeSum);
+                    centerSum.X += center.X * size;
+                    centerSum.Y += center.Y * size;
+                    centerSum.Z += center.Z * size;
+                    sizeSum += size;
                 }
 
                 return new BlockPos(
-                    (int)(centerSum.X / Areas.Count),
-                    (int)(centerSum.Y / Areas.Count),
-                    (int)(centerSum.Z / Areas.Count)
+                    (int)(centerSum.X / sizeSum),
+                    (int)(centerSum.Y / sizeSum),
+                    (int)(centerSum.Z / sizeSum)
                 );
             }
         }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -794,6 +793,30 @@ namespace Vintagestory.API.Common
                 }
             );
 
+            return toolMiningSpeed;
+        }
+
+        /// <summary>
+        /// Only get the mining speed modifier from CollectibleBehavior such as the buffable (quenching).
+        /// Also applies the GlobalConstants.ToolMiningSpeedModifier if prevent default is not set by any CollectibleBehavior
+        /// </summary>
+        /// <param name="itemStack"></param>
+        /// <returns></returns>
+        public virtual float GetMiningSpeedModifier(IItemStack itemStack)
+        {
+            float toolMiningSpeed = 1;
+            WalkBehaviors(
+                (bh, ref handling) => {
+                    var miningSpeedMultiplier = bh.GetMiningSpeedModifier(itemStack as ItemStack, ref handling);
+                    if (handling != EnumHandling.PassThrough)
+                    {
+                        toolMiningSpeed *= miningSpeedMultiplier;
+                    }
+                },
+                () => {
+                    toolMiningSpeed *= GlobalConstants.ToolMiningSpeedModifier;
+                }
+            );
             return toolMiningSpeed;
         }
 
@@ -1968,6 +1991,8 @@ namespace Vintagestory.API.Common
 
 
             var miningSpeeds = GetMiningSpeeds(inSlot);
+            var miningMod = GetMiningSpeedModifier(inSlot.Itemstack);
+
             if (miningSpeeds != null && miningSpeeds.Count > 0)
             {
                 dsc.AppendLine(Lang.Get("Tool Tier: {0}", GetToolTier(inSlot)));
@@ -1979,7 +2004,7 @@ namespace Vintagestory.API.Common
                     if (val.Value < 1.1) continue;
 
                     if (i > 0) dsc.Append(", ");
-                    dsc.Append(Lang.Get(val.Key.ToString()) + " " + val.Value.ToString("#.#") + "x");
+                    dsc.Append(Lang.Get(val.Key.ToString()) + " " + (val.Value * miningMod).ToString("#.#") + "x");
                     i++;
                 }
 
@@ -2451,7 +2476,7 @@ namespace Vintagestory.API.Common
             if (Code == null) return null;
             var handbookAttributes = Attributes?["handbook"];
             if (handbookAttributes?["exclude"].AsBool() == true) return null;
-             
+
             bool inCreativeTab = CreativeInventoryTabs != null && CreativeInventoryTabs.Length > 0;
             bool inCreativeTabStack = CreativeInventoryStacks != null && CreativeInventoryStacks.Length > 0;
             if (!inCreativeTab && !inCreativeTabStack)
@@ -3337,7 +3362,7 @@ namespace Vintagestory.API.Common
                 () => {
                     double nowHours = world.Calendar.TotalHours;
                     // If the colletible gets heated, retain the heat for 0.25 ingame hour
-                    if (delayCooldown && attr.GetDecimal("temperature") < temperature) nowHours += 0.25f;
+                    if (delayCooldown && attr.GetDecimal("temperature") < temperature) nowHours += 0.5f;
 
                     attr.SetDouble("temperatureLastUpdate", nowHours);
                     attr.SetFloat("temperature", temperature);

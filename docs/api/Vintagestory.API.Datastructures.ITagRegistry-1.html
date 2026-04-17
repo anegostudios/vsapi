@@ -201,6 +201,49 @@ Interface ITagRegistry&lt;TTagSet&gt;
 </h2>
 
 
+  <a id="Vintagestory_API_Datastructures_ITagRegistry_1_CreateMergedTagSet_" data-uid="Vintagestory.API.Datastructures.ITagRegistry`1.CreateMergedTagSet*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_ITagRegistry_1_CreateMergedTagSet__0__0_" data-uid="Vintagestory.API.Datastructures.ITagRegistry`1.CreateMergedTagSet(`0,`0)">
+  CreateMergedTagSet(TTagSet, TTagSet)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new <code class="typeparamref">TTagSet</code> where all of the tags from both of the input sets are set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">TTagSet CreateMergedTagSet(TTagSet set1, TTagSet set2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>set1</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+    <dt><code>set2</code> <span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TTagSet</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Vintagestory_API_Datastructures_ITagRegistry_1_CreateMergedTagSet__0__0__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method does not check whether the tags in the given sets are actually registered with this registry.
+It has to assume you are using it with the registry the set actually came from.</p>
+</div>
+
+
+
+
   <a id="Vintagestory_API_Datastructures_ITagRegistry_1_CreateTagSet_" data-uid="Vintagestory.API.Datastructures.ITagRegistry`1.CreateTagSet*"></a>
 
   <h3 id="Vintagestory_API_Datastructures_ITagRegistry_1_CreateTagSet_System_Collections_Generic_IEnumerable_System_String__" data-uid="Vintagestory.API.Datastructures.ITagRegistry`1.CreateTagSet(System.Collections.Generic.IEnumerable{System.String})">

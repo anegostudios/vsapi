@@ -921,6 +921,48 @@ If 'bhHandling' is not set to 'PreventDefault', the mining speed will be multipl
 
 
 
+  <a id="Vintagestory_API_Common_CollectibleBehavior_GetMiningSpeedModifier_" data-uid="Vintagestory.API.Common.CollectibleBehavior.GetMiningSpeedModifier*"></a>
+
+  <h3 id="Vintagestory_API_Common_CollectibleBehavior_GetMiningSpeedModifier_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.CollectibleBehavior.GetMiningSpeedModifier(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)">
+  GetMiningSpeedModifier(ItemStack, ref EnumHandling)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the overall mining speed multiplier
+Multiplies resulted mining speed of the item by return value if 'bhHandling' is not equal to 'PassThrough'.
+If 'bhHandling' is not set to 'PreventDefault', the mining speed will be multiplied by standard item mining speed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual float GetMiningSpeedModifier(ItemStack itemstack, ref EnumHandling bhHandling)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>bhHandling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Mining speed multiplier</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_CollectibleBehavior_GetMiningSpeeds_" data-uid="Vintagestory.API.Common.CollectibleBehavior.GetMiningSpeeds*"></a>
 
   <h3 id="Vintagestory_API_Common_CollectibleBehavior_GetMiningSpeeds_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.CollectibleBehavior.GetMiningSpeeds(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumHandling@)">

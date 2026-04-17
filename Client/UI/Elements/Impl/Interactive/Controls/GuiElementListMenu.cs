@@ -1,6 +1,7 @@
 using Cairo;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -256,6 +257,7 @@ namespace Vintagestory.API.Client
                     };
 
                     switches[i] = new GuiElementSwitch(api, (on) => toggled(on, num), switchBounds, switchBounds.fixedHeight, pad);
+                    switches[i].On = SelectedIndices == null ? SelectedIndex == i : SelectedIndices.Contains(i);
                     switches[i].ComposeElements(ctx, surface);
 
                     ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
@@ -357,8 +359,6 @@ namespace Vintagestory.API.Client
                     api.Render.GlTranslate(0, Bounds.InnerHeight - (int)scrollOffY, 350);
                     for (int i = 0; i < switches.Length; i++)
                     {
-                        //switches[i].Bounds.fixedOffsetY = () / RuntimeEnv.GUIScale;
-                        //switches[i].Bounds.CalcWorldBounds();
                         switches[i].RenderInteractiveElements(deltaTime);
                     }
                     api.Render.GlPopMatrix();
@@ -637,8 +637,6 @@ namespace Vintagestory.API.Client
             }
 
             this.SelectedIndices = selectedIndices.ToArray();
-
-            
         }
 
         /// <summary>

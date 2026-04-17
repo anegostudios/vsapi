@@ -259,14 +259,7 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
                     currentRecipe = subRecipes[i];
                 }
 
-                foreach (IRecipeIngredient ingredient in currentRecipe.RecipeIngredients)
-                {
-                    FillIngredientPlaceHolders(ingredient, variantCode, currentVariant);
-                    ingredient.SkipVariants = null;    // These can now be nullified, because we have expanded the wildcard successfully
-                    ingredient.AllowedVariants = null;
-                }
-
-                currentRecipe.RecipeOutput.FillPlaceHolder(variantCode, currentVariant);
+                currentRecipe.FillPlaceHolder(variantCode, currentVariant);
             }
             variantCodeIndexDivider *= variants.Length;
             first = false;
@@ -278,6 +271,18 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         }
 
         return subRecipes;
+    }
+
+    protected virtual void FillPlaceHolder(string variantCode, string currentVariant)
+    {
+        foreach (IRecipeIngredient ingredient in RecipeIngredients)
+        {
+            FillIngredientPlaceHolders(ingredient, variantCode, currentVariant);
+            ingredient.SkipVariants = null;    // These can now be nullified, because we have expanded the wildcard successfully
+            ingredient.AllowedVariants = null;
+        }
+
+        RecipeOutput.FillPlaceHolder(variantCode, currentVariant);
     }
 
     public virtual void GenerateOutputStack(ItemSlot[] inputSlots, ItemSlot outputSlot)

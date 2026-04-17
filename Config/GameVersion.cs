@@ -43,7 +43,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision-[rc/pre.subrevision]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-rc.8";
+        public const string ShortGameVersion = OverallVersion + "-rc.9";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 

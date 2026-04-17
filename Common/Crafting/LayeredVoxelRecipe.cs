@@ -186,7 +186,7 @@ public abstract class LayeredVoxelRecipe : RecipeBase
     {
         if (Ingredient == null || Name == null)
         {
-            throw new InvalidOperationException("Trying to write voxel recipe into bytes, but recipe ");
+            throw new InvalidOperationException("Trying to write voxel recipe into bytes, but recipe has a null name or ingredient");
         }
 
         writer.Write(RecipeId);

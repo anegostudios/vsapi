@@ -205,7 +205,7 @@ namespace Vintagestory.API.Common
         /// <param name="renderinfo"></param>
         public virtual void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
         {
-            
+
         }
 
 
@@ -252,7 +252,7 @@ namespace Vintagestory.API.Common
 
         public virtual void GetHeldItemName(StringBuilder sb, ItemStack itemStack)
         {
-            
+
         }
 
         /// <summary>
@@ -324,6 +324,17 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns>Mining speed multiplier</returns>
         public virtual float GetMiningSpeed(ItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer, ref EnumHandling bhHandling)
+        {
+            return 1;
+        }
+
+        /// <summary>
+        /// Get the overall mining speed multiplier
+        /// Multiplies resulted mining speed of the item by return value if 'bhHandling' is not equal to 'PassThrough'.
+        /// If 'bhHandling' is not set to 'PreventDefault', the mining speed will be multiplied by standard item mining speed.
+        /// </summary>
+        /// <returns>Mining speed multiplier</returns>
+        public virtual float GetMiningSpeedModifier(ItemStack itemstack, ref EnumHandling bhHandling)
         {
             return 1;
         }
@@ -415,7 +426,7 @@ namespace Vintagestory.API.Common
 
         public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, IRecipeBase recipe, ItemSlot slot, double x, double y, double z, double size, ref EnumHandling handling)
         {
-            
+
         }
 
         public virtual float GetAttackPower(ItemStack itemstack, float attackPower, ref EnumHandling bhHandling)
@@ -443,7 +454,7 @@ namespace Vintagestory.API.Common
 
         public virtual void AfterGetTemperature(IWorldAccessor world, ItemStack itemstack, float temperature, ref EnumHandling handling)
         {
-            
+
         }
 
         public virtual float GetDamageToEntity(float baseDamage, Entity entity, ItemStack itemStack, ref bool isCriticalHit, ref EnumHandling handling)
