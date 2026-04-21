@@ -128,6 +128,8 @@ namespace Vintagestory.API.Common
 
     public delegate bool TrySpawnEntityDelegate(IBlockAccessor blockAccessor, ref EntityProperties properties, Vec3d spawnPosition, long herdId);
 
+    public delegate bool TrySpawnGroupDelegate(IBlockAccessor blockaccessor, EntityProperties props, BlockPos pos);    
+
     public delegate void EntityDespawnDelegate(Entity entity, EntityDespawnData reasonData);
 
     public delegate void EntityDeathDelegate(Entity entity, DamageSource damageSource);

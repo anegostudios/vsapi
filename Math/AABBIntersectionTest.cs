@@ -228,31 +228,7 @@ namespace Vintagestory.API.MathTools
 
             return false;
         }
-
-
-        // This doesnt work at all FYI. Completely broken, no idea why
-        public static bool RayInteresectWithCuboidSlabMethod(Cuboidd b, Ray r)
-        {
-            double tx1 = (b.X1 - r.dir.X) / r.dir.X;
-            double tx2 = (b.X2 - r.dir.X) / r.dir.X;
-
-            double tmin = Math.Min(tx1, tx2);
-            double tmax = Math.Max(tx1, tx2);
-
-            double ty1 = (b.Y1 - r.dir.Y) / r.dir.Y;
-            double ty2 = (b.Y2 - r.dir.Y) / r.dir.Y;
-
-            tmin = Math.Max(tmin, Math.Min(ty1, ty2));
-            tmax = Math.Min(tmax, Math.Max(ty1, ty2));
-
-            double tz1 = (b.Z1 - r.dir.Z) / r.dir.Z;
-            double tz2 = (b.Z2 - r.dir.Z) / r.dir.Z;
-
-            tmin = Math.Max(tmin, Math.Min(tz1, tz2));
-            tmax = Math.Min(tmax, Math.Max(tz1, tz2));
-
-            return tmax >= tmin;
-        }
+        
 
 
 

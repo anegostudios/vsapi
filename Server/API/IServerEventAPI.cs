@@ -116,6 +116,8 @@ namespace Vintagestory.API.Server
         /// </summary>
         event TrySpawnEntityDelegate OnTrySpawnEntity;
 
+        event TrySpawnGroupDelegate OnTrySpawnGroupNearOffthread;
+
         /// <summary>
         /// Called when a player interacts with an entity
         /// </summary>

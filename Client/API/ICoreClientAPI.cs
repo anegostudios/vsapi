@@ -261,5 +261,10 @@ namespace Vintagestory.API.Client
         /// Is the chunk rendered for this Entity position?
         /// </summary>
         bool IsChunkRendered(EntityPos entityPos);
+
+        /// <summary>
+        /// The threadId of the ChunkTesselator thread client-side
+        /// </summary>
+        int TesselationThreadId { get; }
     }
 }
