@@ -1780,13 +1780,21 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+        /// <summary>
+        /// Let items with nutrition decide if they're actually edible. Prevents oddities like showing an eating animation that does nothing.
+        /// For example, pies cannot be eaten unless they're both sliced and not raw even though they have nutrition properties.
+        /// </summary>
+        public virtual bool CanEat(ItemSlot slot, EntityAgent byEntity)
+        {
+            return !slot.Empty && GetNutritionProperties(byEntity?.World, slot.Itemstack, byEntity) != null;
+        }
 
         /// <summary>
         /// Tries to eat the contents in the slot, first call
         /// </summary>
         protected virtual void tryEatBegin(ItemSlot slot, EntityAgent byEntity, ref EnumHandHandling handling, string eatSound = "eat", int eatSoundRepeats = 1)
         {
-            if (!slot.Empty && GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity) != null)
+            if (CanEat(slot, byEntity))
             {
                 byEntity.World.RegisterCallback((dt) => playEatSound(byEntity, eatSound, eatSoundRepeats), 500);
 
@@ -1822,7 +1830,7 @@ namespace Vintagestory.API.Common
         /// <param name="spawnParticleStack"></param>
         protected virtual bool tryEatStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, ItemStack spawnParticleStack = null)
         {
-            if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity) == null) return false;
+            if (!CanEat(slot, byEntity)) return false;
 
             Vec3d pos = byEntity.Pos.AheadCopy(0.4f).XYZ;
             pos.X += byEntity.LocalEyePos.X;
@@ -1853,7 +1861,7 @@ namespace Vintagestory.API.Common
         {
             FoodNutritionProperties nutriProps = GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity);
 
-            if (byEntity.World is IServerWorldAccessor && nutriProps != null && secondsUsed >= 0.95f)
+            if (byEntity.World is IServerWorldAccessor && nutriProps != null && CanEat(slot, byEntity) && secondsUsed >= 0.95f)
             {
                 TransitionState state = UpdateAndGetTransitionState(api.World, slot, EnumTransitionType.Perish);
                 float spoilState = state != null ? state.TransitionLevel : 0;
@@ -2168,7 +2176,7 @@ namespace Vintagestory.API.Common
         {
             WorldInteraction[] interactions;
 
-            if (GetNutritionProperties(api.World, inSlot.Itemstack, null) != null)
+            if (CanEat(inSlot, null))
             {
                 interactions = new WorldInteraction[]
                 {
