@@ -242,7 +242,9 @@ namespace Vintagestory.API.Server
         void LoadChunkColumn(int chunkX, int chunkZ, bool keepLoaded = false);
 
         /// <summary>
-        /// Generates chunk at given coordinate, completely bypassing any existing world data and caching methods, in other words generates, a chunk from scratch without keeping it in the list of loaded chunks
+        /// Generates a chunk at a given coordinate from scratch without keeping it in the list of loaded chunks.
+        /// This will check if the map region this chunk is part of is loaded, and if not, it will load it from disk if it exists.
+        /// Only if the map region did not exist, it will generate it as well, but it won't save it or load it into the loaded map region list.
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>

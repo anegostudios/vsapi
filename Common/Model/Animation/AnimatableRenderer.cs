@@ -93,6 +93,8 @@ namespace Vintagestory.API.Common
             capi.Event.RegisterRenderer(this, renderStage, "animatable");
             capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowFar, "animatable");
             capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowNear, "animatable");
+
+            ShouldRender = activeAnimationsByAnimCode.Count > 0;
         }
 
         public void OnRenderFrame(float dt, EnumRenderStage stage)
