@@ -368,46 +368,139 @@ namespace Vintagestory.API.Client
             RenderedTriangles = 0;
             AllocatedTris = 0;
 
-            for (int i = 0; i < poolLocations.Count; i++)
+            // Cache frequently used values ​​outside the loop
+            int visIdx = ModelDataPoolLocation.VisibleBufIndex;
+            int count = poolLocations.Count;
+            ModelDataPoolLocation location;
+            int size;
+
+            // switch is moved OUTSIDE the loop 
+            switch (frustumCullMode)
             {
-                ModelDataPoolLocation location = poolLocations[i];
+                case EnumFrustumCullMode.CullInstant:
+                    for (int i = 0; i < count; i++)
+                    {
+                        location = poolLocations[i];
+                        size = location.IndicesEnd - location.IndicesStart;
+                        AllocatedTris += size;
 
-                int size = location.IndicesEnd - location.IndicesStart;
-                if (location.IsVisible(frustumCullMode, frustumCuller))
-                {
-                    indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4; // Offset in bytes, not ints
-                    indicesSizes[indicesGroupsCount] = size;
+                        if (!location.Hide && location.CullVisible[visIdx] && frustumCuller.InFrustum(location.FrustumCullSphere))
+                        {
+                            indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4;
+                            indicesSizes[indicesGroupsCount] = size;
+                            RenderedTriangles += size;
+                            indicesGroupsCount++;
+                        }
+                    }
+                    break;
 
-                    RenderedTriangles += size / 3;
+                case EnumFrustumCullMode.CullInstantShadowPassNear:
+                    for (int i = 0; i < count; i++)
+                    {
+                        location = poolLocations[i];
+                        size = location.IndicesEnd - location.IndicesStart;
+                        AllocatedTris += size;
 
-                    indicesGroupsCount++;
-                }
+                        if (!location.Hide && location.CullVisible[visIdx] && frustumCuller.InFrustumShadowPass(location.FrustumCullSphere))
+                        {
+                            indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4;
+                            indicesSizes[indicesGroupsCount] = size;
+                            RenderedTriangles += size;
+                            indicesGroupsCount++;
+                        }
+                    }
+                    break;
 
-                AllocatedTris += size / 3;
+                case EnumFrustumCullMode.CullInstantShadowPassFar:
+                    for (int i = 0; i < count; i++)
+                    {
+                        location = poolLocations[i];
+                        size = location.IndicesEnd - location.IndicesStart;
+                        AllocatedTris += size;
+
+                        if (!location.Hide && location.CullVisible[visIdx] && location.LodLevel >= 1 && frustumCuller.InFrustumShadowPass(location.FrustumCullSphere))
+                        {
+                            indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4;
+                            indicesSizes[indicesGroupsCount] = size;
+                            RenderedTriangles += size;
+                            indicesGroupsCount++;
+                        }
+                    }
+                    break;
+
+                case EnumFrustumCullMode.CullNormal:
+                    for (int i = 0; i < count; i++)
+                    {
+                        location = poolLocations[i];
+                        size = location.IndicesEnd - location.IndicesStart;
+                        AllocatedTris += size;
+
+                        if (!location.Hide && location.CullVisible[visIdx])
+                        {
+                            bool inFrustum = frustumCuller.InFrustumAndRange(location.FrustumCullSphere, location.FrustumVisible, location.LodLevel);
+                            // UpdateVisibleFlag is inlined directly - removing the extra method call
+                            location.FrustumVisible = inFrustum;
+                            if (inFrustum)
+                            {
+                                indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4;
+                                indicesSizes[indicesGroupsCount] = size;
+                                RenderedTriangles += size;
+                                indicesGroupsCount++;
+                            }
+                        }
+                    }
+                    break;
+
+                default: // NoCull
+                    for (int i = 0; i < count; i++)
+                    {
+                        location = poolLocations[i];
+                        size = location.IndicesEnd - location.IndicesStart;
+                        AllocatedTris += size;
+
+                        if (!location.Hide)
+                        {
+                            indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4;
+                            indicesSizes[indicesGroupsCount] = size;
+                            RenderedTriangles += size;
+                            indicesGroupsCount++;
+                        }
+                    }
+                    break;
             }
+
+
+            AllocatedTris = (int)(AllocatedTris / 3);
+            RenderedTriangles = (int)(RenderedTriangles / 3);
         }
 
         public void SetFullyVisible()
         {
             indicesGroupsCount = 0;
-
             RenderedTriangles = 0;
             AllocatedTris = 0;
 
+            ModelDataPoolLocation location;
+            int size;
+
             for (int i = 0; i < poolLocations.Count; i++)
             {
-                ModelDataPoolLocation location = poolLocations[i];
+                location = poolLocations[i];
 
-                int size = location.IndicesEnd - location.IndicesStart;
+                size = location.IndicesEnd - location.IndicesStart;
                 indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4; // Offset in bytes, not ints
                 indicesSizes[indicesGroupsCount] = size;
 
-                RenderedTriangles += size / 3;
+                RenderedTriangles += size;
 
                 indicesGroupsCount++;
 
-                AllocatedTris += size / 3;
+                AllocatedTris += size;
             }
+
+            AllocatedTris = (int)(AllocatedTris / 3);
+            RenderedTriangles = (int)(RenderedTriangles / 3);
+
         }
 
         /// <summary>
