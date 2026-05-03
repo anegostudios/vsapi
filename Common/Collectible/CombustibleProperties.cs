@@ -179,7 +179,7 @@ namespace Vintagestory.API.Common
             {
                 cloned.SmeltedStack = SmeltedStack.Clone();
             }
-            
+
 
             return cloned;
         }
@@ -285,17 +285,14 @@ namespace Vintagestory.API.Common
 
         public static BakingProperties ReadFrom(ItemStack stack)
         {
-            if (stack == null) return null;
+            if (stack?.Collectible?.Attributes?["bakingProperties"]?.AsObject<BakingProperties>() is not BakingProperties bakingProps) return null;
 
-            BakingProperties result = stack.Collectible?.Attributes?["bakingProperties"]?.AsObject<BakingProperties>();
-            if (result == null) return null;
-
-            if (result.Temp == null || result.Temp == 0)
+            if ((bakingProps.Temp ?? 0) == 0 && stack.Collectible.GetCombustibleProperties(null, stack, null) is CombustibleProperties cProps)
             {
-                CombustibleProperties props = stack.Collectible.GetCombustibleProperties(null, stack, null);
-                if (props != null) result.Temp = props.MeltingPoint - 40;
+                bakingProps.Temp = cProps.MeltingPoint - 40;
             }
-            return result;
+
+            return bakingProps;
         }
     }
 
