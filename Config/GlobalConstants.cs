@@ -232,6 +232,8 @@ namespace Vintagestory.API.Config
         public static Dictionary<string, double[]> playerColorByEntitlement = new Dictionary<string, double[]>()
         {
             { "vsteam", new double[] { 13 / 255.0, 128 / 255.0, 62 / 255.0, 1 } },
+            { "glintteam", new double[] { 52 / 255.0, 152 / 255.0, 219 / 255.0, 1 } },
+
             { "vscontributor", new double[] { 135 / 255.0, 179 / 255.0, 148 / 255.0, 1 } },
             { "vssupporter", new double[] { 254/255.0, 197/255.0, 0, 1 } },
 
@@ -251,6 +253,16 @@ namespace Vintagestory.API.Config
                         BorderColor = GuiStyle.DialogBorderColor,
                         BorderWidth = 3,
                     } },
+            { "glintteam", new TextBackground()
+                    {
+                        FillColor = GuiStyle.DialogLightBgColor,
+                        Padding = 3,
+                        Radius = GuiStyle.ElementBGRadius,
+                        Shade = true,
+                        BorderColor = GuiStyle.DialogBorderColor,
+                        BorderWidth = 3,
+                    } },
+
             { "vscontributor", new TextBackground()
                     {
                         FillColor = GuiStyle.DialogLightBgColor,
@@ -269,6 +281,7 @@ namespace Vintagestory.API.Config
                         BorderColor = GuiStyle.DialogBorderColor,
                         BorderWidth = 3,
                     } },
+
             { "staff", new TextBackground()
                     {
                         FillColor = GuiStyle.DialogLightBgColor,

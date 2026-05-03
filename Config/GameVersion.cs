@@ -33,7 +33,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision-[rc/pre.subrevision]
         /// </summary>
-        public const string OverallVersion = "1.22.1";
+        public const string OverallVersion = "1.22.2";
 
         /// <summary>
         /// Whether this is a stable or unstable version
