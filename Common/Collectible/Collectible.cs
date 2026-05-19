@@ -2103,8 +2103,8 @@ namespace Vintagestory.API.Common
                 {
                     if (combustibleProps.BurnTemperature > 0)
                     {
-                        dsc.AppendLine(Lang.Get("Burn temperature: {0}°C", combustibleProps.BurnTemperature));
-                        dsc.AppendLine(Lang.Get("Burn duration: {0}s", combustibleProps.BurnDuration));
+                        dsc.AppendLine(Lang.Get("Firepit burn temperature: {0}°C", combustibleProps.BurnTemperature));
+                        dsc.AppendLine(Lang.Get("Firepit burn duration: {0}s", combustibleProps.BurnDuration));
                     }
 
                     if (combustibleProps.MeltingPoint > 0)
