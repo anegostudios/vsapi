@@ -554,189 +554,205 @@ namespace Vintagestory.API.Common
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
         {
-            string maybeplayername = args.RawArgs.PeekWord();
-            var mplr = api.World.AllOnlinePlayers.FirstOrDefault(p => p.PlayerName.Equals(maybeplayername, StringComparison.InvariantCultureIgnoreCase));
-            if (mplr != null)
-            {
-                args.RawArgs.PopWord();
-                this.entities = new Entity[] { mplr.Entity };
-                return EnumParseResult.Good;
-            }
+            var result = parse(args);
 
-            char v = maybeplayername?.Length > 0 ? maybeplayername[0] : ' ';
-            if (v != 'p' && v !='e' && v != 'l' && v != 's')
+            if (this.entities.Length > 100 && !args.Caller.HasPrivilege("largeentityselection"))
             {
-                lastErrorMessage = Lang.Get("Not a player name and not a selector p, e, l or s: {0}'", maybeplayername);
-                this.entities = new Entity[] { args.Caller.Entity };
-                return EnumParseResult.DependsOnSubsequent;
-            }
-            v = args.RawArgs.PopChar() ?? ' ';
-
-            if (maybeplayername.Equals("e[!]") && v == 'e')
-            {
-                args.RawArgs.PopWord();
-                if (api.Side == EnumAppSide.Server) this.entities = (api as ICoreServerAPI).World.LoadedEntities.Values.ToArray();
-                else this.entities = (api as ICoreClientAPI).World.LoadedEntities.Values.ToArray();
-                return EnumParseResult.Good;
-            }
-
-            Dictionary<string, string> subargs;
-            if (args.RawArgs.PeekChar() == '[')
-            {
-                var subargsstr = args.RawArgs.PopCodeBlock('[', ']', out string errorMsg);
-                if (errorMsg != null)
-                {
-                    lastErrorMessage = errorMsg;
-                    return EnumParseResult.Bad;
-                }
-
-                subargs = parseSubArgs(subargsstr);
-                if (subargs == null) return EnumParseResult.Bad;
-            } else
-            {
-                if (args.RawArgs.PeekChar() == ' ')
-                {
-                    args.RawArgs.PopWord(); // pop empty space
-                } else
-                {
-                    lastErrorMessage = "Invalid selector, needs to be p,e,l,s followed by [";
-                    return EnumParseResult.Bad;
-                }
-                subargs = new Dictionary<string, string>();
-            }
-
-            Vec3d sourcePos = args.Caller.Pos;
-            Entity callingEntity = args.Caller.Entity;
-
-            if (subargs.Count == 0 && v == 'e')
-            {
-                lastErrorMessage = "No selector defined, use e[!] to select all entities";
+                lastErrorMessage = Lang.Get("More than 100 entities selected ({0}). If you really need to select more, acquire the privilege 'largeentityselection'", this.entities.Length);
+                this.entities = Array.Empty<Entity>();
                 return EnumParseResult.Bad;
             }
 
-            var conds = EntityMatchConditions.FromArgs(subargs);
+            return result;
 
-            if (sourcePos != null)
+            EnumParseResult parse(TextCommandCallingArgs args)
             {
-                bool hasBox = false;
-                string[] codes = { "minx", "miny", "minz", "maxx", "maxy", "maxz" };
-                int[] values = new int[6];
-                for (int i = 0; i < codes.Length; i++)
+                string maybeplayername = args.RawArgs.PeekWord();
+                var mplr = api.World.AllOnlinePlayers.FirstOrDefault(p => p.PlayerName.Equals(maybeplayername, StringComparison.InvariantCultureIgnoreCase));
+                if (mplr != null)
                 {
-                    if (subargs.TryGetValue(codes[i], out string val))
+                    args.RawArgs.PopWord();
+                    this.entities = new Entity[] { mplr.Entity };
+                    return EnumParseResult.Good;
+                }
+
+                char v = maybeplayername?.Length > 0 ? maybeplayername[0] : ' ';
+                if (v != 'p' && v != 'e' && v != 'l' && v != 's')
+                {
+                    lastErrorMessage = Lang.Get("Not a player name and not a selector p, e, l or s: {0}'", maybeplayername);
+                    this.entities = new Entity[] { args.Caller.Entity };
+                    return EnumParseResult.DependsOnSubsequent;
+                }
+                v = args.RawArgs.PopChar() ?? ' ';
+
+                if (maybeplayername.Equals("e[!]") && v == 'e')
+                {
+                    args.RawArgs.PopWord();
+                    if (api.Side == EnumAppSide.Server) this.entities = (api as ICoreServerAPI).World.LoadedEntities.Values.ToArray();
+                    else this.entities = (api as ICoreClientAPI).World.LoadedEntities.Values.ToArray();
+                    return EnumParseResult.Good;
+                }
+
+                Dictionary<string, string> subargs;
+                if (args.RawArgs.PeekChar() == '[')
+                {
+                    var subargsstr = args.RawArgs.PopCodeBlock('[', ']', out string errorMsg);
+                    if (errorMsg != null)
                     {
-                        values[i] = val.ToInt() + i/3; // +1 for maxx, maxy and maxz
-                        subargs.Remove(codes[i]);
-                        hasBox = true;
+                        lastErrorMessage = errorMsg;
+                        return EnumParseResult.Bad;
                     }
+
+                    subargs = parseSubArgs(subargsstr);
+                    if (subargs == null) return EnumParseResult.Bad;
                 }
-                if (hasBox)
+                else
                 {
-                    var center = sourcePos.AsBlockPos;
-                    conds.Box = new Cuboidi(values).Translate(center.X, center.Y, center.Z);
-                }
-            }
-
-
-            if (subargs.Count > 0)
-            {
-                lastErrorMessage = "Unknown selector '" + string.Join(", ", subargs.Keys) + "'";
-                return EnumParseResult.Bad;
-            }
-
-            List<Entity> foundEntities = new List<Entity>();
-
-            if (conds.Range != null && sourcePos == null)
-            {
-                lastErrorMessage = "Can't use range argument without source pos";
-                return EnumParseResult.Bad;
-            }
-
-            switch (v)
-            {
-                // Players
-                case 'p':
-                    foreach (var plr in api.World.AllOnlinePlayers)
+                    if (args.RawArgs.PeekChar() == ' ')
                     {
-                        if (entityMatches(plr.Entity, sourcePos, conds))
+                        args.RawArgs.PopWord(); // pop empty space
+                    }
+                    else
+                    {
+                        lastErrorMessage = "Invalid selector, needs to be p,e,l,s followed by [";
+                        return EnumParseResult.Bad;
+                    }
+                    subargs = new Dictionary<string, string>();
+                }
+
+                Vec3d sourcePos = args.Caller.Pos;
+                Entity callingEntity = args.Caller.Entity;
+
+                if (subargs.Count == 0 && v == 'e')
+                {
+                    lastErrorMessage = "No selector defined, use e[!] to select all entities";
+                    return EnumParseResult.Bad;
+                }
+
+                var conds = EntityMatchConditions.FromArgs(subargs);
+
+                if (sourcePos != null)
+                {
+                    bool hasBox = false;
+                    string[] codes = { "minx", "miny", "minz", "maxx", "maxy", "maxz" };
+                    int[] values = new int[6];
+                    for (int i = 0; i < codes.Length; i++)
+                    {
+                        if (subargs.TryGetValue(codes[i], out string val))
                         {
-                            foundEntities.Add(plr.Entity);
+                            values[i] = val.ToInt() + i / 3; // +1 for maxx, maxy and maxz
+                            subargs.Remove(codes[i]);
+                            hasBox = true;
                         }
                     }
-
-                    this.entities = foundEntities.ToArray();
-                    return EnumParseResult.Good;
-
-                // Entities
-                case 'e':
-                    if (conds.Range == null)
+                    if (hasBox)
                     {
-                        ICollection<Entity> entities;
-                        if (api.Side == EnumAppSide.Server) entities = (api as ICoreServerAPI).World.LoadedEntities.Values;
-                        else entities = (api as ICoreClientAPI).World.LoadedEntities.Values;
+                        var center = sourcePos.AsBlockPos;
+                        conds.Box = new Cuboidi(values).Translate(center.X, center.Y, center.Z);
+                    }
+                }
 
-                        foreach (Entity e in entities)
+
+                if (subargs.Count > 0)
+                {
+                    lastErrorMessage = "Unknown selector '" + string.Join(", ", subargs.Keys) + "'";
+                    return EnumParseResult.Bad;
+                }
+
+                List<Entity> foundEntities = new List<Entity>();
+
+                if (conds.Range != null && sourcePos == null)
+                {
+                    lastErrorMessage = "Can't use range argument without source pos";
+                    return EnumParseResult.Bad;
+                }
+
+                switch (v)
+                {
+                    // Players
+                    case 'p':
+                        foreach (var plr in api.World.AllOnlinePlayers)
                         {
-                            if (entityMatches(e, sourcePos, conds))
+                            if (entityMatches(plr.Entity, sourcePos, conds))
                             {
-                                foundEntities.Add(e);
+                                foundEntities.Add(plr.Entity);
                             }
                         }
 
                         this.entities = foundEntities.ToArray();
-                    }
-                    else
-                    {
-                        float r = (float)conds.Range;
-                        entities = api.World.GetEntitiesAround(sourcePos, r, r, (e) =>
+                        return EnumParseResult.Good;
+
+                    // Entities
+                    case 'e':
+                        if (conds.Range == null)
                         {
-                            return entityMatches(e, sourcePos, conds);
-                        });
+                            ICollection<Entity> entities;
+                            if (api.Side == EnumAppSide.Server) entities = (api as ICoreServerAPI).World.LoadedEntities.Values;
+                            else entities = (api as ICoreClientAPI).World.LoadedEntities.Values;
 
-                    }
+                            foreach (Entity e in entities)
+                            {
+                                if (entityMatches(e, sourcePos, conds))
+                                {
+                                    foundEntities.Add(e);
+                                }
+                            }
 
-                    return EnumParseResult.Good;
+                            this.entities = foundEntities.ToArray();
+                        }
+                        else
+                        {
+                            float r = (float)conds.Range;
+                            entities = api.World.GetEntitiesAround(sourcePos, r, r, (e) =>
+                            {
+                                return entityMatches(e, sourcePos, conds);
+                            });
 
-                // Looked at entity
-                case 'l':
-                    var eplr = callingEntity as EntityPlayer;
-                    if (eplr == null)
-                    {
-                        lastErrorMessage = "Can't use 'l' without source player";
+                        }
+
+                        return EnumParseResult.Good;
+
+                    // Looked at entity
+                    case 'l':
+                        var eplr = callingEntity as EntityPlayer;
+                        if (eplr == null)
+                        {
+                            lastErrorMessage = "Can't use 'l' without source player";
+                            return EnumParseResult.Bad;
+                        }
+                        if (eplr.Player.CurrentEntitySelection == null)
+                        {
+                            lastErrorMessage = "Not looking at an entity";
+                            return EnumParseResult.Bad;
+                        }
+
+                        var lookedAtEntity = eplr.Player.CurrentEntitySelection.Entity;
+                        if (entityMatches(lookedAtEntity, sourcePos, conds))
+                        {
+                            this.entities = new Entity[] { lookedAtEntity };
+                        }
+                        else
+                        {
+                            this.entities = Array.Empty<Entity>();
+                        }
+                        return EnumParseResult.Good;
+
+                    // Executing entity
+                    case 's':
+                        if (entityMatches(callingEntity, sourcePos, conds))
+                        {
+                            this.entities = new Entity[] { callingEntity };
+                        }
+                        else
+                        {
+                            this.entities = Array.Empty<Entity>();
+                        }
+                        return EnumParseResult.Good;
+
+                    default:
+                        lastErrorMessage = "Wrong selector, needs to be a player name or p,e,l or s";
                         return EnumParseResult.Bad;
-                    }
-                    if (eplr.Player.CurrentEntitySelection == null)
-                    {
-                        lastErrorMessage = "Not looking at an entity";
-                        return EnumParseResult.Bad;
-                    }
-
-                    var lookedAtEntity = eplr.Player.CurrentEntitySelection.Entity;
-                    if (entityMatches(lookedAtEntity, sourcePos, conds))
-                    {
-                        this.entities = new Entity[] { lookedAtEntity };
-                    }
-                    else
-                    {
-                        this.entities = Array.Empty<Entity>();
-                    }
-                    return EnumParseResult.Good;
-
-                // Executing entity
-                case 's':
-                    if (entityMatches(callingEntity, sourcePos, conds))
-                    {
-                        this.entities = new Entity[] { callingEntity };
-                    }
-                    else
-                    {
-                        this.entities = Array.Empty<Entity>();
-                    }
-                    return EnumParseResult.Good;
-
-                default:
-                    lastErrorMessage = "Wrong selector, needs to be a player name or p,e,l or s";
-                    return EnumParseResult.Bad;
+                }
             }
         }
 

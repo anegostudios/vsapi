@@ -31,9 +31,14 @@ namespace Vintagestory.API.Config
     public static class GameVersion
     {
         /// <summary>
+        /// Major and Minor version as string for easy updating all the other ones in this class
+        /// </summary>
+        public const string OverallMajorMinor = "1.22";
+
+        /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision-[rc/pre.subrevision]
         /// </summary>
-        public const string OverallVersion = "1.22.2";
+        public const string OverallVersion = OverallMajorMinor + ".2";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -53,22 +58,19 @@ namespace Vintagestory.API.Config
         public static string LongGameVersion = "v" + ShortGameVersion + " (" + Branch + ")";
 
         /// <summary>
-        /// Assembly Info Version number in the format: major.minor.revision
+        /// Assembly Info Version number in the format: major.minor.revision.subrevision
         /// </summary>
-        public const string AssemblyVersion = "1.0.0.0";
-
-
-
+        public const string AssemblyVersion = OverallVersion +".0";
 
         /// <summary>
         /// Version of the Mod API
         /// </summary>
-        public const string APIVersion = "1.21.0";
+        public const string APIVersion = OverallMajorMinor + ".0";
 
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.22.6";
+        public const string NetworkVersion = OverallMajorMinor + ".6";
 
         /// <summary>
         /// Version of the world generator - a change in version will insert a smoothed chunk between old and new version

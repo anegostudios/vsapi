@@ -79,11 +79,8 @@ namespace Vintagestory.API.Common
             }
             catch (Exception ex)
             {
-                if (logger != null) {
-                    logger.Error("Failed loading bitmap from data. Will default to an empty 1x1 bitmap.");
-                    logger.Error(ex);
-                }
-
+                logger?.Error("Failed loading bitmap from data. Will default to an empty 1x1 bitmap.");
+                logger?.Error(ex);
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
             }
@@ -96,17 +93,14 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                var buffer = new byte[stream.Length];
+                byte[] buffer = new byte[stream.Length];
                 stream.ReadExactly(buffer);
                 bmp = Decode(buffer);
             }
             catch (Exception ex)
             {
-                if (logger != null) {
-                    logger.Error("Failed loading bitmap from data. Will default to an empty 1x1 bitmap.");
-                    logger.Error(ex);
-                }
-
+                logger?.Error("Failed loading bitmap from data. Will default to an empty 1x1 bitmap.");
+                logger?.Error(ex);
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
             }
@@ -142,7 +136,15 @@ namespace Vintagestory.API.Common
                 bitmapInfo.AlphaType = SKAlphaType.Unpremul;
                 // needs to be set so on MacOS so we load the pixel in the correct color format for the GPU upload, else we get R / B swaped channels
                 bitmapInfo.ColorType = SKColorType.Bgra8888;
-                return SKBitmap.Decode(codec, bitmapInfo);
+
+                var bitmap = new SKBitmap (bitmapInfo);
+                var result = codec.GetPixels (bitmapInfo, bitmap.GetPixels (out _));
+                if (result != SKCodecResult.Success) {
+                    bitmap.Dispose ();
+                    throw new InvalidDataException($"Failed to decode bitmap from data with error: {result}");
+                }
+
+                return bitmap;
             }
         }
 
@@ -281,7 +283,7 @@ namespace Vintagestory.API.Common
             int height = bmp.Height;
             int centerOffsetX = (width - newSize);
             int centerOffsetY = 0;
-            int brown = (29 << 16) + (11 << 8) + 1; 
+            int brown = (29 << 16) + (11 << 8) + 1;
             for (int x = 0; x < newSize; x++)
             {
                 for (int y = 0; y < newSize; y++)

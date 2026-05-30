@@ -128,7 +128,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public void Leave()
         {
-            if (!Enabled && !PrintSlowTicks) return;
+            if (!Enabled && !PrintSlowTicks || currentEntry == null) return;
 
             long elapsedTicks = stopwatch.ElapsedTicks;
             currentEntry.ElapsedTicks += elapsedTicks - currentEntry.Start;

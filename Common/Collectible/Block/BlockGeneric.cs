@@ -326,5 +326,57 @@ namespace Vintagestory.API.Common
 
             return base.SideIsSolid(blockAccess, pos, faceIndex);
         }
+
+        public override int GetLightAbsorption(IWorldChunk chunk, BlockPos pos)
+        {
+            int result = 0;
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                StrongBlockBehavior sbh = behavior as StrongBlockBehavior;
+                if (sbh == null) continue;
+
+                EnumHandling handled = EnumHandling.PassThrough;
+                int behaviorResult = sbh.GetLightAbsorption(chunk, pos, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result = behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            return base.GetLightAbsorption(chunk, pos);
+        }
+
+        public override int GetLightAbsorption(IBlockAccessor blockAccessor, BlockPos pos)
+        {
+            int result = 0;
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                StrongBlockBehavior sbh = behavior as StrongBlockBehavior;
+                if (sbh == null) continue;
+
+                EnumHandling handled = EnumHandling.PassThrough;
+                int behaviorResult = sbh.GetLightAbsorption(blockAccessor, pos, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result = behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            return base.GetLightAbsorption(blockAccessor, pos);
+        }
     }
 }

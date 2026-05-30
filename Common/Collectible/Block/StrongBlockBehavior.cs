@@ -85,5 +85,17 @@ namespace Vintagestory.API.Common
             handled = EnumHandling.PassThrough;
             return false;
         }
+
+        public virtual int GetLightAbsorption(IWorldChunk chunk, BlockPos pos, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return 0;
+        }
+
+        public virtual int GetLightAbsorption(IBlockAccessor blockAccessor, BlockPos pos, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return 0;
+        }
     }
 }

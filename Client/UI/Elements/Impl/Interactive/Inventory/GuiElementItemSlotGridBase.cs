@@ -721,7 +721,7 @@ namespace Vintagestory.API.Client
         {
             base.OnKeyDown(api, args);
 
-            if (!HasFocus) return;
+            if (!HasFocus || cols == 0 || rows == 0) return;
 
             if (KeyboardControlEnabled)
             {
