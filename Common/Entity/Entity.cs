@@ -1758,7 +1758,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual EntityBehavior? GetBehavior(string name)
         {
-            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+            List<EntityBehavior>? behaviors = SidedProperties?.Behaviors;
 
             if (behaviors == null)
             {
@@ -1782,7 +1782,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual TEntityBehavior? GetBehavior<TEntityBehavior>() where TEntityBehavior : EntityBehavior
         {
-            List<EntityBehavior>? behaviors = SidedProperties.Behaviors;
+            List<EntityBehavior>? behaviors = SidedProperties?.Behaviors;
 
             if (behaviors == null)
             {
