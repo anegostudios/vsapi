@@ -126,8 +126,19 @@ namespace Vintagestory.API.MathTools
 
         public struct ColumnNoise
         {
-            OctaveEntry[] orderedOctaveEntries;
-            PastEvaluation[] pastEvaluations;
+            // Thread-isolated static arrays (TLS).
+            // Size 48 covers any possible world height.
+            [ThreadStatic] private static OctaveEntry[] _threadOctaves;
+            [ThreadStatic] private static PastEvaluation[] _threadPastEvals;
+            [ThreadStatic] private static double[] _threadMaxValues;
+            [ThreadStatic] private static int[] _threadOrder;
+
+            // References to TLS arrays for quick access within methods
+            private OctaveEntry[] orderedOctaveEntries;
+            private PastEvaluation[] pastEvaluations;
+
+            // Strict limitation for loops since arrays can be longer
+            private int nUsedOctaves;
 
             public double UncurvedBound { get; private set; }
             public double BoundMin { get; private set; }
@@ -147,9 +158,22 @@ namespace Vintagestory.API.MathTools
             public ColumnNoise(NewNormalizedSimplexFractalNoise terrainNoise, double relativeYFrequency, double[] amplitudes, double[] thresholds, double noiseX, double noiseZ)
             {
                 int nAvailableOctaves = terrainNoise.frequencies.Length;
-                int nUsedOctaves = 0;
-                double[] maxValues = new double[nAvailableOctaves];
-                int[] order = new int[nAvailableOctaves];
+
+                // Initialize or expand TLS arrays on first call in a thread
+                if (_threadOctaves == null || _threadOctaves.Length < nAvailableOctaves)
+                {
+                    int newSize = Math.Max(48, nAvailableOctaves);
+                    _threadOctaves = new OctaveEntry[newSize];
+                    _threadPastEvals = new PastEvaluation[newSize];
+                    _threadMaxValues = new double[newSize];
+                    _threadOrder = new int[newSize];
+                }
+
+                // Binding local links to TLS arrays
+                double[] maxValues = _threadMaxValues;
+                int[] order = _threadOrder;
+
+                int nUsedOctavesLocal = 0;
                 double bound = 0;
                 for (int i = nAvailableOctaves - 1; i >= 0; i--)
                 {
@@ -161,8 +185,8 @@ namespace Vintagestory.API.MathTools
                     if (maxValues[i] == 0) continue;
 
                     // Descending order: Biggest octaves first, so we can rule out layers sooner.
-                    order[nUsedOctaves] = i;
-                    for (int j = nUsedOctaves - 1; j >= 0; j--)
+                    order[nUsedOctavesLocal] = i;
+                    for (int j = nUsedOctavesLocal - 1; j >= 0; j--)
                     {
                         if (maxValues[order[j + 1]] > maxValues[order[j]])
                         {
@@ -171,17 +195,20 @@ namespace Vintagestory.API.MathTools
                             order[j + 1] = temp;
                         }
                     }
-                    nUsedOctaves++;
+                    nUsedOctavesLocal++;
                 }
+
                 this.UncurvedBound = bound;
                 this.BoundMin = NoiseValueCurve(-bound);
                 this.BoundMax = NoiseValueCurve(bound);
+                this.nUsedOctaves = nUsedOctavesLocal;
 
-                // Fill out noise generators in order
-                this.orderedOctaveEntries = new OctaveEntry[nUsedOctaves];
-                this.pastEvaluations = new PastEvaluation[nUsedOctaves];
+                // reuse _threadOctaves and _threadPastEvals
+                this.orderedOctaveEntries = _threadOctaves;
+                this.pastEvaluations = _threadPastEvals;
+
                 double uncertaintySum = 0;
-                for (int j = nUsedOctaves - 1; j >= 0; j--)
+                for (int j = nUsedOctavesLocal - 1; j >= 0; j--)
                 {
                     int i = order[j];
                     uncertaintySum += maxValues[i];
@@ -212,7 +239,9 @@ namespace Vintagestory.API.MathTools
                 const double maxYSlope = NewSimplexNoiseLayer.MaxYSlope_ImprovedXZ;
                 double valueTempMin = inverseCurvedThresholder;
                 double valueTempMax = inverseCurvedThresholder;
-                for (int j = 0; j < orderedOctaveEntries.Length; j++)
+
+                // Iterate strictly up to nUsedOctaves
+                for (int j = 0; j < nUsedOctaves; j++)
                 {
                     // Exit if we couldn't possibly trigger an early return within this loop.
                     if (!(valueTempMax <= 0) && !(valueTempMin >= 0)) break;
@@ -227,10 +256,10 @@ namespace Vintagestory.API.MathTools
                     double evalY = y * octaveEntry.FrequencyY;
                     double deltaY = Math.Abs(pastEvaluations[j].Y - evalY);
                     valueTempMin += ApplyThresholding(Math.Max(-1, pastEvaluations[j].Value - deltaY * maxYSlope) * octaveEntry.Amplitude, octaveEntry.Threshold, octaveEntry.SmoothingFactor);
-                    valueTempMax += ApplyThresholding(Math.Min( 1, pastEvaluations[j].Value + deltaY * maxYSlope) * octaveEntry.Amplitude, octaveEntry.Threshold, octaveEntry.SmoothingFactor);
+                    valueTempMax += ApplyThresholding(Math.Min(1, pastEvaluations[j].Value + deltaY * maxYSlope) * octaveEntry.Amplitude, octaveEntry.Threshold, octaveEntry.SmoothingFactor);
                 }
 
-                for (int j = 0; j < orderedOctaveEntries.Length; j++)
+                for (int j = 0; j < nUsedOctaves; j++)
                 {
                     ref readonly OctaveEntry octaveEntry = ref orderedOctaveEntries[j];
 
@@ -252,7 +281,9 @@ namespace Vintagestory.API.MathTools
             public double Noise(double y)
             {
                 double value = 0.0;
-                for (int j = 0; j < orderedOctaveEntries.Length; j++)
+
+                // Iterate strictly up to nUsedOctaves
+                for (int j = 0; j < nUsedOctaves; j++)
                 {
                     ref readonly OctaveEntry octaveEntry = ref orderedOctaveEntries[j];
 
@@ -262,6 +293,8 @@ namespace Vintagestory.API.MathTools
                 }
                 return NoiseValueCurve(value);
             }
+
+
         }
     }
 }
