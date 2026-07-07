@@ -480,17 +480,14 @@ namespace Vintagestory.API.Common
                 runTriggers();
             }
 
-            if (loopingSounds != null)
+            foreach (var val in loopingSounds)
             {
-                foreach (var val in loopingSounds)
+                if (!ActiveAnimationsByAnimCode.ContainsKey(val.Key))
                 {
-                    if (!ActiveAnimationsByAnimCode.ContainsKey(val.Key))
-                    {
-                        val.Value.Stop();
-                        val.Value.Dispose();
-                        loopingSounds.Remove(val.Key);
-                        break;
-                    }
+                    val.Value.Stop();
+                    val.Value.Dispose();
+                    loopingSounds.Remove(val.Key);
+                    break;
                 }
             }
         }
@@ -527,13 +524,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public void Dispose()
         {
-            if (loopingSounds != null)
+            foreach (var val in loopingSounds)
             {
-                foreach (var val in loopingSounds)
-                {
-                    val.Value.Stop();
-                    val.Value.Dispose();
-                }
+                val.Value.Stop();
+                val.Value.Dispose();
             }
         }
 
@@ -558,8 +552,6 @@ namespace Vintagestory.API.Common
                 var cworld = world as IClientWorldAccessor;
                 if (cworld != null)
                 {
-                    if (loopingSounds == null) loopingSounds = new Dictionary<string, ILoadedSound>();
-
                     ILoadedSound lsound;
                     if (!loopingSounds.TryGetValue(animationMetaCode, out lsound))
                     {
