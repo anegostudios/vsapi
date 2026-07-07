@@ -542,7 +542,7 @@ namespace Vintagestory.API.Common
             OnAnimationStopped?.Invoke(code);
         }
 
-        Dictionary<string, ILoadedSound> loopingSounds = null;
+        Dictionary<string, ILoadedSound> loopingSounds = [];
 
         public void ShouldPlaySound(string animationMetaCode, AnimationSound sound)
         {
