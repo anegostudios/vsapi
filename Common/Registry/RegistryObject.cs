@@ -212,11 +212,40 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public string LastCodePart(int posFromRight = 0)
         {
-            if (Code == null) return null;
-            if (posFromRight == 0 && !Code.Path.Contains('-')) return Code.Path;
+            if (Code == null)
+                return null;
 
-            string[] parts = Code.Path.Split('-');
-            return parts.Length - 1 - posFromRight >= 0 ? parts[parts.Length - 1 - posFromRight] : null;
+            string path = Code.Path;
+            int rightBoundary = path.Length;    // Right boundary of the current found part (initially end of string)
+            int dashesSeen = -1;    // Number of dashes encountered while traversing right to left
+            int i = path.Length;    // i — current index while traversing right to left
+
+            // Traverse the string right to left searching for dashes
+            while (--i >= 0)
+            {
+                if (path[i] != '-')
+                    continue;
+
+                dashesSeen++;
+
+                // If we found the needed dash (index posFromRight), return the part between it and rightBoundary
+                if (dashesSeen == posFromRight)
+                {
+                    return path.Substring(i + 1, rightBoundary - i - 1);
+                }
+                // Otherwise shift the right boundary — now it points to the current dash
+                rightBoundary = i;
+            }
+
+            // Reached the start of the string — not enough dashes
+            // If the last part was requested
+            if (posFromRight == 0)
+                return dashesSeen == -1 ? path : null;
+
+            // If a non-last part was requested, check if there were enough dashes
+            // dashesSeen == posFromRight - 1 means there were exactly enough dashes
+            // to extract the requested part from the start of the string to the first dash
+            return dashesSeen == posFromRight - 1 ? path.Substring(0, rightBoundary) : null;
         }
 
         /// <summary>
@@ -226,11 +255,38 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public string FirstCodePart(int posFromLeft = 0)
         {
-            if (Code == null) return null;
-            if (posFromLeft == 0 && !Code.Path.Contains('-')) return Code.Path;
+            if (Code == null)
+                return null;
 
-            string[] parts = Code.Path.Split('-');
-            return posFromLeft <= parts.Length - 1 ? parts[posFromLeft] : null;
+            string path = Code.Path;
+            int leftBoundary = 0;   // Left boundary of the current found part (initially start of string)
+            int dashesSeen = -1;    // Number of dashes encountered while traversing left to right
+
+            // Traverse the string left to right searching for dashes
+            for (int i = 0; i < path.Length; i++)
+            {
+                if (path[i] != '-')
+                    continue;
+
+                dashesSeen++;
+                // If we found the needed dash, return the part between leftBoundary and it
+                if (dashesSeen == posFromLeft)
+                {
+                    return path.Substring(leftBoundary, i - leftBoundary);
+                }
+                // Otherwise shift the left boundary — now it points to the position after the current dash
+                leftBoundary = i + 1;
+            }
+
+            // Reached the end of the string — not enough dashes
+            // If the first part was requested
+            if (posFromLeft == 0)
+                return dashesSeen == -1 ? path : null;
+
+            // If a non-first part was requested, check if there were enough dashes
+            // dashesSeen == posFromLeft - 1 means there were exactly enough dashes
+            // to extract the requested part from the last dash to the end of the string
+            return dashesSeen == posFromLeft - 1 ? path.Substring(leftBoundary) : null;            
         }
 
         /// <summary>
