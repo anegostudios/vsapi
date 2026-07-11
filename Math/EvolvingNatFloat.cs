@@ -156,10 +156,16 @@ namespace Vintagestory.API.MathTools
             return evo;
         }
 
-        public override bool Equals([NotNullWhen(true)] object obj)
+        // Add a typed overload 
+        // This way we avoid constant conversions of EvolvingNatFloat to object
+        public bool Equals(EvolvingNatFloat other)
         {
-            if (obj is not EvolvingNatFloat enf) return false;
-            return enf.Transform == Transform && enf.factor == factor;
+            return other.Transform == Transform && other.factor == factor;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is EvolvingNatFloat other && Equals(other);
         }
 
         public static bool operator ==(EvolvingNatFloat left, EvolvingNatFloat right)
