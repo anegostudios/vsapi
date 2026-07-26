@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 
@@ -37,12 +37,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         long LastChanged { get; }
 
+        #nullable enable annotations
         /// <summary>
         /// Gets or sets the slot at the given slot number.
         /// Returns null for invalid slot number (below 0 or above Count-1).
         /// The setter allows for replacing slots with custom ones, though caution is advised.
         /// </summary>
-        ItemSlot this[int slotId] { get; set; }
+        ItemSlot? this[int slotId] { get; set; }
+        #nullable disable annotations
 
         /// <summary>
         /// The name of the class for the inventory

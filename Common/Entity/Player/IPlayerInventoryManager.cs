@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 #nullable disable
@@ -138,7 +139,7 @@ namespace Vintagestory.API.Common
         /// <param name="invID"></param>
         /// <param name="invFound"></param>
         /// <returns></returns>
-        bool GetInventory(string invID, out InventoryBase invFound);
+        bool GetInventory(string invID, [MaybeNullWhen(false)] out InventoryBase invFound);
 
 
         /// <summary>

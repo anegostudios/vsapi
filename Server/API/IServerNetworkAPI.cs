@@ -1,4 +1,4 @@
-﻿using Vintagestory.API.Common;
+using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -72,8 +72,10 @@ namespace Vintagestory.API.Server
         /// <param name="pos"></param>
         /// <param name="packetId"></param>
         /// <param name="data"></param>
+        //[Obsolete("Prefer using the ReadOnlySpan overload")] // Rennorb: Obsolete in 1.23
         void BroadcastBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null);
 
+        //[Obsolete("Prefer using the ReadOnlySpan overload")] // Rennorb: Obsolete in 1.23
         void BroadcastBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null, params IServerPlayer[] skipPlayers);
 
 

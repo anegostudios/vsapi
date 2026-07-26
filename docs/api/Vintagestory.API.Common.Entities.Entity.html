@@ -4768,20 +4768,23 @@ Hint: Use itemstack.FixMapping() to do the job for you.</p>
   </h3>
 
   <div class="markdown level1 summary"><p>Called when on the client side something called capi.Network.SendEntityPacket()</p>
+<param name="player">
+<param name="packetid">
+<param name="data">
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void OnReceivedClientPacket(IServerPlayer player, int packetId, byte[] packetData)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>player</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></dt>
     <dd></dd>
-    <dt><code>packetid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>packetId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
-    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dt><code>packetData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
     <dd></dd>
   </dl>
 

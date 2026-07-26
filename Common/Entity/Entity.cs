@@ -1550,20 +1550,79 @@ namespace Vintagestory.API.Common.Entities
 
         /// <summary>
         /// Called when on the client side something called capi.Network.SendEntityPacket()
-        /// </summary>
         /// <param name="player"></param>
         /// <param name="packetid"></param>
         /// <param name="data"></param>
-        public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
+        /// </summary>
+        public virtual void OnReceivedClientPacket(IServerPlayer player, int packetId, byte[] packetData)
         {
             EnumHandling handled = EnumHandling.PassThrough;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
-                behavior.OnReceivedClientPacket(player, packetid, data, ref handled);
+                behavior.OnReceivedClientPacket(player, packetId, packetData, ref handled);
                 if (handled == EnumHandling.PreventSubsequent) break;
             }
         }
+
+
+        #nullable enable
+        /// <summary> Access permissions cache for a specific block for a specific player. Used in packet handling to not have to duplicate work if multiple handlers are interested in validation. </summary>
+        /// <remarks> Proper use of this (passdown into handlers) will be introduced in the next version. </remarks>
+        public struct CachedAccessPerms(Entity entity, IPlayer player)
+        {
+            public EnumBlockAccessFlags TestedFlags;
+            public EnumBlockAccessFlags GrantedFlags;
+            public EnumReachability Reachable;
+            public enum EnumReachability { Unknown = default, Reachable = 1, OutOfReach = -1 }
+
+
+            /// <summary>Test for permissions and log an audit message if the permission is not given.</summary>
+            /// <param name="accessToCheck">These are block access flags that will be checked for the position the entity is located in. Should be set to <see cref="EnumBlockAccessFlags.Use"/> in 99% of cases.</param>
+            public bool IsInteractingPlayerAllowedTo(EnumBlockAccessFlags accessToCheck, bool validatePickRange, string thingNameForLog)
+            {
+                if (validatePickRange)
+                {
+                    if (this.Reachable == EnumReachability.Unknown)
+                    {
+                        this.Reachable = player.IsInInteractionRangeOf(entity) ? EnumReachability.Reachable : EnumReachability.OutOfReach;
+                        if (this.Reachable != EnumReachability.Reachable)
+                        {
+                            // Only log the first time we hit this.
+                            entity.World.Logger.Audit("Player {0} sent a packet to {1} at {2} but is too far away. Rejected.", player.PlayerName, thingNameForLog, entity);
+                        }
+                    }
+
+                    if (this.Reachable != EnumReachability.Reachable)
+                    {
+                        return false;
+                    }
+                }
+
+                if ((accessToCheck & this.TestedFlags) != accessToCheck)
+                {
+                    if (entity.World.Claims.TryAccess(player, entity.Pos.AsBlockPos, accessToCheck))
+                    {
+                        this.GrantedFlags |= accessToCheck;
+                    }
+                    else
+                    {
+                        // Only log the first time we hit this.
+                        entity.World.Logger.Audit("Player {0} sent a packet to {1} at {2} but has no claim access. Rejected.", player.PlayerName, thingNameForLog, entity);
+                    }
+
+                    this.TestedFlags |= accessToCheck;
+                }
+
+                if ((accessToCheck & this.GrantedFlags) != accessToCheck)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
+        #nullable disable
 
         /// <summary>
         /// Called when on the server side something called sapi.Network.SendEntityPacket()

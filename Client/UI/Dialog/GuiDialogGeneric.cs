@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
@@ -79,26 +79,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="blockEntityPos">The block's position.</param>
         /// <returns>In range or no?</returns>
+        // [Obsolete("Prefer using player."+nameof(IPlayer.IsInInteractionRangeOf)+". A dialog does not have an in-world position.", true)] // Rennorb: Obsolete in 1.23.
         public virtual bool IsInRangeOfBlock(BlockPos blockEntityPos)
         {
-            Block block = capi.World.BlockAccessor.GetBlock(blockEntityPos);
-            Cuboidf[] boxes = block.GetSelectionBoxes(capi.World.BlockAccessor, blockEntityPos);
-
-            double dist = 99;
-            for (int i = 0; boxes != null && i < boxes.Length; i++)
-            {
-                Cuboidf box = boxes[i];
-                //Vec3d playerEye = capi.World.Player.Entity.Pos.XYZ.Add(0, capi.World.Player.Entity.EyeHeight, 0);
-                Vec3d playerEye = capi.World.Player.Entity.Pos.XYZ.Add(capi.World.Player.Entity.LocalEyePos);
-
-                dist = Math.Min(dist, box.ToDouble().Translate(blockEntityPos.X, blockEntityPos.InternalY, blockEntityPos.Z).ShortestDistanceFrom(playerEye));
-            }
-
-            return dist <= capi.World.Player.WorldData.PickingRange + 0.5;
+            return capi.World.Player.IsInInteractionRangeOf(blockEntityPos, .5f); // Rennorb 2026.07.06: Slack will change to standardized .25 in 1.23.
         }
-
-
-
-
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Common;
@@ -80,7 +80,7 @@ namespace Vintagestory.API.Client
         {
             base.OnFinalizeFrame(dt);
 
-            if (!IsInRangeOfBlock(BlockEntityPosition))
+            if (!capi.World.Player.IsInInteractionRangeOf(BlockEntityPosition, .5f)) // Rennorb 2026.07.06: Slack will change to standardized .25 in 1.23.
             {
                 // Because we cant do it in here
                 capi.Event.EnqueueMainThreadTask(() => TryClose(), "closedlg");

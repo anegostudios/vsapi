@@ -395,6 +395,45 @@ Interface IInventoryNetworkUtil
 
 
 
+  <a id="Vintagestory_API_Common_IInventoryNetworkUtil_SendInventoryRollback_" data-uid="Vintagestory.API.Common.IInventoryNetworkUtil.SendInventoryRollback*"></a>
+
+  <h3 id="Vintagestory_API_Common_IInventoryNetworkUtil_SendInventoryRollback_Vintagestory_API_Server_IServerPlayer_System_Int32_System_ReadOnlySpan_System_Byte__" data-uid="Vintagestory.API.Common.IInventoryNetworkUtil.SendInventoryRollback(Vintagestory.API.Server.IServerPlayer,System.Int32,System.ReadOnlySpan{System.Byte})">
+  SendInventoryRollback(IServerPlayer, int, ReadOnlySpan&lt;byte&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Discards a packet that would normally be passed into  HandleClientPacket(IPlayer, int, ReadOnlySpan&lt;T&gt;) and tells the client to revert the interaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendInventoryRollback(IServerPlayer byPlayer, int forClientPacketId, ReadOnlySpan&lt;byte&gt; forClientPacketData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></dt>
+    <dd><p>The player the packet came from</p>
+</dd>
+    <dt><code>forClientPacketId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The packet id the client sent us, which we need to roll back client side</p>
+</dd>
+    <dt><code>forClientPacketData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd><p>The packet data the client sent us, which we need to roll back client side</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 

@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using Vintagestory.API.Common.Entities;
+using Vintagestory.API.MathTools;
 
-#nullable disable
+#nullable disable annotations
 
 namespace Vintagestory.API.Common
 {
@@ -114,5 +117,13 @@ namespace Vintagestory.API.Common
         void SendPlayerRedirect(int player, string host, string name);
         */
 
+
+        #nullable enable annotations
+        /// <param name="slack">The slack allowed for in the test in blocks. If you set this close to zero you might find that the server disagrees with the client.</param>
+        [Obsolete("This signature will change in 1.23. Avoid it for now.")]
+        internal bool IsInInteractionRangeOf(BlockPos blockPos, float slack = .25f);
+        /// <param name="slack">The slack allowed for in the test in blocks. If you set this close to zero you might find that the server disagrees with the client.</param>
+        bool IsInInteractionRangeOf(Entity entity, float slack = .25f);
+        #nullable disable annotations
     }
 }

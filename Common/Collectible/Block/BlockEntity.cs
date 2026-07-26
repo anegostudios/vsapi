@@ -354,11 +354,79 @@ namespace Vintagestory.API.Common
         /// <param name="data"></param>
         public virtual void OnReceivedClientPacket(IPlayer fromPlayer, int packetid, byte[] data)
         {
-            foreach (var val in Behaviors)
+            foreach (var behavior in Behaviors)
             {
-                val.OnReceivedClientPacket(fromPlayer, packetid, data);
+                behavior.OnReceivedClientPacket(fromPlayer, packetid, data);
             }
         }
+
+
+        #nullable enable
+        /// <summary> Access permissions cache for a specific block for a specific player. Used in packet handling to not have to duplicate work if multiple handlers are interested in validation. </summary>
+        /// <remarks> Proper use of this (passdown into handlers) will be introduced in the next version. </remarks>
+        public struct CachedAccessPerms {
+            public EnumBlockAccessFlags TestedFlags;
+            public EnumBlockAccessFlags GrantedFlags;
+            public EnumReachability Reachable;
+            private readonly IWorldAccessor world;
+            private readonly BlockPos blockPos;
+            private readonly IPlayer player;
+
+            [Obsolete("This signature will change in 1.23. Avoid it for now.")]
+            public CachedAccessPerms(IWorldAccessor world, BlockPos blockPos, IPlayer player)
+            {
+                this.world = world;
+                this.blockPos = blockPos;
+                this.player = player;
+            }
+
+            public enum EnumReachability { Unknown = default, Reachable = 1, OutOfReach = -1 }
+
+            /// <summary>Test for permissions and log an audit message if the permission is not given.</summary>
+            public bool IsInteractingPlayerAllowedTo(EnumBlockAccessFlags accessToCheck, bool validatePickRange, string thingNameForLog)
+            {
+                if (validatePickRange)
+                {
+                    if (this.Reachable == EnumReachability.Unknown)
+                    {
+                        this.Reachable = player.IsInInteractionRangeOf(blockPos) ? EnumReachability.Reachable : EnumReachability.OutOfReach;
+                        if (this.Reachable != EnumReachability.Reachable)
+                        {
+                            // Only log the first time we hit this.
+                            world.Logger.Audit("Player {0} sent a packet to {1} at {2} but is too far away. Rejected.", player.PlayerName, thingNameForLog, blockPos);
+                        }
+                    }
+
+                    if (this.Reachable != EnumReachability.Reachable)
+                    {
+                        return false;
+                    }
+                }
+
+                if ((accessToCheck & this.TestedFlags) != accessToCheck)
+                {
+                    if (world.Claims.TryAccess(player, blockPos, accessToCheck))
+                    {
+                        this.GrantedFlags |= accessToCheck;
+                    }
+                    else
+                    {
+                        // Only log the first time we hit this.
+                        world.Logger.Audit("Player {0} sent a packet to {1} at {2} but has no claim access. Rejected.", player.PlayerName, thingNameForLog, blockPos);
+                    }
+
+                    this.TestedFlags |= accessToCheck;
+                }
+
+                if ((accessToCheck & this.GrantedFlags) != accessToCheck)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+        }
+        #nullable disable
 
         /// <summary>
         /// Called whenever a blockentity packet at the blocks position has been received from the server
