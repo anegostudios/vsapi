@@ -1578,7 +1578,7 @@ namespace Vintagestory.API.Common.Entities
 
 
             /// <summary>Test for permissions and log an audit message if the permission is not given.</summary>
-            /// <param name="accessToCheck">These are block access flags that will be checked for the position the entity is located in. Should be set to <see cref="EnumBlockAccessFlags.Use"/> in 99% of cases.</param>
+            /// <param name="accessToCheck">These are block access flags that will be checked for the position the entity is located in.</param>
             public bool IsInteractingPlayerAllowedTo(EnumBlockAccessFlags accessToCheck, bool validatePickRange, string thingNameForLog)
             {
                 if (validatePickRange)
