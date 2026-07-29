@@ -112,9 +112,12 @@ namespace Vintagestory.API.Client
         public void Render(Vec3d playerpos, string originUniformName, EnumFrustumCullMode frustumCullMode = EnumFrustumCullMode.CullNormal)
         {
             int count = pools.Count;
+            MeshDataPool pool;
+            IShaderProgram currShader;
+
             for (int i = 0; i < count; i++)
             {
-                MeshDataPool pool = pools[i];
+                pool = pools[i];
                 if (pool.dimensionId == Dimensions.MiniDimensions)
                 {
                     bool revertModelviewMatrix = false;
@@ -132,7 +135,7 @@ namespace Vintagestory.API.Client
 
                     FastVec3d renderOffset = dimension.GetRenderOffset(masterPool.currentDt);
 
-                    var currShader = capi.Render.CurrentActiveShader;
+                    currShader = capi.Render.CurrentActiveShader;
                     if (currShader.HasUniform("modelViewMatrix"))
                     {
                         currShader.UniformMatrix("modelViewMatrix", dimension.GetRenderTransformMatrix(masterPool.currentModelViewMatrix, playerpos));
@@ -162,11 +165,11 @@ namespace Vintagestory.API.Client
                     finally
                     {
                         if (revertModelviewMatrix)
-                            capi.Render.CurrentActiveShader.UniformMatrix("modelViewMatrix", masterPool.currentModelViewMatrix);
+                            currShader.UniformMatrix("modelViewMatrix", masterPool.currentModelViewMatrix);
                         if (revertMVPMatrix)
-                            capi.Render.CurrentActiveShader.UniformMatrix("mvpMatrix", masterPool.shadowMVPMatrix);
+                            currShader.UniformMatrix("mvpMatrix", masterPool.shadowMVPMatrix);
                         if (revertTransparency)
-                            capi.Render.CurrentActiveShader.Uniform("forcedTransparency", 0f);
+                            currShader.Uniform("forcedTransparency", 0f);
                     }
                 }
                 else
@@ -243,3 +246,4 @@ namespace Vintagestory.API.Client
 
 
 }
+

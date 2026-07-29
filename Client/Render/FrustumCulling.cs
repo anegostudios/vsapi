@@ -28,7 +28,6 @@ namespace Vintagestory.API.Client
         CullInstantShadowPassFar = 4
     }
 
-
     public struct Plane
     {
         public double normalX;
@@ -36,6 +35,7 @@ namespace Vintagestory.API.Client
         public double normalZ;
         public double D;
         private const float SQRT3 = 1.7320508f;
+        private const float INV_SQRT3 = 0.577350269f; // 1 / √3
 
         /// <summary>
         /// Creates a Plane with normalised (length 1.0) normal vector
@@ -60,17 +60,28 @@ namespace Vintagestory.API.Client
 
             // Optimised algorithm: First, figure out which of the 8 corners of the AABB we are going to test against this plane - if even the "lowest" corner (the corner in the direction most opposed to the plane normal direction) is outside (above) the plane then the whole AABB must be outside the plane
             // X axis 
-            int sign = normalX > 0 ? 1 : -1;
-            double testX = (double)sphere.x + sign * sphere.radius / SQRT3;   // sphere.radius is 16 if the sphere represents a chunk and chunksize is 32
+            //int sign = normalX > 0 ? 1 : -1;
+            //double testX = (double)sphere.x + sign * sphere.radius / SQRT3;   // sphere.radius is 16 if the sphere represents a chunk and chunksize is 32
 
-            sign = normalY > 0 ? 1 : -1;
-            double testY = (double)sphere.y + sign * sphere.radiusY / SQRT3;
+            //sign = normalY > 0 ? 1 : -1;
+            //double testY = (double)sphere.y + sign * sphere.radiusY / SQRT3;
 
-            sign = normalZ > 0 ? 1 : -1;
-            double testZ = (double)sphere.z + sign * sphere.radiusZ / SQRT3;
+            //sign = normalZ > 0 ? 1 : -1;
+            //double testZ = (double)sphere.z + sign * sphere.radiusZ / SQRT3;
 
             // Now see if that test corner is "outside" the plane
-            return testX * normalX + testY * normalY + testZ * normalZ + D < 0;
+            //return testX * normalX + testY * normalY + testZ * normalZ + D < 0;
+
+
+            // Sign for each axis (direction of the "worst" vertex)
+            float signX = normalX > 0 ? INV_SQRT3 : -INV_SQRT3;
+            float signY = normalY > 0 ? INV_SQRT3 : -INV_SQRT3;
+            float signZ = normalZ > 0 ? INV_SQRT3 : -INV_SQRT3;
+
+            // Calculate the scalar product directly, without intermediate variables
+            return (sphere.x + signX * sphere.radius) * normalX +
+                (sphere.y + signY * sphere.radiusY) * normalY +
+                (sphere.z + signZ * sphere.radiusZ) * normalZ + D < 0;
         }
     }
 
@@ -249,3 +260,4 @@ namespace Vintagestory.API.Client
         public const int FarDistanceOnly = 3;
     }
 }
+
