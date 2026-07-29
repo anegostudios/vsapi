@@ -2168,6 +2168,45 @@ namespace Vintagestory.API.Common
             return null;
         }
 
+        /// <summary>
+        /// Returns the CropProps for the Block.
+        /// </summary>
+        /// <returns></returns>
+        public virtual BlockCropProperties GetCropProps() {
+            return CropProps;
+        }
+
+        /// <summary>
+        /// Returns the CropProps for a specific in-world instance of the Block at a specific in-world position. Without overrides, this returns the same result as <see cref="GetCropProps()"/>
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos">The position of the block in-world.</param>
+        /// <returns></returns>
+        public virtual BlockCropProperties GetCropProps(IWorldAccessor world, BlockPos pos) {
+            return GetCropProps();
+        }
+
+        /// <summary>
+        /// Returns the Block's crop growth stage, if it is indeed a crop.
+        /// </summary>
+        /// <returns>0, if it is not a crop or the stage cannot be determined.</returns>
+        public virtual int GetCurrentCropStage() {
+            if (GetCropProps() == null) return 0;
+
+            int.TryParse(LastCodePart(), out int stage);
+            return stage;
+        }
+
+        /// <summary>
+        /// Returns the crop growth stage for a specific in-world instance of the block at a specific in-world position. Without overrides, this returns the same result as <see cref="GetCurrentCropStage()"/>
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public virtual int GetCurrentCropStage(IWorldAccessor world, BlockPos pos) {
+            return GetCurrentCropStage();
+        }
+
 
         /// <summary>
         /// Called by the block info HUD for display the interaction help besides the crosshair
