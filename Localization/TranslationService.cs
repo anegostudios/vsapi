@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
@@ -83,7 +83,7 @@ namespace Vintagestory.API.Config
                 try
                 {
                     var json = asset.ToText();
-                    LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json), asset.Location.Domain);
+                    LoadEntries(entryCache, regexCache, wildcardCache, JToken.Parse(json), asset.Location.Domain);
                 }
                 catch (Exception ex)
                 {
@@ -123,7 +123,7 @@ namespace Vintagestory.API.Config
                 try
                 {
                     var json = File.ReadAllText(file.FullName);
-                    LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
+                    LoadEntries(entryCache, regexCache, wildcardCache, JToken.Parse(json));
                 }
                 catch (Exception ex)
                 {
@@ -174,7 +174,7 @@ namespace Vintagestory.API.Config
                         try
                         {
                             var json = File.ReadAllText(file.FullName);
-                            LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
+                            LoadEntries(entryCache, regexCache, wildcardCache, JToken.Parse(json));
                         }
                         catch (Exception ex)
                         {
@@ -574,33 +574,116 @@ namespace Vintagestory.API.Config
                 .FirstOrDefault();
         }
 
-        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, Dictionary<string, string> entries, string domain = GlobalConstants.DefaultDomain)
+        /// <summary>
+        /// Loads translation KVPs from a JSON tree. Supports nested objects by
+        /// recursively traversing through object values, until leaf string
+        /// properties are encountered.
+        ///
+        /// As the function recurses deeper, the traversed path is accumulated
+        /// and used as a prefix for the translation key.
+        ///
+        /// For "vanilla style", flat translation files this is trivial, as
+        /// each property within the root-level object corresponds to a single
+        /// translation KVP:
+        /// <code>
+        /// {
+        ///   "item-axe-copper": "Copper axe",
+        ///   "item-axe-iron": "Iron axe",
+        ///   "item-axe-steel": "Steel axe",
+        /// }
+        /// </code>
+        /// Alternatively, the parser supports constructing the keys from a
+        /// nested structure, where parts of the path are split into nested
+        /// objects, with arbitrary nesting:
+        /// <code>
+        /// {
+        ///   "item": {
+        ///     "axe-copper": "Copper axe",
+        ///     "axe-iron": "Iron axe",
+        ///     "axe": {
+        ///       "steel": "Steel axe"
+        ///     }
+        ///   }
+        /// }
+        /// </code>
+        /// The translation values in the examples above are functionally the
+        /// same. Both produce identical translation keys.
+        ///
+        /// For the latter, nested structure, the final keys are computed by
+        /// concatenating the parent keys as prefixes to the key, using a dash
+        /// (<c>-</c>) as a separator.
+        ///
+        /// For example, in the above sample, the <c>item</c> and its child
+        /// property <c>axe-copper</c> gets concatenated as <c>item-axe-copper
+        /// </c>. Likewise, the key <c>steel</c> has its parents <c>axe</c> and
+        /// <c>item</c> prefixed to it, resulting in the full key
+        /// <c>item-axe-steel</c>.
+        /// </summary>
+        private static void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, string domain = GlobalConstants.DefaultDomain)
         {
-            foreach (var entry in entries)
+            var key = new StringBuilder(domain, 256)
+                .Append(AssetLocation.LocationSeparator);
+            LoadEntries(entryCache, regexCache, wildcardCache, json, key, domain, isFirstPart: true);
+        }
+
+        private static void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, JToken json, StringBuilder key, string domain, bool isFirstPart)
+        {
+            switch (json)
             {
-                LoadEntry(entryCache, regexCache, wildcardCache, entry, domain);
+                case JObject jsonObject:
+                    if (!isFirstPart)
+                    {
+                        key.Append('-');
+                    }
+
+                    var prefixLength = key.Length;
+                    foreach (var property in jsonObject.Properties())
+                    {
+                        key.Length = prefixLength;
+                        key.Append(property.Name);
+                        LoadEntries(entryCache, regexCache, wildcardCache, property.Value, key, domain, isFirstPart: false);
+                    }
+                    break;
+                case JValue jsonValue when jsonValue.Type == JTokenType.String && !isFirstPart:
+                    LoadEntry(entryCache, regexCache, wildcardCache, key, jsonValue.ToString(), domain);
+                    break;
+                default:
+                    throw new InvalidOperationException($"Unexpected token: {json.Type}");
             }
         }
 
-        private void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, KeyValuePair<string, string> entry, string domain = GlobalConstants.DefaultDomain)
+        private static void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, StringBuilder keyBuilder, string value, string domain)
         {
-            var key = KeyWithDomain(entry.Key, domain);
+            var key = EnsureSingleDomainPrefix(keyBuilder, domain);
             switch (key.CountChars('*'))
             {
                 case 0:
-                    entryCache[key] = entry.Value;
+                    entryCache[key] = value;
                     break;
                 case 1 when key.EndsWith('*'):
-                    wildcardCache[key.TrimEnd('*')] = entry.Value;
+                    wildcardCache[key.TrimEnd('*')] = value;
                     break;
                     // we can probably do better here, as we have our own wildcardsearch now
                 default:
                 {
                     var regex = new Regex("^" + key.Replace("*", "(.*)") + "$", RegexOptions.Compiled);
-                    regexCache[key] = new KeyValuePair<Regex, string>(regex, entry.Value);
+                    regexCache[key] = new KeyValuePair<Regex, string>(regex, value);
                     break;
                 }
             }
+        }
+
+        private static string EnsureSingleDomainPrefix(StringBuilder keyBuilder, string domain = GlobalConstants.DefaultDomain)
+        {
+            var key = keyBuilder.ToString();
+            var defaultDomainEndIndex = domain.Length + 1;
+            if (key.IndexOf(AssetLocation.LocationSeparator, defaultDomainEndIndex) >= 0)
+            {
+                // Key contains a custom prefix, drop the default prefix
+                return key.Substring(defaultDomainEndIndex);
+            }
+
+            return key;
         }
 
         private static string KeyWithDomain(string key, string domain = GlobalConstants.DefaultDomain)
