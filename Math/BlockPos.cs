@@ -1030,6 +1030,11 @@ namespace Vintagestory.API.MathTools
         {
             return new BlockPos(X + vector.X, Y + vector.Y, Z + vector.Z, dimension);
         }
+
+        public BlockPos AddCopy(Vec3f vector)
+        {
+            return new BlockPos(X + (int)vector.X, Y + (int)vector.Y, Z + (int)vector.Z, dimension);
+        }
     }
 
     // Exactly like BlockPos except using this class signifies the block should be looked for in the fluids layer; used for server block ticking

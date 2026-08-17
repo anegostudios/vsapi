@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Vintagestory.API.Common;
-using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 using Vintagestory.Common;
 
 #nullable disable
@@ -756,11 +758,20 @@ namespace Vintagestory.API.Client
             return dist <= capi.World.Player.WorldData.PickingRange + 0.5;
         }
 
+        public static Regex RegexFromSearchText(string searchText, bool strict = false)
+        {
+            string[] searchWords = Regex.Split(searchText, "\\s+", RegexOptions.Multiline);
+            var pattern = $"({string.Join("|", searchWords.Where(w => w != "").Select(w => {
+                w = Regex.Escape(w.ToSearchFriendly().Trim());
+                return strict ? @$"\b{w}\b" : w;
+            }))})";
+            return new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Compiled | RegexOptions.Multiline);
+        }
 
-
-
-
-
+        public static int CountMatches(string text, Regex regex)
+        {
+            return regex.Matches(text).Count;
+        }
 
         public EnumPosFlag GetFreePos(string code)
         {

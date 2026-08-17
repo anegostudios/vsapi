@@ -494,21 +494,8 @@ namespace Vintagestory.API.MathTools
             return null;
         }
 
-        public static BlockFacing FromFirstLetter(char code)
+        public static BlockFacing FromFirstLetter(char ch)
         {
-            return FromFirstLetter("" + code);
-        }
-
-        /// <summary>
-        /// Returns the face if code is 'n', 'e', 's', 'w', 'n', 'u' or 'd'. Otherwise null.
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        public static BlockFacing FromFirstLetter(string code)
-        {
-            if (code.Length < 1) return null;
-            char ch = char.ToLowerInvariant(code[0]);
-
             switch (ch)
             {
                 case 'n': return NORTH;
@@ -520,6 +507,18 @@ namespace Vintagestory.API.MathTools
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Returns the face if code is 'n', 'e', 's', 'w', 'n', 'u' or 'd'. Otherwise null.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static BlockFacing FromFirstLetter(string code)
+        {
+            if (code.Length < 1) return null;
+            char ch = char.ToLowerInvariant(code[0]);
+            return FromFirstLetter(ch);
         }
 
 

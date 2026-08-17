@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using Vintagestory.API.Config;
 
 #nullable disable
@@ -26,7 +25,7 @@ namespace Vintagestory.API.Client
         public override bool Focusable => focusable && enabled;
 
         /// <summary>
-        /// When enabled and a button is clicked it wont focus on it, leaving your focus on the game to move around 
+        /// When enabled and a button is clicked it wont focus on it, leaving your focus on the game to move around
         /// </summary>
         public bool DisableButtonFocus;
 
@@ -127,7 +126,7 @@ namespace Vintagestory.API.Client
             surfaceHighlight.Dispose();
         }
 
-    
+
         private void GenTextHighlightTexture()
         {
             ImageSurface surfaceHighlight = new ImageSurface(Format.Argb32, (int)(Bounds.OuterWidth - rightSpacing), (int)Bounds.OuterHeight);
@@ -180,11 +179,39 @@ namespace Vintagestory.API.Client
             float size = args.deltaPrecise > 0 ? 1 : -1;
             size *= Interval;
 
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft]) size /= 10;
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
+            size = ApplyKeyModifier(size);
 
             UpdateValue(size);
             args.SetHandled(true);
+        }
+
+        private float ApplyKeyModifier(float size)
+        {
+            var keyStateRaw = api.Input.KeyboardKeyStateRaw;
+
+            if (keyStateRaw[(int)GlKeys.ShiftLeft]) size *= IntMode ? 10 : 0.1f;
+            if (keyStateRaw[(int)GlKeys.ControlLeft]) size *= IntMode ? 100 : 0.01f;
+
+            if (keyStateRaw[(int)GlKeys.ShiftRight]) size *= 10;
+            if (keyStateRaw[(int)GlKeys.ControlRight]) size *= 100;
+            return size;
+        }
+
+        public override void OnKeyUp(ICoreClientAPI api, KeyEvent args)
+        {
+            if(!HasFocus) return;
+
+            float size = args.KeyCode switch
+            {
+                (int)GlKeys.Up => 1,
+                (int)GlKeys.Down => -1,
+                _ => 0
+            };
+            if (size == 0) return;
+
+            size = ApplyKeyModifier(size);
+            UpdateValue(size);
+            args.Handled = true;
         }
 
         private void UpdateValue(float size)
@@ -213,16 +240,15 @@ namespace Vintagestory.API.Client
         {
             if (text == string.Empty) return true; // Allow an empty box, we'll set it to 0 if left empty when it loses focus
             if (text == "-") return true; // We want to allow typing the negative sign into an empty box, as well
-            if (!IntMode && !double.TryParse(text, NumberStyles.Float, GlobalConstants.DefaultCultureInfo, out _)) return false;
-            if (IntMode && !int.TryParse(text, NumberStyles.Integer, GlobalConstants.DefaultCultureInfo, out _)) return false;
-
-            return true;
+            if (IntMode) return int.TryParse(text, NumberStyles.Integer, GlobalConstants.DefaultCultureInfo, out _);
+            return double.TryParse(text, NumberStyles.Float, GlobalConstants.DefaultCultureInfo, out _);
         }
 
         public override void OnFocusLost()
         {
             base.OnFocusLost();
-            if (GetText() == string.Empty) SetValue(0);
+            string text = GetText();
+            if (text == string.Empty || text == "-") SetValue(0);
         }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
@@ -230,16 +256,15 @@ namespace Vintagestory.API.Client
             base.OnMouseDownOnElement(api, args);
 
             rightSpacing = scaled(17);
+
             int mouseX = args.X;
             int mouseY = args.Y;
 
-            float size = Interval;
-
-            if (api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft]) size /= 10;
-            if (api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft]) size /= 100;
-
             if (mouseX >= Bounds.absX + Bounds.OuterWidth - rightSpacing && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)
             {
+                float size = Interval;
+                size = ApplyKeyModifier(size);
+
                 if (DisableButtonFocus) focusable = false;
 
                 double heightHalf = Bounds.OuterHeight / 2 - 1;
@@ -257,8 +282,6 @@ namespace Vintagestory.API.Client
             base.Dispose();
             buttonHighlightTexture.Dispose();
         }
-
-
     }
 
 

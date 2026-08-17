@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Config;
@@ -117,8 +117,7 @@ namespace Vintagestory.API.Client
         }
 
         public void ReloadCells(IEnumerable<T> cells)
-        {
-            
+        {   
             foreach (var val in elementCells)
             {
                 val?.Dispose();
@@ -172,7 +171,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        internal void FilterCells(Func<IGuiElementCell, bool> onFilter)
+        public void FilterCells(Func<IGuiElementCell, bool> onFilter)
         {
             this.cellFilter = onFilter;
 
