@@ -71,13 +71,12 @@ namespace Vintagestory.API.Client
             
 
             Font.Color[3] = 0.85;
-            Font.SetupContext(ctx);
-			textOffsetY = (tabHeight + 1 - Font.GetFontExtents().Height) / 2;
+			textOffsetY = (tabHeight + 1 - Font.GetFontExtents(tabs.Length > 0 ? tabs[0].Name : null).Height) / 2;
 
             double maxWidth = 0;
             for (int i = 0; i < tabs.Length; i++)
             {
-                double w = (int)(ctx.TextExtents(tabs[i].Name).Width + 1 + 2 * padding);
+                double w = (int)(Font.GetTextExtents(tabs[i].Name).Width + 1 + 2 * padding);
 
                 maxWidth = Math.Max(w, maxWidth);
             }
@@ -121,7 +120,7 @@ namespace Vintagestory.API.Client
 
                 ShadePath(ctx, 2);
 
-                Font.SetupContext(ctx);
+                Font.SetupContext(ctx, tabs[i].Name);
 
                 DrawTextLineAt(ctx, tabs[i].Name, xpos - (Right ? 0 : tabWidths[i]) + padding, ypos + textOffsetY);
 
@@ -195,7 +194,7 @@ namespace Vintagestory.API.Client
                 ctx.Stroke();
 
 
-                selectedFont.SetupContext(ctx);
+                selectedFont.SetupContext(ctx, tabs[i].Name);
 
                 DrawTextLineAt(ctx, tabs[i].Name, padding+2, textOffsetY);
 

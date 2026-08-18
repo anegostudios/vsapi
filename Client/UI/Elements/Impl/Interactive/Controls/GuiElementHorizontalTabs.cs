@@ -98,9 +98,7 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
             Context ctx = new Context(surface);
 
-            Font.SetupContext(ctx);
-
-            fontHeight = (float)Font.GetFontExtents().Height;
+            fontHeight = (float)Font.GetFontExtents(tabs.Length > 0 ? tabs[0].Name : null).Height;
 
             double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
@@ -110,7 +108,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                tabWidths[i] = (int)(ctx.TextExtents(tabs[i].Name).Width + 2 * padding + 1);
+                tabWidths[i] = (int)(Font.GetTextExtents(tabs[i].Name).Width + 2 * padding + 1);
                 totalWidth += spacing + tabWidths[i];
             }
 
@@ -142,9 +140,9 @@ namespace Vintagestory.API.Client
 
                 if (AlarmTabs)
                 {
-                    notifyFont.SetupContext(ctx);
+                    notifyFont.SetupContext(ctx, tabs[i].Name);
                 } else {
-                    Font.SetupContext(ctx);
+                    Font.SetupContext(ctx, tabs[i].Name);
                 }
 
                 DrawTextLineAt(ctx, tabs[i].Name, xpos + padding, (surface.Height - fontHeight) / 2);
@@ -214,10 +212,10 @@ namespace Vintagestory.API.Client
 
                 if (isNotifyTabs)
                 {
-                    notifyFont.SetupContext(ctx);
+                    notifyFont.SetupContext(ctx, tabs[i].Name);
                 } else
                 {
-                    selectedFont.SetupContext(ctx);
+                    selectedFont.SetupContext(ctx, tabs[i].Name);
                 }
 
                 ctx.Operator = Operator.Clear;

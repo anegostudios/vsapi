@@ -132,22 +132,49 @@ namespace Vintagestory.API.Client
                 ctx.Stroke();
             }
 
+            font.SetupContext(ctx, text);
 
-
-            font.SetupContext(ctx);
-
-            double fontHeight = font.GetFontExtents().Height;
+            double fontHeight = font.GetFontExtents(text).Height;
 
             string[] lines = text.Split('\n');
             for (int i = 0; i < lines.Length; i++)
             {
                 lines[i] = lines[i].TrimEnd();
+                font.SetupContext(ctx, lines[i]);
+                string renderedLine = ComplexTextLayout.PrepareForRendering(lines[i]);
+                double baselineY = background.VerPadding + ctx.FontExtents.Ascent + i * fontHeight;
 
-                ctx.MoveTo(background.HorPadding, background.VerPadding + ctx.FontExtents.Ascent + i * fontHeight);
+                if (CairoGlyphLayout.TryCreateGlyphs(ctx, lines[i], background.HorPadding, baselineY, out Glyph[] glyphs))
+                {
+                    if (font.StrokeWidth > 0)
+                    {
+                        ctx.GlyphPath(glyphs);
+
+                        ctx.LineWidth = font.StrokeWidth;
+                        ctx.SetSourceRGBA(font.StrokeColor);
+                        ctx.StrokePreserve();
+
+                        ctx.SetSourceRGBA(font.Color);
+                        ctx.Fill();
+                    }
+                    else
+                    {
+                        ctx.ShowGlyphs(glyphs);
+
+                        if (font.RenderTwice)
+                        {
+                            ctx.ShowGlyphs(glyphs);
+                        }
+                    }
+
+                    continue;
+                }
+
+                ctx.MoveTo(background.HorPadding, baselineY);
 
                 if (font.StrokeWidth > 0)
                 {
-                    ctx.TextPath(lines[i]);
+                    ctx.TextPath(renderedLine);
 
                     ctx.LineWidth = font.StrokeWidth;
                     ctx.SetSourceRGBA(font.StrokeColor);
@@ -159,11 +186,11 @@ namespace Vintagestory.API.Client
                 else
                 {
 
-                    ctx.ShowText(lines[i]);
+                    ctx.ShowText(renderedLine);
 
                     if (font.RenderTwice)
                     {
-                        ctx.ShowText(lines[i]);
+                        ctx.ShowText(renderedLine);
                     }
 
                 }

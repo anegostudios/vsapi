@@ -25,6 +25,7 @@ namespace Vintagestory.API.Client
         public double LineHeightMultiplier = 1f;
 
         FontOptions CairoFontOptions;
+        const string ArabicFallbackFontName = "Tahoma";
 
         public FontSlant Slant = FontSlant.Normal;
 
@@ -215,8 +216,13 @@ namespace Vintagestory.API.Client
         /// <param name="ctx">The context to set up the CairoFont with.</param>
         public void SetupContext(Context ctx)
         {
+            SetupContext(ctx, null);
+        }
+
+        public void SetupContext(Context ctx, string text)
+        {
             ctx.SetFontSize(GuiElement.scaled(UnscaledFontsize));
-            ctx.SelectFontFace(Fontname, Slant, FontWeight);
+            ctx.SelectFontFace(GetFontNameForText(text), Slant, GetFontWeightForText(text));
             CairoFontOptions = new FontOptions();
 
             // Antialias.Best does not work on Linux it completely borks the font
@@ -236,6 +242,26 @@ namespace Vintagestory.API.Client
             }
         }
 
+        string GetFontNameForText(string text)
+        {
+            if (!ComplexTextLayout.RequiresRightToLeftLayout(text))
+            {
+                return Fontname;
+            }
+
+            return ArabicFallbackFontName;
+        }
+
+        FontWeight GetFontWeightForText(string text)
+        {
+            if (!ComplexTextLayout.RequiresRightToLeftLayout(text))
+            {
+                return FontWeight;
+            }
+
+            return Cairo.FontWeight.Normal;
+        }
+
         /// <summary>
         /// Gets the font's extents.
         /// </summary>
@@ -246,6 +272,12 @@ namespace Vintagestory.API.Client
             return FontMeasuringContext.FontExtents;
         }
 
+        public FontExtents GetFontExtents(string text)
+        {
+            SetupContext(FontMeasuringContext, text);
+            return FontMeasuringContext.FontExtents;
+        }
+
         /// <summary>
         /// Gets the extents of the text.
         /// </summary>
@@ -253,8 +285,14 @@ namespace Vintagestory.API.Client
         /// <returns>The Text extends for this font with this text.</returns>
         public TextExtents GetTextExtents(string text)
         {
-            SetupContext(FontMeasuringContext);
-            return FontMeasuringContext.TextExtents(text);
+            SetupContext(FontMeasuringContext, text);
+
+            if (CairoGlyphLayout.TryCreateGlyphs(FontMeasuringContext, text, 0, 0, out Glyph[] glyphs))
+            {
+                return FontMeasuringContext.GlyphExtents(glyphs);
+            }
+
+            return FontMeasuringContext.TextExtents(ComplexTextLayout.PrepareForRendering(text));
         }
 
         /// <summary>
