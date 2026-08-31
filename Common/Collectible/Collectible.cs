@@ -1139,7 +1139,7 @@ namespace Vintagestory.API.Common
                     if (perishProps != null)
                     {
                         perishProps.TransitionedStack.Resolve(api.World, "oncrafted perished stack", Code);
-                        CarryOverFreshness(api, allInputSlots, new ItemStack[] { outputSlot.Itemstack }, perishProps);
+                        CarryOverFreshness(api, allInputSlots, new ItemStack[] { outputSlot.Itemstack }, tprops);
                     }
 
                 }
@@ -3134,12 +3134,12 @@ namespace Vintagestory.API.Common
             return newStack;
         }
 
-        public static void CarryOverFreshness(ICoreAPI api, ItemSlot inputSlot, ItemStack outputStack, TransitionableProperties perishProps)
+        public static void CarryOverFreshness(ICoreAPI api, ItemSlot inputSlot, ItemStack outputStack, TransitionableProperties[] transitionProps)
         {
-            CarryOverFreshness(api, new ItemSlot[] { inputSlot }, new ItemStack[] { outputStack }, perishProps);
+            CarryOverFreshness(api, new ItemSlot[] { inputSlot }, new ItemStack[] { outputStack }, transitionProps);
         }
 
-        public static void CarryOverFreshness(ICoreAPI api, ItemSlot[] inputSlots, ItemStack[] outStacks, TransitionableProperties perishProps)
+        public static void CarryOverFreshness(ICoreAPI api, ItemSlot[] inputSlots, ItemStack[] outStacks, TransitionableProperties[] transitionProps)
         {
             float transitionedHoursRelative = 0;
 
@@ -3176,28 +3176,41 @@ namespace Vintagestory.API.Common
                     outStacks[i].Attributes["transitionstate"] = new TreeAttribute();
                 }
 
-                float transitionHours = perishProps.TransitionHours.nextFloat(1, api.World.Rand);
-                float freshHours = perishProps.FreshHours.nextFloat(1, api.World.Rand);
-
                 ITreeAttribute attr = (ITreeAttribute)outStacks[i].Attributes["transitionstate"];
                 attr.SetDouble("createdTotalHours", api.World.Calendar.TotalHours);
                 attr.SetDouble("lastUpdatedTotalHours", api.World.Calendar.TotalHours);
 
-                attr["freshHours"] = new FloatArrayAttribute(new float[] { freshHours });
-                attr["transitionHours"] = new FloatArrayAttribute(new float[] { transitionHours });
+                float[] transitionFloats = new float[transitionProps.Length];
+                float[] transitionedFloats = new float[transitionProps.Length];
+                float[] freshFloats = new float[transitionProps.Length];
 
-                if (spoilageRel > 0)
+                for (int j = 0; j < transitionProps.Length; j++)
                 {
-                    // If already spoiled: Take away 40% spoilage and 2 hours
-                    spoilageRel *= 0.6f;
-                    attr["transitionedHours"] = new FloatArrayAttribute(new float[] { freshHours + Math.Max(0, transitionHours * spoilageRel - 2)  });
-
-                } else
-                {
-                    // If not yet spoiled: Weird formula :D
-                    attr["transitionedHours"] = new FloatArrayAttribute(new float[] { Math.Max(0, transitionedHoursRelative * (0.8f + (2 + quantity) * spoilageRelMax) * (transitionHours + freshHours)) });
+                    transitionFloats[j] = transitionProps[j].TransitionHours.nextFloat(1, api.World.Rand);
+                    freshFloats[j] = transitionProps[j].FreshHours.nextFloat(1, api.World.Rand);
+                    if (transitionProps[j].Type == EnumTransitionType.Perish)
+                    {
+                        if (spoilageRel > 0)
+                        {
+                            // If already spoiled: Take away 40% spoilage and 2 hours
+                            spoilageRel *= 0.6f;
+                            transitionedFloats[j] = freshFloats[j] + Math.Max(0, transitionFloats[j] * spoilageRel - 2);
+                        }
+                        else
+                        {
+                            // If not yet spoiled: Weird formula :D
+                            transitionedFloats[j] = Math.Max(0, transitionedHoursRelative * (0.8f + (2 + quantity) * spoilageRelMax) * (transitionFloats[j] + freshFloats[j]));
+                        }
+                    }
+                    else
+                    {
+                        transitionedFloats[j] = 0f;
+                    }
                 }
 
+                attr["freshHours"] = new FloatArrayAttribute(freshFloats);
+                attr["transitionHours"] = new FloatArrayAttribute(transitionFloats);
+                attr["transitionedHours"] = new FloatArrayAttribute(transitionedFloats);
 
             }
         }
