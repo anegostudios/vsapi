@@ -3363,8 +3363,10 @@ namespace Vintagestory.API.Common
                 },
                 () => {
                     double nowHours = world.Calendar.TotalHours;
-                    // If the colletible gets heated, retain the heat for 0.25 ingame hour
-                    if (delayCooldown && attr.GetDecimal("temperature") < temperature) nowHours += 0.5f;
+
+                    // If the colletible gets heated, retain heat for a short amount of time
+                    // Also keep updating the cooling delay as long as the item is maintained at the same temperature
+                    if (delayCooldown && attr.GetDecimal("temperature") <= temperature) nowHours += 0.5f;
 
                     attr.SetDouble("temperatureLastUpdate", nowHours);
                     attr.SetFloat("temperature", temperature);
