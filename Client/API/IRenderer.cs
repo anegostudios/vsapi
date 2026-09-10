@@ -5,9 +5,12 @@
 namespace Vintagestory.API.Client
 {
 
-    /// <summary>
-    /// Interface to render something on to the clients screens. Used for block entitites.
-    /// </summary>
+   /// <summary>
+   /// Interface for anything that draws once per frame. Register it with
+   /// <see cref="IClientEventAPI.RegisterRenderer"/> for a given render stage.
+   /// Used by the engine itself (sky, terrain, GUI, crosshair) as well as by
+   /// block entities and mods that need custom rendering.
+   /// </summary>
     public interface IRenderer : IDisposable
     {
         /// <summary>
