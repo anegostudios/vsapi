@@ -175,6 +175,8 @@ namespace Vintagestory.API.Common
             }
 
             withslot.Itemstack = returnedStack;
+
+            withslot.OnItemSlotModified(withslot.Itemstack);
         }
 
         public override void OnItemSlotModified(ItemStack sinkStack)

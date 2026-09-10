@@ -195,6 +195,8 @@ namespace Vintagestory.API.Common
 
             if (itemstack.StackSize <= 0) itemstack = null;
 
+            OnItemSlotModified(split);
+
             return split;
         }
 
@@ -275,20 +277,15 @@ namespace Vintagestory.API.Common
 
             bool canHoldHis = itemSlot.Empty || CanHold(itemSlot);
             bool canIExchange = canHoldHis && (Empty || CanTake());
+            if (!canIExchange) return false;
 
             bool canHoldMine = Empty || itemSlot.CanHold(this);
             bool canHeExchange = canHoldMine && (itemSlot.Empty || itemSlot.CanTake());
+            if (!canHeExchange) return false;
 
-            if (canIExchange && canHeExchange)
-            {
-                itemSlot.FlipWith(this);
+            itemSlot.FlipWith(this);
 
-                itemSlot.OnItemSlotModified(itemstack);
-                OnItemSlotModified(itemSlot.itemstack);
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -306,6 +303,9 @@ namespace Vintagestory.API.Common
             ItemStack temp = withSlot.itemstack;
             withSlot.itemstack = itemstack;
             itemstack = temp;
+
+            OnItemSlotModified(withSlot.itemstack);
+            withSlot.OnItemSlotModified(this.itemstack);
         }
 
 
@@ -361,7 +361,6 @@ namespace Vintagestory.API.Common
 
                 itemstack = sourceSlot.TakeOut(q);
                 op.MovedQuantity = itemstack.StackSize;
-                OnItemSlotModified(itemstack);
                 return;
             }
 
@@ -423,8 +422,7 @@ namespace Vintagestory.API.Common
             if (Empty) {
                 if (CanHold(sourceSlot))
                 {
-                    itemstack = (ItemStack)sourceSlot.TakeOut(1);
-                    sourceSlot.OnItemSlotModified(itemstack);
+                    itemstack = sourceSlot.TakeOut(1);
                     OnItemSlotModified(itemstack);
                 }
                 return;
