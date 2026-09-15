@@ -243,7 +243,6 @@ namespace Vintagestory.API.Common
                     op.MovedQuantity = op.MovableQuantity = Math.Min(sinkSlot.StackSize, q);
 
                     sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
-                    OnItemSlotModified(sinkSlot.Itemstack);
                 }
 
                 return op.MovedQuantity;
