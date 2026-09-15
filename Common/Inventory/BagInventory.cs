@@ -117,7 +117,8 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                return bagContents[slotId];
+                var contents = bagContents;
+                return slotId < 0 || slotId >= contents.Count ? null : contents[slotId];
             }
             set
             {
@@ -155,11 +156,11 @@ namespace Vintagestory.API.Common
 
             if (BagSlots == null || BagSlots.Length == 0)
             {
-                bagContents.Clear();
+                bagContents = new List<ItemSlot>();
                 return;
-            } 
+            }
 
-            bagContents.Clear();
+            var reloadedBagContents = new List<ItemSlot>();
             for (int bagIndex = 0; bagIndex < BagSlots.Length; bagIndex++)
             {
                 ItemStack bagstack = BagSlots[bagIndex].Itemstack;
@@ -171,10 +172,14 @@ namespace Vintagestory.API.Common
                 if (bag != null)
                 {
                     var slots = bag.GetOrCreateSlots(bagstack, parentinv, bagIndex, Api.World);
-                    bagContents.AddRange(slots);
+                    reloadedBagContents.AddRange(slots);
                 }
             }
 
+            // Publish the rebuilt contents atomically. Readers may hold the old
+            // list for the duration of an inventory scan, but never observe the
+            // transient empty or partially populated state of an in-place reload.
+            bagContents = reloadedBagContents;
 
             if (Api is ICoreClientAPI capi)
             {
@@ -197,10 +202,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public IEnumerator<ItemSlot> GetEnumerator()
         {
-            for (int i = 0; i < Count; i++)
-            {
-                yield return this[i];
-            }
+            // Keep a single list generation for the whole enumeration if a bag
+            // reload publishes a replacement concurrently.
+            return bagContents.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
