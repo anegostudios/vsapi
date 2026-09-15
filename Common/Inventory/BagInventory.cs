@@ -117,8 +117,7 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                var contents = bagContents;
-                return slotId < 0 || slotId >= contents.Count ? null : contents[slotId];
+                return bagContents[slotId];
             }
             set
             {
@@ -202,9 +201,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public IEnumerator<ItemSlot> GetEnumerator()
         {
-            // Keep a single list generation for the whole enumeration if a bag
-            // reload publishes a replacement concurrently.
-            return bagContents.GetEnumerator();
+            // Snapshot the slot references: the public setter can replace entries
+            // in the published list while an enumeration is in progress.
+            return ((IEnumerable<ItemSlot>)bagContents.ToArray()).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
