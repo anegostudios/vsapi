@@ -360,6 +360,7 @@ namespace Vintagestory.API.Common
 
                 itemstack = sourceSlot.TakeOut(q);
                 op.MovedQuantity = itemstack.StackSize;
+                OnItemSlotModified(itemstack);
                 return;
             }
 
