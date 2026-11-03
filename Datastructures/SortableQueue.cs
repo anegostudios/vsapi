@@ -11,6 +11,7 @@ namespace Vintagestory.API.Datastructures
         protected int tail = 0;
         protected int head = 0;
         protected T[] array;
+        protected T[] sortBuffer;
 
         public SortableQueue()
         {
@@ -23,6 +24,7 @@ namespace Vintagestory.API.Datastructures
             head = 0;
             tail = 0;
             Array.Clear(array, 0, maxSize);    // may assist garbage collector, not sure but can't hurt
+            if (sortBuffer != null) Array.Clear(sortBuffer, 0, sortBuffer.Length);
         }
 
         public void Enqueue(T v)
@@ -77,14 +79,17 @@ namespace Vintagestory.API.Datastructures
         {
             if (head % maxSize > tail % maxSize)
             {
-                T[] newArray = new T[maxSize];
+                if (sortBuffer == null || sortBuffer.Length < maxSize)
+                {
+                    sortBuffer = new T[maxSize];
+                }
                 int lengthToCopy = maxSize - head % maxSize;
-                ArrayCopy(array, head % maxSize, newArray, 0, lengthToCopy);  // Begin at head and copy to the end of the array
-                ArrayCopy(array, 0, newArray, lengthToCopy, tail % maxSize);  // Begin at the start of the array and copy to head
-                Array.Clear(array, 0, maxSize);    // may assist garbage collector, not sure but can't hurt
-                array = newArray;
+                ArrayCopy(array, head % maxSize, sortBuffer, 0, lengthToCopy);  // Begin at head and copy to the end of the array
+                ArrayCopy(array, 0, sortBuffer, lengthToCopy, tail % maxSize);  // Begin at the start of the array and copy to head
+                ArrayCopy(sortBuffer, 0, array, 0, Count);
+                Array.Clear(array, Count, maxSize - Count);
                 head = 0;
-                tail = tail % maxSize + lengthToCopy;
+                tail = Count;
             }
             int start = head % maxSize;
             Array.Sort(array, start, tail % maxSize - start);
@@ -101,6 +106,17 @@ namespace Vintagestory.API.Datastructures
             {
                 for (int j = head % maxSize; j < tail % maxSize; j++) action(array[j]);
             }
+        }
+
+        /// <summary>
+        /// Item at logical queue position i (0 = front, matching the order Dequeue() returns).
+        /// Allows indexed traversal over the queue without allocating a delegate or closure.
+        /// </summary>
+        /// <param name="i">The zero-based logical index from the front of the queue.</param>
+        /// <returns>The element at the specified position.</returns>
+        public T ItemAt(int i)
+        {
+            return array[(head + i) % maxSize];
         }
 
         /// <summary>
