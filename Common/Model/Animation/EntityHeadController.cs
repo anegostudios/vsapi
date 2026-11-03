@@ -249,7 +249,7 @@ namespace Vintagestory.API.Common
 
         protected virtual (float yOffsetDeg, float zOffsetDeg) GetOffsets(float dt) => ((entity.Pos.HeadYaw + YawOffset) * GameMath.RAD2DEG, (entity.Pos.HeadPitch + PitchOffset) * GameMath.RAD2DEG);
 
-        protected ElementPose GetPose(string name) => animationManager.Animator.GetPosebyName(name) ?? throw new InvalidOperationException($"[Head Controller] Entity '{entity.Code}' shape does not have '{name}' element.");
+        protected ElementPose GetPose(string name) => animationManager?.Animator?.GetPosebyName(name) ?? new ElementPose();
     }
 }
 
