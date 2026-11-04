@@ -24,13 +24,15 @@ namespace Vintagestory.API.Common
 
         public TyronThreadPool()
         {
-            // radfast note 13.3.25:  setting below the number of physical CPU cores has no effect, see https://learn.microsoft.com/en-us/dotnet/api/system.threading.threadpool.setmaxthreads?view=net-8.0
-            ThreadPool.SetMaxThreads(10, 1);
+            // Scale threadpool caps with CPU count while maintaining a minimum floor, avoiding runtime rejection from ThreadPool.SetMaxThreads
+            int workerMax = Math.Max(10, Environment.ProcessorCount * 2);
+            int ioMax = Math.Max(1, Environment.ProcessorCount);
+            ThreadPool.SetMaxThreads(workerMax, ioMax);
         }
 
         private int MarkStarted(string caller)
         {
-            int key = keyCounter++;
+            int key = Interlocked.Increment(ref keyCounter) - 1;
             RunningTasks[key] = caller;
             return key;
         }
@@ -174,7 +176,8 @@ namespace Vintagestory.API.Common
             Thread thread = new Thread(starter);
             thread.IsBackground = true;
             thread.Name = name;
-            Inst.DedicatedThreads[Inst.dedicatedCounter++] = thread;
+            int key = Interlocked.Increment(ref Inst.dedicatedCounter) - 1;
+            Inst.DedicatedThreads[key] = thread;
             return thread;
         }
 
@@ -182,8 +185,8 @@ namespace Vintagestory.API.Common
         {
             RunningTasks.Clear();
             DedicatedThreads.Clear();
-            keyCounter = 0;
-            dedicatedCounter = 0;
+            Interlocked.Exchange(ref keyCounter, 0);
+            Interlocked.Exchange(ref dedicatedCounter, 0);
         }
     }
 
