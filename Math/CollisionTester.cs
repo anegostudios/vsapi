@@ -48,6 +48,19 @@ namespace Vintagestory.API.MathTools
         /// <param name="yExtra">Default 1 for the extra high collision boxes of fences</param>
         public void ApplyTerrainCollision(Entity entity, EntityPos entityPos, float dtFactor, ref Vec3d newPosition, float stepHeight = 1, float yExtra = 1)
         {
+            if (entity is not EntityPlayer && entity is not EntityItem)
+            {
+                Vec3d motion = entityPos.Motion;
+                if (motion.X == 0 && motion.Y == 0 && motion.Z == 0
+                    && !entity.FeetInLiquid && !entity.Swimming && !entity.InLava && !entity.IsOnFire)
+                {
+                    entity.CollidedVertically = false;
+                    entity.CollidedHorizontally = false;
+                    newPosition.Set(entityPos.X, entityPos.Y, entityPos.Z);
+                    return;
+                }
+            }
+
             minPos.SetDimension(entityPos.Dimension);
 
             var worldAccessor = entity.World;
