@@ -736,6 +736,21 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int[] RgbToHsvInts(int r, int g, int b)
         {
+            int[] into = new int[3];
+            RgbToHsvInts(r, g, b, into);
+            return into;
+        }
+
+        /// <summary>
+        /// Converts given RGB values into its respective HSV representation (all values in range of 0-255)
+        /// in-place into a caller-supplied 3-element array without heap allocations.
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="g"></param>
+        /// <param name="b"></param>
+        /// <param name="into">Destination array of length at least 3.</param>
+        public static void RgbToHsvInts(int r, int g, int b, int[] into)
+        {
             float K = 0f;
 
             if (g < b)
@@ -751,11 +766,9 @@ namespace Vintagestory.API.MathTools
             }
 
             float chroma = r - Math.Min(g, b);
-            return new int[] {
-                (int)(255 * Math.Abs(K + (g - b) / (6f * chroma + 1.0e-20f))),  //this small non-zero value is OK as a float, smallest non-zero float is around 1.2e-38
-                (int)(255 * chroma / (r + 1.0e-20f)),
-                r
-            };
+            into[0] = (int)(255 * Math.Abs(K + (g - b) / (6f * chroma + 1.0e-20f)));
+            into[1] = (int)(255 * chroma / (r + 1.0e-20f));
+            into[2] = r;
         }
 
 
@@ -924,12 +937,30 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int[] Hsv2RgbInts(int h, int s, int v)
         {
+            int[] into = new int[3];
+            Hsv2RgbInts(h, s, v, into);
+            return into;
+        }
+
+        /// <summary>
+        /// Converts given HSV values into its respective RGB representation (all values in range of 0-255)
+        /// in-place into a caller-supplied 3-element array without heap allocations.
+        /// </summary>
+        /// <param name="h"></param>
+        /// <param name="s"></param>
+        /// <param name="v"></param>
+        /// <param name="into">Destination array of length at least 3.</param>
+        public static void Hsv2RgbInts(int h, int s, int v, int[] into)
+        {
             int region, p, q, t;
             int remainder;
 
             if (s == 0 || v == 0)
             {
-                return new int[] { v, v, v };
+                into[0] = v;
+                into[1] = v;
+                into[2] = v;
+                return;
             }
 
             region = h / 43;
@@ -942,17 +973,17 @@ namespace Vintagestory.API.MathTools
             switch (region)
             {
                 case 0:
-                    return new int[] { v, t, p };
+                    into[0] = v; into[1] = t; into[2] = p; break;
                 case 1:
-                    return new int[] { q, v, p };
+                    into[0] = q; into[1] = v; into[2] = p; break;
                 case 2:
-                    return new int[] { p, v, t };
+                    into[0] = p; into[1] = v; into[2] = t; break;
                 case 3:
-                    return new int[] { p, q, v };
+                    into[0] = p; into[1] = q; into[2] = v; break;
                 case 4:
-                    return new int[] { t, p, v };
+                    into[0] = t; into[1] = p; into[2] = v; break;
                 default:
-                    return new int[] { v, p, q };
+                    into[0] = v; into[1] = p; into[2] = q; break;
             }
         }
 
