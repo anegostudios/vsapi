@@ -12,14 +12,14 @@ namespace Vintagestory.API.Datastructures
     /// <typeparam name="T"></typeparam>
     public class UniqueQueue<T> : IEnumerable<T>
     {
-        private HashSet<T> hashSet;
-        private Queue<T> queue;
+        private Dictionary<T, LinkedListNode<T>> nodesByValue;
+        private LinkedList<T> list;
 
 
         public UniqueQueue()
         {
-            hashSet = new HashSet<T>();
-            queue = new Queue<T>();
+            nodesByValue = new Dictionary<T, LinkedListNode<T>>();
+            list = new LinkedList<T>();
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Vintagestory.API.Datastructures
         {
             get
             {
-                return hashSet.Count;
+                return nodesByValue.Count;
             }
         }
 
@@ -38,8 +38,8 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         public void Clear()
         {
-            hashSet.Clear();
-            queue.Clear();
+            nodesByValue.Clear();
+            list.Clear();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public bool Contains(T item)
         {
-            return hashSet.Contains(item);
+            return nodesByValue.ContainsKey(item);
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace Vintagestory.API.Datastructures
         /// <param name="item"></param>
         public void Enqueue(T item)
         {
-            if (hashSet.Add(item))
+            if (!nodesByValue.ContainsKey(item))
             {
-                queue.Enqueue(item);
+                nodesByValue[item] = list.AddLast(item);
             }
         }
 
@@ -70,8 +70,14 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public T Dequeue()
         {
-            T item = queue.Dequeue();
-            hashSet.Remove(item);
+            LinkedListNode<T> node = list.First;
+            if (node == null)
+            {
+                throw new InvalidOperationException("Queue empty.");
+            }
+            T item = node.Value;
+            list.RemoveFirst();
+            nodesByValue.Remove(item);
             return item;
         }
 
@@ -81,36 +87,31 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public T Peek()
         {
-            return queue.Peek();
+            LinkedListNode<T> node = list.First;
+            if (node == null)
+            {
+                throw new InvalidOperationException("Queue empty.");
+            }
+            return node.Value;
         }
 
 
         public IEnumerator<T> GetEnumerator()
         {
-            return queue.GetEnumerator();
+            return list.GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return queue.GetEnumerator();
+            return list.GetEnumerator();
         }
 
         public void Remove(T item)
         {
-            hashSet.Remove(item);
-            Queue<T> tmp = new();
-            bool notFound = true;
-            do
+            if (nodesByValue.Remove(item, out LinkedListNode<T> node))
             {
-                T read = queue.Dequeue();
-                if (notFound && item.Equals(read))
-                {
-                    notFound = false;
-                    continue;
-                }
-                tmp.Enqueue(read);
-            } while (queue.Count > 0);
-            queue = tmp;
+                list.Remove(node);
+            }
         }
     }
 }
