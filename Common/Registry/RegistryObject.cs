@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -210,13 +210,24 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="posFromRight"></param>
         /// <returns></returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public string LastCodePart(int posFromRight = 0)
         {
             if (Code == null) return null;
-            if (posFromRight == 0 && !Code.Path.Contains('-')) return Code.Path;
+            string path = Code.Path;
+            if (path == null || posFromRight < 0) return null;
 
-            string[] parts = Code.Path.Split('-');
-            return parts.Length - 1 - posFromRight >= 0 ? parts[parts.Length - 1 - posFromRight] : null;
+            int end = path.Length;
+            for (int skip = 0; skip < posFromRight; skip++)
+            {
+                if (end <= 0) return null;
+                int dash = path.LastIndexOf('-', end - 1);
+                if (dash < 0) return null;
+                end = dash;
+            }
+            int start = end <= 0 ? 0 : path.LastIndexOf('-', end - 1) + 1;
+            if (start == 0 && end == path.Length) return path;
+            return path.Substring(start, end - start);
         }
 
         /// <summary>
@@ -224,13 +235,26 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="posFromLeft"></param>
         /// <returns></returns>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public string FirstCodePart(int posFromLeft = 0)
         {
             if (Code == null) return null;
-            if (posFromLeft == 0 && !Code.Path.Contains('-')) return Code.Path;
+            string path = Code.Path;
+            if (path == null || posFromLeft < 0) return null;
 
-            string[] parts = Code.Path.Split('-');
-            return posFromLeft <= parts.Length - 1 ? parts[posFromLeft] : null;
+            int start = 0;
+            for (int skip = 0; skip < posFromLeft; skip++)
+            {
+                if (start > path.Length) return null;
+                int dash = path.IndexOf('-', start);
+                if (dash < 0) return null;
+                start = dash + 1;
+            }
+            if (start > path.Length) return null;
+            int end = path.IndexOf('-', start);
+            if (end < 0) end = path.Length;
+            if (start == 0 && end == path.Length) return path;
+            return path.Substring(start, end - start);
         }
 
         /// <summary>
