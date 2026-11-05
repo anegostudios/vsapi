@@ -776,23 +776,44 @@ public abstract class RecipeBase : IRecipeBase, IConcreteCloneable<RecipeBase>
         return true;
     }
 
+    [ThreadStatic] private static List<ItemStack>? scratchSuppliedStacks;
+    [ThreadStatic] private static List<(ItemStack stack, IRecipeIngredient ingredient)>? scratchIngredientStacks;
+    [ThreadStatic] private static int matchesShapeLessDepth;
+
     protected virtual bool MatchesShapeLess(ItemSlot[] suppliedSlots, IWorldAccessor world, IRecipeIngredient?[] ingredients)
     {
-        List<ItemStack> suppliedStacks = [];
-
-        MergeStacks(suppliedSlots, suppliedStacks);
-
-        if (!MatchWildcardIngredients(suppliedStacks, ingredients))
+        bool reuse = matchesShapeLessDepth == 0;
+        matchesShapeLessDepth++;
+        try
         {
-            return false;
+            List<ItemStack> suppliedStacks = reuse ? (scratchSuppliedStacks ??= new List<ItemStack>(8)) : new List<ItemStack>();
+            if (reuse) suppliedStacks.Clear();
+
+            MergeStacks(suppliedSlots, suppliedStacks);
+
+            if (!MatchWildcardIngredients(suppliedStacks, ingredients))
+            {
+                return false;
+            }
+
+            List<(ItemStack stack, IRecipeIngredient ingredient)> ingredientStacks = reuse ? (scratchIngredientStacks ??= new List<(ItemStack stack, IRecipeIngredient ingredient)>(8)) : new List<(ItemStack stack, IRecipeIngredient ingredient)>();
+            if (reuse) ingredientStacks.Clear();
+
+            MergeIngredientStacks(suppliedSlots, ingredientStacks, ingredients, world);
+
+            if (ingredientStacks.Count != suppliedStacks.Count) return false;
+
+            return MatchIngredientStacks(ingredientStacks, suppliedStacks);
         }
-
-        List<(ItemStack stack, IRecipeIngredient ingredient)> ingredientStacks = [];
-        MergeIngredientStacks(suppliedSlots, ingredientStacks, ingredients, world);
-
-        if (ingredientStacks.Count != suppliedStacks.Count) return false;
-
-        return MatchIngredientStacks(ingredientStacks, suppliedStacks);
+        finally
+        {
+            matchesShapeLessDepth--;
+            if (reuse)
+            {
+                scratchSuppliedStacks?.Clear();
+                scratchIngredientStacks?.Clear();
+            }
+        }
     }
 
     protected virtual void MergeStacks(ItemSlot[] slots, List<ItemStack> stacks)
