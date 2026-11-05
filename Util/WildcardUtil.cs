@@ -62,6 +62,7 @@ namespace Vintagestory.API.Util
 
         public static bool Match(AssetLocation needle, AssetLocation haystack)
         {
+            if (needle == null || haystack == null) return false;
             if (needle.Domain != "*" && needle.Domain != haystack.Domain) return false;
             return fastMatch(needle.Path, haystack.Path);
         }
@@ -75,31 +76,25 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static bool Match(AssetLocation wildCard, AssetLocation inCode, string[] allowedVariants)
         {
-            if (wildCard.Domain.Length * wildCard.Path.Length == 1 && wildCard.Domain == "*" && wildCard.Path == "*") return true;
+            if (wildCard == null || inCode == null) return false;
+
+            if (wildCard.Domain == "*" && wildCard.Path == "*") return true;
 
             if (wildCard.Equals(inCode)) return true;
 
-            int wildCardIndex;
-            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain)) || ((wildCardIndex = wildCard.Path.IndexOf('*')) == -1 && wildCard.Path.IndexOf('(') == -1))
+            if (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain)) return false;
+
+            string needle = wildCard.Path;
+            string haystack = inCode.Path;
+
+            if (!needle.Contains('*') && !needle.StartsWith("@"))
             {
-                return false;
+                return needle.Length == haystack.Length && needle.Equals(haystack, StringComparison.OrdinalIgnoreCase);
             }
 
+            if (!fastMatch(needle, haystack)) return false;
 
-            // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
-            if (wildCardIndex == wildCard.Path.Length - 1)
-            {
-                if (!StringUtil.FastStartsWith(inCode.Path, wildCard.Path, wildCardIndex)) return false;
-            }
-            else
-            {
-                if (!StringUtil.FastStartsWith(inCode.Path, wildCard.Path, wildCardIndex)) return false;
-
-                string pattern = Regex.Escape(wildCard.Path).Replace(@"\*", @"(.*)");
-                if (!Regex.IsMatch(inCode.Path, @"^" + pattern + @"$", RegexOptions.None)) return false;
-            }
-
-            if (allowedVariants != null)
+            if (allowedVariants != null && allowedVariants.Length > 0 && needle.IndexOf('*') != -1)
             {
                 if (!MatchesVariants(wildCard, inCode, allowedVariants)) return false;
             }
@@ -129,7 +124,7 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static string GetWildcardValue(AssetLocation wildCard, AssetLocation inCode)
         {
-            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain))) return null;
+            if (wildCard == null || inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain))) return null;
             if (!wildCard.Path.Contains('*')) return null;
 
             string pattern = Regex.Escape(wildCard.Path).Replace(@"\*", @"(.*)");
