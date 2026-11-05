@@ -1265,6 +1265,10 @@ namespace Vintagestory.API.Common
             return drops;
         }
 
+        [ThreadStatic] private static List<ItemStack> scratchBehaviorDrops;
+        [ThreadStatic] private static List<ItemStack> scratchBlockDrops;
+        [ThreadStatic] private static int getDropsDepth;
+
         /// <summary>
         /// Is called before a block is broken, should return what items this block should drop. Return null or empty array for no drops.
         /// </summary>
@@ -1275,36 +1279,59 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f)
         {
-            bool preventDefault = false;
-            List<ItemStack> dropStacks = new List<ItemStack>();
-
-            foreach (BlockBehavior behavior in BlockBehaviors)
+            bool reuse = getDropsDepth == 0;
+            getDropsDepth++;
+            try
             {
-                EnumHandling handled = EnumHandling.PassThrough;
+                bool preventDefault = false;
+                List<ItemStack> dropStacks = reuse ? (scratchBehaviorDrops ??= new List<ItemStack>(8)) : new List<ItemStack>();
+                if (reuse) dropStacks.Clear();
 
-                ItemStack[] stacks = behavior.GetDrops(world, pos, byPlayer, ref dropQuantityMultiplier, ref handled);
-                if (stacks != null) dropStacks.AddRange(stacks);
-                if (handled == EnumHandling.PreventSubsequent) return stacks;
-                if (handled == EnumHandling.PreventDefault) preventDefault = true;
+                foreach (BlockBehavior behavior in BlockBehaviors)
+                {
+                    EnumHandling handled = EnumHandling.PassThrough;
+
+                    ItemStack[] stacks = behavior.GetDrops(world, pos, byPlayer, ref dropQuantityMultiplier, ref handled);
+                    if (stacks != null) dropStacks.AddRange(stacks);
+                    if (handled == EnumHandling.PreventSubsequent) return stacks;
+                    if (handled == EnumHandling.PreventDefault) preventDefault = true;
+                }
+
+                if (preventDefault)
+                {
+                    return dropStacks.Count == 0 ? Array.Empty<ItemStack>() : dropStacks.ToArray();
+                }
+
+                if (Drops == null) return null;
+
+                List<ItemStack> todrop = reuse ? (scratchBlockDrops ??= new List<ItemStack>(8)) : new List<ItemStack>();
+                if (reuse) todrop.Clear();
+
+                for (int i = 0; i < Drops.Length; i++)
+                {
+                    BlockDropItemStack dstack = Drops[i];
+                    ItemStack stack = dstack.ToRandomItemstackForPlayer(byPlayer, world, dropQuantityMultiplier);
+                    if (stack == null) continue;
+                    todrop.Add(stack);
+                    if (dstack.LastDrop) break;
+                }
+
+                if (dropStacks.Count > 0)
+                {
+                    todrop.AddRange(dropStacks);
+                }
+
+                return todrop.Count == 0 ? Array.Empty<ItemStack>() : todrop.ToArray();
             }
-
-            if (preventDefault) return dropStacks.ToArray();
-
-            if (Drops == null) return null;
-            List<ItemStack> todrop = new List<ItemStack>();
-
-            for (int i = 0; i < Drops.Length; i++)
+            finally
             {
-                BlockDropItemStack dstack = Drops[i];
-                ItemStack stack = dstack.ToRandomItemstackForPlayer(byPlayer, world, dropQuantityMultiplier);
-                if (stack == null) continue;
-                todrop.Add(stack);
-                if (dstack.LastDrop) break;
+                getDropsDepth--;
+                if (reuse)
+                {
+                    scratchBehaviorDrops?.Clear();
+                    scratchBlockDrops?.Clear();
+                }
             }
-
-            todrop.AddRange(dropStacks);
-
-            return todrop.ToArray();
         }
 
 
