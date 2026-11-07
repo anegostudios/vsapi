@@ -10,12 +10,11 @@
 */
 
 // AABB update by radfast, February 2023
-// Performance update: distance test first, precomputed plane extents, SIMD AABB test
+// Optimization: SIMD AABB check via Vector<float> (256 and 512 bit)
 
 using System;
+using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics;
-using System.Runtime.Intrinsics.X86;
 using Vintagestory.API.MathTools;
 
 #nullable disable
@@ -40,7 +39,8 @@ namespace Vintagestory.API.Client
 
         private const double INV_SQRT3 = 0.57735026918962576;
 
-        // Absolute normal components divided by sqrt(3). Computed once, so the AABB test has no branches.
+        // Absolute values of normal components divided by sqrt(3). Calculated once when the plane is created,
+        // so the AABB check then runs without branches and without Math.Abs on each call.
         internal double ex;
         internal double ey;
         internal double ez;
@@ -67,9 +67,9 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// The box is outside if its corner nearest to the inside is still behind the plane:
-        /// n.c + |n|.h + D &lt; 0, where h = radius / sqrt3 is the half size on each axis.
-        /// Also serves as the scalar fallback when no vector hardware is available.
+        /// The box is outside if its corner closest to the inner side of the plane is still behind the plane:
+        /// n.c + |n|.h + D &lt; 0, where h = radius / sqrt3 is half the box side on each axis.
+        /// This is also the scalar path when SIMD is not used (no vector acceleration or Vector&lt;float&gt; is already 128 bit).
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool AABBisOutside(Sphere sphere)
@@ -95,17 +95,39 @@ namespace Vintagestory.API.Client
         /// </summary>
         private Plane[] frustum = new Plane[6];
 
-        // SIMD data, rebuilt once per frame in CalcFrustumEquations.
-        // Sphere centres are taken relative to the origin below before the float cast,
-        // and D is shifted to match, so precision holds far from world zero.
+        // Whether to use the SIMD path. Vector acceleration is required and at least 6 lanes so that all six planes
+        // fit into one Vector<float>: this is 256 bit (8 lanes) and wider (512 bit gives 16 lanes).
+        // On 128 bit (4 lanes, including ARM64) the scalar path is used: measurements showed that a separate
+        // 128 bit branch with two plane sets is almost not faster than the scalar one.
+        // Both conditions are JIT constants, so after compilation only the needed branch remains.
+        private static bool UseSimd
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get => Vector.IsHardwareAccelerated && Vector<float>.Count >= 6;
+        }
+
+        // Data for SIMD. Rebuilt once per frame in CalcFrustumEquations.
+        //
+        // The sphere center is taken relative to origin (the player position) BEFORE conversion to float,
+        // and D is shifted by the same amount. This preserves precision
+        // far from the world zero point, where absolute coordinates in float already lose precision.
         private double originX, originY, originZ;
 
-        // Vector256 layout: 6 planes in 8 lanes, lanes 6 and 7 are padding
-        private Vector256<float> w_nx, w_ny, w_nz, w_d, w_ex, w_ey, w_ez;
+        // Data for six planes in one vector set. Lane i stores plane i,
+        // the other lanes (6 and above: two at 256 bit, ten at 512 bit) are padding.
+        // Padding lanes have zero normal and positive D, so they never produce "outside".
+        private struct PlaneSet
+        {
+            public Vector<float> nx, ny, nz, d, ex, ey, ez;
+        }
 
-        // Vector128 layout: planes 0 to 3 in set a, planes 4 and 5 in set b, lanes 2 and 3 are padding
-        private Vector128<float> a_nx, a_ny, a_nz, a_d, a_ex, a_ey, a_ez;
-        private Vector128<float> b_nx, b_ny, b_nz, b_d, b_ex, b_ey, b_ez;
+        private PlaneSet simdPlanes;
+
+        // Added to the Far plane lane (lane 5) when Far is not checked (includeFar == false).
+        // The lane becomes a huge positive number and cannot produce "outside".
+        // This replaces the 0x1F mask: instead of extracting bits one LessThanAny is enough.
+        // The other lanes are zero. It does not depend on the frame, so it is calculated once when the class is loaded.
+        private static readonly Vector<float> FarOffset = CreateFarOffset();
 
         public void UpdateViewDistance(int newValue)
         {
@@ -143,8 +165,11 @@ namespace Vintagestory.API.Client
 
         public bool InFrustumAndRange(Sphere sphere, bool nowVisible, int lodLevel = 0)
         {
-            // The cheap distance test runs first and rejects most chunks before any plane maths.
-            // The float cast matches BlockPos.HorDistanceSqTo.
+            // The cheap distance check goes first: it rejects most chunks
+            // before any plane math.
+            // The conversion to float is intentional to match BlockPos.HorDistanceSqTo
+            // (otherwise the LOD thresholds would shift).
+            // dx and dz are calculated once and reused in the plane check.
             double dx = sphere.x - originX;
             double dz = sphere.z - originZ;
             double distance = (float)(dx * dx + dz * dz);
@@ -171,118 +196,67 @@ namespace Vintagestory.API.Client
                     return false;
             }
 
-            // The Far plane is not tested here because the range check above replaces it
+            // Far is not checked here (includeFar = false): its role has already been performed by the distance check above.
             return !AabbOutside(sphere, false, dx, dz);
         }
 
-        // Tests the box against the frustum planes. The hardware checks are constants for the JIT,
-        // so only one of the three paths remains in the compiled code.
-        // dx and dz are the sphere centre relative to the origin on the X and Z axes.
+        // Checks the box against the view pyramid planes.
+        // dx and dz are the sphere center relative to origin on the X and Z axes.
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool AabbOutside(Sphere s, bool includeFar, double dx, double dz)
         {
-            if (Vector256.IsHardwareAccelerated)
+            if (UseSimd)
             {
-                // All planes in one vector, one mask extraction
-                Vector256<float> acc = Eval(
-                    Vector256.Create((float)dx), Vector256.Create((float)(s.y - originY)), Vector256.Create((float)dz),
-                    Vector256.Create((float)s.radius), Vector256.Create((float)s.radiusY), Vector256.Create((float)s.radiusZ),
-                    w_nx, w_ny, w_nz, w_d, w_ex, w_ey, w_ez);
+                // The sphere values are broadcast to all lanes. Conversion to float happens after subtracting origin
+                var vx = new Vector<float>((float)dx);
+                var vy = new Vector<float>((float)(s.y - originY));
+                var vz = new Vector<float>((float)dz);
+                var vrx = new Vector<float>((float)s.radius);
+                var vry = new Vector<float>((float)s.radiusY);
+                var vrz = new Vector<float>((float)s.radiusZ);
 
-                uint bits = Vector256.LessThan(acc, Vector256<float>.Zero).ExtractMostSignificantBits();
-                return (bits & (includeFar ? 0x3Fu : 0x1Fu)) != 0;
+                // All six planes are evaluated with one vector, the result is checked with one comparison
+                Vector<float> acc = Eval(in simdPlanes, vx, vy, vz, vrx, vry, vrz);
+
+                // If Far is not needed, its lane is shifted to a large positive value and cannot trigger.
+                if (!includeFar)
+                    acc += FarOffset;
+
+                return Vector.LessThanAny(acc, Vector<float>.Zero);
             }
 
-            if (Vector128.IsHardwareAccelerated)
-            {
-                // Four planes first, the remaining two only if the first set did not reject
-                var vx = Vector128.Create((float)dx);
-                var vy = Vector128.Create((float)(s.y - originY));
-                var vz = Vector128.Create((float)dz);
-                var vrx = Vector128.Create((float)s.radius);
-                var vry = Vector128.Create((float)s.radiusY);
-                var vrz = Vector128.Create((float)s.radiusZ);
+            // SIMD is not used: scalar check with early exit, the loop is manually unrolled
+            if (frustum[0].AABBisOutside(s)) return true;
+            if (frustum[1].AABBisOutside(s)) return true;
+            if (frustum[2].AABBisOutside(s)) return true;
+            if (frustum[3].AABBisOutside(s)) return true;
+            if (frustum[4].AABBisOutside(s)) return true;
+            if (includeFar && frustum[5].AABBisOutside(s)) return true;
 
-                Vector128<float> acc = Eval(vx, vy, vz, vrx, vry, vrz, a_nx, a_ny, a_nz, a_d, a_ex, a_ey, a_ez);
-                if ((Vector128.LessThan(acc, Vector128<float>.Zero).ExtractMostSignificantBits() & 0xFu) != 0) return true;
-
-                acc = Eval(vx, vy, vz, vrx, vry, vrz, b_nx, b_ny, b_nz, b_d, b_ex, b_ey, b_ez);
-                return (Vector128.LessThan(acc, Vector128<float>.Zero).ExtractMostSignificantBits() & (includeFar ? 0x3u : 0x1u)) != 0;
-            }
-
-            // No vector hardware: scalar test with early exit
-            int count = includeFar ? 6 : 5;
-            for (int i = 0; i < count; i++)
-            {
-                if (frustum[i].AABBisOutside(s)) return true;
-            }
             return false;
         }
 
-        // Plane value d + n.c + e.r, built from three independent chains that are added at the end.
-        // This shortens the dependency chain from 6 operations to 4.
+        // Plane value: d + n.c + e.r.
+        // Calculated as three independent chains that are added at the end.
+        // This shortens the dependency chain from 6 to 4, and the processor can execute the chains in parallel.
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Vector256<float> Eval(
-            Vector256<float> sx, Vector256<float> sy, Vector256<float> sz,
-            Vector256<float> rx, Vector256<float> ry, Vector256<float> rz,
-            Vector256<float> nx, Vector256<float> ny, Vector256<float> nz,
-            Vector256<float> d, Vector256<float> ex, Vector256<float> ey, Vector256<float> ez)
+        private static Vector<float> Eval(
+            in PlaneSet p,
+            Vector<float> sx, Vector<float> sy, Vector<float> sz,
+            Vector<float> rx, Vector<float> ry, Vector<float> rz)
         {
-            Vector256<float> a = Mad(sy, ny, Mad(sx, nx, d));
-            Vector256<float> b = Mad(sz, nz, rx * ex);
-            Vector256<float> c = Mad(rz, ez, ry * ey);
+            Vector<float> a = sy * p.ny + (sx * p.nx + p.d);
+            Vector<float> b = sz * p.nz + rx * p.ex;
+            Vector<float> c = rz * p.ez + ry * p.ey;
             return (b + c) + a;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Vector128<float> Eval(
-            Vector128<float> sx, Vector128<float> sy, Vector128<float> sz,
-            Vector128<float> rx, Vector128<float> ry, Vector128<float> rz,
-            Vector128<float> nx, Vector128<float> ny, Vector128<float> nz,
-            Vector128<float> d, Vector128<float> ex, Vector128<float> ey, Vector128<float> ez)
-        {
-            Vector128<float> a = Mad(sy, ny, Mad(sx, nx, d));
-            Vector128<float> b = Mad(sz, nz, rx * ex);
-            Vector128<float> c = Mad(rz, ez, ry * ey);
-            return (b + c) + a;
-        }
-
-        // Multiply and add, fused when the CPU supports FMA
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Vector256<float> Mad(Vector256<float> a, Vector256<float> b, Vector256<float> c)
-        {
-            if (Fma.IsSupported) return Fma.MultiplyAdd(a, b, c);
-            return a * b + c;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Vector128<float> Mad(Vector128<float> a, Vector128<float> b, Vector128<float> c)
-        {
-            if (Fma.IsSupported) return Fma.MultiplyAdd(a, b, c);
-            return a * b + c;
-        }
 
         public void CalcFrustumEquations(BlockPos playerPos, double[] projectionMatrix, double[] cameraMatrix)
         {
             this.playerPos = playerPos;
 
-            double[] matFrustum = Mat4d.Create();
-
-            Mat4d.Multiply(matFrustum, projectionMatrix, cameraMatrix);
-
-            CalcFrustumEquations(matFrustum);
-
-            BuildSimdPlanes();
-        }
-
-        /// <summary>
-        /// Stores the origin and packs the planes into SIMD registers. Runs once per frame.
-        /// n.c + D equals n.(c - o) + (D + n.o), so shifting by the origin o is exact in double,
-        /// and the remaining values are small enough to store as float.
-        /// </summary>
-        private void BuildSimdPlanes()
-        {
-            // The origin is also used by the distance checks, so it is set before any early return
+            // origin is also needed by the distance checks, so it is set before any early exit
             if (playerPos != null)
             {
                 originX = playerPos.X;
@@ -294,61 +268,82 @@ namespace Vintagestory.API.Client
                 originX = originY = originZ = 0;
             }
 
-            if (!Vector128.IsHardwareAccelerated) return;
+            double[] matFrustum = Mat4d.Create();
 
-            Span<float> nx = stackalloc float[8];
-            Span<float> ny = stackalloc float[8];
-            Span<float> nz = stackalloc float[8];
-            Span<float> d = stackalloc float[8];
-            Span<float> ex = stackalloc float[8];
-            Span<float> ey = stackalloc float[8];
-            Span<float> ez = stackalloc float[8];
-            nx.Clear(); ny.Clear(); nz.Clear(); d.Clear(); ex.Clear(); ey.Clear(); ez.Clear();
+            Mat4d.Multiply(matFrustum, projectionMatrix, cameraMatrix);
 
-            for (int i = 0; i < 6; i++)
+            CalcFrustumEquations(matFrustum);
+
+            BuildSimdPlanes();
+        }
+
+        /// <summary>
+        /// Packs six planes into SIMD registers. Runs once per frame.
+        /// Lane i stores plane i, lanes 6 and above are padding (zero normal and D = 1, they never produce "outside").
+        /// D is shifted by origin: n.c + D equals n.(c - o) + (D + n.o). The shift in double is exact,
+        /// and the remaining values are small enough to store as float.
+        /// </summary>
+        private void BuildSimdPlanes()
+        {
+            // Without the SIMD path this data is not needed, the scalar path is used
+            if (!UseSimd)
+                return;
+
+            int n = Vector<float>.Count;
+            Span<float> nx = stackalloc float[n];
+            Span<float> ny = stackalloc float[n];
+            Span<float> nz = stackalloc float[n];
+            Span<float> d = stackalloc float[n];
+            Span<float> ex = stackalloc float[n];
+            Span<float> ey = stackalloc float[n];
+            Span<float> ez = stackalloc float[n];
+
+            // Each lane is set explicitly in both branches, so it does not matter whether stackalloc zeroes memory
+            for (int i = 0; i < n; i++)
             {
-                Plane p = frustum[i];
-                nx[i] = (float)p.normalX;
-                ny[i] = (float)p.normalY;
-                nz[i] = (float)p.normalZ;
-                d[i] = (float)(p.D + p.normalX * originX + p.normalY * originY + p.normalZ * originZ);
-                ex[i] = (float)p.ex;
-                ey[i] = (float)p.ey;
-                ez[i] = (float)p.ez;
+                if (i < 6)
+                {
+                    Plane p = frustum[i];
+                    nx[i] = (float)p.normalX;
+                    ny[i] = (float)p.normalY;
+                    nz[i] = (float)p.normalZ;
+                    d[i] = (float)(p.D + p.normalX * originX + p.normalY * originY + p.normalZ * originZ);
+                    ex[i] = (float)p.ex;
+                    ey[i] = (float)p.ey;
+                    ez[i] = (float)p.ez;
+                }
+                else
+                {
+                    nx[i] = ny[i] = nz[i] = 0f;
+                    ex[i] = ey[i] = ez[i] = 0f;
+                    d[i] = 1f;
+                }
             }
 
-            // Padding lanes have a zero normal and positive D, so they never report "outside"
-            d[6] = 1f;
-            d[7] = 1f;
-
-            if (Vector256.IsHardwareAccelerated)
+            simdPlanes = new PlaneSet
             {
-                w_nx = Vector256.Create((ReadOnlySpan<float>)nx);
-                w_ny = Vector256.Create((ReadOnlySpan<float>)ny);
-                w_nz = Vector256.Create((ReadOnlySpan<float>)nz);
-                w_d = Vector256.Create((ReadOnlySpan<float>)d);
-                w_ex = Vector256.Create((ReadOnlySpan<float>)ex);
-                w_ey = Vector256.Create((ReadOnlySpan<float>)ey);
-                w_ez = Vector256.Create((ReadOnlySpan<float>)ez);
-            }
-            else
-            {
-                a_nx = Vector128.Create((ReadOnlySpan<float>)nx.Slice(0, 4));
-                a_ny = Vector128.Create((ReadOnlySpan<float>)ny.Slice(0, 4));
-                a_nz = Vector128.Create((ReadOnlySpan<float>)nz.Slice(0, 4));
-                a_d = Vector128.Create((ReadOnlySpan<float>)d.Slice(0, 4));
-                a_ex = Vector128.Create((ReadOnlySpan<float>)ex.Slice(0, 4));
-                a_ey = Vector128.Create((ReadOnlySpan<float>)ey.Slice(0, 4));
-                a_ez = Vector128.Create((ReadOnlySpan<float>)ez.Slice(0, 4));
+                nx = new Vector<float>(nx),
+                ny = new Vector<float>(ny),
+                nz = new Vector<float>(nz),
+                d = new Vector<float>(d),
+                ex = new Vector<float>(ex),
+                ey = new Vector<float>(ey),
+                ez = new Vector<float>(ez),
+            };
+        }
 
-                b_nx = Vector128.Create((ReadOnlySpan<float>)nx.Slice(4, 4));
-                b_ny = Vector128.Create((ReadOnlySpan<float>)ny.Slice(4, 4));
-                b_nz = Vector128.Create((ReadOnlySpan<float>)nz.Slice(4, 4));
-                b_d = Vector128.Create((ReadOnlySpan<float>)d.Slice(4, 4));
-                b_ex = Vector128.Create((ReadOnlySpan<float>)ex.Slice(4, 4));
-                b_ey = Vector128.Create((ReadOnlySpan<float>)ey.Slice(4, 4));
-                b_ez = Vector128.Create((ReadOnlySpan<float>)ez.Slice(4, 4));
-            }
+        // Vector with the offset for the Far plane: 1e30f in lane 5, zeros in the others.
+        // The UseSimd check is required: the static initializer runs when the class is loaded on any hardware,
+        // and with 4 lanes there is no index 5 in the vector, which would cause IndexOutOfRangeException (TypeInitializationException).
+        private static Vector<float> CreateFarOffset()
+        {
+            if (!UseSimd)
+                return Vector<float>.Zero;
+
+            Span<float> off = stackalloc float[Vector<float>.Count];
+            off.Clear();
+            off[5] = 1e30f;
+            return new Vector<float>(off);
         }
 
         /// <summary>
