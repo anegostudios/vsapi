@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Vintagestory.API.Config;
 
 #nullable disable
@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class MeshDataPoolMasterManager
     {
-        List<MeshDataPool> modelPools = new List<MeshDataPool>();
+        List<MeshDataPool> modelPools = [];
         ICoreClientAPI capi;
         public float currentDt;
         public float[] currentModelViewMatrix;
@@ -22,12 +22,12 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool DelayedPoolLocationRemoval;
 
-        Queue<ModelDataPoolLocation[]>[] removalQueue = new Queue<ModelDataPoolLocation[]>[] {
-            new Queue<ModelDataPoolLocation[]>(),
-            new Queue<ModelDataPoolLocation[]>(),
-            new Queue<ModelDataPoolLocation[]>(),
-            new Queue<ModelDataPoolLocation[]>()
-        };
+        Queue<ModelDataPoolLocation[]>[] removalQueue = [
+            new(),
+            new(),
+            new(),
+            new()
+        ];
 
 
 
