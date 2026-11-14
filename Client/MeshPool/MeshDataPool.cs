@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -8,130 +9,115 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
     /// <summary>
-    /// This is a modeldata pool, which can hold 400k vertices, 300k indices but not more than 900 chunks
+    /// A model data pool: one large buffer on the GPU that chunk meshes are packed into
+    /// It holds up to 400k vertices and 300k indices but never more than 900 chunks
     /// </summary>
     public class MeshDataPool
     {
-        /// <summary>
-        /// The maximum parts for this pool.
-        /// </summary>
+        /// <summary>Maximum number of parts (meshes) in this pool</summary>
         public int MaxPartsPerPool;
 
-        /// <summary>
-        /// The current vertices for this pool.
-        /// </summary>
+        /// <summary>Size of the pool vertex buffer</summary>
         public int VerticesPoolSize;
 
-        /// <summary>
-        /// the amount of indicies for this pool.
-        /// </summary>
+        /// <summary>Size of the pool index buffer</summary>
         public int IndicesPoolSize;
 
+        // The mesh on the GPU and the pool id (a part checks the id to see it belongs to this pool)
         internal MeshRef modelRef;
         internal int poolId;
 
-        // For defragmentation, sanity checks, frustum culling
-        internal List<ModelDataPoolLocation> poolLocations = new List<ModelDataPoolLocation>();
+        // Sorted by position in the vertex and index buffers Needed to squeeze meshes into gaps
+        // and to compute fragmentation Culling does NOT use this any more, it reads the slot arrays in cullData
+        internal List<ModelDataPoolLocation> poolLocations = [];
 
-        // For final rendering 
+        // Culling data and flags for each part (Hide, LodLevel, FrustumVisible, CullVisible), one slot per part
+        private readonly PoolCullData cullData;
 
-        /// <summary>
-        /// The starting byte for each index.
-        /// </summary>
+        // For the final rendering
+
+        /// <summary>Start byte of each index group</summary>
         public int[] indicesStartsByte;
 
-        /// <summary>
-        /// The size of each index.
-        /// </summary>
+        /// <summary>Size of each index group</summary>
         public int[] indicesSizes;
 
-        /// <summary>
-        /// How many index groups are there.
-        /// </summary>
+        /// <summary>How many index groups there are (how many draw calls to make)</summary>
         public int indicesGroupsCount = 0;
-        
 
-        // Current position on where the next free vertex/index can be placed
-        /// <summary>
-        /// the position of the indices.
-        /// </summary>
+        // Current position where the next vertex or index can be placed
+        /// <summary>Position in the index buffer</summary>
         public int indicesPosition;
 
-        /// <summary>
-        /// the position of the vertices.
-        /// </summary>
+        /// <summary>Position in the vertex buffer</summary>
         public int verticesPosition;
 
-        /// <summary>
-        /// The current fragmentaton.
-        /// </summary>
+        /// <summary>Current buffer fragmentation (share of holes)</summary>
         public float CurrentFragmentation;
 
-        /// <summary>
-        /// How many of the vertices are used.
-        /// </summary>
+        /// <summary>How many vertices are actually used</summary>
         public int UsedVertices;
 
-        internal Vec3i poolOrigin;
+        // Where the pool data sits in the world Set only while the pool is empty, via SetPoolOrigin
+        // null means the world origin (0,0,0)
+        private Vec3i poolOriginInternal;
+
         internal int dimensionId;
 
-        /// <summary>
-        /// How many triangles are rendered.
-        /// </summary>
+        /// <summary>How many triangles were drawn</summary>
         public int RenderedTriangles;
 
-        /// <summary>
-        /// How many triangles are allocated.
-        /// </summary>
+        /// <summary>How many triangles are allocated</summary>
         public int AllocatedTris;
 
 
-        
-        private MeshDataPool(int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool) {
+        /// <summary>Read only view of the pool origin Null means the pool uses the world origin (0,0,0)</summary>
+        internal Vec3i PoolOrigin => poolOriginInternal;
+
+
+        /// <summary>
+        /// Sets the pool origin Allowed only while the pool is empty: changing the origin with live parts
+        /// would silently desync the coordinates stored in cullData Callers must use this method
+        /// because the field can no longer be changed directly
+        /// </summary>
+        internal void SetPoolOrigin(Vec3i newOrigin)
+        {
+            if (poolLocations.Count > 0)
+                throw new InvalidOperationException("MeshDataPool: pool origin can only be set while the pool is empty");
+
+            if (poolOriginInternal == null)
+                poolOriginInternal = new Vec3i(newOrigin.X, newOrigin.Y, newOrigin.Z);
+            else
+                poolOriginInternal.Set(newOrigin.X, newOrigin.Y, newOrigin.Z);
+        }
+
+
+        private MeshDataPool(int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool)
+        {
             this.MaxPartsPerPool = maxPartsPerPool;
             this.IndicesPoolSize = indicesPoolSize;
             this.VerticesPoolSize = verticesPoolSize;
+            this.cullData = new PoolCullData(maxPartsPerPool);
         }
 
         /// <summary>
-        /// Allocates a new pool for mesh data.
+        /// Creates a new pool for mesh data
         /// </summary>
-        /// <param name="capi">The core client API</param>
-        /// <param name="verticesPoolSize">The vertices pool size.</param>
-        /// <param name="indicesPoolSize">The index pool size.</param>
-        /// <param name="maxPartsPerPool">The maximum parts per pool.</param>
-        /// <param name="customFloats">The custom floats of the pool.</param>
-        /// <param name="customShorts"></param>
-        /// <param name="customBytes">The custom bytes of the pool.</param>
-        /// <param name="customInts">The custom ints of the pool.</param>
-        /// <returns>The resulting mesh data pool.</returns>
         public static MeshDataPool AllocateNewPool(ICoreClientAPI capi, int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartShort customShorts = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
         {
-            MeshDataPool pool = new MeshDataPool(verticesPoolSize, indicesPoolSize, maxPartsPerPool);
+            MeshDataPool pool = new MeshDataPool(verticesPoolSize, indicesPoolSize, maxPartsPerPool)
+            {
+                // 64 bit builds need 64 bit memory addresses (a long array would be proper
+                // but GL.MultiDrawElements accepts only int arrays)
+                indicesStartsByte = new int[maxPartsPerPool * 2],
+                indicesSizes = new int[maxPartsPerPool]
+            };
 
-            // 64 bit builds require 64 bit memory addresses (should be long[] really, but GL.MultiDrawElements only accepts int[])
-            // 
-            pool.indicesStartsByte = new int[maxPartsPerPool * 2];
-            
-            pool.indicesSizes = new int[maxPartsPerPool];
-
-            // Allocate the right amount of bytes for custom data
-            if (customFloats != null)
-            {
-                customFloats.SetAllocationSize(verticesPoolSize * customFloats.InterleaveStride / 4);
-            }
-            if (customShorts != null)
-            {
-                customShorts.SetAllocationSize(verticesPoolSize * customShorts.InterleaveStride / 2);
-            }
-            if (customBytes != null)
-            {
-                customBytes.SetAllocationSize(verticesPoolSize * customBytes.InterleaveStride); 
-            }
-            if (customInts != null)
-            {
-                customInts.SetAllocationSize(verticesPoolSize * customInts.InterleaveStride / 4);
-            }
+            // Allocate the right number of bytes for the custom data
+            customFloats?.SetAllocationSize(verticesPoolSize * customFloats.InterleaveStride / 4);
+            customShorts?.SetAllocationSize(verticesPoolSize * customShorts.InterleaveStride / 2);
+            customBytes?.SetAllocationSize(verticesPoolSize * customBytes.InterleaveStride);
+            customInts?.SetAllocationSize(verticesPoolSize * customInts.InterleaveStride / 4);
 
             pool.modelRef = capi.Render.AllocateEmptyMesh(
                 MeshData.XyzSize * verticesPoolSize,
@@ -147,36 +133,31 @@ namespace Vintagestory.API.Client
                 EnumDrawMode.Triangles,
                 false
             );
-            
 
             return pool;
         }
 
         /// <summary>
-        /// Attempts to add the new model.
+        /// Tries to add a new mesh to the pool Returns null when there is no room
+        /// or when the mesh is from another dimension
         /// </summary>
-        /// <param name="capi">The core client API</param>
-        /// <param name="modeldata">The model to add</param>
-        /// <param name="modelOrigin">The origin point of the model.</param>
-        /// <param name="dimension"></param>
-        /// <param name="frustumCullSphere">The culling sphere.</param>
-        /// <returns>The location of the model (and the data) in the pool.</returns>
         public ModelDataPoolLocation TryAdd(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, int dimension, Sphere frustumCullSphere)
         {
             if (poolLocations.Count >= MaxPartsPerPool || dimension != this.dimensionId) return null;
 
-            // Can't add a model data to far away from our baseposition, otherwise our floating point positions
-            // become too inaccurate
-            if (poolOrigin != null)
+            // The pool origin can only be set while the pool is empty If it is not empty the new mesh
+            // must be close enough to the existing origin or the float coordinates relative to the pool
+            // would lose precision
+            if (poolLocations.Count == 0)
             {
-                if (poolLocations.Count == 0)
-                {
-                    poolOrigin.Set(modelOrigin);
-                }
-
-                if (modelOrigin.SquareDistanceTo(poolOrigin) > 5000 * 5000) return null;
+                SetPoolOrigin(modelOrigin);
+            }
+            else if (modelOrigin.SquareDistanceTo(poolOriginInternal) > 5000 * 5000)
+            {
+                return null;
             }
 
+            // If the buffer has many holes first try to squeeze the mesh into one of them
             if (CurrentFragmentation > 0.03f)
             {
                 ModelDataPoolLocation location = TrySqueezeInbetween(capi, modeldata, modelOrigin, frustumCullSphere);
@@ -187,6 +168,10 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Looks for a hole between the meshes already in the pool that fits the new mesh
+        /// Walks the list in order and checks the gap before every mesh
+        /// </summary>
         ModelDataPoolLocation TrySqueezeInbetween(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere)
         {
             int curVertexPos = 0;
@@ -196,7 +181,7 @@ namespace Vintagestory.API.Client
             {
                 ModelDataPoolLocation location = poolLocations[i];
 
-                if (location.IndicesStart - curIndexPos > modeldata.IndicesCount && location.VerticesStart - curVertexPos > modeldata.VerticesCount)
+                if (location.IndicesStart - curIndexPos >= modeldata.IndicesCount && location.VerticesStart - curVertexPos >= modeldata.VerticesCount)
                 {
                     return InsertAt(capi, modeldata, modelOrigin, frustumCullSphere, curIndexPos, curVertexPos, i);
                 }
@@ -209,7 +194,11 @@ namespace Vintagestory.API.Client
         }
 
 
-        ModelDataPoolLocation TryAppend(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere) {
+        /// <summary>
+        /// Puts the mesh at the end of the used part of the buffers Returns null when it does not fit
+        /// </summary>
+        ModelDataPoolLocation TryAppend(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere)
+        {
             if (modeldata.IndicesCount + indicesPosition > IndicesPoolSize || modeldata.VerticesCount + verticesPosition > VerticesPoolSize)
             {
                 return null;
@@ -220,6 +209,7 @@ namespace Vintagestory.API.Client
             indicesPosition += modeldata.IndicesCount;
             verticesPosition += modeldata.VerticesCount;
 #if DEBUG
+            // With SSBOs vertices must land on a 4 vertex boundary (the buffer address must be a multiple of 16 bytes)
             if (verticesPosition % 4 != 0 && capi.Render.UseSSBOs) { throw new Exception("Vertices in pool not aligned on 4-vertex boundary. Try disabling clientsetting: allowSSBOs."); }
 #endif
 
@@ -227,10 +217,14 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// The shared insert step: shifts indices and vertices to the chosen position, uploads the mesh
+        /// to the GPU and creates the ModelDataPoolLocation A listPosition of -1 means append to the list
+        /// </summary>
         ModelDataPoolLocation InsertAt(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere, int indexPosition, int vertexPosition, int listPosition)
         {
-            // Shift the indices numbers accordingly
-            if (vertexPosition > 0)  // not necessary if vertexPosition is zero!
+            // Shift the index numbers to the new vertex position
+            if (vertexPosition > 0)  // not needed when vertexPosition is zero
             {
                 for (int i = 0; i < modeldata.IndicesCount; i++)
                 {
@@ -238,11 +232,12 @@ namespace Vintagestory.API.Client
                 }
             }
 
-            // Relative offset to our pool origin
-            if (poolOrigin != null) {
-                int dx = modelOrigin.X - this.poolOrigin.X;
-                int dy = modelOrigin.Y - this.poolOrigin.Y;
-                int dz = modelOrigin.Z - this.poolOrigin.Z;
+            // Move the vertices into coordinates relative to the pool origin
+            if (poolOriginInternal != null)
+            {
+                int dx = modelOrigin.X - poolOriginInternal.X;
+                int dy = modelOrigin.Y - poolOriginInternal.Y;
+                int dz = modelOrigin.Z - poolOriginInternal.Z;
 
                 for (int i = 0; i < modeldata.VerticesCount; i++)
                 {
@@ -252,7 +247,7 @@ namespace Vintagestory.API.Client
                 }
             }
 
-            // Shift position to the end of the used buffers memory
+            // Shift the offsets to the end of the used buffers
             modeldata.XyzOffset = vertexPosition * MeshData.XyzSize;
             modeldata.NormalsOffset = vertexPosition * MeshData.NormalSize;
             modeldata.RgbaOffset = vertexPosition * MeshData.RgbaSize;
@@ -261,59 +256,48 @@ namespace Vintagestory.API.Client
             modeldata.FlagsOffset = vertexPosition * MeshData.FlagsSize;
             modeldata.IndicesOffset = indexPosition * MeshData.IndexSize;
 
-            if (modeldata.CustomFloats != null)
-            {
-                modeldata.CustomFloats.BaseOffset = vertexPosition * modeldata.CustomFloats.InterleaveStride;
-            }
+            modeldata.CustomFloats?.BaseOffset = vertexPosition * modeldata.CustomFloats.InterleaveStride;
+            modeldata.CustomShorts?.BaseOffset = vertexPosition * modeldata.CustomShorts.InterleaveStride;
+            modeldata.CustomBytes?.BaseOffset = vertexPosition * modeldata.CustomBytes.InterleaveStride;
+            modeldata.CustomInts?.BaseOffset = vertexPosition * modeldata.CustomInts.InterleaveStride;
 
-            if (modeldata.CustomShorts != null)
-            {
-                modeldata.CustomShorts.BaseOffset = vertexPosition * modeldata.CustomShorts.InterleaveStride;
-            }
-
-            if (modeldata.CustomBytes != null)
-            {
-                modeldata.CustomBytes.BaseOffset = vertexPosition * modeldata.CustomBytes.InterleaveStride;
-            }
-
-            if (modeldata.CustomInts != null)
-            {
-                modeldata.CustomInts.BaseOffset = vertexPosition * modeldata.CustomInts.InterleaveStride;
-            }
-
-            // Load into graphics card
+            // Upload to the GPU
             capi.Render.UpdateChunkMesh(modelRef, modeldata);
-            
-            
-            // Assign a location to it
-            ModelDataPoolLocation poolLocation = new ModelDataPoolLocation()
+
+            // Create the description of the place in the pool
+            ModelDataPoolLocation poolLocation = new ModelDataPoolLocation
             {
                 IndicesStart = indexPosition,
                 IndicesEnd = indexPosition + modeldata.IndicesCount,
                 VerticesStart = vertexPosition,
                 VerticesEnd = vertexPosition + modeldata.VerticesCount,
                 PoolId = poolId,
-                FrustumCullSphere = frustumCullSphere
+                FrustumCullSphere = frustumCullSphere,
+                // Hand out a slot: from now on Hide, LodLevel, FrustumVisible and CullVisible live in cullData
+                // The pool origin is passed together with the sphere so the two cannot get out of sync
+                Slots = cullData,
+                Slot = cullData.Allocate(poolOriginInternal, frustumCullSphere, indexPosition * 4, modeldata.IndicesCount)
             };
-            
-            // Maintain correct ordering
+
+            // Keep the list sorted by buffer position
             if (listPosition != -1)
             {
                 poolLocations.Insert(listPosition, poolLocation);
-            } else
+            }
+            else
             {
                 poolLocations.Add(poolLocation);
             }
-            
+
             CalcFragmentation();
 
             return poolLocation;
         }
 
         /// <summary>
-        /// Attempts to remove the model from the pool if the model exists.  Will throw an invalid call or an InvalidOperationException if used improperly.
+        /// Removes a mesh from the pool Throws when it cannot be removed
+        /// (wrong pool or no such mesh in this pool)
         /// </summary>
-        /// <param name="location">The location of the model data.</param>
         public void RemoveLocation(ModelDataPoolLocation location)
         {
             if (location.PoolId != poolId)
@@ -321,19 +305,29 @@ namespace Vintagestory.API.Client
                 throw new Exception("invalid call");
             }
 
-            if (!poolLocations.Remove(location))
-            {    
+            int index = poolLocations.IndexOf(location);
+            if (index < 0)
+            {
                 throw new InvalidOperationException("Tried to remove mesh that does not exist. This shouldn't happen");
             }
 
-            // Last location?
+            poolLocations.RemoveAt(index);
+
+            // Free the slot The location keeps its last flag values so reads and writes through a stale
+            // reference stay harmless and can never hit a part that reuses the slot later
+            int slot = location.Slot;
+            location.Detach();
+            cullData.Free(slot);
+
+            // Was this the last part?
             if (poolLocations.Count == 0)
             {
                 indicesPosition = 0;
                 verticesPosition = 0;
-            } else
+            }
+            else
             {
-                // Location at the end of the buffer?
+                // Was the part at the very end of the buffer?
                 if (location.IndicesEnd == indicesPosition && location.VerticesEnd == verticesPosition)
                 {
                     indicesPosition = poolLocations[poolLocations.Count - 1].IndicesEnd;
@@ -341,16 +335,12 @@ namespace Vintagestory.API.Client
                 }
             }
 
-
             CalcFragmentation();
         }
 
         /// <summary>
-        /// Draw the model.
+        /// Draws the pool: first picks the visible parts, then sends them in one call
         /// </summary>
-        /// <param name="capi">The core client API</param>
-        /// <param name="frustumCuller">The area where models can be viewed from the camera.</param>
-        /// <param name="frustumCullMode">The mode of the culling.</param>
         public void Draw(ICoreClientAPI capi, FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
             FrustumCull(frustumCuller, frustumCullMode);
@@ -358,78 +348,42 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Cleans up the rendering view of the models.
+        /// Finds the visible parts and fills the arrays for MultiDrawElements
+        /// The rules themselves are implemented in PoolCullData and set by FrustumCulling
         /// </summary>
-        /// <param name="frustumCuller">The area where models can be viewed from the camera.</param>
-        /// <param name="frustumCullMode">The mode of the culling.</param>
         public void FrustumCull(FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
-            indicesGroupsCount = 0;
-            RenderedTriangles = 0;
-            AllocatedTris = 0;
+            indicesGroupsCount = cullData.Cull(frustumCuller, frustumCullMode,
+                                               indicesStartsByte, indicesSizes, out int renderedIndices);
 
-            for (int i = 0; i < poolLocations.Count; i++)
-            {
-                ModelDataPoolLocation location = poolLocations[i];
-
-                int size = location.IndicesEnd - location.IndicesStart;
-                if (location.IsVisible(frustumCullMode, frustumCuller))
-                {
-                    indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4; // Offset in bytes, not ints
-                    indicesSizes[indicesGroupsCount] = size;
-
-                    RenderedTriangles += size / 3;
-
-                    indicesGroupsCount++;
-                }
-
-                AllocatedTris += size / 3;
-            }
-        }
-
-        public void SetFullyVisible()
-        {
-            indicesGroupsCount = 0;
-
-            RenderedTriangles = 0;
-            AllocatedTris = 0;
-
-            for (int i = 0; i < poolLocations.Count; i++)
-            {
-                ModelDataPoolLocation location = poolLocations[i];
-
-                int size = location.IndicesEnd - location.IndicesStart;
-                indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4; // Offset in bytes, not ints
-                indicesSizes[indicesGroupsCount] = size;
-
-                RenderedTriangles += size / 3;
-
-                indicesGroupsCount++;
-
-                AllocatedTris += size / 3;
-            }
+            RenderedTriangles = renderedIndices / 3;
+            AllocatedTris = cullData.TotalIndices / 3;
         }
 
         /// <summary>
-        /// Is this an empty pool.
+        /// Draws every part that is not hidden without frustum culling Used for mini dimension pools
+        /// Everything goes through Cull so Hide, the group layout and the triangle stats share one place
         /// </summary>
-        /// <returns>true if the pool is empty.</returns>
+        public void SetFullyVisible()
+        {
+            FrustumCull(null, EnumFrustumCullMode.NoCull);
+        }
+
+        /// <summary>Is the pool empty</summary>
         public bool IsEmpty()
         {
             return poolLocations.Count == 0;
         }
 
-        /// <summary>
-        /// Disposes of the current mesh pool.
-        /// </summary>
-        /// <param name="capi">The core client API</param>
+        /// <summary>Releases the pool buffers on the GPU</summary>
         public void Dispose(ICoreClientAPI capi)
         {
             capi.Render.DeleteMesh(modelRef);
         }
 
         /// <summary>
-        /// Calculates the current fragmentation of the mesh.
+        /// Computes fragmentation: the share of the used vertex buffer taken up by holes between meshes
+        /// The more holes there are, the more worthwhile it is to insert new meshes into the gaps
         /// </summary>
         public void CalcFragmentation()
         {
@@ -445,6 +399,7 @@ namespace Vintagestory.API.Client
 
             foreach (ModelDataPoolLocation location in poolLocations)
             {
+                // How many vertices are used and how much space was skipped before this part
                 UsedVertices += location.VerticesEnd - location.VerticesStart;
                 unusedVertices += Math.Max(0, location.VerticesStart - curPos);
                 curPos = location.VerticesEnd;
@@ -453,15 +408,14 @@ namespace Vintagestory.API.Client
             CurrentFragmentation = (float)unusedVertices / verticesPosition;
         }
 
-        /// <summary>
-        /// Gets the current fragmentation of the pool.
-        /// </summary>
-        /// <returns></returns>
+        /// <summary>Current pool fragmentation</summary>
         public float GetFragmentation()
         {
             return CurrentFragmentation;
         }
 
+        //[MethodImpl(MethodImplOptions.NoInlining)]
+        /// <summary>Sends only the parts found by the previous FrustumCull to the GPU</summary>
         public void RenderMesh(IRenderAPI render)
         {
             render.RenderMesh(modelRef, indicesStartsByte, indicesSizes, indicesGroupsCount);
@@ -470,90 +424,114 @@ namespace Vintagestory.API.Client
 
 
     /// <summary>
-    /// Contains all the data for the given model pool.
+    /// Description of one pool part (one chunk mesh in one LOD and one render pass)
+    ///
+    /// The flags Hide, LodLevel, FrustumVisible and CullVisible are properties: while the part is in a pool
+    /// they live in the pool slot arrays (PoolCullData) so culling reads them without touching this object
+    /// After the part is removed from the pool the last values stay in this object
+    ///
+    /// Note: this class implements no visibility rules All rules (the frustum test per mode, the LOD and
+    /// view distance rule, the shadow pass threshold) live in FrustumCulling and the batched version
+    /// lives in PoolCullData There is no separate per object version to keep in sync
     /// </summary>
     public class ModelDataPoolLocation
     {
+        /// <summary>Which of the two visibility buffers to read this frame (0 or 1)</summary>
         public static int VisibleBufIndex;
 
         /// <summary>
-        /// The ID of the pool model.
+        /// ID of the pool that owns this part
         /// </summary>
         public int PoolId;
 
         /// <summary>
-        /// Where the indices of the model start.
+        /// Where the mesh indices start
         /// </summary>
         public int IndicesStart;
 
         /// <summary>
-        /// Where the indices of the model end.
+        /// Where the mesh indices end
         /// </summary>
         public int IndicesEnd;
 
         /// <summary>
-        /// Where the vertices start.
+        /// Where the vertices start
         /// </summary>
         public int VerticesStart;
 
         /// <summary>
-        /// Where the vertices end.
+        /// Where the vertices end
         /// </summary>
         public int VerticesEnd;
 
         /// <summary>
-        /// The culling sphere.
+        /// The sphere used for culling
         /// </summary>
         public Sphere FrustumCullSphere;
 
         /// <summary>
-        /// Whether this model is visible or not.
-        /// </summary>
-        public bool FrustumVisible;
-
-        public Bools CullVisible = new Bools(true, true);
-
-        public int LodLevel = 0;
-
-        public bool Hide;
-
-        /// <summary>
-        /// Used for models with movements (like a door).
+        /// For models that move, such as a door
         /// </summary>
         public int TransitionCounter;
 
-        private bool UpdateVisibleFlag(bool inFrustum)
+        // Where the flags live while the part is in a pool Null before insertion and after removal
+        internal PoolCullData Slots;
+        internal int Slot;
+
+        // Values used while there is no slot
+        private bool hideLocal;
+        private bool frustumVisibleLocal;
+        private int lodLocal;
+        private Bools cullLocal;
+
+        /// <summary>Hidden parts are not drawn</summary>
+        public bool Hide
         {
-            FrustumVisible = inFrustum;
-            return FrustumVisible;
+            get => Slots != null ? Slots.GetHide(Slot) : hideLocal;
+            set { if (Slots != null) Slots.SetHide(Slot, value); else hideLocal = value; }
         }
 
-
-        public bool IsVisible(EnumFrustumCullMode mode, FrustumCulling culler)
+        /// <summary>Whether the part was visible in the last CullNormal pass</summary>
+        public bool FrustumVisible
         {
-            switch (mode)
-            {
-                case EnumFrustumCullMode.CullInstant:
-                    return !Hide && CullVisible[VisibleBufIndex] && culler.InFrustum(FrustumCullSphere);
+            get => Slots != null ? Slots.GetFrustumVisible(Slot) : frustumVisibleLocal;
+            set { if (Slots != null) Slots.SetFrustumVisible(Slot, value); else frustumVisibleLocal = value; }
+        }
 
-                case EnumFrustumCullMode.CullInstantShadowPassNear:
-                    return !Hide && CullVisible[VisibleBufIndex] && culler.InFrustumShadowPass(FrustumCullSphere);
+        /// <summary>Mesh detail level: 0 is the most detailed and 3 is the coarsest</summary>
+        public int LodLevel
+        {
+            get => Slots != null ? Slots.GetLod(Slot) : lodLocal;
+            set { if (Slots != null) Slots.SetLod(Slot, value); else lodLocal = value; }
+        }
 
-                case EnumFrustumCullMode.CullInstantShadowPassFar:
-                    return !Hide && CullVisible[VisibleBufIndex] && culler.InFrustumShadowPass(FrustumCullSphere) && LodLevel >= 1;
+        /// <summary>
+        /// Visibility set by the chunk culler This is the shared Bools object of the chunk itself
+        /// so a change is visible to every slot of the chunk at once
+        /// </summary>
+        public Bools CullVisible
+        {
+            get => Slots != null ? Slots.GetCullVisible(Slot) : (cullLocal ??= new Bools(true, true));
+            set { if (Slots != null) Slots.SetCullVisible(Slot, value); else cullLocal = value; }
+        }
 
-                case EnumFrustumCullMode.CullNormal:
-                    return !Hide && CullVisible[VisibleBufIndex] && UpdateVisibleFlag(culler.InFrustumAndRange(FrustumCullSphere, FrustumVisible, LodLevel));
+        /// <summary>
+        /// Detaches the part from its slot after copying the current flags into the local fields
+        /// Called before the slot is freed
+        /// </summary>
+        internal void Detach()
+        {
+            if (Slots == null) return;
 
-                default:
-                    return !Hide;
-            }
-
+            hideLocal = Slots.GetHide(Slot);
+            frustumVisibleLocal = Slots.GetFrustumVisible(Slot);
+            lodLocal = Slots.GetLod(Slot);
+            cullLocal = Slots.GetCullVisible(Slot) ?? new Bools(true, true);
+            Slots = null;
         }
     }
 
 
+    /// <summary>Visibility test delegate for external code</summary>
     public delegate bool VisibleTestDelegate(FrustumCulling culler);
-
-    
 }

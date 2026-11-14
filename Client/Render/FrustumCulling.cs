@@ -1,4 +1,4 @@
-//The original sphere-based culling was from Mark Morley's tutorial on frustum culling.
+//The original sphere based culling was from Mark Morley tutorial on frustum culling
 //http://www.crownandcutlass.com/features/technicaldetails/frustum.html
 
 /*Original copyright notice on that source:
@@ -21,15 +21,22 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Frustum culling mode
+    /// </summary>
     public enum EnumFrustumCullMode
     {
-        NoCull = 0,
-        CullNormal = 1,
-        CullInstant = 2,
-        CullInstantShadowPassNear = 3,
-        CullInstantShadowPassFar = 4
+        NoCull = 0,                      // no culling at all, draw everything not hidden
+        CullNormal = 1,                  // normal world pass: LOD and view distance
+        CullInstant = 2,                 // one off draw: frustum only
+        CullInstantShadowPassNear = 3,   // near shadows: frustum and shadow area only
+        CullInstantShadowPassFar = 4     // far shadows: like near but LOD 1 and coarser only
     }
 
+    /// <summary>
+    /// A plane of the form n.p + D = 0 A point in front of the plane gives a value above zero
+    /// and a point behind it gives a value below zero
+    /// </summary>
     public struct Plane
     {
         public double normalX;
@@ -37,16 +44,17 @@ namespace Vintagestory.API.Client
         public double normalZ;
         public double D;
 
+        // 1 / sqrt(3) Needed to turn a sphere radius into half a box side
         private const double INV_SQRT3 = 0.57735026918962576;
 
-        // Absolute values of normal components divided by sqrt(3). Calculated once when the plane is created,
-        // so the AABB check then runs without branches and without Math.Abs on each call.
+        // Absolute normal components divided by sqrt(3) They are computed once when the plane is
+        // created so the AABB test runs without branches and without Math.Abs on every call
         internal double ex;
         internal double ey;
         internal double ez;
 
         /// <summary>
-        /// Creates a Plane with normalised (length 1.0) normal vector
+        /// Creates a plane with a normalized normal of length 1
         /// </summary>
         public Plane(double x, double y, double z, double d)
         {
@@ -61,15 +69,16 @@ namespace Vintagestory.API.Client
             ez = Math.Abs(normalZ) * INV_SQRT3;
         }
 
+        /// <summary>Signed distance from a point to the plane, negative means the point is behind it</summary>
         public double distanceOfPoint(double x, double y, double z)
         {
             return normalX * x + normalY * y + normalZ * z + D;
         }
 
         /// <summary>
-        /// The box is outside if its corner closest to the inner side of the plane is still behind the plane:
-        /// n.c + |n|.h + D &lt; 0, where h = radius / sqrt3 is half the box side on each axis.
-        /// This is also the scalar path when SIMD is not used (no vector acceleration or Vector&lt;float&gt; is already 128 bit).
+        /// The box is outside when its corner closest to the inner side of the plane is still behind it:
+        /// n.c + |n|.h + D below 0 where h is the radius divided by sqrt(3), half the box side on each axis
+        /// This is also the scalar path when SIMD is not used (no vector support or Vector&lt;float&gt; is 128 bit)
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool AABBisOutside(Sphere sphere)
@@ -80,60 +89,106 @@ namespace Vintagestory.API.Client
     }
 
 
+    /// <summary>
+    /// A frustum plane in pool space where the pool origin is the coordinate origin
+    /// Built by <see cref="FrustumCulling.GetPoolPlanes"/> and used by PoolCullData
+    /// </summary>
+    internal struct PoolPlane
+    {
+        public float nx, ny, nz, d;   // normal and offset
+        public float ex, ey, ez;      // |normal| / sqrt(3) for the AABB test
+
+
+        /// <summary>
+        /// The box is fully behind the plane Instead of one corner we pick the corner closest to the inner
+        /// side of the plane by taking the maximum or minimum per axis depending on the normal sign
+        /// </summary>
+        public bool IsBoxOutside(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+        {
+            float cx = nx > 0 ? maxX : minX;
+            float cy = ny > 0 ? maxY : minY;
+            float cz = nz > 0 ? maxZ : minZ;
+            return nx * cx + ny * cy + nz * cz + d < 0;
+        }
+    }
+
+
+    /// <summary>
+    /// Kind of cheap range check done before the plane tests
+    /// </summary>
+    internal enum RangeKind
+    {
+        None = 0,     // CullInstant: planes only
+        Radial = 1,   // CullNormal: circle around the player (view distance and LOD)
+        Box = 2       // Shadow modes: rectangle shadowRangeX and shadowRangeZ
+    }
+
+
+    /// <summary>
+    /// Settings of one culling pass computed from the mode and the culler state
+    /// This is the rule object used by the batched implementation in PoolCullData
+    /// </summary>
+    internal readonly struct CullPass
+    {
+        public readonly RangeKind Range;
+        public readonly float LimitA;    // Radial: max squared distance, Box: shadowRangeX
+        public readonly float LimitB;    // Box: shadowRangeZ
+        public readonly float OffsetX;   // pool origin relative to the player
+        public readonly float OffsetZ;
+
+        public CullPass(RangeKind range, float limitA, float limitB, float offsetX, float offsetZ)
+        {
+            Range = range; LimitA = limitA; LimitB = limitB; OffsetX = offsetX; OffsetZ = offsetZ;
+        }
+
+        // With Radial the far plane is not needed because the distance check already plays that role
+        // which is the same as in InFrustumAndRange
+        public bool IncludeFar => Range != RangeKind.Radial;
+        public int PlaneCount => IncludeFar ? 6 : 5;
+    }
+
+
+    /// <summary>
+    /// The frustum culler keeps the planes of the current view pyramid and tests whether an object is
+    /// inside them All visibility rules live here and are used by both the single object checks
+    /// (InFrustum and friends) and the batched version in PoolCullData
+    /// </summary>
     public class FrustumCulling
     {
         public int ViewDistanceSq;
         internal BlockPos playerPos;
         public float lod0BiasSq;
-        /// <summary>If distance squared is above this fraction of ViewDistanceSq, switch to LOD2.  Default value corresponds to distances beyond around 67% of the player's view distance.   At default, approximately 55% of the total rendered chunks will use LOD2.</summary>
+        /// <summary>If the squared distance is above this share of ViewDistanceSq we switch to LOD2  The default corresponds to roughly 67 percent of the player view distance  With the default about 55 percent of all drawn chunks use LOD2</summary>
         public double lod2BiasSq = 0.45;
         public double shadowRangeX;
         public double shadowRangeZ;
+
+        // Plane order for the tests: the ones that reject the most go first
+        // The frustum indices are Near 0, Left 1, Right 2, Top 3, Bottom 4, Far 5
+        private static readonly int[] PoolPlaneOrder = [1, 2, 0, 3, 4, 5];
 
         /// <summary>
         /// Index order: Near 0, Left 1, Right 2, Top 3, Bottom 4, Far 5
         /// </summary>
         private Plane[] frustum = new Plane[6];
 
-        // Whether to use the SIMD path. Vector acceleration is required and at least 6 lanes so that all six planes
-        // fit into one Vector<float>: this is 256 bit (8 lanes) and wider (512 bit gives 16 lanes).
-        // On 128 bit (4 lanes, including ARM64) the scalar path is used: measurements showed that a separate
-        // 128 bit branch with two plane sets is almost not faster than the scalar one.
-        // Both conditions are JIT constants, so after compilation only the needed branch remains.
-        private static bool UseSimd
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => Vector.IsHardwareAccelerated && Vector<float>.Count >= 6;
-        }
 
-        // Data for SIMD. Rebuilt once per frame in CalcFrustumEquations.
-        //
-        // The sphere center is taken relative to origin (the player position) BEFORE conversion to float,
-        // and D is shifted by the same amount. This preserves precision
-        // far from the world zero point, where absolute coordinates in float already lose precision.
+        // Rebuilt once per frame in CalcFrustumEquations
+        // The sphere center is taken relative to origin (the player position) BEFORE the conversion to
+        // float and D is shifted by the same amount This keeps precision far from the world zero point
+        // where absolute coordinates as float already lose precision
         private double originX, originY, originZ;
 
-        // Data for six planes in one vector set. Lane i stores plane i,
-        // the other lanes (6 and above: two at 256 bit, ten at 512 bit) are padding.
-        // Padding lanes have zero normal and positive D, so they never produce "outside".
-        private struct PlaneSet
-        {
-            public Vector<float> nx, ny, nz, d, ex, ey, ez;
-        }
-
-        private PlaneSet simdPlanes;
-
-        // Added to the Far plane lane (lane 5) when Far is not checked (includeFar == false).
-        // The lane becomes a huge positive number and cannot produce "outside".
-        // This replaces the 0x1F mask: instead of extracting bits one LessThanAny is enough.
-        // The other lanes are zero. It does not depend on the frame, so it is calculated once when the class is loaded.
-        private static readonly Vector<float> FarOffset = CreateFarOffset();
-
+        /// <summary>Updates the view distance A small margin of 20 blocks is added to it</summary>
         public void UpdateViewDistance(int newValue)
         {
             ViewDistanceSq = newValue * newValue + 20 * 20;
         }
 
+        /// <summary>
+        /// Tests a sphere against all six planes with the center as the point and the radius as tolerance
+        /// Returns true when the sphere is at least partly inside the frustum
+        /// </summary>
         public bool SphereInFrustum(double x, double y, double z, double radius)
         {
             if (frustum[0].distanceOfPoint(x, y, z) <= -radius) return false;
@@ -147,85 +202,103 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>The sphere is inside the frustum, ignoring range and LOD</summary>
         public bool InFrustum(Sphere sphere)
         {
-            return !AabbOutside(sphere, true, sphere.x - originX, sphere.z - originZ);
+            return !AabbOutside(sphere, true);
         }
 
 
+        /// <summary>The object is inside the area the shadows are built from</summary>
         public bool InFrustumShadowPass(Sphere sphere)
         {
             double dx = sphere.x - originX;
             double dz = sphere.z - originZ;
+
+            // Quick check: nothing outside the shadow rectangle is drawn
             if (Math.Abs(dx) >= shadowRangeX || Math.Abs(dz) >= shadowRangeZ) return false;
 
-            return !AabbOutside(sphere, true, dx, dz);
+            return !AabbOutside(sphere, true);
         }
 
 
-        public bool InFrustumAndRange(Sphere sphere, bool nowVisible, int lodLevel = 0)
+        /// <summary>
+        /// Full check for the normal pass: range and LOD first, then the planes
+        /// </summary>
+        public bool InFrustumAndRange(Sphere sphere, int lodLevel = 0)
         {
-            // The cheap distance check goes first: it rejects most chunks
-            // before any plane math.
-            // The conversion to float is intentional to match BlockPos.HorDistanceSqTo
-            // (otherwise the LOD thresholds would shift).
-            // dx and dz are calculated once and reused in the plane check.
+            // The cheap distance check comes first because it rejects most chunks
+            // before any plane math
+            // The conversion to float is deliberate to match BlockPos.HorDistanceSqTo
+            // otherwise the LOD thresholds would shift
             double dx = sphere.x - originX;
             double dz = sphere.z - originZ;
-            double distance = (float)(dx * dx + dz * dz);
+            float distanceSq = (float)(dx * dx + dz * dz);
 
-            // Lod level 3: implements Lod2: this is the mesh drawn at long distance  (may be empty)
-            // Lod level 2: implements Lod2: this is the mesh drawn at short and medium view distance
-            // Lod level 1: drawn at all view distance
-            // Lod level 0: only high detail stuff
-            switch (lodLevel)
-            {
-                case 0:
-                    if (!(lod0BiasSq > 0 && distance < lod0BiasSq + 32 * 32)) return false;
-                    break;
-                case 1:
-                    if (!(distance < ViewDistanceSq)) return false;
-                    break;
-                case 2:
-                    if (!(distance <= lod2BiasSq)) return false;
-                    break;
-                case 3:
-                    if (!(distance > lod2BiasSq && distance < ViewDistanceSq)) return false;
-                    break;
-                default:
-                    return false;
-            }
+            if (!PassesObjectTest(EnumFrustumCullMode.CullNormal, lodLevel, distanceSq)) return false;
 
-            // Far is not checked here (includeFar = false): its role has already been performed by the distance check above.
-            return !AabbOutside(sphere, false, dx, dz);
+            // The far plane is not checked here (includeFar is false) because its role was already played by the distance check above
+            return !AabbOutside(sphere, false);
         }
 
-        // Checks the box against the view pyramid planes.
-        // dx and dz are the sphere center relative to origin on the X and Z axes.
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private bool AabbOutside(Sphere s, bool includeFar, double dx, double dz)
+
+        /// <summary>
+        /// The only place that defines the LOD and view distance rule used by both the single check
+        /// in IsVisible through InFrustumAndRange and the batched check in PoolCullData
+        ///
+        /// LOD 3: implements Lod2, the mesh drawn at long distance (may be empty)
+        /// LOD 2: implements Lod2, the mesh drawn at short and medium distance
+        /// LOD 1: drawn at any distance
+        /// LOD 0: only high detail objects
+        /// </summary>
+        internal bool IsWithinLodRange(int lodLevel, float distanceSq)
         {
-            if (UseSimd)
+            switch (lodLevel)
             {
-                // The sphere values are broadcast to all lanes. Conversion to float happens after subtracting origin
-                var vx = new Vector<float>((float)dx);
-                var vy = new Vector<float>((float)(s.y - originY));
-                var vz = new Vector<float>((float)dz);
-                var vrx = new Vector<float>((float)s.radius);
-                var vry = new Vector<float>((float)s.radiusY);
-                var vrz = new Vector<float>((float)s.radiusZ);
-
-                // All six planes are evaluated with one vector, the result is checked with one comparison
-                Vector<float> acc = Eval(in simdPlanes, vx, vy, vz, vrx, vry, vrz);
-
-                // If Far is not needed, its lane is shifted to a large positive value and cannot trigger.
-                if (!includeFar)
-                    acc += FarOffset;
-
-                return Vector.LessThanAny(acc, Vector<float>.Zero);
+                case 0: return lod0BiasSq > 0 && distanceSq < lod0BiasSq + 32 * 32;
+                case 1: return distanceSq < ViewDistanceSq;
+                case 2: return distanceSq <= lod2BiasSq;
+                case 3: return distanceSq > lod2BiasSq && distanceSq < ViewDistanceSq;
+                default: return false;
             }
+        }
 
-            // SIMD is not used: scalar check with early exit, the loop is manually unrolled
+
+        /// <summary>
+        /// The extra per object rule that depends on the mode and is applied after the frustum test
+        /// This is the only place it is defined:
+        ///   CullNormal               the LOD and view distance rule (IsWithinLodRange)
+        ///   CullInstantShadowPassFar the LOD level is at least 1
+        /// All other modes have no extra check
+        ///
+        /// distanceSq is the squared horizontal distance relative to the pool origin and is only used for
+        /// CullNormal Pass 0 for the other modes
+        ///
+        /// Used by both InFrustumAndRange in the single path and PoolCullData.PassesObjectChecks in the
+        /// batched path so the rule cannot drift between them
+        /// </summary>
+        internal bool PassesObjectTest(EnumFrustumCullMode mode, int lodLevel, float distanceSq)
+        {
+            switch (mode)
+            {
+                case EnumFrustumCullMode.CullNormal:
+                    return IsWithinLodRange(lodLevel, distanceSq);
+
+                case EnumFrustumCullMode.CullInstantShadowPassFar:
+                    return lodLevel >= 1;
+
+                default:
+                    return true;
+            }
+        }
+
+
+        // Tests the box against the view pyramid planes
+        // dx and dz are the sphere center relative to origin on the X and Z axes
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private bool AabbOutside(Sphere s, bool includeFar)
+        {
+            // SIMD is not used here: a scalar check with early exit and the loop unrolled by hand
             if (frustum[0].AABBisOutside(s)) return true;
             if (frustum[1].AABBisOutside(s)) return true;
             if (frustum[2].AABBisOutside(s)) return true;
@@ -236,27 +309,15 @@ namespace Vintagestory.API.Client
             return false;
         }
 
-        // Plane value: d + n.c + e.r.
-        // Calculated as three independent chains that are added at the end.
-        // This shortens the dependency chain from 6 to 4, and the processor can execute the chains in parallel.
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static Vector<float> Eval(
-            in PlaneSet p,
-            Vector<float> sx, Vector<float> sy, Vector<float> sz,
-            Vector<float> rx, Vector<float> ry, Vector<float> rz)
-        {
-            Vector<float> a = sy * p.ny + (sx * p.nx + p.d);
-            Vector<float> b = sz * p.nz + rx * p.ex;
-            Vector<float> c = rz * p.ez + ry * p.ey;
-            return (b + c) + a;
-        }
 
-
+        /// <summary>
+        /// Rebuilds the frustum planes from the projection and camera matrices
+        /// </summary>
         public void CalcFrustumEquations(BlockPos playerPos, double[] projectionMatrix, double[] cameraMatrix)
         {
             this.playerPos = playerPos;
 
-            // origin is also needed by the distance checks, so it is set before any early exit
+            // origin is also needed by the distance checks so it is set before any early exit
             if (playerPos != null)
             {
                 originX = playerPos.X;
@@ -268,91 +329,106 @@ namespace Vintagestory.API.Client
                 originX = originY = originZ = 0;
             }
 
+            // Multiply projection by camera to get the final matrix the planes are extracted from
             double[] matFrustum = Mat4d.Create();
 
             Mat4d.Multiply(matFrustum, projectionMatrix, cameraMatrix);
 
             CalcFrustumEquations(matFrustum);
-
-            BuildSimdPlanes();
         }
 
+
         /// <summary>
-        /// Packs six planes into SIMD registers. Runs once per frame.
-        /// Lane i stores plane i, lanes 6 and above are padding (zero normal and D = 1, they never produce "outside").
-        /// D is shifted by origin: n.c + D equals n.(c - o) + (D + n.o). The shift in double is exact,
-        /// and the remaining values are small enough to store as float.
+        /// Which modes cull parts at all, as opposed to NoCull or an unknown mode
+        /// Shared with PoolCullData so the rule is not duplicated
         /// </summary>
-        private void BuildSimdPlanes()
+        internal static bool IsCullingMode(EnumFrustumCullMode mode)
         {
-            // Without the SIMD path this data is not needed, the scalar path is used
-            if (!UseSimd)
-                return;
-
-            int n = Vector<float>.Count;
-            Span<float> nx = stackalloc float[n];
-            Span<float> ny = stackalloc float[n];
-            Span<float> nz = stackalloc float[n];
-            Span<float> d = stackalloc float[n];
-            Span<float> ex = stackalloc float[n];
-            Span<float> ey = stackalloc float[n];
-            Span<float> ez = stackalloc float[n];
-
-            // Each lane is set explicitly in both branches, so it does not matter whether stackalloc zeroes memory
-            for (int i = 0; i < n; i++)
-            {
-                if (i < 6)
-                {
-                    Plane p = frustum[i];
-                    nx[i] = (float)p.normalX;
-                    ny[i] = (float)p.normalY;
-                    nz[i] = (float)p.normalZ;
-                    d[i] = (float)(p.D + p.normalX * originX + p.normalY * originY + p.normalZ * originZ);
-                    ex[i] = (float)p.ex;
-                    ey[i] = (float)p.ey;
-                    ez[i] = (float)p.ez;
-                }
-                else
-                {
-                    nx[i] = ny[i] = nz[i] = 0f;
-                    ex[i] = ey[i] = ez[i] = 0f;
-                    d[i] = 1f;
-                }
-            }
-
-            simdPlanes = new PlaneSet
-            {
-                nx = new Vector<float>(nx),
-                ny = new Vector<float>(ny),
-                nz = new Vector<float>(nz),
-                d = new Vector<float>(d),
-                ex = new Vector<float>(ex),
-                ey = new Vector<float>(ey),
-                ez = new Vector<float>(ez),
-            };
+            return mode == EnumFrustumCullMode.CullNormal
+                || mode == EnumFrustumCullMode.CullInstant
+                || mode == EnumFrustumCullMode.CullInstantShadowPassNear
+                || mode == EnumFrustumCullMode.CullInstantShadowPassFar;
         }
 
-        // Vector with the offset for the Far plane: 1e30f in lane 5, zeros in the others.
-        // The UseSimd check is required: the static initializer runs when the class is loaded on any hardware,
-        // and with 4 lanes there is no index 5 in the vector, which would cause IndexOutOfRangeException (TypeInitializationException).
-        private static Vector<float> CreateFarOffset()
-        {
-            if (!UseSimd)
-                return Vector<float>.Zero;
-
-            Span<float> off = stackalloc float[Vector<float>.Count];
-            off.Clear();
-            off[5] = 1e30f;
-            return new Vector<float>(off);
-        }
 
         /// <summary>
-        /// Calculating the frustum planes.
+        /// Builds the CullPass for the given mode and pool origin The pool origin is only used for the
+        /// cheap range offsets while the plane geometry with D shifted into pool space is built later
+        /// in GetPoolPlanes
+        /// </summary>
+        internal CullPass CreatePass(EnumFrustumCullMode mode, double poolOriginX, double poolOriginZ)
+        {
+            GetPoolOffset(poolOriginX, poolOriginZ, out float offsetX, out float offsetZ);
+
+            switch (mode)
+            {
+                case EnumFrustumCullMode.CullNormal:
+                    return new CullPass(RangeKind.Radial, MaxRangeSquared(), 0, offsetX, offsetZ);
+
+                case EnumFrustumCullMode.CullInstantShadowPassNear:
+                case EnumFrustumCullMode.CullInstantShadowPassFar:
+                    return new CullPass(RangeKind.Box, (float)shadowRangeX, (float)shadowRangeZ, offsetX, offsetZ);
+
+                default:   // CullInstant
+                    return new CullPass(RangeKind.None, 0, 0, offsetX, offsetZ);
+            }
+        }
+
+
+        /// <summary>
+        /// The largest squared distance at which a part can be visible on any LOD
+        /// A small margin guarantees the float pre check never rejects what the exact test would accept
+        /// </summary>
+        private float MaxRangeSquared()
+        {
+            double lod0Range = lod0BiasSq + 32 * 32;
+            double max = Math.Max(Math.Max(ViewDistanceSq, lod0Range), lod2BiasSq);
+            return (float)(max * 1.001 + 1);
+        }
+
+
+        /// <summary>
+        /// Planes in pool space (sphere center minus pool origin) The D shift is computed in double so
+        /// precision does not suffer far from the world zero Returns the number of written planes,
+        /// 6 or 5 without Far, same as in InFrustumAndRange
+        /// </summary>
+        internal int GetPoolPlanes(double poolX, double poolY, double poolZ, bool includeFar, PoolPlane[] result)
+        {
+            int count = includeFar ? 6 : 5;
+
+            for (int k = 0; k < count; k++)
+            {
+                Plane p = frustum[PoolPlaneOrder[k]];
+                result[k] = new PoolPlane
+                {
+                    nx = (float)p.normalX,
+                    ny = (float)p.normalY,
+                    nz = (float)p.normalZ,
+                    // Shift the plane into pool space by plugging in the pool origin
+                    d = (float)(p.D + p.normalX * poolX + p.normalY * poolY + p.normalZ * poolZ),
+                    ex = (float)p.ex,
+                    ey = (float)p.ey,
+                    ez = (float)p.ez
+                };
+            }
+            return count;
+        }
+
+        /// <summary>Pool origin position relative to the player (for the range, LOD and shadow range checks)</summary>
+        internal void GetPoolOffset(double poolX, double poolZ, out float offsetX, out float offsetZ)
+        {
+            offsetX = (float)(poolX - originX);
+            offsetZ = (float)(poolZ - originZ);
+        }
+
+
+        /// <summary>
+        /// Extracts the frustum planes from the final matrix which is projection times camera
         /// </summary>
         /// <remarks>
-        /// From the current OpenGL modelview and projection matrices,
-        /// calculate the frustum plane equations (Ax+By+Cz+D=0, normal=(A,B,C))
-        /// The equations can then be used to see on which side points are.
+        /// Every plane is a combination of two matrix rows: adding them gives one side of the pyramid
+        /// and subtracting them gives the opposite side The plane equation is Ax+By+Cz+D=0 with the
+        /// normal (A,B,C) and the sign of the value tells which side of the plane a point is on
         /// </remarks>
         private void CalcFrustumEquations(double[] matrix)
         {
@@ -360,42 +436,42 @@ namespace Vintagestory.API.Client
             {
                 double x, y, z, d;
 
-                // Extract the numbers for the RIGHT plane
+                // Right plane
                 x = matrix[3] - matrix[0];
                 y = matrix[7] - matrix[4];
                 z = matrix[11] - matrix[8];
                 d = matrix[15] - matrix[12];
                 frustum[2] = new Plane(x, y, z, d);
 
-                // Extract the numbers for the LEFT plane
+                // Left plane
                 x = matrix[3] + matrix[0];
                 y = matrix[7] + matrix[4];
                 z = matrix[11] + matrix[8];
                 d = matrix[15] + matrix[12];
                 frustum[1] = new Plane(x, y, z, d);
 
-                // Extract the BOTTOM plane
+                // Bottom plane
                 x = matrix[3] + matrix[1];
                 y = matrix[7] + matrix[5];
                 z = matrix[11] + matrix[9];
                 d = matrix[15] + matrix[13];
                 frustum[4] = new Plane(x, y, z, d);
 
-                // Extract the TOP plane
+                // Top plane
                 x = matrix[3] - matrix[1];
                 y = matrix[7] - matrix[5];
                 z = matrix[11] - matrix[9];
                 d = matrix[15] - matrix[13];
                 frustum[3] = new Plane(x, y, z, d);
 
-                // Extract the FAR plane
+                // Far plane
                 x = matrix[3] - matrix[2];
                 y = matrix[7] - matrix[6];
                 z = matrix[11] - matrix[10];
                 d = matrix[15] - matrix[14];
                 frustum[5] = new Plane(x, y, z, d);
 
-                // Extract the NEAR plane
+                // Near plane
                 x = matrix[3] + matrix[2];
                 y = matrix[7] + matrix[6];
                 z = matrix[11] + matrix[10];
@@ -403,14 +479,16 @@ namespace Vintagestory.API.Client
                 frustum[0] = new Plane(x, y, z, d);
             }
         }
-
     }
 
+    /// <summary>
+    /// LOD level numbers used for the pool (values of LodLevel)
+    /// </summary>
     public class EnumLodPool
     {
-        public const int NearbyDetail = 0;
-        public const int Everywhere = 1;
-        public const int EverywhereExceptFar = 2;
-        public const int FarDistanceOnly = 3;
+        public const int NearbyDetail = 0;         // only close to the player
+        public const int Everywhere = 1;           // at any distance
+        public const int EverywhereExceptFar = 2;   // everywhere except very distant chunks
+        public const int FarDistanceOnly = 3;      // only at long distances
     }
 }
